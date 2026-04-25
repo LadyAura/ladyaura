@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lady Aura | Arte mágico y diamond painting</title>
+<meta name="description" content="Lady Aura: ilustraciones mágicas, fantasía romántica y diseños exclusivos para diamond painting 60x90 cm.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Estrellas y burbujas decorativas -->
+<div class="stars" id="stars" aria-hidden="true"></div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a class="brand" href="#inicio" aria-label="Lady Aura inicio">
+    <img src="assets/logo.webp" alt="Logo Lady Aura">
+  </a>
+
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+
+  <nav class="nav" id="nav">
+    <a href="#inicio">Inicio</a>
+    <a href="#zodiaco">Zodiaco</a>
+    <a href="#galeria">Galería</a>
+    <a href="#clientes">Clientes</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <a class="header-button" href="#galeria">Elige tu diseño ✨</a>
+</header>
+
+<!-- BANNER ENVÍO GRATIS -->
+<div class="shipping-banner">
+  <span class="shine">✨</span>
+  <span>Envío <strong>GRATIS</strong> a toda España</span>
+  <span class="shine">✨</span>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <img class="hero-bg" src="assets/perfil-horizontal.webp" alt="Lady Aura trabajando en su universo creativo">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <h1>Lady Aura</h1>
+      <p class="kicker">Arte que ilumina tu mundo</p>
+      <p class="hero-text">Diseños mágicos para diamond painting, llenos de fantasía, color y brillo.</p>
+      <div class="hero-actions">
+        <a href="#galeria" class="btn primary">Elige tu diseño ✨</a>
+        <a href="#galeria" class="btn secondary">Comprar ahora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIRA INFO TIENDA -->
+  <section class="shop-strip">
+    <div><span>Formato premium</span><strong>Diamond painting 60×90 cm</strong></div>
+    <div><span>Precio</span><strong>94 €</strong></div>
+    <div><span>Pedido</span><strong>Por Gmail o redes</strong></div>
+  </section>
+
+  <!-- ZODIACO (carrusel) -->
+  <section id="zodiaco" class="zodiac section">
+    <div class="section-heading">
+      <span class="section-tag">Colección Zodiaco</span>
+      <h2>12 signos · 12 diosas</h2>
+      <p>Encuentra tu signo y déjate envolver por su magia. Desliza para descubrirlos todos.</p>
+    </div>
+
+    <div class="zodiac-track" id="zodiacTrack">
+      <a class="zodiac-card" data-img="assets/aries.webp" data-title="Aries"><div class="z-symbol">♈</div><img src="assets/aries.webp" alt="Aries"><span>Aries</span></a>
+      <a class="zodiac-card" data-img="assets/tauro.webp" data-title="Tauro"><div class="z-symbol">♉</div><img src="assets/tauro.webp" alt="Tauro"><span>Tauro</span></a>
+      <a class="zodiac-card" data-img="assets/geminis.webp" data-title="Géminis"><div class="z-symbol">♊</div><img src="assets/geminis.webp" alt="Géminis"><span>Géminis</span></a>
+      <a class="zodiac-card" data-img="assets/cancer.webp" data-title="Cáncer"><div class="z-symbol">♋</div><img src="assets/cancer.webp" alt="Cáncer"><span>Cáncer</span></a>
+      <a class="zodiac-card" data-img="assets/leo.webp" data-title="Leo"><div class="z-symbol">♌</div><img src="assets/leo.webp" alt="Leo"><span>Leo</span></a>
+      <a class="zodiac-card" data-img="assets/virgo.webp" data-title="Virgo"><div class="z-symbol">♍</div><img src="assets/virgo.webp" alt="Virgo"><span>Virgo</span></a>
+      <a class="zodiac-card" data-img="assets/libra.webp" data-title="Libra"><div class="z-symbol">♎</div><img src="assets/libra.webp" alt="Libra"><span>Libra</span></a>
+      <a class="zodiac-card" data-img="assets/escorpio.webp" data-title="Escorpio"><div class="z-symbol">♏</div><img src="assets/escorpio.webp" alt="Escorpio"><span>Escorpio</span></a>
+      <a class="zodiac-card" data-img="assets/sagitario.webp" data-title="Sagitario"><div class="z-symbol">♐</div><img src="assets/sagitario.webp" alt="Sagitario"><span>Sagitario</span></a>
+      <a class="zodiac-card" data-img="assets/capricornio.webp" data-title="Capricornio"><div class="z-symbol">♑</div><img src="assets/capricornio.webp" alt="Capricornio"><span>Capricornio</span></a>
+      <a class="zodiac-card" data-img="assets/acuario.webp" data-title="Acuario"><div class="z-symbol">♒</div><img src="assets/acuario.webp" alt="Acuario"><span>Acuario</span></a>
+      <a class="zodiac-card" data-img="assets/piscis.webp" data-title="Piscis"><div class="z-symbol">♓</div><img src="assets/piscis.webp" alt="Piscis"><span>Piscis</span></a>
+    </div>
+    <p class="scroll-hint">Desliza para descubrir tu signo <span>→</span></p>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section id="sobre-mi" class="about section">
+    <div class="about-text">
+      <span class="section-tag">Universo Lady Aura</span>
+      <h2>Bienvenid@ a mi mundo ✦</h2>
+      <p>Soy Lady Aura, creadora de diseños mágicos con estética de fantasía romántica: sirenas, parejas, signos zodiacales, criaturas celestiales y escenas pensadas para emocionar.</p>
+      <p>Cada obra está pensada para convertirse en una pieza especial de diamond painting: brillante, decorativa, intensa y con mucha personalidad.</p>
+      <a class="btn secondary" href="#galeria">Ver diseños</a>
+    </div>
+
+    <div class="feature-cards">
+      <article><strong>✨ Estilo propio</strong><p>Colores vivos, brillo, fantasía y estética premium.</p></article>
+      <article><strong>💎 60×90 cm</strong><p>Tamaño grande para que el diseño luzca con detalle.</p></article>
+      <article><strong>🌙 Arte mágico</strong><p>Sirenas, zodiaco, parejas, mundos celestiales y oscuros.</p></article>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section id="galeria" class="gallery section">
+    <div class="section-heading">
+      <span class="section-tag">Galería tienda</span>
+      <h2>Elige tu diseño</h2>
+      <p>Todos los diseños en formato diamond painting <strong>60×90 cm</strong> · <strong>94 €</strong> · Envío gratis</p>
+    </div>
+
+    <div class="grid-gallery">
+
+      <!-- Cuadros con descuento (-10€ → 84€) -->
+
+      <article class="art-card product-card" data-price="84" data-old-price="94">
+        <button class="image-open" type="button" aria-label="Ver Sirena oscura">
+          <span class="sale-ribbon">-10 €</span>
+          <img loading="lazy" src="assets/sirena-oscura.webp" alt="Sirena oscura">
+        </button>
+        <div class="product-info">
+          <h3>Sirena oscura</h3>
+          <p class="product-size">Diamond painting 60×90 cm</p>
+          <div class="price-row">
+            <span class="product-price-old">94 €</span>
+            <span class="product-price">84 €</span>
+          </div>
+          <div class="product-actions">
+            <a class="mini-btn buy" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pedido%20Lady%20Aura%20-%20Sirena%20oscura&body=Hola%20Lady%20Aura,%20quiero%20comprar%20el%20dise%C3%B1o:%20Sirena%20oscura.%20Formato:%2060x90.%20Precio:%2084%E2%82%AC%20(rebajado).%0A%0AMis%20datos:%0ANombre%20completo:%0ADirecci%C3%B3n:%0AC%C3%B3digo%20postal%20y%20ciudad:%0ATel%C3%A9fono:" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card product-card" data-price="84" data-old-price="94">
+        <button class="image-open" type="button" aria-label="Ver Princesa y unicornio">
+          <span class="sale-ribbon">-10 €</span>
+          <img loading="lazy" src="assets/mujer-unicornio.webp" alt="Princesa y unicornio">
+        </button>
+        <div class="product-info">
+          <h3>Princesa y unicornio</h3>
+          <p class="product-size">Diamond painting 60×90 cm</p>
+          <div class="price-row">
+            <span class="product-price-old">94 €</span>
+            <span class="product-price">84 €</span>
+          </div>
+          <div class="product-actions">
+            <a class="mini-btn buy" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pedido%20Lady%20Aura%20-%20Princesa%20y%20unicornio&body=Hola%20Lady%20Aura,%20quiero%20comprar%20el%20dise%C3%B1o:%20Princesa%20y%20unicornio.%20Formato:%2060x90.%20Precio:%2084%E2%82%AC%20(rebajado).%0A%0AMis%20datos:%0ANombre%20completo:%0ADirecci%C3%B3n:%0AC%C3%B3digo%20postal%20y%20ciudad:%0ATel%C3%A9fono:" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card product-card" data-price="84" data-old-price="94">
+        <button class="image-open" type="button" aria-label="Ver Noche bajo las estrellas">
+          <span class="sale-ribbon">-10 €</span>
+          <img loading="lazy" src="assets/abrazo-celestial.webp" alt="Noche bajo las estrellas">
+        </button>
+        <div class="product-info">
+          <h3>Noche bajo las estrellas</h3>
+          <p class="product-size">Diamond painting 60×90 cm</p>
+          <div class="price-row">
+            <span class="product-price-old">94 €</span>
+            <span class="product-price">84 €</span>
+          </div>
+          <div class="product-actions">
+            <a class="mini-btn buy" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pedido%20Lady%20Aura%20-%20Noche%20bajo%20las%20estrellas&body=Hola%20Lady%20Aura,%20quiero%20comprar%20el%20dise%C3%B1o:%20Noche%20bajo%20las%20estrellas.%20Formato:%2060x90.%20Precio:%2084%E2%82%AC%20(rebajado).%0A%0AMis%20datos:%0ANombre%20completo:%0ADirecci%C3%B3n:%0AC%C3%B3digo%20postal%20y%20ciudad:%0ATel%C3%A9fono:" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card product-card" data-price="84" data-old-price="94">
+        <button class="image-open" type="button" aria-label="Ver Conejitos cariñosos">
+          <span class="sale-ribbon">-10 €</span>
+          <img loading="lazy" src="assets/conejitos-carinosos.webp" alt="Conejitos cariñosos">
+        </button>
+        <div class="product-info">
+          <h3>Conejitos cariñosos</h3>
+          <p class="product-size">Diamond painting 60×90 cm</p>
+          <div class="price-row">
+            <span class="product-price-old">94 €</span>
+            <span class="product-price">84 €</span>
+          </div>
+          <div class="product-actions">
+            <a class="mini-btn buy" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pedido%20Lady%20Aura%20-%20Conejitos%20cari%C3%B1osos&body=Hola%20Lady%20Aura,%20quiero%20comprar%20el%20dise%C3%B1o:%20Conejitos%20cari%C3%B1osos.%20Formato:%2060x90.%20Precio:%2084%E2%82%AC%20(rebajado).%0A%0AMis%20datos:%0ANombre%20completo:%0ADirecci%C3%B3n:%0AC%C3%B3digo%20postal%20y%20ciudad:%0ATel%C3%A9fono:" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Cuadros sin descuento (94€) -->
+
+      <article class="art-card product-card" data-price="94">
+        <button class="image-open" type="button" aria-label="Ver Sirena bajo la luna llena">
+          <span class="badge-new">✦ Destacado</span>
+          <img loading="lazy" src="assets/sirena-luna-llena.webp" alt="Sirena bajo la luna llena">
+        </button>
+        <div class="product-info">
+          <h3>Sirena bajo la luna llena</h3>
+          <p class="product-size">Diamond painting 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pedido%20Lady%20Aura%20-%20Sirena%20bajo%20la%20luna%20llena&body=Hola%20Lady%20Aura,%20quiero%20comprar%20el%20dise%C3%B1o:%20Sirena%20bajo%20la%20luna%20llena.%20Formato:%2060x90.%20Precio:%2094%E2%82%AC.%0A%0AMis%20datos:%0ANombre%20completo:%0ADirecci%C3%B3n:%0AC%C3%B3digo%20postal%20y%20ciudad:%0ATel%C3%A9fono:" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card product-card" data-price="94">
+        <button class="image-open" type="button" aria-label="Ver Sirena al atardecer">
+          <img loading="lazy" src="assets/sirena-atardecer.webp" alt="Sirena al atardecer">
+        </button>
+        <div class="product-info">
+          <h3>Sirena al atardecer</h3>
+          <p class="product-size">Diamond painting 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pedido%20Lady%20Aura%20-%20Sirena%20al%20atardecer&body=Hola%20Lady%20Aura,%20quiero%20comprar%20el%20dise%C3%B1o:%20Sirena%20al%20atardecer.%20Formato:%2060x90.%20Precio:%2094%E2%82%AC.%0A%0AMis%20datos:%0ANombre%20completo:%0ADirecci%C3%B3n:%0AC%C3%B3digo%20postal%20y%20ciudad:%0ATel%C3%A9fono:" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card product-card" data-price="94">
+        <button class="image-open" type="button" aria-label="Ver Abrazo celestial">
+          <span class="badge-new">♡ Novedad</span>
+          <img loading="lazy" src="assets/abrazo-celestial.webp" alt="Abrazo celestial">
+        </button>
+        <div class="product-info">
+          <h3>Abrazo celestial</h3>
+          <p class="product-size">Diamond painting 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pedido%20Lady%20Aura%20-%20Abrazo%20celestial&body=Hola%20Lady%20Aura,%20quiero%20comprar%20el%20dise%C3%B1o:%20Abrazo%20celestial.%20Formato:%2060x90.%20Precio:%2094%E2%82%AC.%0A%0AMis%20datos:%0ANombre%20completo:%0ADirecci%C3%B3n:%0AC%C3%B3digo%20postal%20y%20ciudad:%0ATel%C3%A9fono:" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card product-card" data-price="94">
+        <button class="image-open" type="button" aria-label="Ver Abrazo bajo el cielo estrellado">
+          <span class="badge-new">♡ Novedad</span>
+          <img loading="lazy" src="assets/abrazo-cielo-estrellado.webp" alt="Abrazo bajo el cielo estrellado">
+        </button>
+        <div class="product-info">
+          <h3>Abrazo bajo el cielo estrellado</h3>
+          <p class="product-size">Diamond painting 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pedido%20Lady%20Aura%20-%20Abrazo%20bajo%20el%20cielo%20estrellado&body=Hola%20Lady%20Aura,%20quiero%20comprar%20el%20dise%C3%B1o:%20Abrazo%20bajo%20el%20cielo%20estrellado.%20Formato:%2060x90.%20Precio:%2094%E2%82%AC.%0A%0AMis%20datos:%0ANombre%20completo:%0ADirecci%C3%B3n:%0AC%C3%B3digo%20postal%20y%20ciudad:%0ATel%C3%A9fono:" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card product-card" data-price="94">
+        <button class="image-open" type="button" aria-label="Ver Abrazo bajo la luna roja">
+          <span class="badge-new">✦ Intenso</span>
+          <img loading="lazy" src="assets/abrazo-luna-roja.webp" alt="Abrazo bajo la luna roja">
+        </button>
+        <div class="product-info">
+          <h3>Abrazo bajo la luna roja</h3>
+          <p class="product-size">Diamond painting 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pedido%20Lady%20Aura%20-%20Abrazo%20bajo%20la%20luna%20roja&body=Hola%20Lady%20Aura,%20quiero%20comprar%20el%20dise%C3%B1o:%20Abrazo%20bajo%20la%20luna%20roja.%20Formato:%2060x90.%20Precio:%2094%E2%82%AC.%0A%0AMis%20datos:%0ANombre%20completo:%0ADirecci%C3%B3n:%0AC%C3%B3digo%20postal%20y%20ciudad:%0ATel%C3%A9fono:" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card product-card" data-price="94">
+        <button class="image-open" type="button" aria-label="Ver Bruja enamorada">
+          <span class="badge-new">🌙 Místico</span>
+          <img loading="lazy" src="assets/bruja-enamorada.webp" alt="Bruja enamorada">
+        </button>
+        <div class="product-info">
+          <h3>Bruja enamorada</h3>
+          <p class="product-size">Diamond painting 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pedido%20Lady%20Aura%20-%20Bruja%20enamorada&body=Hola%20Lady%20Aura,%20quiero%20comprar%20el%20dise%C3%B1o:%20Bruja%20enamorada.%20Formato:%2060x90.%20Precio:%2094%E2%82%AC.%0A%0AMis%20datos:%0ANombre%20completo:%0ADirecci%C3%B3n:%0AC%C3%B3digo%20postal%20y%20ciudad:%0ATel%C3%A9fono:" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section id="clientes" class="clients section">
+    <div class="section-heading">
+      <span class="section-tag">Comunidad</span>
+      <h2>Obras de clientes ✨</h2>
+      <p>Aquí irán las fotos reales de clientas cuando terminen sus cuadros Lady Aura.</p>
+    </div>
+
+    <div class="client-placeholder">
+      <div>
+        <strong>¿Has terminado tu cuadro?</strong>
+        <p>Envíame una foto y la añadiré a esta sección con tu permiso. ¡Me encantará verlo brillar!</p>
+      </div>
+      <a class="btn primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Foto%20cliente%20Lady%20Aura" target="_blank" rel="noopener">Enviar mi obra</a>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contact section">
+    <div class="section-heading">
+      <span class="section-tag">Contacto</span>
+      <h2>Sígueme y contáctame ✦</h2>
+    </div>
+
+    <div class="contact-cards">
+      <a class="contact-card" href="https://www.youtube.com/@LadyAura2025" target="_blank" rel="noopener">
+        <span class="icon">▶</span>
+        <div><h3>YouTube</h3><p>@LadyAura2025</p><small>Lady Aura</small></div>
+      </a>
+
+      <a class="contact-card" href="https://www.instagram.com/lady.aura.2025/" target="_blank" rel="noopener">
+        <span class="icon">◎</span>
+        <div><h3>Instagram</h3><p>@lady.aura.2025</p></div>
+      </a>
+
+      <a class="contact-card" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Consulta%20Lady%20Aura" target="_blank" rel="noopener">
+        <span class="icon">✉</span>
+        <div><h3>Gmail</h3><p>lady.aura.2025@gmail.com</p></div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Lady Aura · Arte mágico y diseños para diamond painting · Hecho con 💜 desde Valencia</p>
+</footer>
+
+<!-- LIGHTBOX (ficha ampliada) -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" type="button" aria-label="Cerrar imagen">×</button>
+  <div class="lightbox-card">
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption">
+      <h3 id="lightbox-title"></h3>
+      <p id="lightbox-price">Diamond painting 60×90 cm · 94 €</p>
+      <a id="lightbox-buy" class="btn primary" href="#" target="_blank" rel="noopener">Comprar este diseño</a>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
