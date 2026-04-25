@@ -491,6 +491,100 @@ p { color: var(--muted); line-height: 1.55; margin: 0.5rem 0; }
   margin-bottom: 0.4rem;
 }
 
+/* ========== CÓMO FUNCIONA (PASOS) ========== */
+.how-it-works {
+  border-top: 1px solid var(--border-soft);
+  background:
+    radial-gradient(circle at center, rgba(160, 63, 255, 0.08), transparent 30rem),
+    rgba(6, 5, 15, 0.5);
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.step-card {
+  background: var(--panel-soft);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2rem 1.4rem 1.6rem;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 0 25px rgba(98, 45, 130, 0.18);
+}
+
+.step-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: 0 0 35px rgba(237, 147, 255, 0.4);
+}
+
+.step-number {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--gold), var(--rose));
+  color: var(--bg);
+  border-radius: 50%;
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  box-shadow: 0 6px 18px rgba(255, 217, 138, 0.5);
+  border: 3px solid var(--bg);
+}
+
+.step-card h3 {
+  margin: 0.6rem 0 0.6rem;
+  font-family: "Cinzel", serif;
+  font-size: 1.05rem;
+  color: #fff0ff;
+  letter-spacing: 0.05em;
+}
+
+.step-card p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.step-icon {
+  font-size: 2rem;
+  margin-top: 1rem;
+  filter: drop-shadow(0 0 8px rgba(240, 163, 255, 0.4));
+}
+
+.community-cta {
+  max-width: 800px;
+  margin: 3rem auto 0;
+  padding: 1.8rem 2rem;
+  background: linear-gradient(135deg, rgba(24, 119, 242, 0.18), rgba(160, 63, 255, 0.18));
+  border: 1px solid rgba(24, 119, 242, 0.4);
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(24, 119, 242, 0.2);
+}
+
+.community-cta p {
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.community-cta strong {
+  color: var(--gold);
+}
+
 /* ========== GALERÍA ========== */
 .gallery, .clients {
   border-top: 1px solid var(--border-soft);
@@ -641,9 +735,28 @@ p { color: var(--muted); line-height: 1.55; margin: 0.5rem 0; }
   letter-spacing: 0.1em;
 }
 
+/* Botón WhatsApp */
+.whatsapp-btn {
+  background: linear-gradient(135deg, #25d366, #128c7e) !important;
+  border-color: rgba(37, 211, 102, 0.5) !important;
+}
+.whatsapp-btn:hover {
+  background: linear-gradient(135deg, #2eed75, #14a092) !important;
+  box-shadow: 0 0 25px rgba(37, 211, 102, 0.5) !important;
+}
+
+/* Botón Email */
+.email-btn {
+  background: rgba(18, 10, 31, 0.7) !important;
+  border-color: var(--border) !important;
+}
+
 .product-actions {
   margin-top: auto;
   padding-top: 0.4rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 /* ========== CLIENTES ========== */
@@ -699,11 +812,65 @@ p { color: var(--muted); line-height: 1.55; margin: 0.5rem 0; }
   font-size: 2rem;
   box-shadow: 0 0 25px rgba(240, 163, 255, 0.38);
   color: white;
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+}
+
+/* Iconos por marca */
+.contact-card.whatsapp .icon {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  box-shadow: 0 0 25px rgba(37, 211, 102, 0.5);
+}
+.contact-card.whatsapp:hover {
+  box-shadow: 0 0 35px rgba(37, 211, 102, 0.5);
+}
+
+.contact-card.instagram .icon {
+  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  box-shadow: 0 0 25px rgba(220, 39, 67, 0.5);
+}
+.contact-card.instagram:hover {
+  box-shadow: 0 0 35px rgba(220, 39, 67, 0.5);
+}
+
+.contact-card.facebook .icon {
+  background: linear-gradient(135deg, #1877f2, #0a5dc2);
+  box-shadow: 0 0 25px rgba(24, 119, 242, 0.5);
+}
+.contact-card.facebook:hover {
+  box-shadow: 0 0 35px rgba(24, 119, 242, 0.5);
+}
+
+.contact-card.youtube .icon {
+  background: linear-gradient(135deg, #ff0000, #cc0000);
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+}
+.contact-card.youtube:hover {
+  box-shadow: 0 0 35px rgba(255, 0, 0, 0.5);
+}
+
+.contact-card.email .icon {
+  background: linear-gradient(135deg, var(--gold), var(--rose));
+  box-shadow: 0 0 25px rgba(255, 217, 138, 0.5);
+}
+.contact-card.email:hover {
+  box-shadow: 0 0 35px rgba(255, 217, 138, 0.5);
 }
 
 .contact-card h3, .contact-card p { margin: 0.1rem 0; }
 .contact-card h3 { font-size: 1.2rem; color: #fff0ff; }
 .contact-card small { color: var(--muted); font-size: 0.85rem; }
+
+/* Botones del lightbox */
+.lightbox-buttons {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+.lightbox-buttons .btn {
+  flex: 1;
+  min-width: 150px;
+}
 
 /* ========== FOOTER ========== */
 footer {
@@ -800,7 +967,9 @@ footer p { margin: 0; font-size: 0.95rem; }
   .about { grid-template-columns: 1fr; gap: 2rem; }
   .shop-strip { grid-template-columns: 1fr; gap: 0.7rem; }
   .feature-cards { grid-template-columns: repeat(3, 1fr); }
-  .grid-gallery, .contact-cards { grid-template-columns: repeat(2, 1fr); }
+  .grid-gallery { grid-template-columns: repeat(2, 1fr); }
+  .contact-cards { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
   .section { padding: 3.5rem 6%; }
 }
 
@@ -851,7 +1020,7 @@ footer p { margin: 0; font-size: 0.95rem; }
     backdrop-filter: blur(4px);
   }
   .hero h1 { font-size: clamp(3rem, 14vw, 5rem); }
-  .grid-gallery, .contact-cards { grid-template-columns: 1fr; }
+  .grid-gallery, .contact-cards, .steps-grid { grid-template-columns: 1fr; }
   .client-placeholder { flex-direction: column; text-align: center; }
   .section { padding: 3rem 5%; }
   .zodiac-card { flex: 0 0 180px; }

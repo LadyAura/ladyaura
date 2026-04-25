@@ -29,15 +29,29 @@ const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 const lightboxTitle = document.getElementById("lightbox-title");
 const lightboxPrice = document.getElementById("lightbox-price");
-const lightboxBuy = document.getElementById("lightbox-buy");
+const lightboxWhatsapp = document.getElementById("lightbox-whatsapp");
+const lightboxEmail = document.getElementById("lightbox-email");
 const closeBtn = document.querySelector(".lightbox-close");
+
+/* Construir URLs de pre-reserva */
+function buildWhatsappUrl(titulo, precio) {
+  const text = `Hola Lady Aura ✨ Quiero pre-reservar el diseño: ${titulo}. Diamond painting 60x90, precio ${precio}€. ¡Gracias!`;
+  return `https://wa.me/34621355638?text=${encodeURIComponent(text)}`;
+}
+
+function buildEmailUrl(titulo, precio) {
+  const subject = encodeURIComponent(`Pre-reserva Lady Aura - ${titulo}`);
+  const body = encodeURIComponent(
+    `Hola Lady Aura, me interesa pre-reservar el diseño: ${titulo}. Formato: 60x90. Precio pre-reserva: ${precio}€.\n\nMis datos:\nNombre:\nEmail de contacto:\n\nMe avisas cuando la tienda esté abierta oficialmente y decido si confirmar. ¡Gracias! ✨`
+  );
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=${subject}&body=${body}`;
+}
 
 /* Cards de producto */
 document.querySelectorAll(".product-card").forEach((card) => {
   const opener = card.querySelector(".image-open");
   const img = card.querySelector("img");
   const title = card.querySelector("h3")?.textContent || "Diseño Lady Aura";
-  const buy = card.querySelector(".mini-btn.buy")?.href || "#";
   const price = card.dataset.price || "94";
   const oldPrice = card.dataset.oldPrice;
 
@@ -50,7 +64,8 @@ document.querySelectorAll(".product-card").forEach((card) => {
     } else {
       lightboxPrice.textContent = `Diamond painting 60×90 cm · ${price} €`;
     }
-    lightboxBuy.href = buy;
+    lightboxWhatsapp.href = buildWhatsappUrl(title, price);
+    lightboxEmail.href = buildEmailUrl(title, price);
     lightbox.classList.add("active");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
@@ -61,15 +76,13 @@ document.querySelectorAll(".product-card").forEach((card) => {
 document.querySelectorAll(".zodiac-card").forEach(card => {
   card.addEventListener("click", (e) => {
     e.preventDefault();
+    const titulo = card.dataset.title;
     lightboxImg.src = card.dataset.img;
-    lightboxImg.alt = card.dataset.title;
-    lightboxTitle.textContent = card.dataset.title;
+    lightboxImg.alt = titulo;
+    lightboxTitle.textContent = titulo;
     lightboxPrice.textContent = "Diamond painting 60×90 cm · 94 €";
-    const subject = encodeURIComponent(`Pre-reserva Lady Aura - ${card.dataset.title}`);
-    const body = encodeURIComponent(
-      `Hola Lady Aura, me interesa pre-reservar el diseño: ${card.dataset.title}. Formato: 60x90. Precio pre-reserva: 94€.\n\nMis datos:\nNombre:\nEmail de contacto:\n\nMe avisas cuando la tienda esté abierta oficialmente y decido si confirmar. ¡Gracias! ✨`
-    );
-    lightboxBuy.href = `https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=${subject}&body=${body}`;
+    lightboxWhatsapp.href = buildWhatsappUrl(titulo, "94");
+    lightboxEmail.href = buildEmailUrl(titulo, "94");
     lightbox.classList.add("active");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
