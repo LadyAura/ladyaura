@@ -65,9 +65,9 @@ document.querySelectorAll(".zodiac-card").forEach(card => {
     lightboxImg.alt = card.dataset.title;
     lightboxTitle.textContent = card.dataset.title;
     lightboxPrice.textContent = "Diamond painting 60×90 cm · 94 €";
-    const subject = encodeURIComponent(`Pedido Lady Aura - ${card.dataset.title}`);
+    const subject = encodeURIComponent(`Pre-reserva Lady Aura - ${card.dataset.title}`);
     const body = encodeURIComponent(
-      `Hola Lady Aura, quiero comprar el diseño: ${card.dataset.title}. Formato: 60x90. Precio: 94€.\n\nMis datos:\nNombre completo:\nDirección:\nCódigo postal y ciudad:\nTeléfono:`
+      `Hola Lady Aura, me interesa pre-reservar el diseño: ${card.dataset.title}. Formato: 60x90. Precio pre-reserva: 94€.\n\nMis datos:\nNombre:\nEmail de contacto:\n\nMe avisas cuando la tienda esté abierta oficialmente y decido si confirmar. ¡Gracias! ✨`
     );
     lightboxBuy.href = `https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=${subject}&body=${body}`;
     lightbox.classList.add("active");
