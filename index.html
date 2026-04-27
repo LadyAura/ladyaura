@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lady Aura | Diamond Painting Premium · Arte Mágico de Fantasía · Cuadros 60×90 cm</title>
-<meta name="description" content="Lady Aura: diamond painting premium de fantasía. Diseños exclusivos de sirenas, dragones, zodíaco y paisajes mágicos. Cuadros 60×90 cm. Pre-reserva sin compromiso. Desde Valencia, España.">
+<title>Cuadros Diamond Painting Premium en España | Lady Aura</title>
+<meta name="description" content="Cuadros diamond painting premium en España con diseños exclusivos Lady Aura. Arte con diamantes mágico, relajante y perfecto como regalo creativo original. Reserva por WhatsApp sin compromiso.">
 <meta name="keywords" content="diamond painting premium, cuadros diamond painting, diamond painting personalizado, arte diamond painting exclusivo, cuadros de fantasía, arte mágico decorativo, diamond painting sirenas, diamond painting dragón, diamond painting zodíaco, diamond painting España, comprar diamond painting online, pintura diamante premium, cuadros bordado diamante fantasía, diamond painting 60x90, Lady Aura diamond painting">
 <meta name="author" content="Lady Aura">
 <meta name="robots" content="index, follow">
@@ -445,7 +445,94 @@
   .trust-item { padding: 1.1rem 1.5rem; }
   .scarcity-bar { font-size: 0.72rem; padding: 9px 14px; }
 }
+
+/* ── ZODIAC TABS ── */
+.zodiac-tabs {
+  display: flex;
+  justify-content: center;
+  gap: .8rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.zodiac-tab-btn {
+  padding: .65rem 1.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: "Cinzel", serif;
+  font-size: .78rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: rgba(15,8,27,.8);
+  color: var(--muted);
+  transition: all .25s;
+}
+.zodiac-tab-btn:hover,
+.zodiac-tab-btn.active {
+  background: linear-gradient(135deg, var(--purple-deep), var(--rose));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 0 22px rgba(160,63,255,.45);
+}
+.zodiac-panel { display: none; }
+.zodiac-panel.active { display: block; }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué incluye un kit Lady Aura?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Incluye lienzo premium, diamantes, herramientas y todo lo necesario para empezar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tarda en llegar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El plazo depende de producción y reserva. Te informamos por WhatsApp antes de confirmar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es fácil?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, es una actividad sencilla, relajante y apta para principiantes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es buen regalo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, es un regalo creativo original para amantes de la fantasía, la decoración y las manualidades."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Los diseños son exclusivos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Son una selección cuidada Lady Aura con estética mágica y premium."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué tamaños hay?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La colección principal trabaja formato premium 60x90 cm."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -490,15 +577,15 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <span class="prelaunch-badge">✦ Edición Limitada · Pre-reserva Abierta ✦</span>
-      <h1>Lady Aura</h1>
-      <p class="kicker">Arte mágico que brilla en tu hogar</p>
+      <h1>Cuadros diamond painting premium en España</h1>
+      <p class="kicker">Diseños exclusivos Lady Aura · Fantasía, zodiaco y magia para crear con calma</p>
       <p class="hero-text">
         <strong>Diamond painting premium</strong> de fantasía.<br>
         Diseños que no encontrarás en ningún otro lugar.<br>
         60×90 cm de pura magia. Sin compromiso de compra.
       </p>
       <div class="hero-actions">
-        <a href="#galeria" class="btn primary">Reservar mi cuadro ✨</a>
+        <a href="#galeria" class="btn primary">✨ Reservar mi cuadro</a>
         <a href="#por-que" class="btn secondary">¿Por qué Lady Aura? →</a>
       </div>
       <p style="margin-top:1.2rem; font-size:0.88rem; color:var(--muted); font-style:italic;">
@@ -583,7 +670,7 @@
         </ul>
       </div>
       <div class="value-image">
-        <img src="assets/dragon-cueva-magia.png" alt="Dragón en su cueva de magia – diamond painting premium de fantasía Lady Aura">
+        <img src="assets/dragon-cueva-magia.webp" alt="Dragón en su cueva de magia – diamond painting premium de fantasía Lady Aura">
       </div>
     </div>
   </section>
@@ -661,24 +748,154 @@
   <section id="zodiaco" class="zodiac section">
     <div class="section-heading">
       <span class="section-tag">Colección Zodiaco · Arte Diamond Painting Exclusivo</span>
-      <h2>12 signos · 12 diosas</h2>
-      <p>Tu signo, convertido en arte. Cada diosa zodiacal es un diseño único de <strong>diamond painting premium</strong> pensado para brillar en tu espacio.</p>
+      <h2>Cuadros de Zodiaco con Diamantes · 24 diseños</h2>
+      <p>Tu signo, convertido en arte. Diosas y retratos celestiales para los 12 signos. <strong>Diamond painting premium</strong> que conecta con tu esencia.</p>
     </div>
-    <div class="zodiac-track" id="zodiacTrack">
-      <a class="zodiac-card" data-img="assets/aries.webp" data-title="Aries"><div class="z-symbol">♈</div><img src="assets/aries.webp" alt="Aries – diamond painting diosa zodiacal Lady Aura"><span>Aries</span></a>
-      <a class="zodiac-card" data-img="assets/tauro.webp" data-title="Tauro"><div class="z-symbol">♉</div><img src="assets/tauro.webp" alt="Tauro – diamond painting diosa zodiacal Lady Aura"><span>Tauro</span></a>
-      <a class="zodiac-card" data-img="assets/geminis.webp" data-title="Géminis"><div class="z-symbol">♊</div><img src="assets/geminis.webp" alt="Géminis – diamond painting diosa zodiacal Lady Aura"><span>Géminis</span></a>
-      <a class="zodiac-card" data-img="assets/cancer.webp" data-title="Cáncer"><div class="z-symbol">♋</div><img src="assets/cancer.webp" alt="Cáncer – diamond painting diosa zodiacal Lady Aura"><span>Cáncer</span></a>
-      <a class="zodiac-card" data-img="assets/leo.webp" data-title="Leo"><div class="z-symbol">♌</div><img src="assets/leo.webp" alt="Leo – diamond painting diosa zodiacal Lady Aura"><span>Leo</span></a>
-      <a class="zodiac-card" data-img="assets/virgo.webp" data-title="Virgo"><div class="z-symbol">♍</div><img src="assets/virgo.webp" alt="Virgo – diamond painting diosa zodiacal Lady Aura"><span>Virgo</span></a>
-      <a class="zodiac-card" data-img="assets/libra.webp" data-title="Libra"><div class="z-symbol">♎</div><img src="assets/libra.webp" alt="Libra – diamond painting diosa zodiacal Lady Aura"><span>Libra</span></a>
-      <a class="zodiac-card" data-img="assets/escorpio.webp" data-title="Escorpio"><div class="z-symbol">♏</div><img src="assets/escorpio.webp" alt="Escorpio – diamond painting diosa zodiacal Lady Aura"><span>Escorpio</span></a>
-      <a class="zodiac-card" data-img="assets/sagitario.webp" data-title="Sagitario"><div class="z-symbol">♐</div><img src="assets/sagitario.webp" alt="Sagitario – diamond painting diosa zodiacal Lady Aura"><span>Sagitario</span></a>
-      <a class="zodiac-card" data-img="assets/capricornio.webp" data-title="Capricornio"><div class="z-symbol">♑</div><img src="assets/capricornio.webp" alt="Capricornio – diamond painting diosa zodiacal Lady Aura"><span>Capricornio</span></a>
-      <a class="zodiac-card" data-img="assets/acuario.webp" data-title="Acuario"><div class="z-symbol">♒</div><img src="assets/acuario.webp" alt="Acuario – diamond painting diosa zodiacal Lady Aura"><span>Acuario</span></a>
-      <a class="zodiac-card" data-img="assets/piscis.webp" data-title="Piscis"><div class="z-symbol">♓</div><img src="assets/piscis.webp" alt="Piscis – diamond painting diosa zodiacal Lady Aura"><span>Piscis</span></a>
+
+    <!-- TABS -->
+    <div class="zodiac-tabs" role="tablist" aria-label="Colección zodiaco por género">
+      <button class="zodiac-tab-btn active" role="tab" aria-selected="true" data-panel="fem">
+        ♀ Diosas · Versión Femenina
+      </button>
+      <button class="zodiac-tab-btn" role="tab" aria-selected="false" data-panel="mas">
+        ♂ Retratos Celestiales · Versión Masculina
+      </button>
     </div>
-    <p class="scroll-hint">Desliza para descubrir tu signo <span>→</span></p>
+
+    <!-- PANEL FEMENINO -->
+    <div class="zodiac-panel active" id="panel-fem" role="tabpanel">
+      <div class="zodiac-track" id="zodiacTrackFem">
+        <a class="zodiac-card" data-img="assets/aries.webp" data-title="Cuadro Diamond Painting Aries – Diosa Aries" href="signos/aries.html">
+          <div class="z-symbol">♈</div>
+          <img loading="lazy" src="assets/aries.webp" alt="Cuadro diamond painting Aries – Diosa Aries con diamantes exclusivo Lady Aura España">
+          <span>Aries ♀</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/tauro.webp" data-title="Cuadro Diamond Painting Tauro – Diosa Tauro" href="signos/tauro.html">
+          <div class="z-symbol">♉</div>
+          <img loading="lazy" src="assets/tauro.webp" alt="Cuadro diamond painting Tauro – Diosa Tauro con diamantes exclusivo Lady Aura">
+          <span>Tauro ♀</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/geminis.webp" data-title="Cuadro Diamond Painting Géminis – Diosa Géminis" href="signos/geminis.html">
+          <div class="z-symbol">♊</div>
+          <img loading="lazy" src="assets/geminis.webp" alt="Cuadro diamond painting Géminis – Diosa Géminis con diamantes Lady Aura España">
+          <span>Géminis ♀</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/cancer.webp" data-title="Cuadro Diamond Painting Cáncer – Diosa Cáncer" href="signos/cancer.html">
+          <div class="z-symbol">♋</div>
+          <img loading="lazy" src="assets/cancer.webp" alt="Cuadro diamond painting Cáncer – Diosa Cáncer arte con diamantes Lady Aura">
+          <span>Cáncer ♀</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/leo.webp" data-title="Cuadro Diamond Painting Leo – Diosa Leo" href="signos/leo.html">
+          <div class="z-symbol">♌</div>
+          <img loading="lazy" src="assets/leo.webp" alt="Cuadro diamond painting Leo – Diosa Leo con diamantes exclusivo Lady Aura España">
+          <span>Leo ♀</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/virgo.webp" data-title="Cuadro Virgo con Diamantes – Diosa Virgo" href="signos/virgo.html">
+          <div class="z-symbol">♍</div>
+          <img loading="lazy" src="assets/virgo.webp" alt="Cuadro Virgo con diamantes – Diosa Virgo diamond painting exclusivo Lady Aura España">
+          <span>Virgo ♀</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/libra.webp" data-title="Cuadro Diamond Painting Libra – Diosa Libra" href="signos/libra.html">
+          <div class="z-symbol">♎</div>
+          <img loading="lazy" src="assets/libra.webp" alt="Cuadro diamond painting Libra – Diosa Libra con diamantes Lady Aura">
+          <span>Libra ♀</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/escorpio.webp" data-title="Cuadro Diamond Painting Escorpio – Diosa Escorpio" href="signos/escorpio.html">
+          <div class="z-symbol">♏</div>
+          <img loading="lazy" src="assets/escorpio.webp" alt="Cuadro diamond painting Escorpio – Diosa Escorpio arte con diamantes Lady Aura España">
+          <span>Escorpio ♀</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/sagitario.webp" data-title="Cuadro Diamond Painting Sagitario – Diosa Sagitario" href="signos/sagitario.html">
+          <div class="z-symbol">♐</div>
+          <img loading="lazy" src="assets/sagitario.webp" alt="Cuadro diamond painting Sagitario – Diosa Sagitario cuadros con diamantes Lady Aura">
+          <span>Sagitario ♀</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/capricornio.webp" data-title="Cuadro Diamond Painting Capricornio – Diosa Capricornio" href="signos/capricornio.html">
+          <div class="z-symbol">♑</div>
+          <img loading="lazy" src="assets/capricornio.webp" alt="Cuadro diamond painting Capricornio – Diosa Capricornio arte con diamantes Lady Aura España">
+          <span>Capricornio ♀</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/acuario.webp" data-title="Cuadro Diamond Painting Acuario – Diosa Acuario" href="signos/acuario.html">
+          <div class="z-symbol">♒</div>
+          <img loading="lazy" src="assets/acuario.webp" alt="Cuadro diamond painting Acuario – Diosa Acuario cuadros con diamantes Lady Aura">
+          <span>Acuario ♀</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/piscis.webp" data-title="Cuadro Diamond Painting Piscis – Diosa Piscis" href="signos/piscis.html">
+          <div class="z-symbol">♓</div>
+          <img loading="lazy" src="assets/piscis.webp" alt="Cuadro diamond painting Piscis – Diosa Piscis arte con diamantes Lady Aura España">
+          <span>Piscis ♀</span>
+        </a>
+      </div>
+      <p class="scroll-hint">Desliza para descubrir tu signo <span>→</span></p>
+    </div>
+
+    <!-- PANEL MASCULINO -->
+    <div class="zodiac-panel" id="panel-mas" role="tabpanel">
+      <div class="zodiac-track" id="zodiacTrackMas">
+        <a class="zodiac-card" data-img="assets/chico-aries-new.png" data-title="Retrato Celestial de Aries ♂">
+          <div class="z-symbol">♈</div>
+          <img loading="lazy" src="assets/chico-aries-new.png" alt="Retrato celestial de Aries – diamond painting masculino zodíaco Lady Aura España">
+          <span>Aries ♂</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/chico-tauro-new.png" data-title="Retrato Celestial de Tauro ♂">
+          <div class="z-symbol">♉</div>
+          <img loading="lazy" src="assets/chico-tauro-new.png"
+               alt="Retrato celestial de Tauro — diamond painting masculino zodíaco Tauro Lady Aura España">
+          <span>Tauro ♂</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/chico-geminis-new.png" data-title="Retrato Celestial de Géminis ♂">
+          <div class="z-symbol">♊</div>
+          <img loading="lazy" src="assets/chico-geminis-new.png" alt="Retrato celestial de Géminis – cuadro con diamantes zodíaco masculino Lady Aura">
+          <span>Géminis ♂</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/chico-cancer-new.png" data-title="Retrato Celestial de Cáncer ♂">
+          <div class="z-symbol">♋</div>
+          <img loading="lazy" src="assets/chico-cancer-new.png" alt="Retrato celestial de Cáncer – arte con diamantes zodíaco masculino Lady Aura España">
+          <span>Cáncer ♂</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/chico-leo-new.png" data-title="Retrato Celestial de Leo ♂">
+          <div class="z-symbol">♌</div>
+          <img loading="lazy" src="assets/chico-leo-new.png" alt="Retrato celestial de Leo – diamond painting masculino zodíaco Leo Lady Aura">
+          <span>Leo ♂</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/chico-virgo-new.png" data-title="Retrato Celestial de Virgo ♂">
+          <div class="z-symbol">♍</div>
+          <img loading="lazy" src="assets/chico-virgo-new.png" alt="Cuadro Virgo con diamantes versión masculina – retrato celestial Virgo Lady Aura España">
+          <span>Virgo ♂</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/chico-libra-new.png" data-title="Retrato Celestial de Libra ♂">
+          <div class="z-symbol">♎</div>
+          <img loading="lazy" src="assets/chico-libra-new.png" alt="Retrato celestial de Libra – diamond painting zodíaco masculino Lady Aura">
+          <span>Libra ♂</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/chico-escorpio-new.png" data-title="Retrato Celestial de Escorpio ♂">
+          <div class="z-symbol">♏</div>
+          <img loading="lazy" src="assets/chico-escorpio-new.png" alt="Retrato celestial de Escorpio – arte con diamantes zodíaco Lady Aura España">
+          <span>Escorpio ♂</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/chico-sagitario-new.png" data-title="Retrato Celestial de Sagitario ♂">
+          <div class="z-symbol">♐</div>
+          <img loading="lazy" src="assets/chico-sagitario-new.png" alt="Retrato celestial de Sagitario – cuadros con diamantes zodíaco masculino Lady Aura">
+          <span>Sagitario ♂</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/chico-capricornio-new.png" data-title="Retrato Celestial de Capricornio ♂">
+          <div class="z-symbol">♑</div>
+          <img loading="lazy" src="assets/chico-capricornio-new.png" alt="Retrato celestial de Capricornio – diamond painting zodíaco exclusivo Lady Aura España">
+          <span>Capricornio ♂</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/chico-acuario-new.png" data-title="Retrato Celestial de Acuario ♂">
+          <div class="z-symbol">♒</div>
+          <img loading="lazy" src="assets/chico-acuario-new.png" alt="Retrato celestial de Acuario – cuadros diamond painting zodíaco Lady Aura">
+          <span>Acuario ♂</span>
+        </a>
+        <a class="zodiac-card" data-img="assets/chico-piscis-new.png" data-title="Retrato Celestial de Piscis ♂">
+          <div class="z-symbol">♓</div>
+          <img loading="lazy" src="assets/chico-piscis-new.png" alt="Cuadro diamond painting Piscis versión masculina – retrato celestial Piscis Lady Aura España">
+          <span>Piscis ♂</span>
+        </a>
+      </div>
+      <p class="scroll-hint">Desliza para descubrir tu signo <span>→</span></p>
+    </div>
   </section>
 
   <!-- ===========================
@@ -688,15 +905,23 @@
     <div class="section-heading">
       <span class="section-tag">Galería · Cuadros de Fantasía Diamond Painting</span>
       <h2>Encuentra el tuyo.<br>Antes de que desaparezca.</h2>
-      <p>Todos los diseños en <strong>formato diamond painting 60×90 cm</strong> · <strong>94 €</strong> · Pre-reserva sin compromiso · Sin pago previo 🌙</p>
+      <p>Pre-reserva sin compromiso · Sin pago previo · Prioridad garantizada por orden de llegada 🌙</p>
     </div>
 
     <div class="grid-gallery">
 
-      <!-- Con descuento -->
-      <article class="art-card product-card" data-price="84" data-old-price="94">
+      <!-- ────── SIRENAS (94 €) ────── -->
+      <div class="collection-separator">
+        <div class="collection-separator-line"></div>
+        <span class="collection-separator-label">🧜 Sirenas</span>
+        <div class="collection-separator-line"></div>
+      </div>
+
+      <!-- Sirena oscura CON descuento — arriba del todo como pediste -->
+      <article class="art-card product-card" data-price="84" data-old-price="94" data-orient="v">
         <button class="image-open" type="button" aria-label="Ver Sirena oscura en detalle">
           <span class="sale-ribbon">-10 €</span>
+          <span class="orient-badge">↕ Vertical</span>
           <img loading="lazy" src="assets/sirena-oscura.webp" alt="Sirena oscura – cuadro diamond painting fantasía oscura Lady Aura">
         </button>
         <div class="product-info">
@@ -707,15 +932,358 @@
             <span class="product-price">84 €</span>
           </div>
           <div class="product-actions">
-            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20oscura.%20Diamond%20painting%2060x90%2C%2084€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20oscura.%20Diamond%20painting%2060x90%2C%2084€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
             <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Sirena%20oscura&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Sirena%20oscura.%20Formato%3A%2060x90.%20Precio%3A%2084€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
           </div>
         </div>
       </article>
 
-      <article class="art-card product-card" data-price="84" data-old-price="94">
+      <article class="art-card product-card" data-price="94" data-orient="v">
+        <button class="image-open" type="button" aria-label="Ver Sirena bajo la luna llena en detalle">
+          <span class="badge-new">✦ Destacado</span>
+          <span class="orient-badge">↕ Vertical</span>
+          <img loading="lazy" src="assets/sirena-luna-llena.webp" alt="Sirena bajo la luna llena – diamond painting sirena mágica Lady Aura">
+        </button>
+        <div class="product-info">
+          <h3>Sirena bajo la luna llena</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20bajo%20la%20luna%20llena.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Sirena%20bajo%20la%20luna%20llena&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Sirena%20bajo%20la%20luna%20llena.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card product-card" data-price="94" data-orient="v">
+        <button class="image-open" type="button" aria-label="Ver Sirena bajo la luna mágica en detalle">
+          <span class="badge-new">🌙 Nueva</span>
+          <span class="orient-badge">↕ Vertical</span>
+          <img loading="lazy" src="assets/sirena-luna-magica.png" alt="Sirena bajo la luna mágica – arte con diamantes exclusivo Lady Aura">
+        </button>
+        <div class="product-info">
+          <h3>Sirena bajo la luna mágica</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20bajo%20la%20luna%20mágica.%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20–%20Sirena%20bajo%20la%20luna%20mágica&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Sirena%20bajo%20la%20luna%20mágica.%2060x90%2C%2094€.%0ANombre%3A%0AEmail%3A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card product-card" data-price="94" data-orient="v">
+        <button class="image-open" type="button" aria-label="Ver Sirena del abismo marino en detalle">
+          <span class="badge-new">🌊 Nueva</span>
+          <span class="orient-badge">↕ Vertical</span>
+          <img loading="lazy" src="assets/sirena-abismo-marino.png" alt="Sirena del abismo marino – cuadro con diamantes fantasía oscura Lady Aura">
+        </button>
+        <div class="product-info">
+          <h3>Sirena del abismo marino</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20del%20abismo%20marino.%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20–%20Sirena%20del%20abismo%20marino&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Sirena%20del%20abismo%20marino.%2060x90%2C%2094€.%0ANombre%3A%0AEmail%3A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card product-card" data-price="94" data-orient="v">
+        <button class="image-open" type="button" aria-label="Ver Sirena en un mar nocturno en detalle">
+          <span class="badge-new">🌊 Nueva</span>
+          <span class="orient-badge">↕ Vertical</span>
+          <img loading="lazy" src="assets/sirena-mar-nocturno.png" alt="Sirena en un mar nocturno – regalo creativo original Lady Aura España">
+        </button>
+        <div class="product-info">
+          <h3>Sirena en un mar nocturno</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20en%20un%20mar%20nocturno.%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20–%20Sirena%20en%20un%20mar%20nocturno&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Sirena%20en%20un%20mar%20nocturno.%2060x90%2C%2094€.%0ANombre%3A%0AEmail%3A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card product-card" data-price="94" data-orient="v">
+        <button class="image-open" type="button" aria-label="Ver Sirena en un reino submarino mágico en detalle">
+          <span class="badge-new">🌊 Exclusiva</span>
+          <span class="orient-badge">↕ Vertical</span>
+          <img loading="lazy" src="assets/sirena-reino-submarino.png" alt="Sirena en un reino submarino mágico – diamond painting fantasía submarina Lady Aura">
+        </button>
+        <div class="product-info">
+          <h3>Sirena en un reino submarino mágico</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20en%20un%20reino%20submarino%20mágico.%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20–%20Sirena%20en%20un%20reino%20submarino%20mágico&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Sirena%20en%20un%20reino%20submarino%20mágico.%2060x90%2C%2094€.%0ANombre%3A%0AEmail%3A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Horizontal: Sirena reina del arrecife (ocupa 2 columnas) -->
+      <article class="art-card product-card" data-price="94" data-orient="h">
+        <button class="image-open" type="button" aria-label="Ver Sirena reina del arrecife en detalle">
+          <span class="badge-new">👑 Exclusiva</span>
+          <span class="orient-badge">↔ Horizontal</span>
+          <img loading="lazy" src="assets/sirena-reina-arrecife.png" alt="Sirena reina del arrecife – cuadros con diamantes exclusivos sirena Lady Aura España">
+        </button>
+        <div class="product-info">
+          <h3>Sirena reina del arrecife</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20reina%20del%20arrecife.%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20–%20Sirena%20reina%20del%20arrecife&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Sirena%20reina%20del%20arrecife.%2060x90%2C%2094€.%0ANombre%3A%0AEmail%3A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Horizontal: Sirena bajo la luna llena nueva -->
+      <article class="art-card product-card" data-price="94" data-orient="h">
+        <button class="image-open" type="button" aria-label="Ver Sirena bajo la luna llena nueva en detalle">
+          <span class="badge-new">✦ Destacada</span>
+          <span class="orient-badge">↔ Horizontal</span>
+          <img loading="lazy" src="assets/sirena-luna-llena-nueva.png" alt="Sirena bajo la luna llena – cuadro diamond painting sirena mágica Lady Aura España">
+        </button>
+        <div class="product-info">
+          <h3>Sirena bajo la luna llena · Ed. especial</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20bajo%20la%20luna%20llena%20ed.%20especial.%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20–%20Sirena%20bajo%20la%20luna%20llena%20ed.%20especial&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Sirena%20bajo%20la%20luna%20llena%20ed.%20especial.%2060x90%2C%2094€.%0ANombre%3A%0AEmail%3A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Horizontal: Sirena al atardecer -->
+      <article class="art-card product-card" data-price="94" data-orient="h">
+        <button class="image-open" type="button" aria-label="Ver Sirena al atardecer en detalle">
+          <span class="orient-badge">↔ Horizontal</span>
+          <img loading="lazy" src="assets/sirena-atardecer.webp" alt="Sirena al atardecer – cuadro diamond painting sirena fantasía Lady Aura">
+        </button>
+        <div class="product-info">
+          <h3>Sirena al atardecer</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20al%20atardecer.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Sirena%20al%20atardecer&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Sirena%20al%20atardecer.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ────── PAREJAS ────── -->
+      <div class="collection-separator">
+        <div class="collection-separator-line"></div>
+        <span class="collection-separator-label">💑 Parejas</span>
+        <div class="collection-separator-line"></div>
+      </div>
+
+      <article class="art-card product-card" data-price="94" data-orient="v">
+        <button class="image-open" type="button" aria-label="Ver Abrazo celestial en detalle">
+          <span class="badge-new">♡ Romántico</span>
+          <span class="orient-badge">↕ Vertical</span>
+          <img loading="lazy" src="assets/abrazo-celestial.webp" alt="Abrazo celestial – diamond painting pareja mágica Lady Aura">
+        </button>
+        <div class="product-info">
+          <h3>Abrazo celestial</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Abrazo%20celestial.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Abrazo%20celestial&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Abrazo%20celestial.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card product-card" data-price="94" data-orient="v">
+        <button class="image-open" type="button" aria-label="Ver Abrazo bajo la luna roja en detalle">
+          <span class="badge-new">✦ Intenso</span>
+          <span class="orient-badge">↕ Vertical</span>
+          <img loading="lazy" src="assets/abrazo-luna-roja.webp" alt="Abrazo bajo la luna roja – cuadro diamond painting romance oscuro Lady Aura">
+        </button>
+        <div class="product-info">
+          <h3>Abrazo bajo la luna roja</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Abrazo%20bajo%20la%20luna%20roja.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Abrazo%20bajo%20la%20luna%20roja&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Abrazo%20bajo%20la%20luna%20roja.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card product-card" data-price="94" data-orient="v">
+        <button class="image-open" type="button" aria-label="Ver Bruja enamorada en detalle">
+          <span class="badge-new">🌙 Místico</span>
+          <span class="orient-badge">↕ Vertical</span>
+          <img loading="lazy" src="assets/bruja-enamorada.webp" alt="Bruja enamorada – diamond painting brujería romance mágico Lady Aura">
+        </button>
+        <div class="product-info">
+          <h3>Bruja enamorada</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Bruja%20enamorada.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Bruja%20enamorada&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Bruja%20enamorada.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Horizontal: Noche bajo las estrellas -->
+      <article class="art-card product-card" data-price="94" data-orient="h">
+        <button class="image-open" type="button" aria-label="Ver Noche bajo las estrellas en detalle">
+          <span class="badge-new">⭐ Romántico</span>
+          <span class="orient-badge">↔ Horizontal</span>
+          <img loading="lazy" src="assets/abrazo-cielo-estrellado.webp" alt="Noche bajo las estrellas – cuadro diamond painting romántico Lady Aura">
+        </button>
+        <div class="product-info">
+          <h3>Noche bajo las estrellas</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Noche%20bajo%20las%20estrellas.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Noche%20bajo%20las%20estrellas&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Noche%20bajo%20las%20estrellas.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ────── PAISAJES ────── -->
+      <div class="collection-separator">
+        <div class="collection-separator-line"></div>
+        <span class="collection-separator-label">🏔 Paisajes</span>
+        <div class="collection-separator-line"></div>
+      </div>
+
+      <!-- Horizontal: Bajo la luna -->
+      <article class="art-card product-card" data-price="94" data-orient="h">
+        <button class="image-open" type="button" aria-label="Ver Bajo la luna en detalle">
+          <span class="badge-new">🌙 Nuevo</span>
+          <span class="orient-badge">↔ Horizontal</span>
+          <img loading="lazy" src="assets/bajo-la-luna.webp" alt="Bajo la luna – diamond painting paisaje nocturno mágico Lady Aura">
+        </button>
+        <div class="product-info">
+          <h3>Bajo la luna</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Bajo%20la%20luna.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Bajo%20la%20luna&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Bajo%20la%20luna.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Horizontal: Paisaje invernal -->
+      <article class="art-card product-card" data-price="94" data-orient="h">
+        <button class="image-open" type="button" aria-label="Ver Paisaje invernal de fantasía en detalle">
+          <span class="badge-new">❄️ Nuevo</span>
+          <span class="orient-badge">↔ Horizontal</span>
+          <img loading="lazy" src="assets/paisaje-invernal-fantasia.webp" alt="Paisaje invernal de fantasía – diamond painting aurora boreal castillo nevado Lady Aura">
+        </button>
+        <div class="product-info">
+          <h3>Paisaje invernal de fantasía</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Paisaje%20invernal%20de%20fantasía.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Paisaje%20invernal%20de%20fantasía&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Paisaje%20invernal%20de%20fantasía.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Horizontal: Villa al amanecer -->
+      <article class="art-card product-card" data-price="94" data-orient="h">
+        <button class="image-open" type="button" aria-label="Ver Villa al amanecer en detalle">
+          <span class="badge-new">🌅 Nuevo</span>
+          <span class="orient-badge">↔ Horizontal</span>
+          <img loading="lazy" src="assets/villa-al-amanecer.webp" alt="Villa al amanecer – diamond painting villa mediterránea atardecer mágico Lady Aura">
+        </button>
+        <div class="product-info">
+          <h3>Villa al amanecer</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Villa%20al%20amanecer.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Villa%20al%20amanecer&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Villa%20al%20amanecer.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ────── ESPECIALES ────── -->
+      <div class="collection-separator">
+        <div class="collection-separator-line"></div>
+        <span class="collection-separator-label">✨ Especiales</span>
+        <div class="collection-separator-line"></div>
+      </div>
+
+      <!-- Horizontal: Dragón cueva de magia -->
+      <article class="art-card product-card" data-price="94" data-orient="h">
+        <button class="image-open" type="button" aria-label="Ver Dragón en su cueva de magia en detalle">
+          <span class="badge-new">🐉 Especial</span>
+          <span class="orient-badge">↔ Horizontal</span>
+          <img loading="lazy" src="assets/dragon-cueva-magia.webp" alt="Dragón en su cueva de magia – arte diamond painting exclusivo Lady Aura España">
+        </button>
+        <div class="product-info">
+          <h3>Dragón en su cueva de magia</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Dragón%20en%20su%20cueva%20de%20magia.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Dragón%20en%20su%20cueva%20de%20magia&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Dragón%20en%20su%20cueva%20de%20magia.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Horizontal: Empoderada -->
+      <article class="art-card product-card" data-price="94" data-orient="h">
+        <button class="image-open" type="button" aria-label="Ver Empoderada en detalle">
+          <span class="badge-new">✨ Nuevo</span>
+          <span class="orient-badge">↔ Horizontal</span>
+          <img loading="lazy" src="assets/empoderada.webp" alt="Empoderada – diamond painting chica creativa aurora boreal Lady Aura">
+        </button>
+        <div class="product-info">
+          <h3>Empoderada</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Empoderada.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Empoderada&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Empoderada.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card product-card" data-price="94" data-orient="v">
+        <button class="image-open" type="button" aria-label="Ver Gatitos en el tejado místico en detalle">
+          <span class="badge-new">🐱 Nuevo</span>
+          <span class="orient-badge">↕ Vertical</span>
+          <img loading="lazy" src="assets/gatitos-tejado-mistico.webp" alt="Gatitos en el tejado místico – diamond painting gatos fantasía mágica Lady Aura">
+        </button>
+        <div class="product-info">
+          <h3>Gatitos en el tejado místico</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <p class="product-price">94 €</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Gatitos%20en%20el%20tejado%20místico.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Gatitos%20en%20el%20tejado%20místico&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Gatitos%20en%20el%20tejado%20místico.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ────── OFERTA 84€ — AL FINAL ────── -->
+      <div class="collection-separator">
+        <div class="collection-separator-line"></div>
+        <span class="collection-separator-label" style="color:#ff7beb;">🔥 Oferta especial · 84 €</span>
+        <div class="collection-separator-line"></div>
+      </div>
+
+      <article class="art-card product-card" data-price="84" data-old-price="94" data-orient="v">
         <button class="image-open" type="button" aria-label="Ver Princesa y unicornio en detalle">
           <span class="sale-ribbon">-10 €</span>
+          <span class="orient-badge">↕ Vertical</span>
           <img loading="lazy" src="assets/mujer-unicornio.webp" alt="Princesa y unicornio – diamond painting fantasía mágica Lady Aura">
         </button>
         <div class="product-info">
@@ -726,34 +1294,17 @@
             <span class="product-price">84 €</span>
           </div>
           <div class="product-actions">
-            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Princesa%20y%20unicornio.%20Diamond%20painting%2060x90%2C%2084€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Princesa%20y%20unicornio.%20Diamond%20painting%2060x90%2C%2084€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
             <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Princesa%20y%20unicornio&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Princesa%20y%20unicornio.%20Formato%3A%2060x90.%20Precio%3A%2084€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
           </div>
         </div>
       </article>
 
-      <article class="art-card product-card" data-price="84" data-old-price="94">
-        <button class="image-open" type="button" aria-label="Ver Noche bajo las estrellas en detalle">
-          <span class="sale-ribbon">-10 €</span>
-          <img loading="lazy" src="assets/abrazo-cielo-estrellado.webp" alt="Noche bajo las estrellas – cuadro diamond painting romántico Lady Aura">
-        </button>
-        <div class="product-info">
-          <h3>Noche bajo las estrellas</h3>
-          <p class="product-size">Diamond painting premium 60×90 cm</p>
-          <div class="price-row">
-            <span class="product-price-old">94 €</span>
-            <span class="product-price">84 €</span>
-          </div>
-          <div class="product-actions">
-            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Noche%20bajo%20las%20estrellas.%20Diamond%20painting%2060x90%2C%2084€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
-            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Noche%20bajo%20las%20estrellas&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Noche%20bajo%20las%20estrellas.%20Formato%3A%2060x90.%20Precio%3A%2084€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="art-card product-card" data-price="84" data-old-price="94">
+      <!-- Horizontal: Conejitos cariñosos -->
+      <article class="art-card product-card" data-price="84" data-old-price="94" data-orient="h">
         <button class="image-open" type="button" aria-label="Ver Conejitos cariñosos en detalle">
           <span class="sale-ribbon">-10 €</span>
+          <span class="orient-badge">↔ Horizontal</span>
           <img loading="lazy" src="assets/conejitos-carinosos.webp" alt="Conejitos cariñosos – diamond painting tierno kawaii Lady Aura">
         </button>
         <div class="product-info">
@@ -764,185 +1315,8 @@
             <span class="product-price">84 €</span>
           </div>
           <div class="product-actions">
-            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Conejitos%20cariñosos.%20Diamond%20painting%2060x90%2C%2084€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Conejitos%20cariñosos.%20Diamond%20painting%2060x90%2C%2084€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
             <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Conejitos%20cariñosos&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Conejitos%20cariñosos.%20Formato%3A%2060x90.%20Precio%3A%2084€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Sin descuento (94€) -->
-      <article class="art-card product-card" data-price="94">
-        <button class="image-open" type="button" aria-label="Ver Sirena bajo la luna llena en detalle">
-          <span class="badge-new">✦ Destacado</span>
-          <img loading="lazy" src="assets/sirena-luna-llena.webp" alt="Sirena bajo la luna llena – diamond painting sirena mágica Lady Aura">
-        </button>
-        <div class="product-info">
-          <h3>Sirena bajo la luna llena</h3>
-          <p class="product-size">Diamond painting premium 60×90 cm</p>
-          <p class="product-price">94 €</p>
-          <div class="product-actions">
-            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20bajo%20la%20luna%20llena.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
-            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Sirena%20bajo%20la%20luna%20llena&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Sirena%20bajo%20la%20luna%20llena.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="art-card product-card" data-price="94">
-        <button class="image-open" type="button" aria-label="Ver Sirena al atardecer en detalle">
-          <img loading="lazy" src="assets/sirena-atardecer.webp" alt="Sirena al atardecer – cuadro diamond painting sirena fantasía Lady Aura">
-        </button>
-        <div class="product-info">
-          <h3>Sirena al atardecer</h3>
-          <p class="product-size">Diamond painting premium 60×90 cm</p>
-          <p class="product-price">94 €</p>
-          <div class="product-actions">
-            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20al%20atardecer.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
-            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Sirena%20al%20atardecer&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Sirena%20al%20atardecer.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="art-card product-card" data-price="94">
-        <button class="image-open" type="button" aria-label="Ver Abrazo celestial en detalle">
-          <span class="badge-new">♡ Romántico</span>
-          <img loading="lazy" src="assets/abrazo-celestial.webp" alt="Abrazo celestial – diamond painting pareja mágica Lady Aura">
-        </button>
-        <div class="product-info">
-          <h3>Abrazo celestial</h3>
-          <p class="product-size">Diamond painting premium 60×90 cm</p>
-          <p class="product-price">94 €</p>
-          <div class="product-actions">
-            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Abrazo%20celestial.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
-            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Abrazo%20celestial&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Abrazo%20celestial.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="art-card product-card" data-price="94">
-        <button class="image-open" type="button" aria-label="Ver Abrazo bajo la luna roja en detalle">
-          <span class="badge-new">✦ Intenso</span>
-          <img loading="lazy" src="assets/abrazo-luna-roja.webp" alt="Abrazo bajo la luna roja – cuadro diamond painting romance oscuro Lady Aura">
-        </button>
-        <div class="product-info">
-          <h3>Abrazo bajo la luna roja</h3>
-          <p class="product-size">Diamond painting premium 60×90 cm</p>
-          <p class="product-price">94 €</p>
-          <div class="product-actions">
-            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Abrazo%20bajo%20la%20luna%20roja.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
-            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Abrazo%20bajo%20la%20luna%20roja&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Abrazo%20bajo%20la%20luna%20roja.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="art-card product-card" data-price="94">
-        <button class="image-open" type="button" aria-label="Ver Bruja enamorada en detalle">
-          <span class="badge-new">🌙 Místico</span>
-          <img loading="lazy" src="assets/bruja-enamorada.webp" alt="Bruja enamorada – diamond painting brujería romance mágico Lady Aura">
-        </button>
-        <div class="product-info">
-          <h3>Bruja enamorada</h3>
-          <p class="product-size">Diamond painting premium 60×90 cm</p>
-          <p class="product-price">94 €</p>
-          <div class="product-actions">
-            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Bruja%20enamorada.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
-            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Bruja%20enamorada&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Bruja%20enamorada.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Los 6 nuevos cuadros -->
-      <article class="art-card product-card" data-price="94">
-        <button class="image-open" type="button" aria-label="Ver Bajo la luna en detalle">
-          <span class="badge-new">🌙 Nuevo</span>
-          <img loading="lazy" src="assets/bajo-la-luna.png" alt="Bajo la luna – diamond painting paisaje nocturno mágico puente flores Lady Aura">
-        </button>
-        <div class="product-info">
-          <h3>Bajo la luna</h3>
-          <p class="product-size">Diamond painting premium 60×90 cm</p>
-          <p class="product-price">94 €</p>
-          <div class="product-actions">
-            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Bajo%20la%20luna.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
-            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Bajo%20la%20luna&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Bajo%20la%20luna.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="art-card product-card" data-price="94">
-        <button class="image-open" type="button" aria-label="Ver Empoderada en detalle">
-          <span class="badge-new">✨ Nuevo</span>
-          <img loading="lazy" src="assets/empoderada.png" alt="Empoderada – diamond painting chica creativa robot kawaii aurora boreal Lady Aura">
-        </button>
-        <div class="product-info">
-          <h3>Empoderada</h3>
-          <p class="product-size">Diamond painting premium 60×90 cm</p>
-          <p class="product-price">94 €</p>
-          <div class="product-actions">
-            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Empoderada.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
-            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Empoderada&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Empoderada.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="art-card product-card" data-price="94">
-        <button class="image-open" type="button" aria-label="Ver Gatitos en el tejado místico en detalle">
-          <span class="badge-new">🐱 Nuevo</span>
-          <img loading="lazy" src="assets/gatitos-tejado-mistico.png" alt="Gatitos en el tejado místico – diamond painting gatos fantasía mágica Lady Aura">
-        </button>
-        <div class="product-info">
-          <h3>Gatitos en el tejado místico</h3>
-          <p class="product-size">Diamond painting premium 60×90 cm</p>
-          <p class="product-price">94 €</p>
-          <div class="product-actions">
-            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Gatitos%20en%20el%20tejado%20místico.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
-            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Gatitos%20en%20el%20tejado%20místico&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Gatitos%20en%20el%20tejado%20místico.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="art-card product-card" data-price="94">
-        <button class="image-open" type="button" aria-label="Ver Paisaje invernal de fantasía en detalle">
-          <span class="badge-new">❄️ Nuevo</span>
-          <img loading="lazy" src="assets/paisaje-invernal-fantasia.png" alt="Paisaje invernal de fantasía – diamond painting aurora boreal castillo nevado Lady Aura">
-        </button>
-        <div class="product-info">
-          <h3>Paisaje invernal de fantasía</h3>
-          <p class="product-size">Diamond painting premium 60×90 cm</p>
-          <p class="product-price">94 €</p>
-          <div class="product-actions">
-            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Paisaje%20invernal%20de%20fantasía.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
-            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Paisaje%20invernal%20de%20fantasía&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Paisaje%20invernal%20de%20fantasía.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="art-card product-card" data-price="94">
-        <button class="image-open" type="button" aria-label="Ver Villa al amanecer en detalle">
-          <span class="badge-new">🌅 Nuevo</span>
-          <img loading="lazy" src="assets/villa-al-amanecer.png" alt="Villa al amanecer – diamond painting villa mediterránea atardecer mágico Lady Aura">
-        </button>
-        <div class="product-info">
-          <h3>Villa al amanecer</h3>
-          <p class="product-size">Diamond painting premium 60×90 cm</p>
-          <p class="product-price">94 €</p>
-          <div class="product-actions">
-            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Villa%20al%20amanecer.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
-            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Villa%20al%20amanecer&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Villa%20al%20amanecer.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="art-card product-card" data-price="94">
-        <button class="image-open" type="button" aria-label="Ver Dragón en su cueva de magia en detalle">
-          <span class="badge-new">🐉 Nuevo</span>
-          <img loading="lazy" src="assets/dragon-cueva-magia.png" alt="Dragón en su cueva de magia – arte diamond painting exclusivo dragón cristales Lady Aura">
-        </button>
-        <div class="product-info">
-          <h3>Dragón en su cueva de magia</h3>
-          <p class="product-size">Diamond painting premium 60×90 cm</p>
-          <p class="product-price">94 €</p>
-          <div class="product-actions">
-            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Dragón%20en%20su%20cueva%20de%20magia.%20Diamond%20painting%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
-            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20Lady%20Aura%20–%20Dragón%20en%20su%20cueva%20de%20magia&body=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20Dragón%20en%20su%20cueva%20de%20magia.%20Formato%3A%2060x90.%20Precio%3A%2094€.%0A%0ANombre%3A%0AEmail%3A%0A%0A¡Gracias!%20✨" target="_blank" rel="noopener">✉️ Email</a>
           </div>
         </div>
       </article>
@@ -950,9 +1324,8 @@
     </div>
   </section>
 
-  <!-- ===========================
-       CÓMO FUNCIONA LA PRE-RESERVA
-  ============================ -->
+
+  <!-- CÓMO FUNCIONA -->
   <section class="how-it-works section">
     <div class="section-heading">
       <span class="section-tag">Sin letra pequeña · Sin sorpresas</span>
@@ -997,7 +1370,7 @@
   <section id="sobre-mi" class="brand-story">
     <div class="brand-story-inner">
       <div class="brand-story-img">
-        <img src="assets/empoderada.png" alt="Lady Aura – creadora de diamond painting premium de fantasía">
+        <img src="assets/empoderada.webp" alt="Lady Aura – creadora de diamond painting premium de fantasía">
         <div class="brand-badge">✦ Creadora · Lady Aura ✦</div>
       </div>
       <div class="brand-story-text">
@@ -1146,5 +1519,24 @@
 </div>
 
 <script src="script.js"></script>
+<script>
+/* ── Tabs zodiaco femenino/masculino ── */
+document.querySelectorAll('.zodiac-tab-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.zodiac-tab-btn').forEach(function(t) {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    document.querySelectorAll('.zodiac-panel').forEach(function(p) {
+      p.classList.remove('active');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    var panelId = 'panel-' + btn.dataset.panel;
+    var panel = document.getElementById(panelId);
+    if (panel) panel.classList.add('active');
+  });
+});
+</script>
 </body>
 </html>
