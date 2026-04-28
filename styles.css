@@ -405,19 +405,16 @@ p { color: var(--muted); line-height: 1.6; margin: .4rem 0; }
    ZODIACO
 ════════════════════════════════════ */
 .zodiac { border-top: 1px solid var(--border-soft); background: rgba(6,5,15,.65); padding-bottom: 2rem; }
-.zodiac-tabs { display: flex; justify-content: center; gap: .65rem; margin-bottom: 1.4rem; flex-wrap: wrap; }
-.zodiac-tab-btn {
-  padding: .55rem 1.4rem; border: 1px solid var(--border); border-radius: 999px;
-  font-family: "Cinzel", serif; font-size: .73rem; letter-spacing: .09em;
-  text-transform: uppercase; cursor: pointer;
-  background: rgba(15,8,27,.8); color: var(--muted); transition: all .25s;
+.zodiac-subtitle {
+  text-align: center; font-family: "Cinzel", serif;
+  font-size: .85rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+  display: flex; align-items: center; justify-content: center; gap: .8rem;
 }
-.zodiac-tab-btn:hover, .zodiac-tab-btn.active {
-  background: linear-gradient(135deg,var(--purple-deep),var(--rose));
-  border-color: transparent; color: #fff; box-shadow: 0 0 18px rgba(160,63,255,.4);
+.zodiac-subtitle::before, .zodiac-subtitle::after {
+  content: ''; flex: 1; max-width: 120px;
+  height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
-.zodiac-panel { display: none; }
-.zodiac-panel.active { display: block; }
 .zodiac-track {
   display: flex; gap: 1rem; overflow-x: auto;
   scroll-snap-type: x mandatory; scroll-behavior: smooth;
