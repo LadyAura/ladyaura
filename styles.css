@@ -54,7 +54,7 @@ main, footer, .site-header, .shipping-banner { position: relative; z-index: 1; }
    BARRA URGENCIA
 ════════════════════════════════════ */
 .scarcity-bar {
-  position: sticky; top: 0; z-index: 9999;
+  position: relative; /* ya no sticky — el header es el que queda fijo */
   display: flex; align-items: center; justify-content: center;
   gap: 10px; padding: 9px 16px; flex-wrap: wrap; text-align: center;
   background: linear-gradient(90deg,#ff2d6f 0%,#b020d8 35%,#7c35db 65%,#ff2d6f 100%);
@@ -68,17 +68,19 @@ main, footer, .site-header, .shipping-banner { position: relative; z-index: 1; }
 .scarcity-bar strong { color: var(--gold); }
 
 /* ════════════════════════════════════
-   HEADER
+   HEADER — siempre visible con logo y botón
 ════════════════════════════════════ */
 .site-header {
-  position: sticky; top: 0; z-index: 100;
+  position: sticky; top: 0; z-index: 9999;
   display: flex; align-items: center; justify-content: space-between;
-  gap: 1rem; padding: .75rem 5%;
-  background: rgba(3,3,10,.94); backdrop-filter: blur(16px);
+  gap: 1rem; padding: .6rem 5%;
+  background: rgba(3,3,10,.96); backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-soft);
+  overflow: visible; min-height: 72px;
 }
 .brand img {
-  width: 160px; max-height: 52px; object-fit: contain;
+  width: auto; height: 56px; max-height: 56px; max-width: 220px;
+  object-fit: contain; display: block;
   filter: drop-shadow(0 0 14px rgba(238,160,255,.7));
 }
 .menu-toggle {
@@ -284,6 +286,59 @@ p { color: var(--muted); line-height: 1.6; margin: .4rem 0; }
 ════════════════════════════════════ */
 .price-section { padding: 3.8rem 8%; background: rgba(4,4,14,.95); border-bottom: 1px solid var(--border-soft); }
 .price-inner { max-width: 940px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
+
+/* ── Nuevo layout sección precio ── */
+.price-inner-new {
+  max-width: 1040px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;
+}
+.price-card-new {
+  background: var(--panel-soft); border: 1px solid var(--border);
+  border-radius: 24px; padding: 1.8rem 1.6rem; text-align: center;
+  position: relative; overflow: hidden; box-shadow: 0 0 40px rgba(160,63,255,.2);
+}
+.price-card-new::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg,var(--gold),var(--rose),var(--purple-mid),var(--gold));
+  background-size: 200% 100%; animation: shimBar 3s linear infinite;
+}
+.price-card-title {
+  font-family: "Cinzel", serif; color: #fff0ff;
+  font-size: clamp(1rem, 2vw, 1.3rem); margin: .6rem 0 1rem; line-height: 1.3;
+}
+.price-includes-grid {
+  list-style: none; padding: 0; margin: 0 0 .5rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: .5rem .8rem; text-align: left;
+}
+.price-includes-grid li {
+  color: var(--muted); font-size: .82rem; line-height: 1.4;
+  display: flex; align-items: flex-start; gap: .3rem;
+}
+.price-text-new { display: flex; flex-direction: column; justify-content: center; }
+.price-text-new p { line-height: 1.7; margin-bottom: .85rem; font-size: .95rem; }
+.price-amount-display {
+  display: flex; align-items: baseline; justify-content: center;
+  gap: .4rem; margin: .4rem 0 .9rem;
+}
+.price-num {
+  font-family: "Cinzel", serif; font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700; color: var(--gold);
+  text-shadow: 0 0 20px rgba(255,217,138,.5); line-height: 1;
+  white-space: nowrap;
+}
+.price-tag-label {
+  font-size: .8rem; color: var(--muted); font-style: italic;
+}
+
+  border-left: 3px solid var(--gold); padding: .65rem 1rem;
+  background: var(--panel-card); border-radius: 0 13px 13px 0;
+  font-style: italic; color: #fff0ff; font-size: .88rem; margin: .5rem 0 .8rem;
+}
+@media (max-width: 700px) {
+  .price-inner-new { grid-template-columns: 1fr; }
+  .price-includes-grid { grid-template-columns: 1fr; }
+}
+
 .price-card {
   background: var(--panel-soft); border: 1px solid var(--border);
   border-radius: 24px; padding: 2rem 1.6rem; text-align: center;
@@ -430,6 +485,26 @@ p { color: var(--muted); line-height: 1.6; margin: .4rem 0; }
   align-items: start;
 }
 
+/* Las cards horizontales van de 2 en 2 — cada una ocupa 1.5 columnas del grid de 3
+   usando subgrid implícito: ponemos 2 horizontales en una fila ocupando span 3 completo */
+.art-card[data-orient="h"] {
+  grid-column: span 1;
+}
+
+/* Cuando hay 2 horizontales seguidas, las agrupamos visualmente con un helper.
+   La solución CSS pura: usamos grid de 2 cols para las horizontales */
+.horiz-pair {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+}
+/* Card sola horizontal (sin par) ocupa todo el ancho */
+.art-card[data-orient="h"].solo {
+  grid-column: 1 / -1;
+}
+
+
 /* Separadores de colección */
 .collection-separator {
   grid-column: 1 / -1;
@@ -469,14 +544,35 @@ p { color: var(--muted); line-height: 1.6; margin: .4rem 0; }
   object-fit: cover;
 }
 
-/* ── HORIZONTAL: paisajes, dragón, empoderada ──
-   En desktop ocupa 2 de 3 columnas       */
+/* ── HORIZONTAL: paisajes, dragón, empoderada ── */
 .art-card[data-orient="h"] {
   grid-column: span 2;
 }
 .art-card[data-orient="h"] .image-open img {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
+  object-position: center;
+}
+
+/* ── LIGHTBOX imagen centrada siempre ── */
+.lightbox {
+  position: fixed; inset: 0; z-index: 200;
+  display: none; align-items: center; justify-content: center; padding: 1.5rem;
+  background: rgba(2,2,8,.92); backdrop-filter: blur(14px);
+}
+.lightbox.active { display: flex; }
+.lightbox-card {
+  width: min(1020px,96vw); max-height: 92vh;
+  display: grid; grid-template-columns: minmax(240px,500px) 1fr;
+  gap: 1.1rem; align-items: center; padding: .85rem;
+  border: 1px solid var(--border); border-radius: 24px;
+  background: rgba(16,7,27,.97); box-shadow: 0 0 52px rgba(237,147,255,.35);
+  animation: popIn .18s ease-out; overflow: hidden;
+}
+.lightbox-card img {
+  width: 100%; max-height: 80vh;
+  object-fit: contain; object-position: center;
+  border-radius: 18px; display: block; margin: 0 auto;
 }
 
 /* ── Badges ── */
@@ -661,23 +757,8 @@ footer p { margin: 0; font-size: .88rem; }
 .seo-footer p { max-width: 940px; margin: 0 auto; font-size: .78rem; color: rgba(216,190,232,.42); line-height: 1.8; text-align: center; }
 
 /* ════════════════════════════════════
-   LIGHTBOX
+   LIGHTBOX (continuación)
 ════════════════════════════════════ */
-.lightbox {
-  position: fixed; inset: 0; z-index: 200;
-  display: none; place-items: center; padding: 1.5rem;
-  background: rgba(2,2,8,.92); backdrop-filter: blur(14px);
-}
-.lightbox.active { display: grid; }
-.lightbox-card {
-  width: min(1020px,96vw); max-height: 92vh;
-  display: grid; grid-template-columns: minmax(240px,560px) 1fr;
-  gap: 1.1rem; align-items: center; padding: .85rem;
-  border: 1px solid var(--border); border-radius: 24px;
-  background: rgba(16,7,27,.97); box-shadow: 0 0 52px rgba(237,147,255,.35);
-  animation: popIn .18s ease-out;
-}
-.lightbox-card img { width: 100%; max-height: 85vh; object-fit: contain; border-radius: 18px; }
 .lightbox-caption { padding: .85rem; }
 .lightbox-caption h3 { font-family: "Cinzel", serif; font-size: clamp(1.4rem,3vw,2.4rem); color: #fff0ff; margin-bottom: .5rem; }
 .lightbox-caption p { font-size: 1.2rem; color: var(--gold); margin-bottom: .9rem; }
@@ -733,6 +814,8 @@ footer p { margin: 0; font-size: .88rem; }
   /* Grid galería: 2 columnas, horizontales siguen 2 col */
   .grid-gallery { grid-template-columns: repeat(2,1fr); }
   .art-card[data-orient="h"] { grid-column: span 2; }
+  .horiz-pair { grid-template-columns: 1fr 1fr; }
+  .art-card[data-orient="h"].solo { grid-column: 1 / -1; }
 
   .steps-grid { grid-template-columns: repeat(2,1fr); }
   .trust-strip { grid-template-columns: 1fr; }
@@ -740,8 +823,11 @@ footer p { margin: 0; font-size: .88rem; }
   .faq-grid { grid-template-columns: 1fr; }
   .fomo-grid, .scarcity-grid { grid-template-columns: repeat(2,1fr); }
 
-  .lightbox-card { grid-template-columns: 1fr; overflow-y: auto; padding: .5rem; }
-  .lightbox-card img { max-height: 48vh; }
+  .lightbox-card {
+    grid-template-columns: 1fr; overflow-y: auto; padding: .5rem;
+    width: min(98vw, 500px); max-height: 95vh;
+  }
+  .lightbox-card img { max-height: 50vh; display: block; margin: 0 auto; object-fit: contain; }
   .lightbox-caption { text-align: center; padding: .5rem; }
 }
 
@@ -764,6 +850,8 @@ footer p { margin: 0; font-size: .88rem; }
   /* Galería: 1 sola columna, todos occupan 1 col */
   .grid-gallery { grid-template-columns: 1fr; gap: 1rem; }
   .art-card[data-orient="h"] { grid-column: span 1; }
+  .horiz-pair { grid-template-columns: 1fr; }
+  .art-card[data-orient="h"].solo { grid-column: span 1; }
   /* Los horizontales mantienen su ratio en 1 col */
   .art-card[data-orient="h"] .image-open img { aspect-ratio: 4/3; }
 
@@ -779,7 +867,7 @@ footer p { margin: 0; font-size: .88rem; }
 
 /* ── Móvil pequeño (< 380px) ── */
 @media (max-width: 380px) {
-  .brand img { width: 120px; }
+  .brand img { height: 44px; max-width: 160px; width: auto; }
   .nav { right: 2%; min-width: 160px; }
   .steps-grid { grid-template-columns: 1fr; }
   .hero h1 { font-size: 1.4rem; }

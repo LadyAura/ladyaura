@@ -50,25 +50,32 @@ function buildEmailUrl(titulo, precio) {
 /* Cards de producto */
 document.querySelectorAll(".product-card").forEach((card) => {
   const opener = card.querySelector(".image-open");
+  if (!opener) return;
   const img = card.querySelector("img");
   const title = card.querySelector("h3")?.textContent || "Diseño Lady Aura";
   const price = card.dataset.price || "94";
   const oldPrice = card.dataset.oldPrice;
 
   opener.addEventListener("click", () => {
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt;
-    lightboxTitle.textContent = title;
-    if (oldPrice) {
-      lightboxPrice.innerHTML = `Diamond painting 60×90 cm · <span style="text-decoration:line-through;opacity:0.6;font-size:1.1rem;">${oldPrice} €</span> <strong>${price} €</strong>`;
-    } else {
-      lightboxPrice.textContent = `Diamond painting 60×90 cm · ${price} €`;
+    try {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxTitle.textContent = title;
+      if (oldPrice) {
+        // Oferta: mostrar precio tachado y oferta
+        lightboxPrice.innerHTML = `Diamond painting 60×90 cm · <span style="text-decoration:line-through;opacity:0.6;font-size:1.1rem;">${oldPrice} €</span> <strong>${price} €</strong> · Envío incluido`;
+      } else {
+        // Normal: sin precio, solo info
+        lightboxPrice.textContent = `Diamond painting 60×90 cm · Envío incluido`;
+      }
+      lightboxWhatsapp.href = buildWhatsappUrl(title, price);
+      lightboxEmail.href = buildEmailUrl(title, price);
+      lightbox.classList.add("active");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    } catch(err) {
+      console.error("Error abriendo lightbox:", err);
     }
-    lightboxWhatsapp.href = buildWhatsappUrl(title, price);
-    lightboxEmail.href = buildEmailUrl(title, price);
-    lightbox.classList.add("active");
-    lightbox.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
   });
 });
 
@@ -76,16 +83,23 @@ document.querySelectorAll(".product-card").forEach((card) => {
 document.querySelectorAll(".zodiac-card").forEach(card => {
   card.addEventListener("click", (e) => {
     e.preventDefault();
-    const titulo = card.dataset.title;
-    lightboxImg.src = card.dataset.img;
-    lightboxImg.alt = titulo;
-    lightboxTitle.textContent = titulo;
-    lightboxPrice.textContent = "Diamond painting 60×90 cm · 94 €";
-    lightboxWhatsapp.href = buildWhatsappUrl(titulo, "94");
-    lightboxEmail.href = buildEmailUrl(titulo, "94");
-    lightbox.classList.add("active");
-    lightbox.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
+    e.stopPropagation();
+    try {
+      const titulo = card.dataset.title || card.querySelector("span")?.textContent || "Diseño Lady Aura";
+      const imgSrc = card.dataset.img || card.querySelector("img")?.src || "";
+      if (!imgSrc) return;
+      lightboxImg.src = imgSrc;
+      lightboxImg.alt = titulo;
+      lightboxTitle.textContent = titulo;
+      lightboxPrice.textContent = "Diamond painting 60×90 cm · Envío incluido";
+      lightboxWhatsapp.href = buildWhatsappUrl(titulo, "94");
+      lightboxEmail.href = buildEmailUrl(titulo, "94");
+      lightbox.classList.add("active");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    } catch(err) {
+      console.error("Error abriendo lightbox:", err);
+    }
   });
 });
 
