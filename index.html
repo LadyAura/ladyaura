@@ -29,7 +29,7 @@
 <meta name="twitter:description" content="Diamond painting de fantasía premium. Sirenas, dragones, zodíaco. 60×90 cm. Pre-reserva sin compromiso.">
 <meta name="twitter:image" content="https://ladyauraart.com/assets/perfil-horizontal.webp">
 
-<!-- Schema.org -->
+<!-- Schema.org ÚNICO — Store + FAQPage fusionados (fix errores Google) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -51,7 +51,13 @@
       "mainEntity": [
         {"@type": "Question", "name": "¿Qué es el diamond painting?", "acceptedAnswer": {"@type": "Answer", "text": "El diamond painting es una técnica artística en la que se colocan pequeñas resinas brillantes (diamantes) sobre un lienzo adhesivo siguiendo un diseño numerado. El resultado es una obra brillante y detallada con efecto mosaico."}},
         {"@type": "Question", "name": "¿Qué tamaño tienen los cuadros de Lady Aura?", "acceptedAnswer": {"@type": "Answer", "text": "Todos los cuadros Lady Aura son en formato premium 60×90 cm, el tamaño ideal para que cada diseño luzca con todo su detalle y brillantez."}},
-        {"@type": "Question", "name": "¿Cómo funciona la pre-reserva?", "acceptedAnswer": {"@type": "Answer", "text": "La pre-reserva no requiere pago previo. Eliges tu diseño favorito, me escribes por WhatsApp o email, y cuando llegue la producción te aviso personalmente. Las primeras en reservar tienen prioridad de entrega."}}
+        {"@type": "Question", "name": "¿Cómo funciona la pre-reserva?", "acceptedAnswer": {"@type": "Answer", "text": "La pre-reserva no requiere pago previo. Eliges tu diseño favorito, me escribes por WhatsApp o email, y cuando llegue la producción te aviso personalmente. Las primeras en reservar tienen prioridad de entrega."}},
+        {"@type": "Question", "name": "¿Qué incluye un kit Lady Aura?", "acceptedAnswer": {"@type": "Answer", "text": "Incluye lienzo premium, diamantes, herramientas y todo lo necesario para empezar."}},
+        {"@type": "Question", "name": "¿Cuánto tarda en llegar?", "acceptedAnswer": {"@type": "Answer", "text": "El plazo depende de producción y reserva. Te informamos por WhatsApp antes de confirmar."}},
+        {"@type": "Question", "name": "¿Es fácil el diamond painting?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, es una actividad sencilla, relajante y apta para principiantes."}},
+        {"@type": "Question", "name": "¿Es buen regalo el diamond painting?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, es un regalo creativo original para amantes de la fantasía, la decoración y las manualidades."}},
+        {"@type": "Question", "name": "¿Los diseños son exclusivos?", "acceptedAnswer": {"@type": "Answer", "text": "Son una selección cuidada Lady Aura con estética mágica y premium."}},
+        {"@type": "Question", "name": "¿Qué tamaños hay?", "acceptedAnswer": {"@type": "Answer", "text": "La colección principal trabaja formato premium 60x90 cm."}}
       ]
     }
   ]
@@ -480,62 +486,6 @@
 .zodiac-panel { display: none; }
 .zodiac-panel.active { display: block; }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "¿Qué incluye un kit Lady Aura?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Incluye lienzo premium, diamantes, herramientas y todo lo necesario para empezar."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Cuánto tarda en llegar?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "El plazo depende de producción y reserva. Te informamos por WhatsApp antes de confirmar."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Es fácil?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sí, es una actividad sencilla, relajante y apta para principiantes."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Es buen regalo?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sí, es un regalo creativo original para amantes de la fantasía, la decoración y las manualidades."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Los diseños son exclusivos?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Son una selección cuidada Lady Aura con estética mágica y premium."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Qué tamaños hay?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "La colección principal trabaja formato premium 60x90 cm."
-      }
-    }
-  ]
-}
-</script>
 </head>
 <body>
 
@@ -710,8 +660,6 @@
       </div>
     </div>
   </section>
-
-
 
   <!-- ===========================
        5. ESCASEZ Y URGENCIA
@@ -990,8 +938,6 @@
   </div>
 </article>
 
-
-
       <!-- Separador → enlace zodiaco -->
       <div class="collection-separator">
         <div class="collection-separator-line"></div>
@@ -1175,7 +1121,7 @@
             </div>
           </div>
         </article>
-      </div><!-- /horiz-pair -->
+      </div>
 
       <!-- ╔══════════════════╗  -->
       <!-- ║ ✨ ESPECIALES    ║  -->
@@ -1381,8 +1327,6 @@
           </div>
         </div>
       </article>
-
-
 
       <article class="art-card product-card" data-price="84" data-old-price="94" data-orient="v">
         <button class="image-open" type="button" aria-label="Ver Conejitos cariñosos">
@@ -1624,11 +1568,11 @@ document.querySelectorAll('.zodiac-tab-btn').forEach(function(btn) {
 const tarotDeck = [
   { id:0,  name:"El Loco",               img:"el-loco.webp", upright:"Nuevos comienzos, aventura, salto de fe. El universo te invita a confiar.", reversed:"Imprudencia, decisiones apresuradas. Tómate un momento antes de actuar." },
   { id:1,  name:"El Mago",               img:"el-mago.webp",           upright:"Tienes todo lo que necesitas. Es momento de manifestar tus deseos con determinación.", reversed:"Energía bloqueada, talentos sin explotar. Revisa qué te frena." },
-  { id:2,  name:"La Sacerdotisa",        img:"la-sacerdotisa.webp",    upright:"Confía en tu intuición. La respuesta ya está dentro de ti, escúchala.", reversed:"Secretos ocultos, desconexión con tu interior. Busca un momento de silencio." , special:true},
-  { id:3,  name:"La Emperatriz",         img:"la-emperatriz.webp",     upright:"Abundancia, creatividad y fertilidad. Es tiempo de nutrir tus proyectos y relaciones.", reversed:"Bloqueo creativo o dependencia excesiva. Recupera tu autonomía." , special:true},
+  { id:2,  name:"La Sacerdotisa",        img:"la-sacerdotisa.webp",    upright:"Confía en tu intuición. La respuesta ya está dentro de ti, escúchala.", reversed:"Secretos ocultos, desconexión con tu interior. Busca un momento de silencio.", special:true },
+  { id:3,  name:"La Emperatriz",         img:"la-emperatriz.webp",     upright:"Abundancia, creatividad y fertilidad. Es tiempo de nutrir tus proyectos y relaciones.", reversed:"Bloqueo creativo o dependencia excesiva. Recupera tu autonomía.", special:true },
   { id:4,  name:"El Emperador",          img:"el-emperador.webp",      upright:"Estructura, autoridad y estabilidad. Toma las riendas con firmeza.", reversed:"Rigidez excesiva o falta de control. Busca el equilibrio entre poder y flexibilidad." },
   { id:5,  name:"El Sumo Sacerdote",     img:"el-sumo-sacerdote.webp", upright:"Busca guía espiritual o tradicional. La sabiduría colectiva tiene algo que enseñarte.", reversed:"Dogmatismo o seguir reglas que ya no sirven. Cuestiona con amor." },
-  { id:6,  name:"Los Enamorados",        img:"los-enamorados.webp",    upright:"Amor, elección y armonía. Una decisión importante del corazón se acerca.", reversed:"Desacuerdo interno o externo. Clarifica tus valores antes de decidir." , special:true},
+  { id:6,  name:"Los Enamorados",        img:"los-enamorados.webp",    upright:"Amor, elección y armonía. Una decisión importante del corazón se acerca.", reversed:"Desacuerdo interno o externo. Clarifica tus valores antes de decidir.", special:true },
   { id:7,  name:"El Carro",              img:"el-carro.webp",          upright:"Victoria a través de la determinación. Mantén el enfoque y llegarás a tu meta.", reversed:"Falta de dirección o control. Reorganiza tus prioridades." },
   { id:8,  name:"La Fuerza",             img:"la-fuerza.webp",         upright:"Coraje interior y paciencia. Tu mayor poder está en la calma y la compasión.", reversed:"Dudas internas o uso excesivo de la fuerza. Confía más en ti." },
   { id:9,  name:"El Ermitaño",           img:"el-ermitano.webp",       upright:"Introspección y búsqueda interior. Un momento de soledad te traerá claridad.", reversed:"Aislamiento no deseado o evitar la reflexión. Busca equilibrio entre estar solo y conectar." },
@@ -1637,11 +1581,11 @@ const tarotDeck = [
   { id:12, name:"El Colgado",            img:"el-colgado.webp",        upright:"Pausa y rendición. A veces la inacción es la acción más sabia.", reversed:"Estancamiento por resistencia. Suelta lo que no puedes controlar." },
   { id:13, name:"La Muerte",             img:"la-muerte.webp",         upright:"Transformación y cierre de ciclos. Algo termina para que algo mejor comience.", reversed:"Resistencia al cambio necesario. Deja ir con gracia." },
   { id:14, name:"La Templanza",          img:"la-templanza.webp",      upright:"Equilibrio, moderación y paciencia. La alquimia de la vida pide calma.", reversed:"Desequilibrio o impaciencia. Respira y encuentra tu centro." },
-  { id:15, name:"El Diablo",             img:"el-diablo.webp", upright:"Cuidado con ataduras o hábitos que te limitan. Reconocerlos es el primer paso.", reversed:"Liberación. Estás rompiendo cadenas que ya no te pertenecen." , special:true},
-  { id:16, name:"La Torre",              img:"la-torre.webp", upright:"Cambio repentino que libera. Lo que cae no era sólido.", reversed:"Miedo a un cambio necesario. Lo que evitas, persiste." },
-  { id:17, name:"La Estrella",           img:"la-estrella.webp",       upright:"Esperanza, sanación y renovación. El universo te cuida.", reversed:"Desánimo temporal. La luz sigue ahí aunque ahora no la veas." , special:true},
-  { id:18, name:"La Luna",               img:"la-luna.webp",           upright:"Intuición profunda y misterio. No todo es lo que parece, confía en tu instinto.", reversed:"Confusión o miedos que distorsionan la realidad. Busca claridad." , special:true},
-  { id:19, name:"El Sol",                img:"el-sol.webp",            upright:"Alegría, éxito y vitalidad. Un período luminoso y positivo llega.", reversed:"Exceso o optimismo bloqueado. Encuentra la medida justa." , special:true},
+  { id:15, name:"El Diablo",             img:"el-diablo.webp",         upright:"Cuidado con ataduras o hábitos que te limitan. Reconocerlos es el primer paso.", reversed:"Liberación. Estás rompiendo cadenas que ya no te pertenecen.", special:true },
+  { id:16, name:"La Torre",              img:"la-torre.webp",          upright:"Cambio repentino que libera. Lo que cae no era sólido.", reversed:"Miedo a un cambio necesario. Lo que evitas, persiste." },
+  { id:17, name:"La Estrella",           img:"la-estrella.webp",       upright:"Esperanza, sanación y renovación. El universo te cuida.", reversed:"Desánimo temporal. La luz sigue ahí aunque ahora no la veas.", special:true },
+  { id:18, name:"La Luna",               img:"la-luna.webp",           upright:"Intuición profunda y misterio. No todo es lo que parece, confía en tu instinto.", reversed:"Confusión o miedos que distorsionan la realidad. Busca claridad.", special:true },
+  { id:19, name:"El Sol",                img:"el-sol.webp",            upright:"Alegría, éxito y vitalidad. Un período luminoso y positivo llega.", reversed:"Exceso o optimismo bloqueado. Encuentra la medida justa.", special:true },
   { id:20, name:"El Juicio",             img:"el-juicio.webp",         upright:"Renacimiento y despertar. Escucha el llamado de tu alma.", reversed:"Autocrítica excesiva. Perdónate y avanza." },
   { id:21, name:"El Mundo",              img:"el-mundo.webp",          upright:"Completitud y logro. Un ciclo se cierra con éxito. Celebra.", reversed:"Falta de cierre o quedarse a medio camino. Da ese último paso." }
 ];
@@ -1708,37 +1652,6 @@ function drawReading(n, type) {
   area.classList.remove('hidden');
   area.scrollIntoView({ behavior: 'smooth', block: 'start' });
   tarotCurrentReading = { title: titles[type], type, selected };
-}
-
-function buildInterpretation(type, selected) {
-  const labels = {
-    daily:  ['Tu energía de hoy'],
-    weekly: ['Pasado','Presente','Futuro'],
-    love:   ['Tú en esta relación','La otra persona','El camino juntos'],
-    advice: ['El consejo del universo'],
-    career: ['Situación actual','Obstáculo','Cómo avanzar'],
-    health: ['Estado actual','Causa','Consejo'],
-    celtic: ['Situación','Cruce','Base','Pasado','Posible futuro']
-  };
-  /* labels también disponible en drawReading */
-  const colors = { daily:'var(--purple-mid)', weekly:'var(--purple-mid)', love:'#f472b6', advice:'var(--gold)', career:'#60a5fa', health:'#34d399', celtic:'#c084fc' };
-  const col = colors[type] || 'var(--gold)';
-  const labs = labels[type] || selected.map((_,i) => `Carta ${i+1}`);
-
-  let html = `<div class="tarot-interp-grid">`;
-  selected.forEach(({card, reversed}, i) => {
-    const label = labs[i] || `Carta ${i+1}`;
-    const meaning = reversed ? card.reversed : card.upright;
-    html += `
-      <div class="tarot-interp-card">
-        <div class="tarot-interp-label" style="color:${col}">${label}</div>
-        <div class="tarot-interp-name">${card.name}${reversed ? ' <span class="tarot-inv-badge">invertida</span>' : ''}</div>
-        <p class="tarot-interp-meaning">${meaning}</p>
-      </div>`;
-  });
-  html += `</div>`;
-  html += `<p class="tarot-disclaimer">🌙 El tarot es una herramienta de reflexión y entretenimiento. Tú tienes el poder de crear tu propio camino.</p>`;
-  return html;
 }
 
 function closeTarotReading() {
