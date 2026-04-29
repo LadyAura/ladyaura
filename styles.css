@@ -285,6 +285,9 @@ p { color: var(--muted); line-height: 1.6; margin: .4rem 0; }
    PRECIO
 ════════════════════════════════════ */
 .price-section { padding: 3.8rem 8%; background: rgba(4,4,14,.95); border-bottom: 1px solid var(--border-soft); }
+@media (max-width: 600px) {
+  .price-section { padding: 2rem 5%; }
+}
 .price-inner { max-width: 940px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
 
 /* ── Nuevo layout sección precio ── */
@@ -329,14 +332,27 @@ p { color: var(--muted); line-height: 1.6; margin: .4rem 0; }
 .price-tag-label {
   font-size: .8rem; color: var(--muted); font-style: italic;
 }
-
+.price-quote-new {
   border-left: 3px solid var(--gold); padding: .65rem 1rem;
   background: var(--panel-card); border-radius: 0 13px 13px 0;
   font-style: italic; color: #fff0ff; font-size: .88rem; margin: .5rem 0 .8rem;
 }
-@media (max-width: 700px) {
-  .price-inner-new { grid-template-columns: 1fr; }
+
+/* ── Responsive precio ── */
+@media (max-width: 860px) {
+  .price-inner-new {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+  .price-includes-grid { grid-template-columns: 1fr 1fr; }
+  .price-text-new { text-align: center; }
+  .price-quote-new { text-align: left; }
+}
+@media (max-width: 480px) {
+  .price-inner-new { gap: 1rem; }
   .price-includes-grid { grid-template-columns: 1fr; }
+  .price-card-new { padding: 1.2rem 1rem; }
+  .price-text-new p { font-size: .88rem; }
 }
 
 .price-card {
