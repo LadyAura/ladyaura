@@ -556,6 +556,7 @@
     <a href="#inicio">Inicio</a>
     <a href="#galeria">Diseños</a>
     <a href="#zodiaco">Zodiaco</a>
+    <a href="#tarot">🔮 Tarot</a>
     <a href="#por-que">Por qué Lady Aura</a>
     <a href="#sobre-mi">Mi historia</a>
     <a href="#contacto">Contacto</a>
@@ -576,7 +577,7 @@
        1. HERO
   ============================ -->
   <section id="inicio" class="hero">
-    <img class="hero-bg" src="assets/sirena-mar-nocturno.png" alt="Lady Aura, creadora de diamond painting premium de fantasía">
+    <img class="hero-bg" src="assets/sirena-mar-nocturno.webp" alt="Lady Aura, creadora de diamond painting premium de fantasía">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <span class="prelaunch-badge">✦ Edición Limitada · Pre-reserva Abierta ✦</span>
@@ -634,6 +635,38 @@
   </div>
 
   <!-- ===========================
+       TAROT
+  ============================ -->
+  <section id="tarot" class="tarot-section">
+    <div class="section-heading">
+      <span class="section-tag">Reflexión · Entretenimiento · Autoconocimiento</span>
+      <h2>🔮 Tarot Lady Aura</h2>
+      <p>Descubre lo que el universo tiene para ti. Elige tu tirada y deja que las cartas hablen.</p>
+    </div>
+
+    <!-- Botones de tirada -->
+    <div class="tarot-buttons">
+      <button class="tarot-btn tarot-btn--purple" onclick="drawReading(1,'daily')"><span>🌞</span><span>Diaria</span></button>
+      <button class="tarot-btn tarot-btn--purple" onclick="drawReading(3,'weekly')"><span>📅</span><span>Semanal</span></button>
+      <button class="tarot-btn tarot-btn--pink" onclick="drawReading(3,'love')"><span>❤️</span><span>Amor</span></button>
+      <button class="tarot-btn tarot-btn--gold" onclick="drawReading(1,'advice')"><span>💡</span><span>Consejo</span></button>
+      <button class="tarot-btn tarot-btn--blue" onclick="drawReading(3,'career')"><span>💼</span><span>Trabajo</span></button>
+      <button class="tarot-btn tarot-btn--green" onclick="drawReading(3,'health')"><span>🧘‍♀️</span><span>Salud</span></button>
+      <button class="tarot-btn tarot-btn--fuchsia" onclick="drawReading(5,'celtic')"><span>✨</span><span>Cruz Celta</span></button>
+    </div>
+
+    <!-- Área de lectura -->
+    <div id="tarot-reading-area" class="tarot-reading hidden">
+      <div class="tarot-reading-header">
+        <h3 id="tarot-reading-title" class="tarot-reading-title"></h3>
+        <button onclick="closeTarotReading()" class="tarot-close-btn">✕ Nueva tirada</button>
+      </div>
+      <div id="tarot-cards-container" class="tarot-cards-container"></div>
+      <div id="tarot-interpretation" class="tarot-interpretation"></div>
+    </div>
+  </section>
+
+  <!-- ===========================
        3. PROPUESTA DE VALOR
   ============================ -->
   <section id="por-que" class="value-prop">
@@ -673,7 +706,7 @@
         </ul>
       </div>
       <div class="value-image">
-        <img src="assets/sirena-luna-llena.png" alt="Sirena bajo la luna llena – diamond painting premium de fantasía Lady Aura" style="width:100%;border-radius:22px;border:1px solid var(--border);box-shadow:0 0 48px rgba(160,63,255,.26);">
+        <img src="assets/sirena-luna-llena.webp" alt="Sirena bajo la luna llena – diamond painting premium de fantasía Lady Aura" style="width:100%;border-radius:22px;border:1px solid var(--border);box-shadow:0 0 48px rgba(160,63,255,.26);">
       </div>
     </div>
   </section>
@@ -730,9 +763,9 @@
           <img loading="lazy" src="assets/aries.webp" alt="Cuadro diamond painting Aries – Diosa Aries con diamantes exclusivo Lady Aura España">
           <span>Aries ♀</span>
         </a>
-        <a class="zodiac-card" data-img="assets/tauro.png" data-title="Cuadro Diamond Painting Tauro – Diosa Tauro">
+        <a class="zodiac-card" data-img="assets/tauro.webp" data-title="Cuadro Diamond Painting Tauro – Diosa Tauro">
           <div class="z-symbol">♉</div>
-          <img loading="lazy" src="assets/tauro.png" alt="Cuadro diamond painting Tauro – Diosa Tauro con diamantes exclusivo Lady Aura">
+          <img loading="lazy" src="assets/tauro.webp" alt="Cuadro diamond painting Tauro – Diosa Tauro con diamantes exclusivo Lady Aura">
           <span>Tauro ♀</span>
         </a>
         <a class="zodiac-card" data-img="assets/geminis.webp" data-title="Cuadro Diamond Painting Géminis – Diosa Géminis">
@@ -750,9 +783,9 @@
           <img loading="lazy" src="assets/leo.webp" alt="Cuadro diamond painting Leo – Diosa Leo con diamantes exclusivo Lady Aura España">
           <span>Leo ♀</span>
         </a>
-        <a class="zodiac-card" data-img="assets/virgo.png" data-title="Cuadro Virgo con Diamantes – Diosa Virgo">
+        <a class="zodiac-card" data-img="assets/virgo.webp" data-title="Cuadro Virgo con Diamantes – Diosa Virgo">
           <div class="z-symbol">♍</div>
-          <img loading="lazy" src="assets/virgo.png" alt="Cuadro Virgo con diamantes – Diosa Virgo diamond painting exclusivo Lady Aura España">
+          <img loading="lazy" src="assets/virgo.webp" alt="Cuadro Virgo con diamantes – Diosa Virgo diamond painting exclusivo Lady Aura España">
           <span>Virgo ♀</span>
         </a>
         <a class="zodiac-card" data-img="assets/libra.webp" data-title="Cuadro Diamond Painting Libra – Diosa Libra">
@@ -765,9 +798,9 @@
           <img loading="lazy" src="assets/escorpio.webp" alt="Cuadro diamond painting Escorpio – Diosa Escorpio arte con diamantes Lady Aura España">
           <span>Escorpio ♀</span>
         </a>
-        <a class="zodiac-card" data-img="assets/sagitario.png" data-title="Cuadro Diamond Painting Sagitario – Diosa Sagitario">
+        <a class="zodiac-card" data-img="assets/sagitario.webp" data-title="Cuadro Diamond Painting Sagitario – Diosa Sagitario">
           <div class="z-symbol">♐</div>
-          <img loading="lazy" src="assets/sagitario.png" alt="Cuadro diamond painting Sagitario – Diosa Sagitario cuadros con diamantes Lady Aura">
+          <img loading="lazy" src="assets/sagitario.webp" alt="Cuadro diamond painting Sagitario – Diosa Sagitario cuadros con diamantes Lady Aura">
           <span>Sagitario ♀</span>
         </a>
         <a class="zodiac-card" data-img="assets/capricornio.webp" data-title="Cuadro Diamond Painting Capricornio – Diosa Capricornio">
@@ -780,9 +813,9 @@
           <img loading="lazy" src="assets/acuario.webp" alt="Cuadro diamond painting Acuario – Diosa Acuario cuadros con diamantes Lady Aura">
           <span>Acuario ♀</span>
         </a>
-        <a class="zodiac-card" data-img="assets/piscis.png" data-title="Cuadro Diamond Painting Piscis – Diosa Piscis">
+        <a class="zodiac-card" data-img="assets/piscis.webp" data-title="Cuadro Diamond Painting Piscis – Diosa Piscis">
           <div class="z-symbol">♓</div>
-          <img loading="lazy" src="assets/piscis.png" alt="Cuadro diamond painting Piscis – Diosa Piscis arte con diamantes Lady Aura España">
+          <img loading="lazy" src="assets/piscis.webp" alt="Cuadro diamond painting Piscis – Diosa Piscis arte con diamantes Lady Aura España">
           <span>Piscis ♀</span>
         </a>
     </div>
@@ -791,64 +824,64 @@
     <!-- MASCULINO -->
     <div class="zodiac-subtitle" style="margin-top:2.5rem;">♂ Retratos Celestiales · Versión Masculina</div>
     <div class="zodiac-track">
-        <a class="zodiac-card" data-img="assets/chico-aries-new.png" data-title="Retrato Celestial de Aries ♂">
+        <a class="zodiac-card" data-img="assets/chico-aries-new.webp" data-title="Retrato Celestial de Aries ♂">
           <div class="z-symbol">♈</div>
-          <img loading="lazy" src="assets/chico-aries-new.png" alt="Retrato celestial de Aries – diamond painting masculino zodíaco Lady Aura España">
+          <img loading="lazy" src="assets/chico-aries-new.webp" alt="Retrato celestial de Aries – diamond painting masculino zodíaco Lady Aura España">
           <span>Aries ♂</span>
         </a>
-        <a class="zodiac-card" data-img="assets/chico-tauro-new.png" data-title="Retrato Celestial de Tauro ♂">
+        <a class="zodiac-card" data-img="assets/chico-tauro-new.webp" data-title="Retrato Celestial de Tauro ♂">
           <div class="z-symbol">♉</div>
-          <img loading="lazy" src="assets/chico-tauro-new.png" alt="Retrato celestial de Tauro – diamond painting masculino zodíaco Tauro Lady Aura España">
+          <img loading="lazy" src="assets/chico-tauro-new.webp" alt="Retrato celestial de Tauro – diamond painting masculino zodíaco Tauro Lady Aura España">
           <span>Tauro ♂</span>
         </a>
-        <a class="zodiac-card" data-img="assets/chico-geminis-new.png" data-title="Retrato Celestial de Géminis ♂">
+        <a class="zodiac-card" data-img="assets/chico-geminis-new.webp" data-title="Retrato Celestial de Géminis ♂">
           <div class="z-symbol">♊</div>
-          <img loading="lazy" src="assets/chico-geminis-new.png" alt="Retrato celestial de Géminis – cuadro con diamantes zodíaco masculino Lady Aura">
+          <img loading="lazy" src="assets/chico-geminis-new.webp" alt="Retrato celestial de Géminis – cuadro con diamantes zodíaco masculino Lady Aura">
           <span>Géminis ♂</span>
         </a>
-        <a class="zodiac-card" data-img="assets/chico-cancer-new.png" data-title="Retrato Celestial de Cáncer ♂">
+        <a class="zodiac-card" data-img="assets/chico-cancer-new.webp" data-title="Retrato Celestial de Cáncer ♂">
           <div class="z-symbol">♋</div>
-          <img loading="lazy" src="assets/chico-cancer-new.png" alt="Retrato celestial de Cáncer – arte con diamantes zodíaco masculino Lady Aura España">
+          <img loading="lazy" src="assets/chico-cancer-new.webp" alt="Retrato celestial de Cáncer – arte con diamantes zodíaco masculino Lady Aura España">
           <span>Cáncer ♂</span>
         </a>
-        <a class="zodiac-card" data-img="assets/chico-leo-new.png" data-title="Retrato Celestial de Leo ♂">
+        <a class="zodiac-card" data-img="assets/chico-leo-new.webp" data-title="Retrato Celestial de Leo ♂">
           <div class="z-symbol">♌</div>
-          <img loading="lazy" src="assets/chico-leo-new.png" alt="Retrato celestial de Leo – diamond painting masculino zodíaco Leo Lady Aura">
+          <img loading="lazy" src="assets/chico-leo-new.webp" alt="Retrato celestial de Leo – diamond painting masculino zodíaco Leo Lady Aura">
           <span>Leo ♂</span>
         </a>
-        <a class="zodiac-card" data-img="assets/chico-virgo-new.png" data-title="Retrato Celestial de Virgo ♂">
+        <a class="zodiac-card" data-img="assets/chico-virgo-new.webp" data-title="Retrato Celestial de Virgo ♂">
           <div class="z-symbol">♍</div>
-          <img loading="lazy" src="assets/chico-virgo-new.png" alt="Cuadro Virgo con diamantes versión masculina – retrato celestial Virgo Lady Aura España">
+          <img loading="lazy" src="assets/chico-virgo-new.webp" alt="Cuadro Virgo con diamantes versión masculina – retrato celestial Virgo Lady Aura España">
           <span>Virgo ♂</span>
         </a>
-        <a class="zodiac-card" data-img="assets/chico-libra-new.png" data-title="Retrato Celestial de Libra ♂">
+        <a class="zodiac-card" data-img="assets/chico-libra-new.webp" data-title="Retrato Celestial de Libra ♂">
           <div class="z-symbol">♎</div>
-          <img loading="lazy" src="assets/chico-libra-new.png" alt="Retrato celestial de Libra – diamond painting zodíaco masculino Lady Aura">
+          <img loading="lazy" src="assets/chico-libra-new.webp" alt="Retrato celestial de Libra – diamond painting zodíaco masculino Lady Aura">
           <span>Libra ♂</span>
         </a>
-        <a class="zodiac-card" data-img="assets/chico-escorpio-new.png" data-title="Retrato Celestial de Escorpio ♂">
+        <a class="zodiac-card" data-img="assets/chico-escorpio-new.webp" data-title="Retrato Celestial de Escorpio ♂">
           <div class="z-symbol">♏</div>
-          <img loading="lazy" src="assets/chico-escorpio-new.png" alt="Retrato celestial de Escorpio – arte con diamantes zodíaco Lady Aura España">
+          <img loading="lazy" src="assets/chico-escorpio-new.webp" alt="Retrato celestial de Escorpio – arte con diamantes zodíaco Lady Aura España">
           <span>Escorpio ♂</span>
         </a>
-        <a class="zodiac-card" data-img="assets/chico-sagitario-new.png" data-title="Retrato Celestial de Sagitario ♂">
+        <a class="zodiac-card" data-img="assets/chico-sagitario-new.webp" data-title="Retrato Celestial de Sagitario ♂">
           <div class="z-symbol">♐</div>
-          <img loading="lazy" src="assets/chico-sagitario-new.png" alt="Retrato celestial de Sagitario – cuadros con diamantes zodíaco masculino Lady Aura">
+          <img loading="lazy" src="assets/chico-sagitario-new.webp" alt="Retrato celestial de Sagitario – cuadros con diamantes zodíaco masculino Lady Aura">
           <span>Sagitario ♂</span>
         </a>
-        <a class="zodiac-card" data-img="assets/chico-capricornio-new.png" data-title="Retrato Celestial de Capricornio ♂">
+        <a class="zodiac-card" data-img="assets/chico-capricornio-new.webp" data-title="Retrato Celestial de Capricornio ♂">
           <div class="z-symbol">♑</div>
-          <img loading="lazy" src="assets/chico-capricornio-new.png" alt="Retrato celestial de Capricornio – diamond painting zodíaco exclusivo Lady Aura España">
+          <img loading="lazy" src="assets/chico-capricornio-new.webp" alt="Retrato celestial de Capricornio – diamond painting zodíaco exclusivo Lady Aura España">
           <span>Capricornio ♂</span>
         </a>
-        <a class="zodiac-card" data-img="assets/chico-acuario-new.png" data-title="Retrato Celestial de Acuario ♂">
+        <a class="zodiac-card" data-img="assets/chico-acuario-new.webp" data-title="Retrato Celestial de Acuario ♂">
           <div class="z-symbol">♒</div>
-          <img loading="lazy" src="assets/chico-acuario-new.png" alt="Retrato celestial de Acuario – cuadros diamond painting zodíaco Lady Aura">
+          <img loading="lazy" src="assets/chico-acuario-new.webp" alt="Retrato celestial de Acuario – cuadros diamond painting zodíaco Lady Aura">
           <span>Acuario ♂</span>
         </a>
-        <a class="zodiac-card" data-img="assets/chico-piscis-new.png" data-title="Retrato Celestial de Piscis ♂">
+        <a class="zodiac-card" data-img="assets/chico-piscis-new.webp" data-title="Retrato Celestial de Piscis ♂">
           <div class="z-symbol">♓</div>
-          <img loading="lazy" src="assets/chico-piscis-new.png" alt="Cuadro diamond painting Piscis versión masculina – retrato celestial Piscis Lady Aura España">
+          <img loading="lazy" src="assets/chico-piscis-new.webp" alt="Cuadro diamond painting Piscis versión masculina – retrato celestial Piscis Lady Aura España">
           <span>Piscis ♂</span>
         </a>
     </div>
@@ -881,7 +914,7 @@
   <button class="image-open" type="button">
     <span class="badge-new">🌊 Nueva</span>
     <span class="orient-tag">↕ Vertical</span>
-    <img src="assets/sirena-abismo-marino.png">
+    <img src="assets/sirena-abismo-marino.webp">
   </button>
   <div class="product-info">
     <h3>Sirena del abismo marino</h3>
@@ -893,7 +926,7 @@
   <button class="image-open" type="button">
     <span class="badge-new">🌊 Nueva</span>
     <span class="orient-tag">↕ Vertical</span>
-    <img src="assets/sirena-mar-nocturno.png">
+    <img src="assets/sirena-mar-nocturno.webp">
   </button>
   <div class="product-info">
     <h3>Sirena en un mar nocturno</h3>
@@ -905,7 +938,7 @@
   <button class="image-open" type="button">
     <span class="badge-new">🌊 Exclusiva</span>
     <span class="orient-tag">↕ Vertical</span>
-    <img src="assets/sirena-reino-submarino.png">
+    <img src="assets/sirena-reino-submarino.webp">
   </button>
   <div class="product-info">
     <h3>Sirena en un reino submarino mágico</h3>
@@ -917,7 +950,7 @@
   <button class="image-open" type="button">
     <span class="badge-new">👑 Exclusiva</span>
     <span class="orient-tag">↕ Vertical</span>
-    <img src="assets/sirena-reina-arrecife.png">
+    <img src="assets/sirena-reina-arrecife.webp">
   </button>
   <div class="product-info">
     <h3>Sirena reina del arrecife</h3>
@@ -929,7 +962,7 @@
   <button class="image-open" type="button">
     <span class="badge-new">🌙 Nueva</span>
     <span class="orient-tag">↕ Vertical</span>
-    <img src="assets/sirena-luna-magica.png">
+    <img src="assets/sirena-luna-magica.webp">
   </button>
   <div class="product-info">
     <h3>Sirena bajo la luna mágica</h3>
@@ -941,7 +974,7 @@
   <button class="image-open" type="button">
     <span class="badge-new">🌕 Nueva</span>
     <span class="orient-tag">↕ Vertical</span>
-    <img src="assets/sirena-luna-llena.png" alt="Sirena bajo la luna llena – diamond painting premium Lady Aura">
+    <img src="assets/sirena-luna-llena.webp" alt="Sirena bajo la luna llena – diamond painting premium Lady Aura">
   </button>
   <div class="product-info">
     <h3>Sirena bajo la luna llena</h3>
@@ -1089,7 +1122,7 @@
           <button class="image-open" type="button" aria-label="Ver Villa al amanecer">
             <span class="badge-new">🌅 Nuevo</span>
             <span class="orient-tag">↔ Horizontal</span>
-            <img loading="lazy" src="assets/villa-al-amanecer.png" alt="Villa al amanecer – diamond painting villa mediterránea Lady Aura">
+            <img loading="lazy" src="assets/villa-al-amanecer.webp" alt="Villa al amanecer – diamond painting villa mediterránea Lady Aura">
           </button>
           <div class="product-info">
             <h3>Villa al amanecer</h3>
@@ -1105,7 +1138,7 @@
           <button class="image-open" type="button" aria-label="Ver Paisaje invernal de fantasía">
             <span class="badge-new">❄️ Nuevo</span>
             <span class="orient-tag">↔ Horizontal</span>
-            <img loading="lazy" src="assets/paisaje-invernal-fantasia.png" alt="Paisaje invernal de fantasía – diamond painting aurora boreal Lady Aura España">
+            <img loading="lazy" src="assets/paisaje-invernal-fantasia.webp" alt="Paisaje invernal de fantasía – diamond painting aurora boreal Lady Aura España">
           </button>
           <div class="product-info">
             <h3>Paisaje invernal de fantasía</h3>
@@ -1179,6 +1212,126 @@
         </article>
       </div>
 
+      <!-- ╔══════════════════════════════════╗  -->
+      <!-- ║ 🔮 CARTAS ESPECIALES DEL TAROT  ║  -->
+      <!-- ╚══════════════════════════════════╝  -->
+      <div class="collection-separator">
+        <div class="collection-separator-line"></div>
+        <span class="collection-separator-label" style="color:#c084fc;">🔮 Cartas especiales del Tarot</span>
+        <div class="collection-separator-line"></div>
+      </div>
+      <article class="art-card product-card" data-price="94" data-orient="v">
+          <button class="image-open" type="button" aria-label="Ver Los Enamorados">
+            <span class="badge-new" style="background:linear-gradient(135deg,#db2777,#9d174d);">❤️ Especial</span>
+            <span class="orient-tag">↕ Vertical</span>
+            <img loading="lazy" src="assets/tarot/los-enamorados.webp" alt="Los Enamorados – diamond painting carta del tarot Lady Aura">
+          </button>
+          <div class="product-info">
+            <h3>Los Enamorados · Tarot</h3>
+            <p class="product-size">Diamond painting premium 60×90 cm</p>
+            <div class="product-actions">
+              <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Los%20Enamorados%20Tarot.%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+              <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20–%20Los%20Enamorados%20Tarot&body=Quiero%20pre-reservar%3A%20Los%20Enamorados%20Tarot.%2060x90%2C%2094€." target="_blank" rel="noopener">✉️ Email</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="art-card product-card" data-price="94" data-orient="v">
+          <button class="image-open" type="button" aria-label="Ver La Sacerdotisa">
+            <span class="badge-new" style="background:linear-gradient(135deg,#7c3aed,#4c1d95);">🔮 Especial</span>
+            <span class="orient-tag">↕ Vertical</span>
+            <img loading="lazy" src="assets/tarot/la-sacerdotisa.webp" alt="La Sacerdotisa – diamond painting carta del tarot Lady Aura">
+          </button>
+          <div class="product-info">
+            <h3>La Sacerdotisa · Tarot</h3>
+            <p class="product-size">Diamond painting premium 60×90 cm</p>
+            <div class="product-actions">
+              <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20La%20Sacerdotisa%20Tarot.%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+              <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20–%20La%20Sacerdotisa%20Tarot&body=Quiero%20pre-reservar%3A%20La%20Sacerdotisa%20Tarot.%2060x90%2C%2094€." target="_blank" rel="noopener">✉️ Email</a>
+            </div>
+          </div>
+        </article>
+
+      <article class="art-card product-card" data-price="94" data-orient="v">
+          <button class="image-open" type="button" aria-label="Ver La Emperatriz">
+            <span class="badge-new" style="background:linear-gradient(135deg,#b45309,#78350f);">✨ Especial</span>
+            <span class="orient-tag">↕ Vertical</span>
+            <img loading="lazy" src="assets/tarot/la-emperatriz.webp" alt="La Emperatriz – diamond painting carta del tarot Lady Aura">
+          </button>
+          <div class="product-info">
+            <h3>La Emperatriz · Tarot</h3>
+            <p class="product-size">Diamond painting premium 60×90 cm</p>
+            <div class="product-actions">
+              <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20La%20Emperatriz%20Tarot.%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+              <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20–%20La%20Emperatriz%20Tarot&body=Quiero%20pre-reservar%3A%20La%20Emperatriz%20Tarot.%2060x90%2C%2094€." target="_blank" rel="noopener">✉️ Email</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="art-card product-card" data-price="94" data-orient="v">
+          <button class="image-open" type="button" aria-label="Ver La Luna">
+            <span class="badge-new" style="background:linear-gradient(135deg,#1e3a5f,#1d4ed8);">🌙 Especial</span>
+            <span class="orient-tag">↕ Vertical</span>
+            <img loading="lazy" src="assets/tarot/la-luna.webp" alt="La Luna – diamond painting carta del tarot Lady Aura">
+          </button>
+          <div class="product-info">
+            <h3>La Luna · Tarot</h3>
+            <p class="product-size">Diamond painting premium 60×90 cm</p>
+            <div class="product-actions">
+              <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20La%20Luna%20Tarot.%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+              <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20–%20La%20Luna%20Tarot&body=Quiero%20pre-reservar%3A%20La%20Luna%20Tarot.%2060x90%2C%2094€." target="_blank" rel="noopener">✉️ Email</a>
+            </div>
+          </div>
+        </article>
+
+      <article class="art-card product-card" data-price="94" data-orient="v">
+          <button class="image-open" type="button" aria-label="Ver La Estrella">
+            <span class="badge-new" style="background:linear-gradient(135deg,#0e7490,#164e63);">⭐ Especial</span>
+            <span class="orient-tag">↕ Vertical</span>
+            <img loading="lazy" src="assets/tarot/la-estrella.webp" alt="La Estrella – diamond painting carta del tarot Lady Aura">
+          </button>
+          <div class="product-info">
+            <h3>La Estrella · Tarot</h3>
+            <p class="product-size">Diamond painting premium 60×90 cm</p>
+            <div class="product-actions">
+              <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20La%20Estrella%20Tarot.%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+              <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20–%20La%20Estrella%20Tarot&body=Quiero%20pre-reservar%3A%20La%20Estrella%20Tarot.%2060x90%2C%2094€." target="_blank" rel="noopener">✉️ Email</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="art-card product-card" data-price="94" data-orient="v">
+          <button class="image-open" type="button" aria-label="Ver El Sol">
+            <span class="badge-new" style="background:linear-gradient(135deg,#d97706,#92400e);">☀️ Especial</span>
+            <span class="orient-tag">↕ Vertical</span>
+            <img loading="lazy" src="assets/tarot/el-sol.webp" alt="El Sol – diamond painting carta del tarot Lady Aura">
+          </button>
+          <div class="product-info">
+            <h3>El Sol · Tarot</h3>
+            <p class="product-size">Diamond painting premium 60×90 cm</p>
+            <div class="product-actions">
+              <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20El%20Sol%20Tarot.%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+              <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20–%20El%20Sol%20Tarot&body=Quiero%20pre-reservar%3A%20El%20Sol%20Tarot.%2060x90%2C%2094€." target="_blank" rel="noopener">✉️ Email</a>
+            </div>
+          </div>
+        </article>
+
+      <article class="art-card product-card" data-price="94" data-orient="v">
+        <button class="image-open" type="button" aria-label="Ver El Diablo">
+          <span class="badge-new" style="background:linear-gradient(135deg,#991b1b,#450a0a);">🔥 Especial</span>
+          <span class="orient-tag">↕ Vertical</span>
+          <img loading="lazy" src="assets/tarot/el-diablo.webp" alt="El Diablo – diamond painting carta del tarot Lady Aura">
+        </button>
+        <div class="product-info">
+          <h3>El Diablo · Tarot</h3>
+          <p class="product-size">Diamond painting premium 60×90 cm</p>
+          <div class="product-actions">
+            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20El%20Diablo%20Tarot.%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
+            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20–%20El%20Diablo%20Tarot&body=Quiero%20pre-reservar%3A%20El%20Diablo%20Tarot.%2060x90%2C%2094€." target="_blank" rel="noopener">✉️ Email</a>
+          </div>
+        </div>
+      </article>
+
       <!-- ╔══════════════════════════════╗  -->
       <!-- ║ 🔥 OFERTA ESPECIAL · 84 €   ║  -->
       <!-- ╚══════════════════════════════╝  -->
@@ -1208,7 +1361,7 @@
         <button class="image-open" type="button" aria-label="Ver Princesa y unicornio">
           <span class="sale-ribbon">-10 €</span>
           <span class="orient-tag">↕ Vertical</span>
-          <img loading="lazy" src="assets/mujer-unicornio.png" alt="Princesa y unicornio – diamond painting fantasía mágica Lady Aura">
+          <img loading="lazy" src="assets/mujer-unicornio.webp" alt="Princesa y unicornio – diamond painting fantasía mágica Lady Aura">
         </button>
         <div class="product-info">
           <h3>Princesa y unicornio</h3>
@@ -1455,6 +1608,112 @@ document.querySelectorAll('.zodiac-tab-btn').forEach(function(btn) {
     if (panel) panel.classList.add('active');
   });
 });
+</script>
+<script>
+/* ═══════════════════════════════════════
+   TAROT LADY AURA
+═══════════════════════════════════════ */
+const tarotDeck = [
+  { id:0,  name:"El Loco",               img:"el-loco.webp", upright:"Nuevos comienzos, aventura, salto de fe. El universo te invita a confiar.", reversed:"Imprudencia, decisiones apresuradas. Tómate un momento antes de actuar." },
+  { id:1,  name:"El Mago",               img:"el-mago.webp",           upright:"Tienes todo lo que necesitas. Es momento de manifestar tus deseos con determinación.", reversed:"Energía bloqueada, talentos sin explotar. Revisa qué te frena." },
+  { id:2,  name:"La Sacerdotisa",        img:"la-sacerdotisa.webp",    upright:"Confía en tu intuición. La respuesta ya está dentro de ti, escúchala.", reversed:"Secretos ocultos, desconexión con tu interior. Busca un momento de silencio." , special:true},
+  { id:3,  name:"La Emperatriz",         img:"la-emperatriz.webp",     upright:"Abundancia, creatividad y fertilidad. Es tiempo de nutrir tus proyectos y relaciones.", reversed:"Bloqueo creativo o dependencia excesiva. Recupera tu autonomía." , special:true},
+  { id:4,  name:"El Emperador",          img:"el-emperador.webp",      upright:"Estructura, autoridad y estabilidad. Toma las riendas con firmeza.", reversed:"Rigidez excesiva o falta de control. Busca el equilibrio entre poder y flexibilidad." },
+  { id:5,  name:"El Sumo Sacerdote",     img:"el-sumo-sacerdote.webp", upright:"Busca guía espiritual o tradicional. La sabiduría colectiva tiene algo que enseñarte.", reversed:"Dogmatismo o seguir reglas que ya no sirven. Cuestiona con amor." },
+  { id:6,  name:"Los Enamorados",        img:"los-enamorados.webp",    upright:"Amor, elección y armonía. Una decisión importante del corazón se acerca.", reversed:"Desacuerdo interno o externo. Clarifica tus valores antes de decidir." , special:true},
+  { id:7,  name:"El Carro",              img:"el-carro.webp",          upright:"Victoria a través de la determinación. Mantén el enfoque y llegarás a tu meta.", reversed:"Falta de dirección o control. Reorganiza tus prioridades." },
+  { id:8,  name:"La Fuerza",             img:"la-fuerza.webp",         upright:"Coraje interior y paciencia. Tu mayor poder está en la calma y la compasión.", reversed:"Dudas internas o uso excesivo de la fuerza. Confía más en ti." },
+  { id:9,  name:"El Ermitaño",           img:"el-ermitano.webp",       upright:"Introspección y búsqueda interior. Un momento de soledad te traerá claridad.", reversed:"Aislamiento no deseado o evitar la reflexión. Busca equilibrio entre estar solo y conectar." },
+  { id:10, name:"La Rueda de la Fortuna",img:"la-rueda-de-la-fortuna.webp", upright:"Los ciclos cambian. Algo nuevo y positivo está en movimiento.", reversed:"Resistencia al cambio. Lo que no fluye, se estanca." },
+  { id:11, name:"La Justicia",           img:"la-justicia.webp",       upright:"Equilibrio, verdad y karma. Las consecuencias de tus actos son justas.", reversed:"Injusticia o falta de responsabilidad. Revisa tu parte en la situación." },
+  { id:12, name:"El Colgado",            img:"el-colgado.webp",        upright:"Pausa y rendición. A veces la inacción es la acción más sabia.", reversed:"Estancamiento por resistencia. Suelta lo que no puedes controlar." },
+  { id:13, name:"La Muerte",             img:"la-muerte.webp",         upright:"Transformación y cierre de ciclos. Algo termina para que algo mejor comience.", reversed:"Resistencia al cambio necesario. Deja ir con gracia." },
+  { id:14, name:"La Templanza",          img:"la-templanza.webp",      upright:"Equilibrio, moderación y paciencia. La alquimia de la vida pide calma.", reversed:"Desequilibrio o impaciencia. Respira y encuentra tu centro." },
+  { id:15, name:"El Diablo",             img:"el-diablo.webp", upright:"Cuidado con ataduras o hábitos que te limitan. Reconocerlos es el primer paso.", reversed:"Liberación. Estás rompiendo cadenas que ya no te pertenecen." , special:true},
+  { id:16, name:"La Torre",              img:"la-torre.webp", upright:"Cambio repentino que libera. Lo que cae no era sólido.", reversed:"Miedo a un cambio necesario. Lo que evitas, persiste." },
+  { id:17, name:"La Estrella",           img:"la-estrella.webp",       upright:"Esperanza, sanación y renovación. El universo te cuida.", reversed:"Desánimo temporal. La luz sigue ahí aunque ahora no la veas." , special:true},
+  { id:18, name:"La Luna",               img:"la-luna.webp",           upright:"Intuición profunda y misterio. No todo es lo que parece, confía en tu instinto.", reversed:"Confusión o miedos que distorsionan la realidad. Busca claridad." , special:true},
+  { id:19, name:"El Sol",                img:"el-sol.webp",            upright:"Alegría, éxito y vitalidad. Un período luminoso y positivo llega.", reversed:"Exceso o optimismo bloqueado. Encuentra la medida justa." , special:true},
+  { id:20, name:"El Juicio",             img:"el-juicio.webp",         upright:"Renacimiento y despertar. Escucha el llamado de tu alma.", reversed:"Autocrítica excesiva. Perdónate y avanza." },
+  { id:21, name:"El Mundo",              img:"el-mundo.webp",          upright:"Completitud y logro. Un ciclo se cierra con éxito. Celebra.", reversed:"Falta de cierre o quedarse a medio camino. Da ese último paso." }
+];
+
+function tarotShuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
+function tarotReversed() { return Math.random() < 0.4; }
+
+let tarotCurrentReading = null;
+
+function drawReading(n, type) {
+  const selected = tarotShuffle(tarotDeck).slice(0, n).map(card => ({
+    card, reversed: tarotReversed()
+  }));
+
+  const area    = document.getElementById('tarot-reading-area');
+  const cont    = document.getElementById('tarot-cards-container');
+  const titleEl = document.getElementById('tarot-reading-title');
+  const interp  = document.getElementById('tarot-interpretation');
+
+  const titles = { daily:'Lectura Diaria 🌞', weekly:'Lectura Semanal 📅', love:'Lectura de Amor ❤️', advice:'Consejo del Tarot 💡', career:'Lectura de Trabajo 💼', health:'Lectura de Salud 🧘‍♀️', celtic:'Cruz Celta ✨' };
+  titleEl.textContent = titles[type] || 'Tu Lectura';
+
+  cont.innerHTML = '';
+  selected.forEach(({card, reversed}, i) => {
+    const el = document.createElement('div');
+    el.className = 'tarot-card' + (reversed ? ' tarot-reversed' : '');
+    el.style.animationDelay = (i * 0.12) + 's';
+    el.innerHTML = `
+      <div class="tarot-card-inner">
+        <div class="tarot-card-back">🔮</div>
+        <div class="tarot-card-front">
+          <img src="assets/tarot/${card.img}" alt="${card.name}" loading="lazy">
+          ${reversed ? '<div class="tarot-rev-label">INVERTIDA</div>' : ''}
+          ${card.special ? '<div class="tarot-special-label">⭐ Especial</div>' : ''}
+        </div>
+      </div>
+      <p class="tarot-card-name">${card.name}${card.special ? ' ✨' : ''}</p>`;
+    el.querySelector('.tarot-card-inner').addEventListener('click', () => el.classList.toggle('tarot-flipped'));
+    cont.appendChild(el);
+  });
+
+  interp.innerHTML = buildInterpretation(type, selected);
+  area.classList.remove('hidden');
+  area.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  tarotCurrentReading = { title: titles[type], type, selected };
+}
+
+function buildInterpretation(type, selected) {
+  const labels = {
+    daily:  ['Tu energía de hoy'],
+    weekly: ['Pasado','Presente','Futuro'],
+    love:   ['Tú en esta relación','La otra persona','El camino juntos'],
+    advice: ['El consejo del universo'],
+    career: ['Situación actual','Obstáculo','Cómo avanzar'],
+    health: ['Estado actual','Causa','Consejo'],
+    celtic: ['Situación','Cruce','Base','Pasado','Posible futuro']
+  };
+  const colors = { daily:'var(--purple-mid)', weekly:'var(--purple-mid)', love:'#f472b6', advice:'var(--gold)', career:'#60a5fa', health:'#34d399', celtic:'#c084fc' };
+  const col = colors[type] || 'var(--gold)';
+  const labs = labels[type] || selected.map((_,i) => `Carta ${i+1}`);
+
+  let html = `<div class="tarot-interp-grid">`;
+  selected.forEach(({card, reversed}, i) => {
+    const label = labs[i] || `Carta ${i+1}`;
+    const meaning = reversed ? card.reversed : card.upright;
+    html += `
+      <div class="tarot-interp-card">
+        <div class="tarot-interp-label" style="color:${col}">${label}</div>
+        <div class="tarot-interp-name">${card.name}${reversed ? ' <span class="tarot-inv-badge">invertida</span>' : ''}</div>
+        <p class="tarot-interp-meaning">${meaning}</p>
+      </div>`;
+  });
+  html += `</div>`;
+  html += `<p class="tarot-disclaimer">🌙 El tarot es una herramienta de reflexión y entretenimiento. Tú tienes el poder de crear tu propio camino.</p>`;
+  return html;
+}
+
+function closeTarotReading() {
+  document.getElementById('tarot-reading-area').classList.add('hidden');
+}
 </script>
 </body>
 </html>
