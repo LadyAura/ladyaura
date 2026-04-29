@@ -874,25 +874,34 @@ footer p { margin: 0; font-size: .88rem; }
 
 /* Botones de tirada */
 .tarot-buttons {
-  display: flex; flex-wrap: wrap; gap: .85rem;
+  display: flex; flex-wrap: wrap; gap: 1rem;
   justify-content: center; margin-top: 2rem;
 }
 .tarot-btn {
-  display: flex; flex-direction: column; align-items: center; gap: .4rem;
-  padding: 1.1rem 1.4rem; border-radius: 22px; border: none; cursor: pointer;
-  font-family: "Playfair Display", "Cinzel", serif; font-size: .95rem;
-  color: #fff; font-weight: 600; min-width: 90px;
-  transition: transform .2s, box-shadow .2s; box-shadow: 0 8px 24px rgba(0,0,0,.4);
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+  padding: 1.2rem 2rem; border-radius: 999px; border: 1px solid rgba(196,181,253,.25);
+  cursor: pointer; font-family: "Cinzel", serif; font-size: .85rem; letter-spacing: .1em;
+  color: rgba(240,230,255,.85); font-weight: 600; min-width: 110px;
+  background: rgba(30,10,60,.45); backdrop-filter: blur(12px);
+  transition: all .3s; box-shadow: 0 4px 20px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.06);
 }
-.tarot-btn span:first-child { font-size: 2rem; }
-.tarot-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,.5); }
-.tarot-btn:active { transform: scale(.96); }
-.tarot-btn--purple  { background: linear-gradient(135deg,#7c3aed,#4c1d95); }
-.tarot-btn--pink    { background: linear-gradient(135deg,#db2777,#9d174d); border: 2px solid rgba(244,114,182,.3); }
-.tarot-btn--gold    { background: linear-gradient(135deg,#b45309,#78350f); }
-.tarot-btn--blue    { background: linear-gradient(135deg,#1d4ed8,#1e3a5f); }
-.tarot-btn--green   { background: linear-gradient(135deg,#059669,#064e3b); }
-.tarot-btn--fuchsia { background: linear-gradient(135deg,#a21caf,#6b21a8); }
+.tarot-btn span:first-child {
+  font-size: 1.6rem; line-height: 1;
+  filter: drop-shadow(0 0 8px rgba(196,181,253,.6));
+}
+.tarot-btn:hover {
+  background: rgba(90,30,160,.5); border-color: rgba(196,181,253,.5);
+  color: #fff; transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(120,40,200,.35), inset 0 1px 0 rgba(255,255,255,.1);
+}
+.tarot-btn:active { transform: scale(.97); }
+.tarot-btn--purple  { }
+.tarot-btn--pink    { border-color: rgba(244,114,182,.25); }
+.tarot-btn--pink:hover { background: rgba(160,30,100,.5); border-color: rgba(244,114,182,.5); }
+.tarot-btn--gold    { }
+.tarot-btn--blue    { }
+.tarot-btn--green   { }
+.tarot-btn--fuchsia { }
 
 /* Área de lectura */
 .tarot-reading {
@@ -917,18 +926,28 @@ footer p { margin: 0; font-size: .88rem; }
 }
 .tarot-close-btn:hover { background: rgba(255,255,255,.13); color: #fff; }
 
-/* Cards */
+/* Grid de cartas — 3 por fila en desktop, 1 en móvil */
 .tarot-cards-container {
-  display: flex; flex-wrap: wrap; gap: 1.2rem;
-  justify-content: center; margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  gap: 1.8rem 1.4rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
 }
-.tarot-card {
-  width: 200px; cursor: pointer;
+
+/* Wrapper carta + texto */
+.tarot-card-wrapper {
+  display: flex; flex-direction: column; align-items: center;
   animation: tarotPop .5s cubic-bezier(.34,1.56,.64,1) backwards;
 }
 @keyframes tarotPop {
   from { opacity:0; transform: scale(.6) rotate(-10deg) translateY(30px); }
   to   { opacity:1; transform: scale(1) rotate(0) translateY(0); }
+}
+
+/* La carta en sí */
+.tarot-card {
+  width: 200px; cursor: pointer;
 }
 .tarot-card-inner {
   width: 200px; height: 300px; position: relative;
@@ -944,64 +963,69 @@ footer p { margin: 0; font-size: .88rem; }
   backface-visibility: hidden; overflow: hidden;
 }
 .tarot-card-back {
-  background: linear-gradient(135deg,#4c1d95,#1e1133);
-  border: 6px solid #c4b5fd;
+  background: linear-gradient(135deg,#2e0d6e,#0f0520);
+  border: 2px solid rgba(196,181,253,.3);
   display: flex; align-items: center; justify-content: center;
-  font-size: 3rem; color: #e0b0ff;
-  text-shadow: 0 0 30px rgba(167,139,250,.9);
+}
+.tarot-back-symbol {
+  font-size: 5rem; color: rgba(196,181,253,.35);
+  font-family: "Cinzel", serif;
+  text-shadow: 0 0 40px rgba(167,139,250,.4);
+  animation: tarotPulse 3s ease-in-out infinite;
+}
+@keyframes tarotPulse {
+  0%,100% { opacity:.3; transform: scale(1); }
+  50% { opacity:.6; transform: scale(1.05); }
 }
 .tarot-card-front {
-  background: #f8f1e3; transform: rotateY(180deg);
+  transform: rotateY(180deg);
   display: flex; flex-direction: column;
 }
-.tarot-card-front img {
-  width: 100%; height: 100%; object-fit: cover;
-}
+.tarot-card-front img { width: 100%; height: 100%; object-fit: cover; }
 .tarot-rev-label {
   position: absolute; top: 6px; right: 6px;
   background: #b91c1c; color: #fff; font-size: 9px;
   padding: 2px 6px; border-radius: 999px; font-weight: 700;
 }
-.tarot-card-name {
-  text-align: center; font-size: .78rem; color: var(--muted);
-  margin-top: .5rem; font-family: "Cinzel", serif; letter-spacing: .05em;
-}
 
-/* Interpretación */
-.tarot-interp-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%,240px),1fr));
-  gap: 1rem; margin-bottom: 1.5rem;
+/* Info debajo de cada carta */
+.tarot-card-info {
+  width: 200px; margin-top: .8rem; text-align: center;
 }
-.tarot-interp-card {
-  background: rgba(255,255,255,.04); border: 1px solid rgba(167,139,250,.2);
-  border-radius: 16px; padding: 1.2rem;
+.tarot-card-label {
+  font-family: "Cinzel", serif; font-size: .65rem; letter-spacing: .14em;
+  text-transform: uppercase; color: rgba(196,181,253,.5); margin-bottom: .2rem;
 }
-.tarot-interp-label {
-  font-family: "Cinzel", serif; font-size: .72rem; letter-spacing: .12em;
-  text-transform: uppercase; margin-bottom: .4rem; font-weight: 700;
+.tarot-card-name-text {
+  font-family: "Cinzel", serif; font-size: .82rem; color: #d4b8ff;
+  letter-spacing: .05em; margin-bottom: .5rem;
 }
-.tarot-interp-name {
-  font-size: 1.05rem; font-weight: 700; color: #f0e6ff;
-  margin-bottom: .5rem; font-family: "Playfair Display", serif;
+.tarot-card-meaning {
+  font-size: .82rem; color: var(--muted); line-height: 1.55;
+  display: none; /* oculto hasta voltear */
+  background: rgba(255,255,255,.04); border: 1px solid rgba(167,139,250,.15);
+  border-radius: 10px; padding: .6rem .8rem; margin-top: .3rem;
 }
-.tarot-inv-badge {
-  font-size: .7rem; background: #7f1d1d; color: #fca5a5;
-  padding: 1px 7px; border-radius: 999px; vertical-align: middle;
-}
-.tarot-interp-meaning {
-  font-size: .88rem; color: var(--muted); line-height: 1.6;
-}
+.tarot-card-meaning.tarot-meaning-visible { display: block; }
+
 .tarot-disclaimer {
-  text-align: center; font-size: .8rem; color: rgba(180,160,220,.5);
-  font-style: italic; margin-top: 1rem; border-top: 1px solid rgba(167,139,250,.1);
-  padding-top: 1rem;
+  text-align: center; font-size: .82rem; color: rgba(180,160,220,.45);
+  font-style: italic; padding: 1rem 0 .5rem;
 }
 
-@media (max-width: 500px) {
-  .tarot-btn { min-width: 75px; padding: .9rem .8rem; font-size: .82rem; }
-  .tarot-btn span:first-child { font-size: 1.6rem; }
-  .tarot-card { width: 150px; }
-  .tarot-card-inner { width: 150px; height: 225px; }
+/* Responsive */
+@media (max-width: 700px) {
+  .tarot-cards-container { grid-template-columns: repeat(2, 160px); gap: 1.4rem 1rem; }
+  .tarot-card { width: 160px; }
+  .tarot-card-inner { width: 160px; height: 240px; }
+  .tarot-card-info { width: 160px; }
+}
+@media (max-width: 420px) {
+  .tarot-cards-container { grid-template-columns: 1fr; }
+  .tarot-card { width: 200px; }
+  .tarot-card-inner { width: 200px; height: 300px; }
+  .tarot-card-info { width: 200px; }
+  .tarot-btn { min-width: 100px; padding: 1rem 1.4rem; }
   .tarot-reading { padding: 1.2rem 1rem; }
 }
 
@@ -1012,4 +1036,44 @@ footer p { margin: 0; font-size: .88rem; }
   color: #fff; font-size: 9px; padding: 2px 8px;
   border-radius: 999px; font-weight: 700;
   letter-spacing: .05em; box-shadow: 0 0 10px rgba(192,38,211,.6);
+}
+
+/* ── Agotado elegante ── */
+.art-card.sold-out { position: relative; }
+.sold-out-overlay {
+  position: absolute; inset: 0; border-radius: inherit;
+  background: linear-gradient(135deg,
+    rgba(8,2,20,.78) 0%,
+    rgba(40,10,80,.72) 50%,
+    rgba(8,2,20,.78) 100%);
+  backdrop-filter: blur(2px);
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity .3s;
+}
+.sold-out-inner {
+  display: flex; flex-direction: column; align-items: center; gap: .4rem;
+  text-align: center; padding: 1rem;
+}
+.sold-out-symbol {
+  font-size: 2rem; color: rgba(196,181,253,.5);
+  animation: soldPulse 3s ease-in-out infinite;
+  font-family: "Cinzel", serif;
+}
+@keyframes soldPulse {
+  0%,100% { opacity:.4; transform: scale(1) rotate(0deg); }
+  50%      { opacity:.8; transform: scale(1.1) rotate(15deg); }
+}
+.sold-out-text {
+  font-family: "Cinzel", serif; font-size: 1.1rem; letter-spacing: .22em;
+  text-transform: uppercase; color: #e0d0ff; font-weight: 700;
+  text-shadow: 0 0 20px rgba(167,139,250,.8);
+}
+.sold-out-sub {
+  font-size: .72rem; color: rgba(196,181,253,.55);
+  font-style: italic; letter-spacing: .06em; margin-top: .2rem;
+}
+.sold-out-notice {
+  font-family: "Cinzel", serif; font-size: .72rem; letter-spacing: .12em;
+  color: rgba(196,181,253,.5); text-align: center;
+  margin-top: .4rem; font-style: italic;
 }

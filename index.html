@@ -646,13 +646,13 @@
 
     <!-- Botones de tirada -->
     <div class="tarot-buttons">
-      <button class="tarot-btn tarot-btn--purple" onclick="drawReading(1,'daily')"><span>🌞</span><span>Diaria</span></button>
-      <button class="tarot-btn tarot-btn--purple" onclick="drawReading(3,'weekly')"><span>📅</span><span>Semanal</span></button>
-      <button class="tarot-btn tarot-btn--pink" onclick="drawReading(3,'love')"><span>❤️</span><span>Amor</span></button>
-      <button class="tarot-btn tarot-btn--gold" onclick="drawReading(1,'advice')"><span>💡</span><span>Consejo</span></button>
-      <button class="tarot-btn tarot-btn--blue" onclick="drawReading(3,'career')"><span>💼</span><span>Trabajo</span></button>
-      <button class="tarot-btn tarot-btn--green" onclick="drawReading(3,'health')"><span>🧘‍♀️</span><span>Salud</span></button>
-      <button class="tarot-btn tarot-btn--fuchsia" onclick="drawReading(5,'celtic')"><span>✨</span><span>Cruz Celta</span></button>
+      <button class="tarot-btn tarot-btn--purple" onclick="drawReading(1,'daily')"><span>☽</span><span>Diaria</span></button>
+      <button class="tarot-btn tarot-btn--purple" onclick="drawReading(3,'weekly')"><span>✦</span><span>Semanal</span></button>
+      <button class="tarot-btn tarot-btn--pink" onclick="drawReading(3,'love')"><span>♡</span><span>Amor</span></button>
+      <button class="tarot-btn tarot-btn--gold" onclick="drawReading(1,'advice')" style="display:none" aria-hidden="true"><span>💡</span><span>Consejo</span></button>
+      <button class="tarot-btn tarot-btn--blue" onclick="drawReading(3,'career')" style="display:none" aria-hidden="true"><span>💼</span><span>Trabajo</span></button>
+      <button class="tarot-btn tarot-btn--green" onclick="drawReading(3,'health')" style="display:none" aria-hidden="true"><span>🧘‍♀️</span><span>Salud</span></button>
+      <button class="tarot-btn tarot-btn--fuchsia" onclick="drawReading(5,'celtic')" style="display:none" aria-hidden="true"><span>✨</span><span>Cruz Celta</span></button>
     </div>
 
     <!-- Área de lectura -->
@@ -934,15 +934,23 @@
   </div>
 </article>
 
-<article class="art-card product-card" data-price="94" data-orient="v">
-  <button class="image-open" type="button">
+<article class="art-card product-card sold-out" data-price="94" data-orient="v">
+  <button class="image-open" type="button" disabled style="cursor:default;">
     <span class="badge-new">🌊 Exclusiva</span>
     <span class="orient-tag">↕ Vertical</span>
     <img src="assets/sirena-reino-submarino.webp">
+    <div class="sold-out-overlay">
+      <div class="sold-out-inner">
+        <span class="sold-out-symbol">✦</span>
+        <span class="sold-out-text">Agotada</span>
+        <span class="sold-out-sub">Esta pieza ya encontró su hogar</span>
+      </div>
+    </div>
   </button>
   <div class="product-info">
     <h3>Sirena en un reino submarino mágico</h3>
     <p class="product-size">Diamond painting premium 60×90 cm</p>
+    <p class="sold-out-notice">✦ Esta edición está agotada</p>
   </div>
 </article>
 
@@ -1653,29 +1661,50 @@ function drawReading(n, type) {
   const titleEl = document.getElementById('tarot-reading-title');
   const interp  = document.getElementById('tarot-interpretation');
 
-  const titles = { daily:'Lectura Diaria 🌞', weekly:'Lectura Semanal 📅', love:'Lectura de Amor ❤️', advice:'Consejo del Tarot 💡', career:'Lectura de Trabajo 💼', health:'Lectura de Salud 🧘‍♀️', celtic:'Cruz Celta ✨' };
+  const titles = { daily:'Lectura Diaria ☽', weekly:'Lectura Semanal ✦', love:'Lectura de Amor ♡', advice:'Consejo del Tarot', career:'Lectura de Trabajo', health:'Lectura de Salud', celtic:'Cruz Celta' };
+  const labels = {
+    daily:  ['Tu energía de hoy'],
+    weekly: ['Pasado','Presente','Futuro'],
+    love:   ['Tú en esta relación','La otra persona','El camino juntos'],
+    advice: ['El consejo del universo'],
+    career: ['Situación actual','Obstáculo','Cómo avanzar'],
+    health: ['Estado actual','Causa','Consejo'],
+    celtic: ['Situación','Cruce','Base','Pasado','Posible futuro']
+  };
   titleEl.textContent = titles[type] || 'Tu Lectura';
 
   cont.innerHTML = '';
+  const labs = (labels[type] || selected.map((_,i) => `Carta ${i+1}`));
   selected.forEach(({card, reversed}, i) => {
-    const el = document.createElement('div');
-    el.className = 'tarot-card' + (reversed ? ' tarot-reversed' : '');
-    el.style.animationDelay = (i * 0.12) + 's';
-    el.innerHTML = `
-      <div class="tarot-card-inner">
-        <div class="tarot-card-back">🔮</div>
-        <div class="tarot-card-front">
-          <img src="assets/tarot/${card.img}" alt="${card.name}" loading="lazy">
-          ${reversed ? '<div class="tarot-rev-label">INVERTIDA</div>' : ''}
-          ${card.special ? '<div class="tarot-special-label">⭐ Especial</div>' : ''}
+    const wrapper = document.createElement('div');
+    wrapper.className = 'tarot-card-wrapper';
+    wrapper.style.animationDelay = (i * 0.12) + 's';
+    const meaning = reversed ? card.reversed : card.upright;
+    const label = labs[i] || `Carta ${i+1}`;
+    wrapper.innerHTML = `
+      <div class="tarot-card${reversed ? ' tarot-reversed' : ''}">
+        <div class="tarot-card-inner">
+          <div class="tarot-card-back"><span class="tarot-back-symbol">✦</span></div>
+          <div class="tarot-card-front">
+            <img src="assets/tarot/${card.img}" alt="${card.name}" loading="lazy">
+            ${reversed ? '<div class="tarot-rev-label">INVERTIDA</div>' : ''}
+            ${card.special ? '<div class="tarot-special-label">⭐ Especial</div>' : ''}
+          </div>
         </div>
       </div>
-      <p class="tarot-card-name">${card.name}${card.special ? ' ✨' : ''}</p>`;
-    el.querySelector('.tarot-card-inner').addEventListener('click', () => el.classList.toggle('tarot-flipped'));
-    cont.appendChild(el);
+      <div class="tarot-card-info">
+        <p class="tarot-card-label">${label}</p>
+        <p class="tarot-card-name-text">${card.name}${card.special ? ' ✨' : ''}</p>
+        <p class="tarot-card-meaning">${meaning}</p>
+      </div>`;
+    wrapper.querySelector('.tarot-card-inner').addEventListener('click', () => {
+      wrapper.querySelector('.tarot-card').classList.toggle('tarot-flipped');
+      wrapper.querySelector('.tarot-card-meaning').classList.toggle('tarot-meaning-visible');
+    });
+    cont.appendChild(wrapper);
   });
 
-  interp.innerHTML = buildInterpretation(type, selected);
+  interp.innerHTML = '<p class="tarot-disclaimer">🌙 Pulsa cada carta para revelar su mensaje. El tarot es una herramienta de reflexión y autoconocimiento.</p>';
   area.classList.remove('hidden');
   area.scrollIntoView({ behavior: 'smooth', block: 'start' });
   tarotCurrentReading = { title: titles[type], type, selected };
@@ -1691,6 +1720,7 @@ function buildInterpretation(type, selected) {
     health: ['Estado actual','Causa','Consejo'],
     celtic: ['Situación','Cruce','Base','Pasado','Posible futuro']
   };
+  /* labels también disponible en drawReading */
   const colors = { daily:'var(--purple-mid)', weekly:'var(--purple-mid)', love:'#f472b6', advice:'var(--gold)', career:'#60a5fa', health:'#34d399', celtic:'#c084fc' };
   const col = colors[type] || 'var(--gold)';
   const labs = labels[type] || selected.map((_,i) => `Carta ${i+1}`);
