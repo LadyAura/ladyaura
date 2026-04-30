@@ -223,6 +223,34 @@
 }
 .lb-close:hover { background:rgba(255,72,137,0.3); color:#fff; }
 
+
+/* ── SELECTOR TAMAÑO LIGHTBOX TAROT ── */
+.lb-size-selector {
+  display: flex;
+  gap: 0.7rem;
+  margin: 0.2rem 0;
+  flex-wrap: wrap;
+}
+.lb-size-btn {
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(160,63,255,0.5);
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  font-family: "Cinzel", serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.lb-size-btn:hover { border-color: #ffd98a; color: #ffd98a; }
+.lb-size-btn.active {
+  background: linear-gradient(135deg, rgba(160,63,255,0.3), rgba(255,72,137,0.3));
+  border-color: #ffd98a;
+  color: #fff0ff;
+  font-weight: 700;
+}
+
 /* ── FAQ ── */
 .tarot-faq { padding:4rem 8%; background:rgba(5,5,14,0.6); }
 .tarot-faq h2 { font-family:"Cinzel",serif; text-align:center; font-size:clamp(1.3rem,3vw,2rem); color:#fff0ff; margin-bottom:2rem; }
@@ -356,7 +384,7 @@
 
       <div class="ts-card" onclick="openLB('Los Enamorados - Tarot','assets/tarot/los-enamorados.webp',94,'Los Enamorados Tarot',false)">
         <img loading="lazy" src="assets/tarot/los-enamorados.webp" alt="Cuadro diamond painting Los Enamorados tarot Lady Aura">
-        <div class="ci"><h3>Los Enamorados</h3><p>Diamond painting 60x90 cm · 94 EUR</p></div>
+        <div class="ci"><h3>Los Enamorados</h3><p>Diamond painting 60×90 cm · 94 €</p></div>
       </div>
 
       <div class="ts-card sold-out">
@@ -371,27 +399,27 @@
 
       <div class="ts-card" onclick="openLB('La Emperatriz - Tarot','assets/tarot/la-emperatriz.webp',94,'La Emperatriz Tarot',false)">
         <img loading="lazy" src="assets/tarot/la-emperatriz.webp" alt="Cuadro diamond painting La Emperatriz tarot Lady Aura">
-        <div class="ci"><h3>La Emperatriz</h3><p>Diamond painting 60x90 cm · 94 EUR</p></div>
+        <div class="ci"><h3>La Emperatriz</h3><p>Diamond painting 60×90 cm · 94 €</p></div>
       </div>
 
       <div class="ts-card" onclick="openLB('La Luna - Tarot','assets/tarot/la-luna.webp',94,'La Luna Tarot',false)">
         <img loading="lazy" src="assets/tarot/la-luna.webp" alt="Cuadro diamond painting La Luna tarot Lady Aura">
-        <div class="ci"><h3>La Luna</h3><p>Diamond painting 60x90 cm · 94 EUR</p></div>
+        <div class="ci"><h3>La Luna</h3><p>Diamond painting 60×90 cm · 94 €</p></div>
       </div>
 
       <div class="ts-card" onclick="openLB('La Estrella - Tarot','assets/tarot/la-estrella.webp',94,'La Estrella Tarot',false)">
         <img loading="lazy" src="assets/tarot/la-estrella.webp" alt="Cuadro diamond painting La Estrella tarot Lady Aura">
-        <div class="ci"><h3>La Estrella</h3><p>Diamond painting 60x90 cm · 94 EUR</p></div>
+        <div class="ci"><h3>La Estrella</h3><p>Diamond painting 60×90 cm · 94 €</p></div>
       </div>
 
       <div class="ts-card" onclick="openLB('El Sol - Tarot','assets/tarot/el-sol.webp',94,'El Sol Tarot',false)">
         <img loading="lazy" src="assets/tarot/el-sol.webp" alt="Cuadro diamond painting El Sol tarot Lady Aura">
-        <div class="ci"><h3>El Sol</h3><p>Diamond painting 60x90 cm · 94 EUR</p></div>
+        <div class="ci"><h3>El Sol</h3><p>Diamond painting 60×90 cm · 94 €</p></div>
       </div>
 
       <div class="ts-card" onclick="openLB('El Diablo - Tarot','assets/tarot/el-diablo.webp',94,'El Diablo Tarot',false)">
         <img loading="lazy" src="assets/tarot/el-diablo.webp" alt="Cuadro diamond painting El Diablo tarot Lady Aura">
-        <div class="ci"><h3>El Diablo</h3><p>Diamond painting 60x90 cm · 94 EUR</p></div>
+        <div class="ci"><h3>El Diablo</h3><p>Diamond painting 60×90 cm · 94 €</p></div>
       </div>
 
     </div>
@@ -451,8 +479,12 @@
     <div class="lb-info">
       <span class="lb-tag">✦ Diamond Painting Premium · Lady Aura ✦</span>
       <h2 class="lb-title" id="lbTitle"></h2>
-      <p class="lb-size" id="lbSize"></p>
+      <div class="lb-size-selector" id="lbSizeSelector">
+        <button class="lb-size-btn active" id="lbBtn60x90" onclick="selectLBSize('60x90')">60×90 cm</button>
+        <button class="lb-size-btn" id="lbBtn40x60" onclick="selectLBSize('40x60')">40×60 cm</button>
+      </div>
       <p class="lb-price" id="lbPrice"></p>
+      <p class="lb-size" id="lbSize" style="margin-top:-0.3rem;"></p>
       <p class="lb-note" id="lbNote"></p>
       <div class="lb-btns">
         <a class="lb-btn wa" id="lbWa" href="#" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
@@ -489,10 +521,25 @@ document.getElementById('menuToggle').addEventListener('click',function(){
 });
 
 /* ── LIGHTBOX ── */
+var _lbNameRaw = '';
+var _lbSoldOut = false;
+var _lbSelectedSize = '60x90';
+
 function openLB(title, img, price, nameRaw, soldOut) {
+  _lbNameRaw  = nameRaw;
+  _lbSoldOut  = soldOut;
+  _lbSelectedSize = '60x90';
+
   document.getElementById('lbImg').src = img;
   document.getElementById('lbImg').alt = title;
   document.getElementById('lbTitle').textContent = title;
+
+  /* Mostrar/ocultar selector de tamaño */
+  document.getElementById('lbSizeSelector').style.display = soldOut ? 'none' : 'flex';
+  /* Reset selector */
+  document.getElementById('lbBtn60x90').classList.add('active');
+  document.getElementById('lbBtn40x60').classList.remove('active');
+
   if (soldOut) {
     document.getElementById('lbPrice').textContent = 'Agotada';
     document.getElementById('lbPrice').style.color = 'rgba(255,255,255,0.4)';
@@ -503,17 +550,35 @@ function openLB(title, img, price, nameRaw, soldOut) {
     document.getElementById('lbWa').href = 'https://wa.me/34621355638?text=Hola%20Lady%20Aura%2C%20me%20interesa%20' + encodeURIComponent(nameRaw) + '%20cuando%20vuelva%20a%20estar%20disponible.';
     document.getElementById('lbEm').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Lista%20de%20espera%20-%20' + encodeURIComponent(nameRaw) + '&body=Hola%2C%20quiero%20apuntarme%20a%20la%20lista%20de%20espera%20de%3A%20' + encodeURIComponent(nameRaw);
   } else {
-    document.getElementById('lbPrice').textContent = price + ' EUR';
-    document.getElementById('lbPrice').style.color = '';
-    document.getElementById('lbSize').textContent = 'Formato 60x90 cm - Diamantes alta densidad - Herramientas incluidas';
-    document.getElementById('lbNote').textContent = 'Pre-reserva sin compromiso ni pago previo. Las primeras en reservar tienen prioridad de entrega.';
-    document.getElementById('lbWa').textContent = 'Reservar por WhatsApp';
-    document.getElementById('lbEm').textContent = 'Reservar por Email';
-    document.getElementById('lbWa').href = 'https://wa.me/34621355638?text=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20' + encodeURIComponent(nameRaw) + '.%2060x90%2C%20' + price + 'EUR.%20Gracias!';
-    document.getElementById('lbEm').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20-%20' + encodeURIComponent(nameRaw) + '&body=Quiero%20pre-reservar%3A%20' + encodeURIComponent(nameRaw) + '.%2060x90%2C%20' + price + 'EUR.';
+    updateLBSize();
   }
+
   document.getElementById('tLb').classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+
+function selectLBSize(size) {
+  if (_lbSoldOut) return;
+  _lbSelectedSize = size;
+  document.getElementById('lbBtn60x90').classList.toggle('active', size === '60x90');
+  document.getElementById('lbBtn40x60').classList.toggle('active', size === '40x60');
+  updateLBSize();
+}
+
+function updateLBSize() {
+  var isSmall  = _lbSelectedSize === '40x60';
+  var price    = isSmall ? 64 : 94;
+  var sizeText = isSmall ? '40x60 cm' : '60x90 cm';
+  var sizePretty = isSmall ? '40x60' : '60x90';
+
+  document.getElementById('lbPrice').textContent = price + ' €';
+  document.getElementById('lbPrice').style.color = '';
+  document.getElementById('lbSize').textContent = 'Formato ' + sizeText + ' - Diamantes alta densidad - Herramientas incluidas';
+  document.getElementById('lbNote').textContent = 'Pre-reserva sin compromiso ni pago previo. Las primeras en reservar tienen prioridad de entrega.';
+  document.getElementById('lbWa').textContent = 'Reservar por WhatsApp';
+  document.getElementById('lbEm').textContent = 'Reservar por Email';
+  document.getElementById('lbWa').href = 'https://wa.me/34621355638?text=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20' + encodeURIComponent(_lbNameRaw) + '.%20' + sizePretty + '%2C%20' + price + '€.%20Gracias!';
+  document.getElementById('lbEm').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20-%20' + encodeURIComponent(_lbNameRaw) + '&body=Quiero%20pre-reservar%3A%20' + encodeURIComponent(_lbNameRaw) + '.%20' + sizePretty + '%2C%20' + price + '€.';
 }
 
 function closeLB() {
