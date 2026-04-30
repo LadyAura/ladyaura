@@ -627,16 +627,7 @@ function flipCard(el) {
   var hint = slot.querySelector('.card-hint');
   if (hint) hint.style.display = slot.classList.contains('revealed') ? 'none' : '';
 
-  if (!wasFlipped) {
-    var cardName = slot.getAttribute('data-cardname');
-    var imgSrc   = slot.getAttribute('data-img');
-    var info = SPECIAL_SHOP[cardName];
-    if (info) {
-      setTimeout(function() {
-        openLB(cardName + ' - Tarot', imgSrc, info.price, info.nameRaw, info.soldOut);
-      }, 500);
-    }
-  }
+  /* Al voltear la carta solo se muestra el significado, no el lightbox de compra */
 }
 
 function resetReading() {
