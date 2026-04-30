@@ -506,7 +506,7 @@
     <a href="#inicio">Inicio</a>
     <a href="#galeria">Diseños</a>
     <a href="#zodiaco">Zodiaco</a>
-    <a href="#tarot">🔮 Tarot</a>
+    <a href="tarot.html" target="_blank" rel="noopener">🔮 Tarot</a>
     <a href="#por-que">Por qué Lady Aura</a>
     <a href="#sobre-mi">Mi historia</a>
     <a href="#contacto">Contacto</a>
@@ -587,32 +587,20 @@
   <!-- ===========================
        TAROT
   ============================ -->
-  <section id="tarot" class="tarot-section">
+  <section id="tarot" class="tarot-section" style="text-align:center;">
     <div class="section-heading">
       <span class="section-tag">Reflexión · Entretenimiento · Autoconocimiento</span>
       <h2>🔮 Tarot Lady Aura</h2>
       <p>Descubre lo que el universo tiene para ti. Elige tu tirada y deja que las cartas hablen.</p>
     </div>
-
-    <!-- Botones de tirada -->
-    <div class="tarot-buttons">
-      <button class="tarot-btn tarot-btn--purple" onclick="drawReading(1,'daily')"><span>☽</span><span>Diaria</span></button>
-      <button class="tarot-btn tarot-btn--purple" onclick="drawReading(3,'weekly')"><span>✦</span><span>Semanal</span></button>
-      <button class="tarot-btn tarot-btn--pink" onclick="drawReading(3,'love')"><span>♡</span><span>Amor</span></button>
-      <button class="tarot-btn tarot-btn--gold" onclick="drawReading(1,'advice')" style="display:none" aria-hidden="true"><span>💡</span><span>Consejo</span></button>
-      <button class="tarot-btn tarot-btn--blue" onclick="drawReading(3,'career')" style="display:none" aria-hidden="true"><span>💼</span><span>Trabajo</span></button>
-      <button class="tarot-btn tarot-btn--green" onclick="drawReading(3,'health')" style="display:none" aria-hidden="true"><span>🧘‍♀️</span><span>Salud</span></button>
-      <button class="tarot-btn tarot-btn--fuchsia" onclick="drawReading(5,'celtic')" style="display:none" aria-hidden="true"><span>✨</span><span>Cruz Celta</span></button>
-    </div>
-
-    <!-- Área de lectura -->
-    <div id="tarot-reading-area" class="tarot-reading hidden">
-      <div class="tarot-reading-header">
-        <h3 id="tarot-reading-title" class="tarot-reading-title"></h3>
-        <button onclick="closeTarotReading()" class="tarot-close-btn">✕ Nueva tirada</button>
-      </div>
-      <div id="tarot-cards-container" class="tarot-cards-container"></div>
-      <div id="tarot-interpretation" class="tarot-interpretation"></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:1.2rem;margin-top:1rem;">
+      <p style="color:var(--muted);font-size:1.05rem;max-width:520px;line-height:1.6;">
+        ✨ El Tarot Lady Aura tiene su propia página mágica con tiradas de Amor, Semanal, Diaria y mucho más.
+      </p>
+      <a href="tarot.html" target="_blank" rel="noopener" class="btn primary btn-xl" style="font-size:1.1rem;padding:1.1rem 2.4rem;">
+        🔮 Entrar al Tarot Lady Aura
+      </a>
+      <p style="color:var(--muted);font-size:0.85rem;font-style:italic;opacity:0.7;">Se abre en una nueva pestaña · Gratis · Sin registro 🌙</p>
     </div>
   </section>
 
@@ -957,19 +945,23 @@
         <div class="collection-separator-line"></div>
       </div>
 
-      <article class="art-card product-card" data-price="94" data-orient="v">
-        <button class="image-open" type="button" aria-label="Ver Abrazo celestial">
+      <article class="art-card product-card sold-out" data-price="94" data-orient="v">
+        <button class="image-open" type="button" disabled style="cursor:default;" aria-label="Abrazo celestial agotado">
           <span class="badge-new">♡ Romántico</span>
           <span class="orient-tag">↕ Vertical</span>
           <img loading="lazy" src="assets/abrazo-celestial.webp" alt="Abrazo celestial – diamond painting pareja mágica Lady Aura">
+          <div class="sold-out-overlay">
+            <div class="sold-out-inner">
+              <span class="sold-out-symbol">✦</span>
+              <span class="sold-out-text">Agotada</span>
+              <span class="sold-out-sub">Esta pieza ya encontró su hogar</span>
+            </div>
+          </div>
         </button>
         <div class="product-info">
           <h3>Abrazo celestial</h3>
           <p class="product-size">Diamond painting premium 60×90 cm</p>
-          <div class="product-actions">
-            <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Abrazo%20celestial.%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
-            <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20–%20Abrazo%20celestial&body=Quiero%20pre-reservar%3A%20Abrazo%20celestial.%2060x90%2C%2094€." target="_blank" rel="noopener">✉️ Email</a>
-          </div>
+          <p class="sold-out-notice">✦ Esta edición está agotada</p>
         </div>
       </article>
 
@@ -1190,19 +1182,23 @@
           </div>
         </article>
 
-        <article class="art-card product-card" data-price="94" data-orient="v">
-          <button class="image-open" type="button" aria-label="Ver La Sacerdotisa">
+        <article class="art-card product-card sold-out" data-price="94" data-orient="v">
+          <button class="image-open" type="button" disabled style="cursor:default;" aria-label="La Sacerdotisa agotada">
             <span class="badge-new" style="background:linear-gradient(135deg,#7c3aed,#4c1d95);">🔮 Especial</span>
             <span class="orient-tag">↕ Vertical</span>
-            <img loading="lazy" src="assets/tarot/la-sacerdotisa.webp" alt="La Sacerdotisa – diamond painting carta del tarot Lady Aura">
+            <img loading="lazy" src="assets/tarot/la-sacerdotisa.webp" alt="La Sacerdotisa – diamond painting carta del tarot Lady Aura agotada">
+            <div class="sold-out-overlay">
+              <div class="sold-out-inner">
+                <span class="sold-out-symbol">✦</span>
+                <span class="sold-out-text">Agotada</span>
+                <span class="sold-out-sub">Esta pieza ya encontró su hogar</span>
+              </div>
+            </div>
           </button>
           <div class="product-info">
             <h3>La Sacerdotisa · Tarot</h3>
             <p class="product-size">Diamond painting premium 60×90 cm</p>
-            <div class="product-actions">
-              <a class="mini-btn buy whatsapp-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20La%20Sacerdotisa%20Tarot.%2060x90%2C%2094€.%20¡Gracias!" target="_blank" rel="noopener">💬 Reservar</a>
-              <a class="mini-btn email-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20–%20La%20Sacerdotisa%20Tarot&body=Quiero%20pre-reservar%3A%20La%20Sacerdotisa%20Tarot.%2060x90%2C%2094€." target="_blank" rel="noopener">✉️ Email</a>
-            </div>
+            <p class="sold-out-notice">✦ Esta edición está agotada</p>
           </div>
         </article>
 
@@ -1561,102 +1557,6 @@ document.querySelectorAll('.zodiac-tab-btn').forEach(function(btn) {
   });
 });
 </script>
-<script>
-/* ═══════════════════════════════════════
-   TAROT LADY AURA
-═══════════════════════════════════════ */
-const tarotDeck = [
-  { id:0,  name:"El Loco",               img:"el-loco.webp", upright:"Nuevos comienzos, aventura, salto de fe. El universo te invita a confiar.", reversed:"Imprudencia, decisiones apresuradas. Tómate un momento antes de actuar." },
-  { id:1,  name:"El Mago",               img:"el-mago.webp",           upright:"Tienes todo lo que necesitas. Es momento de manifestar tus deseos con determinación.", reversed:"Energía bloqueada, talentos sin explotar. Revisa qué te frena." },
-  { id:2,  name:"La Sacerdotisa",        img:"la-sacerdotisa.webp",    upright:"Confía en tu intuición. La respuesta ya está dentro de ti, escúchala.", reversed:"Secretos ocultos, desconexión con tu interior. Busca un momento de silencio.", special:true },
-  { id:3,  name:"La Emperatriz",         img:"la-emperatriz.webp",     upright:"Abundancia, creatividad y fertilidad. Es tiempo de nutrir tus proyectos y relaciones.", reversed:"Bloqueo creativo o dependencia excesiva. Recupera tu autonomía.", special:true },
-  { id:4,  name:"El Emperador",          img:"el-emperador.webp",      upright:"Estructura, autoridad y estabilidad. Toma las riendas con firmeza.", reversed:"Rigidez excesiva o falta de control. Busca el equilibrio entre poder y flexibilidad." },
-  { id:5,  name:"El Sumo Sacerdote",     img:"el-sumo-sacerdote.webp", upright:"Busca guía espiritual o tradicional. La sabiduría colectiva tiene algo que enseñarte.", reversed:"Dogmatismo o seguir reglas que ya no sirven. Cuestiona con amor." },
-  { id:6,  name:"Los Enamorados",        img:"los-enamorados.webp",    upright:"Amor, elección y armonía. Una decisión importante del corazón se acerca.", reversed:"Desacuerdo interno o externo. Clarifica tus valores antes de decidir.", special:true },
-  { id:7,  name:"El Carro",              img:"el-carro.webp",          upright:"Victoria a través de la determinación. Mantén el enfoque y llegarás a tu meta.", reversed:"Falta de dirección o control. Reorganiza tus prioridades." },
-  { id:8,  name:"La Fuerza",             img:"la-fuerza.webp",         upright:"Coraje interior y paciencia. Tu mayor poder está en la calma y la compasión.", reversed:"Dudas internas o uso excesivo de la fuerza. Confía más en ti." },
-  { id:9,  name:"El Ermitaño",           img:"el-ermitano.webp",       upright:"Introspección y búsqueda interior. Un momento de soledad te traerá claridad.", reversed:"Aislamiento no deseado o evitar la reflexión. Busca equilibrio entre estar solo y conectar." },
-  { id:10, name:"La Rueda de la Fortuna",img:"la-rueda-de-la-fortuna.webp", upright:"Los ciclos cambian. Algo nuevo y positivo está en movimiento.", reversed:"Resistencia al cambio. Lo que no fluye, se estanca." },
-  { id:11, name:"La Justicia",           img:"la-justicia.webp",       upright:"Equilibrio, verdad y karma. Las consecuencias de tus actos son justas.", reversed:"Injusticia o falta de responsabilidad. Revisa tu parte en la situación." },
-  { id:12, name:"El Colgado",            img:"el-colgado.webp",        upright:"Pausa y rendición. A veces la inacción es la acción más sabia.", reversed:"Estancamiento por resistencia. Suelta lo que no puedes controlar." },
-  { id:13, name:"La Muerte",             img:"la-muerte.webp",         upright:"Transformación y cierre de ciclos. Algo termina para que algo mejor comience.", reversed:"Resistencia al cambio necesario. Deja ir con gracia." },
-  { id:14, name:"La Templanza",          img:"la-templanza.webp",      upright:"Equilibrio, moderación y paciencia. La alquimia de la vida pide calma.", reversed:"Desequilibrio o impaciencia. Respira y encuentra tu centro." },
-  { id:15, name:"El Diablo",             img:"el-diablo.webp",         upright:"Cuidado con ataduras o hábitos que te limitan. Reconocerlos es el primer paso.", reversed:"Liberación. Estás rompiendo cadenas que ya no te pertenecen.", special:true },
-  { id:16, name:"La Torre",              img:"la-torre.webp",          upright:"Cambio repentino que libera. Lo que cae no era sólido.", reversed:"Miedo a un cambio necesario. Lo que evitas, persiste." },
-  { id:17, name:"La Estrella",           img:"la-estrella.webp",       upright:"Esperanza, sanación y renovación. El universo te cuida.", reversed:"Desánimo temporal. La luz sigue ahí aunque ahora no la veas.", special:true },
-  { id:18, name:"La Luna",               img:"la-luna.webp",           upright:"Intuición profunda y misterio. No todo es lo que parece, confía en tu instinto.", reversed:"Confusión o miedos que distorsionan la realidad. Busca claridad.", special:true },
-  { id:19, name:"El Sol",                img:"el-sol.webp",            upright:"Alegría, éxito y vitalidad. Un período luminoso y positivo llega.", reversed:"Exceso o optimismo bloqueado. Encuentra la medida justa.", special:true },
-  { id:20, name:"El Juicio",             img:"el-juicio.webp",         upright:"Renacimiento y despertar. Escucha el llamado de tu alma.", reversed:"Autocrítica excesiva. Perdónate y avanza." },
-  { id:21, name:"El Mundo",              img:"el-mundo.webp",          upright:"Completitud y logro. Un ciclo se cierra con éxito. Celebra.", reversed:"Falta de cierre o quedarse a medio camino. Da ese último paso." }
-];
 
-function tarotShuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
-function tarotReversed() { return Math.random() < 0.4; }
-
-let tarotCurrentReading = null;
-
-function drawReading(n, type) {
-  const selected = tarotShuffle(tarotDeck).slice(0, n).map(card => ({
-    card, reversed: tarotReversed()
-  }));
-
-  const area    = document.getElementById('tarot-reading-area');
-  const cont    = document.getElementById('tarot-cards-container');
-  const titleEl = document.getElementById('tarot-reading-title');
-  const interp  = document.getElementById('tarot-interpretation');
-
-  const titles = { daily:'Lectura Diaria ☽', weekly:'Lectura Semanal ✦', love:'Lectura de Amor ♡', advice:'Consejo del Tarot', career:'Lectura de Trabajo', health:'Lectura de Salud', celtic:'Cruz Celta' };
-  const labels = {
-    daily:  ['Tu energía de hoy'],
-    weekly: ['Pasado','Presente','Futuro'],
-    love:   ['Tú en esta relación','La otra persona','El camino juntos'],
-    advice: ['El consejo del universo'],
-    career: ['Situación actual','Obstáculo','Cómo avanzar'],
-    health: ['Estado actual','Causa','Consejo'],
-    celtic: ['Situación','Cruce','Base','Pasado','Posible futuro']
-  };
-  titleEl.textContent = titles[type] || 'Tu Lectura';
-
-  cont.innerHTML = '';
-  const labs = (labels[type] || selected.map((_,i) => `Carta ${i+1}`));
-  selected.forEach(({card, reversed}, i) => {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'tarot-card-wrapper';
-    wrapper.style.animationDelay = (i * 0.12) + 's';
-    const meaning = reversed ? card.reversed : card.upright;
-    const label = labs[i] || `Carta ${i+1}`;
-    wrapper.innerHTML = `
-      <div class="tarot-card${reversed ? ' tarot-reversed' : ''}">
-        <div class="tarot-card-inner">
-          <div class="tarot-card-back"><span class="tarot-back-symbol">✦</span></div>
-          <div class="tarot-card-front">
-            <img src="assets/tarot/${card.img}" alt="${card.name}" loading="lazy">
-            ${reversed ? '<div class="tarot-rev-label">INVERTIDA</div>' : ''}
-            ${card.special ? '<div class="tarot-special-label">⭐ Especial</div>' : ''}
-          </div>
-        </div>
-      </div>
-      <div class="tarot-card-info">
-        <p class="tarot-card-label">${label}</p>
-        <p class="tarot-card-name-text">${card.name}${card.special ? ' ✨' : ''}</p>
-        <p class="tarot-card-meaning">${meaning}</p>
-      </div>`;
-    wrapper.querySelector('.tarot-card-inner').addEventListener('click', () => {
-      wrapper.querySelector('.tarot-card').classList.toggle('tarot-flipped');
-      wrapper.querySelector('.tarot-card-meaning').classList.toggle('tarot-meaning-visible');
-    });
-    cont.appendChild(wrapper);
-  });
-
-  interp.innerHTML = '<p class="tarot-disclaimer">🌙 Pulsa cada carta para revelar su mensaje. El tarot es una herramienta de reflexión y autoconocimiento.</p>';
-  area.classList.remove('hidden');
-  area.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  tarotCurrentReading = { title: titles[type], type, selected };
-}
-
-function closeTarotReading() {
-  document.getElementById('tarot-reading-area').classList.add('hidden');
-}
-</script>
 </body>
 </html>

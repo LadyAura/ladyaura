@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarot Gratis Online en Español | Tiradas de Amor, Semanal y Diaria | Lady Aura</title>
+<meta name="description" content="Echa las cartas del tarot gratis en español con Lady Aura. Tiradas de amor, semanal, diaria y mas. Arte del tarot premium con diamantes. Consulta tu destino ahora.">
+<meta name="keywords" content="tarot gratis online, tirada de tarot amor, tarot del dia, tarot semanal gratis, echar las cartas del tarot, tarot espanol gratis, tarot Lady Aura, cartas del tarot online, tarot gratuito">
+<meta name="author" content="Lady Aura">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ladyauraart.com/tarot.html">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" href="assets/favicon.ico">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ladyauraart.com/tarot.html">
+<meta property="og:title" content="Tarot Gratis Online en Espanol - Lady Aura">
+<meta property="og:description" content="Echa las cartas del tarot gratis. Tiradas de amor, semanal, diaria. Lady Aura.">
+<meta property="og:image" content="https://ladyauraart.com/assets/tarot/la-luna.webp">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Lady Aura">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tarot Gratis Online - Lady Aura">
+<meta name="twitter:description" content="Tira las cartas gratis. Amor, semanal, diaria. Lady Aura.">
+<meta name="twitter:image" content="https://ladyauraart.com/assets/tarot/la-luna.webp">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "Tarot Gratis Online en Espanol - Lady Aura",
+      "description": "Echa las cartas del tarot gratis en espanol. Tiradas de amor, semanal, diaria.",
+      "url": "https://ladyauraart.com/tarot.html",
+      "isPartOf": {"@type": "WebSite", "name": "Lady Aura", "url": "https://ladyauraart.com"},
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://ladyauraart.com"},
+          {"@type": "ListItem", "position": 2, "name": "Tarot Gratis", "item": "https://ladyauraart.com/tarot.html"}
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "El tarot de Lady Aura es gratis?", "acceptedAnswer": {"@type": "Answer", "text": "Si, completamente gratis y sin registro."}},
+        {"@type": "Question", "name": "Que tiradas hay?", "acceptedAnswer": {"@type": "Answer", "text": "Tirada diaria, semanal y de amor."}},
+        {"@type": "Question", "name": "Puedo comprar cuadros de tarot?", "acceptedAnswer": {"@type": "Answer", "text": "Si, Lady Aura tiene cuadros de tarot en diamond painting premium 60x90 cm."}}
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ── STICKY NAV ── */
+.sticky-nav-wrapper { position:sticky; top:0; z-index:200; }
+.back-bar {
+  background:rgba(10,5,20,0.97);
+  border-bottom:1px solid rgba(160,63,255,0.3);
+  padding:0.65rem 2rem;
+  display:flex; align-items:center; gap:1rem; flex-wrap:wrap;
+}
+.back-bar a {
+  color:#ffd98a; text-decoration:none;
+  font-family:"Cinzel",serif; font-size:0.77rem;
+  letter-spacing:0.1em; text-transform:uppercase; transition:opacity 0.2s;
+}
+.back-bar a:hover { opacity:0.7; }
+.back-bar .sep { color:rgba(255,255,255,0.2); }
+
+/* ── HERO ── */
+.tarot-hero {
+  padding:4.5rem 8% 3rem; text-align:center;
+  background:
+    radial-gradient(ellipse at 30% 0%,rgba(160,63,255,0.25),transparent 50%),
+    radial-gradient(ellipse at 70% 100%,rgba(255,72,137,0.15),transparent 50%),
+    #05050f;
+  border-bottom:1px solid rgba(160,63,255,0.2);
+}
+.tarot-hero h1 {
+  font-family:"Cinzel",serif;
+  font-size:clamp(2rem,5vw,3.8rem); font-weight:700;
+  background:linear-gradient(135deg,#fff0ff,#ffd98a,#c084fc);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  margin:0.8rem 0 1rem; line-height:1.15;
+}
+.tarot-hero .hero-sub { color:rgba(255,255,255,0.55); font-size:1.1rem; max-width:580px; margin:0 auto 2rem; line-height:1.6; }
+.tarot-badge {
+  display:inline-block; padding:6px 20px;
+  background:linear-gradient(135deg,rgba(255,217,138,0.12),rgba(160,63,255,0.12));
+  border:1px solid rgba(255,217,138,0.35); border-radius:999px;
+  color:#ffd98a; font-family:"Cinzel",serif; font-size:0.72rem;
+  letter-spacing:0.18em; text-transform:uppercase; margin-bottom:1rem;
+}
+
+/* ── TIRADA SELECTOR ── */
+.tirada-section { padding:3.5rem 8%; background:rgba(6,5,15,0.8); border-bottom:1px solid rgba(160,63,255,0.15); }
+.tirada-section h2 { font-family:"Cinzel",serif; text-align:center; font-size:clamp(1.4rem,3vw,2.2rem); color:#fff0ff; margin-bottom:0.5rem; }
+.tirada-sub { text-align:center; color:rgba(255,255,255,0.45); margin-bottom:2.5rem; font-size:0.95rem; }
+.tirada-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:900px; margin:0 auto 2.5rem; }
+.tirada-card {
+  background:rgba(15,8,28,0.9); border:1px solid rgba(160,63,255,0.3);
+  border-radius:24px; padding:2rem 1.5rem; text-align:center; cursor:pointer; transition:all 0.25s;
+}
+.tirada-card:hover,.tirada-card.active { border-color:#ffd98a; box-shadow:0 0 35px rgba(255,217,138,0.2); transform:translateY(-4px); }
+.tirada-icon { font-size:2.8rem; display:block; margin-bottom:0.8rem; }
+.tirada-name { font-family:"Cinzel",serif; font-size:1rem; color:#fff0ff; display:block; margin-bottom:0.4rem; }
+.tirada-desc { color:rgba(255,255,255,0.45); font-size:0.85rem; line-height:1.5; }
+.tirada-count { display:inline-block; margin-top:0.8rem; padding:3px 12px; background:rgba(160,63,255,0.2); border-radius:999px; font-size:0.72rem; color:#c084fc; }
+.btn-draw {
+  display:block; margin:0 auto; padding:1rem 3rem;
+  font-family:"Cinzel",serif; font-size:1rem; letter-spacing:0.15em; text-transform:uppercase;
+  background:linear-gradient(135deg,rgba(160,63,255,0.9),rgba(255,72,137,0.9));
+  color:#fff; border:none; border-radius:999px; cursor:pointer; transition:all 0.25s;
+  box-shadow:0 0 30px rgba(160,63,255,0.4);
+}
+.btn-draw:hover { transform:translateY(-2px); box-shadow:0 0 50px rgba(160,63,255,0.65); }
+
+/* ── READING AREA ── */
+.reading-area { padding:3rem 8%; background:rgba(5,5,16,0.95); display:none; }
+.reading-area.visible { display:block; }
+.reading-title { font-family:"Cinzel",serif; text-align:center; font-size:clamp(1.3rem,3vw,2rem); color:#ffd98a; margin-bottom:0.4rem; }
+.reading-subtitle { text-align:center; color:rgba(255,255,255,0.45); font-size:0.9rem; margin-bottom:2.5rem; }
+.cards-row { display:flex; justify-content:center; gap:2.5rem; flex-wrap:wrap; margin-bottom:3rem; }
+.card-slot { display:flex; flex-direction:column; align-items:center; gap:1rem; width:280px; animation:fadeUp 0.5s ease both; }
+.card-slot:nth-child(2) { animation-delay:0.12s; }
+.card-slot:nth-child(3) { animation-delay:0.24s; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.card-label { font-family:"Cinzel",serif; font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(160,63,255,0.9); text-align:center; }
+.card-flip { width:240px; height:360px; perspective:1000px; cursor:pointer; }
+.card-flip-inner { width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:transform 0.65s cubic-bezier(0.23,1,0.32,1); }
+.card-flip.flipped .card-flip-inner { transform:rotateY(180deg); }
+.card-face { position:absolute; inset:0; border-radius:16px; backface-visibility:hidden; overflow:hidden; border:1px solid rgba(160,63,255,0.4); }
+.card-back {
+  background:linear-gradient(135deg,#1a0533,#0d0821);
+  display:flex; align-items:center; justify-content:center; font-size:5rem;
+  border:2px solid rgba(255,217,138,0.3);
+  box-shadow:0 0 30px rgba(160,63,255,0.4),inset 0 0 50px rgba(160,63,255,0.15);
+}
+.card-back::after { content:''; position:absolute; inset:8px; border:1px solid rgba(255,217,138,0.2); border-radius:10px; }
+.card-front { transform:rotateY(180deg); background:#0d0821; }
+.card-front img { width:100%; height:100%; object-fit:cover; display:block; }
+.card-front.reversed img { transform:rotate(180deg); }
+.rev-badge { position:absolute; bottom:8px; left:50%; transform:translateX(-50%); background:rgba(255,72,137,0.85); color:#fff; font-size:0.65rem; padding:3px 10px; border-radius:999px; font-family:"Cinzel",serif; white-space:nowrap; }
+.special-badge { position:absolute; top:8px; right:8px; background:rgba(255,217,138,0.9); border-radius:999px; padding:2px 7px; font-size:0.78rem; }
+.card-name { font-family:"Cinzel",serif; font-size:1rem; color:#fff0ff; text-align:center; letter-spacing:0.05em; }
+.card-meaning { font-size:0.95rem; color:rgba(255,255,255,0.6); text-align:center; line-height:1.6; max-width:260px; display:none; }
+.card-slot.revealed .card-meaning { display:block; }
+.card-hint { font-size:0.78rem; color:rgba(160,63,255,0.6); text-align:center; font-style:italic; }
+.reading-disclaimer { text-align:center; color:rgba(255,255,255,0.3); font-size:0.85rem; font-style:italic; padding:1rem 0 0.5rem; border-top:1px solid rgba(160,63,255,0.12); max-width:600px; margin:0 auto; }
+.btn-nueva { display:block; margin:1.5rem auto 0; padding:0.7rem 2rem; font-family:"Cinzel",serif; font-size:0.82rem; letter-spacing:0.12em; text-transform:uppercase; background:transparent; color:rgba(255,255,255,0.45); border:1px solid rgba(255,255,255,0.18); border-radius:999px; cursor:pointer; transition:all 0.2s; }
+.btn-nueva:hover { border-color:#ffd98a; color:#ffd98a; }
+
+/* ── CUADROS TAROT ── */
+.tarot-shop-section {
+  padding:4rem 8%;
+  background:radial-gradient(ellipse at 20% 50%,rgba(160,63,255,0.1),transparent 40%),rgba(6,5,15,0.7);
+  border-top:1px solid rgba(160,63,255,0.2); border-bottom:1px solid rgba(160,63,255,0.2);
+}
+.tarot-shop-section h2 { font-family:"Cinzel",serif; text-align:center; font-size:clamp(1.4rem,3vw,2.2rem); color:#fff0ff; margin-bottom:0.4rem; }
+.shop-sub { text-align:center; color:rgba(255,255,255,0.45); font-size:0.95rem; margin-bottom:2.5rem; }
+.tarot-shop-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1.8rem; max-width:1100px; margin:0 auto 2rem; }
+.ts-card {
+  background:rgba(15,8,28,0.9); border:1px solid rgba(160,63,255,0.3);
+  border-radius:20px; overflow:hidden; text-align:center; transition:all 0.25s;
+  cursor:pointer; position:relative;
+}
+.ts-card:hover { transform:translateY(-6px); border-color:#ffd98a; box-shadow:0 0 40px rgba(255,217,138,0.25); }
+.ts-card img { width:100%; aspect-ratio:3/4; object-fit:cover; display:block; }
+.ts-card .ci { padding:1rem 1rem 1.2rem; }
+.ts-card .ci h3 { font-family:"Cinzel",serif; font-size:0.95rem; color:#fff0ff; margin:0 0 0.4rem; letter-spacing:0.05em; }
+.ts-card .ci p { color:rgba(255,255,255,0.45); font-size:0.82rem; margin:0; }
+.ts-card.sold-out { cursor:default; }
+.ts-card.sold-out:hover { transform:none; border-color:rgba(160,63,255,0.3); box-shadow:none; }
+.sold-overlay { position:absolute; inset:0; background:rgba(5,3,14,0.72); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.3rem; backdrop-filter:blur(2px); }
+.so-sym { font-family:"Cinzel",serif; font-size:2rem; color:#ffd98a; }
+.so-txt { font-family:"Cinzel",serif; font-size:1rem; color:#fff0ff; letter-spacing:0.1em; }
+.so-sub { font-size:0.78rem; color:rgba(255,255,255,0.4); }
+.sold-notice { color:rgba(255,217,138,0.65); font-size:0.78rem; margin-top:0.3rem; }
+.tarot-shop-cta { text-align:center; margin-top:2rem; display:flex; flex-direction:column; align-items:center; gap:1rem; }
+
+/* ── LIGHTBOX ── */
+.t-lb {
+  display:none; position:fixed; inset:0; z-index:9999;
+  background:rgba(3,2,10,0.92); backdrop-filter:blur(8px);
+  align-items:center; justify-content:center; padding:1.5rem;
+}
+.t-lb.open { display:flex; }
+.t-lb-card {
+  background:rgba(12,6,24,0.98); border:1px solid rgba(160,63,255,0.4);
+  border-radius:28px; overflow:hidden; display:flex; max-width:860px; width:100%;
+  box-shadow:0 0 80px rgba(160,63,255,0.35); animation:lbIn 0.3s ease; position:relative;
+}
+@keyframes lbIn { from{opacity:0;transform:scale(0.95)} to{opacity:1;transform:scale(1)} }
+.lb-img { width:44%; flex-shrink:0; overflow:hidden; }
+.lb-img img { width:100%; height:100%; object-fit:cover; display:block; }
+.lb-info { flex:1; padding:2.5rem 2rem; display:flex; flex-direction:column; justify-content:center; gap:1rem; }
+.lb-tag { font-family:"Cinzel",serif; font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,217,138,0.7); }
+.lb-title { font-family:"Cinzel",serif; font-size:clamp(1.4rem,3vw,2rem); color:#fff0ff; margin:0; line-height:1.2; }
+.lb-size { color:rgba(255,255,255,0.4); font-size:0.92rem; }
+.lb-price { font-family:"Cinzel",serif; font-size:2rem; color:#ffd98a; text-shadow:0 0 20px rgba(255,217,138,0.4); }
+.lb-note { color:rgba(255,255,255,0.38); font-size:0.85rem; line-height:1.5; font-style:italic; }
+.lb-btns { display:flex; flex-direction:column; gap:0.7rem; margin-top:0.5rem; }
+.lb-btn {
+  padding:0.85rem 1.5rem; border-radius:999px; font-family:"Cinzel",serif;
+  font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase;
+  text-decoration:none; text-align:center; transition:all 0.25s; border:none; cursor:pointer; display:block;
+}
+.lb-btn.wa { background:linear-gradient(135deg,rgba(160,63,255,0.9),rgba(255,72,137,0.9)); color:#fff; box-shadow:0 0 25px rgba(160,63,255,0.4); }
+.lb-btn.wa:hover { box-shadow:0 0 45px rgba(160,63,255,0.7); transform:translateY(-2px); }
+.lb-btn.em { background:transparent; color:rgba(255,255,255,0.55); border:1px solid rgba(255,255,255,0.2); }
+.lb-btn.em:hover { border-color:#ffd98a; color:#ffd98a; }
+.lb-close {
+  position:absolute; top:1rem; right:1rem;
+  background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15);
+  border-radius:999px; color:rgba(255,255,255,0.55); font-size:1.2rem;
+  width:36px; height:36px; display:flex; align-items:center; justify-content:center;
+  cursor:pointer; transition:all 0.2s; z-index:1;
+}
+.lb-close:hover { background:rgba(255,72,137,0.3); color:#fff; }
+
+/* ── FAQ ── */
+.tarot-faq { padding:4rem 8%; background:rgba(5,5,14,0.6); }
+.tarot-faq h2 { font-family:"Cinzel",serif; text-align:center; font-size:clamp(1.3rem,3vw,2rem); color:#fff0ff; margin-bottom:2rem; }
+.faq-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem; max-width:900px; margin:0 auto; }
+.faq-item { background:rgba(15,8,28,0.8); border:1px solid rgba(160,63,255,0.2); border-radius:18px; padding:1.4rem; transition:border-color 0.25s; }
+.faq-item:hover { border-color:rgba(160,63,255,0.5); }
+.faq-item h3 { font-family:"Cinzel",serif; font-size:0.9rem; color:#fff0ff; margin:0 0 0.5rem; }
+.faq-item p { margin:0; font-size:0.9rem; color:rgba(255,255,255,0.5); line-height:1.6; }
+
+/* ── CONTACTO ── */
+.tarot-contact { padding:3.5rem 8%; background:rgba(5,5,16,0.95); border-top:1px solid rgba(160,63,255,0.2); text-align:center; }
+.tarot-contact h2 { font-family:"Cinzel",serif; font-size:clamp(1.3rem,3vw,2rem); color:#fff0ff; margin-bottom:0.5rem; }
+.tarot-contact .sub { color:rgba(255,255,255,0.45); margin-bottom:2rem; }
+.contact-cards { display:flex; justify-content:center; flex-wrap:wrap; gap:1rem; max-width:800px; margin:0 auto; }
+.contact-card { display:flex; align-items:center; gap:0.8rem; padding:1rem 1.5rem; background:rgba(15,8,28,0.9); border:1px solid rgba(160,63,255,0.3); border-radius:18px; text-decoration:none; color:inherit; transition:all 0.25s; min-width:170px; }
+.contact-card:hover { border-color:#ffd98a; transform:translateY(-3px); box-shadow:0 0 20px rgba(255,217,138,0.2); }
+.contact-card .icon { font-size:1.6rem; }
+.contact-card h3 { font-family:"Cinzel",serif; font-size:0.82rem; color:#fff0ff; margin:0 0 0.15rem; }
+.contact-card p { margin:0; font-size:0.75rem; color:rgba(255,255,255,0.35); }
+
+/* ── FOOTER ── */
+.tarot-footer { padding:1.5rem 8%; background:rgba(3,3,10,0.98); border-top:1px solid rgba(160,63,255,0.15); text-align:center; color:rgba(255,255,255,0.28); font-size:0.82rem; }
+.tarot-footer a { color:rgba(255,217,138,0.55); text-decoration:none; }
+.tarot-footer a:hover { color:#ffd98a; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px) {
+  .tirada-grid { grid-template-columns:1fr; max-width:400px; }
+  .faq-grid { grid-template-columns:1fr; }
+  .cards-row { gap:1.5rem; }
+  .card-slot { width:200px; }
+  .card-flip { width:170px; height:255px; }
+  .t-lb-card { flex-direction:column; max-height:90vh; overflow-y:auto; }
+  .lb-img { width:100%; height:220px; }
+  .lb-info { padding:1.5rem; }
+}
+@media(max-width:600px) {
+  .tarot-hero,.tirada-section,.reading-area,.tarot-shop-section,.tarot-faq,.tarot-contact { padding-left:5%; padding-right:5%; }
+  .cards-row { gap:1rem; }
+  .card-slot { width:150px; }
+  .card-flip { width:128px; height:192px; }
+  .card-name { font-size:0.82rem; }
+  .tarot-shop-grid { grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); }
+  .contact-cards { flex-direction:column; align-items:center; }
+  .back-bar { padding:0.6rem 1.2rem; }
+}
+</style>
+</head>
+<body style="background:#05050f;color:rgba(255,255,255,0.75);font-family:'Cormorant Garamond',Georgia,serif;margin:0;padding:0;min-height:100vh;">
+
+<div class="stars" id="stars" aria-hidden="true" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></div>
+
+<!-- STICKY NAV -->
+<div class="sticky-nav-wrapper">
+  <div class="back-bar">
+    <a href="index.html">← Volver a Lady Aura</a>
+    <span class="sep">·</span>
+    <a href="index.html#galeria">Ver cuadros diamond painting ✨</a>
+    <span class="sep">·</span>
+    <a href="https://wa.me/34621355638" target="_blank" rel="noopener">💬 WhatsApp</a>
+  </div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Lady Aura inicio">
+      <img src="assets/logo-new.png" alt="Logo Lady Aura" style="height:48px;">
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+    <nav class="nav" id="navMenu" aria-label="Navegacion principal">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#galeria">Diseños</a>
+      <a href="index.html#zodiaco">Zodiaco</a>
+      <a href="tarot.html" aria-current="page" style="color:var(--gold,#ffd98a);">🔮 Tarot</a>
+      <a href="index.html#sobre-mi">Mi historia</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="header-button" href="index.html#galeria">Ver diseños ✨</a>
+  </header>
+</div>
+
+<main style="position:relative;z-index:5;">
+
+  <!-- HERO -->
+  <section class="tarot-hero">
+    <span class="tarot-badge">✦ Gratis · Sin registro · En español ✦</span>
+    <h1>Tarot Lady Aura<br>Echa las cartas gratis 🔮</h1>
+    <p class="hero-sub">Deja que el universo hable. Elige tu tirada, baraja las cartas y descubre el mensaje que tienen para ti hoy.</p>
+    <a href="#tiradas" class="btn primary" style="font-size:1rem;padding:0.9rem 2.2rem;">✨ Empezar mi tirada</a>
+  </section>
+
+  <!-- TIRADA SELECTOR -->
+  <section class="tirada-section" id="tiradas">
+    <h2>¿Que tirada quieres?</h2>
+    <p class="tirada-sub">Elige una y pulsa el boton para barajar las cartas 🌙</p>
+    <div class="tirada-grid">
+      <div class="tirada-card active" data-type="daily" onclick="selectTirada(this)">
+        <span class="tirada-icon">☽</span>
+        <span class="tirada-name">Tirada Diaria</span>
+        <p class="tirada-desc">La energia que te acompana hoy. Una carta, un mensaje directo.</p>
+        <span class="tirada-count">1 carta</span>
+      </div>
+      <div class="tirada-card" data-type="weekly" onclick="selectTirada(this)">
+        <span class="tirada-icon">✦</span>
+        <span class="tirada-name">Tirada Semanal</span>
+        <p class="tirada-desc">Pasado, presente y futuro de tu semana. Tres perspectivas.</p>
+        <span class="tirada-count">3 cartas</span>
+      </div>
+      <div class="tirada-card" data-type="love" onclick="selectTirada(this)">
+        <span class="tirada-icon">♡</span>
+        <span class="tirada-name">Tirada de Amor</span>
+        <p class="tirada-desc">Tu, la otra persona y el camino de vuestra relacion.</p>
+        <span class="tirada-count">3 cartas</span>
+      </div>
+    </div>
+    <button class="btn-draw" onclick="doReading()">🔮 Barajar y echar las cartas</button>
+  </section>
+
+  <!-- READING AREA -->
+  <section class="reading-area" id="readingArea">
+    <h2 class="reading-title" id="readingTitle"></h2>
+    <p class="reading-subtitle">Pulsa cada carta para revelar su mensaje ✨</p>
+    <div class="cards-row" id="cardsRow"></div>
+    <p class="reading-disclaimer">🌙 El tarot es una herramienta de reflexion y autoconocimiento. Las cartas son un espejo de tu energia interior, no un oraculo definitivo. Tu tienes el poder de crear tu camino.</p>
+    <button class="btn-nueva" onclick="resetReading()">✕ Nueva tirada</button>
+  </section>
+
+  <!-- CUADROS TAROT -->
+  <section class="tarot-shop-section" aria-labelledby="sh">
+    <span style="display:block;text-align:center;margin-bottom:0.5rem;font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,217,138,0.65);">Diamond Painting · Coleccion Tarot</span>
+    <h2 id="sh">Lleva el tarot a tu pared 💎</h2>
+    <p class="shop-sub">Cuadros de tarot premium en diamond painting 60×90 cm · Pincha para ver y reservar</p>
+    <div class="tarot-shop-grid">
+
+      <div class="ts-card" onclick="openLB('Los Enamorados - Tarot','assets/tarot/los-enamorados.webp',94,'Los Enamorados Tarot',false)">
+        <img loading="lazy" src="assets/tarot/los-enamorados.webp" alt="Cuadro diamond painting Los Enamorados tarot Lady Aura">
+        <div class="ci"><h3>Los Enamorados</h3><p>Diamond painting 60x90 cm · 94 EUR</p></div>
+      </div>
+
+      <div class="ts-card sold-out">
+        <img loading="lazy" src="assets/tarot/la-sacerdotisa.webp" alt="Cuadro diamond painting La Sacerdotisa tarot Lady Aura agotada">
+        <div class="sold-overlay">
+          <span class="so-sym">✦</span>
+          <span class="so-txt">Agotada</span>
+          <span class="so-sub">Esta pieza ya encontro su hogar</span>
+        </div>
+        <div class="ci"><h3>La Sacerdotisa</h3><p class="sold-notice">✦ Esta edicion esta agotada</p></div>
+      </div>
+
+      <div class="ts-card" onclick="openLB('La Emperatriz - Tarot','assets/tarot/la-emperatriz.webp',94,'La Emperatriz Tarot',false)">
+        <img loading="lazy" src="assets/tarot/la-emperatriz.webp" alt="Cuadro diamond painting La Emperatriz tarot Lady Aura">
+        <div class="ci"><h3>La Emperatriz</h3><p>Diamond painting 60x90 cm · 94 EUR</p></div>
+      </div>
+
+      <div class="ts-card" onclick="openLB('La Luna - Tarot','assets/tarot/la-luna.webp',94,'La Luna Tarot',false)">
+        <img loading="lazy" src="assets/tarot/la-luna.webp" alt="Cuadro diamond painting La Luna tarot Lady Aura">
+        <div class="ci"><h3>La Luna</h3><p>Diamond painting 60x90 cm · 94 EUR</p></div>
+      </div>
+
+      <div class="ts-card" onclick="openLB('La Estrella - Tarot','assets/tarot/la-estrella.webp',94,'La Estrella Tarot',false)">
+        <img loading="lazy" src="assets/tarot/la-estrella.webp" alt="Cuadro diamond painting La Estrella tarot Lady Aura">
+        <div class="ci"><h3>La Estrella</h3><p>Diamond painting 60x90 cm · 94 EUR</p></div>
+      </div>
+
+      <div class="ts-card" onclick="openLB('El Sol - Tarot','assets/tarot/el-sol.webp',94,'El Sol Tarot',false)">
+        <img loading="lazy" src="assets/tarot/el-sol.webp" alt="Cuadro diamond painting El Sol tarot Lady Aura">
+        <div class="ci"><h3>El Sol</h3><p>Diamond painting 60x90 cm · 94 EUR</p></div>
+      </div>
+
+      <div class="ts-card" onclick="openLB('El Diablo - Tarot','assets/tarot/el-diablo.webp',94,'El Diablo Tarot',false)">
+        <img loading="lazy" src="assets/tarot/el-diablo.webp" alt="Cuadro diamond painting El Diablo tarot Lady Aura">
+        <div class="ci"><h3>El Diablo</h3><p>Diamond painting 60x90 cm · 94 EUR</p></div>
+      </div>
+
+    </div>
+    <div class="tarot-shop-cta">
+      <p style="color:rgba(255,255,255,0.38);font-size:0.88rem;">Pre-reserva sin pago · Sin compromiso · Envio gratuito 🌙</p>
+      <a href="index.html#galeria" class="btn primary">Ver todos los cuadros ✨</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="tarot-faq" aria-labelledby="fh">
+    <h2 id="fh">Preguntas sobre el Tarot Lady Aura</h2>
+    <div class="faq-grid">
+      <div class="faq-item"><h3>El tarot es gratis?</h3><p>Si, completamente gratis y sin registro. Puedes hacer todas las tiradas que quieras, cuando quieras.</p></div>
+      <div class="faq-item"><h3>Que tiradas hay disponibles?</h3><p>Tirada diaria (1 carta), semanal (3 cartas) y de amor (3 cartas: tu, la otra persona y el camino juntos).</p></div>
+      <div class="faq-item"><h3>Que significa una carta invertida?</h3><p>Matiza el mensaje normal. Puede indicar bloqueos o retos internos que necesitan atencion.</p></div>
+      <div class="faq-item"><h3>El tarot predice el futuro?</h3><p>Es una herramienta de reflexion y autoconocimiento, no una prediccion exacta. Las cartas son un espejo de tu energia.</p></div>
+      <div class="faq-item"><h3>Las cartas con estrella son especiales?</h3><p>Si, tambien existen como cuadros de diamond painting premium en Lady Aura. Arte real que puedes tener en casa.</p></div>
+      <div class="faq-item"><h3>Puedo comprar un cuadro de tarot?</h3><p>Si, pre-reserva por WhatsApp sin pago previo y sin compromiso. Pincha cualquier cuadro para ver el precio y reservar.</p></div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="tarot-contact" aria-labelledby="ch">
+    <span style="display:block;margin-bottom:0.5rem;font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,217,138,0.65);">Contacto</span>
+    <h2 id="ch">Sigueme y contactame ✦</h2>
+    <p class="sub">Tienes dudas sobre los cuadros o quieres pre-reservar? Escribeme directamente 💜</p>
+    <div class="contact-cards">
+      <a class="contact-card" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20vengo%20del%20Tarot%20y%20quiero%20saber%20mas" target="_blank" rel="noopener">
+        <span class="icon">💬</span><div><h3>WhatsApp</h3><p>+34 621 35 56 38</p></div>
+      </a>
+      <a class="contact-card" href="https://www.instagram.com/lady.aura.2025/" target="_blank" rel="noopener">
+        <span class="icon">◎</span><div><h3>Instagram</h3><p>@lady.aura.2025</p></div>
+      </a>
+      <a class="contact-card" href="https://www.facebook.com/groups/2691253344587054" target="_blank" rel="noopener">
+        <span class="icon">f</span><div><h3>Comunidad Facebook</h3><p>Grupo Lady Aura</p></div>
+      </a>
+      <a class="contact-card" href="https://www.youtube.com/@LadyAura2025" target="_blank" rel="noopener">
+        <span class="icon">▶</span><div><h3>YouTube</h3><p>@LadyAura2025</p></div>
+      </a>
+      <a class="contact-card" href="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Consulta%20desde%20Tarot%20Lady%20Aura" target="_blank" rel="noopener">
+        <span class="icon">✉</span><div><h3>Email</h3><p>lady.aura.2025@gmail.com</p></div>
+      </a>
+    </div>
+    <div style="margin-top:2.5rem;">
+      <a href="index.html" class="btn secondary">← Volver a la tienda de cuadros</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- LIGHTBOX -->
+<div class="t-lb" id="tLb" role="dialog" aria-modal="true" onclick="if(event.target===this)closeLB()">
+  <button class="lb-close" onclick="closeLB()" aria-label="Cerrar">×</button>
+  <div class="t-lb-card">
+    <div class="lb-img"><img id="lbImg" src="" alt=""></div>
+    <div class="lb-info">
+      <span class="lb-tag">✦ Diamond Painting Premium · Lady Aura ✦</span>
+      <h2 class="lb-title" id="lbTitle"></h2>
+      <p class="lb-size" id="lbSize"></p>
+      <p class="lb-price" id="lbPrice"></p>
+      <p class="lb-note" id="lbNote"></p>
+      <div class="lb-btns">
+        <a class="lb-btn wa" id="lbWa" href="#" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
+        <a class="lb-btn em" id="lbEm" href="#" target="_blank" rel="noopener">✉️ Reservar por Email</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="tarot-footer" style="position:relative;z-index:5;">
+  <p>© 2026 <a href="index.html">Lady Aura</a> · <strong>Tarot Gratis Online en Español</strong> · Diamond Painting Premium · Valencia, España 💜</p>
+  <p style="margin-top:0.3rem;"><a href="index.html">Tienda de cuadros</a> · <a href="tarot.html">Tarot gratis</a> · <a href="https://wa.me/34621355638" target="_blank" rel="noopener">WhatsApp</a></p>
+</footer>
+
+<script>
+/* ── STARS ── */
+(function(){
+  var c=document.getElementById('stars');
+  if(!c)return;
+  for(var i=0;i<120;i++){
+    var s=document.createElement('div');
+    s.style.cssText='position:absolute;border-radius:50%;background:#fff;width:'+(Math.random()*2+0.5)+'px;height:'+(Math.random()*2+0.5)+'px;top:'+(Math.random()*100)+'%;left:'+(Math.random()*100)+'%;opacity:'+(Math.random()*0.45+0.1)+';animation:twinkle '+(Math.random()*3+2)+'s ease-in-out infinite alternate;animation-delay:'+(Math.random()*3)+'s;';
+    c.appendChild(s);
+  }
+  var st=document.createElement('style');
+  st.textContent='@keyframes twinkle{from{opacity:0.1}to{opacity:0.65}}';
+  document.head.appendChild(st);
+})();
+
+/* ── MENU MOBILE ── */
+document.getElementById('menuToggle').addEventListener('click',function(){
+  document.getElementById('navMenu').classList.toggle('open');
+});
+
+/* ── LIGHTBOX ── */
+function openLB(title, img, price, nameRaw, soldOut) {
+  document.getElementById('lbImg').src = img;
+  document.getElementById('lbImg').alt = title;
+  document.getElementById('lbTitle').textContent = title;
+  if (soldOut) {
+    document.getElementById('lbPrice').textContent = 'Agotada';
+    document.getElementById('lbPrice').style.color = 'rgba(255,255,255,0.4)';
+    document.getElementById('lbSize').textContent = 'Formato 60x90 cm - Diamond painting premium';
+    document.getElementById('lbNote').textContent = 'Esta edicion esta agotada. Escribeme para apuntarte a la lista de espera.';
+    document.getElementById('lbWa').textContent = 'Lista de espera WhatsApp';
+    document.getElementById('lbEm').textContent = 'Lista de espera Email';
+    document.getElementById('lbWa').href = 'https://wa.me/34621355638?text=Hola%20Lady%20Aura%2C%20me%20interesa%20' + encodeURIComponent(nameRaw) + '%20cuando%20vuelva%20a%20estar%20disponible.';
+    document.getElementById('lbEm').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Lista%20de%20espera%20-%20' + encodeURIComponent(nameRaw) + '&body=Hola%2C%20quiero%20apuntarme%20a%20la%20lista%20de%20espera%20de%3A%20' + encodeURIComponent(nameRaw);
+  } else {
+    document.getElementById('lbPrice').textContent = price + ' EUR';
+    document.getElementById('lbPrice').style.color = '';
+    document.getElementById('lbSize').textContent = 'Formato 60x90 cm - Diamantes alta densidad - Herramientas incluidas';
+    document.getElementById('lbNote').textContent = 'Pre-reserva sin compromiso ni pago previo. Las primeras en reservar tienen prioridad de entrega.';
+    document.getElementById('lbWa').textContent = 'Reservar por WhatsApp';
+    document.getElementById('lbEm').textContent = 'Reservar por Email';
+    document.getElementById('lbWa').href = 'https://wa.me/34621355638?text=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20' + encodeURIComponent(nameRaw) + '.%2060x90%2C%20' + price + 'EUR.%20Gracias!';
+    document.getElementById('lbEm').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20-%20' + encodeURIComponent(nameRaw) + '&body=Quiero%20pre-reservar%3A%20' + encodeURIComponent(nameRaw) + '.%2060x90%2C%20' + price + 'EUR.';
+  }
+  document.getElementById('tLb').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLB() {
+  document.getElementById('tLb').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLB();
+});
+
+/* ── TAROT DECK ── */
+var DECK = [
+  {name:'El Loco',           img:'el-loco.webp',                up:'Nuevos comienzos y aventura. El universo te invita a confiar y dar el salto.',         rev:'Imprudencia. Tomate un momento antes de actuar.',               special:false},
+  {name:'El Mago',           img:'el-mago.webp',                up:'Tienes todo lo que necesitas. Manifesta tus deseos con determinacion.',                 rev:'Energia bloqueada. Revisa que te frena.',                       special:false},
+  {name:'La Sacerdotisa',    img:'la-sacerdotisa.webp',         up:'Confia en tu intuicion. La respuesta ya esta dentro de ti.',                           rev:'Desconexion interior. Busca un momento de silencio.',           special:true},
+  {name:'La Emperatriz',     img:'la-emperatriz.webp',          up:'Abundancia y creatividad. Nutre tus proyectos y relaciones.',                          rev:'Bloqueo creativo. Recupera tu autonomia.',                     special:true},
+  {name:'El Emperador',      img:'el-emperador.webp',           up:'Estructura y estabilidad. Toma las riendas con firmeza.',                              rev:'Rigidez excesiva. Busca equilibrio.',                           special:false},
+  {name:'El Sumo Sacerdote', img:'el-sumo-sacerdote.webp',      up:'Busca guia en la sabiduria colectiva. Hay algo que aprender.',                         rev:'Dogmatismo. Cuestiona lo que ya no sirve.',                     special:false},
+  {name:'Los Enamorados',    img:'los-enamorados.webp',         up:'Amor y armonia. Una decision importante del corazon se acerca.',                       rev:'Desacuerdo. Clarifica tus valores antes de elegir.',            special:true},
+  {name:'El Carro',          img:'el-carro.webp',               up:'Victoria a traves de la determinacion. Manten el enfoque.',                            rev:'Falta de direccion. Reorganiza tus prioridades.',               special:false},
+  {name:'La Fuerza',         img:'la-fuerza.webp',              up:'Coraje interior. Tu mayor poder esta en la calma y la compasion.',                     rev:'Dudas internas. Confia mas en ti.',                             special:false},
+  {name:'El Ermitano',       img:'el-ermitano.webp',            up:'Introspeccion. La soledad te traera claridad.',                                        rev:'Aislamiento no deseado. Busca equilibrio.',                     special:false},
+  {name:'La Rueda',          img:'la-rueda-de-la-fortuna.webp', up:'Los ciclos cambian. Algo nuevo y positivo esta en movimiento.',                        rev:'Resistencia al cambio. Lo que no fluye, se estanca.',           special:false},
+  {name:'La Justicia',       img:'la-justicia.webp',            up:'Equilibrio y karma. Las consecuencias de tus actos son justas.',                       rev:'Injusticia. Revisa tu parte en la situacion.',                  special:false},
+  {name:'El Colgado',        img:'el-colgado.webp',             up:'Pausa y rendicion. A veces la inaccion es la accion mas sabia.',                       rev:'Estancamiento. Suelta lo que no puedes controlar.',             special:false},
+  {name:'La Muerte',         img:'la-muerte.webp',              up:'Transformacion. Algo termina para que algo mejor comience.',                           rev:'Resistencia al cambio necesario. Deja ir con gracia.',          special:false},
+  {name:'La Templanza',      img:'la-templanza.webp',           up:'Equilibrio y paciencia. La alquimia de la vida pide calma.',                           rev:'Desequilibrio. Respira y encuentra tu centro.',                 special:false},
+  {name:'El Diablo',         img:'el-diablo.webp',              up:'Cuidado con ataduras que te limitan. Reconocerlos es el primer paso.',                 rev:'Liberacion. Estas rompiendo cadenas.',                          special:true},
+  {name:'La Torre',          img:'la-torre.webp',               up:'Cambio repentino que libera. Lo que cae no era solido.',                               rev:'Miedo a un cambio necesario. Lo que evitas, persiste.',         special:false},
+  {name:'La Estrella',       img:'la-estrella.webp',            up:'Esperanza y renovacion. El universo te cuida.',                                        rev:'Desanimo temporal. La luz sigue ahi.',                          special:true},
+  {name:'La Luna',           img:'la-luna.webp',                up:'Intuicion profunda. No todo es lo que parece, confia en tu instinto.',                 rev:'Confusion. Busca claridad.',                                   special:true},
+  {name:'El Sol',            img:'el-sol.webp',                 up:'Alegria y vitalidad. Un periodo luminoso y positivo llega.',                           rev:'Exceso o optimismo bloqueado. Encuentra la medida justa.',      special:true},
+  {name:'El Juicio',         img:'el-juicio.webp',              up:'Renacimiento. Escucha el llamado de tu alma.',                                         rev:'Autocritica excesiva. Perdonante y avanza.',                    special:false},
+  {name:'El Mundo',          img:'el-mundo.webp',               up:'Completitud y logro. Un ciclo se cierra con exito. Celebra.',                          rev:'Falta de cierre. Da ese ultimo paso.',                          special:false}
+];
+
+var SPECIAL_SHOP = {
+  'La Sacerdotisa': {soldOut:true,  nameRaw:'La Sacerdotisa Tarot', price:94},
+  'La Emperatriz':  {soldOut:false, nameRaw:'La Emperatriz Tarot',  price:94},
+  'Los Enamorados': {soldOut:false, nameRaw:'Los Enamorados Tarot', price:94},
+  'El Diablo':      {soldOut:false, nameRaw:'El Diablo Tarot',      price:94},
+  'La Estrella':    {soldOut:false, nameRaw:'La Estrella Tarot',    price:94},
+  'La Luna':        {soldOut:false, nameRaw:'La Luna Tarot',        price:94},
+  'El Sol':         {soldOut:false, nameRaw:'El Sol Tarot',         price:94}
+};
+
+var TIRADAS = {
+  daily:  {title:'Tirada Diaria ☽',    labels:['Tu energia de hoy'], n:1},
+  weekly: {title:'Tirada Semanal ✦',   labels:['Pasado','Presente','Futuro'], n:3},
+  love:   {title:'Tirada de Amor ♡',   labels:['Tu en esta relacion','La otra persona','El camino juntos'], n:3}
+};
+
+var selectedType = 'daily';
+
+function selectTirada(el) {
+  document.querySelectorAll('.tirada-card').forEach(function(c){ c.classList.remove('active'); });
+  el.classList.add('active');
+  selectedType = el.dataset.type;
+  document.getElementById('readingArea').classList.remove('visible');
+}
+
+function shuffle(arr) { return arr.slice().sort(function(){ return Math.random()-0.5; }); }
+
+function doReading() {
+  var t = TIRADAS[selectedType];
+  var picked = shuffle(DECK).slice(0, t.n).map(function(c){ return {card:c, rev:Math.random()<0.38}; });
+  var row = document.getElementById('cardsRow');
+  row.innerHTML = '';
+
+  picked.forEach(function(entry, i) {
+    var card = entry.card;
+    var rev  = entry.rev;
+    var label   = t.labels[i] || ('Carta '+(i+1));
+    var meaning = rev ? card.rev : card.up;
+
+    var slot = document.createElement('div');
+    slot.className = 'card-slot';
+    slot.setAttribute('data-cardname', card.name);
+    slot.setAttribute('data-img', 'assets/tarot/'+card.img);
+
+    slot.innerHTML =
+      '<span class="card-label">'+label+'</span>'+
+      '<div class="card-flip" id="cf'+i+'" onclick="flipCard(this)">'+
+        '<div class="card-flip-inner">'+
+          '<div class="card-face card-back">✦</div>'+
+          '<div class="card-face card-front'+(rev?' reversed':'')+'">'+
+            '<img src="assets/tarot/'+card.img+'" alt="'+card.name+'" loading="lazy">'+
+            (rev?'<div class="rev-badge">INVERTIDA</div>':'')+
+            (card.special?'<div class="special-badge">★</div>':'')+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+      '<span class="card-name">'+card.name+(card.special?' ★':'')+'</span>'+
+      '<p class="card-meaning">'+meaning+'</p>'+
+      '<span class="card-hint">Pulsa para revelar ✨</span>';
+
+    row.appendChild(slot);
+  });
+
+  document.getElementById('readingTitle').textContent = t.title;
+  document.getElementById('readingArea').classList.add('visible');
+  document.getElementById('readingArea').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function flipCard(el) {
+  var wasFlipped = el.classList.contains('flipped');
+  el.classList.toggle('flipped');
+  var slot = el.closest('.card-slot');
+  slot.classList.toggle('revealed');
+  var hint = slot.querySelector('.card-hint');
+  if (hint) hint.style.display = slot.classList.contains('revealed') ? 'none' : '';
+
+  if (!wasFlipped) {
+    var cardName = slot.getAttribute('data-cardname');
+    var imgSrc   = slot.getAttribute('data-img');
+    var info = SPECIAL_SHOP[cardName];
+    if (info) {
+      setTimeout(function() {
+        openLB(cardName + ' - Tarot', imgSrc, info.price, info.nameRaw, info.soldOut);
+      }, 500);
+    }
+  }
+}
+
+function resetReading() {
+  document.getElementById('readingArea').classList.remove('visible');
+  document.getElementById('tiradas').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
