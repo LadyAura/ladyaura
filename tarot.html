@@ -382,9 +382,14 @@
     <p class="shop-sub">Cuadros de tarot premium en diamond painting 60×90 cm · Pincha para ver y reservar</p>
     <div class="tarot-shop-grid">
 
-      <div class="ts-card" onclick="openLB('Los Enamorados - Tarot','assets/tarot/los-enamorados.webp',94,'Los Enamorados Tarot',false)">
-        <img loading="lazy" src="assets/tarot/los-enamorados.webp" alt="Cuadro diamond painting Los Enamorados tarot Lady Aura">
-        <div class="ci"><h3>Los Enamorados</h3><p>Diamond painting 60×90 cm · 94 €</p></div>
+      <div class="ts-card sold-out">
+        <img loading="lazy" src="assets/tarot/los-enamorados.webp" alt="Cuadro diamond painting Los Enamorados tarot Lady Aura agotada">
+        <div class="sold-overlay">
+          <span class="so-sym">✦</span>
+          <span class="so-txt">Agotada</span>
+          <span class="so-sub">Esta pieza ya encontró su hogar</span>
+        </div>
+        <div class="ci"><h3>Los Enamorados</h3><p class="sold-notice">✦ Esta edición está agotada</p></div>
       </div>
 
       <div class="ts-card sold-out">
@@ -619,7 +624,7 @@ var DECK = [
 var SPECIAL_SHOP = {
   'La Sacerdotisa': {soldOut:true,  nameRaw:'La Sacerdotisa Tarot', price:94},
   'La Emperatriz':  {soldOut:false, nameRaw:'La Emperatriz Tarot',  price:94},
-  'Los Enamorados': {soldOut:false, nameRaw:'Los Enamorados Tarot', price:94},
+  'Los Enamorados': {soldOut:true,  nameRaw:'Los Enamorados Tarot', price:94},
   'El Diablo':      {soldOut:false, nameRaw:'El Diablo Tarot',      price:94},
   'La Estrella':    {soldOut:false, nameRaw:'La Estrella Tarot',    price:94},
   'La Luna':        {soldOut:false, nameRaw:'La Luna Tarot',        price:94},
