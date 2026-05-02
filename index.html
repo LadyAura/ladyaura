@@ -742,6 +742,155 @@ html[lang="en"] span.section-tag.lang-es {
   .lang-btn { padding: 4px 7px; font-size: 0.65rem; }
 }
 
+
+/* ── PERSONALIZADO LADY AURA ── */
+.personalizado-section {
+  padding: 6rem 8%;
+  background:
+    radial-gradient(ellipse at 70% 30%, rgba(160,63,255,0.13), transparent 50%),
+    radial-gradient(ellipse at 20% 70%, rgba(255,72,137,0.10), transparent 50%),
+    rgba(5,3,14,0.95);
+  position: relative;
+  overflow: hidden;
+}
+.personalizado-section::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23a03fff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.personalizado-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+.personalizado-card {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(160,63,255,0.4),
+    0 0 40px rgba(160,63,255,0.25),
+    0 0 80px rgba(255,72,137,0.12);
+  animation: personalGlow 4s ease-in-out infinite;
+}
+@keyframes personalGlow {
+  0%,100% { box-shadow: 0 0 0 1px rgba(160,63,255,0.4), 0 0 40px rgba(160,63,255,0.25), 0 0 80px rgba(255,72,137,0.12); }
+  50%      { box-shadow: 0 0 0 1px rgba(255,72,137,0.5), 0 0 60px rgba(255,72,137,0.30), 0 0 100px rgba(160,63,255,0.20); }
+}
+.personalizado-card img {
+  width: 100%;
+  display: block;
+  border-radius: 28px;
+  transition: transform 0.6s ease;
+}
+.personalizado-card:hover img { transform: scale(1.03); }
+.personalizado-card-label {
+  position: absolute;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(5,3,14,0.85);
+  border: 1px solid rgba(160,63,255,0.5);
+  border-radius: 999px;
+  padding: 6px 20px;
+  font-family: "Cinzel", serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: #c084fc;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+}
+.personalizado-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+.personalizado-content .section-tag { margin-bottom: 0; }
+.personalizado-content h2 {
+  font-family: "Cinzel", serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  color: #fff0ff;
+  line-height: 1.25;
+  margin: 0;
+}
+.personalizado-content h2 em {
+  font-style: normal;
+  background: linear-gradient(135deg, #ff48a0, #a03fff, #4fc3f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.personalizado-content p {
+  color: rgba(255,255,255,0.6);
+  font-size: 1rem;
+  line-height: 1.75;
+  margin: 0;
+}
+.personalizado-content p strong {
+  color: rgba(255,255,255,0.9);
+}
+.personalizado-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+.btn-personalizado {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 2.2rem;
+  background: linear-gradient(135deg, #ff48a0, #a03fff);
+  border-radius: 999px;
+  font-family: "Cinzel", serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 4px 30px rgba(160,63,255,0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
+  align-self: flex-start;
+}
+.btn-personalizado:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(160,63,255,0.6);
+}
+.personalizado-microcopy {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.38);
+  font-style: italic;
+}
+.personalizado-privacy {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  background: rgba(160,63,255,0.07);
+  border: 1px solid rgba(160,63,255,0.2);
+  border-radius: 14px;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.55;
+  margin-top: 0.3rem;
+}
+.personalizado-privacy span { font-size: 1rem; flex-shrink: 0; }
+
+@media (max-width: 768px) {
+  .personalizado-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .personalizado-content { text-align: center; }
+  .btn-personalizado { align-self: center; }
+  .personalizado-privacy { text-align: left; }
+  .personalizado-section { padding: 4rem 5%; }
+}
+
 /* ── ZODIAC TABS ── */
 .zodiac-tabs {
   display: flex;
@@ -797,6 +946,7 @@ html[lang="en"] span.section-tag.lang-es {
     <a href="tarot.html" target="_blank" rel="noopener">🔮 Tarot</a>
     <a href="#por-que"><span class="lang-es">Por qué Lady Aura</span><span class="lang-en" style="display:none;">Why Lady Aura</span></a>
     <a href="#sobre-mi"><span class="lang-es">Mi historia</span><span class="lang-en" style="display:none;">My story</span></a>
+    <a href="#personalizado"><span class="lang-es">Personalizado</span><span class="lang-en" style="display:none;">Custom</span></a>
     <a href="#contacto"><span class="lang-es">Contacto</span><span class="lang-en" style="display:none;">Contact</span><span class="lang-en" style="display:none;">Contact</span></a>
     <a href="#coleccion-agotada" id="nav-agotados"><span class="lang-es">Agotados</span><span class="lang-en" style="display:none;">Sold Out</span></a>
   </nav>
@@ -1803,6 +1953,68 @@ html[lang="en"] span.section-tag.lang-es {
 
   
   
+
+  <!-- ═══════════════════════════════════
+       PERSONALIZADO LADY AURA
+  ═══════════════════════════════════ -->
+  <section class="personalizado-section" id="personalizado" aria-labelledby="personal-h">
+    <div class="personalizado-inner">
+
+      <!-- Imagen -->
+      <div class="personalizado-card">
+        <img
+          src="assets/personalizado-lady-aura.webp"
+          alt="Retrato personalizado Lady Aura – ejemplo de arte personalizado a partir de foto"
+          loading="lazy"
+        >
+        <div class="personalizado-card-label">✦ Ejemplo real · Lady Aura ✦</div>
+      </div>
+
+      <!-- Contenido -->
+      <div class="personalizado-content">
+        <span class="section-tag">
+          <span class="lang-es">Arte exclusivo · Solo para ti</span>
+          <span class="lang-en" style="display:none;">Exclusive art · Just for you</span>
+        </span>
+
+        <h2 id="personal-h">
+          <span class="lang-es">Personalizado<br><em>Lady Aura</em></span>
+          <span class="lang-en" style="display:none;">Custom<br><em>Lady Aura</em></span>
+        </h2>
+
+        <p>
+          <span class="lang-es">Convierte tu foto en una <strong>obra mágica creada solo para ti</strong>. Este es un ejemplo de transformación artística estilo Lady Aura aplicada sobre un retrato propio. Puedes pedir tu versión como hada, diosa, sirena, reina zodiacal o fantasía celestial.</span>
+          <span class="lang-en" style="display:none;">Turn your photo into a <strong>magical artwork created just for you</strong>. This is an example of Lady Aura-style artistic transformation applied to a personal portrait. You can request your version as a fairy, goddess, mermaid, zodiac queen or celestial fantasy.</span>
+        </p>
+
+        <div class="personalizado-cta">
+          <a
+            class="btn-personalizado"
+            href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pedir%20un%20personalizado%20a%20partir%20de%20mi%20foto.%20¿Me%20cuentas%20opciones?"
+            target="_blank"
+            rel="noopener"
+            aria-label="Pedir retrato personalizado Lady Aura por WhatsApp"
+          >
+            ✨ <span class="lang-es">Quiero mi personalizado</span><span class="lang-en" style="display:none;">I want my custom artwork</span>
+          </a>
+          <p class="personalizado-microcopy">
+            <span class="lang-es">Sin compromiso. Cuéntame tu idea y te digo opciones.</span>
+            <span class="lang-en" style="display:none;">No commitment. Tell me your idea and I'll explain the options.</span>
+          </p>
+        </div>
+
+        <div class="personalizado-privacy">
+          <span>🔒</span>
+          <p>
+            <span class="lang-es">Tu imagen es privada. Nunca publicaré tu foto original ni el resultado final sin tu consentimiento expreso.</span>
+            <span class="lang-en" style="display:none;">Your image is private. I will never publish your original photo or the final result without your express consent.</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ═══════════════════════════════════
        COLECCIÓN AGOTADA
   ═══════════════════════════════════ -->
