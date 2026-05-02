@@ -125,13 +125,13 @@
 .reading-area.visible { display:block; }
 .reading-title { font-family:"Cinzel",serif; text-align:center; font-size:clamp(1.3rem,3vw,2rem); color:#ffd98a; margin-bottom:0.4rem; }
 .reading-subtitle { text-align:center; color:rgba(255,255,255,0.45); font-size:0.9rem; margin-bottom:2.5rem; }
-.cards-row { display:flex; justify-content:center; gap:2.5rem; flex-wrap:wrap; margin-bottom:3rem; }
-.card-slot { display:flex; flex-direction:column; align-items:center; gap:1rem; width:280px; animation:fadeUp 0.5s ease both; }
+.cards-row { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; margin-bottom:3rem; }
+.card-slot { display:flex; flex-direction:column; align-items:center; gap:1rem; width:320px; animation:fadeUp 0.5s ease both; }
 .card-slot:nth-child(2) { animation-delay:0.12s; }
 .card-slot:nth-child(3) { animation-delay:0.24s; }
 @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 .card-label { font-family:"Cinzel",serif; font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(160,63,255,0.9); text-align:center; }
-.card-flip { width:240px; height:360px; perspective:1000px; cursor:pointer; }
+.card-flip { width:280px; height:420px; perspective:1000px; cursor:pointer; }
 .card-flip-inner { width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:transform 0.65s cubic-bezier(0.23,1,0.32,1); }
 .card-flip.flipped .card-flip-inner { transform:rotateY(180deg); }
 .card-face { position:absolute; inset:0; border-radius:16px; backface-visibility:hidden; overflow:hidden; border:1px solid rgba(160,63,255,0.4); }
@@ -148,7 +148,7 @@
 .rev-badge { position:absolute; bottom:8px; left:50%; transform:translateX(-50%); background:rgba(255,72,137,0.85); color:#fff; font-size:0.65rem; padding:3px 10px; border-radius:999px; font-family:"Cinzel",serif; white-space:nowrap; }
 .special-badge { position:absolute; top:8px; right:8px; background:rgba(255,217,138,0.9); border-radius:999px; padding:2px 7px; font-size:0.78rem; }
 .card-name { font-family:"Cinzel",serif; font-size:1rem; color:#fff0ff; text-align:center; letter-spacing:0.05em; }
-.card-meaning { font-size:0.95rem; color:rgba(255,255,255,0.6); text-align:center; line-height:1.6; max-width:260px; display:none; }
+.card-meaning { font-size:0.95rem; color:rgba(255,255,255,0.6); text-align:center; line-height:1.6; max-width:min(280px, 85vw); display:none; }
 .card-slot.revealed .card-meaning { display:block; }
 .card-hint { font-size:0.78rem; color:rgba(160,63,255,0.6); text-align:center; font-style:italic; }
 .reading-disclaimer { text-align:center; color:rgba(255,255,255,0.3); font-size:0.85rem; font-style:italic; padding:1rem 0 0.5rem; border-top:1px solid rgba(160,63,255,0.12); max-width:600px; margin:0 auto; }
@@ -280,23 +280,74 @@
 @media(max-width:900px) {
   .tirada-grid { grid-template-columns:1fr; max-width:400px; }
   .faq-grid { grid-template-columns:1fr; }
-  .cards-row { gap:1.5rem; }
-  .card-slot { width:200px; }
-  .card-flip { width:170px; height:255px; }
+  .cards-row { gap:2rem; flex-direction:column; align-items:center; }
+  .card-slot { width:min(360px, 88vw); }
+  .card-flip { width:min(320px, 80vw); height:calc(min(320px, 80vw) * 1.5); }
   .t-lb-card { flex-direction:column; max-height:90vh; overflow-y:auto; }
   .lb-img { width:100%; height:220px; }
   .lb-info { padding:1.5rem; }
 }
 @media(max-width:600px) {
   .tarot-hero,.tirada-section,.reading-area,.tarot-shop-section,.tarot-faq,.tarot-contact { padding-left:5%; padding-right:5%; }
-  .cards-row { gap:1rem; }
-  .card-slot { width:150px; }
-  .card-flip { width:128px; height:192px; }
+  .cards-row { gap:1.8rem; flex-direction:column; align-items:center; }
+  .card-slot { width:min(340px, 90vw); }
+  .card-flip { width:min(300px, 82vw); height:calc(min(300px, 82vw) * 1.5); }
   .card-name { font-size:0.82rem; }
   .tarot-shop-grid { grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); }
   .contact-cards { flex-direction:column; align-items:center; }
   .back-bar { padding:0.6rem 1.2rem; }
 }
+
+/* ── RESPONSIVE MEJORADO TAROT ── */
+@media (max-width: 768px) {
+  .sticky-nav-wrapper .back-bar { padding: 0.5rem 1rem; gap: 0.6rem; font-size: 0.7rem; }
+  .back-bar .sep { display: none; }
+  .tarot-hero { padding: 3rem 5% 2rem; }
+  .tarot-hero h1 { font-size: clamp(1.6rem, 6vw, 2.8rem); }
+  .tirada-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto 2rem; }
+  .cards-row { gap: 2rem; flex-direction: column; align-items: center; }
+  .card-slot { width: min(360px, 88vw); }
+  .card-flip { width: min(320px, 80vw); height: calc(min(320px, 80vw) * 1.5); }
+  .tarot-shop-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .contact-cards { flex-direction: column; align-items: center; }
+  .contact-card { min-width: unset; width: 100%; max-width: 320px; }
+  .lb-img { width: 100%; height: 200px; }
+  .t-lb-card { flex-direction: column; max-height: 90vh; overflow-y: auto; }
+  .lb-info { padding: 1.2rem; }
+  .lb-title { font-size: 1.3rem; }
+  .tarot-faq, .tarot-contact, .tarot-shop-section { padding-left: 5%; padding-right: 5%; }
+  .lang-selector { margin-left: auto; }
+  .site-header { gap: 0.5rem; }
+  .header-button { display: none; }
+}
+@media (max-width: 480px) {
+  .tirada-grid { max-width: 280px; }
+  .cards-row { gap: 1.8rem; flex-direction: column; align-items: center; }
+  .card-slot { width: min(340px, 90vw); }
+  .card-flip { width: min(300px, 82vw); height: calc(min(300px, 82vw) * 1.5); }
+  .card-name { font-size: 0.8rem; }
+  .tarot-shop-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+  .btn-draw { padding: 0.85rem 2rem; font-size: 0.9rem; }
+  .tarot-hero h1 { font-size: 1.5rem; }
+  .lb-size-selector { flex-wrap: wrap; }
+}
+
+
+/* ── IDIOMA TAROT ── */
+.lang-en { display: none !important; }
+html[lang="en"] .lang-en { display: revert !important; }
+html[lang="en"] .lang-es { display: none !important; }
+h1.lang-en, h2.lang-en, h3.lang-en, p.lang-en, div.lang-en {
+  display: none !important;
+}
+html[lang="en"] h1.lang-en, html[lang="en"] h2.lang-en,
+html[lang="en"] h3.lang-en, html[lang="en"] p.lang-en,
+html[lang="en"] div.lang-en { display: block !important; }
+html[lang="en"] h1.lang-es, html[lang="en"] h2.lang-es,
+html[lang="en"] h3.lang-es, html[lang="en"] p.lang-es,
+html[lang="en"] div.lang-es { display: none !important; }
+
 </style>
 </head>
 <body style="background:#05050f;color:rgba(255,255,255,0.75);font-family:'Cormorant Garamond',Georgia,serif;margin:0;padding:0;min-height:100vh;">
@@ -306,9 +357,9 @@
 <!-- STICKY NAV -->
 <div class="sticky-nav-wrapper">
   <div class="back-bar">
-    <a href="index.html">← Volver a Lady Aura</a>
+    <a href="index.html"><span class="lang-es">← Volver a Lady Aura</span><span class="lang-en" style="display:none;">← Back to Lady Aura</span></a>
     <span class="sep">·</span>
-    <a href="index.html#galeria">Ver cuadros diamond painting ✨</a>
+    <a href="index.html#galeria"><span class="lang-es">Ver cuadros diamond painting ✨</span><span class="lang-en" style="display:none;">See diamond painting kits ✨</span></a>
     <span class="sep">·</span>
     <a href="https://wa.me/34621355638" target="_blank" rel="noopener">💬 WhatsApp</a>
   </div>
@@ -325,7 +376,12 @@
       <a href="index.html#sobre-mi">Mi historia</a>
       <a href="#contacto">Contacto</a>
     </nav>
-    <a class="header-button" href="index.html#galeria">Ver diseños ✨</a>
+    <a class="header-button" href="index.html#galeria"><span class="lang-es">Ver diseños ✨</span><span class="lang-en" style="display:none;">See designs ✨</span></a>
+    <div class="lang-selector" role="group" aria-label="Selector de idioma" style="display:flex;align-items:center;gap:0;background:rgba(255,255,255,0.07);border:1px solid rgba(160,63,255,0.4);border-radius:999px;overflow:hidden;font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.12em;flex-shrink:0;">
+      <button class="lang-btn active" id="btn-es" onclick="setLangTarot('es')" style="padding:5px 12px;background:linear-gradient(135deg,rgba(160,63,255,0.5),rgba(255,72,137,0.5));color:#fff;border:none;cursor:pointer;font-family:'Cinzel',serif;font-size:0.72rem;">ES</button>
+      <span style="color:rgba(160,63,255,0.4);font-size:0.65rem;">|</span>
+      <button class="lang-btn" id="btn-en" onclick="setLangTarot('en')" style="padding:5px 12px;background:transparent;color:rgba(255,255,255,0.45);border:none;cursor:pointer;font-family:'Cinzel',serif;font-size:0.72rem;">EN</button>
+    </div>
   </header>
 </div>
 
@@ -333,53 +389,55 @@
 
   <!-- HERO -->
   <section class="tarot-hero">
-    <span class="tarot-badge">✦ Gratis · Sin registro · En español ✦</span>
-    <h1>Tarot Lady Aura<br>Echa las cartas gratis 🔮</h1>
-    <p class="hero-sub">Deja que el universo hable. Elige tu tirada, baraja las cartas y descubre el mensaje que tienen para ti hoy.</p>
-    <a href="#tiradas" class="btn primary" style="font-size:1rem;padding:0.9rem 2.2rem;">✨ Empezar mi tirada</a>
+    <span class="tarot-badge"><span class="lang-es">✦ Gratis · Sin registro · En español ✦</span><span class="lang-en" style="display:none;">✦ Free · No sign-up · In English ✦</span></span>
+    <h1 class="lang-es">Tarot Lady Aura<br>Echa las cartas gratis 🔮</h1>
+    <h1 class="lang-en" style="display:none;">Lady Aura Tarot<br>Free card reading 🔮</h1>
+    <p class="hero-sub lang-es">Deja que el universo hable. Elige tu tirada, baraja las cartas y descubre el mensaje que tienen para ti hoy.</p>
+    <p class="hero-sub lang-en" style="display:none;">Let the universe speak. Choose your spread, shuffle the cards and discover the message they hold for you today.</p>
+    <a href="#tiradas" class="btn primary" style="font-size:1rem;padding:0.9rem 2.2rem;"><span class="lang-es">✨ Empezar mi tirada</span><span class="lang-en" style="display:none;">✨ Start my reading</span></a>
   </section>
 
   <!-- TIRADA SELECTOR -->
   <section class="tirada-section" id="tiradas">
-    <h2>¿Que tirada quieres?</h2>
-    <p class="tirada-sub">Elige una y pulsa el boton para barajar las cartas 🌙</p>
+    <h2><span class="lang-es">¿Que tirada quieres?</span><span class="lang-en" style="display:none;">Which spread do you want?</span></h2>
+    <p class="tirada-sub"><span class="lang-es">Elige una y pulsa el boton para barajar las cartas 🌙</span><span class="lang-en" style="display:none;">Choose one and press the button to shuffle the cards 🌙</span></p>
     <div class="tirada-grid">
       <div class="tirada-card active" data-type="daily" onclick="selectTirada(this)">
         <span class="tirada-icon">☽</span>
-        <span class="tirada-name">Tirada Diaria</span>
-        <p class="tirada-desc">La energia que te acompana hoy. Una carta, un mensaje directo.</p>
+        <span class="tirada-name"><span class="lang-es">Tirada Diaria</span><span class="lang-en" style="display:none;">Daily Reading</span></span>
+        <p class="tirada-desc"><span class="lang-es">La energia que te acompana hoy. Una carta, un mensaje directo.</span><span class="lang-en" style="display:none;">The energy accompanying you today. One card, one direct message.</span></p>
         <span class="tirada-count">1 carta</span>
       </div>
       <div class="tirada-card" data-type="weekly" onclick="selectTirada(this)">
         <span class="tirada-icon">✦</span>
-        <span class="tirada-name">Tirada Semanal</span>
-        <p class="tirada-desc">Pasado, presente y futuro de tu semana. Tres perspectivas.</p>
+        <span class="tirada-name"><span class="lang-es">Tirada Semanal</span><span class="lang-en" style="display:none;">Weekly Reading</span></span>
+        <p class="tirada-desc"><span class="lang-es">Pasado, presente y futuro de tu semana. Tres perspectivas.</span><span class="lang-en" style="display:none;">Past, present and future of your week. Three perspectives.</span></p>
         <span class="tirada-count">3 cartas</span>
       </div>
       <div class="tirada-card" data-type="love" onclick="selectTirada(this)">
         <span class="tirada-icon">♡</span>
-        <span class="tirada-name">Tirada de Amor</span>
-        <p class="tirada-desc">Tu, la otra persona y el camino de vuestra relacion.</p>
+        <span class="tirada-name"><span class="lang-es">Tirada de Amor</span><span class="lang-en" style="display:none;">Love Reading</span></span>
+        <p class="tirada-desc"><span class="lang-es">Tu, la otra persona y el camino de vuestra relacion.</span><span class="lang-en" style="display:none;">You, the other person and the path of your relationship.</span></p>
         <span class="tirada-count">3 cartas</span>
       </div>
     </div>
-    <button class="btn-draw" onclick="doReading()">🔮 Barajar y echar las cartas</button>
+    <button class="btn-draw" onclick="doReading()"><span class="lang-es">🔮 Barajar y echar las cartas</span><span class="lang-en" style="display:none;">🔮 Shuffle and draw the cards</span></button>
   </section>
 
   <!-- READING AREA -->
   <section class="reading-area" id="readingArea">
     <h2 class="reading-title" id="readingTitle"></h2>
-    <p class="reading-subtitle">Pulsa cada carta para revelar su mensaje ✨</p>
+    <p class="reading-subtitle"><span class="lang-es">Pulsa cada carta para revelar su mensaje ✨</span><span class="lang-en" style="display:none;">Tap each card to reveal its message ✨</span></p>
     <div class="cards-row" id="cardsRow"></div>
-    <p class="reading-disclaimer">🌙 El tarot es una herramienta de reflexion y autoconocimiento. Las cartas son un espejo de tu energia interior, no un oraculo definitivo. Tu tienes el poder de crear tu camino.</p>
-    <button class="btn-nueva" onclick="resetReading()">✕ Nueva tirada</button>
+    <p class="reading-disclaimer"><span class="lang-es">🌙 El tarot es una herramienta de reflexion y autoconocimiento. Las cartas son un espejo de tu energia interior, no un oraculo definitivo. Tu tienes el poder de crear tu camino.</span><span class="lang-en" style="display:none;">🌙 Tarot is a tool for reflection and self-knowledge. The cards are a mirror of your inner energy, not a definitive oracle. You have the power to create your own path.</span></p>
+    <button class="btn-nueva" onclick="resetReading()"><span class="lang-es">✕ Nueva tirada</span><span class="lang-en" style="display:none;">✕ New reading</span></button>
   </section>
 
   <!-- CUADROS TAROT -->
   <section class="tarot-shop-section" aria-labelledby="sh">
     <span style="display:block;text-align:center;margin-bottom:0.5rem;font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,217,138,0.65);">Diamond Painting · Coleccion Tarot</span>
-    <h2 id="sh">Lleva el tarot a tu pared 💎</h2>
-    <p class="shop-sub">Cuadros de tarot premium en diamond painting 60×90 cm · Pincha para ver y reservar</p>
+    <h2 id="sh"><span class="lang-es">Lleva el tarot a tu pared 💎</span><span class="lang-en" style="display:none;">Bring tarot to your wall 💎</span></h2>
+    <p class="shop-sub"><span class="lang-es">Cuadros de tarot premium en diamond painting 60×90 cm · Pincha para ver y reservar</span><span class="lang-en" style="display:none;">Premium tarot diamond painting kits 60×90 cm · Click to view and reserve</span></p>
     <div class="tarot-shop-grid">
 
       <div class="ts-card sold-out">
@@ -429,29 +487,29 @@
 
     </div>
     <div class="tarot-shop-cta">
-      <p style="color:rgba(255,255,255,0.38);font-size:0.88rem;">Pre-reserva sin pago · Sin compromiso · Envio gratuito 🌙</p>
-      <a href="index.html#galeria" class="btn primary">Ver todos los cuadros ✨</a>
+      <p style="color:rgba(255,255,255,0.38);font-size:0.88rem;"><span class="lang-es">Pre-reserva sin pago · Sin compromiso · Envio gratuito 🌙</span><span class="lang-en" style="display:none;">No-payment pre-order · No commitment · Free shipping 🌙</span></p>
+      <a href="index.html#galeria" class="btn primary"><span class="lang-es">Ver todos los cuadros ✨</span><span class="lang-en" style="display:none;">See all designs ✨</span></a>
     </div>
   </section>
 
   <!-- FAQ -->
   <section class="tarot-faq" aria-labelledby="fh">
-    <h2 id="fh">Preguntas sobre el Tarot Lady Aura</h2>
+    <h2 id="fh"><span class="lang-es">Preguntas sobre el Tarot Lady Aura</span><span class="lang-en" style="display:none;">Questions about Lady Aura Tarot</span></h2>
     <div class="faq-grid">
-      <div class="faq-item"><h3>El tarot es gratis?</h3><p>Si, completamente gratis y sin registro. Puedes hacer todas las tiradas que quieras, cuando quieras.</p></div>
-      <div class="faq-item"><h3>Que tiradas hay disponibles?</h3><p>Tirada diaria (1 carta), semanal (3 cartas) y de amor (3 cartas: tu, la otra persona y el camino juntos).</p></div>
-      <div class="faq-item"><h3>Que significa una carta invertida?</h3><p>Matiza el mensaje normal. Puede indicar bloqueos o retos internos que necesitan atencion.</p></div>
-      <div class="faq-item"><h3>El tarot predice el futuro?</h3><p>Es una herramienta de reflexion y autoconocimiento, no una prediccion exacta. Las cartas son un espejo de tu energia.</p></div>
-      <div class="faq-item"><h3>Las cartas con estrella son especiales?</h3><p>Si, tambien existen como cuadros de diamond painting premium en Lady Aura. Arte real que puedes tener en casa.</p></div>
-      <div class="faq-item"><h3>Puedo comprar un cuadro de tarot?</h3><p>Si, pre-reserva por WhatsApp sin pago previo y sin compromiso. Pincha cualquier cuadro para ver el precio y reservar.</p></div>
+      <div class="faq-item"><h3><span class="lang-es">El tarot es gratis?</span><span class="lang-en" style="display:none;">Is the tarot free?</span></h3><p class="lang-es">Si, completamente gratis y sin registro. Puedes hacer todas las tiradas que quieras, cuando quieras.</p><p class="lang-en" style="display:none;">Yes, completely free and no sign-up needed. You can do as many readings as you like, whenever you want.</p></div>
+      <div class="faq-item"><h3><span class="lang-es">Que tiradas hay disponibles?</span><span class="lang-en" style="display:none;">What spreads are available?</span></h3><p class="lang-es">Tirada diaria (1 carta), semanal (3 cartas) y de amor (3 cartas: tu, la otra persona y el camino juntos).</p><p class="lang-en" style="display:none;">Daily reading (1 card), weekly (3 cards) and love (3 cards: you, the other person and the path together).</p></div>
+      <div class="faq-item"><h3><span class="lang-es">Que significa una carta invertida?</span><span class="lang-en" style="display:none;">What does a reversed card mean?</span></h3><p class="lang-es">Matiza el mensaje normal. Puede indicar bloqueos o retos internos que necesitan atencion.</p><p class="lang-en" style="display:none;">It nuances the normal message. It may indicate inner blocks or challenges that need attention.</p></div>
+      <div class="faq-item"><h3><span class="lang-es">El tarot predice el futuro?</span><span class="lang-en" style="display:none;">Does tarot predict the future?</span></h3><p class="lang-es">Es una herramienta de reflexion y autoconocimiento, no una prediccion exacta. Las cartas son un espejo de tu energia.</p><p class="lang-en" style="display:none;">It is a tool for reflection and self-knowledge, not an exact prediction. The cards are a mirror of your energy.</p></div>
+      <div class="faq-item"><h3><span class="lang-es">Las cartas con estrella son especiales?</span><span class="lang-en" style="display:none;">Are starred cards special?</span></h3><p class="lang-es">Si, tambien existen como cuadros de diamond painting premium en Lady Aura. Arte real que puedes tener en casa.</p><p class="lang-en" style="display:none;">Yes, they also exist as premium diamond painting kits at Lady Aura. Real art you can have at home.</p></div>
+      <div class="faq-item"><h3><span class="lang-es">Puedo comprar un cuadro de tarot?</span><span class="lang-en" style="display:none;">Can I buy a tarot diamond painting kit?</span></h3><p class="lang-es">Si, pre-reserva por WhatsApp sin pago previo y sin compromiso. Pincha cualquier cuadro para ver el precio y reservar.</p><p class="lang-en" style="display:none;">Yes, pre-order via WhatsApp with no upfront payment and no commitment. Click any kit to see the price and reserve.</p></div>
     </div>
   </section>
 
   <!-- CONTACTO -->
   <section id="contacto" class="tarot-contact" aria-labelledby="ch">
     <span style="display:block;margin-bottom:0.5rem;font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,217,138,0.65);">Contacto</span>
-    <h2 id="ch">Sigueme y contactame ✦</h2>
-    <p class="sub">Tienes dudas sobre los cuadros o quieres pre-reservar? Escribeme directamente 💜</p>
+    <h2 id="ch"><span class="lang-es">Sigueme y contactame ✦</span><span class="lang-en" style="display:none;">Follow me & get in touch ✦</span></h2>
+    <p class="sub"><span class="lang-es">Tienes dudas sobre los cuadros o quieres pre-reservar? Escribeme directamente 💜</span><span class="lang-en" style="display:none;">Any questions about the kits or want to pre-order? Message me directly 💜</span></p>
     <div class="contact-cards">
       <a class="contact-card" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20vengo%20del%20Tarot%20y%20quiero%20saber%20mas" target="_blank" rel="noopener">
         <span class="icon">💬</span><div><h3>WhatsApp</h3><p>+34 621 35 56 38</p></div>
@@ -470,7 +528,7 @@
       </a>
     </div>
     <div style="margin-top:2.5rem;">
-      <a href="index.html" class="btn secondary">← Volver a la tienda de cuadros</a>
+      <a href="index.html" class="btn secondary"><span class="lang-es">← Volver a la tienda de cuadros</span><span class="lang-en" style="display:none;">← Back to the shop</span></a>
     </div>
   </section>
 
@@ -501,8 +559,8 @@
 
 <!-- FOOTER -->
 <footer class="tarot-footer" style="position:relative;z-index:5;">
-  <p>© 2026 <a href="index.html">Lady Aura</a> · <strong>Tarot Gratis Online en Español</strong> · Diamond Painting Premium · Valencia, España 💜</p>
-  <p style="margin-top:0.3rem;"><a href="index.html">Tienda de cuadros</a> · <a href="tarot.html">Tarot gratis</a> · <a href="https://wa.me/34621355638" target="_blank" rel="noopener">WhatsApp</a></p>
+  <p><span class="lang-es">© 2026 <a href="index.html">Lady Aura</a> · <strong>Tarot Gratis Online en Español</strong> · Diamond Painting Premium · Valencia, España 💜</span><span class="lang-en" style="display:none;">© 2026 <a href="index.html">Lady Aura</a> · <strong>Free Online Tarot</strong> · Diamond Painting Premium · Valencia, Spain 💜</span></p>
+  <p style="margin-top:0.3rem;"><a href="index.html">Tienda de cuadros</a> · <a href="tarot.html"><span class="lang-es">Tarot gratis</span><span class="lang-en" style="display:none;">Free tarot</span></a> · <a href="https://wa.me/34621355638" target="_blank" rel="noopener">WhatsApp</a></p>
 </footer>
 
 <script>
@@ -632,10 +690,39 @@ var SPECIAL_SHOP = {
 };
 
 var TIRADAS = {
-  daily:  {title:'Tirada Diaria ☽',    labels:['Tu energia de hoy'], n:1},
-  weekly: {title:'Tirada Semanal ✦',   labels:['Pasado','Presente','Futuro'], n:3},
-  love:   {title:'Tirada de Amor ♡',   labels:['Tu en esta relacion','La otra persona','El camino juntos'], n:3}
+  daily:  {
+    title_es:'Tirada Diaria ☽',    title_en:'Daily Reading ☽',
+    labels_es:['Tu energia de hoy'], labels_en:['Your energy today'], n:1
+  },
+  weekly: {
+    title_es:'Tirada Semanal ✦',   title_en:'Weekly Reading ✦',
+    labels_es:['Pasado','Presente','Futuro'], labels_en:['Past','Present','Future'], n:3
+  },
+  love: {
+    title_es:'Tirada de Amor ♡',   title_en:'Love Reading ♡',
+    labels_es:['Tu en esta relacion','La otra persona','El camino juntos'],
+    labels_en:['You in this relationship','The other person','The path together'], n:3
+  }
 };
+
+
+var TAROT_EN = {
+  'El Loco':'The Fool','El Mago':'The Magician','La Sacerdotisa':'The High Priestess',
+  'La Emperatriz':'The Empress','El Emperador':'The Emperor','El Sumo Sacerdote':'The Hierophant',
+  'Los Enamorados':'The Lovers','El Carro':'The Chariot','La Fuerza':'Strength',
+  'El Ermitano':'The Hermit','La Rueda':'Wheel of Fortune','La Justicia':'Justice',
+  'El Colgado':'The Hanged Man','La Muerte':'Death','La Templanza':'Temperance',
+  'El Diablo':'The Devil','La Torre':'The Tower','La Estrella':'The Star',
+  'La Luna':'The Moon','El Sol':'The Sun','El Juicio':'Judgement','El Mundo':'The World'
+};
+
+
+var UP_EN = ["New beginnings and adventure. The universe invites you to trust and take the leap.", "You have everything you need. Now is the time to manifest your desires with determination.", "Trust your intuition. The answer is already inside you, listen to it.", "Abundance, creativity and fertility. Nurture your projects and relationships.", "Structure and stability. Take the reins of your life with firmness.", "Seek guidance in collective wisdom. There is something to learn from tradition.", "Love, choice and harmony. An important heart decision is approaching.", "Victory through determination. Stay focused and you will reach your goal.", "Inner courage and patience. Your greatest power lies in calm and compassion.", "Introspection and inner search. A moment of solitude will bring clarity.", "The cycles are changing. Something new and positive is in motion.", "Balance, truth and karma. The consequences of your actions are fair.", "Pause and surrender. Sometimes inaction is the wisest action.", "Transformation and closing cycles. Something ends so something better can begin.", "Balance, moderation and patience. The alchemy of life calls for calm.", "Beware of attachments or habits that limit you. Recognising them is the first step.", "Sudden change that liberates. What falls was not solid.", "Hope, healing and renewal. The universe is watching over you.", "Deep intuition and mystery. Not everything is as it seems. Trust your instinct.", "Joy, success and vitality. A luminous and positive period is coming.", "Rebirth and awakening. Listen to the call of your soul.", "Completion and achievement. A cycle closes successfully. Celebrate."];
+var REV_EN = ["Recklessness or hasty decisions. Take a moment before acting.", "Blocked energy or unexplored talents. Review what is holding you back.", "Disconnection with your inner self. Seek a moment of silence and reflection.", "Creative block or excessive dependency. Reclaim your autonomy.", "Excessive rigidity or loss of control. Seek balance.", "Dogmatism or following rules that no longer serve. Question with love.", "Internal or external disagreement. Clarify your values before choosing.", "Lack of direction or control. Reorganise your priorities.", "Inner doubts or excessive use of force. Trust yourself more.", "Unwanted isolation. Seek balance between being alone and connecting.", "Resistance to change. What does not flow, stagnates.", "Injustice or lack of responsibility. Review your part in the situation.", "Stagnation through resistance. Release what you cannot control.", "Resistance to necessary change. Let go with grace.", "Imbalance or impatience. Breathe and find your centre.", "Liberation. You are breaking chains that no longer belong to you.", "Fear of necessary change. What you avoid, persists.", "Temporary discouragement. The light is still there even if you cannot see it now.", "Confusion or fears distorting reality. Seek clarity.", "Excess or blocked optimism. Find the right measure.", "Excessive self-criticism. Forgive yourself and move forward.", "Lack of closure or stopping halfway. Take that last step."];
+
+function getLang() {
+  return document.documentElement.getAttribute('lang') || localStorage.getItem('ladyaura-lang') || 'es';
+}
 
 var selectedType = 'daily';
 
@@ -650,6 +737,8 @@ function shuffle(arr) { return arr.slice().sort(function(){ return Math.random()
 
 function doReading() {
   var t = TIRADAS[selectedType];
+  var lang = getLang();
+  var isEN = lang === 'en';
   var picked = shuffle(DECK).slice(0, t.n).map(function(c){ return {card:c, rev:Math.random()<0.38}; });
   var row = document.getElementById('cardsRow');
   row.innerHTML = '';
@@ -657,8 +746,10 @@ function doReading() {
   picked.forEach(function(entry, i) {
     var card = entry.card;
     var rev  = entry.rev;
-    var label   = t.labels[i] || ('Carta '+(i+1));
-    var meaning = rev ? card.rev : card.up;
+    var labels  = isEN ? t.labels_en : t.labels_es;
+    var label   = labels[i] || (isEN ? 'Card '+(i+1) : 'Carta '+(i+1));
+    var cardIdx = DECK.indexOf(card);
+    var meaning = isEN ? (rev ? REV_EN[cardIdx] : UP_EN[cardIdx]) : (rev ? card.rev : card.up);
 
     var slot = document.createElement('div');
     slot.className = 'card-slot';
@@ -679,12 +770,12 @@ function doReading() {
       '</div>'+
       '<span class="card-name">'+card.name+(card.special?' ★':'')+'</span>'+
       '<p class="card-meaning">'+meaning+'</p>'+
-      '<span class="card-hint">Pulsa para revelar ✨</span>';
+      '<span class="card-hint">' + (isEN ? 'Tap to reveal ✨' : 'Pulsa para revelar ✨') + '</span>';
 
     row.appendChild(slot);
   });
 
-  document.getElementById('readingTitle').textContent = t.title;
+  document.getElementById('readingTitle').textContent = isEN ? t.title_en : t.title_es;
   document.getElementById('readingArea').classList.add('visible');
   document.getElementById('readingArea').scrollIntoView({behavior:'smooth', block:'start'});
 }
@@ -705,5 +796,45 @@ function resetReading() {
   document.getElementById('tiradas').scrollIntoView({behavior:'smooth'});
 }
 </script>
+
+<script>
+/* ── SELECTOR ES/EN TAROT ── */
+function setLangTarot(lang) {
+  var isEN = lang === 'en';
+  document.documentElement.setAttribute('lang', lang);
+  document.querySelectorAll('.lang-es').forEach(function(el){ el.style.display = isEN ? 'none' : ''; });
+  document.querySelectorAll('.lang-en').forEach(function(el){ el.style.display = isEN ? '' : 'none'; });
+  document.getElementById('btn-es').classList.toggle('active', !isEN);
+  document.getElementById('btn-en').classList.toggle('active', isEN);
+  document.getElementById('btn-es').style.background = isEN ? 'transparent' : 'linear-gradient(135deg,rgba(160,63,255,0.5),rgba(255,72,137,0.5))';
+  document.getElementById('btn-es').style.color = isEN ? 'rgba(255,255,255,0.45)' : '#fff';
+  document.getElementById('btn-en').style.background = isEN ? 'linear-gradient(135deg,rgba(160,63,255,0.5),rgba(255,72,137,0.5))' : 'transparent';
+  document.getElementById('btn-en').style.color = isEN ? '#fff' : 'rgba(255,255,255,0.45)';
+
+  /* Traducir card-hint dinámico */
+  document.querySelectorAll('.card-hint').forEach(function(el){
+    el.textContent = isEN ? 'Tap to reveal ✨' : 'Pulsa para revelar ✨';
+  });
+  /* Botón nueva tirada */
+  var btn = document.querySelector('.btn-nueva');
+  if (btn) btn.innerHTML = isEN ? '✕ New reading' : '✕ Nueva tirada';
+
+  document.title = isEN
+    ? 'Free Online Tarot | Love, Weekly & Daily Readings | Lady Aura'
+    : 'Tarot Gratis Online en Español | Tiradas de Amor, Semanal y Diaria | Lady Aura';
+
+  localStorage.setItem('ladyaura-lang', lang);
+  /* Si hay una tirada visible, re-dibujarla en el nuevo idioma */
+  if (document.getElementById('readingArea').classList.contains('visible')) {
+    doReading();
+  }
+}
+/* Restaurar idioma */
+(function(){
+  var saved = localStorage.getItem('ladyaura-lang');
+  if (saved === 'en') { setTimeout(function(){ setLangTarot('en'); }, 50); }
+})();
+</script>
+
 </body>
 </html>
