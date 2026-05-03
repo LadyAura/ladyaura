@@ -752,17 +752,17 @@ function startTransform(){
   const fit=document.getElementById('fitChk').checked;
   const imgW=loadedImg.width, imgH=loadedImg.height;
   let dw,dh,dx,dy;
-  if(fit || cfg.fixedCols){
-    // FIT: imagen completa sin recortar, centrada
-    const scale=Math.min(dotW/imgW, dotH/imgH);
-    dw=Math.round(imgW*scale); dh=Math.round(imgH*scale);
+  // SIEMPRE usar crop (llenar todo el área) igual que la preview original
+  // Así el patrón muestra exactamente lo mismo que el original
+  const scale=Math.max(dotW/imgW, dotH/imgH);
+  dw=Math.round(imgW*scale); dh=Math.round(imgH*scale);
+  dx=Math.round((dotW-dw)/2); dy=Math.round((dotH-dh)/2);
+  if(fit){
+    // Solo si el usuario activa fit: ajustar sin recortar
+    const scaleFit=Math.min(dotW/imgW, dotH/imgH);
+    dw=Math.round(imgW*scaleFit); dh=Math.round(imgH*scaleFit);
     dx=Math.round((dotW-dw)/2); dy=Math.round((dotH-dh)/2);
     tc.fillStyle='#ffffff'; tc.fillRect(0,0,dotW,dotH);
-  } else {
-    // CROP: llena todo el área recortando lo que sobra
-    const scale=Math.max(dotW/imgW, dotH/imgH);
-    dw=Math.round(imgW*scale); dh=Math.round(imgH*scale);
-    dx=Math.round((dotW-dw)/2); dy=Math.round((dotH-dh)/2);
   }
   // loadedImg es un canvas offscreen — drawImage desde canvas nunca da CORS
   tc.drawImage(loadedImg,dx,dy,dw,dh);
