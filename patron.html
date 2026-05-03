@@ -741,6 +741,16 @@ function startTransform(){
     G.dynStep=STEP;
   }
 
+  // Ajustar cols/rows al aspect ratio de la imagen para evitar recortes
+  const imgAR = loadedImg.width / loadedImg.height;
+  const areaAR = G.cols / G.rows;
+  if(imgAR > areaAR){
+    // imagen más ancha — reducir filas
+    G.rows = Math.round(G.cols / imgAR);
+  } else {
+    // imagen más alta — reducir columnas
+    G.cols = Math.round(G.rows * imgAR);
+  }
   const dotW=G.cols*G.dynStep, dotH=G.rows*G.dynStep;
   G.offX=Math.floor((G.totalW-dotW)/2);
   G.offY=Math.floor((G.totalH-dotH)/2);
@@ -749,23 +759,8 @@ function startTransform(){
   const tmp=document.createElement('canvas');
   tmp.width=dotW; tmp.height=dotH;
   const tc=tmp.getContext('2d',{willReadFrequently:true});
-  const fit=document.getElementById('fitChk').checked;
-  const imgW=loadedImg.width, imgH=loadedImg.height;
-  let dw,dh,dx,dy;
-  // SIEMPRE usar crop (llenar todo el área) igual que la preview original
-  // Así el patrón muestra exactamente lo mismo que el original
-  const scale=Math.max(dotW/imgW, dotH/imgH);
-  dw=Math.round(imgW*scale); dh=Math.round(imgH*scale);
-  dx=Math.round((dotW-dw)/2); dy=Math.round((dotH-dh)/2);
-  if(fit){
-    // Solo si el usuario activa fit: ajustar sin recortar
-    const scaleFit=Math.min(dotW/imgW, dotH/imgH);
-    dw=Math.round(imgW*scaleFit); dh=Math.round(imgH*scaleFit);
-    dx=Math.round((dotW-dw)/2); dy=Math.round((dotH-dh)/2);
-    tc.fillStyle='#ffffff'; tc.fillRect(0,0,dotW,dotH);
-  }
-  // loadedImg es un canvas offscreen — drawImage desde canvas nunca da CORS
-  tc.drawImage(loadedImg,dx,dy,dw,dh);
+  // cols/rows ya tienen el aspect ratio de la imagen — escalar directo sin recorte
+  tc.drawImage(loadedImg, 0, 0, dotW, dotH);
 
   // getImageData nunca falla aquí porque loadedImg es un canvas local (DataURL)
   const srcData=tc.getImageData(0,0,dotW,dotH).data;
