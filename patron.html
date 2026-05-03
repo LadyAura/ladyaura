@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💎 DMC Lady Aura — Generador de Patrones</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a18;--card:#12122a;--card2:#1a1a38;--brd:rgba(200,160,255,0.2);
+  --text:#f0eaff;--muted:#9988bb;--gold:#f5c842;--rose:#ff6eb4;
+  --purple:#c084fc;--dark-purple:#7c3aed;--mint:#6affda;
+  --r:18px;--rs:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;padding:1.2rem;min-height:100vh;
+  background-image:radial-gradient(ellipse at 20% 20%,rgba(124,58,237,0.15) 0%,transparent 60%),
+  radial-gradient(ellipse at 80% 80%,rgba(255,110,180,0.10) 0%,transparent 60%);}
+
+h1{text-align:center;font-family:'Cinzel Decorative',serif;font-size:clamp(16px,4vw,26px);
+  padding:.8rem 0 .3rem;background:linear-gradient(135deg,var(--gold),var(--rose),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.3;}
+.sub{text-align:center;font-size:12px;color:var(--muted);margin-bottom:1.2rem;}
+
+.card{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:1.1rem;margin-bottom:1rem;
+  box-shadow:0 4px 24px rgba(0,0,0,0.4);}
+.ct{font-size:11px;font-weight:800;color:var(--gold);margin-bottom:10px;letter-spacing:.08em;text-transform:uppercase;}
+
+button{border:none;border-radius:var(--rs);padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer;
+  transition:all .2s;font-family:'Nunito',sans-serif;}
+button:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.3);}
+button:disabled{opacity:.3;cursor:not-allowed;transform:none!important;}
+.bp{background:linear-gradient(135deg,var(--dark-purple),var(--rose));color:#fff;}
+.bt{background:linear-gradient(135deg,#059669,#10b981);color:#fff;}
+.bg{background:linear-gradient(135deg,var(--gold),#f97316);color:#0a0a18;}
+.bs{background:var(--card2);color:var(--muted);border:1px solid var(--brd);font-size:11px;padding:6px 12px;}
+
+select{background:var(--card2);color:var(--text);border:1px solid var(--brd);border-radius:var(--rs);
+  padding:8px 12px;font-size:13px;font-family:'Nunito',sans-serif;cursor:pointer;}
+select:focus{outline:none;border-color:var(--purple);}
+
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px;}
+
+.drop{border:2px dashed var(--brd);border-radius:var(--r);padding:2rem 1rem;text-align:center;cursor:pointer;
+  background:var(--card);transition:all .25s;position:relative;overflow:hidden;}
+.drop::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(192,132,252,0.05),rgba(255,110,180,0.05));
+  opacity:0;transition:opacity .25s;}
+.drop:hover::before,.drop.drag::before{opacity:1;}
+.drop:hover,.drop.drag{border-color:var(--purple);background:var(--card2);}
+.drop-icon{font-size:36px;margin-bottom:8px;display:block;}
+.drop strong{font-size:14px;display:block;margin-bottom:4px;}
+.drop span{font-size:12px;color:var(--muted);}
+#fi{display:none;}
+
+#sb{text-align:center;padding:7px;font-size:13px;min-height:22px;border-radius:10px;margin-bottom:8px;font-weight:600;}
+#sb.err{background:rgba(255,80,80,.15);color:#ff8080;}
+#sb.ok{background:rgba(106,255,218,.1);color:#6affda;}
+#sb.info{color:var(--muted);}
+
+.prog-wrap{background:var(--card2);border-radius:99px;height:7px;margin-bottom:.8rem;display:none;overflow:hidden;}
+.prog-bar{height:100%;background:linear-gradient(90deg,var(--dark-purple),var(--rose),var(--gold));border-radius:99px;width:0;transition:width .15s;}
+
+/* Preview panels */
+.pp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+@media(max-width:520px){.pp{grid-template-columns:1fr;}}
+.pc{background:#0d0d20;border:1px solid var(--brd);border-radius:var(--r);overflow:hidden;}
+.pl{font-size:11px;color:var(--muted);padding:6px 12px;background:var(--card);font-weight:700;}
+.pc canvas{width:100%;display:block;}
+
+/* Selection box */
+#selBox{display:none;position:absolute;border:2px solid var(--purple);background:rgba(192,132,252,0.15);pointer-events:none;box-sizing:border-box;}
+
+/* Pages grid */
+.pg{display:grid;gap:10px;margin-bottom:1rem;}
+.pgc{background:#0d0d20;border:1px solid var(--brd);border-radius:var(--r);overflow:hidden;}
+.pgl{font-size:11px;color:var(--muted);padding:6px 12px;background:var(--card);display:flex;justify-content:space-between;align-items:center;font-weight:700;}
+.pgc canvas{width:100%;display:block;}
+
+/* Download section */
+.dls{background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(255,110,180,0.10));
+  border:1px solid rgba(200,160,255,0.3);border-radius:var(--r);padding:1.2rem;text-align:center;margin-bottom:1rem;}
+.dls p{font-size:11px;color:var(--muted);margin-top:8px;}
+
+/* Legend */
+.lg{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:7px;}
+.li{background:var(--card2);border:1px solid var(--brd);border-radius:var(--rs);display:flex;
+  align-items:center;gap:8px;padding:7px 10px;cursor:pointer;transition:border-color .15s;}
+.li:hover{border-color:var(--purple);}
+.ld{width:32px;height:32px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;
+  justify-content:center;font-size:12px;font-weight:800;border:1.5px solid rgba(255,255,255,.2);}
+.ls{font-size:12px;font-weight:700;}
+.li2{font-size:10px;color:var(--muted);line-height:1.5;}
+.lc{font-size:10px;color:var(--gold);font-weight:700;}
+
+/* Modal */
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:999;align-items:center;justify-content:center;padding:1rem;}
+.mo.open{display:flex;}
+.mb{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);width:100%;max-width:640px;
+  max-height:88vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6);}
+.mh{padding:1rem;border-bottom:1px solid var(--brd);}
+.mt{font-size:14px;font-weight:800;color:var(--text);margin-bottom:6px;}
+.ms{width:100%;padding:8px 12px;background:var(--card2);border:1px solid var(--brd);border-radius:var(--rs);
+  color:var(--text);font-size:13px;font-family:'Nunito',sans-serif;}
+.ms:focus{outline:none;border-color:var(--purple);}
+.mby{flex:1;overflow-y:auto;padding:1rem;}
+.mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:7px;}
+.mc{background:var(--card2);border:1.5px solid var(--brd);border-radius:var(--rs);padding:8px 5px;
+  cursor:pointer;text-align:center;transition:all .15s;}
+.mc:hover{border-color:var(--purple);transform:translateY(-1px);}
+.mc.best{border-color:var(--mint);}
+.mcd{width:36px;height:36px;border-radius:50%;margin:0 auto 5px;display:flex;align-items:center;
+  justify-content:center;font-size:13px;font-weight:800;border:1.5px solid rgba(255,255,255,.2);}
+.mci{font-size:9.5px;color:var(--muted);}
+.mf{padding:.8rem 1rem;border-top:1px solid var(--brd);text-align:right;}
+
+.chk{display:flex;align-items:center;gap:7px;margin-top:10px;font-size:13px;color:var(--muted);cursor:pointer;}
+.chk input{accent-color:var(--purple);}
+
+/* Canvas pattern scroll */
+#patCard{overflow:hidden;}
+#prevWrap2{overflow:auto;max-height:480px;background:#fff;line-height:0;}
+
+/* Settings grid */
+.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:400px){.settings-grid{grid-template-columns:1fr;}}
+.setting-group label{font-size:11px;color:var(--muted);font-weight:700;display:block;margin-bottom:5px;}
+.setting-group select{width:100%;}
+
+/* Badge */
+.badge{display:inline-block;background:rgba(245,200,66,.15);color:var(--gold);border:1px solid rgba(245,200,66,.3);
+  border-radius:99px;padding:2px 8px;font-size:10px;font-weight:800;margin-left:6px;}
+</style>
+</head>
+<body>
+
+<h1>💎 Lady Aura — Generador DMC</h1>
+<p class="sub">Convierte tu imagen a patrón de diamantes con colores exactos ✨</p>
+
+<div class="card">
+  <div class="ct">🖼️ Sube tu imagen</div>
+  <div class="drop" id="dropZ" onclick="fi.click()">
+    <span class="drop-icon">🎨</span>
+    <strong>Haz clic o arrastra tu imagen aquí</strong>
+    <span>PNG · JPG · WEBP — tu diseño IA</span>
+  </div>
+  <input type="file" id="fi" accept="image/*">
+</div>
+
+<div class="card">
+  <div class="ct">⚙️ Configuración</div>
+  <div class="settings-grid">
+    <div class="setting-group">
+      <label>📐 Tamaño del lienzo</label>
+      <select id="szSel" onchange="updateSpec()">
+        <optgroup label="— Lienzos estándar —">
+          <option value="20x25">20×25 cm (peq.)</option>
+          <option value="25x35">25×35 cm</option>
+          <option value="30x40">30×40 cm</option>
+          <option value="40x50">40×50 cm</option>
+          <option value="40x60">40×60 cm</option>
+          <option value="50x70">50×70 cm</option>
+          <option value="60x90" selected>60×90 cm (estándar)</option>
+          <option value="70x100">70×100 cm (grande)</option>
+        </optgroup>
+        <optgroup label="— Folios A4 —">
+          <option value="A4V">A4 vertical (1 folio)</option>
+          <option value="A4H">A4 horizontal (1 folio)</option>
+          <option value="A4-2x2">A4 × 4 folios</option>
+          <option value="A4-3x3">A4 × 9 folios</option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="setting-group">
+      <label>🎨 Número de colores <span class="badge">más = más detalle</span></label>
+      <select id="colorSel">
+        <option value="15">15 colores</option>
+        <option value="20">20 colores</option>
+        <option value="25">25 colores</option>
+        <option value="30">30 colores</option>
+        <option value="35" selected>35 colores ★</option>
+        <option value="45">45 colores</option>
+        <option value="60">60 colores</option>
+        <option value="80">80 colores</option>
+        <option value="100">100 colores (máx)</option>
+      </select>
+    </div>
+  </div>
+
+  <label class="chk">
+    <input type="checkbox" id="fitChk">
+    <span>Ajustar imagen sin recortar</span>
+  </label>
+
+  <label class="chk">
+    <input type="checkbox" id="bgChk" checked>
+    <span>Dejar fondo blanco sin símbolo <span style="color:var(--gold);font-size:10px">(recomendado)</span></span>
+  </label>
+
+  <div id="bgThreshRow" style="margin-top:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+    <label style="font-size:11px;color:var(--muted);font-weight:700;">Umbral de blanco:</label>
+    <input type="range" id="bgThresh" min="180" max="254" value="230" style="flex:1;min-width:100px;accent-color:var(--purple);">
+    <span id="bgThreshVal" style="font-size:11px;color:var(--gold);font-weight:700;min-width:30px;">230</span>
+    <span style="font-size:10px;color:var(--muted)">(más alto = más estricto)</span>
+  </div>
+
+  <div class="row">
+    <button class="bp" id="genBtn" disabled onclick="startTransform()">💎 Generar patrón</button>
+    <span style="font-size:11px;color:var(--muted)" id="specInfo"></span>
+  </div>
+</div>
+
+<div id="sb" class="info"></div>
+<div class="prog-wrap" id="pw"><div class="prog-bar" id="pb"></div></div>
+
+<div class="pp" id="ppArea" style="display:none">
+  <div class="pc"><div class="pl">📸 Original</div><canvas id="cvOrig"></canvas></div>
+  <div class="pc">
+    <div class="pl">💎 Resultado DMC <span style="color:var(--gold);font-size:9px">✏️ Arrastra zona para editar</span></div>
+    <div id="prevWrap" style="position:relative;line-height:0;">
+      <canvas id="cvPrev" style="width:100%;display:block;cursor:crosshair;user-select:none;"></canvas>
+      <div id="selBox"></div>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="patCard" style="display:none;padding:0;">
+  <div class="pl" style="padding:8px 14px;border-radius:18px 18px 0 0">🔢 Patrón completo — scroll para navegar</div>
+  <div id="prevWrap2"><canvas id="cvPattern" style="display:block;cursor:crosshair;"></canvas></div>
+</div>
+
+<div class="dls" id="dlSec" style="display:none">
+  <div style="font-size:22px;margin-bottom:8px">💎</div>
+  <div style="font-size:15px;font-weight:800;color:var(--gold);margin-bottom:6px">¿Te gusta tu patrón?</div>
+  <div style="font-size:13px;color:var(--muted);margin-bottom:14px">
+    Recibe el PDF completo <strong style="color:var(--text)">sin marcas de agua</strong> por solo <strong style="color:var(--gold)">1€</strong> 🎉
+  </div>
+  <a id="contactBtn" href="mailto:ladyaura@gmail.com?subject=Quiero%20mi%20patrón%20DMC&body=Hola%2C%20me%20ha%20gustado%20mi%20patrón%20y%20quiero%20el%20PDF%20sin%20marcas%20de%20agua%20por%201€.%20¡Gracias!" 
+    style="display:inline-block;background:linear-gradient(135deg,#7c3aed,#ff6eb4);color:#fff;
+    text-decoration:none;padding:12px 28px;border-radius:14px;font-weight:800;font-size:15px;
+    box-shadow:0 4px 20px rgba(124,58,237,0.4);transition:all .2s;">
+    💌 Contactar para recibir mi PDF
+  </a>
+  <div style="margin-top:10px;font-size:11px;color:var(--muted)">
+    Te respondo en menos de 24h con el PDF listo para imprimir
+  </div>
+  <p id="dlInfo" style="margin-top:8px;"></p>
+  <div style="margin-top:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+    <button class="bs" onclick="restoreOriginal()">↩ Restaurar original</button>
+  </div>
+</div>
+
+<div class="pg" id="pgGrid" style="display:none"></div>
+
+<div class="card" id="lgCard" style="display:none">
+  <div class="ct">🧵 Leyenda de colores DMC</div>
+  <div class="lg" id="lgGrid"></div>
+</div>
+
+<!-- Swap modal -->
+<div class="mo" id="swapMo">
+  <div class="mb">
+    <div class="mh">
+      <div class="mt" id="swapTit">Reemplazar color</div>
+      <input class="ms" id="swapSrch" placeholder="Buscar por nombre o número DMC…" oninput="filterSwap()">
+    </div>
+    <div class="mby"><div class="mg" id="swapGrid"></div></div>
+    <div class="mf"><button class="bs" onclick="closeSwap()">✕ Cancelar</button></div>
+  </div>
+</div>
+
+<!-- Zone modal -->
+<div class="mo" id="zoneMo">
+  <div class="mb">
+    <div class="mh">
+      <div class="mt" id="zoneTit">Colores en la selección</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px">Toca un color para reemplazarlo</div>
+    </div>
+    <div class="mby"><div class="mg" id="zoneGrid"></div></div>
+    <div class="mf"><button class="bs" onclick="closeZone()">✕ Cerrar</button></div>
+  </div>
+</div>
+
+<script>
+// ─── PALETA DMC AMPLIADA (120 colores) ───────────────────────────────────────
+// Mucho más rica en rojos, dorados, rosas, morados, azules y pieles
+const DMC = [
+  // ── ROJOS ──
+  {dmc:'321',  hex:'#CE2139',r:206,g:33, b:57,  name:'Rojo'},
+  {dmc:'666',  hex:'#EB2135',r:235,g:33, b:53,  name:'Rojo brillante'},
+  {dmc:'606',  hex:'#E8281A',r:232,g:40, b:26,  name:'Rojo-naranja brillante'},
+  {dmc:'304',  hex:'#B52035',r:181,g:32, b:53,  name:'Rojo medio'},
+  {dmc:'816',  hex:'#921A28',r:146,g:26, b:40,  name:'Garnet'},
+  {dmc:'815',  hex:'#7C1828',r:124,g:24, b:40,  name:'Garnet medio'},
+  {dmc:'814',  hex:'#5C1020',r:92, g:16, b:32,  name:'Garnet oscuro'},
+  {dmc:'498',  hex:'#8B0000',r:139,g:0,  b:0,   name:'Rojo oscuro'},
+  // ── NARANJAS ──
+  {dmc:'608',  hex:'#F96B2F',r:249,g:107,b:47,  name:'Naranja brillante'},
+  {dmc:'900',  hex:'#D84B18',r:216,g:75, b:24,  name:'Naranja quemado oscuro'},
+  {dmc:'947',  hex:'#F4703A',r:244,g:112,b:58,  name:'Naranja quemado'},
+  {dmc:'946',  hex:'#E06020',r:224,g:96, b:32,  name:'Naranja quemado medio'},
+  {dmc:'740',  hex:'#FE7B00',r:254,g:123,b:0,   name:'Naranja'},
+  {dmc:'741',  hex:'#FFA020',r:255,g:160,b:32,  name:'Naranja medio'},
+  {dmc:'742',  hex:'#FFC040',r:255,g:192,b:64,  name:'Naranja claro'},
+  // ── DORADOS / AMARILLOS ──
+  {dmc:'972',  hex:'#FFC200',r:255,g:194,b:0,   name:'Canario oscuro'},
+  {dmc:'973',  hex:'#FEDC00',r:254,g:220,b:0,   name:'Canario brillante'},
+  {dmc:'307',  hex:'#FEEC0A',r:254,g:236,b:10,  name:'Limón'},
+  {dmc:'444',  hex:'#F8D210',r:248,g:210,b:16,  name:'Amarillo oscuro'},
+  {dmc:'725',  hex:'#F8C840',r:248,g:200,b:64,  name:'Paja'},
+  {dmc:'726',  hex:'#FAD058',r:250,g:208,b:88,  name:'Paja claro'},
+  {dmc:'727',  hex:'#FCEAA0',r:252,g:234,b:160, name:'Paja muy claro'},
+  {dmc:'3820', hex:'#E8A820',r:232,g:168,b:32,  name:'Paja oscuro'},
+  {dmc:'3821', hex:'#F0B830',r:240,g:184,b:48,  name:'Paja'},
+  {dmc:'783',  hex:'#C8901A',r:200,g:144,b:26,  name:'Topacio medio'},
+  {dmc:'782',  hex:'#B07010',r:176,g:112,b:16,  name:'Topacio oscuro'},
+  {dmc:'781',  hex:'#906010',r:144,g:96, b:16,  name:'Topacio muy oscuro'},
+  // ── VERDES ──
+  {dmc:'704',  hex:'#57C135',r:87, g:193,b:53,  name:'Verde chartreuse'},
+  {dmc:'702',  hex:'#3AAA35',r:58, g:170,b:53,  name:'Verde Kelly'},
+  {dmc:'700',  hex:'#008B20',r:0,  g:139,b:32,  name:'Verde brillante'},
+  {dmc:'699',  hex:'#008000',r:0,  g:128,b:0,   name:'Verde'},
+  {dmc:'3818', hex:'#00632B',r:0,  g:99, b:43,  name:'Esmeralda oscuro'},
+  {dmc:'895',  hex:'#004020',r:0,  g:64, b:32,  name:'Hunter Green muy oscuro'},
+  {dmc:'500',  hex:'#003820',r:0,  g:56, b:32,  name:'Blue Green muy oscuro'},
+  {dmc:'3347', hex:'#5E9828',r:94, g:152,b:40,  name:'Verde amarillento medio'},
+  {dmc:'3346', hex:'#407818',r:64, g:120,b:24,  name:'Hunter Green'},
+  {dmc:'3819', hex:'#D8E888',r:216,g:232,b:136, name:'Musgo claro'},
+  // ── AZULES ──
+  {dmc:'3843', hex:'#009FCA',r:0,  g:159,b:202, name:'Azul eléctrico'},
+  {dmc:'996',  hex:'#02A4D3',r:2,  g:164,b:211, name:'Azul eléctrico medio'},
+  {dmc:'995',  hex:'#0080B0',r:0,  g:128,b:176, name:'Azul eléctrico oscuro'},
+  {dmc:'826',  hex:'#5890C0',r:88, g:144,b:192, name:'Azul medio'},
+  {dmc:'825',  hex:'#407898',r:64, g:120,b:152, name:'Azul oscuro'},
+  {dmc:'824',  hex:'#285878',r:40, g:88, b:120, name:'Azul muy oscuro'},
+  {dmc:'820',  hex:'#0047AB',r:0,  g:71, b:171, name:'Royal Blue muy oscuro'},
+  {dmc:'796',  hex:'#0E5BA8',r:14, g:91, b:168, name:'Royal Blue oscuro'},
+  {dmc:'791',  hex:'#3B3FA0',r:59, g:63, b:160, name:'Cornflower muy oscuro'},
+  {dmc:'336',  hex:'#1F305E',r:31, g:48, b:94,  name:'Navy Blue'},
+  {dmc:'312',  hex:'#264880',r:38, g:72, b:128, name:'Light Navy Blue'},
+  {dmc:'813',  hex:'#90B8D8',r:144,g:184,b:216, name:'Azul claro'},
+  {dmc:'827',  hex:'#C0D8F0',r:192,g:216,b:240, name:'Azul muy claro'},
+  // ── VIOLETAS / MORADOS ──
+  {dmc:'550',  hex:'#4B0082',r:75, g:0,  b:130, name:'Violeta muy oscuro'},
+  {dmc:'552',  hex:'#7B2D8B',r:123,g:45, b:139, name:'Violeta medio'},
+  {dmc:'553',  hex:'#8B3FA3',r:139,g:63, b:163, name:'Violeta'},
+  {dmc:'554',  hex:'#C085C8',r:192,g:133,b:200, name:'Violeta claro'},
+  {dmc:'208',  hex:'#8B5B9E',r:139,g:91, b:158, name:'Lavanda muy oscuro'},
+  {dmc:'209',  hex:'#A878B8',r:168,g:120,b:184, name:'Lavanda oscuro'},
+  {dmc:'210',  hex:'#C585CB',r:197,g:133,b:203, name:'Lavanda medio'},
+  {dmc:'211',  hex:'#DEB8E0',r:222,g:184,b:224, name:'Lavanda claro'},
+  {dmc:'327',  hex:'#5A1878',r:90, g:24, b:120, name:'Violeta oscuro'},
+  {dmc:'333',  hex:'#3D1E6E',r:61, g:30, b:110, name:'Blue Violet muy oscuro'},
+  {dmc:'340',  hex:'#8878C0',r:136,g:120,b:192, name:'Blue Violet medio'},
+  {dmc:'341',  hex:'#A8A0D0',r:168,g:160,b:208, name:'Blue Violet claro'},
+  // ── ROSAS / MAGENTAS ──
+  {dmc:'917',  hex:'#B5007E',r:181,g:0,  b:126, name:'Ciruela medio'},
+  {dmc:'915',  hex:'#8B0060',r:139,g:0,  b:96,  name:'Ciruela oscuro'},
+  {dmc:'718',  hex:'#9E1E7B',r:158,g:30, b:123, name:'Ciruela'},
+  {dmc:'3804', hex:'#D8006A',r:216,g:0,  b:106, name:'Ciclamen oscuro'},
+  {dmc:'3805', hex:'#E8007A',r:232,g:0,  b:122, name:'Ciclamen'},
+  {dmc:'3806', hex:'#F2619A',r:242,g:97, b:154, name:'Ciclamen claro'},
+  {dmc:'891',  hex:'#D63068',r:214,g:48, b:104, name:'Clavel oscuro'},
+  {dmc:'892',  hex:'#E05078',r:224,g:80, b:120, name:'Clavel medio'},
+  {dmc:'893',  hex:'#EC8098',r:236,g:128,b:152, name:'Clavel claro'},
+  {dmc:'956',  hex:'#F07090',r:240,g:112,b:144, name:'Geranio'},
+  {dmc:'957',  hex:'#F8A0B0',r:248,g:160,b:176, name:'Geranio pálido'},
+  {dmc:'963',  hex:'#FCC8D0',r:252,g:200,b:208, name:'Rosa pálido'},
+  {dmc:'3708', hex:'#FFA8B8',r:255,g:168,b:184, name:'Melón claro'},
+  {dmc:'3706', hex:'#FF7898',r:255,g:120,b:152, name:'Melón medio'},
+  {dmc:'3705', hex:'#FF5080',r:255,g:80, b:128, name:'Melón oscuro'},
+  {dmc:'602',  hex:'#D42070',r:212,g:32, b:112, name:'Cranberry medio'},
+  {dmc:'600',  hex:'#B01858',r:176,g:24, b:88,  name:'Cranberry muy oscuro'},
+  // ── BLANCOS / CREMAS ──
+  {dmc:'Blanc',hex:'#FFFFFF',r:255,g:255,b:255, name:'Blanco'},
+  {dmc:'3865', hex:'#F5F0E8',r:245,g:240,b:232, name:'Blanco invernal'},
+  {dmc:'746',  hex:'#FFFACD',r:255,g:250,b:205, name:'Off White'},
+  {dmc:'Ecru', hex:'#F0DEB4',r:240,g:222,b:180, name:'Ecru'},
+  // ── GRISES ──
+  {dmc:'762',  hex:'#D4D4D4',r:212,g:212,b:212, name:'Perla muy claro'},
+  {dmc:'415',  hex:'#C0C0C0',r:192,g:192,b:192, name:'Perla'},
+  {dmc:'318',  hex:'#A0A0A4',r:160,g:160,b:164, name:'Gris acero claro'},
+  {dmc:'414',  hex:'#6E6E76',r:110,g:110,b:118, name:'Gris acero oscuro'},
+  {dmc:'317',  hex:'#585860',r:88, g:88, b:96,  name:'Pewter Gray'},
+  {dmc:'413',  hex:'#3C3C44',r:60, g:60, b:68,  name:'Pewter oscuro'},
+  {dmc:'310',  hex:'#1C1C1C',r:28, g:28, b:28,  name:'Negro'},
+  {dmc:'3799', hex:'#2C2C34',r:44, g:44, b:52,  name:'Pewter muy oscuro'},
+  // ── MARRONES ──
+  {dmc:'3823', hex:'#FFF8D8',r:255,g:248,b:216, name:'Amarillo ultraclaro'},
+  {dmc:'738',  hex:'#EDD9B0',r:237,g:217,b:176, name:'Tan muy claro'},
+  {dmc:'437',  hex:'#D4A870',r:212,g:168,b:112, name:'Tan claro'},
+  {dmc:'436',  hex:'#C09050',r:192,g:144,b:80,  name:'Tan'},
+  {dmc:'435',  hex:'#AA7830',r:170,g:120,b:48,  name:'Marrón muy claro'},
+  {dmc:'434',  hex:'#8B6020',r:139,g:96, b:32,  name:'Marrón claro'},
+  {dmc:'433',  hex:'#7A5018',r:122,g:80, b:24,  name:'Marrón medio'},
+  {dmc:'801',  hex:'#5C3410',r:92, g:52, b:16,  name:'Café oscuro'},
+  {dmc:'938',  hex:'#3A1E08',r:58, g:30, b:8,   name:'Café ultraoscuro'},
+  {dmc:'3781', hex:'#705038',r:112,g:80, b:56,  name:'Mocha muy oscuro'},
+  {dmc:'3782', hex:'#C0A080',r:192,g:160,b:128, name:'Mocha claro'},
+  {dmc:'842',  hex:'#D8C0A0',r:216,g:192,b:160, name:'Beige claro'},
+  {dmc:'841',  hex:'#C0A880',r:192,g:168,b:128, name:'Beige medio'},
+  {dmc:'840',  hex:'#A08060',r:160,g:128,b:96,  name:'Beige oscuro'},
+  // ── PIELES ──
+  {dmc:'951',  hex:'#FFD8B0',r:255,g:216,b:176, name:'Tawny claro'},
+  {dmc:'945',  hex:'#FFC890',r:255,g:200,b:144, name:'Tawny'},
+  {dmc:'3774', hex:'#F5B898',r:245,g:184,b:152, name:'Sable desierto muy claro'},
+  {dmc:'3773', hex:'#D89868',r:216,g:152,b:104, name:'Sable desierto'},
+  {dmc:'407',  hex:'#B07848',r:176,g:120,b:72,  name:'Sable oscuro'},
+  {dmc:'3771', hex:'#E8A888',r:232,g:168,b:136, name:'Terra Cotta muy claro'},
+  {dmc:'3770', hex:'#FDE0C8',r:253,g:224,b:200, name:'Tawny muy claro'},
+  // ── AZULES NOCHE / ÍNDIGO ──
+  {dmc:'3750', hex:'#1E3050',r:30, g:48, b:80,  name:'Azul antique muy oscuro'},
+  {dmc:'3760', hex:'#286888',r:40, g:104,b:136, name:'Wedgwood medio'},
+  {dmc:'322',  hex:'#3C70A8',r:60, g:112,b:168, name:'Baby Blue oscuro'},
+  {dmc:'3755', hex:'#7098C8',r:112,g:152,b:200, name:'Baby Blue'},
+  {dmc:'3325', hex:'#B0C8E8',r:176,g:200,b:232, name:'Baby Blue claro'},
+  // ── TURQUESAS / TEALES ──
+  {dmc:'3810', hex:'#008080',r:0,  g:128,b:128, name:'Teal oscuro'},
+  {dmc:'3811', hex:'#80C8C0',r:128,g:200,b:192, name:'Teal claro'},
+  {dmc:'3808', hex:'#006878',r:0,  g:104,b:120, name:'Fuego Teal oscuro'},
+  {dmc:'958',  hex:'#00B090',r:0,  g:176,b:144, name:'Sea Green oscuro'},
+  {dmc:'964',  hex:'#80D8C8',r:128,g:216,b:200, name:'Sea Green claro'},
+];
+
+// ─── CONVERSIÓN RGB → LAB ─────────────────────────────────────────────────────
+function rgbToLab(r,g,b){
+  let rv=r/255,gv=g/255,bv=b/255;
+  rv=rv>0.04045?Math.pow((rv+0.055)/1.055,2.4):rv/12.92;
+  gv=gv>0.04045?Math.pow((gv+0.055)/1.055,2.4):gv/12.92;
+  bv=bv>0.04045?Math.pow((bv+0.055)/1.055,2.4):bv/12.92;
+  const X=(rv*0.4124+gv*0.3576+bv*0.1805)/0.95047;
+  const Y=(rv*0.2126+gv*0.7152+bv*0.0722)/1.00000;
+  const Z=(rv*0.0193+gv*0.1192+bv*0.9505)/1.08883;
+  const f=t=>t>0.008856?Math.cbrt(t):(7.787*t+16/116);
+  return [116*f(Y)-16, 500*(f(X)-f(Y)), 200*(f(Y)-f(Z))];
+}
+
+// Pre-computar LAB de todos los colores DMC
+const DMC_LAB = DMC.map(c=>({...c, lab:rgbToLab(c.r,c.g,c.b)}));
+
+// Asignar símbolo a cada color
+const SYM_POOL='123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%&*+=/?^~-_.,<>(){}[]|'.split('');
+DMC_LAB.forEach((c,i)=>c.sym=SYM_POOL[i]||String(i));
+
+// Encontrar color DMC más cercano en espacio LAB
+function closest(r,g,b){
+  const [L1,A1,B1]=rgbToLab(r,g,b);
+  let best=DMC_LAB[0],d=Infinity;
+  for(let i=0;i<DMC_LAB.length;i++){
+    const [L2,A2,B2]=DMC_LAB[i].lab;
+    const dd=(L1-L2)**2+(A1-A2)**2+(B1-B2)**2;
+    if(dd<d){d=dd;best=DMC_LAB[i];}
+  }
+  return {...best};
+}
+
+// Reducir colores usando LAB (no RGB)
+function reduceColors(maxColors){
+  const dmcCount=new Map();
+  for(let r=0;r<G.rows;r++) for(let c=0;c<G.cols;c++){
+    if(G.bgMask&&G.bgMask[r][c]) continue; // saltar fondo
+    const k=G.dotColor[r][c].dmc;
+    dmcCount.set(k,(dmcCount.get(k)||0)+1);
+  }
+  if(dmcCount.size<=maxColors) return;
+  const sorted=[...dmcCount.entries()].sort((a,b)=>b[1]-a[1]);
+  const topSet=new Set(sorted.slice(0,maxColors).map(([d])=>d));
+  const topColors=DMC_LAB.filter(c=>topSet.has(c.dmc));
+  // Reemplazar colores fuera del top usando distancia LAB
+  for(let r=0;r<G.rows;r++) for(let c=0;c<G.cols;c++){
+    if(G.bgMask&&G.bgMask[r][c]) continue; // saltar fondo
+    const cell=G.dotColor[r][c];
+    if(!topSet.has(cell.dmc)){
+      const [L1,A1,B1]=cell.lab;
+      let best=topColors[0],bestD=Infinity;
+      for(const tc of topColors){
+        const [L2,A2,B2]=tc.lab;
+        const d=(L1-L2)**2+(A1-A2)**2+(B1-B2)**2;
+        if(d<bestD){bestD=d;best=tc;}
+      }
+      G.dotColor[r][c]={...best};
+    }
+  }
+}
+
+// ─── CONFIGURACIÓN DE TAMAÑOS ─────────────────────────────────────────────────
+// DPI 150 para lienzos de diamantes (2.54cm = 1 inch, 1 diamante = 2.5mm)
+// Cada diamante = 10px a 96dpi → ajustamos para que quepan bien en A4 al imprimir
+const STEP=38, RADIUS=18, BORDER=76; // BORDER = 2 * STEP
+
+function getSizeCfg(v){
+  const A4W=2480, A4H=3508; // A4 a 300dpi
+  // Tamaños de lienzo en cm → convertir a puntos de diamante
+  // 2.5mm por diamante → 10 diamantes por cm
+  const diamPerCm=10;
+  const canvasSizes={
+    '20x25':{w:20,h:25},'25x35':{w:25,h:35},'30x40':{w:30,h:40},
+    '40x50':{w:40,h:50},'40x60':{w:40,h:60},'50x70':{w:50,h:70},
+    '60x90':{w:60,h:90},'70x100':{w:70,h:100}
+  };
+  if(canvasSizes[v]){
+    const {w,h}=canvasSizes[v];
+    const cols=w*diamPerCm, rows=h*diamPerCm;
+    // Calcular cuántos folios A4 necesitamos
+    const totalW=cols*STEP+BORDER*2, totalH=rows*STEP+BORDER*2;
+    const pX=Math.ceil(totalW/A4W), pY=Math.ceil(totalH/A4H);
+    return {pX,pY,pageW:A4W,pageH:A4H,fixedCols:cols,fixedRows:rows};
+  }
+  switch(v){
+    case 'A4V':  return {pX:1,pY:1,pageW:A4W,pageH:A4H};
+    case 'A4H':  return {pX:1,pY:1,pageW:A4H,pageH:A4W};
+    case 'A4-2x2': return {pX:2,pY:2,pageW:A4W,pageH:A4H};
+    case 'A4-3x3': return {pX:3,pY:3,pageW:A4W,pageH:A4H};
+    default: return {pX:1,pY:1,pageW:A4W,pageH:A4H};
+  }
+}
+
+function updateSpec(){
+  const v=document.getElementById('szSel').value;
+  const cfg=getSizeCfg(v);
+  let cols,rows;
+  if(cfg.fixedCols){
+    cols=cfg.fixedCols; rows=cfg.fixedRows;
+  } else {
+    const tW=cfg.pX*cfg.pageW, tH=cfg.pY*cfg.pageH;
+    cols=Math.floor((tW-BORDER*2)/STEP); rows=Math.floor((tH-BORDER*2)/STEP);
+  }
+  const pages=cfg.pX*cfg.pY;
+  document.getElementById('specInfo').textContent=
+    `${cols}×${rows} = ${(cols*rows).toLocaleString()} pts · ${pages} folio${pages>1?'s':''}`;
+}
+
+// ─── ESTADO GLOBAL ────────────────────────────────────────────────────────────
+const G={dotColor:null,dotOriginal:null,bgMask:null,swapZone:null,cols:0,rows:0,
+  offX:0,offY:0,pX:1,pY:1,pageW:2480,pageH:3508,
+  totalW:0,totalH:0,renderedPages:[],counts:new Map()};
+
+// Slider umbral
+document.getElementById('bgThresh').addEventListener('input',function(){
+  document.getElementById('bgThreshVal').textContent=this.value;
+});
+document.getElementById('bgChk').addEventListener('change',function(){
+  document.getElementById('bgThreshRow').style.display=this.checked?'flex':'none';
+});
+
+function setS(msg,type='info'){const s=document.getElementById('sb');s.textContent=msg;s.className=type;}
+function setProg(p){const w=document.getElementById('pw');w.style.display='block';
+  document.getElementById('pb').style.width=p+'%';if(p>=100)setTimeout(()=>w.style.display='none',700);}
+
+// ─── CARGA DE IMAGEN ──────────────────────────────────────────────────────────
+let loadedImg=null;
+const fi=document.getElementById('fi'), dropZ=document.getElementById('dropZ');
+fi.addEventListener('change',e=>e.target.files[0]&&loadImg(e.target.files[0]));
+dropZ.addEventListener('dragover',e=>{e.preventDefault();dropZ.classList.add('drag');});
+dropZ.addEventListener('dragleave',()=>dropZ.classList.remove('drag'));
+dropZ.addEventListener('drop',e=>{e.preventDefault();dropZ.classList.remove('drag');e.dataTransfer.files[0]&&loadImg(e.dataTransfer.files[0]);});
+
+function loadImg(file){
+  if(!file.type.startsWith('image/')){setS('⚠️ Solo PNG/JPG/WEBP','err');return;}
+  setS('Cargando…','info');
+  const reader=new FileReader();
+  reader.onerror=()=>setS('No se pudo cargar la imagen','err');
+  reader.onload=e=>{
+    const img=new Image();
+    img.onerror=()=>setS('Error al cargar imagen','err');
+    img.onload=()=>{
+      loadedImg=img;
+      const cvO=document.getElementById('cvOrig');
+      const sc=img.width>420?420/img.width:1;
+      cvO.width=Math.round(img.width*sc); cvO.height=Math.round(img.height*sc);
+      cvO.getContext('2d').drawImage(img,0,0,cvO.width,cvO.height);
+      document.getElementById('ppArea').style.display='grid';
+      document.getElementById('dlSec').style.display='none';
+      document.getElementById('pgGrid').style.display='none';
+      document.getElementById('lgCard').style.display='none';
+      document.getElementById('patCard').style.display='none';
+      document.getElementById('genBtn').disabled=false;
+      setS('✅ Imagen cargada — pulsa Generar patrón','ok');
+    };
+    img.src=e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+// ─── TRANSFORMACIÓN PRINCIPAL ─────────────────────────────────────────────────
+function startTransform(){
+  if(!loadedImg){setS('⚠️ Sube una imagen primero','err');return;}
+  document.getElementById('genBtn').disabled=true;
+  document.getElementById('dlSec').style.display='none';
+  document.getElementById('pgGrid').style.display='none';
+  document.getElementById('lgCard').style.display='none';
+  G.renderedPages=[];
+  setS('Calculando colores DMC…','info'); setProg(0);
+
+  const cfg=getSizeCfg(document.getElementById('szSel').value);
+  G.pX=cfg.pX; G.pY=cfg.pY; G.pageW=cfg.pageW; G.pageH=cfg.pageH;
+  G.totalW=G.pX*G.pageW; G.totalH=G.pY*G.pageH;
+
+  if(cfg.fixedCols){
+    G.cols=cfg.fixedCols; G.rows=cfg.fixedRows;
+  } else {
+    G.cols=Math.floor((G.totalW-BORDER*2)/STEP);
+    G.rows=Math.floor((G.totalH-BORDER*2)/STEP);
+  }
+
+  const dotW=G.cols*STEP, dotH=G.rows*STEP;
+  G.offX=Math.floor((G.totalW-dotW)/2);
+  G.offY=Math.floor((G.totalH-dotH)/2);
+
+  // Escalar imagen al área de puntos
+  const tmp=document.createElement('canvas');
+  tmp.width=dotW; tmp.height=dotH;
+  const tc=tmp.getContext('2d');
+  const fit=document.getElementById('fitChk').checked;
+  const ir=loadedImg.width/loadedImg.height, dr=dotW/dotH;
+  let dw,dh,dx,dy;
+  if(fit){
+    if(ir>dr){dw=dotW;dh=dotW/ir;dx=0;dy=(dotH-dh)/2;}
+    else{dh=dotH;dw=dotH*ir;dx=(dotW-dw)/2;dy=0;}
+    tc.fillStyle='#ffffff'; tc.fillRect(0,0,dotW,dotH);
+  } else {
+    if(ir>dr){dh=dotH;dw=dh*ir;dx=-(dw-dotW)/2;dy=0;}
+    else{dw=dotW;dh=dw/ir;dx=0;dy=-(dh-dotH)/2;}
+  }
+  tc.drawImage(loadedImg,dx,dy,dw,dh);
+
+  let srcData;
+  try{srcData=tc.getImageData(0,0,dotW,dotH).data;}
+  catch(e){setS('Error CORS — abre el archivo localmente en Chrome/Firefox','err');
+    document.getElementById('genBtn').disabled=false;return;}
+
+  G.dotColor=Array.from({length:G.rows},()=>new Array(G.cols));
+  G.bgMask=Array.from({length:G.rows},()=>new Uint8Array(G.cols));
+  const useBgMask=document.getElementById('bgChk').checked;
+  const bgThreshold=parseInt(document.getElementById('bgThresh').value)||230;
+  let done=0, total=G.rows*G.cols;
+
+  function computeChunk(startRow){
+    const endRow=Math.min(startRow+25,G.rows);
+    for(let row=startRow;row<endRow;row++)
+      for(let col=0;col<G.cols;col++){
+        const x=col*STEP, y=row*STEP;
+        let rS=0,gS=0,bS=0,n=0;
+        // Muestrear área del diamante (evita bordes)
+        const margin=Math.floor(STEP*0.15);
+        for(let dy2=margin;dy2<STEP-margin;dy2++) for(let dx2=margin;dx2<STEP-margin;dx2++){
+          const idx=((y+dy2)*dotW+(x+dx2))*4;
+          rS+=srcData[idx];gS+=srcData[idx+1];bS+=srcData[idx+2];n++;
+        }
+        const ar=Math.round(rS/n),ag=Math.round(gS/n),ab=Math.round(bS/n);
+        G.dotColor[row][col]=closest(ar,ag,ab);
+        // Marcar como fondo si todos los canales superan el umbral
+        if(useBgMask && ar>=bgThreshold && ag>=bgThreshold && ab>=bgThreshold)
+          G.bgMask[row][col]=1;
+        done++;
+      }
+    setProg(Math.round(done/total*60));
+    setS('Calculando… '+Math.round(done/total*100)+'%','info');
+    if(endRow<G.rows) requestAnimationFrame(()=>computeChunk(endRow));
+    else {
+      reduceColors(parseInt(document.getElementById('colorSel').value)||35);
+      remapSymbols();
+      G.dotOriginal=G.dotColor.map(row=>row.map(c=>({...c})));
+      G.bgMaskOriginal=G.bgMask?G.bgMask.map(row=>new Uint8Array(row)):null;
+      setTimeout(()=>renderAllFromDots(true),20);
+    }
+  }
+  requestAnimationFrame(()=>computeChunk(0));
+}
+
+// ─── SÍMBOLOS ─────────────────────────────────────────────────────────────────
+function remapSymbols(){
+  const dmcCount=new Map();
+  for(let r=0;r<G.rows;r++) for(let c=0;c<G.cols;c++){
+    if(G.bgMask&&G.bgMask[r][c]) continue; // saltar fondo
+    const k=G.dotColor[r][c].dmc;
+    dmcCount.set(k,(dmcCount.get(k)||0)+1);
+  }
+  const sorted=[...dmcCount.entries()].sort((a,b)=>b[1]-a[1]);
+  const symMap=new Map();
+  sorted.forEach(([dmc],i)=>symMap.set(dmc,SYM_POOL[i]||String(i)));
+  for(let r=0;r<G.rows;r++) for(let c=0;c<G.cols;c++)
+    G.dotColor[r][c].sym=symMap.get(G.dotColor[r][c].dmc);
+}
+
+// ─── RENDER PREVIEW LIMPIO ────────────────────────────────────────────────────
+const CPIX=5;
+function renderCleanPreview(){
+  const pv=document.getElementById('cvPrev');
+  pv.width=G.cols*CPIX; pv.height=G.rows*CPIX;
+  const ctx=pv.getContext('2d');
+  for(let row=0;row<G.rows;row++) for(let col=0;col<G.cols;col++){
+    if(G.bgMask&&G.bgMask[row][col]){
+      ctx.fillStyle='#f0f0f0';
+    } else {
+      ctx.fillStyle=G.dotColor[row][col].hex;
+    }
+    ctx.fillRect(col*CPIX,row*CPIX,CPIX,CPIX);
+  }
+  // Borde del lienzo en preview
+  ctx.strokeStyle='#000'; ctx.lineWidth=2;
+  ctx.strokeRect(0,0,G.cols*CPIX,G.rows*CPIX);
+  // Marcas de agua en preview
+  ctx.save();
+  ctx.globalAlpha=0.22;
+  ctx.fillStyle='#7c3aed';
+  ctx.font=`bold ${Math.max(10,Math.floor(G.cols*CPIX/8))}px Arial,sans-serif`;
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.translate(G.cols*CPIX/2,G.rows*CPIX/2);
+  ctx.rotate(-Math.PI/5);
+  const pw=G.cols*CPIX, ph=G.rows*CPIX;
+  for(let wy=-3;wy<=3;wy++) for(let wx=-3;wx<=3;wx++)
+    ctx.fillText('LADY AURA',wx*pw*0.4,wy*ph*0.25);
+  ctx.restore();
+}
+
+// ─── RENDER PATRÓN CON SÍMBOLOS ──────────────────────────────────────────────
+const PSTEP=20, PFS=13;
+function renderPreview(){
+  const pv=document.getElementById('cvPattern');
+  const PW=G.cols*PSTEP, PH=G.rows*PSTEP;
+  pv.width=PW; pv.height=PH;
+  const ctx=pv.getContext('2d');
+  ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,PW,PH);
+  ctx.font=`bold ${PFS}px Arial,sans-serif`;
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  for(let row=0;row<G.rows;row++) for(let col=0;col<G.cols;col++){
+    const x=col*PSTEP, y=row*PSTEP;
+    if(G.bgMask&&G.bgMask[row][col]){
+      ctx.fillStyle='#ffffff'; ctx.fillRect(x,y,PSTEP,PSTEP); // celda vacía
+      continue;
+    }
+    const c=G.dotColor[row][col];
+    const cx=x+PSTEP/2, cy=y+PSTEP/2;
+    ctx.fillStyle=c.hex; ctx.fillRect(x,y,PSTEP,PSTEP);
+    ctx.beginPath(); ctx.arc(cx,cy,PSTEP*0.44,0,Math.PI*2);
+    ctx.fillStyle=c.hex; ctx.fill();
+    ctx.strokeStyle='rgba(0,0,0,0.18)'; ctx.lineWidth=0.7; ctx.stroke();
+    const br=(c.r*299+c.g*587+c.b*114)/1000;
+    const fc=br>128?'#111':'#fff', oc=br>128?'#fff':'#000';
+    ctx.fillStyle=oc;
+    ctx.fillText(c.sym,cx-1,cy); ctx.fillText(c.sym,cx+1,cy);
+    ctx.fillText(c.sym,cx,cy-1); ctx.fillText(c.sym,cx,cy+1);
+    ctx.fillStyle=fc; ctx.fillText(c.sym,cx,cy);
+  }
+  // Cuadrícula cada 10 diamantes
+  ctx.strokeStyle='rgba(0,0,0,0.12)'; ctx.lineWidth=0.6;
+  for(let col=0;col<=G.cols;col+=10){ctx.beginPath();ctx.moveTo(col*PSTEP,0);ctx.lineTo(col*PSTEP,PH);ctx.stroke();}
+  for(let row=0;row<=G.rows;row+=10){ctx.beginPath();ctx.moveTo(0,row*PSTEP);ctx.lineTo(PW,row*PSTEP);ctx.stroke();}
+  document.getElementById('patCard').style.display='block';
+}
+
+// ─── RENDER TODAS LAS PÁGINAS ─────────────────────────────────────────────────
+function renderAllFromDots(initial=false){
+  setS('Renderizando folios…','info');
+  G.counts=new Map();
+  for(let r=0;r<G.rows;r++) for(let c=0;c<G.cols;c++){
+    if(G.bgMask&&G.bgMask[r][c]) continue;
+    const col=G.dotColor[r][c];
+    G.counts.set(col.sym,(G.counts.get(col.sym)||0)+1);
+  }
+
+  const grid=document.getElementById('pgGrid');
+  if(initial){
+    grid.innerHTML='';
+    const gc=Math.min(G.pX,3);
+    grid.style.gridTemplateColumns=`repeat(${gc},1fr)`;
+    grid.style.display='grid';
+    for(let py=0;py<G.pY;py++) for(let px=0;px<G.pX;px++){
+      const idx=py*G.pX+px;
+      const card=document.createElement('div'); card.className='pgc';
+      card.innerHTML=`<div class="pgl"><span>📄 Folio ${idx+1} de ${G.pX*G.pY}</span><span style="font-size:10px;color:var(--muted)">vista previa</span></div>`;
+      const thumb=document.createElement('canvas'); thumb.id=`th${idx}`;
+      card.appendChild(thumb); grid.appendChild(card);
+    }
+  }
+
+  G.renderedPages=[];
+  for(let py=0;py<G.pY;py++) for(let px=0;px<G.pX;px++){
+    G.renderedPages.push(renderOnePage(px,py));
+    const idx=py*G.pX+px;
+    const thumb=document.getElementById(`th${idx}`);
+    if(thumb){
+      const TW=300, TH=Math.round(G.pageH*TW/G.pageW);
+      thumb.width=TW; thumb.height=TH;
+      const tCtx=thumb.getContext('2d');
+      tCtx.fillStyle='#fff'; tCtx.fillRect(0,0,TW,TH);
+      const ts=TW/G.pageW;
+      const tcs=Math.max(1,Math.round(STEP*ts));
+      const pgL=px*G.pageW, pgT=py*G.pageH;
+      for(let row=0;row<G.rows;row++) for(let col=0;col<G.cols;col++){
+        const c=G.dotColor[row][col];
+        const bx=G.offX+col*STEP-pgL, by=G.offY+row*STEP-pgT;
+        if(bx+STEP<0||bx>G.pageW||by+STEP<0||by>G.pageH) continue;
+        tCtx.fillStyle=c.hex;
+        tCtx.fillRect(Math.round(bx*ts),Math.round(by*ts),tcs,tcs);
+      }
+    }
+
+    setProg(60+Math.round((idx+1)/(G.pX*G.pY)*30));
+  }
+
+  renderCleanPreview();
+  renderPreview();
+  buildLegend();
+
+  const sel=document.getElementById('szSel');
+  const selLbl=sel.options[sel.selectedIndex]?.text||'';
+  document.getElementById('dlInfo').textContent=
+    `${selLbl} · ${G.pX*G.pY} folio${G.pX*G.pY>1?'s':''} · ${G.cols}×${G.rows} pts · ${(G.cols*G.rows).toLocaleString()} diamantes`;
+  document.getElementById('dlSec').style.display='block';
+  document.getElementById('genBtn').disabled=false;
+  setS(`✨ ¡Listo! ${G.counts.size} colores DMC · ${(G.cols*G.rows).toLocaleString()} diamantes — con marca de agua 💎`,'ok');
+  setProg(100);
+}
+
+// ─── RENDER UNA PÁGINA ────────────────────────────────────────────────────────
+function renderOnePage(pxIdx,pyIdx){
+  const cv=document.createElement('canvas');
+  cv.width=G.pageW; cv.height=G.pageH;
+  const ctx=cv.getContext('2d');
+  ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,G.pageW,G.pageH);
+
+  const FS=Math.round(STEP*0.68);
+  ctx.font=`bold ${FS}px Arial,sans-serif`;
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+
+  const pgL=pxIdx*G.pageW, pgT=pyIdx*G.pageH;
+  // Calcular rango de celdas visibles en esta página (con margen para no cortar)
+  const colStart=Math.max(0,Math.floor((pgL-G.offX)/STEP));
+  const colEnd=Math.min(G.cols,Math.ceil((pgL+G.pageW-G.offX)/STEP));
+  const rowStart=Math.max(0,Math.floor((pgT-G.offY)/STEP));
+  const rowEnd=Math.min(G.rows,Math.ceil((pgT+G.pageH-G.offY)/STEP));
+
+  // Dibujar diamantes — SOLO los que caben completos en esta página
+  for(let row=rowStart;row<rowEnd;row++){
+    for(let col=colStart;col<colEnd;col++){
+      const c=G.dotColor[row][col];
+      const bx=G.offX+col*STEP, by=G.offY+row*STEP;
+      const lx=bx-pgL, ly=by-pgT;
+      // Sólo dibujar si el centro del círculo está dentro de la página
+      const lcx=lx+STEP/2, lcy=ly+STEP/2;
+      if(lcx<0||lcx>=G.pageW||lcy<0||lcy>=G.pageH) continue;
+
+      // Saltar celdas de fondo
+      if(G.bgMask&&G.bgMask[row][col]) continue;
+
+      // Fondo del diamante
+      const fx=Math.max(lx,0), fy=Math.max(ly,0);
+      const fw=Math.min(lx+STEP,G.pageW)-fx, fh=Math.min(ly+STEP,G.pageH)-fy;
+      if(fw>0&&fh>0){ctx.fillStyle=c.hex; ctx.fillRect(fx,fy,fw,fh);}
+
+      // Círculo del diamante
+      ctx.beginPath(); ctx.arc(lcx,lcy,RADIUS,0,Math.PI*2);
+      ctx.fillStyle=c.hex; ctx.fill();
+      ctx.strokeStyle='rgba(0,0,0,0.22)'; ctx.lineWidth=1.5; ctx.stroke();
+
+      // Símbolo
+      const br=(c.r*299+c.g*587+c.b*114)/1000;
+      const fc=br>128?'#111111':'#ffffff', oc=br>128?'#ffffff':'#000000';
+      ctx.font=`bold ${FS}px Arial,sans-serif`;
+      ctx.fillStyle=oc;
+      for(let ox=-2;ox<=2;ox+=2) for(let oy=-2;oy<=2;oy+=2){
+        if(ox===0&&oy===0) continue;
+        ctx.fillText(c.sym,lcx+ox,lcy+oy);
+      }
+      ctx.fillStyle=fc; ctx.fillText(c.sym,lcx,lcy);
+    }
+  }
+
+  // ── BORDE DEL LIENZO (línea negra que delimita el área de bordado) ──
+  // Solo en la página donde están los bordes reales del dibujo
+  const borderX = G.offX - pgL;
+  const borderY = G.offY - pgT;
+  const borderW = G.cols * STEP;
+  const borderH = G.rows * STEP;
+  const bx1 = Math.max(borderX, 0), by1 = Math.max(borderY, 0);
+  const bx2 = Math.min(borderX + borderW, G.pageW);
+  const by2 = Math.min(borderY + borderH, G.pageH);
+  if(bx2 > bx1 && by2 > by1){
+    ctx.strokeStyle = '#000000'; ctx.lineWidth = 4;
+    ctx.strokeRect(bx1, by1, bx2-bx1, by2-by1);
+  }
+
+  // ── MARCAS DE AGUA EN DIAGONAL ──
+  ctx.save();
+  ctx.globalAlpha = 0.18;
+  ctx.fillStyle = '#7c3aed';
+  ctx.font = 'bold 52px Arial,sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.translate(G.pageW/2, G.pageH/2);
+  ctx.rotate(-Math.PI/5);
+  const wmText = '💎 LADY AURA';
+  const wmSpacingX = 600, wmSpacingY = 280;
+  for(let wy=-3; wy<=3; wy++){
+    for(let wx=-3; wx<=3; wx++){
+      ctx.fillText(wmText, wx*wmSpacingX, wy*wmSpacingY);
+    }
+  }
+  ctx.restore();
+
+  // Marco de la página con info
+  const margin=8;
+  ctx.strokeStyle='rgba(0,0,0,0.10)'; ctx.lineWidth=2;
+  ctx.strokeRect(margin,margin,G.pageW-margin*2,G.pageH-margin*2);
+
+  // Número de página y coordenadas
+  const pageNum=pyIdx*G.pX+pxIdx+1;
+  const totalPages=G.pX*G.pY;
+  ctx.fillStyle='rgba(0,0,0,0.5)'; ctx.font='bold 28px Arial,sans-serif';
+  ctx.textAlign='left'; ctx.textBaseline='bottom';
+  ctx.fillText(`Folio ${pageNum}/${totalPages} · Fila ${rowStart+1}-${rowEnd} · Col ${colStart+1}-${colEnd}`,
+    margin+12, G.pageH-margin-10);
+
+  // Marca de agua Lady Aura
+  ctx.textAlign='right';
+  ctx.fillText('💎 Lady Aura — ladyaura.es', G.pageW-margin-12, G.pageH-margin-10);
+
+  // Líneas de guía para encuadre entre páginas
+  if(G.pX>1||G.pY>1){
+    ctx.setLineDash([8,8]);
+    ctx.strokeStyle='rgba(200,0,200,0.3)'; ctx.lineWidth=2;
+    if(pxIdx>0){ctx.beginPath();ctx.moveTo(1,0);ctx.lineTo(1,G.pageH);ctx.stroke();}
+    if(pxIdx<G.pX-1){ctx.beginPath();ctx.moveTo(G.pageW-1,0);ctx.lineTo(G.pageW-1,G.pageH);ctx.stroke();}
+    if(pyIdx>0){ctx.beginPath();ctx.moveTo(0,1);ctx.lineTo(G.pageW,1);ctx.stroke();}
+    if(pyIdx<G.pY-1){ctx.beginPath();ctx.moveTo(0,G.pageH-1);ctx.lineTo(G.pageW,G.pageH-1);ctx.stroke();}
+    ctx.setLineDash([]);
+  }
+
+  return cv;
+}
+
+// ─── LEYENDA ──────────────────────────────────────────────────────────────────
+function buildLegend(){
+  const grid=document.getElementById('lgGrid');
+  grid.innerHTML='';
+  const items=[...G.counts.entries()].sort((a,b)=>b[1]-a[1]);
+  items.forEach(([sym,count])=>{
+    let c=null;
+    for(let r=0;r<G.rows&&!c;r++) for(let col=0;col<G.cols&&!c;col++)
+      if(G.dotColor[r][col].sym===sym) c=G.dotColor[r][col];
+    if(!c) return;
+    const br=(c.r*299+c.g*587+c.b*114)/1000, tc=br>128?'#000':'#fff';
+    const div=document.createElement('div'); div.className='li';
+    div.title='Clic para reemplazar'; div.onclick=()=>openSwap(sym);
+    div.innerHTML=`<div class="ld" style="background:${c.hex};color:${tc}">${c.sym}</div>
+      <div><div class="ls">${c.sym} — DMC ${c.dmc}</div>
+      <div class="li2">${c.name}</div>
+      <div class="lc">${count.toLocaleString()} diamantes</div></div>`;
+    grid.appendChild(div);
+  });
+  document.getElementById('lgCard').style.display='block';
+}
+
+// ─── DESCARGAS ────────────────────────────────────────────────────────────────
+function downloadPage(idx){
+  if(!G.renderedPages[idx]) return;
+  const a=document.createElement('a');
+  a.href=G.renderedPages[idx].toDataURL('image/png');
+  a.download=`patron_dmc_folio${idx+1}.png`; a.click();
+}
+
+function downloadAll(){
+  G.renderedPages.forEach((cv,i)=>setTimeout(()=>{
+    const a=document.createElement('a');
+    a.href=cv.toDataURL('image/png'); a.download=`patron_dmc_folio${i+1}.png`; a.click();
+  },i*800));
+}
+
+function downloadLegend(){
+  if(!G.counts||G.counts.size===0){alert('Genera el patrón primero.');return;}
+  const items=[...G.counts.entries()].sort((a,b)=>b[1]-a[1]).map(([sym,cnt])=>{
+    let c=null;
+    for(let r=0;r<G.rows&&!c;r++) for(let col=0;col<G.cols&&!c;col++)
+      if(G.dotColor[r][col].sym===sym) c=G.dotColor[r][col];
+    return {c,cnt};
+  }).filter(x=>x.c);
+
+  const COLS=4,IW=280,IH=70,PAD=50,GAP=10,CR=26;
+  const nRows=Math.ceil(items.length/COLS);
+  const CW=COLS*IW+(COLS-1)*GAP+PAD*2;
+  const CH=nRows*IH+(nRows-1)*GAP+PAD*2+80;
+  const cv=document.createElement('canvas'); cv.width=CW; cv.height=CH;
+  const ctx=cv.getContext('2d');
+  ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,CW,CH);
+
+  // Encabezado
+  ctx.fillStyle='#1a0a2e'; ctx.font='bold 30px Arial,sans-serif';
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText('💎 Leyenda DMC — Lady Aura',CW/2,PAD+16);
+  ctx.strokeStyle='#e0c0ff'; ctx.lineWidth=2;
+  ctx.beginPath(); ctx.moveTo(PAD,PAD+36); ctx.lineTo(CW-PAD,PAD+36); ctx.stroke();
+
+  const sY=PAD+56;
+  items.forEach(({c,cnt},i)=>{
+    const col=i%COLS, row=Math.floor(i/COLS);
+    const x=PAD+col*(IW+GAP), y=sY+row*(IH+GAP);
+    const cxL=x+CR+6, cyL=y+IH/2;
+    // Fondo
+    ctx.fillStyle='#f8f4ff';
+    ctx.beginPath(); if(ctx.roundRect) ctx.roundRect(x,y,IW,IH,8); else ctx.rect(x,y,IW,IH);
+    ctx.fill();
+    // Círculo color
+    ctx.beginPath(); ctx.arc(cxL,cyL,CR,0,Math.PI*2);
+    ctx.fillStyle=c.hex; ctx.fill();
+    ctx.strokeStyle='rgba(0,0,0,0.2)'; ctx.lineWidth=1.5; ctx.stroke();
+    // Símbolo
+    const br=(c.r*299+c.g*587+c.b*114)/1000;
+    ctx.fillStyle=br>128?'#000':'#fff'; ctx.font=`bold 18px Arial,sans-serif`;
+    ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(c.sym,cxL,cyL);
+    // Texto
+    ctx.fillStyle='#1a0a2e'; ctx.font='bold 14px Arial,sans-serif'; ctx.textAlign='left';
+    ctx.fillText(`DMC ${c.dmc}`,x+CR*2+14,cyL-13);
+    ctx.font='11px Arial,sans-serif'; ctx.fillStyle='#666';
+    ctx.fillText(c.name,x+CR*2+14,cyL+2);
+    ctx.fillStyle='#7c3aed'; ctx.font='bold 11px Arial,sans-serif';
+    ctx.fillText(`${cnt.toLocaleString()} diamantes`,x+CR*2+14,cyL+17);
+  });
+
+  const a=document.createElement('a'); a.href=cv.toDataURL('image/png');
+  a.download='leyenda_dmc_ladyaura.png'; a.click();
+}
+
+// ─── SELECCIÓN DE ZONA ────────────────────────────────────────────────────────
+let dragStart=null, currentZone=null;
+const cvPrev=document.getElementById('cvPrev');
+const prevWrap=document.getElementById('prevWrap');
+
+function cssToCell(cssX,cssY){
+  const rect=cvPrev.getBoundingClientRect();
+  const col=Math.floor(cssX/rect.width*G.cols);
+  const row=Math.floor(cssY/rect.height*G.rows);
+  return [Math.max(0,Math.min(col,G.cols-1)),Math.max(0,Math.min(row,G.rows-1))];
+}
+
+function startDrag(cx,cy){
+  if(!G.dotColor) return;
+  const wr=prevWrap.getBoundingClientRect();
+  dragStart={x:cx-wr.left,y:cy-wr.top};
+  const sb=document.getElementById('selBox');
+  sb.style.cssText=`display:block;left:${dragStart.x}px;top:${dragStart.y}px;width:0;height:0;`;
+}
+function moveDrag(cx,cy){
+  if(!dragStart) return;
+  const wr=prevWrap.getBoundingClientRect();
+  const ex=Math.max(0,Math.min(cx-wr.left,wr.width));
+  const ey=Math.max(0,Math.min(cy-wr.top,wr.height));
+  const x=Math.min(dragStart.x,ex),y=Math.min(dragStart.y,ey);
+  const sb=document.getElementById('selBox');
+  sb.style.left=x+'px'; sb.style.top=y+'px';
+  sb.style.width=Math.abs(ex-dragStart.x)+'px'; sb.style.height=Math.abs(ey-dragStart.y)+'px';
+}
+function endDrag(cx,cy){
+  if(!dragStart) return;
+  const wr=prevWrap.getBoundingClientRect();
+  const ex=Math.max(0,Math.min(cx-wr.left,wr.width));
+  const ey=Math.max(0,Math.min(cy-wr.top,wr.height));
+  const x1=Math.min(dragStart.x,ex),y1=Math.min(dragStart.y,ey);
+  const x2=Math.max(dragStart.x,ex),y2=Math.max(dragStart.y,ey);
+  dragStart=null;
+  document.getElementById('selBox').style.display='none';
+  if(!G.dotColor||x2-x1<3||y2-y1<3) return;
+  const [c1,r1]=cssToCell(x1,y1),[c2,r2]=cssToCell(x2,y2);
+  currentZone={r1,c1,r2:Math.max(r1,r2),c2:Math.max(c1,c2)};
+  openZoneModal(c1,r1,c2,r2);
+}
+
+cvPrev.addEventListener('mousedown',e=>{e.preventDefault();startDrag(e.clientX,e.clientY);});
+cvPrev.addEventListener('touchstart',e=>{e.preventDefault();startDrag(e.touches[0].clientX,e.touches[0].clientY);},{passive:false});
+document.addEventListener('mousemove',e=>moveDrag(e.clientX,e.clientY));
+document.addEventListener('touchmove',e=>{if(dragStart) moveDrag(e.touches[0].clientX,e.touches[0].clientY);});
+document.addEventListener('mouseup',e=>endDrag(e.clientX,e.clientY));
+document.addEventListener('touchend',e=>{if(e.changedTouches[0]) endDrag(e.changedTouches[0].clientX,e.changedTouches[0].clientY);});
+
+function openZoneModal(c1,r1,c2,r2){
+  const zMap=new Map();
+  for(let r=r1;r<=r2;r++) for(let c=c1;c<=c2;c++){
+    if(r<0||r>=G.rows||c<0||c>=G.cols) continue;
+    const dot=G.dotColor[r][c];
+    if(!zMap.has(dot.sym)) zMap.set(dot.sym,{col:dot,cnt:0});
+    zMap.get(dot.sym).cnt++;
+  }
+  if(!zMap.size) return;
+  const items=[...zMap.values()].sort((a,b)=>b.cnt-a.cnt);
+  const grid=document.getElementById('zoneGrid');
+  grid.innerHTML='';
+  items.forEach(({col:c,cnt})=>{
+    const br=(c.r*299+c.g*587+c.b*114)/1000,tc=br>128?'#000':'#fff';
+    const div=document.createElement('div'); div.className='mc';
+    div.onclick=()=>{closeZone();G.swapZone=currentZone;openSwap(c.sym);};
+    div.innerHTML=`<div class="mcd" style="background:${c.hex};color:${tc}">${c.sym}</div>
+      <div class="mci">DMC ${c.dmc}</div><div class="mci">${c.name}</div>
+      <div class="mci" style="color:var(--gold)">${cnt.toLocaleString()} pts</div>`;
+    grid.appendChild(div);
+  });
+  document.getElementById('zoneTit').textContent=`${items.length} color${items.length>1?'es':''} en la selección`;
+  document.getElementById('zoneMo').classList.add('open');
+}
+function closeZone(){document.getElementById('zoneMo').classList.remove('open');}
+document.getElementById('zoneMo').addEventListener('click',e=>{if(e.target===document.getElementById('zoneMo')) closeZone();});
+
+// ─── MODAL SWAP ───────────────────────────────────────────────────────────────
+let currentSwapSym=null, allSwapItems=[];
+
+function openSwap(sym){
+  currentSwapSym=sym;
+  let cur=null;
+  for(let r=0;r<G.rows&&!cur;r++) for(let c=0;c<G.cols&&!cur;c++)
+    if(G.dotColor[r][c].sym===sym) cur=G.dotColor[r][c];
+  if(!cur) return;
+  document.getElementById('swapTit').textContent=`Reemplazar: ${sym} — DMC ${cur.dmc} (${cur.name})`;
+  document.getElementById('swapSrch').value='';
+  // Ordenar por distancia LAB desde color actual
+  const [L1,A1,B1]=cur.lab;
+  allSwapItems=[...DMC_LAB].sort((a,b)=>{
+    const [La,Aa,Ba]=a.lab,da=(L1-La)**2+(A1-Aa)**2+(B1-Ba)**2;
+    const [Lb,Ab,Bb]=b.lab,db=(L1-Lb)**2+(A1-Ab)**2+(B1-Bb)**2;
+    return da-db;
+  });
+  renderSwapGrid(allSwapItems,cur.sym);
+  document.getElementById('swapMo').classList.add('open');
+}
+
+function renderSwapGrid(items,currentSym){
+  const grid=document.getElementById('swapGrid');
+  grid.innerHTML='';
+  items.forEach((c,i)=>{
+    const br=(c.r*299+c.g*587+c.b*114)/1000,tc=br>128?'#000':'#fff';
+    const div=document.createElement('div');
+    div.className='mc'+(i===0||c.sym===currentSym?' best':'');
+    div.onclick=()=>swapColor(c);
+    div.innerHTML=`<div class="mcd" style="background:${c.hex};color:${tc}">${c.sym}</div>
+      <div class="mci">DMC ${c.dmc}</div><div class="mci">${c.name}</div>`;
+    grid.appendChild(div);
+  });
+}
+
+function filterSwap(){
+  const q=document.getElementById('swapSrch').value.toLowerCase();
+  const filtered=q?allSwapItems.filter(c=>c.name.toLowerCase().includes(q)||c.dmc.toLowerCase().includes(q)):allSwapItems;
+  let cur=null;
+  for(let r=0;r<G.rows&&!cur;r++) for(let c=0;c<G.cols&&!cur;c++)
+    if(G.dotColor[r][c].sym===currentSwapSym) cur=G.dotColor[r][c];
+  renderSwapGrid(filtered,cur?cur.sym:null);
+}
+
+function swapColor(newColor){
+  if(!currentSwapSym) return;
+  const zone=G.swapZone;
+  for(let r=0;r<G.rows;r++) for(let c=0;c<G.cols;c++){
+    if(G.dotColor[r][c].sym===currentSwapSym){
+      if(!zone||(r>=zone.r1&&r<=zone.r2&&c>=zone.c1&&c<=zone.c2))
+        G.dotColor[r][c]={...newColor};
+    }
+  }
+  G.swapZone=null;
+  closeSwap();
+  setS('Renderizando…','info');
+  reduceColors(parseInt(document.getElementById('colorSel').value)||35);
+  remapSymbols();
+  setTimeout(()=>renderAllFromDots(false),20);
+}
+
+function closeSwap(){document.getElementById('swapMo').classList.remove('open');currentSwapSym=null;}
+document.getElementById('swapMo').addEventListener('click',e=>{if(e.target===document.getElementById('swapMo')) closeSwap();});
+
+// ─── RESTAURAR ────────────────────────────────────────────────────────────────
+function restoreOriginal(){
+  if(!G.dotOriginal) return;
+  G.dotColor=G.dotOriginal.map(row=>row.map(c=>({...c})));
+  if(G.bgMaskOriginal) G.bgMask=G.bgMaskOriginal.map(row=>new Uint8Array(row));
+  setS('Renderizando…','info');
+  reduceColors(parseInt(document.getElementById('colorSel').value)||35);
+  remapSymbols();
+  setTimeout(()=>renderAllFromDots(false),20);
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+updateSpec();
+</script>
+</body>
+</html>
