@@ -628,11 +628,11 @@ function getSizeCfg(v){
     return {pX,pY,pageW:A4W,pageH:A4H,fixedCols:cols,fixedRows:rows};
   }
   switch(v){
-    // Folios A4: fijar cols/rows equivalentes a 30x42cm (densidad estándar diamond painting)
-    case 'A4V':  return {pX:1,pY:1,pageW:A4W,pageH:A4H,fixedCols:300,fixedRows:420};
-    case 'A4H':  return {pX:1,pY:1,pageW:A4H,pageH:A4W,fixedCols:420,fixedRows:300};
-    case 'A4-2x2': return {pX:2,pY:2,pageW:A4W,pageH:A4H,fixedCols:600,fixedRows:840};
-    case 'A4-3x3': return {pX:3,pY:3,pageW:A4W,pageH:A4H,fixedCols:900,fixedRows:1260};
+    // Folios A4: sin fixedCols, calcula automáticamente con STEP=38 (mismo que lienzos)
+    case 'A4V':  return {pX:1,pY:1,pageW:A4W,pageH:A4H};
+    case 'A4H':  return {pX:1,pY:1,pageW:A4H,pageH:A4W};
+    case 'A4-2x2': return {pX:2,pY:2,pageW:A4W,pageH:A4H};
+    case 'A4-3x3': return {pX:3,pY:3,pageW:A4W,pageH:A4H};
     default: return {pX:1,pY:1,pageW:A4W,pageH:A4H};
   }
 }
@@ -730,12 +730,17 @@ function startTransform(){
 
   if(cfg.fixedCols){
     G.cols=cfg.fixedCols; G.rows=cfg.fixedRows;
+    // Calcular step dinámico para que quepan exactamente en el total de páginas
+    G.stepX=Math.floor((G.totalW-BORDER*2)/G.cols);
+    G.stepY=Math.floor((G.totalH-BORDER*2)/G.rows);
+    G.dynStep=Math.min(G.stepX,G.stepY); // paso cuadrado más pequeño que quepa
   } else {
     G.cols=Math.floor((G.totalW-BORDER*2)/STEP);
     G.rows=Math.floor((G.totalH-BORDER*2)/STEP);
+    G.dynStep=STEP;
   }
 
-  const dotW=G.cols*STEP, dotH=G.rows*STEP;
+  const dotW=G.cols*G.dynStep, dotH=G.rows*G.dynStep;
   G.offX=Math.floor((G.totalW-dotW)/2);
   G.offY=Math.floor((G.totalH-dotH)/2);
 
@@ -770,11 +775,11 @@ function startTransform(){
     const endRow=Math.min(startRow+25,G.rows);
     for(let row=startRow;row<endRow;row++)
       for(let col=0;col<G.cols;col++){
-        const x=col*STEP, y=row*STEP;
+        const x=col*G.dynStep, y=row*G.dynStep;
         let rS=0,gS=0,bS=0,n=0;
         // Muestrear área del diamante (evita bordes)
-        const margin=Math.floor(STEP*0.15);
-        for(let dy2=margin;dy2<STEP-margin;dy2++) for(let dx2=margin;dx2<STEP-margin;dx2++){
+        const margin=Math.floor(G.dynStep*0.15);
+        for(let dy2=margin;dy2<G.dynStep-margin;dy2++) for(let dx2=margin;dx2<G.dynStep-margin;dx2++){
           const idx=((y+dy2)*dotW+(x+dx2))*4;
           rS+=srcData[idx];gS+=srcData[idx+1];bS+=srcData[idx+2];n++;
         }
@@ -925,10 +930,12 @@ function renderAllFromDots(initial=false){
       const ts=TW/G.pageW;
       const tcs=Math.max(1,Math.round(STEP*ts));
       const pgL=px*G.pageW, pgT=py*G.pageH;
+      const DS2=G.dynStep||STEP;
       for(let row=0;row<G.rows;row++) for(let col=0;col<G.cols;col++){
+        if(G.bgMask&&G.bgMask[row][col]) continue;
         const c=G.dotColor[row][col];
-        const bx=G.offX+col*STEP-pgL, by=G.offY+row*STEP-pgT;
-        if(bx+STEP<0||bx>G.pageW||by+STEP<0||by>G.pageH) continue;
+        const bx=G.offX+col*DS2-pgL, by=G.offY+row*DS2-pgT;
+        if(bx+DS2<0||bx>G.pageW||by+DS2<0||by>G.pageH) continue;
         tCtx.fillStyle=c.hex;
         tCtx.fillRect(Math.round(bx*ts),Math.round(by*ts),tcs,tcs);
       }
@@ -958,37 +965,33 @@ function renderOnePage(pxIdx,pyIdx){
   const ctx=cv.getContext('2d');
   ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,G.pageW,G.pageH);
 
-  const FS=Math.round(STEP*0.68);
+  const DS=G.dynStep||STEP; // step dinámico
+  const DR=Math.round(DS*0.47); // radio del círculo
+  const FS=Math.round(DS*0.68);
   ctx.font=`bold ${FS}px Arial,sans-serif`;
   ctx.textAlign='center'; ctx.textBaseline='middle';
 
   const pgL=pxIdx*G.pageW, pgT=pyIdx*G.pageH;
-  // Calcular rango de celdas visibles en esta página (con margen para no cortar)
-  const colStart=Math.max(0,Math.floor((pgL-G.offX)/STEP));
-  const colEnd=Math.min(G.cols,Math.ceil((pgL+G.pageW-G.offX)/STEP));
-  const rowStart=Math.max(0,Math.floor((pgT-G.offY)/STEP));
-  const rowEnd=Math.min(G.rows,Math.ceil((pgT+G.pageH-G.offY)/STEP));
+  const colStart=Math.max(0,Math.floor((pgL-G.offX)/DS));
+  const colEnd=Math.min(G.cols,Math.ceil((pgL+G.pageW-G.offX)/DS));
+  const rowStart=Math.max(0,Math.floor((pgT-G.offY)/DS));
+  const rowEnd=Math.min(G.rows,Math.ceil((pgT+G.pageH-G.offY)/DS));
 
   // Dibujar diamantes — SOLO los que caben completos en esta página
   for(let row=rowStart;row<rowEnd;row++){
     for(let col=colStart;col<colEnd;col++){
       const c=G.dotColor[row][col];
-      const bx=G.offX+col*STEP, by=G.offY+row*STEP;
+      const bx=G.offX+col*DS, by=G.offY+row*DS;
       const lx=bx-pgL, ly=by-pgT;
-      // Sólo dibujar si el centro del círculo está dentro de la página
-      const lcx=lx+STEP/2, lcy=ly+STEP/2;
+      const lcx=lx+DS/2, lcy=ly+DS/2;
       if(lcx<0||lcx>=G.pageW||lcy<0||lcy>=G.pageH) continue;
-
-      // Saltar celdas de fondo
       if(G.bgMask&&G.bgMask[row][col]) continue;
 
-      // Fondo del diamante
       const fx=Math.max(lx,0), fy=Math.max(ly,0);
-      const fw=Math.min(lx+STEP,G.pageW)-fx, fh=Math.min(ly+STEP,G.pageH)-fy;
+      const fw=Math.min(lx+DS,G.pageW)-fx, fh=Math.min(ly+DS,G.pageH)-fy;
       if(fw>0&&fh>0){ctx.fillStyle=c.hex; ctx.fillRect(fx,fy,fw,fh);}
 
-      // Círculo del diamante
-      ctx.beginPath(); ctx.arc(lcx,lcy,RADIUS,0,Math.PI*2);
+      ctx.beginPath(); ctx.arc(lcx,lcy,DR,0,Math.PI*2);
       ctx.fillStyle=c.hex; ctx.fill();
       ctx.strokeStyle='rgba(0,0,0,0.22)'; ctx.lineWidth=1.5; ctx.stroke();
 
@@ -1009,8 +1012,8 @@ function renderOnePage(pxIdx,pyIdx){
   // Solo en la página donde están los bordes reales del dibujo
   const borderX = G.offX - pgL;
   const borderY = G.offY - pgT;
-  const borderW = G.cols * STEP;
-  const borderH = G.rows * STEP;
+  const borderW = G.cols * (G.dynStep||STEP);
+  const borderH = G.rows * (G.dynStep||STEP);
   const bx1 = Math.max(borderX, 0), by1 = Math.max(borderY, 0);
   const bx2 = Math.min(borderX + borderW, G.pageW);
   const by2 = Math.min(borderY + borderH, G.pageH);
