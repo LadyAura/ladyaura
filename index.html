@@ -770,10 +770,20 @@ html[lang="en"] span.section-tag.lang-es {
   position: relative;
 }
 .personalizado-cards-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.personalizado-cards-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
+  gap: 1rem;
   align-items: end;
+}
+.personalizado-cards-row--single {
+  grid-template-columns: 1fr;
+  max-width: 60%;
+  margin: 0 auto;
 }
 .personalizado-card {
   position: relative;
@@ -900,7 +910,8 @@ html[lang="en"] span.section-tag.lang-es {
   .personalizado-section { padding: 4rem 5%; }
 }
 @media (max-width: 480px) {
-  .personalizado-cards-col { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .personalizado-cards-row { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .personalizado-cards-row--single { max-width: 70%; }
 }
 
 /* ── ZODIAC TABS ── */
@@ -1974,21 +1985,35 @@ html[lang="en"] span.section-tag.lang-es {
 
       <!-- Imágenes -->
       <div class="personalizado-cards-col">
-        <div class="personalizado-card">
-          <img
-            src="assets/personalizado-lady-aura.webp"
-            alt="Retrato personalizado Lady Aura – ejemplo femenino de arte personalizado a partir de foto"
-            loading="lazy"
-          >
-          <div class="personalizado-card-label">✦ Lady Aura ✦</div>
+        <!-- Fila superior: Lady Aura + Escorpio -->
+        <div class="personalizado-cards-row">
+          <div class="personalizado-card">
+            <img
+              src="assets/personalizado-lady-aura.webp"
+              alt="Retrato personalizado Lady Aura – ejemplo femenino de arte personalizado a partir de foto"
+              loading="lazy"
+            >
+            <div class="personalizado-card-label">✦ Lady Aura ✦</div>
+          </div>
+          <div class="personalizado-card">
+            <img
+              src="assets/personalizado-3.webp"
+              alt="Retrato personalizado Lady Aura – ejemplo masculino Escorpio"
+              loading="lazy"
+            >
+            <div class="personalizado-card-label">✦ Escorpio · Personalizado ✦</div>
+          </div>
         </div>
-        <div class="personalizado-card">
-          <img
-            src="assets/personalizado-2.webp"
-            alt="Retrato personalizado Lady Aura – ejemplo masculino Piscis"
-            loading="lazy"
-          >
-          <div class="personalizado-card-label">✦ Piscis · Personalizado ✦</div>
+        <!-- Fila inferior: Piscis -->
+        <div class="personalizado-cards-row personalizado-cards-row--single">
+          <div class="personalizado-card">
+            <img
+              src="assets/personalizado-2.webp"
+              alt="Retrato personalizado Lady Aura – ejemplo masculino Piscis"
+              loading="lazy"
+            >
+            <div class="personalizado-card-label">✦ Piscis · Personalizado ✦</div>
+          </div>
         </div>
       </div>
 
