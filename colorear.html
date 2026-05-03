@@ -3,659 +3,738 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎨 Lady Aura Art — Colorear por Números</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>Láminas para Colorear · Lady Aura Art · PDF Digital</title>
+<meta name="description" content="Láminas digitales para colorear estilo fantasy. Descarga tu PDF A4, imprímelo y coloréalo con tus rotuladores. Diseños exclusivos Lady Aura.">
+<link rel="canonical" href="https://ladyauraart.com/colorear.html">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <style>
-:root{
-  --bg:#0a0a18;--card:#12122a;--card2:#1a1a38;--brd:rgba(200,160,255,0.2);
-  --text:#f0eaff;--muted:#9988bb;--gold:#f5c842;--rose:#ff6eb4;
-  --purple:#c084fc;--dark-purple:#7c3aed;--mint:#6affda;
-  --r:18px;--rs:12px;
+/* ── Variables del mismo estilo que la web ── */
+:root {
+  --gold: #c9a84c;
+  --gold2: #e8c97a;
+  --purple-dark: #0d0b1a;
+  --purple-mid: #1e1040;
+  --purple-card: #16102e;
+  --muted: #9b93b8;
+  --border: rgba(201,168,76,0.18);
+  --white: #f0ebff;
 }
-*{box-sizing:border-box;margin:0;padding:0;}
-body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;padding:0;min-height:100vh;
-  background-image:radial-gradient(ellipse at 20% 20%,rgba(124,58,237,0.15) 0%,transparent 60%),
-  radial-gradient(ellipse at 80% 80%,rgba(255,110,180,0.10) 0%,transparent 60%);}
 
-/* NAV */
-.nav-bar{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
-  padding:0.8rem 4%;background:rgba(5,5,20,0.95);backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(150,100,255,0.2);box-shadow:0 2px 20px rgba(0,0,0,0.4);}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-brand span{font-family:'Cinzel Decorative',serif;font-size:clamp(11px,2vw,16px);
-  background:linear-gradient(135deg,#c084fc,#ff6eb4);-webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;font-weight:700;}
-.nav-links{display:flex;gap:clamp(8px,2vw,20px);align-items:center;flex-wrap:wrap;}
-.nav-links a{color:#c0b0e0;text-decoration:none;font-size:13px;font-weight:600;transition:color .2s;}
-.nav-links a:hover{color:#c084fc;}
-.nav-pill{background:linear-gradient(135deg,#7c3aed,#ff6eb4);color:#fff!important;
-  padding:7px 16px;border-radius:99px;box-shadow:0 2px 12px rgba(124,58,237,0.4);}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-.wrap{padding:1.2rem;}
+body {
+  background: var(--purple-dark);
+  color: var(--white);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  min-height: 100vh;
+}
 
-h1{text-align:center;font-family:'Cinzel Decorative',serif;font-size:clamp(16px,4vw,26px);
-  padding:.8rem 0 .3rem;background:linear-gradient(135deg,var(--gold),var(--rose),var(--purple));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.3;}
-.sub{text-align:center;font-size:12px;color:var(--muted);margin-bottom:1.2rem;}
+/* ── NAV igual que la web ── */
+.nav-colorear {
+  background: rgba(13,11,26,0.95);
+  border-bottom: 1px solid var(--border);
+  padding: .8rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+.nav-logo img { height: 48px; }
+.nav-back {
+  color: var(--gold);
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  font-size: .72rem;
+  letter-spacing: .1em;
+  border: 1px solid rgba(201,168,76,.3);
+  padding: .4rem 1rem;
+  border-radius: 20px;
+  transition: all .2s;
+}
+.nav-back:hover { background: rgba(201,168,76,.1); }
 
-.card{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:1.1rem;margin-bottom:1rem;
-  box-shadow:0 4px 24px rgba(0,0,0,0.4);}
-.ct{font-size:11px;font-weight:800;color:var(--gold);margin-bottom:10px;letter-spacing:.08em;text-transform:uppercase;}
+/* ── Hero ── */
+.hero {
+  text-align: center;
+  padding: 4rem 1.5rem 2rem;
+  max-width: 780px;
+  margin: 0 auto;
+}
+.hero .section-tag {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: .7rem;
+  letter-spacing: .18em;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,.3);
+  padding: .3rem 1.2rem;
+  border-radius: 20px;
+  margin-bottom: 1.2rem;
+  background: rgba(201,168,76,.06);
+}
+.hero h1 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gold), var(--gold2), #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.hero p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0 auto 1.5rem;
+}
 
-button{border:none;border-radius:var(--rs);padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer;
-  transition:all .2s;font-family:'Nunito',sans-serif;}
-button:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.3);}
-button:disabled{opacity:.3;cursor:not-allowed;transform:none!important;}
-.bp{background:linear-gradient(135deg,var(--dark-purple),var(--rose));color:#fff;}
-.bs{background:var(--card2);color:var(--muted);border:1px solid var(--brd);font-size:11px;padding:6px 12px;}
+/* ── Aviso arte digital ── */
+.aviso-digital {
+  background: rgba(201,168,76,.08);
+  border: 1px solid rgba(201,168,76,.25);
+  border-radius: 14px;
+  padding: 1rem 1.4rem;
+  max-width: 640px;
+  margin: 0 auto 3rem;
+  display: flex;
+  align-items: flex-start;
+  gap: .8rem;
+  text-align: left;
+}
+.aviso-digital .ico { font-size: 1.4rem; flex-shrink: 0; margin-top: .1rem; }
+.aviso-digital p { color: var(--muted); font-size: .9rem; line-height: 1.6; }
+.aviso-digital strong { color: var(--gold); }
 
-select{background:var(--card2);color:var(--text);border:1px solid var(--brd);border-radius:var(--rs);
-  padding:8px 12px;font-size:13px;font-family:'Nunito',sans-serif;cursor:pointer;width:100%;}
+/* ── Sección gratis Aries ── */
+.seccion-gratis {
+  max-width: 1100px;
+  margin: 0 auto 5rem;
+  padding: 0 1.5rem;
+}
+.seccion-titulo {
+  font-family: 'Cinzel', serif;
+  font-size: .72rem;
+  letter-spacing: .15em;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.seccion-titulo::before, .seccion-titulo::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
 
-.drop{border:2px dashed var(--brd);border-radius:var(--r);padding:2rem 1rem;text-align:center;cursor:pointer;
-  background:var(--card);transition:all .25s;position:relative;overflow:hidden;}
-.drop:hover,.drop.drag{border-color:var(--purple);background:var(--card2);}
-.drop-icon{font-size:36px;margin-bottom:8px;display:block;}
-.drop strong{font-size:14px;display:block;margin-bottom:4px;}
-.drop span{font-size:12px;color:var(--muted);}
-#fi{display:none;}
+.aries-gratis-card {
+  background: var(--purple-card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+@media(max-width: 700px) { .aries-gratis-card { grid-template-columns: 1fr; } }
 
-#sb{text-align:center;padding:7px;font-size:13px;min-height:22px;border-radius:10px;margin-bottom:8px;font-weight:600;}
-#sb.err{background:rgba(255,80,80,.15);color:#ff8080;}
-#sb.ok{background:rgba(106,255,218,.1);color:#6affda;}
-#sb.info{color:var(--muted);}
+.aries-img-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.aries-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s;
+}
+.aries-img-wrap:hover img { transform: scale(1.03); }
+.aries-badge-gratis {
+  position: absolute;
+  top: 1rem; left: 1rem;
+  background: linear-gradient(135deg, #7c3aed, #9333ea);
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  font-size: .65rem;
+  letter-spacing: .12em;
+  padding: .35rem .9rem;
+  border-radius: 20px;
+  font-weight: 600;
+}
+.aries-preview-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(13,11,26,.95), transparent);
+  padding: 1.5rem 1rem .8rem;
+  font-size: .8rem;
+  color: var(--muted);
+  text-align: center;
+}
 
-.prog-wrap{background:var(--card2);border-radius:99px;height:7px;margin-bottom:.8rem;display:none;overflow:hidden;}
-.prog-bar{height:100%;background:linear-gradient(90deg,var(--dark-purple),var(--rose),var(--gold));border-radius:99px;width:0;transition:width .15s;}
+.aries-info {
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.2rem;
+}
+.aries-signo {
+  font-family: 'Cinzel', serif;
+  font-size: .7rem;
+  letter-spacing: .2em;
+  color: var(--gold);
+}
+.aries-titulo {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+}
+.aries-desc {
+  color: var(--muted);
+  font-size: .95rem;
+  line-height: 1.7;
+}
+.aries-incluye {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+.aries-incluye li {
+  color: var(--muted);
+  font-size: .88rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.aries-incluye li::before { content: '✓'; color: var(--gold); font-weight: 700; }
 
-.pp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
-@media(max-width:520px){.pp{grid-template-columns:1fr;}}
-.pc{background:#0d0d20;border:1px solid var(--brd);border-radius:var(--r);overflow:hidden;}
-.pl{font-size:11px;color:var(--muted);padding:6px 12px;background:var(--card);font-weight:700;}
-.pc canvas{width:100%;display:block;}
+.btn-gratis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: #0d0b1a;
+  font-family: 'Cinzel', serif;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  padding: .95rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all .25s;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+}
+.btn-gratis:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,.3); }
 
-.pg{display:grid;gap:10px;margin-bottom:1rem;}
-.pgc{background:#0d0d20;border:1px solid var(--brd);border-radius:var(--r);overflow:hidden;}
-.pgl{font-size:11px;color:var(--muted);padding:6px 12px;background:var(--card);display:flex;justify-content:space-between;align-items:center;font-weight:700;}
-.pgc canvas{width:100%;display:block;}
+.precio-gratis {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+}
+.precio-gratis .gratis-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+.precio-gratis .gratis-sub {
+  color: var(--muted);
+  font-size: .82rem;
+  line-height: 1.4;
+}
 
-.dls{background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(255,110,180,0.10));
-  border:1px solid rgba(200,160,255,0.3);border-radius:var(--r);padding:1.2rem;text-align:center;margin-bottom:1rem;}
+/* ── Catálogo próximamente ── */
+.catalogo {
+  max-width: 1100px;
+  margin: 0 auto 5rem;
+  padding: 0 1.5rem;
+}
 
-.lg{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:7px;}
-.li{background:var(--card2);border:1px solid var(--brd);border-radius:var(--rs);display:flex;
-  align-items:center;gap:8px;padding:7px 10px;}
-.ld{width:32px;height:32px;border-radius:6px;flex-shrink:0;border:1.5px solid rgba(255,255,255,.2);
-  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;}
-.ls{font-size:12px;font-weight:700;}
-.li2{font-size:10px;color:var(--muted);}
-.lc{font-size:10px;color:var(--gold);font-weight:700;}
+.grid-laminas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.2rem;
+}
 
-.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-@media(max-width:400px){.settings-grid{grid-template-columns:1fr;}}
-.setting-group label{font-size:11px;color:var(--muted);font-weight:700;display:block;margin-bottom:5px;}
-.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px;}
+.lamina-card {
+  background: var(--purple-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all .25s;
+  cursor: pointer;
+  position: relative;
+}
+.lamina-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,.4); box-shadow: 0 12px 32px rgba(0,0,0,.4); }
+
+.lamina-thumb {
+  aspect-ratio: 3/4;
+  position: relative;
+  overflow: hidden;
+}
+.lamina-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: blur(12px) brightness(0.4);
+  transform: scale(1.1);
+}
+.lamina-thumb .lock {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+}
+.lamina-thumb .lock-ico { font-size: 1.8rem; }
+.lamina-thumb .lock-txt {
+  font-family: 'Cinzel', serif;
+  font-size: .65rem;
+  letter-spacing: .1em;
+  color: var(--gold);
+}
+.lamina-thumb .soon-badge {
+  position: absolute;
+  top: .6rem; right: .6rem;
+  background: rgba(124,58,237,.8);
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .1em;
+  padding: .2rem .6rem;
+  border-radius: 10px;
+}
+
+.lamina-info {
+  padding: .8rem 1rem;
+}
+.lamina-signo {
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  letter-spacing: .15em;
+  color: var(--gold);
+  margin-bottom: .2rem;
+}
+.lamina-nombre {
+  font-family: 'Cinzel', serif;
+  font-size: .88rem;
+  color: var(--white);
+  margin-bottom: .5rem;
+}
+.lamina-precio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.lamina-precio .precio { color: var(--gold); font-weight: 600; font-size: .95rem; font-family: 'Cinzel', serif; }
+.lamina-precio .aviso { color: var(--muted); font-size: .72rem; }
+
+.btn-wa-mini {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  padding: .5rem .8rem;
+  border-radius: 20px;
+  text-decoration: none;
+  margin-top: .6rem;
+  width: 100%;
+  text-align: center;
+  transition: all .2s;
+}
+.btn-wa-mini:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,211,102,.25); }
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: .82rem;
+}
+footer a { color: var(--gold); text-decoration: none; }
+
+/* ── Modal lightbox ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.92);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.modal-overlay.open { display: flex; }
+.modal-inner {
+  background: var(--purple-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  max-width: 860px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+@media(max-width:640px){ .modal-inner { grid-template-columns: 1fr; } }
+.modal-img { position: relative; }
+.modal-img img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 20px 0 0 20px; }
+@media(max-width:640px){ .modal-img img { border-radius: 20px 20px 0 0; } }
+.modal-body {
+  padding: 2rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+.modal-close {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  background: rgba(0,0,0,.5);
+  border: 1px solid var(--border);
+  color: var(--white);
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  z-index: 10;
+  transition: all .2s;
+}
+.modal-close:hover { background: rgba(201,168,76,.2); color: var(--gold); }
+.modal-signo { font-family: 'Cinzel', serif; font-size: .68rem; letter-spacing: .2em; color: var(--gold); }
+.modal-titulo { font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 700; color: var(--white); line-height: 1.2; }
+.modal-desc { color: var(--muted); font-size: .9rem; line-height: 1.6; }
+.modal-incluye { list-style: none; display: flex; flex-direction: column; gap: .3rem; }
+.modal-incluye li { color: var(--muted); font-size: .85rem; display: flex; align-items: center; gap: .5rem; }
+.modal-incluye li::before { content: '✓'; color: var(--gold); font-weight: 700; }
+.modal-precio { display: flex; align-items: baseline; gap: .5rem; }
+.modal-precio .p { font-family: 'Cinzel', serif; font-size: 2rem; font-weight: 700; color: var(--gold); }
+.modal-precio .ps { color: var(--muted); font-size: .88rem; }
+.btn-modal-wa {
+  display: flex; align-items: center; justify-content: center; gap: .5rem;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: #fff; font-family: 'Cinzel', serif; font-size: .78rem; font-weight: 700;
+  letter-spacing: .07em; padding: .9rem 1.6rem; border-radius: 50px;
+  text-decoration: none; transition: all .25s;
+}
+.btn-modal-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,.25); }
+.modal-nota { color: var(--muted); font-size: .78rem; font-style: italic; opacity: .75; }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav class="nav-bar">
-  <a href="/" class="nav-brand">
-    <span>Lady Aura Art</span>
-  </a>
-  <div class="nav-links">
-    <a href="/#galeria">Diseños</a>
-    <a href="/#zodiaco">Zodiaco</a>
-    <a href="/#contacto">Contacto</a>
-    <a href="colorear.html" class="nav-pill">🎨 Colorear por números</a>
+<nav class="nav-colorear">
+  <div class="nav-logo">
+    <a href="index.html"><img src="assets/logo.webp" alt="Lady Aura Art"></a>
   </div>
+  <a href="index.html" class="nav-back">← Volver a la tienda</a>
 </nav>
 
-<div class="wrap">
-
 <!-- HERO -->
-<div style="background:linear-gradient(135deg,#1a0a2e,#0a0a18);border:1px solid rgba(200,160,255,0.2);border-radius:20px;padding:2rem 1.5rem;margin-bottom:1.2rem;text-align:center;position:relative;overflow:hidden;">
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(255,110,180,0.2),transparent 70%);pointer-events:none;"></div>
-  <div style="position:relative;z-index:1;">
-    <div style="font-size:36px;margin-bottom:8px;">🎨</div>
-    <h1>Colorear por Números</h1>
-    <p style="color:#9988bb;font-size:13px;margin-bottom:16px;">Convierte tu imagen en lámina para colorear con rotuladores</p>
-    <div style="background:linear-gradient(135deg,rgba(245,200,66,0.15),rgba(255,110,180,0.10));border:1.5px solid rgba(245,200,66,0.4);border-radius:14px;padding:14px 20px;display:inline-block;max-width:480px;">
-      <div style="font-size:13px;color:#f0eaff;font-weight:700;margin-bottom:4px;">✨ ¿Cómo funciona?</div>
-      <div style="font-size:12px;color:#9988bb;line-height:1.7;">
-        1️⃣ Sube tu imagen &nbsp;→&nbsp; 2️⃣ Genera la vista previa gratuita<br>
-        3️⃣ ¿Te gusta? &nbsp;→&nbsp; <strong style="color:#f5c842;">Pídeme el PDF para imprimir por solo 0,49€ 💌</strong>
+<section class="hero">
+  <div class="section-tag">✦ Arte digital para colorear ✦</div>
+  <h1>🎨 Láminas para Colorear</h1>
+  <p>Descarga, imprime y colorea con tus propios rotuladores. Diseños exclusivos Lady Aura en formato PDF A4 de alta resolución.</p>
+</section>
+
+<!-- AVISO ARTE DIGITAL -->
+<div style="max-width:700px;margin:0 auto 3rem;display:flex;flex-direction:column;gap:.8rem;">
+  <div class="aviso-digital">
+    <span class="ico">🖨️</span>
+    <p>
+      <strong>¿Qué recibes?</strong> Un archivo <strong>PDF A4 de alta resolución</strong> que descargas al instante. Lo imprimes en casa o en una copistería y lo coloreas con tus rotuladores, lápices de colores o acuarelas.
+    </p>
+  </div>
+  <div class="aviso-digital" style="border-color:rgba(167,139,250,.3);background:rgba(124,58,237,.07);">
+    <span class="ico">📵</span>
+    <p style="color:#a78bfa;">
+      <strong style="color:#a78bfa;">No se envía ningún producto físico.</strong> Es arte digital · Solo recibes el archivo PDF · Sin envío · Sin esperas · Descarga inmediata tras el pago.
+    </p>
+  </div>
+</div>
+
+<!-- ARIES GRATIS -->
+<section class="seccion-gratis">
+  <div class="seccion-titulo">✦ LÁMINA DE MUESTRA GRATUITA · DESCARGA LIBRE ✦</div>
+
+  <div class="aries-gratis-card">
+    <!-- Imagen coloreada + line art -->
+    <div style="display:grid;grid-template-rows:1fr 1fr;height:100%;">
+      <div class="aries-img-wrap" style="max-height:300px;">
+        <img src="conejito-color.webp" alt="Aries coloreada Lady Aura">
+        <div class="aries-badge-gratis">✨ GRATIS</div>
+        <div class="aries-preview-label">Versión coloreada (referencia)</div>
+      </div>
+      <div class="aries-img-wrap" style="max-height:300px;">
+        <img src="conejito-colorear.webp" alt="Aries line art para colorear">
+        <div class="aries-preview-label">Lámina para colorear (lo que recibes)</div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- SUBIR IMAGEN -->
-<div class="card">
-  <div class="ct">🖼️ Sube tu imagen</div>
-  <div class="drop" id="dropZ" onclick="fi.click()">
-    <span class="drop-icon">🎨</span>
-    <strong>Haz clic o arrastra tu imagen aquí</strong>
-    <span>PNG · JPG · WEBP</span>
-  </div>
-  <input type="file" id="fi" accept="image/*">
-</div>
-
-<!-- CONFIGURACIÓN -->
-<div class="card">
-  <div class="ct">⚙️ Configuración</div>
-  <div class="settings-grid">
-    <div class="setting-group">
-      <label>📐 Tamaño de impresión</label>
-      <select id="szSel" onchange="updateSpec()">
-        <optgroup label="— Folios estándar —">
-          <option value="A4V">A4 vertical (21×29.7cm)</option>
-          <option value="A4H">A4 horizontal (29.7×21cm)</option>
-          <option value="A3V">A3 vertical (29.7×42cm)</option>
-          <option value="A3H">A3 horizontal (42×29.7cm)</option>
-        </optgroup>
-        <optgroup label="— Varios folios A4 —">
-          <option value="A4-2x2">A4 × 4 folios</option>
-          <option value="A4-3x3">A4 × 9 folios</option>
-        </optgroup>
-      </select>
-    </div>
-    <div class="setting-group">
-      <label>🎨 Número de colores</label>
-      <select id="colorSel">
-        <option value="8">8 colores</option>
-        <option value="12">12 colores</option>
-        <option value="16" selected>16 colores ★</option>
-        <option value="24">24 colores</option>
-        <option value="32">32 colores</option>
-        <option value="48">48 colores</option>
-      </select>
-    </div>
-  </div>
-  <div class="row">
-    <button class="bp" id="genBtn" disabled onclick="startTransform()">🎨 Generar lámina</button>
-    <span style="font-size:11px;color:var(--muted)" id="specInfo"></span>
-  </div>
-</div>
-
-<div id="sb" class="info"></div>
-<div class="prog-wrap" id="pw"><div class="prog-bar" id="pb"></div></div>
-
-<!-- PREVIEWS -->
-<div class="pp" id="ppArea" style="display:none">
-  <div class="pc"><div class="pl">📸 Original</div><canvas id="cvOrig"></canvas></div>
-  <div class="pc"><div class="pl">🎨 Vista previa — colorear por números</div><canvas id="cvPrev"></canvas></div>
-</div>
-
-<!-- CTA CONTACTO -->
-<div class="dls" id="dlSec" style="display:none">
-  <p id="dlInfo" style="font-size:11px;color:var(--muted);margin-bottom:16px;"></p>
-  <div style="background:linear-gradient(135deg,#1a0a2e,#12122a);border:2px solid rgba(245,200,66,0.5);border-radius:20px;padding:24px;max-width:500px;margin:0 auto 16px;">
-    <div style="font-size:32px;margin-bottom:10px;">🎉</div>
-    <div style="font-size:18px;font-weight:800;color:#f5c842;margin-bottom:8px;">¡Tu lámina está lista!</div>
-    <div style="font-size:13px;color:#9988bb;margin-bottom:6px;">Vista previa gratuita con marcas de agua</div>
-    <div style="background:rgba(245,200,66,0.1);border-radius:12px;padding:12px;margin:14px 0;">
-      <div style="font-size:22px;font-weight:900;color:#f5c842;">PDF para imprimir = 0,49€</div>
-      <div style="font-size:12px;color:#9988bb;margin-top:4px;">Sin marcas de agua · Listo para imprimir · Te lo mando en &lt;24h</div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:10px;">
-      <a href="https://mail.google.com/mail/?view=cm&to=lady.aura.2025@gmail.com&su=Quiero%20mi%20lámina%20para%20colorear&body=Hola%20Lady%20Aura!%20Me%20ha%20gustado%20la%20lámina%20para%20colorear%20y%20quiero%20el%20PDF%20sin%20marcas%20de%20agua%20por%200%2C49€.%20¡Gracias!" target="_blank" rel="noopener"
-        style="display:flex;align-items:center;justify-content:center;gap:10px;
-        background:linear-gradient(135deg,#f5c842,#f97316);color:#0a0a18;
-        text-decoration:none;padding:14px 24px;border-radius:14px;font-weight:900;font-size:15px;
-        box-shadow:0 6px 24px rgba(245,200,66,0.4);">
-        📧 Contactar por Gmail — 0,49€
+    <!-- Info -->
+    <div class="aries-info">
+      <div class="aries-signo">🐰 EJEMPLO GRATUITO · DESCARGA SIN REGISTRO</div>
+      <div class="aries-titulo">Chica con<br>Conejito Adorable</div>
+      <div class="aries-desc">
+        Una lámina tierna y llena de detalles: una chica con su conejito, corazones de cristal y detalles mágicos. Perfecta para ver cómo es el estilo de nuestras láminas antes de pedir la tuya.
+      </div>
+      <ul class="aries-incluye">
+        <li>PDF A4 alta resolución (listo para imprimir)</li>
+        <li>Line art profesional, líneas limpias</li>
+        <li>Zonas amplias fáciles de colorear</li>
+        <li>Imagen de referencia de colores incluida</li>
+        <li>Descarga inmediata · Sin registro</li>
+      </ul>
+      <div class="precio-gratis">
+        <span class="gratis-tag">GRATIS</span>
+        <span class="gratis-sub">Ejemplo de muestra<br>Sin coste · Descarga directa</span>
+      </div>
+      <a href="conejito-colorear.webp" download="LadyAura-Conejito-Colorear.webp" class="btn-gratis">
+        ⬇️ Descargar lámina gratis
       </a>
-      <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura!%20He%20visto%20el%20generador%20de%20láminas%20para%20colorear%20y%20quiero%20el%20PDF%20sin%20marcas%20de%20agua%20por%200%2C49€.%20Te%20mando%20mi%20imagen%20💎" target="_blank" rel="noopener"
-        style="display:flex;align-items:center;justify-content:center;gap:10px;
-        background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;
-        text-decoration:none;padding:14px 24px;border-radius:14px;font-weight:900;font-size:15px;
-        box-shadow:0 6px 24px rgba(37,211,102,0.4);">
-        💬 Contactar por WhatsApp — 0,49€
-      </a>
+      <p style="color:var(--muted);font-size:.78rem;font-style:italic;opacity:.7;">
+        Haz clic derecho → Guardar imagen · O pulsa el botón para descargar directamente
+      </p>
     </div>
-    <div style="font-size:11px;color:#6b5f88;">Mándame tu imagen y te genero la lámina en menos de 24h</div>
   </div>
-  <button class="bs" onclick="restoreOriginal()">↩ Restaurar original</button>
-</div>
+</section>
 
-<!-- PÁGINAS -->
-<div class="pg" id="pgGrid" style="display:none"></div>
+<!-- CATÁLOGO PRÓXIMOS -->
+<section class="catalogo">
+  <div class="seccion-titulo">✦ COLECCIÓN · 3€ POR LÁMINA ✦</div>
 
-<!-- LEYENDA -->
-<div class="card" id="lgCard" style="display:none">
-  <div class="ct">🎨 Leyenda de colores</div>
-  <p style="font-size:11px;color:var(--muted);margin-bottom:10px;">Estos son los colores que necesitarás para tu lámina 👇</p>
-  <div class="lg" id="lgGrid"></div>
-</div>
+  <div class="grid-laminas">
 
-</div><!-- /wrap -->
+    <!-- Tauro -->
+    <div class="lamina-card" onclick="abrirModal('tauro')">
+      <div class="lamina-thumb">
+        <img src="conejito-colorear.webp" alt="Tauro">
+        <div class="lock">
+          <span class="lock-ico">🔒</span>
+          <span class="lock-txt">PRÓXIMAMENTE</span>
+        </div>
+        <span class="soon-badge">MUY PRONTO</span>
+      </div>
+      <div class="lamina-info">
+        <div class="lamina-signo">♉ TAURO · 20 ABR – 20 MAY</div>
+        <div class="lamina-nombre">Diosa Tauro</div>
+        <div class="lamina-precio">
+          <span class="precio">3 €</span>
+          <span class="aviso">PDF A4</span>
+        </div>
+        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Tauro%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini" onclick="event.stopPropagation()">
+          💬 Avisar cuando esté lista
+        </a>
+      </div>
+    </div>
+
+    <!-- Géminis -->
+    <div class="lamina-card" onclick="abrirModal('geminis')">
+      <div class="lamina-thumb">
+        <img src="conejito-colorear.webp" alt="Géminis">
+        <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
+        <span class="soon-badge">MUY PRONTO</span>
+      </div>
+      <div class="lamina-info">
+        <div class="lamina-signo">♊ GÉMINIS · 21 MAY – 20 JUN</div>
+        <div class="lamina-nombre">Diosas Géminis</div>
+        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4</span></div>
+        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Géminis%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini" onclick="event.stopPropagation()">💬 Avisar cuando esté lista</a>
+      </div>
+    </div>
+
+    <!-- Cáncer -->
+    <div class="lamina-card">
+      <div class="lamina-thumb">
+        <img src="conejito-colorear.webp" alt="Cáncer">
+        <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
+        <span class="soon-badge">MUY PRONTO</span>
+      </div>
+      <div class="lamina-info">
+        <div class="lamina-signo">♋ CÁNCER · 21 JUN – 22 JUL</div>
+        <div class="lamina-nombre">Diosa Cáncer</div>
+        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4</span></div>
+        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Cáncer%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini" onclick="event.stopPropagation()">💬 Avisar cuando esté lista</a>
+      </div>
+    </div>
+
+    <!-- Leo -->
+    <div class="lamina-card">
+      <div class="lamina-thumb">
+        <img src="conejito-colorear.webp" alt="Leo">
+        <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
+        <span class="soon-badge">MUY PRONTO</span>
+      </div>
+      <div class="lamina-info">
+        <div class="lamina-signo">♌ LEO · 23 JUL – 22 AGO</div>
+        <div class="lamina-nombre">Diosa Leo</div>
+        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4</span></div>
+        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Leo%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini" onclick="event.stopPropagation()">💬 Avisar cuando esté lista</a>
+      </div>
+    </div>
+
+    <!-- Virgo -->
+    <div class="lamina-card">
+      <div class="lamina-thumb">
+        <img src="conejito-colorear.webp" alt="Virgo">
+        <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
+        <span class="soon-badge">MUY PRONTO</span>
+      </div>
+      <div class="lamina-info">
+        <div class="lamina-signo">♍ VIRGO · 23 AGO – 22 SEP</div>
+        <div class="lamina-nombre">Diosa Virgo</div>
+        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4</span></div>
+        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Virgo%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini" onclick="event.stopPropagation()">💬 Avisar cuando esté lista</a>
+      </div>
+    </div>
+
+    <!-- Libra -->
+    <div class="lamina-card">
+      <div class="lamina-thumb">
+        <img src="conejito-colorear.webp" alt="Libra">
+        <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
+        <span class="soon-badge">MUY PRONTO</span>
+      </div>
+      <div class="lamina-info">
+        <div class="lamina-signo">♎ LIBRA · 23 SEP – 22 OCT</div>
+        <div class="lamina-nombre">Diosa Libra</div>
+        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4</span></div>
+        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Libra%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini" onclick="event.stopPropagation()">💬 Avisar cuando esté lista</a>
+      </div>
+    </div>
+
+    <!-- Escorpio -->
+    <div class="lamina-card">
+      <div class="lamina-thumb">
+        <img src="conejito-colorear.webp" alt="Escorpio">
+        <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
+        <span class="soon-badge">MUY PRONTO</span>
+      </div>
+      <div class="lamina-info">
+        <div class="lamina-signo">♏ ESCORPIO · 23 OCT – 21 NOV</div>
+        <div class="lamina-nombre">Diosa Escorpio</div>
+        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4</span></div>
+        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Escorpio%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini" onclick="event.stopPropagation()">💬 Avisar cuando esté lista</a>
+      </div>
+    </div>
+
+    <!-- Sagitario -->
+    <div class="lamina-card">
+      <div class="lamina-thumb">
+        <img src="conejito-colorear.webp" alt="Sagitario">
+        <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
+        <span class="soon-badge">MUY PRONTO</span>
+      </div>
+      <div class="lamina-info">
+        <div class="lamina-signo">♐ SAGITARIO · 22 NOV – 21 DIC</div>
+        <div class="lamina-nombre">Diosa Sagitario</div>
+        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4</span></div>
+        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Sagitario%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini" onclick="event.stopPropagation()">💬 Avisar cuando esté lista</a>
+      </div>
+    </div>
+
+    <!-- Capricornio -->
+    <div class="lamina-card">
+      <div class="lamina-thumb">
+        <img src="conejito-colorear.webp" alt="Capricornio">
+        <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
+        <span class="soon-badge">MUY PRONTO</span>
+      </div>
+      <div class="lamina-info">
+        <div class="lamina-signo">♑ CAPRICORNIO · 22 DIC – 19 ENE</div>
+        <div class="lamina-nombre">Diosa Capricornio</div>
+        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4</span></div>
+        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Capricornio%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini" onclick="event.stopPropagation()">💬 Avisar cuando esté lista</a>
+      </div>
+    </div>
+
+    <!-- Acuario -->
+    <div class="lamina-card">
+      <div class="lamina-thumb">
+        <img src="conejito-colorear.webp" alt="Acuario">
+        <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
+        <span class="soon-badge">MUY PRONTO</span>
+      </div>
+      <div class="lamina-info">
+        <div class="lamina-signo">♒ ACUARIO · 20 ENE – 18 FEB</div>
+        <div class="lamina-nombre">Diosa Acuario</div>
+        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4</span></div>
+        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Acuario%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini" onclick="event.stopPropagation()">💬 Avisar cuando esté lista</a>
+      </div>
+    </div>
+
+    <!-- Piscis -->
+    <div class="lamina-card">
+      <div class="lamina-thumb">
+        <img src="conejito-colorear.webp" alt="Piscis">
+        <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
+        <span class="soon-badge">MUY PRONTO</span>
+      </div>
+      <div class="lamina-info">
+        <div class="lamina-signo">♓ PISCIS · 19 FEB – 20 MAR</div>
+        <div class="lamina-nombre">Diosa Piscis</div>
+        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4</span></div>
+        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Piscis%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini" onclick="event.stopPropagation()">💬 Avisar cuando esté lista</a>
+      </div>
+    </div>
+
+    <!-- Personalizada -->
+    <div class="lamina-card" style="border-color:rgba(124,58,237,.4);">
+      <div class="lamina-thumb" style="background:linear-gradient(135deg,#1e1040,#2d1060);">
+        <div class="lock">
+          <span class="lock-ico">✨</span>
+          <span class="lock-txt" style="color:#a78bfa;">PERSONALIZADA</span>
+        </div>
+      </div>
+      <div class="lamina-info">
+        <div class="lamina-signo" style="color:#a78bfa;">🎨 TU IMAGEN</div>
+        <div class="lamina-nombre">Lámina personalizada</div>
+        <div class="lamina-precio"><span class="precio" style="color:#a78bfa;">5 €</span><span class="aviso">PDF A4</span></div>
+        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20una%20lámina%20personalizada%20para%20colorear%20por%205€%20🎨%20Te%20cuento%20lo%20que%20quiero%3A" target="_blank" rel="noopener" class="btn-wa-mini">💬 Pedir la mía</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="assets/logo.webp" alt="Lady Aura Art" style="height:40px;margin-bottom:.8rem;display:block;margin-left:auto;margin-right:auto;">
+  <p>© 2026 Lady Aura · <a href="index.html">Diamond Painting Premium</a> · Valencia, España 💜</p>
+  <p style="margin-top:.4rem;font-size:.78rem;opacity:.6;">Las láminas son arte digital · Entrega inmediata por email o WhatsApp · No se envía producto físico</p>
+</footer>
 
 <script>
-// ─── LOGO BASE64 (marca de agua) ─────────────────────────────────────────────
-const LOGO_IMG = new Image();
-// Se carga desde el mismo dominio
-LOGO_IMG.src = 'Logo.png';
-
-// ─── PALETA DE COLORES GENÉRICOS (48 colores) ────────────────────────────────
-const PALETTE = [
-  // Rojos
-  {id:1, name:'Rojo vivo',      hex:'#E63946', r:230,g:57, b:70},
-  {id:2, name:'Rojo oscuro',    hex:'#9B2226', r:155,g:34, b:38},
-  {id:3, name:'Rosa fucsia',    hex:'#FF006E', r:255,g:0,  b:110},
-  {id:4, name:'Rosa claro',     hex:'#FFACC7', r:255,g:172,b:199},
-  {id:5, name:'Salmón',         hex:'#F4A261', r:244,g:162,b:97},
-  // Naranjas
-  {id:6, name:'Naranja',        hex:'#FB5607', r:251,g:86, b:7},
-  {id:7, name:'Naranja claro',  hex:'#FFBE0B', r:255,g:190,b:11},
-  {id:8, name:'Amarillo',       hex:'#FFD60A', r:255,g:214,b:10},
-  {id:9, name:'Amarillo claro', hex:'#FFF3B0', r:255,g:243,b:176},
-  // Verdes
-  {id:10,name:'Verde lima',     hex:'#80B918', r:128,g:185,b:24},
-  {id:11,name:'Verde',          hex:'#2DC653', r:45, g:198,b:83},
-  {id:12,name:'Verde oscuro',   hex:'#1B4332', r:27, g:67, b:50},
-  {id:13,name:'Verde menta',    hex:'#95D5B2', r:149,g:213,b:178},
-  {id:14,name:'Verde oliva',    hex:'#606C38', r:96, g:108,b:56},
-  // Azules
-  {id:15,name:'Azul cielo',     hex:'#90E0EF', r:144,g:224,b:239},
-  {id:16,name:'Azul',           hex:'#0077B6', r:0,  g:119,b:182},
-  {id:17,name:'Azul oscuro',    hex:'#03045E', r:3,  g:4,  b:94},
-  {id:18,name:'Azul marino',    hex:'#14213D', r:20, g:33, b:61},
-  {id:19,name:'Azul celeste',   hex:'#ADE8F4', r:173,g:232,b:244},
-  // Morados
-  {id:20,name:'Morado',         hex:'#7B2D8B', r:123,g:45, b:139},
-  {id:21,name:'Violeta',        hex:'#9D4EDD', r:157,g:78, b:221},
-  {id:22,name:'Lavanda',        hex:'#C8B6E2', r:200,g:182,b:226},
-  {id:23,name:'Índigo',         hex:'#4361EE', r:67, g:97, b:238},
-  // Marrones
-  {id:24,name:'Marrón',         hex:'#774936', r:119,g:73, b:54},
-  {id:25,name:'Marrón claro',   hex:'#C9A98A', r:201,g:169,b:138},
-  {id:26,name:'Beige',          hex:'#F2DEB3', r:242,g:222,b:179},
-  {id:27,name:'Tierra',         hex:'#BC6C25', r:188,g:108,b:37},
-  // Pieles
-  {id:28,name:'Piel clara',     hex:'#FFD8B0', r:255,g:216,b:176},
-  {id:29,name:'Piel media',     hex:'#E8A87C', r:232,g:168,b:124},
-  {id:30,name:'Piel oscura',    hex:'#8D5524', r:141,g:85, b:36},
-  // Grises
-  {id:31,name:'Blanco',         hex:'#FFFFFF', r:255,g:255,b:255},
-  {id:32,name:'Gris muy claro', hex:'#E5E5E5', r:229,g:229,b:229},
-  {id:33,name:'Gris claro',     hex:'#AAAAAA', r:170,g:170,b:170},
-  {id:34,name:'Gris',           hex:'#777777', r:119,g:119,b:119},
-  {id:35,name:'Gris oscuro',    hex:'#444444', r:68, g:68, b:68},
-  {id:36,name:'Negro',          hex:'#111111', r:17, g:17, b:17},
-  // Dorados/metálicos
-  {id:37,name:'Dorado',         hex:'#D4AF37', r:212,g:175,b:55},
-  {id:38,name:'Dorado claro',   hex:'#F9E784', r:249,g:231,b:132},
-  {id:39,name:'Cobre',          hex:'#B87333', r:184,g:115,b:51},
-  {id:40,name:'Plateado',       hex:'#C0C0C0', r:192,g:192,b:192},
-  // Turquesas
-  {id:41,name:'Turquesa',       hex:'#40E0D0', r:64, g:224,b:208},
-  {id:42,name:'Turquesa oscuro',hex:'#00827F', r:0,  g:130,b:127},
-  // Rosas adicionales
-  {id:43,name:'Rosa pastel',    hex:'#FFB3C6', r:255,g:179,b:198},
-  {id:44,name:'Rosa chicle',    hex:'#FF70A6', r:255,g:112,b:166},
-  {id:45,name:'Melocotón',      hex:'#FFCBA4', r:255,g:203,b:164},
-  // Azules adicionales
-  {id:46,name:'Azul pastel',    hex:'#BDE0FE', r:189,g:224,b:254},
-  {id:47,name:'Azul pervenche', hex:'#7B9CCA', r:123,g:156,b:202},
-  {id:48,name:'Azul pizarra',   hex:'#6272A4', r:98, g:114,b:164},
-];
-
-// Pre-computar LAB
-function rgbToLab(r,g,b){
-  let rv=r/255,gv=g/255,bv=b/255;
-  rv=rv>0.04045?Math.pow((rv+0.055)/1.055,2.4):rv/12.92;
-  gv=gv>0.04045?Math.pow((gv+0.055)/1.055,2.4):gv/12.92;
-  bv=bv>0.04045?Math.pow((bv+0.055)/1.055,2.4):bv/12.92;
-  const X=(rv*0.4124+gv*0.3576+bv*0.1805)/0.95047;
-  const Y=(rv*0.2126+gv*0.7152+bv*0.0722)/1.00000;
-  const Z=(rv*0.0193+gv*0.1192+bv*0.9505)/1.08883;
-  const f=t=>t>0.008856?Math.cbrt(t):(7.787*t+16/116);
-  return [116*f(Y)-16,500*(f(X)-f(Y)),200*(f(Y)-f(Z))];
-}
-PALETTE.forEach(c=>{c.lab=rgbToLab(c.r,c.g,c.b);});
-
-function closestColor(r,g,b,palette){
-  const [L1,A1,B1]=rgbToLab(r,g,b);
-  let best=palette[0],d=Infinity;
-  for(const c of palette){
-    const [L2,A2,B2]=c.lab;
-    const dd=(L1-L2)**2+(A1-A2)**2+(B1-B2)**2;
-    if(dd<d){d=dd;best=c;}
-  }
-  return best;
-}
-
-// ─── TAMAÑOS ─────────────────────────────────────────────────────────────────
-function getSizeCfg(v){
-  const A4W=2480,A4H=3508,A3W=3508,A3H=4961;
-  switch(v){
-    case 'A4V': return {pX:1,pY:1,pageW:A4W,pageH:A4H};
-    case 'A4H': return {pX:1,pY:1,pageW:A4H,pageH:A4W};
-    case 'A3V': return {pX:1,pY:1,pageW:A3W,pageH:A3H};
-    case 'A3H': return {pX:1,pY:1,pageW:A3H,pageH:A3W};
-    case 'A4-2x2': return {pX:2,pY:2,pageW:A4W,pageH:A4H};
-    case 'A4-3x3': return {pX:3,pY:3,pageW:A4W,pageH:A4H};
-    default: return {pX:1,pY:1,pageW:A4W,pageH:A4H};
-  }
-}
-
-function updateSpec(){
-  const cfg=getSizeCfg(document.getElementById('szSel').value);
-  const pages=cfg.pX*cfg.pY;
-  document.getElementById('specInfo').textContent=
-    `${cfg.pageW}×${cfg.pageH}px · ${pages} folio${pages>1?'s':''}`;
-}
-
-// ─── ESTADO ──────────────────────────────────────────────────────────────────
-const G={colorMap:null,colorMapOrig:null,cols:0,rows:0,pageW:0,pageH:0,
-  pX:1,pY:1,totalW:0,totalH:0,renderedPages:[],usedColors:[]};
-
-function setS(msg,type='info'){const s=document.getElementById('sb');s.textContent=msg;s.className=type;}
-function setProg(p){const w=document.getElementById('pw');w.style.display='block';
-  document.getElementById('pb').style.width=p+'%';if(p>=100)setTimeout(()=>w.style.display='none',700);}
-
-// ─── CARGA IMAGEN ─────────────────────────────────────────────────────────────
-let loadedImg=null;
-const fi=document.getElementById('fi'),dropZ=document.getElementById('dropZ');
-fi.addEventListener('change',e=>e.target.files[0]&&loadImg(e.target.files[0]));
-dropZ.addEventListener('dragover',e=>{e.preventDefault();dropZ.classList.add('drag');});
-dropZ.addEventListener('dragleave',()=>dropZ.classList.remove('drag'));
-dropZ.addEventListener('drop',e=>{e.preventDefault();dropZ.classList.remove('drag');e.dataTransfer.files[0]&&loadImg(e.dataTransfer.files[0]);});
-
-function loadImg(file){
-  if(!file.type.startsWith('image/')){setS('⚠️ Solo PNG/JPG/WEBP','err');return;}
-  setS('Cargando…','info');
-  const reader=new FileReader();
-  reader.onload=e=>{
-    const img=new Image();
-    img.onload=()=>{
-      const offscreen=document.createElement('canvas');
-      offscreen.width=img.width; offscreen.height=img.height;
-      const octx=offscreen.getContext('2d',{willReadFrequently:true});
-      octx.drawImage(img,0,0);
-      loadedImg=offscreen;
-      const cvO=document.getElementById('cvOrig');
-      const sc=img.width>420?420/img.width:1;
-      cvO.width=Math.round(img.width*sc); cvO.height=Math.round(img.height*sc);
-      cvO.getContext('2d').drawImage(offscreen,0,0,cvO.width,cvO.height);
-      document.getElementById('ppArea').style.display='grid';
-      document.getElementById('dlSec').style.display='none';
-      document.getElementById('pgGrid').style.display='none';
-      document.getElementById('lgCard').style.display='none';
-      document.getElementById('genBtn').disabled=false;
-      setS('✅ Imagen cargada — pulsa Generar lámina','ok');
-    };
-    img.onerror=()=>setS('⚠️ Error al cargar','err');
-    img.src=e.target.result;
-  };
-  reader.readAsDataURL(file);
-}
-
-// ─── TRANSFORMACIÓN PRINCIPAL ─────────────────────────────────────────────────
-function startTransform(){
-  if(!loadedImg){setS('⚠️ Sube una imagen primero','err');return;}
-  document.getElementById('genBtn').disabled=true;
-  document.getElementById('dlSec').style.display='none';
-  document.getElementById('pgGrid').style.display='none';
-  document.getElementById('lgCard').style.display='none';
-  G.renderedPages=[];
-  setS('Calculando colores…','info'); setProg(0);
-
-  const cfg=getSizeCfg(document.getElementById('szSel').value);
-  G.pX=cfg.pX; G.pY=cfg.pY; G.pageW=cfg.pageW; G.pageH=cfg.pageH;
-  G.totalW=G.pX*G.pageW; G.totalH=G.pY*G.pageH;
-
-  const maxColors=parseInt(document.getElementById('colorSel').value)||16;
-
-  // Escalar imagen al total manteniendo aspect ratio
-  const imgW=loadedImg.width, imgH=loadedImg.height;
-  const scale=Math.min(G.totalW/imgW, G.totalH/imgH);
-  G.cols=Math.round(imgW*scale);
-  G.rows=Math.round(imgH*scale);
-
-  // Centrar en el total
-  const offX=Math.round((G.totalW-G.cols)/2);
-  const offY=Math.round((G.totalH-G.rows)/2);
-  G.offX=offX; G.offY=offY;
-
-  // Escalar imagen a G.cols x G.rows
-  const tmp=document.createElement('canvas');
-  tmp.width=G.cols; tmp.height=G.rows;
-  const tc=tmp.getContext('2d',{willReadFrequently:true});
-  tc.drawImage(loadedImg,0,0,G.cols,G.rows);
-
-  let srcData;
-  try{srcData=tc.getImageData(0,0,G.cols,G.rows).data;}
-  catch(e){setS('⚠️ Error al leer la imagen','err');document.getElementById('genBtn').disabled=false;return;}
-
-  // Mapear cada pixel al color más cercano
-  const total=G.rows*G.cols;
-  G.colorMap=new Uint8Array(total); // índice en PALETTE
-  const colorCount=new Map();
-
-  for(let i=0;i<total;i++){
-    const pi=i*4;
-    const c=closestColor(srcData[pi],srcData[pi+1],srcData[pi+2],PALETTE);
-    G.colorMap[i]=PALETTE.indexOf(c);
-    colorCount.set(c.id,(colorCount.get(c.id)||0)+1);
-  }
-  setProg(40);
-
-  // Reducir a maxColors usando LAB
-  const sorted=[...colorCount.entries()].sort((a,b)=>b[1]-a[1]);
-  const topIds=new Set(sorted.slice(0,maxColors).map(([id])=>id));
-  const topColors=PALETTE.filter(c=>topIds.has(c.id));
-
-  // Reasignar colores fuera del top
-  for(let i=0;i<total;i++){
-    const c=PALETTE[G.colorMap[i]];
-    if(!topIds.has(c.id)){
-      G.colorMap[i]=PALETTE.indexOf(closestColor(c.r,c.g,c.b,topColors));
-    }
-  }
-  setProg(60);
-
-  // Colores usados ordenados por cantidad
-  const usedCount=new Map();
-  for(let i=0;i<total;i++){
-    const id=PALETTE[G.colorMap[i]].id;
-    usedCount.set(id,(usedCount.get(id)||0)+1);
-  }
-  G.usedColors=PALETTE.filter(c=>usedCount.has(c.id))
-    .sort((a,b)=>usedCount.get(b.id)-usedCount.get(a.id));
-
-  G.colorMapOrig=new Uint8Array(G.colorMap);
-  renderAll();
-}
-
-// ─── RENDER PREVIEW ──────────────────────────────────────────────────────────
-function renderPreview(){
-  const cv=document.getElementById('cvPrev');
-  // Mostrar solo la zona del dibujo escalada a 420px
-  const sc=Math.min(420/G.cols,420/G.rows);
-  cv.width=Math.round(G.cols*sc); cv.height=Math.round(G.rows*sc);
-  const ctx=cv.getContext('2d');
-  ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,cv.width,cv.height);
-
-  // Dibujar zonas de color centradas con margen
-  const PREV_MARGIN=10;
-  const prevDrawW=cv.width-PREV_MARGIN*2, prevDrawH=cv.height-PREV_MARGIN*2;
-  const prevScale=Math.min(prevDrawW/G.cols, prevDrawH/G.rows);
-  const prevOffX=Math.round((cv.width-G.cols*prevScale)/2);
-  const prevOffY=Math.round((cv.height-G.rows*prevScale)/2);
-  ctx.save(); ctx.translate(prevOffX, prevOffY);
-  renderColoringPage(ctx, 0, 0, G.cols*prevScale, G.rows*prevScale, G.cols, G.rows, prevScale, true);
-  ctx.restore();
-
-  // Marca de agua
-  ctx.save();
-  ctx.globalAlpha=0.2;
-  ctx.translate(cv.width/2,cv.height/2);
-  ctx.rotate(-Math.PI/6);
-  const wmW=Math.max(60,Math.floor(cv.width*0.5));
-  const wmH=LOGO_IMG.naturalWidth>0?Math.round(wmW*LOGO_IMG.height/LOGO_IMG.width):20;
-  for(let wy=-3;wy<=3;wy++) for(let wx=-3;wx<=3;wx++){
-    if(LOGO_IMG.complete&&LOGO_IMG.naturalWidth>0)
-      ctx.drawImage(LOGO_IMG,wx*cv.width*0.5-wmW/2,wy*cv.height*0.35-wmH/2,wmW,wmH);
-    else{ctx.fillStyle='#7c3aed';ctx.font=`bold ${Math.max(8,Math.floor(cv.width/10))}px Arial`;
-      ctx.textAlign='center';ctx.textBaseline='middle';
-      ctx.fillText('LadyauraArt.com',wx*cv.width*0.5,wy*cv.height*0.35);}
-  }
-  ctx.restore();
-}
-
-// ─── RENDER PÁGINA DE COLOREAR ───────────────────────────────────────────────
-function renderColoringPage(ctx, pgL, pgT, pageW, pageH, cols, rows, scale, isPreview){
-  const fontSize=Math.max(5, Math.min(11, Math.floor(scale*0.6)));
-  for(let row=0;row<rows;row++){
-    for(let col=0;col<cols;col++){
-      const i=row*cols+col;
-      if(i>=G.colorMap.length) continue;
-      const c=PALETTE[G.colorMap[i]];
-      const x=Math.round(col*scale)-pgL;
-      const y=Math.round(row*scale)-pgT;
-      const w=Math.round((col+1)*scale)-pgL-x;
-      const h=Math.round((row+1)*scale)-pgT-y;
-      if(x+w<0||x>pageW||y+h<0||y>pageH) continue;
-      // Fondo muy tenue del color
-      ctx.fillStyle=c.hex;
-      ctx.globalAlpha=0.12;
-      ctx.fillRect(x,y,w,h);
-      ctx.globalAlpha=1;
-      // Bordes entre zonas de diferente color
-      const right=col<cols-1?PALETTE[G.colorMap[row*cols+col+1]]:null;
-      const below=row<rows-1?PALETTE[G.colorMap[(row+1)*cols+col]]:null;
-      ctx.strokeStyle='rgba(0,0,0,0.5)';
-      ctx.lineWidth=0.5;
-      if(right&&right.id!==c.id){
-        ctx.beginPath();ctx.moveTo(x+w,y);ctx.lineTo(x+w,y+h);ctx.stroke();
-      }
-      if(below&&below.id!==c.id){
-        ctx.beginPath();ctx.moveTo(x,y+h);ctx.lineTo(x+w,y+h);ctx.stroke();
-      }
-      // Número en gris muy clarito, centrado
-      if(scale>=4&&w>=4&&h>=4){
-        const numIdx=G.usedColors.findIndex(uc=>uc.id===c.id)+1;
-        ctx.fillStyle='rgba(180,180,180,0.9)'; // gris clarito
-        ctx.font=`bold ${fontSize}px Arial,sans-serif`;
-        ctx.textAlign='center';ctx.textBaseline='middle';
-        ctx.fillText(String(numIdx),x+w/2,y+h/2);
-      }
-    }
-  }
-  // Borde exterior
-  ctx.strokeStyle='#222';ctx.lineWidth=2;
-  ctx.strokeRect(0,0,Math.round(cols*scale),Math.round(rows*scale));
-}
-
-// ─── RENDER TODAS LAS PÁGINAS ─────────────────────────────────────────────────
-function renderAll(){
-  setS('Renderizando…','info');
-
-  const grid=document.getElementById('pgGrid');
-  grid.innerHTML='';
-  const gc=Math.min(G.pX,3);
-  grid.style.gridTemplateColumns=`repeat(${gc},1fr)`;
-  grid.style.display='grid';
-
-  G.renderedPages=[];
-
-  for(let py=0;py<G.pY;py++) for(let px=0;px<G.pX;px++){
-    const cv=document.createElement('canvas');
-    cv.width=G.pageW; cv.height=G.pageH;
-    const ctx=cv.getContext('2d');
-    ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,G.pageW,G.pageH);
-
-    const pgL=px*G.pageW-G.offX, pgT=py*G.pageH-G.offY;
-    const scale=G.cols/loadedImg.width; // escala real
-    const pageScale=G.totalW/G.cols; // escala para que quepa en páginas... 
-
-    // Margen blanco de 80px por cada lado en cada folio
-    const MARGIN=80;
-    const drawW=G.pageW-MARGIN*2, drawH=G.pageH-MARGIN*2;
-    // Escala para que el dibujo quepa en el área con márgenes
-    const pxScale=Math.min(drawW/G.cols, drawH/G.rows);
-    // Offset para centrar el dibujo dentro del folio con márgenes iguales
-    const drawOffX=Math.round((G.pageW-G.cols*pxScale)/2);
-    const drawOffY=Math.round((G.pageH-G.rows*pxScale)/2);
-
-    renderColoringPage(ctx, px*G.pageW-drawOffX, py*G.pageH-drawOffY,
-      G.pageW, G.pageH, G.cols, G.rows, pxScale, false);
-
-    // Marca de agua
-    ctx.save();
-    ctx.globalAlpha=0.18;
-    ctx.translate(G.pageW/2,G.pageH/2);
-    ctx.rotate(-Math.PI/6);
-    const wmW=500,wmH=LOGO_IMG.naturalWidth>0?Math.round(wmW*LOGO_IMG.height/LOGO_IMG.width):100;
-    for(let wy=-4;wy<=4;wy++) for(let wx=-3;wx<=3;wx++){
-      if(LOGO_IMG.complete&&LOGO_IMG.naturalWidth>0)
-        ctx.drawImage(LOGO_IMG,wx*620-wmW/2,wy*320-wmH/2,wmW,wmH);
-      else{ctx.fillStyle='#7c3aed';ctx.font='bold 48px Arial';
-        ctx.textAlign='center';ctx.textBaseline='middle';
-        ctx.fillText('www.LadyauraArt.com',wx*620,wy*320);}
-    }
-    ctx.restore();
-
-    // Info folio
-    const pageNum=py*G.pX+px+1, totalPages=G.pX*G.pY;
-    ctx.fillStyle='rgba(0,0,0,0.4)';ctx.font='bold 24px Arial';
-    ctx.textAlign='left';ctx.textBaseline='bottom';
-    ctx.fillText(`Folio ${pageNum}/${totalPages} · LadyauraArt.com`,16,G.pageH-10);
-
-    G.renderedPages.push(cv);
-
-    // Thumbnail
-    const idx=py*G.pX+px;
-    const card=document.createElement('div'); card.className='pgc';
-    card.innerHTML=`<div class="pgl"><span>🎨 Folio ${idx+1} de ${totalPages}</span><span style="font-size:10px;color:var(--muted)">vista previa</span></div>`;
-    const thumb=document.createElement('canvas'); thumb.id=`th${idx}`;
-    const TW=300,TH=Math.round(G.pageH*TW/G.pageW);
-    thumb.width=TW; thumb.height=TH;
-    thumb.getContext('2d').drawImage(cv,0,0,TW,TH);
-    card.appendChild(thumb); grid.appendChild(card);
-
-    setProg(60+Math.round((idx+1)/totalPages*30));
-  }
-
-  renderPreview();
-  buildLegend();
-
-  const sel=document.getElementById('szSel');
-  document.getElementById('dlInfo').textContent=
-    `${sel.options[sel.selectedIndex]?.text} · ${G.pX*G.pY} folio${G.pX*G.pY>1?'s':''} · ${G.usedColors.length} colores`;
-  document.getElementById('dlSec').style.display='block';
-  document.getElementById('genBtn').disabled=false;
-  setS(`✨ ¡Listo! ${G.usedColors.length} colores · con marca de agua 🎨`,'ok');
-  setProg(100);
-}
-
-// ─── LEYENDA ──────────────────────────────────────────────────────────────────
-function buildLegend(){
-  const grid=document.getElementById('lgGrid');
-  grid.innerHTML='';
-  G.usedColors.forEach((c,i)=>{
-    const br=(c.r*299+c.g*587+c.b*114)/1000, tc=br>128?'#000':'#fff';
-    const div=document.createElement('div'); div.className='li';
-    div.innerHTML=`<div class="ld" style="background:${c.hex};color:${tc}">${i+1}</div>
-      <div><div class="ls">${c.name}</div>
-      <div class="li2">${c.hex}</div></div>`;
-    grid.appendChild(div);
-  });
-  document.getElementById('lgCard').style.display='block';
-}
-
-// ─── RESTAURAR ────────────────────────────────────────────────────────────────
-function restoreOriginal(){
-  if(!G.colorMapOrig) return;
-  G.colorMap=new Uint8Array(G.colorMapOrig);
-  renderAll();
-}
-
-// ─── INIT ─────────────────────────────────────────────────────────────────────
-updateSpec();
+function abrirModal(signo){ /* placeholder para cuando haya láminas reales */ }
 </script>
+
 </body>
 </html>
