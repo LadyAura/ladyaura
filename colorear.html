@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Láminas para Colorear · Lady Aura Art · PDF Digital</title>
+<title>Arte Digital para Colorear · Lady Aura Art · PDF A4</title>
 <meta name="description" content="Láminas digitales para colorear estilo fantasy. Descarga tu PDF A4, imprímelo y coloréalo con tus rotuladores. Diseños exclusivos Lady Aura.">
 <link rel="canonical" href="https://ladyauraart.com/colorear.html">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
@@ -450,18 +450,32 @@ footer a { color: var(--gold); text-decoration: none; }
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav-colorear">
-  <div class="nav-logo">
-    <a href="index.html"><img src="assets/logo.webp" alt="Lady Aura Art"></a>
-  </div>
-  <a href="index.html" class="nav-back">← Volver a la tienda</a>
-</nav>
+<!-- SCARCITY BAR -->
+<div class="scarcity-bar" role="alert">
+  <span>✦ Arte Digital · <strong>Láminas para colorear exclusivas Lady Aura</strong> · Descarga inmediata · PDF A4 💜</span>
+</div>
+
+<!-- HEADER igual que index -->
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="Lady Aura inicio">
+    <img src="assets/logo-new.png" alt="Logo Lady Aura">
+  </a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+  <nav class="nav" id="nav" aria-label="Navegación principal">
+    <a href="index.html"><span>Inicio</span></a>
+    <a href="index.html#galeria"><span>Diseños</span></a>
+    <a href="index.html#zodiaco"><span>Zodiaco</span></a>
+    <a href="tarot.html" target="_blank" rel="noopener">🔮 Tarot</a>
+    <a href="colorear.html" style="color:var(--gold);">🎨 Arte Digital</a>
+    <a href="index.html#contacto"><span>Contacto</span></a>
+  </nav>
+  <a class="header-button" href="#catalogo">Ver láminas ✨</a>
+</header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="section-tag">✦ Arte digital para colorear ✦</div>
-  <h1>🎨 Láminas para Colorear</h1>
+  <div class="section-tag">✦ Arte Digital · PDF A4 · Descarga inmediata ✦</div>
+  <h1>🎨 Arte Digital<br>para Colorear</h1>
   <p>Descarga, imprime y colorea con tus propios rotuladores. Diseños exclusivos Lady Aura en formato PDF A4 de alta resolución.</p>
 </section>
 
@@ -494,7 +508,7 @@ footer a { color: var(--gold); text-decoration: none; }
         <div class="aries-preview-label">Versión coloreada (referencia)</div>
       </div>
       <div class="aries-img-wrap" style="max-height:300px;">
-        <img src="conejito-colorear.webp" alt="Aries line art para colorear">
+        <img src="conejito-colorear.png" alt="Aries line art para colorear">
         <div class="aries-preview-label">Lámina para colorear (lo que recibes)</div>
       </div>
     </div>
@@ -528,7 +542,7 @@ footer a { color: var(--gold); text-decoration: none; }
 </section>
 
 <!-- CATÁLOGO PRÓXIMOS -->
-<section class="catalogo">
+<section class="catalogo" id="catalogo">
   <div class="seccion-titulo">✦ COLECCIÓN · 3€ POR LÁMINA ✦</div>
 
   <div class="grid-laminas">
@@ -536,7 +550,7 @@ footer a { color: var(--gold); text-decoration: none; }
     <!-- Tauro -->
     <div class="lamina-card" onclick="abrirModal('tauro')">
       <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Tauro">
+        <img src="conejito-colorear.png" alt="Tauro">
         <div class="lock">
           <span class="lock-ico">🔒</span>
           <span class="lock-txt">PRÓXIMAMENTE</span>
@@ -559,7 +573,7 @@ footer a { color: var(--gold); text-decoration: none; }
     <!-- Géminis -->
     <div class="lamina-card" onclick="abrirModal('geminis')">
       <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Géminis">
+        <img src="conejito-colorear.png" alt="Géminis">
         <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
         <span class="soon-badge">MUY PRONTO</span>
       </div>
@@ -574,7 +588,7 @@ footer a { color: var(--gold); text-decoration: none; }
     <!-- Cáncer -->
     <div class="lamina-card">
       <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Cáncer">
+        <img src="conejito-colorear.png" alt="Cáncer">
         <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
         <span class="soon-badge">MUY PRONTO</span>
       </div>
@@ -589,7 +603,7 @@ footer a { color: var(--gold); text-decoration: none; }
     <!-- Leo -->
     <div class="lamina-card">
       <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Leo">
+        <img src="conejito-colorear.png" alt="Leo">
         <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
         <span class="soon-badge">MUY PRONTO</span>
       </div>
@@ -604,7 +618,7 @@ footer a { color: var(--gold); text-decoration: none; }
     <!-- Virgo -->
     <div class="lamina-card">
       <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Virgo">
+        <img src="conejito-colorear.png" alt="Virgo">
         <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
         <span class="soon-badge">MUY PRONTO</span>
       </div>
@@ -619,7 +633,7 @@ footer a { color: var(--gold); text-decoration: none; }
     <!-- Libra -->
     <div class="lamina-card">
       <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Libra">
+        <img src="conejito-colorear.png" alt="Libra">
         <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
         <span class="soon-badge">MUY PRONTO</span>
       </div>
@@ -634,7 +648,7 @@ footer a { color: var(--gold); text-decoration: none; }
     <!-- Escorpio -->
     <div class="lamina-card">
       <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Escorpio">
+        <img src="conejito-colorear.png" alt="Escorpio">
         <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
         <span class="soon-badge">MUY PRONTO</span>
       </div>
@@ -649,7 +663,7 @@ footer a { color: var(--gold); text-decoration: none; }
     <!-- Sagitario -->
     <div class="lamina-card">
       <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Sagitario">
+        <img src="conejito-colorear.png" alt="Sagitario">
         <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
         <span class="soon-badge">MUY PRONTO</span>
       </div>
@@ -664,7 +678,7 @@ footer a { color: var(--gold); text-decoration: none; }
     <!-- Capricornio -->
     <div class="lamina-card">
       <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Capricornio">
+        <img src="conejito-colorear.png" alt="Capricornio">
         <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
         <span class="soon-badge">MUY PRONTO</span>
       </div>
@@ -679,7 +693,7 @@ footer a { color: var(--gold); text-decoration: none; }
     <!-- Acuario -->
     <div class="lamina-card">
       <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Acuario">
+        <img src="conejito-colorear.png" alt="Acuario">
         <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
         <span class="soon-badge">MUY PRONTO</span>
       </div>
@@ -694,7 +708,7 @@ footer a { color: var(--gold); text-decoration: none; }
     <!-- Piscis -->
     <div class="lamina-card">
       <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Piscis">
+        <img src="conejito-colorear.png" alt="Piscis">
         <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
         <span class="soon-badge">MUY PRONTO</span>
       </div>
@@ -736,5 +750,9 @@ footer a { color: var(--gold); text-decoration: none; }
 function abrirModal(signo){ /* placeholder para cuando haya láminas reales */ }
 </script>
 
+<script>
+var mt=document.getElementById('menuToggle'),nav=document.getElementById('nav');
+if(mt&&nav){mt.addEventListener('click',function(){nav.classList.toggle('open');});}
+</script>
 </body>
 </html>
