@@ -750,15 +750,19 @@ function startTransform(){
   tmp.width=dotW; tmp.height=dotH;
   const tc=tmp.getContext('2d',{willReadFrequently:true});
   const fit=document.getElementById('fitChk').checked;
-  const ir=loadedImg.width/loadedImg.height, dr=dotW/dotH;
+  const imgW=loadedImg.width, imgH=loadedImg.height;
   let dw,dh,dx,dy;
-  if(fit){
-    if(ir>dr){dw=dotW;dh=dotW/ir;dx=0;dy=(dotH-dh)/2;}
-    else{dh=dotH;dw=dotH*ir;dx=(dotW-dw)/2;dy=0;}
+  if(fit || cfg.fixedCols){
+    // FIT: imagen completa sin recortar, centrada
+    const scale=Math.min(dotW/imgW, dotH/imgH);
+    dw=Math.round(imgW*scale); dh=Math.round(imgH*scale);
+    dx=Math.round((dotW-dw)/2); dy=Math.round((dotH-dh)/2);
     tc.fillStyle='#ffffff'; tc.fillRect(0,0,dotW,dotH);
   } else {
-    if(ir>dr){dh=dotH;dw=dh*ir;dx=-(dw-dotW)/2;dy=0;}
-    else{dw=dotW;dh=dw/ir;dx=0;dy=-(dh-dotH)/2;}
+    // CROP: llena todo el área recortando lo que sobra
+    const scale=Math.max(dotW/imgW, dotH/imgH);
+    dw=Math.round(imgW*scale); dh=Math.round(imgH*scale);
+    dx=Math.round((dotW-dw)/2); dy=Math.round((dotH-dh)/2);
   }
   // loadedImg es un canvas offscreen — drawImage desde canvas nunca da CORS
   tc.drawImage(loadedImg,dx,dy,dw,dh);
