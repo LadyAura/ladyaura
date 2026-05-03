@@ -479,8 +479,15 @@ function renderPreview(){
   const ctx=cv.getContext('2d');
   ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,cv.width,cv.height);
 
-  // Dibujar zonas de color con borde negro
-  renderColoringPage(ctx, 0, 0, G.cols, G.rows, G.cols, G.rows, sc, true);
+  // Dibujar zonas de color centradas con margen
+  const PREV_MARGIN=10;
+  const prevDrawW=cv.width-PREV_MARGIN*2, prevDrawH=cv.height-PREV_MARGIN*2;
+  const prevScale=Math.min(prevDrawW/G.cols, prevDrawH/G.rows);
+  const prevOffX=Math.round((cv.width-G.cols*prevScale)/2);
+  const prevOffY=Math.round((cv.height-G.rows*prevScale)/2);
+  ctx.save(); ctx.translate(prevOffX, prevOffY);
+  renderColoringPage(ctx, 0, 0, G.cols*prevScale, G.rows*prevScale, G.cols, G.rows, prevScale, true);
+  ctx.restore();
 
   // Marca de agua
   ctx.save();
@@ -501,9 +508,7 @@ function renderPreview(){
 
 // ─── RENDER PÁGINA DE COLOREAR ───────────────────────────────────────────────
 function renderColoringPage(ctx, pgL, pgT, pageW, pageH, cols, rows, scale, isPreview){
-  // Para cada pixel, dibujar el color y el número
-  const fontSize=Math.max(6, Math.min(14, Math.floor(scale*0.7)));
-
+  const fontSize=Math.max(5, Math.min(11, Math.floor(scale*0.6)));
   for(let row=0;row<rows;row++){
     for(let col=0;col<cols;col++){
       const i=row*cols+col;
@@ -514,17 +519,15 @@ function renderColoringPage(ctx, pgL, pgT, pageW, pageH, cols, rows, scale, isPr
       const w=Math.round((col+1)*scale)-pgL-x;
       const h=Math.round((row+1)*scale)-pgT-y;
       if(x+w<0||x>pageW||y+h<0||y>pageH) continue;
-
-      // Color de fondo (versión clara para colorear)
+      // Fondo muy tenue del color
       ctx.fillStyle=c.hex;
-      ctx.globalAlpha=0.15; // muy tenue para que se vea el número
+      ctx.globalAlpha=0.12;
       ctx.fillRect(x,y,w,h);
       ctx.globalAlpha=1;
-
-      // Borde entre zonas de diferente color
+      // Bordes entre zonas de diferente color
       const right=col<cols-1?PALETTE[G.colorMap[row*cols+col+1]]:null;
       const below=row<rows-1?PALETTE[G.colorMap[(row+1)*cols+col]]:null;
-      ctx.strokeStyle='rgba(0,0,0,0.6)';
+      ctx.strokeStyle='rgba(0,0,0,0.5)';
       ctx.lineWidth=0.5;
       if(right&&right.id!==c.id){
         ctx.beginPath();ctx.moveTo(x+w,y);ctx.lineTo(x+w,y+h);ctx.stroke();
@@ -532,20 +535,18 @@ function renderColoringPage(ctx, pgL, pgT, pageW, pageH, cols, rows, scale, isPr
       if(below&&below.id!==c.id){
         ctx.beginPath();ctx.moveTo(x,y+h);ctx.lineTo(x+w,y+h);ctx.stroke();
       }
-
-      // Número del color (solo si el pixel es lo suficientemente grande)
+      // Número en gris muy clarito, centrado
       if(scale>=4&&w>=4&&h>=4){
         const numIdx=G.usedColors.findIndex(uc=>uc.id===c.id)+1;
-        ctx.fillStyle='rgba(0,0,0,0.7)';
+        ctx.fillStyle='rgba(180,180,180,0.9)'; // gris clarito
         ctx.font=`bold ${fontSize}px Arial,sans-serif`;
         ctx.textAlign='center';ctx.textBaseline='middle';
         ctx.fillText(String(numIdx),x+w/2,y+h/2);
       }
     }
   }
-
-  // Borde exterior del dibujo
-  ctx.strokeStyle='#000000';ctx.lineWidth=2;
+  // Borde exterior
+  ctx.strokeStyle='#222';ctx.lineWidth=2;
   ctx.strokeRect(0,0,Math.round(cols*scale),Math.round(rows*scale));
 }
 
@@ -571,10 +572,16 @@ function renderAll(){
     const scale=G.cols/loadedImg.width; // escala real
     const pageScale=G.totalW/G.cols; // escala para que quepa en páginas... 
 
-    // Calcular escala pixel→página
-    const pxScale=G.totalW/G.cols;
+    // Margen blanco de 80px por cada lado en cada folio
+    const MARGIN=80;
+    const drawW=G.pageW-MARGIN*2, drawH=G.pageH-MARGIN*2;
+    // Escala para que el dibujo quepa en el área con márgenes
+    const pxScale=Math.min(drawW/G.cols, drawH/G.rows);
+    // Offset para centrar el dibujo dentro del folio con márgenes iguales
+    const drawOffX=Math.round((G.pageW-G.cols*pxScale)/2);
+    const drawOffY=Math.round((G.pageH-G.rows*pxScale)/2);
 
-    renderColoringPage(ctx, px*G.pageW-G.offX, py*G.pageH-G.offY,
+    renderColoringPage(ctx, px*G.pageW-drawOffX, py*G.pageH-drawOffY,
       G.pageW, G.pageH, G.cols, G.rows, pxScale, false);
 
     // Marca de agua
