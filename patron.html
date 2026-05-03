@@ -133,8 +133,24 @@ select:focus{outline:none;border-color:var(--purple);}
 </head>
 <body>
 
-<h1>💎 Lady Aura — Generador DMC</h1>
-<p class="sub">Convierte tu imagen a patrón de diamantes con colores exactos ✨</p>
+<!-- HERO BANNER -->
+<div style="background:linear-gradient(135deg,#1a0a2e,#0a0a18);border:1px solid rgba(200,160,255,0.2);border-radius:20px;padding:2rem 1.5rem;margin-bottom:1.2rem;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(124,58,237,0.3),transparent 70%);pointer-events:none;"></div>
+  <a href="/" style="position:absolute;top:14px;left:16px;color:rgba(200,160,255,0.6);font-size:12px;font-weight:700;text-decoration:none;">← Lady Aura</a>
+  <div style="position:relative;z-index:1;">
+    <div style="font-size:36px;margin-bottom:8px;">💎</div>
+    <h1 style="font-family:'Cinzel Decorative',serif;font-size:clamp(16px,5vw,28px);background:linear-gradient(135deg,#f5c842,#ff6eb4,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;line-height:1.3;">Generador de Patrones DMC</h1>
+    <p style="color:#9988bb;font-size:13px;margin-bottom:16px;">Convierte tu imagen en patrón diamond painting con colores reales</p>
+    <!-- CTA DESTACADO -->
+    <div style="background:linear-gradient(135deg,rgba(245,200,66,0.15),rgba(255,110,180,0.10));border:1.5px solid rgba(245,200,66,0.4);border-radius:14px;padding:14px 20px;display:inline-block;max-width:480px;">
+      <div style="font-size:13px;color:#f0eaff;font-weight:700;margin-bottom:4px;">✨ ¿Cómo funciona?</div>
+      <div style="font-size:12px;color:#9988bb;line-height:1.7;">
+        1️⃣ Sube tu imagen &nbsp;→&nbsp; 2️⃣ Genera la vista previa gratuita<br>
+        3️⃣ ¿Te gusta? &nbsp;→&nbsp; <strong style="color:#f5c842;">Pídeme el PDF sin marcas de agua por solo 1€ 💌</strong>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="card">
   <div class="ct">🖼️ Sube tu imagen</div>
@@ -229,30 +245,31 @@ select:focus{outline:none;border-color:var(--purple);}
 </div>
 
 <div class="dls" id="dlSec" style="display:none">
-  <div style="font-size:22px;margin-bottom:8px">💎</div>
-  <div style="font-size:15px;font-weight:800;color:var(--gold);margin-bottom:6px">¿Te gusta tu patrón?</div>
-  <div style="font-size:13px;color:var(--muted);margin-bottom:14px">
-    Recibe el PDF completo <strong style="color:var(--text)">sin marcas de agua</strong> por solo <strong style="color:var(--gold)">1€</strong> 🎉
+  <p id="dlInfo" style="font-size:11px;color:var(--muted);margin-bottom:16px;"></p>
+  <div style="background:linear-gradient(135deg,#1a0a2e,#12122a);border:2px solid rgba(245,200,66,0.5);border-radius:20px;padding:24px;max-width:500px;margin:0 auto 16px;">
+    <div style="font-size:32px;margin-bottom:10px;">🎉</div>
+    <div style="font-size:18px;font-weight:800;color:#f5c842;margin-bottom:8px;">¡Tu patrón está listo!</div>
+    <div style="font-size:13px;color:#9988bb;margin-bottom:6px;">Lo que ves es una <strong style="color:#f0eaff;">vista previa gratuita</strong> con marcas de agua</div>
+    <div style="background:rgba(245,200,66,0.1);border-radius:12px;padding:12px;margin:14px 0;">
+      <div style="font-size:22px;font-weight:900;color:#f5c842;">PDF completo = 1€</div>
+      <div style="font-size:12px;color:#9988bb;margin-top:4px;">Sin marcas de agua · Listo para imprimir · Te lo mando en &lt;24h</div>
+    </div>
+    <a href="mailto:lady.aura.2025@gmail.com?subject=Quiero%20mi%20patrón%20DMC&body=Hola%2C%20me%20ha%20gustado%20mi%20patrón%20y%20quiero%20el%20PDF%20completo%20sin%20marcas%20de%20agua%20por%201€.%20¡Gracias!"
+      style="display:block;background:linear-gradient(135deg,#f5c842,#f97316);color:#0a0a18;
+      text-decoration:none;padding:16px 24px;border-radius:14px;font-weight:900;font-size:16px;
+      box-shadow:0 6px 24px rgba(245,200,66,0.4);margin-bottom:10px;">
+      💌 Quiero mi PDF por 1€ — Contactar ahora
+    </a>
+    <div style="font-size:11px;color:#6b5f88;">Al pulsar se abrirá tu correo con el mensaje listo para enviar a lady.aura.2025@gmail.com</div>
   </div>
-  <a id="contactBtn" href="mailto:ladyaura@gmail.com?subject=Quiero%20mi%20patrón%20DMC&body=Hola%2C%20me%20ha%20gustado%20mi%20patrón%20y%20quiero%20el%20PDF%20sin%20marcas%20de%20agua%20por%201€.%20¡Gracias!" 
-    style="display:inline-block;background:linear-gradient(135deg,#7c3aed,#ff6eb4);color:#fff;
-    text-decoration:none;padding:12px 28px;border-radius:14px;font-weight:800;font-size:15px;
-    box-shadow:0 4px 20px rgba(124,58,237,0.4);transition:all .2s;">
-    💌 Contactar para recibir mi PDF
-  </a>
-  <div style="margin-top:10px;font-size:11px;color:var(--muted)">
-    Te respondo en menos de 24h con el PDF listo para imprimir
-  </div>
-  <p id="dlInfo" style="margin-top:8px;"></p>
-  <div style="margin-top:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
-    <button class="bs" onclick="restoreOriginal()">↩ Restaurar original</button>
-  </div>
+  <button class="bs" onclick="restoreOriginal()" style="margin-top:4px;">↩ Restaurar original</button>
 </div>
 
 <div class="pg" id="pgGrid" style="display:none"></div>
 
 <div class="card" id="lgCard" style="display:none">
-  <div class="ct">🧵 Leyenda de colores DMC</div>
+  <div class="ct">🧵 Colores DMC de tu patrón</div>
+  <p style="font-size:11px;color:var(--muted);margin-bottom:10px;">Toca cualquier color para reemplazarlo por otro 👇</p>
   <div class="lg" id="lgGrid"></div>
 </div>
 
@@ -557,28 +574,21 @@ dropZ.addEventListener('drop',e=>{e.preventDefault();dropZ.classList.remove('dra
 function loadImg(file){
   if(!file.type.startsWith('image/')){setS('⚠️ Solo PNG/JPG/WEBP','err');return;}
   setS('Cargando…','info');
-  const reader=new FileReader();
-  reader.onerror=()=>setS('No se pudo cargar la imagen','err');
-  reader.onload=e=>{
-    const img=new Image();
-    img.onerror=()=>setS('Error al cargar imagen','err');
-    img.onload=()=>{
-      loadedImg=img;
-      const cvO=document.getElementById('cvOrig');
-      const sc=img.width>420?420/img.width:1;
-      cvO.width=Math.round(img.width*sc); cvO.height=Math.round(img.height*sc);
-      cvO.getContext('2d').drawImage(img,0,0,cvO.width,cvO.height);
-      document.getElementById('ppArea').style.display='grid';
-      document.getElementById('dlSec').style.display='none';
-      document.getElementById('pgGrid').style.display='none';
-      document.getElementById('lgCard').style.display='none';
-      document.getElementById('patCard').style.display='none';
-      document.getElementById('genBtn').disabled=false;
-      setS('✅ Imagen cargada — pulsa Generar patrón','ok');
-    };
-    img.src=e.target.result;
-  };
-  reader.readAsDataURL(file);
+  // Usar createImageBitmap directamente desde el File — nunca causa error CORS
+  createImageBitmap(file).then(bitmap=>{
+    loadedImg=bitmap;
+    const cvO=document.getElementById('cvOrig');
+    const sc=bitmap.width>420?420/bitmap.width:1;
+    cvO.width=Math.round(bitmap.width*sc); cvO.height=Math.round(bitmap.height*sc);
+    cvO.getContext('2d').drawImage(bitmap,0,0,cvO.width,cvO.height);
+    document.getElementById('ppArea').style.display='grid';
+    document.getElementById('dlSec').style.display='none';
+    document.getElementById('pgGrid').style.display='none';
+    document.getElementById('lgCard').style.display='none';
+    document.getElementById('patCard').style.display='none';
+    document.getElementById('genBtn').disabled=false;
+    setS('✅ Imagen cargada — pulsa Generar patrón','ok');
+  }).catch(()=>setS('⚠️ No se pudo cargar la imagen. Prueba PNG o JPG.','err'));
 }
 
 // ─── TRANSFORMACIÓN PRINCIPAL ─────────────────────────────────────────────────
