@@ -206,28 +206,30 @@ select:focus{outline:none;border-color:var(--purple);}
 </head>
 <body>
 
-<header class="site-header">
-  <a class="brand" href="#inicio" aria-label="Lady Aura inicio">
-    <img src="assets/logo-new.png" alt="Logo Lady Aura – Diamond Painting Premium">
+<header class="header" style="
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.8rem 4%;
+  background:rgba(5,5,20,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(150,100,255,0.2);
+  box-shadow:0 2px 20px rgba(0,0,0,0.4);
+">
+  <a href="/" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+    <img src="Logo.png" alt="Lady Aura Art" style="height:40px;object-fit:contain;" onerror="this.style.display='none'">
+    <span style="font-family:'Cinzel Decorative',serif;font-size:clamp(11px,2vw,16px);
+      background:linear-gradient(135deg,#c084fc,#ff6eb4);-webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;font-weight:700;">Lady Aura Art</span>
   </a>
-  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
-  <nav class="nav" id="nav" aria-label="Navegación principal">
-    <a href="#inicio"><span class="lang-es">Inicio</span><span class="lang-en" style="display:none;">Home</span></a>
-    <a href="#galeria"><span class="lang-es">Diseños</span><span class="lang-en" style="display:none;">Designs</span></a>
-    <a href="#zodiaco"><span class="lang-es">Zodiaco</span><span class="lang-en" style="display:none;">Zodiac</span></a>
-    <a href="tarot.html" target="_blank" rel="noopener">🔮 Tarot</a>
-    <a href="#por-que"><span class="lang-es">Por qué Lady Aura</span><span class="lang-en" style="display:none;">Why Lady Aura</span></a>
-    <a href="#sobre-mi"><span class="lang-es">Mi historia</span><span class="lang-en" style="display:none;">My story</span></a>
-    <a href="#personalizado"><span class="lang-es">Personalizado</span><span class="lang-en" style="display:none;">Custom</span></a>
-    <a href="#contacto"><span class="lang-es">Contacto</span><span class="lang-en" style="display:none;">Contact</span><span class="lang-en" style="display:none;">Contact</span></a>
-    <a href="#coleccion-agotada" id="nav-agotados"><span class="lang-es">Agotados</span><span class="lang-en" style="display:none;">Sold Out</span></a>
+  <nav style="display:flex;gap:clamp(8px,2vw,20px);align-items:center;flex-wrap:wrap;">
+    <a href="/#galeria" style="color:#c0b0e0;text-decoration:none;font-size:13px;font-weight:600;transition:color .2s;" onmouseover="this.style.color='#c084fc'" onmouseout="this.style.color='#c0b0e0'">Diseños</a>
+    <a href="/#zodiaco" style="color:#c0b0e0;text-decoration:none;font-size:13px;font-weight:600;transition:color .2s;" onmouseover="this.style.color='#c084fc'" onmouseout="this.style.color='#c0b0e0'">Zodiaco</a>
+    <a href="/#por-que" style="color:#c0b0e0;text-decoration:none;font-size:13px;font-weight:600;transition:color .2s;" onmouseover="this.style.color='#c084fc'" onmouseout="this.style.color='#c0b0e0'">Por qué Lady Aura</a>
+    <a href="/#contacto" style="color:#c0b0e0;text-decoration:none;font-size:13px;font-weight:600;transition:color .2s;" onmouseover="this.style.color='#c084fc'" onmouseout="this.style.color='#c0b0e0'">Contacto</a>
+    <a href="patron.html" style="background:linear-gradient(135deg,#7c3aed,#ff6eb4);color:#fff;
+      text-decoration:none;font-size:12px;font-weight:800;padding:7px 16px;border-radius:99px;
+      box-shadow:0 2px 12px rgba(124,58,237,0.4);">💎 Generador</a>
   </nav>
-  <a class="header-button" href="#galeria"><span class="lang-es">Ver diseños ✨</span><span class="lang-en" style="display:none;">See designs ✨</span></a>
-  <div class="lang-selector" role="group" aria-label="Selector de idioma">
-    <button class="lang-btn active" id="btn-es" onclick="setLang('es')" aria-label="Español">ES</button>
-    <span class="lang-sep">|</span>
-    <button class="lang-btn" id="btn-en" onclick="setLang('en')" aria-label="English">EN</button>
-  </div>
 </header>
 
 <!-- HERO BANNER -->
