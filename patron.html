@@ -628,11 +628,12 @@ function getSizeCfg(v){
     return {pX,pY,pageW:A4W,pageH:A4H,fixedCols:cols,fixedRows:rows};
   }
   switch(v){
-    // Folios A4: sin fixedCols, calcula automáticamente con STEP=38 (mismo que lienzos)
-    case 'A4V':  return {pX:1,pY:1,pageW:A4W,pageH:A4H};
-    case 'A4H':  return {pX:1,pY:1,pageW:A4H,pageH:A4W};
-    case 'A4-2x2': return {pX:2,pY:2,pageW:A4W,pageH:A4H};
-    case 'A4-3x3': return {pX:3,pY:3,pageW:A4W,pageH:A4H};
+    // Folios A4: fixedCols basados en 10 diamantes/cm (estándar diamond painting)
+    // A4 = 21x29.7cm → 210x297 diamantes, el step se calcula dinámicamente para que quepan
+    case 'A4V':  return {pX:1,pY:1,pageW:A4W,pageH:A4H,fixedCols:210,fixedRows:297};
+    case 'A4H':  return {pX:1,pY:1,pageW:A4H,pageH:A4W,fixedCols:297,fixedRows:210};
+    case 'A4-2x2': return {pX:2,pY:2,pageW:A4W,pageH:A4H,fixedCols:420,fixedRows:594};
+    case 'A4-3x3': return {pX:3,pY:3,pageW:A4W,pageH:A4H,fixedCols:630,fixedRows:891};
     default: return {pX:1,pY:1,pageW:A4W,pageH:A4H};
   }
 }
