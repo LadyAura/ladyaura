@@ -446,6 +446,43 @@ footer a { color: var(--gold); text-decoration: none; }
 }
 .btn-modal-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,.25); }
 .modal-nota { color: var(--muted); font-size: .78rem; font-style: italic; opacity: .75; }
+
+/* Tarjeta doble: color + line art */
+.lamina-doble {
+  background: var(--purple-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all .25s;
+  position: relative;
+}
+.lamina-doble:hover { transform: translateY(-4px); border-color: rgba(201,168,76,.4); box-shadow: 0 12px 32px rgba(0,0,0,.4); }
+.lamina-doble .thumb-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 220px;
+}
+.lamina-doble .thumb-row img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.lamina-doble .thumb-label {
+  font-size: .6rem; color: var(--muted); text-align: center;
+  padding: .2rem .3rem; background: rgba(0,0,0,.4);
+  position: absolute; bottom: 220px;
+}
+.lamina-doble .price-badge {
+  position: absolute; top: .6rem; right: .6rem;
+  background: linear-gradient(135deg,#c9a84c,#e8c97a);
+  color: #0d0b14; font-family: 'Cinzel',serif;
+  font-size: .6rem; letter-spacing: .1em;
+  padding: .25rem .65rem; border-radius: 10px; font-weight: 700;
+}
+.lamina-doble .col-label {
+  position: absolute; top: .6rem; left: .6rem;
+  background: rgba(0,0,0,.55); color: var(--muted);
+  font-size: .58rem; padding: .2rem .5rem; border-radius: 8px;
+}
+
 </style>
 </head>
 <body>
@@ -545,13 +582,20 @@ footer a { color: var(--gold); text-decoration: none; }
 <section class="catalogo" id="catalogo">
   <div class="seccion-titulo">✦ COLECCIÓN · 3€ POR LÁMINA ✦</div>
 
-    <div class="grid-laminas">
+      <div class="grid-laminas">
 
-    <!-- ARIES - DISPONIBLE -->
-    <div class="lamina-card">
-      <div class="lamina-thumb" style="background:#0a0814;">
-        <img src="colorear-aries.webp" alt="Diosa Aries lámina colorear Lady Aura" style="filter:none;transform:none;width:100%;height:100%;object-fit:cover;display:block;">
-        <span class="soon-badge" style="background:linear-gradient(135deg,#c9a84c,#e8c97a);color:#0d0b14;">3 €</span>
+
+    <div class="lamina-doble">
+      <span class="price-badge">3 €</span>
+      <div class="thumb-row">
+        <div style="position:relative;overflow:hidden;">
+          <img src="assets/aries.webp" alt="Diosa Aries coloreada">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Color</div>
+        </div>
+        <div style="position:relative;overflow:hidden;background:#fff;">
+          <img src="colorear-aries.webp" alt="Diosa Aries lámina colorear">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Para colorear</div>
+        </div>
       </div>
       <div class="lamina-info">
         <div class="lamina-signo">♈ ARIES · 21 MAR – 19 ABR</div>
@@ -560,12 +604,17 @@ footer a { color: var(--gold); text-decoration: none; }
         <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Aries%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini">💬 Pedir por WhatsApp · 3€</a>
       </div>
     </div>
-
-    <!-- CÁNCER - DISPONIBLE -->
-    <div class="lamina-card">
-      <div class="lamina-thumb" style="background:#0a0814;">
-        <img src="colorear-cancer.webp" alt="Diosa Cáncer lámina colorear Lady Aura" style="filter:none;transform:none;width:100%;height:100%;object-fit:cover;display:block;">
-        <span class="soon-badge" style="background:linear-gradient(135deg,#c9a84c,#e8c97a);color:#0d0b14;">3 €</span>
+    <div class="lamina-doble">
+      <span class="price-badge">3 €</span>
+      <div class="thumb-row">
+        <div style="position:relative;overflow:hidden;">
+          <img src="assets/cancer.webp" alt="Diosa Cáncer coloreada">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Color</div>
+        </div>
+        <div style="position:relative;overflow:hidden;background:#fff;">
+          <img src="colorear-cancer.webp" alt="Diosa Cáncer lámina colorear">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Para colorear</div>
+        </div>
       </div>
       <div class="lamina-info">
         <div class="lamina-signo">♋ CÁNCER · 21 JUN – 22 JUL</div>
@@ -574,12 +623,17 @@ footer a { color: var(--gold); text-decoration: none; }
         <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Cáncer%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini">💬 Pedir por WhatsApp · 3€</a>
       </div>
     </div>
-
-    <!-- CAPRICORNIO - DISPONIBLE -->
-    <div class="lamina-card">
-      <div class="lamina-thumb" style="background:#0a0814;">
-        <img src="colorear-capricornio.webp" alt="Diosa Capricornio lámina colorear Lady Aura" style="filter:none;transform:none;width:100%;height:100%;object-fit:cover;display:block;">
-        <span class="soon-badge" style="background:linear-gradient(135deg,#c9a84c,#e8c97a);color:#0d0b14;">3 €</span>
+    <div class="lamina-doble">
+      <span class="price-badge">3 €</span>
+      <div class="thumb-row">
+        <div style="position:relative;overflow:hidden;">
+          <img src="assets/capricornio.webp" alt="Diosa Capricornio coloreada">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Color</div>
+        </div>
+        <div style="position:relative;overflow:hidden;background:#fff;">
+          <img src="colorear-capricornio.webp" alt="Diosa Capricornio lámina colorear">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Para colorear</div>
+        </div>
       </div>
       <div class="lamina-info">
         <div class="lamina-signo">♑ CAPRICORNIO · 22 DIC – 19 ENE</div>
@@ -588,12 +642,17 @@ footer a { color: var(--gold); text-decoration: none; }
         <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Capricornio%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini">💬 Pedir por WhatsApp · 3€</a>
       </div>
     </div>
-
-    <!-- ACUARIO - DISPONIBLE -->
-    <div class="lamina-card">
-      <div class="lamina-thumb" style="background:#0a0814;">
-        <img src="colorear-acuario.webp" alt="Diosa Acuario lámina colorear Lady Aura" style="filter:none;transform:none;width:100%;height:100%;object-fit:cover;display:block;">
-        <span class="soon-badge" style="background:linear-gradient(135deg,#c9a84c,#e8c97a);color:#0d0b14;">3 €</span>
+    <div class="lamina-doble">
+      <span class="price-badge">3 €</span>
+      <div class="thumb-row">
+        <div style="position:relative;overflow:hidden;">
+          <img src="assets/acuario.webp" alt="Diosa Acuario coloreada">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Color</div>
+        </div>
+        <div style="position:relative;overflow:hidden;background:#fff;">
+          <img src="colorear-acuario.webp" alt="Diosa Acuario lámina colorear">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Para colorear</div>
+        </div>
       </div>
       <div class="lamina-info">
         <div class="lamina-signo">♒ ACUARIO · 20 ENE – 18 FEB</div>
@@ -602,123 +661,155 @@ footer a { color: var(--gold); text-decoration: none; }
         <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Acuario%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini">💬 Pedir por WhatsApp · 3€</a>
       </div>
     </div>
-
-    <!-- TAURO - PRÓXIMAMENTE -->
-    <div class="lamina-card">
-      <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Tauro próximamente">
-        <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
-        <span class="soon-badge">MUY PRONTO</span>
-      </div>
-      <div class="lamina-info">
-        <div class="lamina-signo">♉ TAURO · 20 ABR – 20 MAY</div>
-        <div class="lamina-nombre">Diosa Tauro</div>
-        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4</span></div>
-        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Me%20interesa%20la%20lámina%20de%20Tauro%20🎨%20¿Cuándo%20estará%20lista?" target="_blank" rel="noopener" class="btn-wa-mini">💬 Avisar cuando esté lista</a>
-      </div>
-    </div>
-
-    <!-- GÉMINIS - PRÓXIMAMENTE -->
-    <div class="lamina-card">
-      <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Géminis próximamente">
-        <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
-        <span class="soon-badge">MUY PRONTO</span>
-      </div>
-      <div class="lamina-info">
-        <div class="lamina-signo">♊ GÉMINIS · 21 MAY – 20 JUN</div>
-        <div class="lamina-nombre">Diosas Géminis</div>
-        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4</span></div>
-        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Me%20interesa%20la%20lámina%20de%20Géminis%20🎨%20¿Cuándo%20estará%20lista?" target="_blank" rel="noopener" class="btn-wa-mini">💬 Avisar cuando esté lista</a>
-      </div>
-    </div>
-
-    <!-- LEO - PRÓXIMAMENTE -->
-    <div class="lamina-card">
-      <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Leo próximamente">
-        <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
-        <span class="soon-badge">MUY PRONTO</span>
-      </div>
-      <div class="lamina-info">
-        <div class="lamina-signo">♌ LEO · 23 JUL – 22 AGO</div>
-        <div class="lamina-nombre">Diosa Leo</div>
-        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4</span></div>
-        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Me%20interesa%20la%20lámina%20de%20Leo%20🎨%20¿Cuándo%20estará%20lista?" target="_blank" rel="noopener" class="btn-wa-mini">💬 Avisar cuando esté lista</a>
-      </div>
-    </div>
-
-    <!-- VIRGO - PRÓXIMAMENTE -->
-    <div class="lamina-card">
-      <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Virgo próximamente">
-        <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
-        <span class="soon-badge">MUY PRONTO</span>
-      </div>
-      <div class="lamina-info">
-        <div class="lamina-signo">♍ VIRGO · 23 AGO – 22 SEP</div>
-        <div class="lamina-nombre">Diosa Virgo</div>
-        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4</span></div>
-        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Me%20interesa%20la%20lámina%20de%20Virgo%20🎨%20¿Cuándo%20estará%20lista?" target="_blank" rel="noopener" class="btn-wa-mini">💬 Avisar cuando esté lista</a>
-      </div>
-    </div>
-
-    <!-- LIBRA - PRÓXIMAMENTE -->
-    <div class="lamina-card">
-      <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Libra próximamente">
-        <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
-        <span class="soon-badge">MUY PRONTO</span>
-      </div>
-      <div class="lamina-info">
-        <div class="lamina-signo">♎ LIBRA · 23 SEP – 22 OCT</div>
-        <div class="lamina-nombre">Diosa Libra</div>
-        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4</span></div>
-        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Me%20interesa%20la%20lámina%20de%20Libra%20🎨%20¿Cuándo%20estará%20lista?" target="_blank" rel="noopener" class="btn-wa-mini">💬 Avisar cuando esté lista</a>
-      </div>
-    </div>
-
-    <!-- ESCORPIO - PRÓXIMAMENTE -->
-    <div class="lamina-card">
-      <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Escorpio próximamente">
-        <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
-        <span class="soon-badge">MUY PRONTO</span>
+    <div class="lamina-doble">
+      <span class="price-badge">3 €</span>
+      <div class="thumb-row">
+        <div style="position:relative;overflow:hidden;">
+          <img src="assets/escorpio.webp" alt="Diosa Escorpio coloreada">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Color</div>
+        </div>
+        <div style="position:relative;overflow:hidden;background:#fff;">
+          <img src="colorear-escorpio.webp" alt="Diosa Escorpio lámina colorear">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Para colorear</div>
+        </div>
       </div>
       <div class="lamina-info">
         <div class="lamina-signo">♏ ESCORPIO · 23 OCT – 21 NOV</div>
         <div class="lamina-nombre">Diosa Escorpio</div>
-        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4</span></div>
-        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Me%20interesa%20la%20lámina%20de%20Escorpio%20🎨%20¿Cuándo%20estará%20lista?" target="_blank" rel="noopener" class="btn-wa-mini">💬 Avisar cuando esté lista</a>
+        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4 · Arte digital</span></div>
+        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Escorpio%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini">💬 Pedir por WhatsApp · 3€</a>
       </div>
     </div>
-
-    <!-- SAGITARIO - PRÓXIMAMENTE -->
-    <div class="lamina-card">
-      <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Sagitario próximamente">
-        <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
-        <span class="soon-badge">MUY PRONTO</span>
+    <div class="lamina-doble">
+      <span class="price-badge">3 €</span>
+      <div class="thumb-row">
+        <div style="position:relative;overflow:hidden;">
+          <img src="assets/geminis.webp" alt="Diosa Géminis coloreada">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Color</div>
+        </div>
+        <div style="position:relative;overflow:hidden;background:#fff;">
+          <img src="colorear-geminis.webp" alt="Diosa Géminis lámina colorear">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Para colorear</div>
+        </div>
+      </div>
+      <div class="lamina-info">
+        <div class="lamina-signo">♊ GÉMINIS · 21 MAY – 20 JUN</div>
+        <div class="lamina-nombre">Diosa Géminis</div>
+        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4 · Arte digital</span></div>
+        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Géminis%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini">💬 Pedir por WhatsApp · 3€</a>
+      </div>
+    </div>
+    <div class="lamina-doble">
+      <span class="price-badge">3 €</span>
+      <div class="thumb-row">
+        <div style="position:relative;overflow:hidden;">
+          <img src="assets/leo.webp" alt="Diosa Leo coloreada">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Color</div>
+        </div>
+        <div style="position:relative;overflow:hidden;background:#fff;">
+          <img src="colorear-leo.webp" alt="Diosa Leo lámina colorear">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Para colorear</div>
+        </div>
+      </div>
+      <div class="lamina-info">
+        <div class="lamina-signo">♌ LEO · 23 JUL – 22 AGO</div>
+        <div class="lamina-nombre">Diosa Leo</div>
+        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4 · Arte digital</span></div>
+        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Leo%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini">💬 Pedir por WhatsApp · 3€</a>
+      </div>
+    </div>
+    <div class="lamina-doble">
+      <span class="price-badge">3 €</span>
+      <div class="thumb-row">
+        <div style="position:relative;overflow:hidden;">
+          <img src="assets/libra.webp" alt="Diosa Libra coloreada">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Color</div>
+        </div>
+        <div style="position:relative;overflow:hidden;background:#fff;">
+          <img src="colorear-libra.webp" alt="Diosa Libra lámina colorear">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Para colorear</div>
+        </div>
+      </div>
+      <div class="lamina-info">
+        <div class="lamina-signo">♎ LIBRA · 23 SEP – 22 OCT</div>
+        <div class="lamina-nombre">Diosa Libra</div>
+        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4 · Arte digital</span></div>
+        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20la%20lámina%20de%20Libra%20para%20colorear%20por%203€%20🎨" target="_blank" rel="noopener" class="btn-wa-mini">💬 Pedir por WhatsApp · 3€</a>
+      </div>
+    </div>
+    <div class="lamina-doble">
+      <span class="soon-badge">MUY PRONTO</span>
+      <div class="thumb-row">
+        <div style="position:relative;overflow:hidden;">
+          <div style="background:linear-gradient(135deg,#1e1040,#2d1060);width:100%;height:100%;display:flex;align-items:center;justify-content:center;"><span style='font-size:1.5rem'>🎨</span></div>
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Color</div>
+        </div>
+        <div style="position:relative;overflow:hidden;background:#fff;">
+          <img src="conejito-colorear.webp" alt="Diosa Tauro lámina colorear">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Para colorear</div>
+        </div>
+      </div>
+      <div class="lamina-info">
+        <div class="lamina-signo">♉ TAURO · 20 ABR – 20 MAY</div>
+        <div class="lamina-nombre">Diosa Tauro</div>
+        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4 · Arte digital</span></div>
+        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Me%20interesa%20la%20lámina%20de%20Tauro%20🎨%20¿Cuándo%20estará%20lista?" target="_blank" rel="noopener" class="btn-wa-mini">💬 Avisar cuando esté lista</a>
+      </div>
+    </div>
+    <div class="lamina-doble">
+      <span class="soon-badge">MUY PRONTO</span>
+      <div class="thumb-row">
+        <div style="position:relative;overflow:hidden;">
+          <div style="background:linear-gradient(135deg,#1e1040,#2d1060);width:100%;height:100%;display:flex;align-items:center;justify-content:center;"><span style='font-size:1.5rem'>🎨</span></div>
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Color</div>
+        </div>
+        <div style="position:relative;overflow:hidden;background:#fff;">
+          <img src="conejito-colorear.webp" alt="Diosa Virgo lámina colorear">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Para colorear</div>
+        </div>
+      </div>
+      <div class="lamina-info">
+        <div class="lamina-signo">♍ VIRGO · 23 AGO – 22 SEP</div>
+        <div class="lamina-nombre">Diosa Virgo</div>
+        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4 · Arte digital</span></div>
+        <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Me%20interesa%20la%20lámina%20de%20Virgo%20🎨%20¿Cuándo%20estará%20lista?" target="_blank" rel="noopener" class="btn-wa-mini">💬 Avisar cuando esté lista</a>
+      </div>
+    </div>
+    <div class="lamina-doble">
+      <span class="soon-badge">MUY PRONTO</span>
+      <div class="thumb-row">
+        <div style="position:relative;overflow:hidden;">
+          <div style="background:linear-gradient(135deg,#1e1040,#2d1060);width:100%;height:100%;display:flex;align-items:center;justify-content:center;"><span style='font-size:1.5rem'>🎨</span></div>
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Color</div>
+        </div>
+        <div style="position:relative;overflow:hidden;background:#fff;">
+          <img src="conejito-colorear.webp" alt="Diosa Sagitario lámina colorear">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Para colorear</div>
+        </div>
       </div>
       <div class="lamina-info">
         <div class="lamina-signo">♐ SAGITARIO · 22 NOV – 21 DIC</div>
         <div class="lamina-nombre">Diosa Sagitario</div>
-        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4</span></div>
+        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4 · Arte digital</span></div>
         <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Me%20interesa%20la%20lámina%20de%20Sagitario%20🎨%20¿Cuándo%20estará%20lista?" target="_blank" rel="noopener" class="btn-wa-mini">💬 Avisar cuando esté lista</a>
       </div>
     </div>
-
-    <!-- PISCIS - PRÓXIMAMENTE -->
-    <div class="lamina-card">
-      <div class="lamina-thumb">
-        <img src="conejito-colorear.webp" alt="Piscis próximamente">
-        <div class="lock"><span class="lock-ico">🔒</span><span class="lock-txt">PRÓXIMAMENTE</span></div>
-        <span class="soon-badge">MUY PRONTO</span>
+    <div class="lamina-doble">
+      <span class="soon-badge">MUY PRONTO</span>
+      <div class="thumb-row">
+        <div style="position:relative;overflow:hidden;">
+          <div style="background:linear-gradient(135deg,#1e1040,#2d1060);width:100%;height:100%;display:flex;align-items:center;justify-content:center;"><span style='font-size:1.5rem'>🎨</span></div>
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Color</div>
+        </div>
+        <div style="position:relative;overflow:hidden;background:#fff;">
+          <img src="conejito-colorear.webp" alt="Diosa Piscis lámina colorear">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);font-size:.58rem;color:var(--muted);text-align:center;padding:.2rem;">Para colorear</div>
+        </div>
       </div>
       <div class="lamina-info">
         <div class="lamina-signo">♓ PISCIS · 19 FEB – 20 MAR</div>
         <div class="lamina-nombre">Diosa Piscis</div>
-        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4</span></div>
+        <div class="lamina-precio"><span class="precio">3 €</span><span class="aviso">PDF A4 · Arte digital</span></div>
         <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Me%20interesa%20la%20lámina%20de%20Piscis%20🎨%20¿Cuándo%20estará%20lista?" target="_blank" rel="noopener" class="btn-wa-mini">💬 Avisar cuando esté lista</a>
       </div>
     </div>
@@ -726,10 +817,7 @@ footer a { color: var(--gold); text-decoration: none; }
     <!-- PERSONALIZADA -->
     <div class="lamina-card" style="border-color:rgba(124,58,237,.4);">
       <div class="lamina-thumb" style="background:linear-gradient(135deg,#1e1040,#2d1060);">
-        <div class="lock">
-          <span class="lock-ico">✨</span>
-          <span class="lock-txt" style="color:#a78bfa;">PERSONALIZADA</span>
-        </div>
+        <div class="lock"><span class="lock-ico">✨</span><span class="lock-txt" style="color:#a78bfa;">PERSONALIZADA</span></div>
       </div>
       <div class="lamina-info">
         <div class="lamina-signo" style="color:#a78bfa;">🎨 TU IMAGEN</div>
