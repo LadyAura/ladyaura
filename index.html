@@ -81,7 +81,7 @@
 .portal-hero-bg {
   position: absolute; inset: 0;
   background-image: url('assets/sirena-mar-nocturno.webp');
-  background-size: cover; background-position: center;
+  background-size: cover; background-position: center top;
   filter: brightness(0.35) saturate(1.2);
 }
 .portal-hero-overlay {
@@ -94,6 +94,17 @@
 .portal-hero-content {
   position: relative; z-index: 2;
   max-width: 760px; margin: 0 auto;
+}
+.hero-logo {
+  width: min(520px, 90vw);
+  margin: 0 auto 2.2rem;
+  display: block;
+  filter: drop-shadow(0 0 40px rgba(160,63,255,0.6)) drop-shadow(0 0 80px rgba(255,72,137,0.3));
+  animation: logoPulse 4s ease-in-out infinite;
+}
+@keyframes logoPulse {
+  0%, 100% { filter: drop-shadow(0 0 40px rgba(160,63,255,0.6)) drop-shadow(0 0 80px rgba(255,72,137,0.3)); }
+  50%       { filter: drop-shadow(0 0 60px rgba(200,100,255,0.9)) drop-shadow(0 0 100px rgba(255,72,137,0.5)); }
 }
 .portal-eyebrow {
   display: inline-block;
@@ -163,7 +174,6 @@
   gap: 1.5rem;
 }
 
-/* Card grande (featured) */
 .col-card {
   position: relative; border-radius: 24px;
   overflow: hidden; cursor: pointer;
@@ -177,15 +187,10 @@
   border-color: rgba(255,217,138,0.4);
   box-shadow: 0 20px 60px rgba(160,63,255,0.3);
 }
-.col-card.featured {
-  grid-column: span 2;
-  grid-row: span 1;
-}
 .col-card img {
-  width: 100%; height: 100%;
+  width: 100%; height: 320px;
   object-fit: cover; display: block;
   transition: transform 0.5s ease;
-  min-height: 280px;
 }
 .col-card:hover img { transform: scale(1.06); }
 
@@ -336,7 +341,6 @@
 /* RESPONSIVE */
 @media (max-width: 900px) {
   .collections-grid { grid-template-columns: 1fr 1fr; }
-  .col-card.featured { grid-column: span 2; }
   .tools-grid { grid-template-columns: 1fr; }
   .trust-strip-portal { flex-direction: column; }
   .ts-item { border-right: none; border-bottom: 1px solid var(--border-soft); }
@@ -347,8 +351,7 @@
   .collections-section { padding: 3.5rem 5%; }
   .tools-section { padding: 0 5% 3.5rem; }
   .collections-grid { grid-template-columns: 1fr; gap: 1rem; }
-  .col-card.featured { grid-column: span 1; }
-  .col-card img { min-height: 220px; }
+  .col-card img { height: 320px; }
   .tool-card { flex-direction: column; }
   .tool-card-img { width: 100%; height: 140px; }
   .about-mini { flex-direction: column; text-align: center; }
@@ -397,9 +400,8 @@
     <div class="portal-hero-bg"></div>
     <div class="portal-hero-overlay"></div>
     <div class="portal-hero-content">
-      <span class="portal-eyebrow">✦ Diamond Painting Premium · Diseños Exclusivos · España ✦</span>
+      <img src="assets/logo.webp" alt="Lady Aura Art – Diamond Painting Premium" class="hero-logo">
       <h1>Arte con Diamantes<br>que no encontrarás<br>en ningún otro lugar</h1>
-      <p>Sirenas, zodíaco, dragones y fantasía. Cuadros diamond painting premium 60×90 cm. Pre-reserva sin compromiso ni pago previo.</p>
       <div class="portal-cta-group">
         <a href="zodiaco.html" class="btn primary btn-xl">✨ Ver colecciones</a>
         <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20saber%20más%20sobre%20los%20cuadros" target="_blank" rel="noopener" class="btn secondary">💬 Pregúntame</a>
@@ -448,8 +450,8 @@
 
     <div class="collections-grid">
 
-      <!-- ZODÍACO — featured -->
-      <a href="zodiaco.html" class="col-card featured">
+      <!-- ZODÍACO -->
+      <a href="zodiaco.html" class="col-card">
         <span class="always-badge">✦ Siempre disponible</span>
         <img src="assets/aries.webp" alt="Colección diamond painting zodíaco diosas y retratos celestiales Lady Aura">
         <div class="col-card-overlay">
