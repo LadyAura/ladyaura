@@ -13,14 +13,14 @@
 <link rel="apple-touch-icon" href="assets/favicon.ico">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ladyauraart.com/tarot.html">
-<meta property="og:title" content="Tarot Gratis Online en Espanol - Lady Aura">
-<meta property="og:description" content="Echa las cartas del tarot gratis. Tiradas de amor, semanal, diaria. Lady Aura.">
+<meta property="og:title" content="Tarot Gratis Online · Echar las Cartas Tarot de Amor y Diario | Lady Aura Art">
+<meta property="og:description" content="Echa las cartas del tarot gratis en español, sin registro ni pago. Tirada diaria, semanal y de amor. Cartas del tarot online con arte premium.">
 <meta property="og:image" content="https://ladyauraart.com/assets/tarot/la-luna.webp">
 <meta property="og:locale" content="es_ES">
-<meta property="og:site_name" content="Lady Aura">
+<meta property="og:site_name" content="Lady Aura Art">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Tarot Gratis Online - Lady Aura">
-<meta name="twitter:description" content="Tira las cartas gratis. Amor, semanal, diaria. Lady Aura.">
+<meta name="twitter:title" content="Tarot Gratis Online · Echar las Cartas | Lady Aura Art">
+<meta name="twitter:description" content="Echa las cartas del tarot gratis en español. Tirada diaria, semanal y de amor. Sin registro ni pago.">
 <meta name="twitter:image" content="https://ladyauraart.com/assets/tarot/la-luna.webp">
 <script type="application/ld+json">
 {
@@ -173,6 +173,55 @@
 .reading-disclaimer { text-align:center; color:rgba(255,255,255,0.3); font-size:0.85rem; font-style:italic; padding:1rem 0 0.5rem; border-top:1px solid rgba(160,63,255,0.12); max-width:600px; margin:0 auto; }
 .btn-nueva { display:block; margin:1.5rem auto 0; padding:0.7rem 2rem; font-family:"Cinzel",serif; font-size:0.82rem; letter-spacing:0.12em; text-transform:uppercase; background:transparent; color:rgba(255,255,255,0.45); border:1px solid rgba(255,255,255,0.18); border-radius:999px; cursor:pointer; transition:all 0.2s; }
 .btn-nueva:hover { border-color:#ffd98a; color:#ffd98a; }
+
+
+/* ── LECTURA COMBINADA LADY AURA ── */
+.combo-reading-box {
+  max-width: 860px;
+  margin: -1rem auto 2.5rem;
+  padding: 1.6rem 1.8rem;
+  border-radius: 26px;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(255,217,138,0.10), transparent 45%),
+    radial-gradient(ellipse at 85% 100%, rgba(160,63,255,0.14), transparent 45%),
+    rgba(13,7,28,0.92);
+  border: 1px solid rgba(255,217,138,0.24);
+  box-shadow: 0 0 45px rgba(160,63,255,0.14);
+  display: none;
+}
+.combo-reading-box.visible { display: block; animation: fadeUp 0.55s ease both; }
+.combo-kicker {
+  font-family: "Cinzel", serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,217,138,0.75);
+  text-align: center;
+  margin-bottom: 0.45rem;
+}
+.combo-reading-box h3 {
+  font-family: "Cinzel", serif;
+  color: #fff0ff;
+  text-align: center;
+  margin: 0 0 1rem;
+  font-size: clamp(1.1rem, 2.4vw, 1.55rem);
+}
+.combo-reading-box p {
+  color: rgba(255,255,255,0.62);
+  font-size: 1.02rem;
+  line-height: 1.75;
+  margin: 0.75rem 0;
+}
+.combo-reading-box strong { color: #ffd98a; font-weight: 700; }
+.combo-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,217,138,0.25), transparent);
+  margin: 1rem 0;
+}
+@media(max-width:600px) {
+  .combo-reading-box { padding: 1.25rem; margin-top: -0.5rem; }
+  .combo-reading-box p { font-size: 0.95rem; }
+}
 
 /* ── CUADROS TAROT ── */
 .tarot-shop-section {
@@ -389,13 +438,14 @@ html[lang="en"] div.lang-es { display: none !important; }
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
     <nav class="nav" id="navMenu" aria-label="Navegacion principal">
       <a href="index.html">Inicio</a>
-      <a href="index.html#galeria">Diseños</a>
-      <a href="index.html#zodiaco">Zodiaco</a>
+      <a href="zodiaco.html">Zodíaco</a>
+      <a href="sirenas.html">Sirenas</a>
+      <a href="personalizados.html">Personalizados</a>
       <a href="tarot.html" aria-current="page" style="color:var(--gold,#ffd98a);">🔮 Tarot</a>
       <a href="index.html#sobre-mi">Mi historia</a>
       <a href="#contacto">Contacto</a>
     </nav>
-    <a class="header-button" href="index.html#galeria"><span class="lang-es">Ver diseños ✨</span><span class="lang-en" style="display:none;">See designs ✨</span></a>
+    <a class="header-button" href="zodiaco.html"><span class="lang-es">Ver colecciones ✨</span><span class="lang-en" style="display:none;">See collections ✨</span></a>
     <div class="lang-selector" role="group" aria-label="Selector de idioma" style="display:flex;align-items:center;gap:0;background:rgba(255,255,255,0.07);border:1px solid rgba(160,63,255,0.4);border-radius:999px;overflow:hidden;font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.12em;flex-shrink:0;">
       <button class="lang-btn active" id="btn-es" onclick="setLangTarot('es')" style="padding:5px 12px;background:linear-gradient(135deg,rgba(160,63,255,0.5),rgba(255,72,137,0.5));color:#fff;border:none;cursor:pointer;font-family:'Cinzel',serif;font-size:0.72rem;">ES</button>
       <span style="color:rgba(160,63,255,0.4);font-size:0.65rem;">|</span>
@@ -450,6 +500,7 @@ html[lang="en"] div.lang-es { display: none !important; }
     <h2 class="reading-title" id="readingTitle"></h2>
     <p class="reading-subtitle"><span class="lang-es">Pulsa cada carta para revelar su mensaje ✨</span><span class="lang-en" style="display:none;">Tap each card to reveal its message ✨</span></p>
     <div class="cards-row" id="cardsRow"></div>
+    <div class="combo-reading-box" id="comboReading"></div>
     <p class="reading-disclaimer"><span class="lang-es">🌙 El tarot es una herramienta de reflexion y autoconocimiento. Las cartas son un espejo de tu energia interior, no un oraculo definitivo. Tu tienes el poder de crear tu camino.</span><span class="lang-en" style="display:none;">🌙 Tarot is a tool for reflection and self-knowledge. The cards are a mirror of your inner energy, not a definitive oracle. You have the power to create your own path.</span></p>
     <button class="btn-nueva" onclick="resetReading()"><span class="lang-es">✕ Nueva tirada</span><span class="lang-en" style="display:none;">✕ New reading</span></button>
   </section>
@@ -514,7 +565,7 @@ html[lang="en"] div.lang-es { display: none !important; }
     </div>
     <div class="tarot-shop-cta">
       <p style="color:rgba(255,255,255,0.38);font-size:0.88rem;"><span class="lang-es">Pre-reserva sin pago · Sin compromiso · Envio gratuito 🌙</span><span class="lang-en" style="display:none;">No-payment pre-order · No commitment · Free shipping 🌙</span></p>
-      <a href="index.html#galeria" class="btn primary"><span class="lang-es">Ver todos los cuadros ✨</span><span class="lang-en" style="display:none;">See all designs ✨</span></a>
+      <a href="zodiaco.html" class="btn primary"><span class="lang-es">Ver todos los cuadros ✨</span><span class="lang-en" style="display:none;">See all designs ✨</span></a>
     </div>
   </section>
 
@@ -554,7 +605,7 @@ html[lang="en"] div.lang-es { display: none !important; }
       </a>
     </div>
     <div style="margin-top:2.5rem;">
-      <a href="index.html" class="btn secondary"><span class="lang-es">← Volver a la tienda de cuadros</span><span class="lang-en" style="display:none;">← Back to the shop</span></a>
+      <a href="index.html" class="btn secondary"><span class="lang-es">← Volver al inicio</span><span class="lang-en" style="display:none;">← Back to home</span></a>
     </div>
   </section>
 
@@ -586,7 +637,7 @@ html[lang="en"] div.lang-es { display: none !important; }
 <!-- FOOTER -->
 <footer class="tarot-footer" style="position:relative;z-index:5;">
   <p><span class="lang-es">© 2026 <a href="index.html">Lady Aura</a> · <strong>Tarot Gratis Online en Español</strong> · Diamond Painting Premium · Valencia, España 💜</span><span class="lang-en" style="display:none;">© 2026 <a href="index.html">Lady Aura</a> · <strong>Free Online Tarot</strong> · Diamond Painting Premium · Valencia, Spain 💜</span></p>
-  <p style="margin-top:0.3rem;"><a href="index.html">Tienda de cuadros</a> · <a href="tarot.html"><span class="lang-es">Tarot gratis</span><span class="lang-en" style="display:none;">Free tarot</span></a> · <a href="https://wa.me/34621355638" target="_blank" rel="noopener">WhatsApp</a></p>
+  <p style="margin-top:0.3rem;"><a href="index.html">Inicio</a> · <a href="zodiaco.html">Zodíaco</a> · <a href="sirenas.html">Sirenas</a> · <a href="personalizados.html">Personalizados</a> · <a href="colorear.html">Colorear</a> · <a href="https://wa.me/34621355638" target="_blank" rel="noopener">WhatsApp</a></p>
 </footer>
 
 <script>
@@ -761,6 +812,139 @@ function selectTirada(el) {
 
 function shuffle(arr) { return arr.slice().sort(function(){ return Math.random()-0.5; }); }
 
+
+/* ── INTERPRETACIONES COMBINADAS ── */
+var CARD_SOUL = {
+  'El Loco': {gift:'un salto de fe', shadow:'la impulsividad', verb:'atreverte sin perder el norte'},
+  'El Mago': {gift:'poder de manifestacion', shadow:'energia dispersa', verb:'usar bien tus recursos'},
+  'La Sacerdotisa': {gift:'intuicion profunda', shadow:'silencios que confunden', verb:'escuchar lo que no se dice'},
+  'La Emperatriz': {gift:'abundancia y magnetismo', shadow:'dependencia emocional o creativa', verb:'nutrir lo que merece crecer'},
+  'El Emperador': {gift:'estructura y control', shadow:'rigidez', verb:'poner orden sin endurecerte'},
+  'El Sumo Sacerdote': {gift:'sabiduria y consejo', shadow:'normas que aprietan', verb:'aprender sin obedecer a ciegas'},
+  'Los Enamorados': {gift:'eleccion del corazon', shadow:'duda afectiva', verb:'elegir con verdad'},
+  'El Carro': {gift:'avance y victoria', shadow:'prisa sin direccion', verb:'moverte con foco'},
+  'La Fuerza': {gift:'coraje sereno', shadow:'inseguridad interior', verb:'dominar la situacion con calma'},
+  'El Ermitano': {gift:'claridad interior', shadow:'aislamiento', verb:'tomarte espacio para ver mejor'},
+  'La Rueda': {gift:'cambio de ciclo', shadow:'resistencia al destino', verb:'adaptarte al giro que llega'},
+  'La Justicia': {gift:'verdad y equilibrio', shadow:'juicios pendientes', verb:'actuar con coherencia'},
+  'El Colgado': {gift:'pausa reveladora', shadow:'estancamiento', verb:'mirar desde otro angulo'},
+  'La Muerte': {gift:'transformacion inevitable', shadow:'apego a lo viejo', verb:'cerrar una etapa con dignidad'},
+  'La Templanza': {gift:'armonizacion y paciencia', shadow:'desorden emocional', verb:'mezclar calma con accion'},
+  'El Diablo': {gift:'deseo y poder personal', shadow:'ataduras o tentacion', verb:'reconocer lo que te domina'},
+  'La Torre': {gift:'liberacion brusca', shadow:'miedo al derrumbe', verb:'dejar caer lo que ya no sostiene'},
+  'La Estrella': {gift:'esperanza y sanacion', shadow:'fe debilitada', verb:'volver a creer en tu camino'},
+  'La Luna': {gift:'sensibilidad e intuicion', shadow:'confusion o fantasias', verb:'separar intuicion de miedo'},
+  'El Sol': {gift:'alegria y claridad', shadow:'exceso de confianza', verb:'mostrarte sin esconder tu luz'},
+  'El Juicio': {gift:'despertar y llamada interior', shadow:'culpa o autocritica', verb:'responder a lo que tu alma pide'},
+  'El Mundo': {gift:'cierre y logro', shadow:'final inconcluso', verb:'completar el ciclo y celebrar'}
+};
+
+var SPECIAL_COMBOS = {
+  'El Diablo|Los Enamorados': [
+    'Esta combinacion habla de una atraccion intensa, pero tambien de la necesidad de distinguir amor de dependencia. Hay deseo, quimica y magnetismo, pero la lectura te pide no entregar tu poder por miedo a perder a alguien.',
+    'Cuando Los Enamorados se cruzan con El Diablo, el corazon se enciende pero tambien se pone a prueba. Puede haber una decision afectiva marcada por tentacion, celos, apego o una conexion dificil de soltar.',
+    'Aqui no aparece un amor tibio: aparece una union que remueve. Si eliges desde la verdad, puede haber mucha pasion; si eliges desde la necesidad, la relacion puede convertirse en cadena.'
+  ],
+  'La Luna|El Sol': [
+    'La Luna y El Sol juntas anuncian que una confusion empieza a aclararse. Algo que antes se sentia nebuloso, ambiguo o emocionalmente pesado empieza a recibir luz y sentido.',
+    'Esta combinacion es preciosa: la intuicion de La Luna encuentra la claridad de El Sol. No niegues tus sensaciones, pero espera a tener hechos antes de decidir.',
+    'Aqui hay paso de sombra a luz. Lo que te inquietaba no desaparece por magia: se ordena cuando miras la situacion sin miedo y sin autoengano.'
+  ],
+  'La Muerte|La Torre': [
+    'Esta es una combinacion de cambio potente: algo no solo termina, tambien se desmonta. No lo tomes como castigo; las cartas muestran una limpieza profunda para que no sigas construyendo sobre una base rota.',
+    'La Muerte junto a La Torre indica una transformacion que ya no puede aplazarse. Lo que cae puede doler, pero tambien libera espacio para una version mas honesta de tu vida.',
+    'Estas cartas no suavizan el mensaje: hay una etapa agotada. Resistirte solo alarga el impacto; aceptar el cambio te devuelve poder.'
+  ],
+  'La Estrella|La Templanza': [
+    'La Estrella y La Templanza traen sanacion lenta, bonita y real. No hablan de una solucion inmediata, sino de recuperar paz paso a paso hasta volver a sentirte en equilibrio.',
+    'Esta combinacion protege la tirada. Hay esperanza, pero pide paciencia: no fuerces respuestas, deja que las cosas encuentren su temperatura justa.',
+    'Aqui el tarot habla de una calma que vuelve. Lo que parecia roto empieza a recolocarse con suavidad, cuidado y fe.'
+  ],
+  'El Mago|La Emperatriz': [
+    'El Mago y La Emperatriz son una combinacion creadora: idea, deseo y materializacion. Si estas pensando en lanzar algo, vender, crear o mostrar tu arte, las cartas dicen que hay potencial real.',
+    'Esta union mezcla talento con abundancia. No basta con imaginar: hay que poner manos a la obra, porque lo que cuides ahora puede crecer mucho mas de lo que esperas.',
+    'Aqui hay fertilidad creativa. Tu magnetismo aumenta cuando conviertes una idea en algo visible, bello y concreto.'
+  ],
+  'El Emperador|La Justicia': [
+    'El Emperador con La Justicia pide decisiones firmes, limpias y bien pensadas. Es una combinacion de contratos, limites, responsabilidad y consecuencias claras.',
+    'Aqui no conviene improvisar. Las cartas recomiendan orden, pruebas, equilibrio y actuar de forma impecable para que nada se vuelva en tu contra.',
+    'Esta pareja habla de madurez: tomar el control, pero sin abusar de el. Lo correcto sera mas fuerte que lo impulsivo.'
+  ],
+  'El Carro|La Rueda': [
+    'El Carro y La Rueda anuncian movimiento rapido. Se abre un giro de destino, pero tu direccion sera clave: si sabes hacia donde vas, el cambio te favorece.',
+    'Esta combinacion empuja hacia delante. No todo dependera de ti, pero si dependera de como conduzcas la energia cuando aparezca la oportunidad.',
+    'Hay avance y cambio de escenario. El tarot te dice: no te quedes mirando la puerta, subete al carro cuando se abra.'
+  ],
+  'El Ermitano|La Sacerdotisa': [
+    'El Ermitano y La Sacerdotisa son cartas de silencio, intuicion y sabiduria interna. La respuesta no esta en el ruido externo, sino en lo que ya vienes sintiendo desde hace tiempo.',
+    'Esta combinacion pide retirarte un poco para escuchar mejor. No es frialdad ni distancia: es proteccion energetica y claridad espiritual.',
+    'Aqui el tarot susurra, no grita. Cuanto menos te precipites, mas evidente sera la respuesta.'
+  ],
+  'El Juicio|El Mundo': [
+    'El Juicio y El Mundo anuncian cierre grande y renacimiento. Algo llega a conclusion, pero no como final triste: como graduacion energetica.',
+    'Esta combinacion habla de completar una etapa y escuchar una llamada nueva. Ya no eres la misma persona que empezo este camino.',
+    'Hay recompensa por aprendizaje. El ciclo se cierra cuando aceptas lo que has entendido y te permites pasar de nivel.'
+  ],
+  'El Colgado|La Templanza': [
+    'El Colgado con La Templanza pide paciencia inteligente. No todo esta parado: algunas cosas se estan mezclando por dentro antes de mostrar resultado fuera.',
+    'Esta combinacion aconseja no forzar. La espera tiene sentido si la usas para cambiar la mirada y recuperar equilibrio.',
+    'Aqui el avance es lento, pero no inutil. Lo que hoy parece demora puede estar evitando una decision impulsiva.'
+  ]
+};
+
+function comboKey(a,b) {
+  return [a.card.name, b.card.name].sort().join('|');
+}
+function pickVariant(arr, salt) {
+  var n = 0;
+  for (var i=0;i<salt.length;i++) n += salt.charCodeAt(i);
+  return arr[n % arr.length];
+}
+function orientationText(entry) {
+  return entry.rev ? 'en sombra' : 'en luz';
+}
+function makePairReading(a, b, context, salt) {
+  var special = SPECIAL_COMBOS[comboKey(a,b)];
+  if (special) return pickVariant(special, salt);
+  var A = CARD_SOUL[a.card.name];
+  var B = CARD_SOUL[b.card.name];
+  var templates = [
+    'Cuando <strong>'+a.card.name+'</strong> aparece '+orientationText(a)+' junto a <strong>'+b.card.name+'</strong> '+orientationText(b)+', la lectura mezcla '+A.gift+' con '+B.gift+'. El mensaje es que necesitas '+A.verb+' mientras aprendes a '+B.verb+', sin dejar que '+A.shadow+' ni '+B.shadow+' manden por ti.',
+    'Esta combinacion une la energia de <strong>'+a.card.name+'</strong> y <strong>'+b.card.name+'</strong>: una parte de ti busca '+A.verb+', pero otra necesita '+B.verb+'. Si equilibras ambas fuerzas, la situacion puede avanzar con mas claridad y menos desgaste emocional.',
+    '<strong>'+a.card.name+'</strong> marca '+A.gift+', mientras <strong>'+b.card.name+'</strong> trae '+B.gift+'. Juntas dicen que el camino no se resuelve desde un solo impulso: primero reconoce '+A.shadow+', despues observa '+B.shadow+', y decide desde tu centro.'
+  ];
+  return pickVariant(templates, salt + context);
+}
+function makeDailyReading(entry, isEN) {
+  var S = CARD_SOUL[entry.card.name];
+  if (isEN) return '<div class="combo-kicker">Lady Aura reading</div><h3>Your full message</h3><p>Today, <strong>'+entry.card.name+'</strong> asks you to observe where your energy is moving. This card speaks of '+S.gift+', but also warns against '+S.shadow+'. The advice is simple: '+S.verb+' before making your next move.</p>';
+  var variants = [
+    'Hoy <strong>'+entry.card.name+'</strong> no viene solo a darte una frase bonita: viene a marcarte una direccion. Su energia habla de '+S.gift+', pero tambien te pide vigilar '+S.shadow+'. Si hoy tienes que decidir algo, hazlo desde la calma y con esta clave: '+S.verb+'.',
+    'La carta de hoy pone el foco en '+S.gift+'. Puede que notes una señal, una conversacion o una sensacion interna que te empuja a moverte distinto. No dejes que '+S.shadow+' te nuble; el consejo de la carta es '+S.verb+'.',
+    'Esta energia diaria te recuerda que no todo se resuelve corriendo. <strong>'+entry.card.name+'</strong> te invita a reconocer '+S.gift+' y a transformar '+S.shadow+' en aprendizaje. Hoy ganas poder cuando eliges '+S.verb+'.'
+  ];
+  return '<div class="combo-kicker">Lectura Lady Aura</div><h3>Mensaje completo de tu carta</h3><p>'+pickVariant(variants, entry.card.name + entry.rev)+'</p>';
+}
+function buildComboReading(picked, type, isEN) {
+  if (!picked || picked.length === 0) return '';
+  if (picked.length === 1) return makeDailyReading(picked[0], isEN);
+  var title = type === 'love' ? 'Lectura combinada de amor' : 'Lectura combinada de la tirada';
+  var intro = type === 'love'
+    ? 'Esta tirada no habla de cartas aisladas, sino de dinamica emocional: lo que traes tu, lo que mueve la otra persona y el camino que se crea entre ambos.'
+    : 'Esta tirada muestra una secuencia: de donde vienes, que energia domina ahora y hacia donde puede abrirse el camino si actuas con conciencia.';
+  var html = '<div class="combo-kicker">Interpretacion completa</div><h3>'+title+'</h3><p>'+intro+'</p><div class="combo-divider"></div>';
+  if (type === 'love') {
+    html += '<p>'+makePairReading(picked[0], picked[1], 'tu y la otra persona', 'love01')+'</p>';
+    html += '<p>'+makePairReading(picked[1], picked[2], 'la otra persona y el camino', 'love12')+'</p>';
+    html += '<p>'+makePairReading(picked[0], picked[2], 'tu energia y el futuro juntos', 'love02')+'</p>';
+  } else {
+    html += '<p>'+makePairReading(picked[0], picked[1], 'pasado y presente', 'weekly01')+'</p>';
+    html += '<p>'+makePairReading(picked[1], picked[2], 'presente y futuro', 'weekly12')+'</p>';
+    html += '<p>'+makePairReading(picked[0], picked[2], 'raiz y desenlace', 'weekly02')+'</p>';
+  }
+  return html;
+}
+
 function doReading() {
   var t = TIRADAS[selectedType];
   var lang = getLang();
@@ -801,6 +985,12 @@ function doReading() {
     row.appendChild(slot);
   });
 
+  var comboBox = document.getElementById('comboReading');
+  if (comboBox) {
+    comboBox.innerHTML = buildComboReading(picked, selectedType, isEN);
+    comboBox.classList.add('visible');
+  }
+
   document.getElementById('readingTitle').textContent = isEN ? t.title_en : t.title_es;
   document.getElementById('readingArea').classList.add('visible');
   document.getElementById('readingArea').scrollIntoView({behavior:'smooth', block:'start'});
@@ -818,6 +1008,8 @@ function flipCard(el) {
 }
 
 function resetReading() {
+  var comboBox = document.getElementById('comboReading');
+  if (comboBox) { comboBox.classList.remove('visible'); comboBox.innerHTML = ''; }
   document.getElementById('readingArea').classList.remove('visible');
   document.getElementById('tiradas').scrollIntoView({behavior:'smooth'});
 }
