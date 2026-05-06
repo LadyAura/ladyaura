@@ -71,12 +71,8 @@ body{background:var(--purple-dark);color:var(--white);font-family:'Cormorant Gar
 .product-card.sold-out{cursor:default;}
 .product-card.sold-out:hover{transform:none;border-color:var(--border);box-shadow:none;}
 .card-img-wrap{position:relative;overflow:hidden;}
-.product-card:not(.sold-out):hover .card-img-wrap img{transform:scale(1.05);}
-.card-img-wrap img{transition:transform 0.4s;}
-
-/* Badge orientación */
+.product-card:not(.sold-out):hover .card-img-wrap img{transform:scale(1.05);transition:transform 0.4s;}
 .orient-badge{position:absolute;bottom:8px;left:8px;padding:3px 10px;border-radius:999px;font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.1em;color:#fff;backdrop-filter:blur(4px);}
-
 .card-info{padding:1rem 1.1rem 1.2rem;}
 .card-info h3{font-family:'Cinzel',serif;font-size:1rem;color:var(--white);margin-bottom:0.4rem;letter-spacing:0.04em;line-height:1.3;}
 .card-price{font-family:'Cinzel',serif;font-size:0.95rem;color:var(--gold2);}
@@ -99,19 +95,21 @@ body{background:var(--purple-dark);color:var(--white);font-family:'Cormorant Gar
 .col-link{padding:0.55rem 1.4rem;background:rgba(13,8,33,0.8);border:1px solid var(--border);border-radius:999px;text-decoration:none;font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.1em;color:var(--muted);transition:all 0.2s;}
 .col-link:hover{border-color:var(--gold);color:var(--gold2);}
 .col-link.current{border-color:rgba(160,63,255,0.5);color:#c084fc;background:rgba(160,63,255,0.1);}
-
-/* LIGHTBOX — imagen completa, respeta proporción */
+/* LIGHTBOX — imagen completa respetando proporción real */
 .lb{display:none;position:fixed;inset:0;z-index:9999;background:rgba(3,2,10,0.96);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:1rem;}
 .lb.open{display:flex;animation:lbFade 0.25s ease;}
 @keyframes lbFade{from{opacity:0}to{opacity:1}}
 .lb-inner{display:flex;gap:2rem;align-items:center;max-width:1100px;width:100%;max-height:92vh;animation:lbSlide 0.3s cubic-bezier(0.23,1,0.32,1);}
 @keyframes lbSlide{from{transform:scale(0.94);opacity:0}to{transform:scale(1);opacity:1}}
 .lb-img-wrap{flex-shrink:0;display:flex;align-items:center;justify-content:center;max-height:88vh;}
-.lb-img-wrap img{max-height:88vh;max-width:55vw;width:auto;height:auto;border-radius:16px;border:1px solid rgba(160,63,255,0.4);box-shadow:0 0 60px rgba(160,63,255,0.3);display:block;object-fit:contain;}
-.lb-body{background:rgba(10,5,22,0.98);border:1px solid rgba(160,63,255,0.35);border-radius:24px;padding:2rem 1.8rem;display:flex;flex-direction:column;gap:1rem;min-width:280px;max-width:340px;}
+/* Vertical: imagen alta y estrecha; Horizontal: imagen ancha */
+.lb-img-wrap.orient-v img{max-height:88vh;max-width:45vw;width:auto;height:auto;}
+.lb-img-wrap.orient-h img{max-height:60vh;max-width:60vw;width:auto;height:auto;}
+.lb-img-wrap img{border-radius:16px;border:1px solid rgba(160,63,255,0.4);box-shadow:0 0 60px rgba(160,63,255,0.3);display:block;object-fit:contain;}
+.lb-body{background:rgba(10,5,22,0.98);border:1px solid rgba(160,63,255,0.35);border-radius:24px;padding:2rem 1.8rem;display:flex;flex-direction:column;gap:1rem;min-width:280px;max-width:320px;flex-shrink:0;}
 .lb-eyebrow{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(201,168,76,0.6);}
-.lb-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2vw,1.7rem);color:var(--white);line-height:1.2;}
-.lb-orient{font-size:0.75rem;color:rgba(160,63,255,0.7);font-family:'Cinzel',serif;letter-spacing:0.1em;}
+.lb-title{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2vw,1.6rem);color:var(--white);line-height:1.2;}
+.lb-orient{font-size:0.75rem;color:rgba(160,63,255,0.8);font-family:'Cinzel',serif;letter-spacing:0.1em;}
 .lb-includes{list-style:none;display:flex;flex-direction:column;gap:0.35rem;}
 .lb-includes li{font-size:0.8rem;color:rgba(255,255,255,0.55);display:flex;align-items:center;gap:0.4rem;}
 .lb-price-row{display:flex;align-items:baseline;gap:0.7rem;padding:0.8rem 0;border-top:1px solid var(--border);}
@@ -125,15 +123,14 @@ body{background:var(--purple-dark);color:var(--white);font-family:'Cormorant Gar
 .lb-btn.em:hover{border-color:var(--gold2);color:var(--gold2);}
 .lb-close{position:fixed;top:1rem;right:1rem;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:999px;color:rgba(255,255,255,0.7);font-size:1.4rem;width:42px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;z-index:10;}
 .lb-close:hover{background:rgba(255,72,137,0.4);color:#fff;}
-
 footer{padding:1.5rem 8%;text-align:center;border-top:1px solid rgba(160,63,255,0.12);color:rgba(255,255,255,0.25);font-size:0.8rem;}
 footer a{color:rgba(201,168,76,0.5);text-decoration:none;}
 footer a:hover{color:var(--gold2);}
-
 @media(max-width:800px){
-  .lb-inner{flex-direction:column;overflow-y:auto;}
-  .lb-img-wrap img{max-width:90vw;max-height:50vh;}
-  .lb-body{min-width:unset;max-width:100%;}
+  .lb-inner{flex-direction:column;overflow-y:auto;align-items:center;}
+  .lb-img-wrap.orient-v img{max-width:85vw;max-height:45vh;}
+  .lb-img-wrap.orient-h img{max-width:90vw;max-height:40vh;}
+  .lb-body{min-width:unset;max-width:100%;width:100%;}
 }
 @media(max-width:640px){
   .products-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem;}
@@ -179,8 +176,8 @@ footer a:hover{color:var(--gold2);}
            data-nombre="Paisaje invernal de fantasía" data-img="assets/paisaje-invernal-fantasia.webp" data-orient="h"
            data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Paisaje%20invernal%20de%20fantasía.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Paisaje%20invernal%20de%20fantasía&body=Quiero%20pre-reservar%3A%20Paisaje%20invernal%20de%20fantasía.%2060x90%2C%2094€.">
         <div class="card-img-wrap">
-          <img loading="lazy" src="assets/paisaje-invernal-fantasia.webp" alt="Diamond painting paisaje invernal fantasía aurora boreal Lady Aura Art" style="aspect-ratio:16/9;width:100%;object-fit:cover;display:block;">
-          <span class="orient-badge" style="background:rgba(255,72,137,0.7);">↔ Horizontal</span>
+          <img loading="lazy" src="assets/paisaje-invernal-fantasia.webp" alt="Diamond painting paisaje invernal fantasía Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 30%;display:block;">
+          <span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span>
         </div>
         <div class="card-info">
           <h3>Paisaje invernal de fantasía</h3>
@@ -191,8 +188,8 @@ footer a:hover{color:var(--gold2);}
            data-nombre="Bajo la luna" data-img="assets/bajo-la-luna.webp" data-orient="h"
            data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Bajo%20la%20luna.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Bajo%20la%20luna&body=Quiero%20pre-reservar%3A%20Bajo%20la%20luna.%2060x90%2C%2094€.">
         <div class="card-img-wrap">
-          <img loading="lazy" src="assets/bajo-la-luna.webp" alt="Diamond painting bajo la luna paisaje nocturno Lady Aura Art" style="aspect-ratio:16/9;width:100%;object-fit:cover;display:block;">
-          <span class="orient-badge" style="background:rgba(255,72,137,0.7);">↔ Horizontal</span>
+          <img loading="lazy" src="assets/bajo-la-luna.webp" alt="Diamond painting bajo la luna paisaje nocturno Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 30%;display:block;">
+          <span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span>
         </div>
         <div class="card-info">
           <h3>Bajo la luna</h3>
@@ -203,8 +200,8 @@ footer a:hover{color:var(--gold2);}
            data-nombre="El mágico puente de las flores" data-img="assets/el-magico-puente-de-las-flores.webp" data-orient="h"
            data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20El%20mágico%20puente%20de%20las%20flores.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–El%20mágico%20puente%20de%20las%20flores&body=Quiero%20pre-reservar%3A%20El%20mágico%20puente%20de%20las%20flores.%2060x90%2C%2094€.">
         <div class="card-img-wrap">
-          <img loading="lazy" src="assets/el-magico-puente-de-las-flores.webp" alt="Diamond painting mágico puente flores Lady Aura Art" style="aspect-ratio:16/9;width:100%;object-fit:cover;display:block;">
-          <span class="orient-badge" style="background:rgba(255,72,137,0.7);">↔ Horizontal</span>
+          <img loading="lazy" src="assets/el-magico-puente-de-las-flores.webp" alt="Diamond painting mágico puente flores Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 30%;display:block;">
+          <span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span>
         </div>
         <div class="card-info">
           <h3>El mágico puente de las flores</h3>
@@ -215,8 +212,8 @@ footer a:hover{color:var(--gold2);}
            data-nombre="Paraíso futurista" data-img="assets/paraiso-futurista.webp" data-orient="h"
            data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Paraíso%20futurista.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Paraíso%20futurista&body=Quiero%20pre-reservar%3A%20Paraíso%20futurista.%2060x90%2C%2094€.">
         <div class="card-img-wrap">
-          <img loading="lazy" src="assets/paraiso-futurista.webp" alt="Diamond painting paraíso futurista ciudad del futuro Lady Aura Art" style="aspect-ratio:16/9;width:100%;object-fit:cover;display:block;">
-          <span class="orient-badge" style="background:rgba(255,72,137,0.7);">↔ Horizontal</span>
+          <img loading="lazy" src="assets/paraiso-futurista.webp" alt="Diamond painting paraíso futurista Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 30%;display:block;">
+          <span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span>
         </div>
         <div class="card-info">
           <h3>Paraíso futurista</h3>
@@ -225,13 +222,13 @@ footer a:hover{color:var(--gold2);}
       </div>
       <div class="product-card sold-out">
         <div class="card-img-wrap">
-          <img loading="lazy" src="assets/villa-al-amanecer.webp" alt="Diamond painting villa al amanecer – Edición agotada Lady Aura" style="aspect-ratio:16/9;width:100%;object-fit:cover;display:block;">
+          <img loading="lazy" src="assets/villa-al-amanecer.webp" alt="Diamond painting villa al amanecer agotada Lady Aura" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 30%;display:block;">
           <div class="sold-overlay">
             <span class="so-sym">✦</span>
             <span class="so-txt">Agotada</span>
             <span class="so-sub">Esta pieza ya encontró su hogar</span>
           </div>
-          <span class="orient-badge" style="background:rgba(255,72,137,0.7);">↔ Horizontal</span>
+          <span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span>
         </div>
         <div class="card-info">
           <h3>Villa al amanecer</h3>
@@ -260,12 +257,10 @@ footer a:hover{color:var(--gold2);}
 <footer>
   <p>© 2026 <a href="index.html">Lady Aura Art</a> · Diamond Painting Premium · Valencia, España 💜</p>
 </footer>
-
-<!-- LIGHTBOX imagen completa -->
 <div class="lb" id="lb" onclick="if(event.target===this)closeLB()">
   <button class="lb-close" onclick="closeLB()">×</button>
-  <div class="lb-inner">
-    <div class="lb-img-wrap">
+  <div class="lb-inner" id="lbInner">
+    <div class="lb-img-wrap" id="lbImgWrap">
       <img id="lbImg" src="" alt="">
     </div>
     <div class="lb-body">
@@ -291,14 +286,14 @@ footer a:hover{color:var(--gold2);}
     </div>
   </div>
 </div>
-
 <script>
 (function(){var c=document.getElementById('stars');if(!c)return;for(var i=0;i<100;i++){var s=document.createElement('div');s.style.cssText='position:absolute;border-radius:50%;background:#fff;width:'+(Math.random()*2+0.4)+'px;height:'+(Math.random()*2+0.4)+'px;top:'+(Math.random()*100)+'%;left:'+(Math.random()*100)+'%;opacity:'+(Math.random()*0.4+0.08)+';animation:tw '+(Math.random()*3+2)+'s ease-in-out infinite alternate;animation-delay:'+(Math.random()*4)+'s;';c.appendChild(s);}var st=document.createElement('style');st.textContent='@keyframes tw{from{opacity:0.08}to{opacity:0.55}}';document.head.appendChild(st);})();
 
-function openLB(card){
-  var img = card.dataset.img;
+function openLB(card) {
   var orient = card.dataset.orient || 'v';
-  document.getElementById('lbImg').src = img;
+  var wrap = document.getElementById('lbImgWrap');
+  wrap.className = 'lb-img-wrap orient-' + orient;
+  document.getElementById('lbImg').src = card.dataset.img;
   document.getElementById('lbImg').alt = card.dataset.nombre;
   document.getElementById('lbTitle').textContent = card.dataset.nombre;
   document.getElementById('lbOrient').textContent = orient === 'v' ? '↕ Cuadro Vertical · 60×90 cm' : '↔ Cuadro Horizontal · 90×60 cm';
@@ -307,7 +302,7 @@ function openLB(card){
   document.getElementById('lb').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-function closeLB(){
+function closeLB() {
   document.getElementById('lb').classList.remove('open');
   document.body.style.overflow = '';
 }
