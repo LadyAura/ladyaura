@@ -418,6 +418,50 @@ html[lang="en"] div.lang-es { display: none !important; }
 
 
 @media(max-width:768px){.header-button{display:none!important;}}
+
+/* ── Nav responsivo móvil ── */
+@media (max-width: 768px) {
+  #navMenu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(13,11,26,0.98);
+    border-top: 1px solid rgba(201,168,76,0.18);
+    padding: 1rem 1.5rem;
+    gap: .5rem;
+    z-index: 200;
+  }
+  #navMenu.open {
+    display: flex;
+  }
+  #navMenu a {
+    color: #f0ebff;
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: .8rem;
+    letter-spacing: .08em;
+    padding: .6rem 0;
+    border-bottom: 1px solid rgba(201,168,76,0.18);
+  }
+  #navMenu a:last-child { border-bottom: none; }
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: 1px solid rgba(201,168,76,0.18);
+    color: #c9a84c;
+    font-size: 1.2rem;
+    padding: .3rem .7rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .site-header { position: relative; }
+}
+@media (min-width: 769px) {
+  .menu-toggle { display: none; }
+}
 </style>
 </head>
 <body style="background:#05050f;color:rgba(255,255,255,0.75);font-family:'Cormorant Garamond',Georgia,serif;margin:0;padding:0;min-height:100vh;">
