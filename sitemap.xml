@@ -80,6 +80,21 @@
   </url>
 
   <url>
+    <loc>https://ladyauraart.com/personalizados.html</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://ladyauraart.com/assets/personalizado-lady-aura.webp</image:loc>
+      <image:title>Diamond painting personalizado con foto Lady Aura Art</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ladyauraart.com/assets/personalizado-4.webp</image:loc>
+      <image:title>Ejemplo retrato personalizado diamond painting Lady Aura Art</image:title>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://ladyauraart.com/tarot.html</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
