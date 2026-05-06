@@ -815,28 +815,28 @@ function shuffle(arr) { return arr.slice().sort(function(){ return Math.random()
 
 /* ── INTERPRETACIONES COMBINADAS ── */
 var CARD_SOUL = {
-  'El Loco': {gift:'un salto de fe', shadow:'la impulsividad', verb:'atreverte sin perder el norte'},
-  'El Mago': {gift:'poder de manifestacion', shadow:'energia dispersa', verb:'usar bien tus recursos'},
-  'La Sacerdotisa': {gift:'intuicion profunda', shadow:'silencios que confunden', verb:'escuchar lo que no se dice'},
-  'La Emperatriz': {gift:'abundancia y magnetismo', shadow:'dependencia emocional o creativa', verb:'nutrir lo que merece crecer'},
-  'El Emperador': {gift:'estructura y control', shadow:'rigidez', verb:'poner orden sin endurecerte'},
-  'El Sumo Sacerdote': {gift:'sabiduria y consejo', shadow:'normas que aprietan', verb:'aprender sin obedecer a ciegas'},
-  'Los Enamorados': {gift:'eleccion del corazon', shadow:'duda afectiva', verb:'elegir con verdad'},
-  'El Carro': {gift:'avance y victoria', shadow:'prisa sin direccion', verb:'moverte con foco'},
-  'La Fuerza': {gift:'coraje sereno', shadow:'inseguridad interior', verb:'dominar la situacion con calma'},
-  'El Ermitano': {gift:'claridad interior', shadow:'aislamiento', verb:'tomarte espacio para ver mejor'},
-  'La Rueda': {gift:'cambio de ciclo', shadow:'resistencia al destino', verb:'adaptarte al giro que llega'},
-  'La Justicia': {gift:'verdad y equilibrio', shadow:'juicios pendientes', verb:'actuar con coherencia'},
-  'El Colgado': {gift:'pausa reveladora', shadow:'estancamiento', verb:'mirar desde otro angulo'},
-  'La Muerte': {gift:'transformacion inevitable', shadow:'apego a lo viejo', verb:'cerrar una etapa con dignidad'},
-  'La Templanza': {gift:'armonizacion y paciencia', shadow:'desorden emocional', verb:'mezclar calma con accion'},
-  'El Diablo': {gift:'deseo y poder personal', shadow:'ataduras o tentacion', verb:'reconocer lo que te domina'},
-  'La Torre': {gift:'liberacion brusca', shadow:'miedo al derrumbe', verb:'dejar caer lo que ya no sostiene'},
-  'La Estrella': {gift:'esperanza y sanacion', shadow:'fe debilitada', verb:'volver a creer en tu camino'},
-  'La Luna': {gift:'sensibilidad e intuicion', shadow:'confusion o fantasias', verb:'separar intuicion de miedo'},
-  'El Sol': {gift:'alegria y claridad', shadow:'exceso de confianza', verb:'mostrarte sin esconder tu luz'},
-  'El Juicio': {gift:'despertar y llamada interior', shadow:'culpa o autocritica', verb:'responder a lo que tu alma pide'},
-  'El Mundo': {gift:'cierre y logro', shadow:'final inconcluso', verb:'completar el ciclo y celebrar'}
+  'El Loco':          {gift:'atreverte a comenzar algo nuevo', shadow:'la impulsividad', block:'actuar sin pensar puede costarte caro', verb:'dar el paso sin esperar que todo sea perfecto'},
+  'El Mago':          {gift:'convertir tus ideas en realidad', shadow:'la dispersion de energia', block:'intentar hacer demasiado a la vez paraliza en lugar de avanzar', verb:'enfocarte en lo que realmente importa y ponerte a ello'},
+  'La Sacerdotisa':   {gift:'confiar en lo que sientes por dentro', shadow:'el miedo a equivocarte', block:'desconfiar de tu propia intuicion puede alejarte de la respuesta correcta', verb:'escuchar esa voz interna que ya sabe la respuesta'},
+  'La Emperatriz':    {gift:'crear, cuidar y atraer abundancia', shadow:'la dependencia emocional', block:'buscar en otros lo que solo tu puedes darte a ti misma frena tu crecimiento', verb:'nutrir lo que vale y darte permiso de recibir'},
+  'El Emperador':     {gift:'poner orden y tomar el control', shadow:'la rigidez', block:'cuando el control se convierte en necesidad, aleja a las personas y cierra puertas', verb:'actuar con firmeza sin perder la calidez'},
+  'El Sumo Sacerdote':{gift:'aprender de la experiencia y la sabiduria', shadow:'el dogmatismo', block:'seguir normas que ya no encajan solo porque siempre fue asi es una trampa sutil', verb:'buscar tu propia verdad en lugar de seguir al rebano'},
+  'Los Enamorados':   {gift:'elegir desde el corazon con honestidad', shadow:'la duda paralizante', block:'cuando el miedo toma las decisiones por ti, el resultado rara vez te representa', verb:'tomar una decision importante alineada con tus valores'},
+  'El Carro':         {gift:'avanzar con determinacion hacia tu meta', shadow:'la prisa sin direccion', block:'ir rapido sin saber a donde llevas la misma energia que te mueve a ninguna parte', verb:'mantener el foco y no dejar que nada te desvie'},
+  'La Fuerza':        {gift:'afrontar la situacion con calma y coraje', shadow:'la inseguridad interior', block:'dudar de ti misma justo cuando mas te necesitas es el principal obstaculo ahora', verb:'confiar en tu capacidad incluso cuando el miedo aparece'},
+  'El Ermitano':      {gift:'encontrar claridad en el silencio y la reflexion', shadow:'el aislamiento excesivo', block:'cerrarte demasiado puede convertir una pausa necesaria en soledad que pesa', verb:'tomarte el espacio que necesitas para ver con claridad'},
+  'La Rueda':         {gift:'abrirte a que las cosas cambien a mejor', shadow:'la resistencia al cambio', block:'cuanto mas te aferras a como eran las cosas, mas energia gastas en algo que ya no existe', verb:'fluir con lo que llega en lugar de luchar contra la corriente'},
+  'La Justicia':      {gift:'actuar con honestidad y coherencia', shadow:'el juicio excesivo', block:'juzgar la situacion o juzgarte a ti misma con demasiada dureza nubla la vision real', verb:'ser honesta contigo misma y actuar en consecuencia'},
+  'El Colgado':       {gift:'ver la situacion desde un angulo completamente distinto', shadow:'el estancamiento', block:'quedarte paralizada cuando lo que toca es moverte hace que la espera pierda su sentido', verb:'soltar el control y permitirte ver las cosas de otra manera'},
+  'La Muerte':        {gift:'transformarte dejando atras lo que ya no encaja', shadow:'el apego a lo conocido', block:'aferrarse a lo que ya termino por miedo a lo desconocido solo prolonga el dolor', verb:'cerrar esta etapa con gratitud y abrirte a lo que viene'},
+  'La Templanza':     {gift:'encontrar el equilibrio justo entre dos extremos', shadow:'el desequilibrio emocional', block:'actuar desde el caos interior suele llevar a decisiones de las que despues te arrepientes', verb:'mezclar paciencia y accion sin perder la calma'},
+  'El Diablo':        {gift:'reconocer que tienes mas poder del que crees', shadow:'las ataduras invisibles', block:'hay algo que te limita y puede que ni lo hayas identificado todavia', verb:'mirar de frente lo que te tiene encadenada y decidir si quieres seguir'},
+  'La Torre':         {gift:'liberarte de algo que estaba limitandote', shadow:'el miedo al derrumbe', block:'resistirse a un cambio necesario por miedo al caos solo retrasa lo inevitable', verb:'dejar caer lo que no era solido para construir algo real'},
+  'La Estrella':      {gift:'recuperar la esperanza y la confianza en el futuro', shadow:'el desanimo', block:'rendirse justo antes de que las cosas empiecen a mejorar es el error mas frecuente', verb:'volver a creer en tu camino aunque ahora no lo veas claro'},
+  'La Luna':          {gift:'conectar con tu intuicion mas profunda', shadow:'la confusion interna', block:'cuando el miedo y la intuicion se mezclan, es facil tomar decisiones desde el lugar equivocado', verb:'distinguir lo que realmente sientes de lo que te inventa la mente'},
+  'El Sol':           {gift:'brillar con autenticidad y alegria', shadow:'el autosabotaje', block:'bloquearte por miedo a que te vean o te critiquen apaga algo muy valioso en ti', verb:'mostrarte sin disculpas y disfrutar de lo bueno que ya tienes'},
+  'El Juicio':        {gift:'escuchar el llamado a una nueva version de ti misma', shadow:'la autocritica excesiva', block:'castigarte por el pasado en lugar de aprender de el es la trampa que mas paraliza', verb:'perdonarte y dar ese paso que sabes que debes dar'},
+  'El Mundo':         {gift:'cerrar un ciclo importante con exito y aprendizaje', shadow:'la falta de cierre', block:'quedarte dando vueltas sin dar el ultimo paso que falta hace que nada termine de resolverse', verb:'reconocer todo lo que has logrado y permitirte celebrarlo'}
 };
 
 var SPECIAL_COMBOS = {
@@ -908,10 +908,12 @@ function makePairReading(a, b, context, salt) {
   if (special) return pickVariant(special, salt);
   var A = CARD_SOUL[a.card.name];
   var B = CARD_SOUL[b.card.name];
+  var revA = a.rev ? ', aunque con la energia algo bloqueada' : '';
+  var revB = b.rev ? ', aunque con cierta resistencia interna' : '';
   var templates = [
-    'Cuando <strong>'+a.card.name+'</strong> aparece '+orientationText(a)+' junto a <strong>'+b.card.name+'</strong> '+orientationText(b)+', la lectura mezcla '+A.gift+' con '+B.gift+'. El mensaje es que necesitas '+A.verb+' mientras aprendes a '+B.verb+', sin dejar que '+A.shadow+' ni '+B.shadow+' manden por ti.',
-    'Esta combinacion une la energia de <strong>'+a.card.name+'</strong> y <strong>'+b.card.name+'</strong>: una parte de ti busca '+A.verb+', pero otra necesita '+B.verb+'. Si equilibras ambas fuerzas, la situacion puede avanzar con mas claridad y menos desgaste emocional.',
-    '<strong>'+a.card.name+'</strong> marca '+A.gift+', mientras <strong>'+b.card.name+'</strong> trae '+B.gift+'. Juntas dicen que el camino no se resuelve desde un solo impulso: primero reconoce '+A.shadow+', despues observa '+B.shadow+', y decide desde tu centro.'
+    '<strong>'+a.card.name+'</strong>'+revA+' y <strong>'+b.card.name+'</strong>'+revB+' aparecen juntas con un mensaje claro: el momento pide '+A.verb+', y al mismo tiempo '+B.verb+'. Hay algo importante que vigilar: '+A.block+'. Si consigues mantener eso bajo control, la situacion puede avanzar con mucha mas facilidad.',
+    '<strong>'+a.card.name+'</strong> te habla de '+A.gift+', mientras que <strong>'+b.card.name+'</strong>'+revB+' añade la necesidad de '+B.verb+'. Las dos juntas forman un mensaje completo: tienes la energia para moverte, pero recuerda que '+B.block+'. Cuando te liberes de eso, el camino se abre.',
+    'Que aparezcan juntas <strong>'+a.card.name+'</strong> y <strong>'+b.card.name+'</strong> no es casualidad. Una te señala '+A.gift+' y la otra '+B.gift+'. El tarot te pide que uses ambas energias a la vez: no son opuestas, se complementan. Integralas y sabras exactamente que paso dar.'
   ];
   return pickVariant(templates, salt + context);
 }
@@ -919,9 +921,9 @@ function makeDailyReading(entry, isEN) {
   var S = CARD_SOUL[entry.card.name];
   if (isEN) return '<div class="combo-kicker">Lady Aura reading</div><h3>Your full message</h3><p>Today, <strong>'+entry.card.name+'</strong> asks you to observe where your energy is moving. This card speaks of '+S.gift+', but also warns against '+S.shadow+'. The advice is simple: '+S.verb+' before making your next move.</p>';
   var variants = [
-    'Hoy <strong>'+entry.card.name+'</strong> no viene solo a darte una frase bonita: viene a marcarte una direccion. Su energia habla de '+S.gift+', pero tambien te pide vigilar '+S.shadow+'. Si hoy tienes que decidir algo, hazlo desde la calma y con esta clave: '+S.verb+'.',
-    'La carta de hoy pone el foco en '+S.gift+'. Puede que notes una señal, una conversacion o una sensacion interna que te empuja a moverte distinto. No dejes que '+S.shadow+' te nuble; el consejo de la carta es '+S.verb+'.',
-    'Esta energia diaria te recuerda que no todo se resuelve corriendo. <strong>'+entry.card.name+'</strong> te invita a reconocer '+S.gift+' y a transformar '+S.shadow+' en aprendizaje. Hoy ganas poder cuando eliges '+S.verb+'.'
+    'La carta de hoy tiene algo concreto que decirte. <strong>'+entry.card.name+'</strong> te pide que '+S.verb+'. Eso es lo esencial de este dia. Puede que hoy sientas el impulso de '+S.gift+', y eso es buena señal. Solo ten en cuenta que '+S.block+'. Saberlo de antemano te da ventaja.',
+    'Hoy el universo te manda un mensaje muy directo a traves de <strong>'+entry.card.name+'</strong>: es momento de '+S.verb+'. No es casualidad que esta carta haya aparecido hoy. Algo en tu dia te va a dar la oportunidad de aplicar exactamente eso. No lo dejes pasar.',
+    '<strong>'+entry.card.name+'</strong> como carta del dia te habla de '+S.gift+'. Si hoy tienes que tomar alguna decision o afrontar algo que llevas posponiendo, recuerda: '+S.verb+'. Y recuerda tambien que '+S.block+', asi que si notas esa tendencia, ya sabes de donde viene.'
   ];
   return '<div class="combo-kicker">Lectura Lady Aura</div><h3>Mensaje completo de tu carta</h3><p>'+pickVariant(variants, entry.card.name + entry.rev)+'</p>';
 }
@@ -930,8 +932,8 @@ function buildComboReading(picked, type, isEN) {
   if (picked.length === 1) return makeDailyReading(picked[0], isEN);
   var title = type === 'love' ? 'Lectura combinada de amor' : 'Lectura combinada de la tirada';
   var intro = type === 'love'
-    ? 'Esta tirada no habla de cartas aisladas, sino de dinamica emocional: lo que traes tu, lo que mueve la otra persona y el camino que se crea entre ambos.'
-    : 'Esta tirada muestra una secuencia: de donde vienes, que energia domina ahora y hacia donde puede abrirse el camino si actuas con conciencia.';
+    ? 'Esta tirada de amor habla de la dinamica entre dos personas: la primera carta eres tu, la segunda es la otra persona y la tercera muestra el camino que se esta creando entre los dos. Leelas en conjunto.'
+    : 'Las tres cartas de tu tirada semanal forman una historia: lo que dejaste atras, lo que estas viviendo ahora mismo y lo que puede llegar si actuas con conciencia. Lee el conjunto, no cada carta por separado.';
   var html = '<div class="combo-kicker">Interpretacion completa</div><h3>'+title+'</h3><p>'+intro+'</p><div class="combo-divider"></div>';
   if (type === 'love') {
     html += '<p>'+makePairReading(picked[0], picked[1], 'tu y la otra persona', 'love01')+'</p>';
