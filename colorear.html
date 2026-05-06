@@ -598,6 +598,51 @@ footer a { color: var(--gold); text-decoration: none; }
   font-size: .58rem; padding: .2rem .5rem; border-radius: 8px;
 }
 
+/* ── Nav responsivo móvil ── */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(13,11,26,0.98);
+    border-top: 1px solid var(--border);
+    padding: 1rem 1.5rem;
+    gap: .5rem;
+    z-index: 200;
+  }
+  .nav.open {
+    display: flex;
+  }
+  .nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: .8rem;
+    letter-spacing: .08em;
+    padding: .6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav a:last-child { border-bottom: none; }
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--gold);
+    font-size: 1.2rem;
+    padding: .3rem .7rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .header-button { display: none; }
+  .site-header { position: relative; }
+}
+@media (min-width: 769px) {
+  .menu-toggle { display: none; }
+}
+
 </style>
 </head>
 <body>
