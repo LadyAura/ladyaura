@@ -8,28 +8,74 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://ladyauraart.com/assets/sirena-mar-nocturno.webp</image:loc>
-      <image:title>Diamond painting sirena – Lady Aura Art España</image:title>
+      <image:loc>https://ladyauraart.com/assets/Logo.png</image:loc>
+      <image:title>Lady Aura Art – Diamond Painting Premium España</image:title>
     </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/sirena-luna-llena.webp</image:loc>
-      <image:title>Cuadro diamond painting sirena luna llena – Lady Aura Art</image:title>
-    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ladyauraart.com/zodiaco.html</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/aries.webp</image:loc>
-      <image:title>Diamond painting Aries diosa zodíaco – Lady Aura Art</image:title>
+      <image:title>Diamond painting zodíaco Aries Diosa Lady Aura Art</image:title>
     </image:image>
+  </url>
+
+  <url>
+    <loc>https://ladyauraart.com/sirenas.html</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
     <image:image>
-      <image:loc>https://ladyauraart.com/assets/guardian-ambar.webp</image:loc>
-      <image:title>Diamond painting dragón Guardián Ámbar – Lady Aura Art</image:title>
+      <image:loc>https://ladyauraart.com/assets/sirena-luna-llena.webp</image:loc>
+      <image:title>Diamond painting sirena luna llena Lady Aura Art</image:title>
     </image:image>
+  </url>
+
+  <url>
+    <loc>https://ladyauraart.com/parejas.html</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/abrazo-luna-roja.webp</image:loc>
-      <image:title>Diamond painting parejas abrazo luna roja – Lady Aura Art</image:title>
+      <image:title>Diamond painting parejas abrazo luna roja Lady Aura Art</image:title>
     </image:image>
+  </url>
+
+  <url>
+    <loc>https://ladyauraart.com/dragones.html</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ladyauraart.com/assets/guardian-ambar.webp</image:loc>
+      <image:title>Diamond painting dragon Guardian Ambar Lady Aura Art</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ladyauraart.com/paisajes.html</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/paisaje-invernal-fantasia.webp</image:loc>
-      <image:title>Diamond painting paisaje invernal fantasía – Lady Aura Art</image:title>
+      <image:title>Diamond painting paisaje invernal fantasia Lady Aura Art</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ladyauraart.com/especiales.html</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ladyauraart.com/assets/aurora-celestial.webp</image:loc>
+      <image:title>Diamond painting aurora celestial Lady Aura Art</image:title>
     </image:image>
   </url>
 
@@ -40,15 +86,7 @@
     <priority>0.9</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/tarot/la-luna.webp</image:loc>
-      <image:title>La Luna – carta del tarot diamond painting Lady Aura</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/tarot/la-emperatriz.webp</image:loc>
-      <image:title>La Emperatriz – carta del tarot diamond painting Lady Aura</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/tarot/el-sol.webp</image:loc>
-      <image:title>El Sol – carta del tarot diamond painting Lady Aura</image:title>
+      <image:title>Tarot gratis online La Luna Lady Aura Art</image:title>
     </image:image>
   </url>
 
@@ -56,10 +94,10 @@
     <loc>https://ladyauraart.com/colorear.html</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/aries.webp</image:loc>
-      <image:title>Lámina para colorear Aries fantasy PDF – Lady Aura Art</image:title>
+      <image:title>Laminas para colorear adultos fantasy PDF Lady Aura Art</image:title>
     </image:image>
   </url>
 
