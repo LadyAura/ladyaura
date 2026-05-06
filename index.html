@@ -118,10 +118,15 @@
 .portal-hero h1 {
   font-family: 'Cinzel', serif;
   font-size: clamp(2rem, 5.5vw, 4rem);
-  font-weight: 700; line-height: 1.1;
-  background: linear-gradient(135deg, #fff8ff 0%, var(--gold) 45%, #e0aaff 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  margin-bottom: 1.2rem;
+  font-weight: 700; line-height: 1.15;
+  color: #ffffff;
+  text-shadow:
+    0 0 40px rgba(160,63,255,0.9),
+    0 0 80px rgba(160,63,255,0.5),
+    0 2px 8px rgba(0,0,0,0.9),
+    0 4px 20px rgba(0,0,0,0.8);
+  margin-bottom: 1.8rem;
+  letter-spacing: 0.03em;
 }
 .portal-hero p {
   color: rgba(255,255,255,0.6); font-size: 1.1rem;
@@ -400,7 +405,7 @@
     <div class="portal-hero-bg"></div>
     <div class="portal-hero-overlay"></div>
     <div class="portal-hero-content">
-      <img src="assets/logo.webp" alt="Lady Aura Art – Diamond Painting Premium" class="hero-logo">
+      <img src="assets/Logo.png" alt="Lady Aura Art – Diamond Painting Premium" class="hero-logo" onerror="this.src='assets/logo-new.png'">
       <h1>Arte con Diamantes<br>que no encontrarás<br>en ningún otro lugar</h1>
       <div class="portal-cta-group">
         <a href="zodiaco.html" class="btn primary btn-xl">✨ Ver colecciones</a>
