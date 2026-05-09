@@ -558,14 +558,7 @@ function fullscreenAttach() {
   });
 }
 
-/* MutationObserver para enganchar cuando el lightbox se abre */
+/* Inyectar estilos al cargar */
 document.addEventListener('DOMContentLoaded', function() {
   fullscreenInjectStyles();
-  fullscreenAttach();
-
-  // Reenganche cuando cambia el DOM (lightbox se abre y cambia el src)
-  var fsObserver = new MutationObserver(function() {
-    fullscreenAttach();
-  });
-  fsObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['src','class'] });
 });

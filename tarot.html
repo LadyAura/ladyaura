@@ -694,7 +694,7 @@ html[lang="en"] div.lang-es { display: none !important; }
 <div class="t-lb" id="tLb" role="dialog" aria-modal="true" onclick="if(event.target===this)closeLB()">
   <button class="lb-close" onclick="closeLB()" aria-label="Cerrar">×</button>
   <div class="t-lb-card">
-    <div class="lb-img"><img id="lbImg" src="" alt=""></div>
+    <div class="lb-img"><img id="lbImg" src="" alt="" onclick="if(this.src)fullscreenOpen(this.src,this.alt)" style="cursor:zoom-in;"></div>
     <div class="lb-info">
       <span class="lb-tag">✦ Diamond Painting Premium · Lady Aura ✦</span>
       <h2 class="lb-title" id="lbTitle"></h2>
