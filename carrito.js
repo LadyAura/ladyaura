@@ -560,7 +560,5 @@ function fullscreenAttach() {
   });
 }
 
-/* Inyectar estilos al cargar */
-);
 // Llamada inmediata también por si el DOM ya está listo
 if(document.readyState !== "loading") fullscreenInjectStyles();
