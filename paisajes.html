@@ -149,16 +149,23 @@ footer a:hover{color:var(--gold2);}
 </head>
 <body>
 <div id="stars" aria-hidden="true" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></div>
-<div class="page-topbar">
-  <a href="index.html">← Inicio</a>
-  <span class="sep">·</span>
-  <a href="zodiaco.html">♈ Zodíaco</a>
-  <span class="sep">·</span>
-  <a href="tarot.html">🔮 Tarot gratis</a>
-  <span class="sep">·</span>
-  <a href="https://wa.me/34621355638" target="_blank" rel="noopener">💬 WhatsApp</a>
-  <span class="brand">Lady Aura Art</span>
-</div>
+<header class="site-header" id="site-header">
+  <a class="brand" href="index.html" aria-label="Lady Aura inicio">
+    <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art – Diamond Painting Premium">
+  </a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+  <nav class="nav" id="nav" aria-label="Navegación principal">
+    <a href="index.html">Inicio</a>
+    <a href="zodiaco.html">♈ Zodíaco</a>
+    <a href="parejas.html">💑 Parejas</a>
+    <a href="paisajes.html">🏔️ Paisajes</a>
+    <a href="especiales.html">✨ Diseños exclusivos</a>
+    <a href="personalizados.html">🎨 Personalizados</a>
+    <a href="tarot.html">🔮 Tarot</a>
+    <a href="colorear.html">🎨 Colorear</a>
+    <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">🛒<span class="cart-badge" style="display:none">0</span></a>
+  </nav>
+</header>
 <main style="position:relative;z-index:5;">
   <section class="col-hero">
     <div class="col-hero-img"><img src="assets/paisaje-invernal-fantasia.webp" alt="Diamond painting paisaje invernal de fantasía – Lady Aura Art" loading="eager"></div>
@@ -331,7 +338,7 @@ footer a:hover{color:var(--gold2);}
       <ul class="lb-includes">
         <li>📐 Formato 60×90 cm</li>
         <li>💎 Diamantes alta densidad</li>
-        <li>🎨 Lienzo de lino premium</li>
+        <li>🎨 Lienzo de alta calidad premium</li>
         <li>🛠️ Herramientas incluidas</li>
         <li>📖 Instrucciones en español</li>
         <li>✨ Diseño exclusivo Lady Aura</li>
@@ -340,9 +347,8 @@ footer a:hover{color:var(--gold2);}
         <span class="lb-price">94 €</span>
         <span class="lb-price-note">· Sin pago ni compromiso</span>
       </div>
-      <div class="lb-btns">
-        <a class="lb-btn wa" id="lbWa" href="#" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
-        <a class="lb-btn em" id="lbEm" href="#" target="_blank" rel="noopener">✉️ Reservar por Email</a>
+      <div class="lb-btns" id="lbBtns">
+        <a class="lb-btn em" id="lbEm" href="https://wa.me/34621355638" target="_blank" rel="noopener" style="background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.45);font-size:0.75rem;">💬 ¿Dudas? Escríbeme</a>
       </div>
     </div>
   </div>
@@ -374,6 +380,14 @@ document.addEventListener('keydown', function(e){
 });
 </script>
 <script src="script.js"></script>
+<script>
+(function(){
+  var cur = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.site-header .nav a').forEach(function(a){
+    if(a.getAttribute('href') === cur) a.setAttribute('aria-current','page');
+  });
+})();
+</script>
 <script src="carrito.js"></script>
 </body>
 </html>

@@ -637,7 +637,6 @@ footer a { color: var(--gold); text-decoration: none; }
     cursor: pointer;
   }
   .header-button { display: none; }
-  .site-header { position: relative; }
 }
 @media (min-width: 769px) {
   .menu-toggle { display: none; }
@@ -653,20 +652,22 @@ footer a { color: var(--gold); text-decoration: none; }
 </div>
 
 <!-- HEADER igual que index -->
-<header class="site-header">
+<header class="site-header" id="site-header">
   <a class="brand" href="index.html" aria-label="Lady Aura inicio">
-    <img src="assets/logo-new.png" alt="Logo Lady Aura">
+    <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art – Diamond Painting Premium">
   </a>
   <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
   <nav class="nav" id="nav" aria-label="Navegación principal">
-    <a href="index.html"><span>Inicio</span></a>
-    <a href="index.html#galeria"><span>Diseños</span></a>
-    <a href="index.html#zodiaco"><span>Zodiaco</span></a>
-    <a href="tarot.html" target="_blank" rel="noopener">🔮 Tarot</a>
-    <a href="colorear.html" style="color:var(--gold);">🎨 Arte Digital</a>
-    <a href="index.html#contacto"><span>Contacto</span></a>
+    <a href="index.html">Inicio</a>
+    <a href="zodiaco.html">♈ Zodíaco</a>
+    <a href="parejas.html">💑 Parejas</a>
+    <a href="paisajes.html">🏔️ Paisajes</a>
+    <a href="especiales.html">✨ Diseños exclusivos</a>
+    <a href="personalizados.html">🎨 Personalizados</a>
+    <a href="tarot.html">🔮 Tarot</a>
+    <a href="colorear.html">🎨 Colorear</a>
+    <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">🛒<span class="cart-badge" style="display:none">0</span></a>
   </nav>
-  <a class="header-button" href="#catalogo">Ver láminas ✨</a>
 </header>
 
 <!-- HERO -->
@@ -1044,6 +1045,14 @@ var mt=document.getElementById('menuToggle'),nav=document.getElementById('nav');
 if(mt&&nav){mt.addEventListener('click',function(){nav.classList.toggle('open');});}
 </script>
 <script src="script.js"></script>
+<script>
+(function(){
+  var cur = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.site-header .nav a').forEach(function(a){
+    if(a.getAttribute('href') === cur) a.setAttribute('aria-current','page');
+  });
+})();
+</script>
 <script src="carrito.js"></script>
 </body>
 </html>
