@@ -568,11 +568,33 @@ document.getElementById('order-form').addEventListener('submit', async function(
     });
 
     if (res.ok) {
-      // Éxito
-      cartSave([]); // vaciar carrito
+      // Guardar pedido en historial local
+      const order = {
+        id: 'LA-' + Date.now(),
+        fecha: new Date().toLocaleDateString('es-ES', {day:'2-digit',month:'2-digit',year:'numeric'}),
+        nombre: data.nombre + ' ' + data.apellidos,
+        email: data.email,
+        direccion: data.direccion + ', ' + data.cp + ' ' + data.ciudad + ', ' + data.pais,
+        items: items.map(i => ({ nombre: i.nombre, img: i.img, precio: i.precio, orient: i.orient })),
+        total: items.reduce((s,i) => s+(i.precio||94), 0),
+        estado: 'procesando' // procesando | enviado | recibido
+      };
+      const orders = JSON.parse(localStorage.getItem('ladyaura_orders') || '[]');
+      orders.unshift(order);
+      localStorage.setItem('ladyaura_orders', JSON.stringify(orders));
+
+      // Vaciar carrito
+      cartSave([]);
       document.getElementById('cart-content').style.display = 'none';
       const confirm = document.getElementById('cart-confirm');
       confirm.style.display = 'block';
+
+      // Botón ver pedidos
+      const verPedidos = document.createElement('a');
+      verPedidos.href = 'pedidos.html';
+      verPedidos.style.cssText = 'display:block;margin-top:1rem;font-family:Cinzel,serif;font-size:0.78rem;letter-spacing:0.1em;color:rgba(255,255,255,0.45);text-decoration:none;';
+      verPedidos.textContent = '📦 Ver mis pedidos →';
+      confirm.appendChild(verPedidos);
 
       // Botón WhatsApp con resumen
       const waText = encodeURIComponent(
