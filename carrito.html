@@ -398,6 +398,38 @@ main {
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .paypal-btn:hover { transform: translateY(-2px); box-shadow: 0 0 42px rgba(255,217,138,0.36); }
+.bizum-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.9rem 1.5rem;
+  background: linear-gradient(135deg, #0066ff, #0044cc);
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(0,102,255,0.35);
+  transition: all 0.25s;
+  text-decoration: none;
+}
+.bizum-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 36px rgba(0,102,255,0.5); }
+.bizum-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+.bizum-copy-msg {
+  display: none;
+  text-align: center;
+  font-size: 0.78rem;
+  color: rgba(100,230,140,0.9);
+  margin-top: 0.5rem;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.08em;
+}
 .payment-mini {
   text-align: center;
   font-size: 0.76rem;
@@ -562,9 +594,16 @@ footer a { color: var(--gold2); text-decoration: none; }
 
       <div class="payment-method">
         <h3>Opción 1 · Bizum</h3>
-        <p>Envía el Bizum al número:</p>
-        <span class="payment-number">621 355 638</span>
-        <p class="payment-concept">Concepto: <strong id="bizum-concept">Lady Aura + tu nombre</strong></p>
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:0.3rem;">Número: <strong style="color:#fff;">621 355 638</strong></p>
+        <p class="payment-concept">Concepto: <strong id="bizum-concept">Lady Aura · tu nombre</strong></p>
+        <button class="bizum-btn" id="bizum-btn" onclick="abrirBizum()">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="24" height="24" rx="6" fill="white" fill-opacity="0.15"/>
+            <text x="3" y="17" font-size="12" font-weight="bold" fill="white" font-family="Arial">Bz</text>
+          </svg>
+          Pagar con Bizum
+        </button>
+        <p class="bizum-copy-msg" id="bizum-copy-msg">✓ Número copiado · Abre tu banco y busca Bizum</p>
       </div>
 
       <div class="payment-method">
@@ -653,7 +692,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
     return;
   }
   const totalPedido = items.reduce((s,i) => s + (Number(i.precio)||94), 0);
-  const paypalUrl = 'https://www.paypal.com/paypalme/LadyAuraArt/' + totalPedido + 'EUR';
+  const paypalUrl = 'https://paypal.me/LadyAuraArt/' + totalPedido + 'EUR';
   const data = {
     nombre:    document.getElementById('f-nombre').value,
     apellidos: document.getElementById('f-apellidos').value,
@@ -698,17 +737,11 @@ document.getElementById('order-form').addEventListener('submit', async function(
 
       // Guardar una copia del último pedido para que la pantalla de pago NO dependa del carrito
       localStorage.setItem('ladyaura_last_order', JSON.stringify(order));
-      // Guardar datos de pago por separado para que persistan
-      localStorage.setItem('ladyaura_payment', JSON.stringify({
-        total: totalPedido,
-        nombre: data.nombre + ' ' + data.apellidos,
-        paypalUrl: paypalUrl
-      }));
 
       // Mostrar total y enlaces de pago ANTES de vaciar el carrito
       document.getElementById('payment-total').textContent = totalPedido + ' €';
       document.getElementById('paypal-pay-link').href = paypalUrl;
-      document.getElementById('bizum-concept').textContent = 'Lady Aura · ' + data.nombre + ' ' + data.apellidos;
+      document.getElementById('bizum-concept').textContent = 'Lady Aura ' + data.nombre + ' ' + data.apellidos;
 
       // Vaciar carrito después de guardar el pedido
       cartSave([]);
@@ -751,19 +784,25 @@ document.getElementById('order-form').addEventListener('submit', async function(
 
 renderCart();
 
-// Si hay datos de pago guardados y la pantalla de confirmación está visible, restaurarlos
-(function() {
-  const payment = JSON.parse(localStorage.getItem('ladyaura_payment') || 'null');
-  const confirm = document.getElementById('cart-confirm');
-  if (payment && confirm && confirm.style.display !== 'none') {
-    const pt = document.getElementById('payment-total');
-    const pl = document.getElementById('paypal-pay-link');
-    const bc = document.getElementById('bizum-concept');
-    if (pt) pt.textContent = payment.total + ' €';
-    if (pl) pl.href = payment.paypalUrl;
-    if (bc) bc.textContent = 'Lady Aura · ' + payment.nombre;
+function abrirBizum() {
+  var num = '621355638';
+  var totalEl = document.getElementById('payment-total');
+  var total = totalEl ? totalEl.textContent.replace(/[^0-9]/g,'') : '';
+  var conceptoEl = document.getElementById('bizum-concept');
+  var concepto = conceptoEl ? conceptoEl.textContent : 'Lady Aura';
+
+  // Copiar número al portapapeles
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(num).then(function() {
+      var msg = document.getElementById('bizum-copy-msg');
+      if (msg) { msg.style.display = 'block'; setTimeout(function(){ msg.style.display = 'none'; }, 4000); }
+    }).catch(function(){});
   }
-})();
+
+  // Intentar abrir URI Bizum (funciona en móvil si tienen la app)
+  var bizumUri = 'bizum://pay?phone=' + num + '&amount=' + total + '&concept=' + encodeURIComponent(concepto);
+  window.location.href = bizumUri;
+}
 </script>
 </body>
 </html>
