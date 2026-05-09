@@ -763,9 +763,9 @@ function openLB(title, img, price, nameRaw, soldOut) {
     document.getElementById('lbPrice').style.color = 'rgba(255,255,255,0.4)';
     document.getElementById('lbSize').textContent = 'Formato 60x90 cm - Diamond painting premium';
     document.getElementById('lbNote').textContent = 'Esta edicion esta agotada. Escribeme para apuntarte a la lista de espera.';
-    (document.getElementById('lbWa') || {}).textContent = 'Lista de espera WhatsApp';
+    (document.getElementById('lbWa')||{}).textContent = 'Lista de espera WhatsApp';
     document.getElementById('lbEm').textContent = 'Lista de espera Email';
-    (document.getElementById('lbWa') || {}).href = 'https://wa.me/34621355638?text=Hola%20Lady%20Aura%2C%20me%20interesa%20' + encodeURIComponent(nameRaw) + '%20cuando%20vuelva%20a%20estar%20disponible.';
+    (document.getElementById('lbWa')||{}).href = 'https://wa.me/34621355638?text=Hola%20Lady%20Aura%2C%20me%20interesa%20' + encodeURIComponent(nameRaw) + '%20cuando%20vuelva%20a%20estar%20disponible.';
     document.getElementById('lbEm').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Lista%20de%20espera%20-%20' + encodeURIComponent(nameRaw) + '&body=Hola%2C%20quiero%20apuntarme%20a%20la%20lista%20de%20espera%20de%3A%20' + encodeURIComponent(nameRaw);
   } else {
     updateLBSize();
@@ -814,9 +814,9 @@ function updateLBSize() {
   document.getElementById('lbPrice').style.color = '';
   document.getElementById('lbSize').textContent = 'Formato ' + sizeText + ' - Diamantes alta densidad - Herramientas incluidas';
   document.getElementById('lbNote').textContent = 'Pre-reserva sin compromiso ni pago previo. Las primeras en reservar tienen prioridad de entrega.';
-  (document.getElementById('lbWa') || {}).textContent = 'Reservar por WhatsApp';
+  (document.getElementById('lbWa')||{}).textContent = 'Reservar por WhatsApp';
   document.getElementById('lbEm').textContent = 'Reservar por Email';
-  (document.getElementById('lbWa') || {}).href = 'https://wa.me/34621355638?text=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20' + encodeURIComponent(_lbNameRaw) + '.%20' + sizePretty + '%2C%20' + price + '€.%20Gracias!';
+  (document.getElementById('lbWa')||{}).href = 'https://wa.me/34621355638?text=Hola%20Lady%20Aura%2C%20quiero%20pre-reservar%3A%20' + encodeURIComponent(_lbNameRaw) + '.%20' + sizePretty + '%2C%20' + price + '€.%20Gracias!';
   document.getElementById('lbEm').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20-%20' + encodeURIComponent(_lbNameRaw) + '&body=Quiero%20pre-reservar%3A%20' + encodeURIComponent(_lbNameRaw) + '.%20' + sizePretty + '%2C%20' + price + '€.';
 }
 

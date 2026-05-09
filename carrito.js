@@ -372,6 +372,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if (lbInner && !lbInner.querySelector('.lb-btn-cart')) {
     // Se inyecta cuando se abre el lightbox via patchLightbox()
   }
+
+  fullscreenInjectStyles();
 });
 
 /* ── Patch del openLB para añadir botón dentro del lightbox ── */
@@ -559,8 +561,6 @@ function fullscreenAttach() {
 }
 
 /* Inyectar estilos al cargar */
-document.addEventListener('DOMContentLoaded', function() {
-  fullscreenInjectStyles();
-});
+);
 // Llamada inmediata también por si el DOM ya está listo
 if(document.readyState !== "loading") fullscreenInjectStyles();

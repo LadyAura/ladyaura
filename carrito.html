@@ -398,38 +398,6 @@ main {
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .paypal-btn:hover { transform: translateY(-2px); box-shadow: 0 0 42px rgba(255,217,138,0.36); }
-.bizum-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  width: 100%;
-  margin-top: 1rem;
-  padding: 0.9rem 1.5rem;
-  background: linear-gradient(135deg, #0066ff, #0044cc);
-  color: #fff;
-  font-family: 'Cinzel', serif;
-  font-size: 0.82rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 999px;
-  cursor: pointer;
-  box-shadow: 0 4px 24px rgba(0,102,255,0.35);
-  transition: all 0.25s;
-  text-decoration: none;
-}
-.bizum-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 36px rgba(0,102,255,0.5); }
-.bizum-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
-.bizum-copy-msg {
-  display: none;
-  text-align: center;
-  font-size: 0.78rem;
-  color: rgba(100,230,140,0.9);
-  margin-top: 0.5rem;
-  font-family: 'Cinzel', serif;
-  letter-spacing: 0.08em;
-}
 .payment-mini {
   text-align: center;
   font-size: 0.76rem;
@@ -472,11 +440,23 @@ footer a { color: var(--gold2); text-decoration: none; }
 
 <div id="stars"></div>
 
-<header class="site-header">
+<header class="site-header" id="site-header">
   <a class="brand" href="index.html" aria-label="Lady Aura inicio">
-    <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art">
+    <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art – Diamond Painting Premium">
   </a>
-  <a class="back-link" href="index.html">← Seguir comprando</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+  <nav class="nav" id="nav">
+    <a href="index.html">← Inicio</a>
+    <a href="zodiaco.html">♈ Zodíaco</a>
+    <a href="parejas.html">💑 Parejas</a>
+    <a href="paisajes.html">🏔️ Paisajes</a>
+    <a href="especiales.html">✨ Diseños exclusivos</a>
+    <a href="personalizados.html">🎨 Personalizados</a>
+    <a href="tarot.html">🔮 Tarot</a>
+    <a href="colorear.html">🎨 Colorear</a>
+    <a href="pedidos.html">📦 Mis pedidos</a>
+    <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">🛒<span class="cart-badge" style="display:none">0</span></a>
+  </nav>
 </header>
 
 <main>
@@ -594,16 +574,9 @@ footer a { color: var(--gold2); text-decoration: none; }
 
       <div class="payment-method">
         <h3>Opción 1 · Bizum</h3>
-        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:0.3rem;">Número: <strong style="color:#fff;">621 355 638</strong></p>
-        <p class="payment-concept">Concepto: <strong id="bizum-concept">Lady Aura · tu nombre</strong></p>
-        <button class="bizum-btn" id="bizum-btn" onclick="abrirBizum()">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="24" height="24" rx="6" fill="white" fill-opacity="0.15"/>
-            <text x="3" y="17" font-size="12" font-weight="bold" fill="white" font-family="Arial">Bz</text>
-          </svg>
-          Pagar con Bizum
-        </button>
-        <p class="bizum-copy-msg" id="bizum-copy-msg">✓ Número copiado · Abre tu banco y busca Bizum</p>
+        <p>Envía el Bizum al número:</p>
+        <span class="payment-number">621 355 638</span>
+        <p class="payment-concept">Concepto: <strong id="bizum-concept">Lady Aura + tu nombre</strong></p>
       </div>
 
       <div class="payment-method">
@@ -783,26 +756,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
 });
 
 renderCart();
-
-function abrirBizum() {
-  var num = '621355638';
-  var totalEl = document.getElementById('payment-total');
-  var total = totalEl ? totalEl.textContent.replace(/[^0-9]/g,'') : '';
-  var conceptoEl = document.getElementById('bizum-concept');
-  var concepto = conceptoEl ? conceptoEl.textContent : 'Lady Aura';
-
-  // Copiar número al portapapeles
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(num).then(function() {
-      var msg = document.getElementById('bizum-copy-msg');
-      if (msg) { msg.style.display = 'block'; setTimeout(function(){ msg.style.display = 'none'; }, 4000); }
-    }).catch(function(){});
-  }
-
-  // Intentar abrir URI Bizum (funciona en móvil si tienen la app)
-  var bizumUri = 'bizum://pay?phone=' + num + '&amount=' + total + '&concept=' + encodeURIComponent(concepto);
-  window.location.href = bizumUri;
-}
 </script>
+<script src="carrito.js"></script>
 </body>
 </html>

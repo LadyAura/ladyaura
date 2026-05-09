@@ -1,123 +1,100 @@
 /* ===== Estrellas decorativas ===== */
 const starsContainer = document.getElementById("stars");
-const STAR_COUNT = 70;
-for (let i = 0; i < STAR_COUNT; i++) {
-  const s = document.createElement("div");
-  s.className = "star";
-  const size = Math.random() * 2.5 + 0.5;
-  s.style.width = size + "px";
-  s.style.height = size + "px";
-  s.style.left = Math.random() * 100 + "vw";
-  s.style.top = Math.random() * 100 + "vh";
-  s.style.animationDelay = Math.random() * 3 + "s";
-  s.style.animationDuration = (Math.random() * 3 + 2) + "s";
-  starsContainer.appendChild(s);
+if (starsContainer) {
+  const STAR_COUNT = 70;
+  for (let i = 0; i < STAR_COUNT; i++) {
+    const s = document.createElement("div");
+    s.className = "star";
+    const size = Math.random() * 2.5 + 0.5;
+    s.style.width = size + "px";
+    s.style.height = size + "px";
+    s.style.left = Math.random() * 100 + "vw";
+    s.style.top = Math.random() * 100 + "vh";
+    s.style.animationDelay = Math.random() * 3 + "s";
+    s.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    starsContainer.appendChild(s);
+  }
 }
 
 /* ===== Menú móvil ===== */
 const menuToggle = document.getElementById("menuToggle");
 const nav = document.getElementById("nav");
-menuToggle.addEventListener("click", () => {
-  nav.classList.toggle("active");
-});
-nav.querySelectorAll("a").forEach(a => {
-  a.addEventListener("click", () => nav.classList.remove("active"));
-});
+if (menuToggle && nav) {
+  menuToggle.addEventListener("click", () => nav.classList.toggle("active"));
+  nav.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => nav.classList.remove("active"));
+  });
+}
 
-/* ===== Lightbox (ficha ampliada) ===== */
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const lightboxTitle = document.getElementById("lightbox-title");
-const lightboxPrice = document.getElementById("lightbox-price");
-const lightboxWhatsapp = document.getElementById("lightbox-whatsapp");
-const lightboxEmail = document.getElementById("lightbox-email");
-const closeBtn = document.querySelector(".lightbox-close");
+/* ===== Lightbox del index (solo si existe) ===== */
+const lightbox        = document.getElementById("lightbox");
+const lightboxImg     = document.getElementById("lightbox-img");
+const lightboxTitle   = document.getElementById("lightbox-title");
+const lightboxPrice   = document.getElementById("lightbox-price");
+const lightboxWhatsapp= document.getElementById("lightbox-whatsapp");
+const lightboxEmail   = document.getElementById("lightbox-email");
+const closeBtn        = document.querySelector(".lightbox-close");
 
-/* Construir URLs de pre-reserva */
 function buildWhatsappUrl(titulo, precio) {
-  const text = `Hola Lady Aura ✨ Quiero pre-reservar el diseño: ${titulo}. Diamond painting 60x90, precio ${precio}€. ¡Gracias!`;
-  return `https://wa.me/34621355638?text=${encodeURIComponent(text)}`;
+  return `https://wa.me/34621355638?text=${encodeURIComponent(`Hola Lady Aura ✨ Quiero pre-reservar: ${titulo}. Diamond painting 60x90, ${precio}€. ¡Gracias!`)}`;
 }
-
 function buildEmailUrl(titulo, precio) {
-  const subject = encodeURIComponent(`Pre-reserva Lady Aura - ${titulo}`);
-  const body = encodeURIComponent(
-    `Hola Lady Aura, me interesa pre-reservar el diseño: ${titulo}. Formato: 60x90. Precio pre-reserva: ${precio}€.\n\nMis datos:\nNombre:\nEmail de contacto:\n\nMe avisas cuando la tienda esté abierta oficialmente y decido si confirmar. ¡Gracias! ✨`
-  );
-  return `https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=${subject}&body=${body}`;
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=${encodeURIComponent(`Pre-reserva Lady Aura - ${titulo}`)}&body=${encodeURIComponent(`Hola Lady Aura, me interesa pre-reservar: ${titulo}. 60x90, ${precio}€.\n\nNombre:\nEmail:\n\n¡Gracias! ✨`)}`;
 }
 
-/* Cards de producto */
-document.querySelectorAll(".product-card").forEach((card) => {
-  const opener = card.querySelector(".image-open");
-  if (!opener) return;
-  const img = card.querySelector("img");
-  const title = card.querySelector("h3")?.textContent || "Diseño Lady Aura";
-  const price = card.dataset.price || "94";
-  const oldPrice = card.dataset.oldPrice;
-
-  opener.addEventListener("click", () => {
-    try {
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
-      lightboxTitle.textContent = title;
-      if (oldPrice) {
-        // Oferta: mostrar precio tachado y oferta
-        lightboxPrice.innerHTML = `Diamond painting 60×90 cm · <span style="text-decoration:line-through;opacity:0.6;font-size:1.1rem;">${oldPrice} €</span> <strong>${price} €</strong> · Envío incluido`;
-      } else {
-        // Normal: sin precio, solo info
-        lightboxPrice.textContent = `Diamond painting 60×90 cm · Envío incluido`;
-      }
-      lightboxWhatsapp.href = buildWhatsappUrl(title, price);
-      lightboxEmail.href = buildEmailUrl(title, price);
-      lightbox.classList.add("active");
-      lightbox.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-    } catch(err) {
-      console.error("Error abriendo lightbox:", err);
-    }
+if (lightbox && lightboxImg && closeBtn) {
+  document.querySelectorAll(".product-card").forEach(card => {
+    const opener = card.querySelector(".image-open");
+    if (!opener) return;
+    const img   = card.querySelector("img");
+    const title = card.querySelector("h3")?.textContent || "Diseño Lady Aura";
+    const price = card.dataset.price || "94";
+    const oldPrice = card.dataset.oldPrice;
+    opener.addEventListener("click", () => {
+      try {
+        lightboxImg.src = img.src; lightboxImg.alt = img.alt;
+        if (lightboxTitle) lightboxTitle.textContent = title;
+        if (lightboxPrice) lightboxPrice.innerHTML = oldPrice
+          ? `Diamond painting 60×90 cm · <span style="text-decoration:line-through;opacity:0.6">${oldPrice} €</span> <strong>${price} €</strong> · Envío incluido`
+          : `Diamond painting 60×90 cm · Envío incluido`;
+        if (lightboxWhatsapp) lightboxWhatsapp.href = buildWhatsappUrl(title, price);
+        if (lightboxEmail)    lightboxEmail.href    = buildEmailUrl(title, price);
+        lightbox.classList.add("active");
+        lightbox.setAttribute("aria-hidden","false");
+        document.body.style.overflow = "hidden";
+      } catch(e){ console.error(e); }
+    });
   });
-});
 
-/* Cards del zodiaco */
-document.querySelectorAll(".zodiac-card").forEach(card => {
-  card.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    try {
-      const titulo = card.dataset.title || card.querySelector("span")?.textContent || "Diseño Lady Aura";
-      const imgSrc = card.dataset.img || card.querySelector("img")?.src || "";
-      if (!imgSrc) return;
-      lightboxImg.src = imgSrc;
-      lightboxImg.alt = titulo;
-      lightboxTitle.textContent = titulo;
-      lightboxPrice.textContent = "Diamond painting 60×90 cm · Envío incluido";
-      lightboxWhatsapp.href = buildWhatsappUrl(titulo, "94");
-      lightboxEmail.href = buildEmailUrl(titulo, "94");
-      lightbox.classList.add("active");
-      lightbox.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-    } catch(err) {
-      console.error("Error abriendo lightbox:", err);
-    }
+  document.querySelectorAll(".zodiac-card").forEach(card => {
+    card.addEventListener("click", e => {
+      e.preventDefault(); e.stopPropagation();
+      try {
+        const titulo = card.dataset.title || card.querySelector("span")?.textContent || "Diseño Lady Aura";
+        const imgSrc = card.dataset.img || card.querySelector("img")?.src || "";
+        if (!imgSrc) return;
+        lightboxImg.src = imgSrc; lightboxImg.alt = titulo;
+        if (lightboxTitle) lightboxTitle.textContent = titulo;
+        if (lightboxPrice) lightboxPrice.textContent = "Diamond painting 60×90 cm · Envío incluido";
+        if (lightboxWhatsapp) lightboxWhatsapp.href = buildWhatsappUrl(titulo,"94");
+        if (lightboxEmail)    lightboxEmail.href    = buildEmailUrl(titulo,"94");
+        lightbox.classList.add("active");
+        lightbox.setAttribute("aria-hidden","false");
+        document.body.style.overflow = "hidden";
+      } catch(e){ console.error(e); }
+    });
   });
-});
 
-function closeLightbox() {
-  lightbox.classList.remove("active");
-  lightbox.setAttribute("aria-hidden", "true");
-  lightboxImg.src = "";
-  document.body.style.overflow = "";
+  const closeLightbox = () => {
+    lightbox.classList.remove("active");
+    lightbox.setAttribute("aria-hidden","true");
+    lightboxImg.src = "";
+    document.body.style.overflow = "";
+  };
+  closeBtn.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener("keydown", e => { if (e.key==="Escape" && lightbox.classList.contains("active")) closeLightbox(); });
 }
-
-closeBtn.addEventListener("click", closeLightbox);
-lightbox.addEventListener("click", (event) => {
-  if (event.target === lightbox) closeLightbox();
-});
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && lightbox.classList.contains("active")) closeLightbox();
-});
-
 
 /* ── PAGINACIÓN ── */
 (function(){
@@ -128,38 +105,21 @@ document.addEventListener("keydown", (event) => {
   if (allCards.length <= ITEMS_PER_PAGE) return;
   const totalPages = Math.ceil(allCards.length / ITEMS_PER_PAGE);
   let currentPage = 1;
-
   function showPage(page) {
     currentPage = page;
-    allCards.forEach((card, i) => {
-      card.style.display = (i >= (page-1)*ITEMS_PER_PAGE && i < page*ITEMS_PER_PAGE) ? '' : 'none';
+    allCards.forEach((card,i) => {
+      card.style.display = (i>=(page-1)*ITEMS_PER_PAGE && i<page*ITEMS_PER_PAGE) ? '' : 'none';
     });
     renderPagination();
-    window.scrollTo({top: grid.offsetTop - 100, behavior: 'smooth'});
+    window.scrollTo({top: grid.offsetTop-100, behavior:'smooth'});
   }
-
   function renderPagination() {
     let pag = document.querySelector('.pagination');
-    if (!pag) { pag = document.createElement('div'); pag.className = 'pagination'; grid.parentNode.insertBefore(pag, grid.nextSibling); }
-    pag.innerHTML = '';
-    const prev = document.createElement('button');
-    prev.className = 'page-btn' + (currentPage === 1 ? ' disabled' : '');
-    prev.textContent = '←';
-    prev.onclick = () => { if (currentPage > 1) showPage(currentPage - 1); };
-    pag.appendChild(prev);
-    for (let i = 1; i <= totalPages; i++) {
-      const btn = document.createElement('button');
-      btn.className = 'page-btn' + (i === currentPage ? ' active' : '');
-      btn.textContent = i;
-      btn.onclick = () => showPage(i);
-      pag.appendChild(btn);
-    }
-    const next = document.createElement('button');
-    next.className = 'page-btn' + (currentPage === totalPages ? ' disabled' : '');
-    next.textContent = '→';
-    next.onclick = () => { if (currentPage < totalPages) showPage(currentPage + 1); };
-    pag.appendChild(next);
+    if (!pag) { pag=document.createElement('div'); pag.className='pagination'; grid.parentNode.insertBefore(pag,grid.nextSibling); }
+    pag.innerHTML='';
+    const prev=document.createElement('button'); prev.className='page-btn'+(currentPage===1?' disabled':''); prev.textContent='←'; prev.onclick=()=>{ if(currentPage>1)showPage(currentPage-1); }; pag.appendChild(prev);
+    for(let i=1;i<=totalPages;i++){ const btn=document.createElement('button'); btn.className='page-btn'+(i===currentPage?' active':''); btn.textContent=i; btn.onclick=()=>showPage(i); pag.appendChild(btn); }
+    const next=document.createElement('button'); next.className='page-btn'+(currentPage===totalPages?' disabled':''); next.textContent='→'; next.onclick=()=>{ if(currentPage<totalPages)showPage(currentPage+1); }; pag.appendChild(next);
   }
-
   showPage(1);
 })();
