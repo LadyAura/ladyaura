@@ -425,3 +425,147 @@ function cartPatchLightbox(card) {
   };
   btns.insertBefore(btn, btns.firstChild);
 }
+
+/* ============================================================
+   VISOR FULLSCREEN · Al hacer click en la imagen del lightbox
+   se abre a pantalla completa con la imagen entera
+   ============================================================ */
+
+function fullscreenInjectStyles() {
+  if (document.getElementById('fs-styles')) return;
+  const style = document.createElement('style');
+  style.id = 'fs-styles';
+  style.textContent = `
+    #fs-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(0,0,0,0.96);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+      cursor: zoom-out;
+    }
+    #fs-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    #fs-overlay img {
+      max-width: 92vw;
+      max-height: 92vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 0 80px rgba(160,63,255,0.3);
+      user-select: none;
+      animation: fsZoomIn 0.25s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    @keyframes fsZoomIn {
+      from { transform: scale(0.88); opacity: 0; }
+      to   { transform: scale(1);    opacity: 1; }
+    }
+    #fs-close {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.4rem;
+      z-index: 100000;
+      background: rgba(13,8,33,0.85);
+      border: 1px solid rgba(160,63,255,0.4);
+      color: rgba(255,255,255,0.85);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      backdrop-filter: blur(8px);
+    }
+    #fs-close:hover {
+      background: rgba(160,63,255,0.3);
+      color: #fff;
+      border-color: rgba(160,63,255,0.8);
+    }
+    #fs-overlay.open ~ #fs-close,
+    #fs-close.visible { display: flex; }
+
+    /* Cursor zoom-in en imágenes de lightbox */
+    .lb-img-wrap img,
+    .lb-img img,
+    #lbImg,
+    .modal-img img { cursor: zoom-in !important; }
+  `;
+  document.head.appendChild(style);
+}
+
+function fullscreenOpen(src, alt) {
+  let overlay = document.getElementById('fs-overlay');
+  let closeBtn = document.getElementById('fs-close');
+
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'fs-overlay';
+    overlay.innerHTML = `<img id="fs-img" src="" alt="">`;
+    document.body.appendChild(overlay);
+
+    closeBtn = document.createElement('button');
+    closeBtn.id = 'fs-close';
+    closeBtn.innerHTML = '✕';
+    closeBtn.setAttribute('aria-label', 'Cerrar imagen');
+    document.body.appendChild(closeBtn);
+
+    overlay.addEventListener('click', fullscreenClose);
+    closeBtn.addEventListener('click', fullscreenClose);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') fullscreenClose();
+    });
+  }
+
+  document.getElementById('fs-img').src = src;
+  document.getElementById('fs-img').alt = alt || '';
+  overlay.classList.add('open');
+  closeBtn.classList.add('visible');
+  document.body.style.overflow = 'hidden';
+}
+
+function fullscreenClose() {
+  const overlay = document.getElementById('fs-overlay');
+  const closeBtn = document.getElementById('fs-close');
+  if (overlay) overlay.classList.remove('open');
+  if (closeBtn) closeBtn.classList.remove('visible');
+  document.body.style.overflow = '';
+}
+
+/* Enganchar click en imagen del lightbox */
+function fullscreenAttach() {
+  // Selectors de imagen dentro de cualquier lightbox
+  const selectors = [
+    '#lbImg',           // especiales, paisajes, parejas, zodiaco
+    '#fs-img',          // evitar recursión
+  ].join(',');
+
+  document.querySelectorAll('#lbImg, .lb-img img, .modal-img img').forEach(img => {
+    if (img.dataset.fsAttached) return;
+    img.dataset.fsAttached = '1';
+    img.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (this.src) fullscreenOpen(this.src, this.alt);
+    });
+  });
+}
+
+/* MutationObserver para enganchar cuando el lightbox se abre */
+document.addEventListener('DOMContentLoaded', function() {
+  fullscreenInjectStyles();
+  fullscreenAttach();
+
+  // Reenganche cuando cambia el DOM (lightbox se abre y cambia el src)
+  var fsObserver = new MutationObserver(function() {
+    fullscreenAttach();
+  });
+  fsObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['src','class'] });
+});
