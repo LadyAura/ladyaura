@@ -625,7 +625,7 @@ footer a:hover { color: var(--gold2); }
 <div class="lb" id="lb" role="dialog" aria-modal="true" onclick="if(event.target===this)closeLB()">
   <button class="lb-close" onclick="closeLB()" aria-label="Cerrar">×</button>
   <div class="lb-card">
-    <div class="lb-img"><img id="lbImg" src="" alt=""></div>
+    <div class="lb-img"><img id="lbImg" src="" alt="" style="cursor:zoom-in;"></div>
     <div class="lb-body">
       <span class="lb-eyebrow">✦ Diamond Painting Premium · Lady Aura Art · Colección Zodíaco ✦</span>
       <div class="lb-symbol" id="lbSymbol"></div>
@@ -784,6 +784,14 @@ function openLB(signName, isFem) {
 
   document.getElementById('lb').classList.add('open');
   document.body.style.overflow = 'hidden';
+  // Fullscreen al pinchar imagen
+  var _img = document.getElementById('lbImg');
+  if (_img) {
+    _img.onclick = function(e) {
+      e.stopPropagation();
+      if (this.src && typeof fullscreenOpen === 'function') fullscreenOpen(this.src, this.alt);
+    };
+  }
   // Carrito
   if (typeof cartPatchLightbox === 'function') {
     cartPatchLightbox({

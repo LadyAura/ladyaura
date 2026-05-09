@@ -800,7 +800,7 @@ footer a:hover{color:var(--gold2);}
   <button class="lb-close" onclick="closeLB()">×</button>
   <div class="lb-inner" id="lbInner">
     <div class="lb-img-wrap" id="lbImgWrap">
-      <img id="lbImg" src="" alt="" onclick="if(this.src)fullscreenOpen(this.src,this.alt)" style="cursor:zoom-in;">
+      <img id="lbImg" src="" alt="" style="cursor:zoom-in;">
     </div>
     <div class="lb-body">
       <span class="lb-eyebrow">✦ Diamond Painting Premium · Lady Aura Art ✦</span>
@@ -840,6 +840,14 @@ function openLB(card) {
   document.getElementById('lb').classList.add('open');
   if(typeof cartPatchLightbox==='function') cartPatchLightbox(card);
   document.body.style.overflow = 'hidden';
+  // Fullscreen al pinchar imagen
+  var _img = document.getElementById('lbImg');
+  if (_img) {
+    _img.onclick = function(e) {
+      e.stopPropagation();
+      if (this.src && typeof fullscreenOpen === 'function') fullscreenOpen(this.src, this.alt);
+    };
+  }
 }
 function closeLB() {
   document.getElementById('lb').classList.remove('open');

@@ -439,7 +439,7 @@ function fullscreenInjectStyles() {
     #fs-overlay {
       position: fixed;
       inset: 0;
-      z-index: 99999;
+      z-index: 999999;
       background: rgba(0,0,0,0.96);
       display: flex;
       align-items: center;
@@ -470,7 +470,7 @@ function fullscreenInjectStyles() {
       position: fixed;
       top: 1.2rem;
       right: 1.4rem;
-      z-index: 100000;
+      z-index: 1000000;
       background: rgba(13,8,33,0.85);
       border: 1px solid rgba(160,63,255,0.4);
       color: rgba(255,255,255,0.85);
@@ -562,3 +562,5 @@ function fullscreenAttach() {
 document.addEventListener('DOMContentLoaded', function() {
   fullscreenInjectStyles();
 });
+// Llamada inmediata también por si el DOM ya está listo
+if(document.readyState !== "loading") fullscreenInjectStyles();
