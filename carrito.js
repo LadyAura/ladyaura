@@ -10,6 +10,13 @@ function cartGet() {
   try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
   catch(e) { return []; }
 }
+
+function cartPriceFromCard(card, fallback) {
+  const raw = card && card.dataset ? (card.dataset.precio || card.dataset.price) : null;
+  const n = raw ? parseFloat(String(raw).replace(',', '.')) : NaN;
+  return Number.isFinite(n) ? n : fallback;
+}
+
 function cartSave(items) {
   localStorage.setItem(CART_KEY, JSON.stringify(items));
   cartUpdateBadge();
@@ -123,7 +130,7 @@ function cartInjectButtons() {
         id: card.dataset.img || nombre,
         nombre: nombre,
         img: card.dataset.img || card.querySelector('img')?.src || '',
-        precio: 94,
+        precio: cartPriceFromCard(card, 94),
         orient: card.dataset.orient || 'v'
       });
       this.classList.add('added');
@@ -264,6 +271,30 @@ function cartInjectStyles() {
     #cart-toast em { color: #c9a84c; font-style: normal; }
     #cart-toast.in { opacity: 1; transform: translateY(0); }
     #cart-toast.out { opacity: 0; transform: translateY(10px); }
+
+    /* === FIX MÓVIL === */
+    @media (max-width: 768px) {
+      .btn-add-cart, .lb-btn-cart {
+        min-height: 44px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 5;
+      }
+      #cart-fab {
+        right: 1rem;
+        bottom: 1rem;
+        padding: 0.75rem 1rem;
+      }
+      #cart-toast {
+        left: 1rem;
+        right: 1rem;
+        bottom: 4.8rem;
+        max-width: none;
+      }
+    }
   `;
   document.head.appendChild(style);
 }
@@ -387,7 +418,7 @@ function cartPatchLightbox(card) {
         id: card.dataset.img || card.dataset.nombre,
         nombre: card.dataset.nombre,
         img: card.dataset.img || '',
-        precio: 94,
+        precio: cartPriceFromCard(card, 94),
         orient: card.dataset.orient || 'v'
       });
       this.classList.add('added');

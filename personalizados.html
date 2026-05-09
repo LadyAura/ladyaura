@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Diamond Painting Personalizado con tu Foto | Lady Aura Art España</title>
-<meta name="description" content="Convierte tu foto en un cuadro diamond painting personalizado de fantasía. Tu cara, tu signo, tu estilo. Diseño exclusivo Lady Aura Art 60×90 cm. Consulta sin compromiso.">
+<meta name="description" content="Convierte tu foto en un cuadro diamond painting personalizado de fantasía. Tu cara, tu signo, tu estilo. Diseño exclusivo Lady Aura Art 60×90 cm. Consulta sin líos.">
 <meta name="keywords" content="diamond painting personalizado, cuadro diamond painting con foto, retrato diamond painting, diamond painting personalizado España, kit diamond painting personalizado, retrato fantasía diamantes">
 <meta name="author" content="Lady Aura Art">
 <meta name="robots" content="index, follow">
@@ -51,7 +51,7 @@
       "mainEntity": [
         {"@type":"Question","name":"¿Cómo funciona el diamond painting personalizado?","acceptedAnswer":{"@type":"Answer","text":"Me mandas tu foto por WhatsApp o email, me dices el estilo que quieres (signo del zodíaco, fantasía, ángel, etc.) y yo creo el diseño digital personalizado para tu cuadro diamond painting. Revisas el diseño antes de confirmar."}},
         {"@type":"Question","name":"¿Qué foto tengo que mandar?","acceptedAnswer":{"@type":"Answer","text":"Una foto tuya de buena calidad, preferiblemente de cara o busto. Cuanto mejor sea la foto, mejor quedará el retrato personalizado. Puedes mandar varias opciones."}},
-        {"@type":"Question","name":"¿Cuánto cuesta el diamond painting personalizado?","acceptedAnswer":{"@type":"Answer","text":"El precio del personalizado varía según la complejidad del diseño. Escríbeme por WhatsApp y te hago un presupuesto sin compromiso."}},
+        {"@type":"Question","name":"¿Cuánto cuesta el diamond painting personalizado?","acceptedAnswer":{"@type":"Answer","text":"El precio del personalizado varía según la complejidad del diseño. Escríbeme por WhatsApp y te hago un presupuesto sin líos."}},
         {"@type":"Question","name":"¿Puedo elegir el estilo del diseño personalizado?","acceptedAnswer":{"@type":"Answer","text":"Sí, puedes elegir cualquier estilo: tu signo del zodíaco, ángel, hada, fantasía oscura, guerrera, etc. También puedes pedir incluir a tu pareja, mascota o cualquier detalle especial."}}
       ]
     }
@@ -225,7 +225,7 @@ footer a:hover{color:var(--gold2);}
     <div class="info-item">
       <span class="info-icon">💌</span>
       <div class="info-text">
-        <strong>Sin compromiso</strong>
+        <strong>Sin líos</strong>
         <span>Consulta gratis sin pagar nada</span>
       </div>
     </div>
@@ -316,7 +316,7 @@ footer a:hover{color:var(--gold2);}
     </div>
     <div class="faq-item">
       <h3>¿Cuánto cuesta el personalizado?</h3>
-      <p>El precio varía según la complejidad. Escríbeme por WhatsApp y te hago un presupuesto personalizado sin compromiso. La consulta es siempre gratuita.</p>
+      <p>El precio varía según la complejidad. Escríbeme por WhatsApp y te hago un presupuesto personalizado sin líos. La consulta es siempre gratuita.</p>
     </div>
     <div class="faq-item">
       <h3>¿Puedo ver el diseño antes de pagar?</h3>
@@ -331,7 +331,7 @@ footer a:hover{color:var(--gold2);}
   <!-- CTA FINAL -->
   <section class="cta-section">
     <h2>¿Lista para tener tu retrato<br>en diamantes? ✨</h2>
-    <p>Escríbeme sin compromiso. Te cuento todo, te hago el presupuesto y empezamos cuando quieras.</p>
+    <p>Escríbeme sin líos. Te cuento todo, te hago el presupuesto y empezamos cuando quieras.</p>
     <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20un%20diamond%20painting%20personalizado%20con%20mi%20foto.%20¿Cómo%20funciona?" target="_blank" rel="noopener" class="btn-primary" style="font-size:1rem;padding:1.1rem 2.8rem;">💬 Pedir mi personalizado por WhatsApp</a>
   </section>
 
@@ -376,5 +376,38 @@ footer a:hover{color:var(--gold2);}
 })();
 </script>
 <script src="carrito.js"></script>
+
+<style id="lady-aura-fixes">
+/* Fix móvil: menú y botones siempre pulsables */
+.menu-toggle{cursor:pointer;touch-action:manipulation;}
+.btn-add-cart,.lb-btn,.cart-nav-link,#cart-fab{touch-action:manipulation;}
+@media (max-width: 768px){
+  .site-header{position:sticky;top:0;z-index:9999;display:flex;align-items:center;gap:.8rem;}
+  .site-header .menu-toggle{display:flex!important;margin-left:auto;align-items:center;justify-content:center;min-width:42px;min-height:42px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font-size:1.25rem;}
+  .site-header .nav{display:none;position:absolute;top:100%;left:0;right:0;z-index:9998;background:rgba(5,3,14,.98);border-bottom:1px solid rgba(160,63,255,.25);padding:1rem;flex-direction:column;align-items:stretch;gap:.45rem;box-shadow:0 18px 40px rgba(0,0,0,.45);}
+  .site-header .nav.active,.site-header .nav.open{display:flex!important;}
+  .site-header .nav a{display:block;width:100%;padding:.85rem 1rem;border-radius:14px;background:rgba(255,255,255,.04);text-align:left;}
+  .lb-btns{display:flex!important;flex-direction:column!important;gap:.7rem!important;width:100%;}
+  .lb-btn,.lb-btn-cart,.btn-add-cart{min-height:44px!important;width:100%!important;display:flex!important;align-items:center!important;justify-content:center!important;}
+}
+</style>
+<script id="lady-aura-fixes-script">
+(function(){
+  function ready(fn){document.readyState==='loading'?document.addEventListener('DOMContentLoaded',fn):fn();}
+  ready(function(){
+    var mt=document.getElementById('menuToggle');
+    var nav=document.getElementById('nav')||document.getElementById('navMenu');
+    if(mt&&nav&&!mt.dataset.ladyAuraFixed){
+      mt.dataset.ladyAuraFixed='1';
+      mt.addEventListener('click',function(e){
+        e.preventDefault(); e.stopPropagation();
+        nav.classList.toggle('active'); nav.classList.toggle('open');
+      });
+      nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('active','open');});});
+    }
+  });
+})();
+</script>
+
 </body>
 </html>

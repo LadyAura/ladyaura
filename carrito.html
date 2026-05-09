@@ -526,7 +526,7 @@ function renderCart() {
         <h3>${item.nombre}</h3>
         <p>Diamond painting ${item.orient==='v'?'60×90 cm ↕':'90×60 cm ↔'} · Envío incluido</p>
       </div>
-      <span class="cart-item-price">${item.precio} €</span>
+      <span class="cart-item-price">${item.precio || 94} €</span>
       <button class="cart-item-remove" onclick="cartRemove('${item.id.replace(/'/g,"\\'")}')" aria-label="Eliminar">✕</button>
     </div>
   `).join('');
@@ -554,7 +554,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
     cp:        document.getElementById('f-cp').value,
     pais:      document.getElementById('f-pais').value,
     notas:     document.getElementById('f-notas').value,
-    pedido:    items.map(i => `${i.nombre} · ${i.precio}€`).join(' | '),
+    pedido:    items.map(i => `${i.nombre} · ${i.precio || 94}€`).join(' | '),
     total:     items.reduce((s,i) => s+(i.precio||94), 0) + ' €',
     _subject:  `🛒 Nuevo pedido Lady Aura Art · ${document.getElementById('f-nombre').value}`
   };
@@ -609,7 +609,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
     // Fallback: abrir WhatsApp con el pedido
     const items2 = cartGet();
     const waText = encodeURIComponent(
-      `Hola Lady Aura ✨ Quiero hacer un pedido:\n\n${items2.map(i=>`• ${i.nombre} · ${i.precio}€`).join('\n')}\n\nTotal: ${items2.reduce((s,i)=>s+(i.precio||94),0)}€\n\nMis datos:\nNombre: ${data.nombre} ${data.apellidos}\nEmail: ${data.email}\nDirección: ${data.direccion}, ${data.cp} ${data.ciudad}, ${data.pais}\n\n¡Gracias! 💜`
+      `Hola Lady Aura ✨ Quiero hacer un pedido:\n\n${items2.map(i=>`• ${i.nombre} · ${i.precio || 94}€`).join('\n')}\n\nTotal: ${items2.reduce((s,i)=>s+(i.precio||94),0)}€\n\nMis datos:\nNombre: ${data.nombre} ${data.apellidos}\nEmail: ${data.email}\nDirección: ${data.direccion}, ${data.cp} ${data.ciudad}, ${data.pais}\n\n¡Gracias! 💜`
     );
     window.open(`https://wa.me/34621355638?text=${waText}`, '_blank');
     btn.disabled = false;
