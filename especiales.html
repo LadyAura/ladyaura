@@ -832,6 +832,7 @@ function openLB(card) {
   document.getElementById('lbWa').href = card.dataset.wa;
   document.getElementById('lbEm').href = card.dataset.em;
   document.getElementById('lb').classList.add('open');
+  if(typeof cartPatchLightbox==='function') cartPatchLightbox(card);
   document.body.style.overflow = 'hidden';
 }
 function closeLB() {
@@ -844,5 +845,6 @@ document.addEventListener('keydown', function(e){
 });
 </script>
 <script src="script.js"></script>
+<script src="carrito.js"></script>
 </body>
 </html>

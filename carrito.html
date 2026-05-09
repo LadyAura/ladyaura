@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi carrito – Lady Aura Art</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Raleway:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:    #05030e;
+  --card:  rgba(13,8,33,0.9);
+  --border:rgba(160,63,255,0.18);
+  --gold:  #c9a84c;
+  --gold2: #e8c96a;
+  --purple:#a03fff;
+  --pink:  #ff4889;
+  --muted: rgba(255,255,255,0.45);
+  --text:  rgba(255,255,255,0.88);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Raleway', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── ESTRELLAS ── */
+#stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+
+/* ── HEADER ── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem 5%;
+  background: rgba(5,3,14,0.92);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+.brand img { height: 38px; display: block; }
+.back-link {
+  margin-left: auto;
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--gold2); }
+
+/* ── LAYOUT ── */
+main {
+  position: relative;
+  z-index: 5;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 5% 6rem;
+}
+
+/* ── HERO TÍTULO ── */
+.page-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.page-hero .eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.8rem;
+}
+.page-hero h1 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff 0%, var(--gold2) 50%, var(--purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+.page-hero p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+/* ── ESTADO VACÍO ── */
+#cart-empty {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+#cart-empty .empty-icon { font-size: 4rem; display: block; margin-bottom: 1.2rem; opacity: 0.5; }
+#cart-empty h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+}
+#cart-empty p { color: var(--muted); font-size: 0.88rem; margin-bottom: 2rem; }
+.btn-shop {
+  display: inline-block;
+  padding: 0.9rem 2.2rem;
+  background: linear-gradient(135deg, rgba(160,63,255,0.9), rgba(255,72,137,0.85));
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 0 30px rgba(160,63,255,0.35);
+  transition: all 0.25s;
+}
+.btn-shop:hover { box-shadow: 0 0 50px rgba(160,63,255,0.6); transform: translateY(-2px); }
+
+/* ── LISTA DE ITEMS ── */
+#cart-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+
+.cart-item {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1rem 1.2rem;
+  transition: border-color 0.2s;
+}
+.cart-item:hover { border-color: rgba(160,63,255,0.35); }
+.cart-item-img {
+  width: 70px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.cart-item-info { flex: 1; min-width: 0; }
+.cart-item-info h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cart-item-info p {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.cart-item-price {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  color: var(--gold2);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.cart-item-remove {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.25);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+.cart-item-remove:hover { color: #ff4889; background: rgba(255,72,137,0.1); }
+
+/* ── RESUMEN ── */
+.cart-summary {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1.5rem 1.8rem;
+  margin-bottom: 2.5rem;
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.summary-row:last-child { border-bottom: none; }
+.summary-total {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  color: var(--gold2);
+  font-weight: 700;
+  padding-top: 0.8rem !important;
+}
+.summary-total span { font-size: 1.05rem; }
+
+/* ── FORMULARIO DE PEDIDO ── */
+.order-form {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2rem 2rem;
+}
+.form-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.form-subtitle {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 1.8rem;
+  font-weight: 300;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  width: 100%;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: rgba(160,63,255,0.6);
+  box-shadow: 0 0 0 3px rgba(160,63,255,0.12);
+}
+.form-group textarea { resize: vertical; min-height: 80px; }
+.form-group select option { background: #0d0821; }
+
+.form-note {
+  font-size: 0.76rem;
+  color: var(--muted);
+  background: rgba(160,63,255,0.07);
+  border: 1px solid rgba(160,63,255,0.15);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin: 1.2rem 0;
+  line-height: 1.6;
+}
+.form-note strong { color: var(--gold2); }
+
+.btn-submit {
+  display: block;
+  width: 100%;
+  padding: 1.1rem;
+  background: linear-gradient(135deg, rgba(160,63,255,0.9), rgba(255,72,137,0.85));
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(160,63,255,0.4);
+  transition: all 0.25s;
+  margin-top: 1.2rem;
+}
+.btn-submit:hover { box-shadow: 0 0 55px rgba(160,63,255,0.65); transform: translateY(-2px); }
+.btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* ── CONFIRMACIÓN ── */
+#cart-confirm {
+  display: none;
+  text-align: center;
+  padding: 3rem 1rem;
+}
+#cart-confirm .confirm-icon { font-size: 4rem; display: block; margin-bottom: 1.5rem; }
+#cart-confirm h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  color: var(--gold2);
+  margin-bottom: 0.8rem;
+}
+#cart-confirm p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 0.6rem; }
+#cart-confirm .confirm-wa {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.9rem 2rem;
+  background: linear-gradient(135deg, rgba(160,63,255,0.9), rgba(255,72,137,0.85));
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 0 25px rgba(160,63,255,0.4);
+}
+
+/* ── FOOTER ── */
+footer {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+footer a { color: var(--gold2); text-decoration: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .cart-item-img { width: 55px; height: 70px; }
+  .order-form { padding: 1.5rem 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="stars"></div>
+
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="Lady Aura inicio">
+    <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art">
+  </a>
+  <a class="back-link" href="index.html">← Seguir comprando</a>
+</header>
+
+<main>
+  <div class="page-hero">
+    <span class="eyebrow">✦ Lady Aura Art · Diamond Painting Premium ✦</span>
+    <h1>🛒 Mi carrito</h1>
+    <p>Revisa tus selecciones y confirma tu pedido</p>
+  </div>
+
+  <!-- VACÍO -->
+  <div id="cart-empty" style="display:none">
+    <span class="empty-icon">🌟</span>
+    <h2>Tu carrito está vacío</h2>
+    <p>Explora nuestras colecciones y encuentra tu diamond painting perfecto.</p>
+    <a href="index.html" class="btn-shop">✨ Ver colecciones</a>
+  </div>
+
+  <!-- CON ITEMS -->
+  <div id="cart-content" style="display:none">
+
+    <div id="cart-list"></div>
+
+    <div class="cart-summary">
+      <div class="summary-row">
+        <span>Diseños seleccionados</span>
+        <span id="sum-count">0</span>
+      </div>
+      <div class="summary-row">
+        <span>Formato</span>
+        <span>60×90 cm · Diamond painting premium</span>
+      </div>
+      <div class="summary-row">
+        <span>Envío</span>
+        <span style="color:#a0ffb0">✓ Incluido</span>
+      </div>
+      <div class="summary-row summary-total">
+        <span>Total</span>
+        <span id="sum-total">0 €</span>
+      </div>
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="order-form">
+      <p class="form-title">✨ Confirma tu pedido</p>
+      <p class="form-subtitle">Rellena tus datos y te contactaré en menos de 24h para coordinar el pago y el envío.</p>
+
+      <form id="order-form" novalidate>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="f-nombre">Nombre *</label>
+            <input type="text" id="f-nombre" name="nombre" required placeholder="Tu nombre">
+          </div>
+          <div class="form-group">
+            <label for="f-apellidos">Apellidos *</label>
+            <input type="text" id="f-apellidos" name="apellidos" required placeholder="Tus apellidos">
+          </div>
+          <div class="form-group">
+            <label for="f-email">Email *</label>
+            <input type="email" id="f-email" name="email" required placeholder="tu@email.com">
+          </div>
+          <div class="form-group">
+            <label for="f-telefono">Teléfono</label>
+            <input type="tel" id="f-telefono" name="telefono" placeholder="+34 600 000 000">
+          </div>
+          <div class="form-group full">
+            <label for="f-direccion">Dirección de envío *</label>
+            <input type="text" id="f-direccion" name="direccion" required placeholder="Calle, número, piso...">
+          </div>
+          <div class="form-group">
+            <label for="f-ciudad">Ciudad *</label>
+            <input type="text" id="f-ciudad" name="ciudad" required placeholder="Ciudad">
+          </div>
+          <div class="form-group">
+            <label for="f-cp">Código postal *</label>
+            <input type="text" id="f-cp" name="cp" required placeholder="00000">
+          </div>
+          <div class="form-group full">
+            <label for="f-pais">País *</label>
+            <select id="f-pais" name="pais" required>
+              <option value="">Selecciona país...</option>
+              <option value="España" selected>España</option>
+              <option value="Portugal">Portugal</option>
+              <option value="Francia">Francia</option>
+              <option value="Italia">Italia</option>
+              <option value="Alemania">Alemania</option>
+              <option value="México">México</option>
+              <option value="Argentina">Argentina</option>
+              <option value="Colombia">Colombia</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="f-notas">Notas adicionales</label>
+            <textarea id="f-notas" name="notas" placeholder="¿Algo que quieras comentarme? Personalización, regalo, etc."></textarea>
+          </div>
+        </div>
+
+        <div class="form-note">
+          <strong>¿Cómo funciona?</strong> Al enviar este formulario me llegará tu pedido por email. Te contactaré en menos de 24h con los detalles del pago (Bizum, transferencia o PayPal). Tu cuadro se produce bajo pedido en 2–3 semanas. 💜
+        </div>
+
+        <button type="submit" class="btn-submit" id="btn-submit">✨ Confirmar pedido</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- CONFIRMACIÓN -->
+  <div id="cart-confirm">
+    <span class="confirm-icon">💜</span>
+    <h2>¡Pedido recibido!</h2>
+    <p>Gracias por tu confianza. Te he enviado una copia a tu email.</p>
+    <p>Me pondré en contacto contigo en menos de 24h para coordinar el pago y confirmar los detalles de tu pedido.</p>
+    <p style="color:var(--gold2);margin-top:1rem;">✦ Cada cuadro se produce con amor, especialmente para ti ✦</p>
+    <a href="#" id="confirm-wa-link" class="confirm-wa" target="_blank" rel="noopener">💬 Hablar por WhatsApp</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 <a href="index.html">Lady Aura Art</a> · Diamond Painting Premium · Valencia, España 💜</p>
+</footer>
+
+<script>
+/* ── Estrellas ── */
+(function(){
+  var c = document.getElementById('stars');
+  for(var i=0;i<80;i++){
+    var s=document.createElement('div');
+    s.style.cssText='position:absolute;border-radius:50%;background:#fff;width:'+(Math.random()*2+0.4)+'px;height:'+(Math.random()*2+0.4)+'px;top:'+(Math.random()*100)+'%;left:'+(Math.random()*100)+'%;opacity:'+(Math.random()*0.35+0.06)+';animation:tw '+(Math.random()*3+2)+'s ease-in-out infinite alternate;animation-delay:'+(Math.random()*4)+'s;';
+    c.appendChild(s);
+  }
+  var st=document.createElement('style');
+  st.textContent='@keyframes tw{from{opacity:0.06}to{opacity:0.5}}';
+  document.head.appendChild(st);
+})();
+
+/* ── Carrito ── */
+const CART_KEY = 'ladyaura_cart';
+function cartGet(){ try{ return JSON.parse(localStorage.getItem(CART_KEY))||[]; }catch(e){ return []; } }
+function cartSave(items){ localStorage.setItem(CART_KEY, JSON.stringify(items)); }
+function cartRemove(id){ cartSave(cartGet().filter(i=>i.id!==id)); renderCart(); }
+
+function renderCart() {
+  const items = cartGet();
+  const empty   = document.getElementById('cart-empty');
+  const content = document.getElementById('cart-content');
+
+  if (items.length === 0) {
+    empty.style.display = 'block';
+    content.style.display = 'none';
+    return;
+  }
+
+  empty.style.display = 'none';
+  content.style.display = 'block';
+
+  const list = document.getElementById('cart-list');
+  list.innerHTML = items.map(item => `
+    <div class="cart-item">
+      <img class="cart-item-img" src="${item.img}" alt="${item.nombre}" onerror="this.style.opacity='0.3'">
+      <div class="cart-item-info">
+        <h3>${item.nombre}</h3>
+        <p>Diamond painting ${item.orient==='v'?'60×90 cm ↕':'90×60 cm ↔'} · Envío incluido</p>
+      </div>
+      <span class="cart-item-price">${item.precio} €</span>
+      <button class="cart-item-remove" onclick="cartRemove('${item.id.replace(/'/g,"\\'")}')" aria-label="Eliminar">✕</button>
+    </div>
+  `).join('');
+
+  const total = items.reduce((s,i) => s + (i.precio||94), 0);
+  document.getElementById('sum-count').textContent = items.length + (items.length===1?' diseño':' diseños');
+  document.getElementById('sum-total').textContent = total + ' €';
+}
+
+/* ── Formulario → Formspree ── */
+document.getElementById('order-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('btn-submit');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  const items = cartGet();
+  const data = {
+    nombre:    document.getElementById('f-nombre').value,
+    apellidos: document.getElementById('f-apellidos').value,
+    email:     document.getElementById('f-email').value,
+    telefono:  document.getElementById('f-telefono').value,
+    direccion: document.getElementById('f-direccion').value,
+    ciudad:    document.getElementById('f-ciudad').value,
+    cp:        document.getElementById('f-cp').value,
+    pais:      document.getElementById('f-pais').value,
+    notas:     document.getElementById('f-notas').value,
+    pedido:    items.map(i => `${i.nombre} · ${i.precio}€`).join(' | '),
+    total:     items.reduce((s,i) => s+(i.precio||94), 0) + ' €',
+    _subject:  `🛒 Nuevo pedido Lady Aura Art · ${document.getElementById('f-nombre').value}`
+  };
+
+  try {
+    // Formspree – sustituye XXXXXXXX por tu ID de Formspree (gratis en formspree.io)
+    const res = await fetch('https://formspree.io/f/meenpjnk', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    if (res.ok) {
+      // Éxito
+      cartSave([]); // vaciar carrito
+      document.getElementById('cart-content').style.display = 'none';
+      const confirm = document.getElementById('cart-confirm');
+      confirm.style.display = 'block';
+
+      // Botón WhatsApp con resumen
+      const waText = encodeURIComponent(
+        `Hola Lady Aura ✨ Acabo de enviar un pedido desde la web.\n\nNombre: ${data.nombre} ${data.apellidos}\nEmail: ${data.email}\nPedido: ${data.pedido}\nTotal: ${data.total}\n\n¿Puedes confirmarme los detalles? ¡Gracias! 💜`
+      );
+      document.getElementById('confirm-wa-link').href = `https://wa.me/34621355638?text=${waText}`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      throw new Error('Error en el envío');
+    }
+  } catch(err) {
+    // Fallback: abrir WhatsApp con el pedido
+    const items2 = cartGet();
+    const waText = encodeURIComponent(
+      `Hola Lady Aura ✨ Quiero hacer un pedido:\n\n${items2.map(i=>`• ${i.nombre} · ${i.precio}€`).join('\n')}\n\nTotal: ${items2.reduce((s,i)=>s+(i.precio||94),0)}€\n\nMis datos:\nNombre: ${data.nombre} ${data.apellidos}\nEmail: ${data.email}\nDirección: ${data.direccion}, ${data.cp} ${data.ciudad}, ${data.pais}\n\n¡Gracias! 💜`
+    );
+    window.open(`https://wa.me/34621355638?text=${waText}`, '_blank');
+    btn.disabled = false;
+    btn.textContent = '✨ Confirmar pedido';
+    alert('No se pudo enviar el email automático. Se abrirá WhatsApp con tu pedido. ¡Envía el mensaje y te responderé enseguida! 💜');
+  }
+});
+
+renderCart();
+</script>
+</body>
+</html>
