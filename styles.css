@@ -1077,3 +1077,11 @@ footer p { margin: 0; font-size: .88rem; }
   color: rgba(196,181,253,.5); text-align: center;
   margin-top: .4rem; font-style: italic;
 }
+
+
+/* ── PAGINACIÓN ── */
+.pagination { display:flex; justify-content:center; align-items:center; gap:0.5rem; padding:2rem 1rem 1rem; flex-wrap:wrap; }
+.page-btn { font-family:'Cinzel',serif; font-size:0.82rem; color:var(--gold,#c9a84c); background:rgba(20,10,40,0.7); border:1px solid rgba(160,63,255,0.25); border-radius:8px; padding:0.45rem 0.85rem; cursor:pointer; transition:all 0.2s; min-width:38px; text-align:center; }
+.page-btn:hover { border-color:var(--gold,#c9a84c); color:#fff; }
+.page-btn.active { background:rgba(160,63,255,0.35); border-color:var(--gold,#c9a84c); color:#fff; font-weight:700; }
+.page-btn.disabled { opacity:0.3; cursor:default; pointer-events:none; }

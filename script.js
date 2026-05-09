@@ -117,3 +117,49 @@ lightbox.addEventListener("click", (event) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && lightbox.classList.contains("active")) closeLightbox();
 });
+
+
+/* ── PAGINACIÓN ── */
+(function(){
+  const ITEMS_PER_PAGE = 10;
+  const grid = document.querySelector('.products-grid');
+  if (!grid) return;
+  const allCards = Array.from(grid.children);
+  if (allCards.length <= ITEMS_PER_PAGE) return;
+  const totalPages = Math.ceil(allCards.length / ITEMS_PER_PAGE);
+  let currentPage = 1;
+
+  function showPage(page) {
+    currentPage = page;
+    allCards.forEach((card, i) => {
+      card.style.display = (i >= (page-1)*ITEMS_PER_PAGE && i < page*ITEMS_PER_PAGE) ? '' : 'none';
+    });
+    renderPagination();
+    window.scrollTo({top: grid.offsetTop - 100, behavior: 'smooth'});
+  }
+
+  function renderPagination() {
+    let pag = document.querySelector('.pagination');
+    if (!pag) { pag = document.createElement('div'); pag.className = 'pagination'; grid.parentNode.insertBefore(pag, grid.nextSibling); }
+    pag.innerHTML = '';
+    const prev = document.createElement('button');
+    prev.className = 'page-btn' + (currentPage === 1 ? ' disabled' : '');
+    prev.textContent = '←';
+    prev.onclick = () => { if (currentPage > 1) showPage(currentPage - 1); };
+    pag.appendChild(prev);
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement('button');
+      btn.className = 'page-btn' + (i === currentPage ? ' active' : '');
+      btn.textContent = i;
+      btn.onclick = () => showPage(i);
+      pag.appendChild(btn);
+    }
+    const next = document.createElement('button');
+    next.className = 'page-btn' + (currentPage === totalPages ? ' disabled' : '');
+    next.textContent = '→';
+    next.onclick = () => { if (currentPage < totalPages) showPage(currentPage + 1); };
+    pag.appendChild(next);
+  }
+
+  showPage(1);
+})();
