@@ -364,7 +364,6 @@ function openLB(card) {
   document.getElementById('lbImg').alt = card.dataset.nombre;
   document.getElementById('lbTitle').textContent = card.dataset.nombre;
   document.getElementById('lbOrient').textContent = orient === 'v' ? '↕ Cuadro Vertical · 60×90 cm' : '↔ Cuadro Horizontal · 90×60 cm';
-  document.getElementById('lbWa').href = card.dataset.wa;
   document.getElementById('lbEm').href = card.dataset.em;
   document.getElementById('lb').classList.add('open');
   if(typeof cartPatchLightbox==='function') cartPatchLightbox(card);

@@ -743,7 +743,7 @@ function renderPairs() {
       document.getElementById('lbVersion').textContent = '🌸 Versión kawaii · Diamond Painting 60×90 cm';
       document.getElementById('lbDesc').textContent = 'Edición especial infantil del signo ' + card.dataset.sign + '. Diamond painting premium 60×90 cm · Envío incluido.';
       var nameEnc = encodeURIComponent(title);
-      document.getElementById('lbWa').href = 'https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20' + nameEnc + '.%2060x90%2C%2094€.%20¡Gracias!';
+      (document.getElementById('lbWa') || {}).href = 'https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20' + nameEnc + '.%2060x90%2C%2094€.%20¡Gracias!';
       document.getElementById('lbEm').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20–%20' + nameEnc + '&body=Quiero%20pre-reservar%3A%20' + nameEnc + '.%2060x90%2C%2094€.';
       document.getElementById('lb').classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -779,7 +779,7 @@ function openLB(signName, isFem) {
   document.getElementById('lbTitle').textContent = title;
   document.getElementById('lbVersion').textContent = ver + ' · ' + s.elem;
   document.getElementById('lbDesc').textContent = desc;
-  document.getElementById('lbWa').href = 'https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20' + nameEnc + '.%2060x90%2C%2094€.%20¡Gracias!';
+  (document.getElementById('lbWa') || {}).href = 'https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20' + nameEnc + '.%2060x90%2C%2094€.%20¡Gracias!';
   document.getElementById('lbEm').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva%20–%20' + nameEnc + '&body=Hola%2C%20quiero%20pre-reservar%3A%20' + nameEnc + '.%2060x90%2C%2094€.';
 
   document.getElementById('lb').classList.add('open');

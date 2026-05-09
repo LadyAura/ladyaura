@@ -653,7 +653,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
     return;
   }
   const totalPedido = items.reduce((s,i) => s + (Number(i.precio)||94), 0);
-  const paypalUrl = 'https://paypal.me/LadyAuraArt/' + totalPedido + 'EUR';
+  const paypalUrl = 'https://www.paypal.com/paypalme/LadyAuraArt/' + totalPedido + 'EUR';
   const data = {
     nombre:    document.getElementById('f-nombre').value,
     apellidos: document.getElementById('f-apellidos').value,
@@ -698,11 +698,17 @@ document.getElementById('order-form').addEventListener('submit', async function(
 
       // Guardar una copia del último pedido para que la pantalla de pago NO dependa del carrito
       localStorage.setItem('ladyaura_last_order', JSON.stringify(order));
+      // Guardar datos de pago por separado para que persistan
+      localStorage.setItem('ladyaura_payment', JSON.stringify({
+        total: totalPedido,
+        nombre: data.nombre + ' ' + data.apellidos,
+        paypalUrl: paypalUrl
+      }));
 
       // Mostrar total y enlaces de pago ANTES de vaciar el carrito
       document.getElementById('payment-total').textContent = totalPedido + ' €';
       document.getElementById('paypal-pay-link').href = paypalUrl;
-      document.getElementById('bizum-concept').textContent = 'Lady Aura ' + data.nombre + ' ' + data.apellidos;
+      document.getElementById('bizum-concept').textContent = 'Lady Aura · ' + data.nombre + ' ' + data.apellidos;
 
       // Vaciar carrito después de guardar el pedido
       cartSave([]);
@@ -744,6 +750,20 @@ document.getElementById('order-form').addEventListener('submit', async function(
 });
 
 renderCart();
+
+// Si hay datos de pago guardados y la pantalla de confirmación está visible, restaurarlos
+(function() {
+  const payment = JSON.parse(localStorage.getItem('ladyaura_payment') || 'null');
+  const confirm = document.getElementById('cart-confirm');
+  if (payment && confirm && confirm.style.display !== 'none') {
+    const pt = document.getElementById('payment-total');
+    const pl = document.getElementById('paypal-pay-link');
+    const bc = document.getElementById('bizum-concept');
+    if (pt) pt.textContent = payment.total + ' €';
+    if (pl) pl.href = payment.paypalUrl;
+    if (bc) bc.textContent = 'Lady Aura · ' + payment.nombre;
+  }
+})();
 </script>
 </body>
 </html>
