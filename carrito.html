@@ -34,30 +34,94 @@ body {
 /* ── ESTRELLAS ── */
 #stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 
-/* ── HEADER ── */
+/* ── HEADER ESTILO INDEX + MENÚ MÓVIL ── */
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 9999;
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.7rem 5%;
-  background: rgba(5,3,14,0.92);
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(12px);
+  padding: 0.6rem 5%;
+  background: rgba(3,3,10,0.96);
+  border-bottom: 1px solid rgba(160,63,255,0.18);
+  backdrop-filter: blur(20px);
+  min-height: 68px;
 }
-.brand img { height: 38px; display: block; }
-.back-link {
+.brand img {
+  width: auto;
+  height: 52px;
+  max-height: 52px;
+  max-width: 200px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 0 14px rgba(238,160,255,0.7));
+}
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(160,63,255,0.3);
+  color: rgba(255,255,255,0.88);
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}
+.site-header .nav {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
   margin-left: auto;
   font-family: 'Cinzel', serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.2s;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  flex-wrap: wrap;
 }
-.back-link:hover { color: var(--gold2); }
+.site-header .nav a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.site-header .nav a:hover,
+.site-header .nav a[aria-current="page"] {
+  color: var(--gold2);
+  border-color: var(--gold2);
+  opacity: 1;
+}
+@media (max-width: 900px) {
+  .menu-toggle { display: flex; }
+  .site-header { position: sticky; }
+  .site-header .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background: rgba(3,3,10,0.98);
+    border-bottom: 1px solid rgba(160,63,255,0.2);
+    padding: 1rem 5%;
+    margin: 0;
+  }
+  .site-header .nav.active { display: flex; }
+  .site-header .nav a {
+    width: 100%;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(160,63,255,0.1);
+  }
+  .site-header .nav a:last-child { border-bottom: none; }
+}
+
 
 /* ── LAYOUT ── */
 main {
@@ -444,7 +508,7 @@ footer a { color: var(--gold2); text-decoration: none; }
   <a class="brand" href="index.html" aria-label="Lady Aura inicio">
     <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art – Diamond Painting Premium">
   </a>
-  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
   <nav class="nav" id="nav">
     <a href="index.html">← Inicio</a>
     <a href="zodiaco.html">♈ Zodíaco</a>
@@ -757,6 +821,28 @@ document.getElementById('order-form').addEventListener('submit', async function(
 
 renderCart();
 </script>
+
+<script>
+/* ── Menú móvil ── */
+(function(){
+  const btn = document.getElementById('menuToggle');
+  const nav = document.getElementById('nav');
+  if (!btn || !nav) return;
+
+  btn.addEventListener('click', function(){
+    nav.classList.toggle('active');
+    btn.setAttribute('aria-expanded', nav.classList.contains('active') ? 'true' : 'false');
+  });
+
+  nav.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){
+      nav.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+</script>
+
 <script src="carrito.js"></script>
 </body>
 </html>
