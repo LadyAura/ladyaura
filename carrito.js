@@ -75,15 +75,19 @@ function cartShowToast(nombre, yaEsta) {
 
 /* ── Inyectar icono carrito en el nav ── */
 function cartInjectNav() {
-  // Busca el nav principal o el back-bar
+  // Si ya hay un enlace hardcodeado, solo actualizar badge
+  if (document.querySelector('.cart-nav-link')) {
+    cartUpdateBadge();
+    return;
+  }
   const nav = document.getElementById('nav') || document.querySelector('.back-bar') || document.querySelector('nav');
-  if (!nav || nav.querySelector('.cart-nav-link')) return;
+  if (!nav) return;
 
   const link = document.createElement('a');
   link.href = 'carrito.html';
   link.className = 'cart-nav-link';
   link.setAttribute('aria-label', 'Ver carrito');
-  link.innerHTML = `<span class="cart-icon">🛒</span><span class="cart-badge" style="display:none">0</span>`;
+  link.innerHTML = '<span class="cart-icon">🛒</span><span class="cart-badge" style="display:none">0</span>';
   nav.appendChild(link);
   cartUpdateBadge();
 }
@@ -264,12 +268,104 @@ function cartInjectStyles() {
   document.head.appendChild(style);
 }
 
+/* ── Inyectar botón en sign-cards del zodiaco ── */
+function cartInjectZodiaco() {
+  document.querySelectorAll('.sign-card:not(.sold-out)').forEach(card => {
+    if (card.querySelector('.btn-add-cart')) return;
+    const titulo = card.dataset.sign;
+    if (!titulo) return;
+    const isFem = card.dataset.fem === '1';
+    const imgEl = card.querySelector('img');
+    const imgSrc = imgEl ? imgEl.src : '';
+    const nombre = (isFem ? 'Diosa ' : 'Retrato Celestial de ') + titulo;
+
+    const btn = document.createElement('button');
+    btn.className = 'btn-add-cart';
+    btn.innerHTML = '🛒 Añadir al carrito';
+    btn.style.cssText = 'display:block;width:100%;margin-top:0.5rem;padding:0.45rem 0.8rem;background:linear-gradient(135deg,rgba(160,63,255,0.15),rgba(255,72,137,0.1));border:1px solid rgba(160,63,255,0.4);border-radius:999px;color:rgba(255,255,255,0.85);font-family:Cinzel,serif;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.25s;';
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      cartAdd({
+        id: 'zodiaco-' + titulo + '-' + (isFem ? 'f' : 'm'),
+        nombre: nombre,
+        img: imgSrc,
+        precio: 94,
+        orient: 'v'
+      });
+      this.classList.add('added');
+      this.innerHTML = '✓ En el carrito';
+      setTimeout(() => {
+        this.classList.remove('added');
+        this.innerHTML = '🛒 Añadir al carrito';
+      }, 2000);
+    });
+
+    // Añadir debajo de la imagen/nombre
+    card.appendChild(btn);
+  });
+}
+
+/* ── Inyectar botón en láminas kawaii de colorear.html ── */
+function cartInjectColorear() {
+  document.querySelectorAll('.lamina-doble').forEach(card => {
+    if (card.querySelector('.btn-add-cart')) return;
+    const nombreEl = card.querySelector('.lamina-nombre');
+    if (!nombreEl) return;
+    const nombre = nombreEl.textContent.trim();
+    if (nombre === 'Lámina personalizada') return; // precio variable, skip
+    const img = card.querySelector('img');
+    const imgSrc = img ? img.src : '';
+
+    const btn = document.createElement('button');
+    btn.className = 'btn-add-cart';
+    btn.innerHTML = '🛒 Añadir al carrito';
+    btn.style.marginTop = '0.5rem';
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      cartAdd({
+        id: 'colorear-' + nombre,
+        nombre: 'Lámina kawaii · ' + nombre,
+        img: imgSrc,
+        precio: 3,
+        orient: 'v'
+      });
+      this.classList.add('added');
+      this.innerHTML = '✓ En el carrito';
+      setTimeout(() => {
+        this.classList.remove('added');
+        this.innerHTML = '🛒 Añadir al carrito';
+      }, 2000);
+    });
+
+    const info = card.querySelector('.lamina-info');
+    if (info) info.appendChild(btn);
+  });
+}
+
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded', function() {
   cartInjectStyles();
   cartInjectNav();
   cartInjectFAB();
   cartInjectButtons();
+  cartInjectColorear();
+  // Reintento para páginas que generan cards dinámicamente (zodiaco)
+  setTimeout(function() {
+    cartInjectButtons();
+    cartInjectColorear();
+    cartInjectZodiaco();
+  }, 800);
+  setTimeout(function() {
+    cartInjectZodiaco(); // segundo intento por si los tabs tardan más
+  }, 2000);
+  // MutationObserver para cards que aparecen después (zodiaco tabs)
+  var observer = new MutationObserver(function() {
+    cartInjectButtons();
+    cartInjectColorear();
+    cartInjectZodiaco();
+  });
+  var grid = document.querySelector('.products-grid') || document.querySelector('.grid-laminas') || document.querySelector('.signs-grid') || document.querySelector('main');
+  if (grid) observer.observe(grid, { childList: true, subtree: true });
 
   // También inyectar en lightbox si existe (añadir desde ficha ampliada)
   const lbInner = document.getElementById('lbInner');
