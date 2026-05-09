@@ -406,7 +406,7 @@ footer a { color: var(--gold2); text-decoration: none; }
     <!-- FORMULARIO -->
     <div class="order-form">
       <p class="form-title">✨ Confirma tu pedido</p>
-      <p class="form-subtitle">Rellena tus datos y te contactaré en menos de 24h para coordinar el pago y el envío.</p>
+      <p class="form-subtitle">Rellena tus datos, envía el pedido y después podrás pagar directamente por Bizum o PayPal.</p>
 
       <form id="order-form" novalidate>
         <div class="form-grid">
@@ -460,22 +460,39 @@ footer a { color: var(--gold2); text-decoration: none; }
         </div>
 
         <div class="form-note">
-          <strong>¿Cómo funciona?</strong> Al enviar este formulario me llegará tu pedido por email. Te contactaré en menos de 24h con los detalles del pago (Bizum, transferencia o PayPal). Tu cuadro se produce bajo pedido en 2–3 semanas. 💜
+          <strong>¿Cómo funciona?</strong> Primero envías tus datos del pedido. Después aparecerán las instrucciones para pagar el total por Bizum o PayPal. Tu cuadro se produce bajo pedido en 2–3 semanas. 💜
         </div>
 
-        <button type="submit" class="btn-submit" id="btn-submit">✨ Confirmar pedido</button>
+        <button type="submit" class="btn-submit" id="btn-submit">✨ Enviar pedido y continuar al pago</button>
       </form>
     </div>
   </div>
 
-  <!-- CONFIRMACIÓN -->
+  <!-- CONFIRMACIÓN + PAGO -->
   <div id="cart-confirm">
     <span class="confirm-icon">💜</span>
-    <h2>¡Pedido recibido!</h2>
-    <p>Gracias por tu confianza. Te he enviado una copia a tu email.</p>
-    <p>Me pondré en contacto contigo en menos de 24h para coordinar el pago y confirmar los detalles de tu pedido.</p>
-    <p style="color:var(--gold2);margin-top:1rem;">✦ Cada cuadro se produce con amor, especialmente para ti ✦</p>
-    <a href="#" id="confirm-wa-link" class="confirm-wa" target="_blank" rel="noopener">💬 Hablar por WhatsApp</a>
+    <h2>¡Pedido enviado!</h2>
+    <p>Ya me ha llegado tu pedido por email. Ahora puedes pagar el total para dejarlo confirmado.</p>
+
+    <div id="payment-box" style="max-width:620px;margin:1.6rem auto 0;text-align:left;background:rgba(13,8,33,0.92);border:1px solid var(--border);border-radius:22px;padding:1.4rem;">
+      <p style="font-family:Cinzel,serif;color:var(--gold2);font-size:1rem;margin-bottom:0.8rem;text-align:center;">Total a pagar: <span id="payment-total">0 €</span></p>
+
+      <div style="background:rgba(160,63,255,0.08);border:1px solid rgba(160,63,255,0.2);border-radius:16px;padding:1rem;margin-bottom:1rem;">
+        <p style="color:#fff;margin-bottom:0.45rem;"><strong>Opción 1 · Bizum</strong></p>
+        <p>Envía el Bizum al número:</p>
+        <p style="font-family:Cinzel,serif;color:var(--gold2);font-size:1.2rem;margin:0.3rem 0;">621 355 638</p>
+        <p>Concepto: <strong id="bizum-concept">Lady Aura + tu nombre</strong></p>
+      </div>
+
+      <div style="background:rgba(255,217,138,0.08);border:1px solid rgba(255,217,138,0.2);border-radius:16px;padding:1rem;">
+        <p style="color:#fff;margin-bottom:0.75rem;"><strong>Opción 2 · PayPal</strong></p>
+        <a href="#" id="paypal-pay-link" class="confirm-wa" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:0;">💳 Pagar ahora con PayPal</a>
+        <p style="font-size:0.76rem;color:var(--muted);margin-top:0.7rem;text-align:center;">Receptor PayPal: Elisabet Lucas · LadyAuraArt</p>
+      </div>
+    </div>
+
+    <p style="color:var(--gold2);margin-top:1.2rem;">✦ Cuando vea el pago, preparo tu pedido ✦</p>
+    <a href="#" id="confirm-wa-link" class="confirm-wa" target="_blank" rel="noopener">💬 Avisar por WhatsApp</a>
   </div>
 
 </main>
@@ -526,7 +543,7 @@ function renderCart() {
         <h3>${item.nombre}</h3>
         <p>Diamond painting ${item.orient==='v'?'60×90 cm ↕':'90×60 cm ↔'} · Envío incluido</p>
       </div>
-      <span class="cart-item-price">${item.precio || 94} €</span>
+      <span class="cart-item-price">${item.precio} €</span>
       <button class="cart-item-remove" onclick="cartRemove('${item.id.replace(/'/g,"\\'")}')" aria-label="Eliminar">✕</button>
     </div>
   `).join('');
@@ -544,6 +561,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
   btn.textContent = 'Enviando...';
 
   const items = cartGet();
+  const totalPedido = items.reduce((s,i) => s+(Number(i.precio)||94), 0);
   const data = {
     nombre:    document.getElementById('f-nombre').value,
     apellidos: document.getElementById('f-apellidos').value,
@@ -554,8 +572,11 @@ document.getElementById('order-form').addEventListener('submit', async function(
     cp:        document.getElementById('f-cp').value,
     pais:      document.getElementById('f-pais').value,
     notas:     document.getElementById('f-notas').value,
-    pedido:    items.map(i => `${i.nombre} · ${i.precio || 94}€`).join(' | '),
-    total:     items.reduce((s,i) => s+(i.precio||94), 0) + ' €',
+    pedido:    items.map(i => `${i.nombre} · ${i.precio}€`).join(' | '),
+    total:     totalPedido + ' €',
+    metodo_pago: 'Pendiente de pago: Bizum o PayPal',
+    bizum: '621 355 638',
+    paypal: 'https://paypal.me/LadyAuraArt/' + totalPedido + 'EUR',
     _subject:  `🛒 Nuevo pedido Lady Aura Art · ${document.getElementById('f-nombre').value}`
   };
 
@@ -576,7 +597,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
         email: data.email,
         direccion: data.direccion + ', ' + data.cp + ' ' + data.ciudad + ', ' + data.pais,
         items: items.map(i => ({ nombre: i.nombre, img: i.img, precio: i.precio, orient: i.orient })),
-        total: items.reduce((s,i) => s+(i.precio||94), 0),
+        total: totalPedido,
         estado: 'procesando' // procesando | enviado | recibido
       };
       const orders = JSON.parse(localStorage.getItem('ladyaura_orders') || '[]');
@@ -609,11 +630,11 @@ document.getElementById('order-form').addEventListener('submit', async function(
     // Fallback: abrir WhatsApp con el pedido
     const items2 = cartGet();
     const waText = encodeURIComponent(
-      `Hola Lady Aura ✨ Quiero hacer un pedido:\n\n${items2.map(i=>`• ${i.nombre} · ${i.precio || 94}€`).join('\n')}\n\nTotal: ${items2.reduce((s,i)=>s+(i.precio||94),0)}€\n\nMis datos:\nNombre: ${data.nombre} ${data.apellidos}\nEmail: ${data.email}\nDirección: ${data.direccion}, ${data.cp} ${data.ciudad}, ${data.pais}\n\n¡Gracias! 💜`
+      `Hola Lady Aura ✨ Quiero hacer un pedido:\n\n${items2.map(i=>`• ${i.nombre} · ${i.precio}€`).join('\n')}\n\nTotal: ${items2.reduce((s,i)=>s+(i.precio||94),0)}€\n\nMis datos:\nNombre: ${data.nombre} ${data.apellidos}\nEmail: ${data.email}\nDirección: ${data.direccion}, ${data.cp} ${data.ciudad}, ${data.pais}\n\n¡Gracias! 💜`
     );
     window.open(`https://wa.me/34621355638?text=${waText}`, '_blank');
     btn.disabled = false;
-    btn.textContent = '✨ Confirmar pedido';
+    btn.textContent = '✨ Enviar pedido y continuar al pago';
     alert('No se pudo enviar el email automático. Se abrirá WhatsApp con tu pedido. ¡Envía el mensaje y te responderé enseguida! 💜');
   }
 });
