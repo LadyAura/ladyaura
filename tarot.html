@@ -741,6 +741,19 @@ function openLB(title, img, price, nameRaw, soldOut) {
 
   document.getElementById('tLb').classList.add('open');
   document.body.style.overflow = 'hidden';
+  // Carrito (solo si no está agotado)
+  if (!soldOut && typeof cartPatchLightbox === 'function') {
+    cartPatchLightbox({
+      dataset: {
+        img: img,
+        nombre: title,
+        orient: 'v'
+      }
+    });
+  }
+  // Ocultar botón carrito si está agotado
+  var btnCart = document.querySelector('.lb-btn-cart');
+  if (btnCart) btnCart.style.display = soldOut ? 'none' : 'block';
 }
 
 function selectLBSize(size) {

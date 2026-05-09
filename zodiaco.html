@@ -779,6 +779,16 @@ function openLB(signName, isFem) {
 
   document.getElementById('lb').classList.add('open');
   document.body.style.overflow = 'hidden';
+  // Carrito
+  if (typeof cartPatchLightbox === 'function') {
+    cartPatchLightbox({
+      dataset: {
+        img: 'assets/' + img,
+        nombre: title,
+        orient: 'v'
+      }
+    });
+  }
 }
 
 function closeLB() {
