@@ -499,6 +499,11 @@ footer a { color: var(--gold2); text-decoration: none; }
   .order-form { padding: 1.5rem 1.2rem; }
 }
 </style>
+
+<style>
+.lang-btn.active { background: rgba(160,63,255,0.3) !important; border-color: rgba(160,63,255,0.7) !important; box-shadow: 0 0 10px rgba(160,63,255,0.4); }
+.lang-btn:hover { background: rgba(255,255,255,0.18) !important; transform: scale(1.1); }
+</style>
 </head>
 <body>
 
@@ -520,22 +525,26 @@ footer a { color: var(--gold2); text-decoration: none; }
     <a href="colorear.html">🎨 Colorear</a>
     <a href="pedidos.html">📦 Mis pedidos</a>
     <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">🛒<span class="cart-badge" style="display:none">0</span></a>
-  </nav>
+    <div class="lang-selector" id="lang-selector" style="display:flex;align-items:center;gap:0.3rem;margin-left:0.6rem;flex-shrink:0;">
+    <button class="lang-btn active" id="btn-es" onclick="setLang('es')" title="Español" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);cursor:pointer;font-size:1.4rem;opacity:1;padding:0.2rem 0.35rem;border-radius:8px;transition:all 0.2s;line-height:1;">🇪🇸</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')" title="English" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);cursor:pointer;font-size:1.4rem;opacity:1;padding:0.2rem 0.35rem;border-radius:8px;transition:all 0.2s;line-height:1;">🇬🇧</button>
+  </div>
+</nav>
 </header>
 
 <main>
   <div class="page-hero">
     <span class="eyebrow">✦ Lady Aura Art · Diamond Painting Premium ✦</span>
-    <h1>🛒 Mi carrito</h1>
+    <h1 data-i18n="cart_title">🛒 Mi carrito</h1>
     <p>Revisa tus selecciones y confirma tu pedido</p>
   </div>
 
   <!-- VACÍO -->
   <div id="cart-empty" style="display:none">
     <span class="empty-icon">🌟</span>
-    <h2>Tu carrito está vacío</h2>
-    <p>Explora nuestras colecciones y encuentra tu diamond painting perfecto.</p>
-    <a href="index.html" class="btn-shop">✨ Ver colecciones</a>
+    <h2 data-i18n="cart_empty_title">Tu carrito está vacío</h2>
+    <p data-i18n="cart_empty_sub">Explora nuestras colecciones y encuentra tu diamond painting perfecto.</p>
+    <a href="index.html" class="btn-shop" data-i18n="cart_btn_shop">✨ Ver colecciones</a>
   </div>
 
   <!-- CON ITEMS -->
@@ -564,41 +573,41 @@ footer a { color: var(--gold2); text-decoration: none; }
 
     <!-- FORMULARIO -->
     <div class="order-form">
-      <p class="form-title">✨ Confirma tu pedido</p>
+      <p class="form-title" data-i18n="cart_form_title">✨ Confirma tu pedido</p>
       <p class="form-subtitle">Rellena tus datos, envía el pedido y después podrás pagar directamente por Bizum o PayPal.</p>
 
       <form id="order-form" novalidate>
         <div class="form-grid">
           <div class="form-group">
-            <label for="f-nombre">Nombre *</label>
+            <label for="f-nombre" data-i18n="cart_nombre">Nombre *</label>
             <input type="text" id="f-nombre" name="nombre" required placeholder="Tu nombre">
           </div>
           <div class="form-group">
-            <label for="f-apellidos">Apellidos *</label>
+            <label for="f-apellidos" data-i18n="cart_apellidos">Apellidos *</label>
             <input type="text" id="f-apellidos" name="apellidos" required placeholder="Tus apellidos">
           </div>
           <div class="form-group">
-            <label for="f-email">Email *</label>
+            <label for="f-email" data-i18n="cart_email">Email *</label>
             <input type="email" id="f-email" name="email" required placeholder="tu@email.com">
           </div>
           <div class="form-group">
-            <label for="f-telefono">Teléfono</label>
+            <label for="f-telefono" data-i18n="cart_telefono">Teléfono</label>
             <input type="tel" id="f-telefono" name="telefono" placeholder="+34 600 000 000">
           </div>
           <div class="form-group full">
-            <label for="f-direccion">Dirección de envío *</label>
+            <label for="f-direccion" data-i18n="cart_direccion">Dirección de envío *</label>
             <input type="text" id="f-direccion" name="direccion" required placeholder="Calle, número, piso...">
           </div>
           <div class="form-group">
-            <label for="f-ciudad">Ciudad *</label>
+            <label for="f-ciudad" data-i18n="cart_ciudad">Ciudad *</label>
             <input type="text" id="f-ciudad" name="ciudad" required placeholder="Ciudad">
           </div>
           <div class="form-group">
-            <label for="f-cp">Código postal *</label>
+            <label for="f-cp" data-i18n="cart_cp">Código postal *</label>
             <input type="text" id="f-cp" name="cp" required placeholder="00000">
           </div>
           <div class="form-group full">
-            <label for="f-pais">País *</label>
+            <label for="f-pais" data-i18n="cart_pais">País *</label>
             <select id="f-pais" name="pais" required>
               <option value="">Selecciona país...</option>
               <option value="España" selected>España</option>
@@ -613,7 +622,7 @@ footer a { color: var(--gold2); text-decoration: none; }
             </select>
           </div>
           <div class="form-group full">
-            <label for="f-notas">Notas adicionales</label>
+            <label for="f-notas" data-i18n="cart_notas">Notas adicionales</label>
             <textarea id="f-notas" name="notas" placeholder="¿Algo que quieras comentarme? Personalización, regalo, etc."></textarea>
           </div>
         </div>
@@ -843,6 +852,7 @@ renderCart();
 })();
 </script>
 
+<script src="i18n.js"></script>
 <script src="carrito.js"></script>
 </body>
 </html>

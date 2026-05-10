@@ -152,6 +152,11 @@ footer a:hover{color:var(--gold2);}
   .collections-nav{padding:2rem 5%;}
 }
 </style>
+
+<style>
+.lang-btn.active { background: rgba(160,63,255,0.3) !important; border-color: rgba(160,63,255,0.7) !important; box-shadow: 0 0 10px rgba(160,63,255,0.4); }
+.lang-btn:hover { background: rgba(255,255,255,0.18) !important; transform: scale(1.1); }
+</style>
 </head>
 <body>
 
@@ -172,7 +177,11 @@ footer a:hover{color:var(--gold2);}
     <a href="tarot.html">🔮 Tarot</a>
     <a href="colorear.html">🎨 Colorear</a>
     <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">🛒<span class="cart-badge" style="display:none">0</span></a>
-  </nav>
+    <div class="lang-selector" id="lang-selector" style="display:flex;align-items:center;gap:0.3rem;margin-left:0.6rem;flex-shrink:0;">
+    <button class="lang-btn active" id="btn-es" onclick="setLang('es')" title="Español" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);cursor:pointer;font-size:1.4rem;opacity:1;padding:0.2rem 0.35rem;border-radius:8px;transition:all 0.2s;line-height:1;">🇪🇸</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')" title="English" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);cursor:pointer;font-size:1.4rem;opacity:1;padding:0.2rem 0.35rem;border-radius:8px;transition:all 0.2s;line-height:1;">🇬🇧</button>
+  </div>
+</nav>
 </header>
 
 <main style="position:relative;z-index:5;">
@@ -182,7 +191,7 @@ footer a:hover{color:var(--gold2);}
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <span class="hero-eyebrow">✦ Diseño Exclusivo · Solo para ti · Lady Aura Art ✦</span>
+      <span class="hero-eyebrow" data-i18n="per_eyebrow">✦ Diseño Exclusivo · Solo para ti · Lady Aura Art ✦</span>
       <h1>Tu Retrato<br><span>Convertido en Magia</span></h1>
       <p>Mándame tu foto y la convierto en un cuadro diamond painting de fantasía único. Tu cara, tu signo, tu historia — en diamantes.</p>
       <div class="hero-btns">
@@ -233,7 +242,7 @@ footer a:hover{color:var(--gold2);}
 
   <!-- CÓMO FUNCIONA -->
   <section class="steps-section">
-    <h2 class="section-title">¿Cómo funciona?</h2>
+    <h2 class="section-title" data-i18n="per_como">¿Cómo funciona?</h2>
     <p class="section-sub">En 4 pasos sencillos tu foto se convierte en arte con diamantes</p>
     <div class="steps-grid">
       <div class="step-card">
@@ -261,7 +270,7 @@ footer a:hover{color:var(--gold2);}
 
   <!-- GALERÍA EJEMPLOS -->
   <section class="gallery-section" id="ejemplos">
-    <h2 class="section-title" style="margin-bottom:0.6rem;">Ejemplos reales</h2>
+    <h2 class="section-title" style="margin-bottom:0.6rem;" data-i18n="per_ejemplos">Ejemplos reales</h2>
     <p class="section-sub">Cada diseño es único — esto es lo que puedes conseguir</p>
     <div class="gallery-grid">
 
@@ -305,7 +314,7 @@ footer a:hover{color:var(--gold2);}
 
   <!-- FAQ -->
   <section class="faq-section">
-    <h2 class="section-title" style="margin-bottom:2rem;">Preguntas frecuentes</h2>
+    <h2 class="section-title" style="margin-bottom:2rem;" data-i18n="per_faq">Preguntas frecuentes</h2>
     <div class="faq-item">
       <h3>¿Cómo tengo que ser la foto que mande?</h3>
       <p>Preferiblemente una foto de cara o busto, bien iluminada y con buena resolución. Puedes mandar varias opciones y yo elijo la que mejor quede para el diseño.</p>
@@ -375,6 +384,7 @@ footer a:hover{color:var(--gold2);}
   });
 })();
 </script>
+<script src="i18n.js"></script>
 <script src="carrito.js"></script>
 </body>
 </html>

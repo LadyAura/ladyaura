@@ -643,6 +643,11 @@ footer a { color: var(--gold); text-decoration: none; }
 }
 
 </style>
+
+<style>
+.lang-btn.active { background: rgba(160,63,255,0.3) !important; border-color: rgba(160,63,255,0.7) !important; box-shadow: 0 0 10px rgba(160,63,255,0.4); }
+.lang-btn:hover { background: rgba(255,255,255,0.18) !important; transform: scale(1.1); }
+</style>
 </head>
 <body>
 
@@ -667,7 +672,11 @@ footer a { color: var(--gold); text-decoration: none; }
     <a href="tarot.html">🔮 Tarot</a>
     <a href="colorear.html">🎨 Colorear</a>
     <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">🛒<span class="cart-badge" style="display:none">0</span></a>
-  </nav>
+    <div class="lang-selector" id="lang-selector" style="display:flex;align-items:center;gap:0.3rem;margin-left:0.6rem;flex-shrink:0;">
+    <button class="lang-btn active" id="btn-es" onclick="setLang('es')" title="Español" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);cursor:pointer;font-size:1.4rem;opacity:1;padding:0.2rem 0.35rem;border-radius:8px;transition:all 0.2s;line-height:1;">🇪🇸</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')" title="English" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);cursor:pointer;font-size:1.4rem;opacity:1;padding:0.2rem 0.35rem;border-radius:8px;transition:all 0.2s;line-height:1;">🇬🇧</button>
+  </div>
+</nav>
 </header>
 
 <!-- HERO -->
@@ -1053,6 +1062,7 @@ if(mt&&nav){mt.addEventListener('click',function(){nav.classList.toggle('open');
   });
 })();
 </script>
+<script src="i18n.js"></script>
 <script src="carrito.js"></script>
 </body>
 </html>

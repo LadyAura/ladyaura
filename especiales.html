@@ -154,6 +154,11 @@ footer a:hover{color:var(--gold2);}
   .products-grid{grid-template-columns:1fr!important;}
 }
 </style>
+
+<style>
+.lang-btn.active { background: rgba(160,63,255,0.3) !important; border-color: rgba(160,63,255,0.7) !important; box-shadow: 0 0 10px rgba(160,63,255,0.4); }
+.lang-btn:hover { background: rgba(255,255,255,0.18) !important; transform: scale(1.1); }
+</style>
 </head>
 <body>
 <div id="stars" aria-hidden="true" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></div>
@@ -167,12 +172,16 @@ footer a:hover{color:var(--gold2);}
     <a href="zodiaco.html">♈ Zodíaco</a>
     <a href="parejas.html">💑 Parejas</a>
     <a href="paisajes.html">🏔️ Paisajes</a>
-    <a href="especiales.html">✨ Diseños exclusivos</a>
+    <a href="especiales.html" data-i18n="esp_title">✨ Diseños exclusivos</a>
     <a href="personalizados.html">🎨 Personalizados</a>
     <a href="tarot.html">🔮 Tarot</a>
     <a href="colorear.html">🎨 Colorear</a>
     <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">🛒<span class="cart-badge" style="display:none">0</span></a>
-  </nav>
+    <div class="lang-selector" id="lang-selector" style="display:flex;align-items:center;gap:0.3rem;margin-left:0.6rem;flex-shrink:0;">
+    <button class="lang-btn active" id="btn-es" onclick="setLang('es')" title="Español" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);cursor:pointer;font-size:1.4rem;opacity:1;padding:0.2rem 0.35rem;border-radius:8px;transition:all 0.2s;line-height:1;">🇪🇸</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')" title="English" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);cursor:pointer;font-size:1.4rem;opacity:1;padding:0.2rem 0.35rem;border-radius:8px;transition:all 0.2s;line-height:1;">🇬🇧</button>
+  </div>
+</nav>
 </header>
 <main style="position:relative;z-index:5;">
   <section class="col-hero">
@@ -777,7 +786,7 @@ footer a:hover{color:var(--gold2);}
     </div>
   </section>
     <section class="cta-section">
-    <h2>¿Te quedaste con dudas?</h2>
+    <h2 data-i18n="esp_dudas">¿Te quedaste con dudas?</h2>
     <p>Escríbeme directamente. Te cuento todo sobre los cuadros y la pre-reserva sin ningún compromiso.</p>
     <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Vengo%20de%20la%20colección%20Diseños%20exclusivos%20y%20quiero%20saber%20más" target="_blank" rel="noopener" class="btn-primary">💬 Hablar con Lady Aura</a>
     <a href="index.html" class="btn-secondary">← Volver al inicio</a>
@@ -803,16 +812,16 @@ footer a:hover{color:var(--gold2);}
       <img id="lbImg" src="" alt="" style="cursor:zoom-in;">
     </div>
     <div class="lb-body">
-      <span class="lb-eyebrow">✦ Diamond Painting Premium · Lady Aura Art ✦</span>
+      <span class="lb-eyebrow" data-i18n="esp_lb_eyebrow">✦ Diamond Painting Premium · Lady Aura Art ✦</span>
       <h2 class="lb-title" id="lbTitle"></h2>
       <span class="lb-orient" id="lbOrient"></span>
       <ul class="lb-includes">
-        <li>📐 Formato 60×90 cm</li>
-        <li>💎 Diamantes alta densidad</li>
-        <li>🎨 Lienzo de alta calidad premium</li>
-        <li>🛠️ Herramientas incluidas</li>
-        <li>📖 Instrucciones en español</li>
-        <li>✨ Diseño exclusivo Lady Aura</li>
+        <li data-i18n="esp_lb_formato">📐 Formato 60×90 cm</li>
+        <li data-i18n="esp_lb_diamantes">💎 Diamantes alta densidad</li>
+        <li data-i18n="esp_lb_lienzo">🎨 Lienzo de alta calidad premium</li>
+        <li data-i18n="esp_lb_herram">🛠️ Herramientas incluidas</li>
+        <li data-i18n="esp_lb_instruc">📖 Instrucciones en español</li>
+        <li data-i18n="esp_lb_diseno">✨ Diseño exclusivo Lady Aura</li>
       </ul>
       <div class="lb-price-row">
         <span class="lb-price">94 €</span>
@@ -866,6 +875,7 @@ document.addEventListener('keydown', function(e){
   });
 })();
 </script>
+<script src="i18n.js"></script>
 <script src="carrito.js"></script>
 </body>
 </html>
