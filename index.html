@@ -369,7 +369,7 @@
   .portal-cta-group { flex-direction: column; align-items: center; }
 }
 
-@media(max-width:768px){.header-button{display:none!important;}.lang-selector{display:none!important;}}
+@media(max-width:768px){.header-button{display:none!important;}}
 
 /* ── INDEX SIN BOTÓN MENÚ MÓVIL ── */
 @media(max-width:900px){
@@ -383,19 +383,24 @@
 <style>
 /* ── Selector de idioma ── */
 .lang-selector {
-  display: flex; align-items: center; gap: 0.25rem;
-  margin-left: 0.4rem;
+  display: flex; align-items: center; gap: 0.3rem;
+  margin-left: 0.6rem; flex-shrink: 0;
 }
 .lang-btn {
-  background: none; border: none; cursor: pointer;
-  font-size: 1.25rem; opacity: 0.45;
-  padding: 0.15rem 0.2rem; border-radius: 4px;
-  transition: opacity 0.2s, transform 0.15s;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  font-size: 1.4rem;
+  opacity: 1;
+  padding: 0.2rem 0.35rem;
+  border-radius: 8px;
+  transition: all 0.2s;
   line-height: 1;
+  display: inline-flex; align-items: center; justify-content: center;
 }
-.lang-btn:hover { opacity: 0.85; transform: scale(1.1); }
-.lang-btn.active { opacity: 1; transform: scale(1.12); filter: drop-shadow(0 0 4px rgba(255,255,255,0.4)); }
-@media(max-width:900px){ .lang-selector { display: none !important; } }
+.lang-btn:hover { background: rgba(255,255,255,0.18); transform: scale(1.1); border-color: rgba(255,255,255,0.4); }
+.lang-btn.active { background: rgba(160,63,255,0.3); border-color: rgba(160,63,255,0.7); box-shadow: 0 0 10px rgba(160,63,255,0.4); }
+
 </style>
 </head>
 <body>
