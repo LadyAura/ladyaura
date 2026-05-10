@@ -520,11 +520,6 @@ footer a:hover { color: var(--gold2); }
 
 @media(max-width:768px){.header-button{display:none!important;}}
 </style>
-
-<style>
-.lang-btn.active { background: rgba(160,63,255,0.3) !important; border-color: rgba(160,63,255,0.7) !important; box-shadow: 0 0 10px rgba(160,63,255,0.4); }
-.lang-btn:hover { background: rgba(255,255,255,0.18) !important; transform: scale(1.1); }
-</style>
 </head>
 <body>
 
@@ -538,34 +533,30 @@ footer a:hover { color: var(--gold2); }
   </a>
   <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
   <nav class="nav" id="nav" aria-label="Navegación principal">
-    <a href="index.html">Inicio</a>
-    <a href="zodiaco.html">♈ Zodíaco</a>
-    <a href="parejas.html">💑 Parejas</a>
-    <a href="paisajes.html">🏔️ Paisajes</a>
-    <a href="especiales.html">✨ Diseños exclusivos</a>
-    <a href="personalizados.html">🎨 Personalizados</a>
-    <a href="tarot.html">🔮 Tarot</a>
-    <a href="colorear.html">🎨 Colorear</a>
+    <a href="index.html" data-i18n="nav_inicio">Inicio</a>
+    <a href="zodiaco.html" data-i18n="nav_zodiaco">♈ Zodíaco</a>
+    <a href="parejas.html" data-i18n="nav_parejas">💑 Parejas</a>
+    <a href="paisajes.html" data-i18n="nav_paisajes">🏔️ Paisajes</a>
+    <a href="especiales.html" data-i18n="nav_especiales">✨ Diseños exclusivos</a>
+    <a href="personalizados.html" data-i18n="nav_personalizados">🎨 Personalizados</a>
+    <a href="tarot.html" data-i18n="nav_tarot">🔮 Tarot</a>
+    <a href="colorear.html" data-i18n="nav_colorear">🎨 Colorear</a>
     <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">🛒<span class="cart-badge" style="display:none">0</span></a>
-    <div class="lang-selector" id="lang-selector" style="display:flex;align-items:center;gap:0.3rem;margin-left:0.6rem;flex-shrink:0;">
-    <button class="lang-btn active" id="btn-es" onclick="setLang('es')" title="Español" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);cursor:pointer;font-size:1.4rem;opacity:1;padding:0.2rem 0.35rem;border-radius:8px;transition:all 0.2s;line-height:1;">🇪🇸</button>
-    <button class="lang-btn" id="btn-en" onclick="setLang('en')" title="English" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);cursor:pointer;font-size:1.4rem;opacity:1;padding:0.2rem 0.35rem;border-radius:8px;transition:all 0.2s;line-height:1;">🇬🇧</button>
-  </div>
-</nav>
+  </nav>
 </header>
 
 <main style="position:relative;z-index:5;">
 
   <!-- HERO -->
   <section class="hero">
-    <span class="hero-eyebrow">✦ Colección Zodíaco · Diamond Painting Premium ✦</span>
-    <h1>Tu Signo Convertido<br>en Arte con Diamantes</h1>
-    <p class="hero-sub">24 diseños exclusivos — 12 Diosas y 12 Retratos Celestiales. Cada signo, en su versión más mágica y brillante. Formato premium 60×90 cm.</p>
+    <span class="hero-eyebrow" data-i18n="zod_eyebrow">✦ Colección Zodíaco · Diamond Painting Premium ✦</span>
+    <h1 data-i18n="zod_title">Tu Signo Convertido<br>en Arte con Diamantes</h1>
+    <p class="hero-sub" data-i18n="zod_desc">24 diseños exclusivos — 12 Diosas y 12 Retratos Celestiales. Cada signo, en su versión más mágica y brillante. Formato premium 60×90 cm.</p>
     <div class="hero-badges">
-      <span class="badge gold">✦ 24 diseños disponibles</span>
-      <span class="badge">💎 60×90 cm premium</span>
-      <span class="badge gold">✦ Pre-reserva gratis</span>
-      <span class="badge">🚀 Nunca se agotan</span>
+      <span class="badge gold" data-i18n="zod_badge1">✦ 24 diseños disponibles</span>
+      <span class="badge" data-i18n="zod_badge2">💎 60×90 cm premium</span>
+      <span class="badge gold" data-i18n="zod_badge3">✦ Pre-reserva gratis</span>
+      <span class="badge" data-i18n="zod_badge4">🚀 Nunca se agotan</span>
     </div>
   </section>
 
@@ -574,22 +565,22 @@ footer a:hover { color: var(--gold2); }
     <div class="ps-item">
       <span class="ps-icon">💎</span>
       <span class="ps-label">94 €</span>
-      <span class="ps-sub">Sin pago previo</span>
+      <span class="ps-sub" data-i18n="strip_sinpago">Sin pago previo</span>
     </div>
     <div class="ps-item">
       <span class="ps-icon">📐</span>
       <span class="ps-label">60 × 90 cm</span>
-      <span class="ps-sub">Formato grande premium</span>
+      <span class="ps-sub" data-i18n="strip_formato_sub">Formato grande premium</span>
     </div>
     <div class="ps-item">
       <span class="ps-icon">🛠️</span>
-      <span class="ps-label">Kit completo</span>
-      <span class="ps-sub">Diamantes + lienzo + herramientas</span>
+      <span class="ps-label" data-i18n="strip_kit">Kit completo</span>
+      <span class="ps-sub" data-i18n="strip_kit_sub">Diamantes + lienzo + herramientas</span>
     </div>
     <div class="ps-item">
       <span class="ps-icon">🚀</span>
-      <span class="ps-label">Nunca se agotan</span>
-      <span class="ps-sub">Tu signo siempre disponible</span>
+      <span class="ps-label" data-i18n="zod_strip_nunca">Nunca se agotan</span>
+      <span class="ps-sub" data-i18n="zod_strip_nunca_sub">Tu signo siempre disponible</span>
     </div>
   </div>
 
@@ -597,7 +588,7 @@ footer a:hover { color: var(--gold2); }
   <section class="col-section" id="zodiaco">
     <div class="col-header">
       <h2 data-i18n="zod_sub">Los 12 Signos del Zodíaco</h2>
-      <p>Cada signo en su versión femenina y masculina. Pincha en el diseño que quieras para ver más detalles y reservar.</p>
+      <p data-i18n="zod_desc2">Cada signo en su versión femenina y masculina. Pincha en el diseño que quieras para ver más detalles y reservar.</p>
     </div>
   </section>
   <div class="pairs-container" id="pairs-container"></div>
@@ -605,9 +596,9 @@ footer a:hover { color: var(--gold2); }
   <!-- CTA -->
   <section class="cta-section">
     <h2>¿No encuentras tu signo?<br>Escríbeme directamente</h2>
-    <p>Todos los signos están siempre disponibles. Si tienes alguna duda o quieres saber más antes de reservar, estoy aquí.</p>
-    <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Vengo%20de%20la%20colección%20Zodíaco%20y%20quiero%20saber%20más" target="_blank" rel="noopener" class="btn-primary">💬 Hablar con Lady Aura</a>
-    <a href="index.html" class="btn-secondary">← Volver al inicio</a>
+    <p data-i18n="zod_nosigno_sub">Todos los signos están siempre disponibles. Si tienes alguna duda o quieres saber más antes de reservar, estoy aquí.</p>
+    <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Vengo%20de%20la%20colección%20Zodíaco%20y%20quiero%20saber%20más" target="_blank" rel="noopener" class="btn-primary" data-i18n="zod_wa">💬 Hablar con Lady Aura</a>
+    <a href="index.html" class="btn-secondary" data-i18n="zod_back">← Volver al inicio</a>
   </section>
 
   <!-- NAV COLECCIONES -->
@@ -642,12 +633,12 @@ footer a:hover { color: var(--gold2); }
       <span class="lb-version" id="lbVersion"></span>
       <p class="lb-desc" id="lbDesc"></p>
       <ul class="lb-includes">
-        <li>📐 Formato 60×90 cm</li>
-        <li>💎 Diamantes alta densidad</li>
-        <li>🎨 Lienzo de alta calidad premium</li>
-        <li>🛠️ Herramientas incluidas</li>
-        <li>📖 Instrucciones en español</li>
-        <li>✨ Diseño exclusivo Lady Aura</li>
+        <li data-i18n="lb_formato">📐 Formato 60×90 cm</li>
+        <li data-i18n="lb_diamantes">💎 Diamantes alta densidad</li>
+        <li data-i18n="lb_lienzo">🎨 Lienzo de alta calidad premium</li>
+        <li data-i18n="lb_herram">🛠️ Herramientas incluidas</li>
+        <li data-i18n="lb_instruc">📖 Instrucciones en español</li>
+        <li data-i18n="lb_diseno">✨ Diseño exclusivo Lady Aura</li>
       </ul>
       <div class="lb-price-row">
         <span class="lb-price">94 €</span>
@@ -835,7 +826,6 @@ document.addEventListener('keydown', function(e){
   });
 })();
 </script>
-<script src="i18n.js"></script>
 <script src="carrito.js"></script>
 </body>
 </html>
