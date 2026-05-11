@@ -7,14 +7,14 @@
   --panel-soft:    rgba(24, 12, 36, 0.88);
   --panel-card:    rgba(15, 8, 27, 0.75);
   --text:          #fff4ff;
-  --muted:         #f3e6ff;
+  --muted:         #e8d4f4;
   --pink:          #f0a3ff;
   --purple-deep:   #7c35db;
   --purple-mid:    #a03fff;
   --gold:          #ffd98a;
   --rose:          #ff7beb;
   --border:        rgba(240, 163, 255, 0.36);
-  --border-soft:   rgba(240, 163, 255, 0.28);
+  --border-soft:   rgba(240, 163, 255, 0.18);
   --shadow:        0 0 30px rgba(182, 82, 255, 0.32);
   --shadow-strong: 0 0 45px rgba(237, 147, 255, 0.45);
   --radius:        22px;
@@ -462,7 +462,7 @@ p { color: var(--muted); line-height: 1.6; margin: .4rem 0; }
   color: var(--bg); border-radius: 50%; font-size: .95rem; font-weight: bold;
   z-index: 2; box-shadow: 0 4px 12px rgba(255,217,138,.5);
 }
-.scroll-hint { text-align: center; font-style: italic; color: #f4e6ff; font-size: .86rem; opacity: 1; margin-top: .3rem; }
+.scroll-hint { text-align: center; font-style: italic; color: var(--muted); font-size: .86rem; opacity: 0.9; margin-top: .3rem; }
 .scroll-hint span { display: inline-block; animation: swipe 2s ease-in-out infinite; }
 @keyframes swipe { 0%,100%{transform:translateX(0)} 50%{transform:translateX(7px)} }
 
@@ -502,7 +502,7 @@ p { color: var(--muted); line-height: 1.6; margin: .4rem 0; }
 .collection-separator-line { flex: 1; height: 1px; background: var(--border-soft); }
 .collection-separator-label {
   font-family: "Cinzel", serif; font-size: .63rem; letter-spacing: .18em;
-  text-transform: uppercase; color: var(--gold); opacity: 1;
+  text-transform: uppercase; color: var(--gold); opacity: .88;
   white-space: nowrap; padding: 0 .35rem;
 }
 
@@ -608,8 +608,8 @@ p { color: var(--muted); line-height: 1.6; margin: .4rem 0; }
   color: var(--gold); font-family: "Cormorant Garamond", serif; line-height: 1;
 }
 .product-price-old {
-  font-size: 1rem; color: #f1dcff; text-decoration: line-through;
-  text-decoration-color: rgba(240,163,255,.85); opacity: .9;
+  font-size: 1rem; color: var(--muted); text-decoration: line-through;
+  text-decoration-color: rgba(240,163,255,.5); opacity: .65;
 }
 .product-actions { margin-top: auto; padding-top: .38rem; display: flex; gap: .4rem; flex-wrap: wrap; }
 .mini-btn { padding: .55rem .85rem; font-size: .75rem; flex: 1; min-width: 110px; letter-spacing: .07em; }
@@ -701,7 +701,7 @@ p { color: var(--muted); line-height: 1.6; margin: .4rem 0; }
 .final-cta h2 { font-size: clamp(1.7rem, 4vw, 3.2rem); max-width: 700px; margin: 0 auto .8rem; }
 .final-lead { font-size: 1.05rem; max-width: 560px; margin: 0 auto 2rem; color: var(--muted); line-height: 1.65; }
 .cta-buttons { display: flex; justify-content: center; gap: .9rem; flex-wrap: wrap; margin-bottom: 1.1rem; }
-.final-microcopy { color: #f4e6ff; font-size: .8rem; font-style: italic; opacity: 1; }
+.final-microcopy { color: var(--muted); font-size: .8rem; font-style: italic; opacity: 0.9; }
 
 /* ════════════════════════════════════
    CLIENTES
@@ -745,7 +745,7 @@ p { color: var(--muted); line-height: 1.6; margin: .4rem 0; }
 footer { text-align: center; padding: 1.3rem; border-top: 1px solid var(--border-soft); background: rgba(3,3,10,.85); }
 footer p { margin: 0; font-size: .88rem; }
 .seo-footer { padding: 1.8rem 8%; background: rgba(3,3,10,.96); border-top: 1px solid var(--border-soft); }
-.seo-footer p { max-width: 940px; margin: 0 auto; font-size: .78rem; color: rgba(245,230,255,0.96); line-height: 1.8; text-align: center; }
+.seo-footer p { max-width: 940px; margin: 0 auto; font-size: .78rem; color: rgba(216,190,232,0.88); line-height: 1.8; text-align: center; }
 
 /* ════════════════════════════════════
    LIGHTBOX (continuación)
@@ -881,7 +881,7 @@ footer p { margin: 0; font-size: .88rem; }
   display: flex; flex-direction: column; align-items: center; gap: .5rem;
   padding: 1.2rem 2rem; border-radius: 999px; border: 1px solid rgba(196,181,253,.25);
   cursor: pointer; font-family: "Cinzel", serif; font-size: .85rem; letter-spacing: .1em;
-  color: rgba(255,246,255,.96); font-weight: 600; min-width: 110px;
+  color: rgba(240,230,255,.85); font-weight: 600; min-width: 110px;
   background: rgba(30,10,60,.45); backdrop-filter: blur(12px);
   transition: all .3s; box-shadow: 0 4px 20px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.06);
 }
@@ -994,7 +994,7 @@ footer p { margin: 0; font-size: .88rem; }
 }
 .tarot-card-label {
   font-family: "Cinzel", serif; font-size: .65rem; letter-spacing: .14em;
-  text-transform: uppercase; color: rgba(225,214,255,.92); margin-bottom: .2rem;
+  text-transform: uppercase; color: rgba(196,181,253,.5); margin-bottom: .2rem;
 }
 .tarot-card-name-text {
   font-family: "Cinzel", serif; font-size: .82rem; color: #d4b8ff;
@@ -1009,7 +1009,7 @@ footer p { margin: 0; font-size: .88rem; }
 .tarot-card-meaning.tarot-meaning-visible { display: block; }
 
 .tarot-disclaimer {
-  text-align: center; font-size: .82rem; color: rgba(225,210,255,.88);
+  text-align: center; font-size: .82rem; color: rgba(180,160,220,.45);
   font-style: italic; padding: 1rem 0 .5rem;
 }
 
@@ -1069,55 +1069,14 @@ footer p { margin: 0; font-size: .88rem; }
   text-shadow: 0 0 20px rgba(167,139,250,.8);
 }
 .sold-out-sub {
-  font-size: .72rem; color: rgba(225,214,255,.9);
+  font-size: .72rem; color: rgba(196,181,253,.55);
   font-style: italic; letter-spacing: .06em; margin-top: .2rem;
 }
 .sold-out-notice {
   font-family: "Cinzel", serif; font-size: .72rem; letter-spacing: .12em;
-  color: rgba(225,214,255,.9); text-align: center;
+  color: rgba(196,181,253,.5); text-align: center;
   margin-top: .4rem; font-style: italic;
 }
-
-/* ═══════════════════════════════════════
-   MEJORA DE LEGIBILIDAD — textos menos transparentes
-═══════════════════════════════════════ */
-.hero .hero-text,
-.hero-bullets li,
-.hero-microcopy,
-.shop-strip span,
-.t-text span,
-.diff-list p,
-.price-includes-grid li,
-.price-text-new p,
-.price-label,
-.price-checklist li,
-.fomo-card p,
-.scar-card p,
-.product-size,
-.contact-card small,
-.faq-a,
-.lightbox-prelaunch,
-.tarot-card-meaning {
-  color: #f3e6ff;
-}
-
-.kicker,
-.section-tag,
-.zodiac-subtitle,
-.price-badge,
-.price-tag-label {
-  text-shadow: 0 0 8px rgba(0,0,0,.65);
-}
-
-.product-info,
-.faq-item,
-.contact-card,
-.step-card,
-.price-card-new,
-.art-card {
-  background-color: rgba(15, 8, 27, 0.88);
-}
-
 
 
 /* ── PAGINACIÓN ── */
@@ -1125,196 +1084,42 @@ footer p { margin: 0; font-size: .88rem; }
 .page-btn { font-family:'Cinzel',serif; font-size:0.82rem; color:var(--gold,#c9a84c); background:rgba(20,10,40,0.7); border:1px solid rgba(160,63,255,0.25); border-radius:8px; padding:0.45rem 0.85rem; cursor:pointer; transition:all 0.2s; min-width:38px; text-align:center; }
 .page-btn:hover { border-color:var(--gold,#c9a84c); color:#fff; }
 .page-btn.active { background:rgba(160,63,255,0.35); border-color:var(--gold,#c9a84c); color:#fff; font-weight:700; }
-.page-btn.disabled { opacity:0.55; cursor:default; pointer-events:none; }
+.page-btn.disabled { opacity:0.3; cursor:default; pointer-events:none; }
+
 
 /* ═══════════════════════════════════════
-   MEJORA FINAL DE LECTURA — textos más grandes en web y móvil
-   Añadido para que explicaciones, tarot y textos pequeños se lean mejor
+   REFUERZO GLOBAL DE LEGIBILIDAD — textos pequeños
 ═══════════════════════════════════════ */
-
-/* Base un poco más cómoda */
-body {
-  font-size: 19px;
+:root {
+  --muted: #f4e8ff;
+  --border-soft: rgba(240, 163, 255, 0.34);
 }
-
-/* Textos normales de secciones */
-p,
-.hero .hero-text,
-.price-text-new p,
-.price-right p,
-.brand-story-text p,
-.final-lead,
-.community-cta p {
-  font-size: 1.08rem;
-  line-height: 1.72;
+body { font-size: 19px; }
+p, li, small, .hero .hero-text, .hero-bullets li, .hero-microcopy,
+.shop-strip span, .t-text span, .diff-list p, .price-includes-grid li,
+.price-text-new p, .price-label, .price-checklist li, .fomo-card p,
+.scar-card p, .product-size, .contact-card small, .faq-a,
+.lightbox-prelaunch, .tarot-card-meaning, .tarot-disclaimer,
+.final-microcopy, .seo-footer p {
+  color: #f4e8ff !important;
+  opacity: 1 !important;
+  line-height: 1.65 !important;
 }
-
-/* Textos pequeños que antes se veían demasiado finos */
-.hero-bullets li,
-.hero-microcopy,
-.shop-strip span,
-.t-text span,
-.diff-list p,
-.price-includes-grid li,
-.price-label,
-.price-checklist li,
-.fomo-card p,
-.scar-card p,
-.product-size,
-.contact-card small,
-.faq-a,
-.lightbox-prelaunch,
-.scroll-hint,
-.final-microcopy,
-.seo-footer p,
-.sold-out-sub,
-.sold-out-notice {
-  font-size: 0.98rem;
-  line-height: 1.65;
+.product-size, .faq-a, .lightbox-prelaunch, .tarot-card-meaning,
+.tarot-disclaimer, .seo-footer p, .hero-microcopy, .price-label,
+.price-checklist li, .price-includes-grid li {
+  font-size: 1rem !important;
 }
-
-/* Títulos pequeños y etiquetas */
-.kicker,
-.section-tag,
-.zodiac-subtitle,
-.collection-separator-label,
-.price-badge,
-.price-tag-label,
-.faq-q,
-.t-text strong,
-.fomo-card strong,
-.scar-card strong,
-.step-card h3,
-.tarot-card-label,
-.tarot-card-name-text {
-  font-size: 0.92rem;
-  line-height: 1.45;
+.mini-btn, .btn, .page-btn, .section-tag, .kicker, .price-badge,
+.price-tag-label, .collection-separator-label, .orient-tag, .badge-new,
+.sale-ribbon, .tarot-btn, .tarot-card-label, .tarot-card-name-text {
+  opacity: 1 !important;
 }
-
-/* Botones más legibles */
-.btn,
-.header-button,
-.tarot-btn,
-.mini-btn,
-.page-btn,
-.tarot-close-btn {
-  font-size: 0.95rem;
-}
-
-/* Tarot: explicaciones claramente más grandes */
-.tarot-card-meaning {
-  font-size: 1rem;
-  line-height: 1.72;
-  padding: .75rem .9rem;
-}
-
-.tarot-disclaimer {
-  font-size: 0.96rem;
-  line-height: 1.6;
-}
-
-.tarot-reading-title {
-  font-size: clamp(1.7rem, 4vw, 2.45rem);
-}
-
-/* Contacto y productos */
-.contact-card h3,
-.art-card h3,
-.client-placeholder strong {
-  font-size: 1.22rem;
-}
-
-/* Lightbox: cuando se abre una imagen/producto */
-.lightbox-caption p {
-  font-size: 1.32rem;
-  line-height: 1.55;
-}
-
-/* Móvil: todavía más cómodo, porque ahí se pierde legibilidad */
-@media (max-width: 600px) {
-  body {
-    font-size: 18px;
-  }
-
-  p,
-  .hero .hero-text,
-  .price-text-new p,
-  .price-right p,
-  .brand-story-text p,
-  .final-lead,
-  .community-cta p {
-    font-size: 1.05rem;
-    line-height: 1.7;
-  }
-
-  .hero-bullets li,
-  .hero-microcopy,
-  .shop-strip span,
-  .t-text span,
-  .diff-list p,
-  .price-includes-grid li,
-  .price-label,
-  .price-checklist li,
-  .fomo-card p,
-  .scar-card p,
-  .product-size,
-  .contact-card small,
-  .faq-a,
-  .lightbox-prelaunch,
-  .scroll-hint,
-  .final-microcopy,
-  .seo-footer p,
-  .sold-out-sub,
-  .sold-out-notice {
-    font-size: 1rem;
-    line-height: 1.68;
-  }
-
-  .kicker,
-  .section-tag,
-  .zodiac-subtitle,
-  .collection-separator-label,
-  .price-badge,
-  .price-tag-label,
-  .faq-q,
-  .t-text strong,
-  .fomo-card strong,
-  .scar-card strong,
-  .step-card h3,
-  .tarot-card-label,
-  .tarot-card-name-text {
-    font-size: 0.9rem;
-  }
-
-  .btn,
-  .header-button,
-  .tarot-btn,
-  .mini-btn,
-  .page-btn,
-  .tarot-close-btn {
-    font-size: 0.92rem;
-  }
-
-  .tarot-card-meaning {
-    font-size: 1.05rem;
-    line-height: 1.75;
-  }
-
-  .tarot-disclaimer {
-    font-size: 1rem;
-  }
-}
-
-/* Móvil muy pequeño: evitar que se vea mini */
-@media (max-width: 380px) {
-  body {
-    font-size: 17px;
-  }
-
-  .tarot-card-meaning,
-  .faq-a,
-  .lightbox-prelaunch,
-  .seo-footer p {
-    font-size: 1rem;
-  }
+.tarot-card-label { font-size: 0.88rem !important; }
+.tarot-card-name-text { font-size: 1rem !important; }
+.tarot-card-meaning { font-size: 1.02rem !important; padding: .8rem .95rem !important; }
+@media (max-width: 700px) {
+  body { font-size: 18px; }
+  p, li, small, .faq-a, .tarot-card-meaning, .tarot-disclaimer,
+  .product-size, .hero-microcopy, .seo-footer p { font-size: 1rem !important; }
 }

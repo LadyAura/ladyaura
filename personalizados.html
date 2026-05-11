@@ -151,6 +151,213 @@ footer a:hover{color:var(--gold2);}
   .hero-btns{flex-direction:column;align-items:center;}
   .collections-nav{padding:2rem 5%;}
 }
+
+
+/* ═══════════════════════════════════════
+   LEGIBILIDAD GLOBAL LADY AURA — textos más grandes y visibles
+   Añadido para que los textos pequeños del HTML inline también se vean bien
+═══════════════════════════════════════ */
+:root {
+  --muted: #f4e8ff !important;
+  --text: #fff7ff !important;
+  --white: #fff7ff !important;
+}
+
+body {
+  font-size: 19px !important;
+}
+
+p,
+li,
+small,
+.page-hero p,
+.col-hero p,
+.hero-sub,
+.tirada-sub,
+.tirada-desc,
+.card-desc,
+.product-desc,
+.product-size,
+.reserve-hint,
+.ps-sub,
+.so-sub,
+.sold-notice,
+.ts-text span,
+.faq-a,
+.faq-answer,
+.faq-item p,
+.modal-desc,
+.modal-incluye li,
+.modal-nota,
+.lb-includes li,
+.lb-price-note,
+.lightbox-prelaunch,
+.aviso-digital p,
+.lamina-precio .aviso,
+.tarot-card-meaning,
+.tarot-disclaimer,
+.tarot-card-label,
+.tarot-card-name-text,
+.reading-text,
+.result-text,
+.explanation,
+.help-text,
+.empty-state p,
+#orders-empty p,
+.cart-note,
+.cart-item-meta,
+.order-meta,
+.payment-note,
+.final-microcopy,
+.seo-footer p {
+  color: #f4e8ff !important;
+  opacity: 1 !important;
+  line-height: 1.65 !important;
+}
+
+/* Textos explicativos pequeños */
+.tirada-desc,
+.tirada-sub,
+.tarot-card-meaning,
+.tarot-disclaimer,
+.faq-a,
+.faq-answer,
+.modal-desc,
+.modal-incluye li,
+.modal-nota,
+.lb-includes li,
+.lb-price-note,
+.ps-sub,
+.reserve-hint,
+.sold-notice,
+.so-sub,
+.product-size,
+.page-hero p,
+.col-hero p,
+.hero-sub,
+.aviso-digital p,
+.lamina-precio .aviso,
+#orders-empty p,
+.seo-footer p {
+  font-size: 1rem !important;
+}
+
+/* Etiquetas y navegación pequeñas: suben sin romper diseño */
+.back-bar a,
+.page-topbar a,
+.site-header .nav a,
+.header-links a,
+.col-link,
+.lb-btn,
+.btn-secondary,
+.btn-primary,
+.btn-shop,
+.btn-draw,
+.tarot-btn,
+.page-hero .eyebrow,
+.col-hero-eyebrow,
+.tarot-badge,
+.tirada-count,
+.orient-badge,
+.lb-eyebrow,
+.modal-signo,
+.ps-label,
+.card-price,
+.reserve-hint,
+.product-price-old,
+.page-btn {
+  font-size: max(0.9rem, 15px) !important;
+  opacity: 1 !important;
+}
+
+/* Tarot: prioridad máxima porque era lo más pequeño */
+.tarot-card-label {
+  font-size: 0.88rem !important;
+  letter-spacing: 0.11em !important;
+}
+.tarot-card-name-text {
+  font-size: 1rem !important;
+}
+.tarot-card-meaning {
+  font-size: 1.02rem !important;
+  padding: 0.8rem 0.95rem !important;
+  background: rgba(255,255,255,0.07) !important;
+  border-color: rgba(225,214,255,0.28) !important;
+}
+.tarot-disclaimer {
+  font-size: 0.98rem !important;
+}
+
+/* Cards y modales: mejora lectura sobre fondos oscuros */
+.product-card,
+.card-info,
+.tirada-card,
+.faq-item,
+.modal-card,
+.lightbox-card,
+.tarot-reading,
+.order-card,
+.cart-card,
+.payment-card,
+.summary-card {
+  background-color: rgba(15, 8, 27, 0.92) !important;
+}
+
+/* Móvil: mínimo legible real */
+@media (max-width: 700px) {
+  body { font-size: 18px !important; }
+  p,
+  li,
+  small,
+  .page-hero p,
+  .col-hero p,
+  .hero-sub,
+  .tirada-sub,
+  .tirada-desc,
+  .product-size,
+  .reserve-hint,
+  .ps-sub,
+  .so-sub,
+  .sold-notice,
+  .faq-a,
+  .faq-answer,
+  .modal-desc,
+  .modal-incluye li,
+  .modal-nota,
+  .lb-includes li,
+  .lb-price-note,
+  .tarot-card-meaning,
+  .tarot-disclaimer,
+  #orders-empty p,
+  .seo-footer p {
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
+  }
+
+  .back-bar a,
+  .page-topbar a,
+  .site-header .nav a,
+  .header-links a,
+  .col-link,
+  .lb-btn,
+  .btn-secondary,
+  .btn-primary,
+  .btn-shop,
+  .btn-draw,
+  .tarot-btn,
+  .page-hero .eyebrow,
+  .col-hero-eyebrow,
+  .tarot-badge,
+  .tirada-count,
+  .orient-badge,
+  .lb-eyebrow,
+  .modal-signo,
+  .ps-label,
+  .page-btn {
+    font-size: 0.92rem !important;
+  }
+}
+
 </style>
 </head>
 <body>
