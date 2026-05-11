@@ -1126,3 +1126,195 @@ footer p { margin: 0; font-size: .88rem; }
 .page-btn:hover { border-color:var(--gold,#c9a84c); color:#fff; }
 .page-btn.active { background:rgba(160,63,255,0.35); border-color:var(--gold,#c9a84c); color:#fff; font-weight:700; }
 .page-btn.disabled { opacity:0.55; cursor:default; pointer-events:none; }
+
+/* ═══════════════════════════════════════
+   MEJORA FINAL DE LECTURA — textos más grandes en web y móvil
+   Añadido para que explicaciones, tarot y textos pequeños se lean mejor
+═══════════════════════════════════════ */
+
+/* Base un poco más cómoda */
+body {
+  font-size: 19px;
+}
+
+/* Textos normales de secciones */
+p,
+.hero .hero-text,
+.price-text-new p,
+.price-right p,
+.brand-story-text p,
+.final-lead,
+.community-cta p {
+  font-size: 1.08rem;
+  line-height: 1.72;
+}
+
+/* Textos pequeños que antes se veían demasiado finos */
+.hero-bullets li,
+.hero-microcopy,
+.shop-strip span,
+.t-text span,
+.diff-list p,
+.price-includes-grid li,
+.price-label,
+.price-checklist li,
+.fomo-card p,
+.scar-card p,
+.product-size,
+.contact-card small,
+.faq-a,
+.lightbox-prelaunch,
+.scroll-hint,
+.final-microcopy,
+.seo-footer p,
+.sold-out-sub,
+.sold-out-notice {
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+/* Títulos pequeños y etiquetas */
+.kicker,
+.section-tag,
+.zodiac-subtitle,
+.collection-separator-label,
+.price-badge,
+.price-tag-label,
+.faq-q,
+.t-text strong,
+.fomo-card strong,
+.scar-card strong,
+.step-card h3,
+.tarot-card-label,
+.tarot-card-name-text {
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+/* Botones más legibles */
+.btn,
+.header-button,
+.tarot-btn,
+.mini-btn,
+.page-btn,
+.tarot-close-btn {
+  font-size: 0.95rem;
+}
+
+/* Tarot: explicaciones claramente más grandes */
+.tarot-card-meaning {
+  font-size: 1rem;
+  line-height: 1.72;
+  padding: .75rem .9rem;
+}
+
+.tarot-disclaimer {
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+.tarot-reading-title {
+  font-size: clamp(1.7rem, 4vw, 2.45rem);
+}
+
+/* Contacto y productos */
+.contact-card h3,
+.art-card h3,
+.client-placeholder strong {
+  font-size: 1.22rem;
+}
+
+/* Lightbox: cuando se abre una imagen/producto */
+.lightbox-caption p {
+  font-size: 1.32rem;
+  line-height: 1.55;
+}
+
+/* Móvil: todavía más cómodo, porque ahí se pierde legibilidad */
+@media (max-width: 600px) {
+  body {
+    font-size: 18px;
+  }
+
+  p,
+  .hero .hero-text,
+  .price-text-new p,
+  .price-right p,
+  .brand-story-text p,
+  .final-lead,
+  .community-cta p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .hero-bullets li,
+  .hero-microcopy,
+  .shop-strip span,
+  .t-text span,
+  .diff-list p,
+  .price-includes-grid li,
+  .price-label,
+  .price-checklist li,
+  .fomo-card p,
+  .scar-card p,
+  .product-size,
+  .contact-card small,
+  .faq-a,
+  .lightbox-prelaunch,
+  .scroll-hint,
+  .final-microcopy,
+  .seo-footer p,
+  .sold-out-sub,
+  .sold-out-notice {
+    font-size: 1rem;
+    line-height: 1.68;
+  }
+
+  .kicker,
+  .section-tag,
+  .zodiac-subtitle,
+  .collection-separator-label,
+  .price-badge,
+  .price-tag-label,
+  .faq-q,
+  .t-text strong,
+  .fomo-card strong,
+  .scar-card strong,
+  .step-card h3,
+  .tarot-card-label,
+  .tarot-card-name-text {
+    font-size: 0.9rem;
+  }
+
+  .btn,
+  .header-button,
+  .tarot-btn,
+  .mini-btn,
+  .page-btn,
+  .tarot-close-btn {
+    font-size: 0.92rem;
+  }
+
+  .tarot-card-meaning {
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .tarot-disclaimer {
+    font-size: 1rem;
+  }
+}
+
+/* Móvil muy pequeño: evitar que se vea mini */
+@media (max-width: 380px) {
+  body {
+    font-size: 17px;
+  }
+
+  .tarot-card-meaning,
+  .faq-a,
+  .lightbox-prelaunch,
+  .seo-footer p {
+    font-size: 1rem;
+  }
+}
