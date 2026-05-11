@@ -1000,8 +1000,8 @@ small,
 const CART_KEY = 'ladyaura_cart';
 
 /* ── CUPÓN ── */
-const COUPON_CODE       = 'LADYAURA10';
-const COUPON_DISCOUNT   = 10;
+const COUPON_CODE       = 'LADYAURA5';
+const COUPON_DISCOUNT   = 5;
 const COUPON_APPLIED_KEY = 'ladyAuraCouponApplied';
 const COUPON_USED_KEY   = 'ladyAuraCouponUsed';
 
@@ -1031,7 +1031,7 @@ function applyCoupon() {
     msg.className = 'coupon-msg ok'; return;
   }
   localStorage.setItem(COUPON_APPLIED_KEY, COUPON_CODE);
-  msg.textContent = 'Cupón de bienvenida aplicado: -10 €';
+  msg.textContent = 'Cupón de bienvenida aplicado: -5 €';
   msg.className = 'coupon-msg ok';
   renderCart();
 }
@@ -1129,7 +1129,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
     notas:     document.getElementById('f-notas').value,
     pedido:    items.map(i => `${i.nombre} · ${i.precio}€`).join(' | '),
     subtotal:  subtotalPedido + ' €',
-    cupon:     couponApplied ? 'LADYAURA10 · -' + discountPedido + ' €' : 'Ninguno',
+    cupon:     couponApplied ? 'LADYAURA5 · -' + discountPedido + ' €' : 'Ninguno',
     total:     totalPedido + ' €',
     metodo_pago: 'Pendiente de pago: Bizum o PayPal',
     bizum: '621 355 638',
