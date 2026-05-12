@@ -87,6 +87,104 @@
 .nedeka-coupon-banner strong{color:var(--gold);font-family:"Cinzel",serif;letter-spacing:.08em}
 @media(max-width:760px){.nedeka-products{padding:1rem 5% 4rem}.nedeka-products-grid{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.9rem}.nedeka-products .card-info{padding:.85rem}.nedeka-products .card-info h3{font-size:.88rem}}
 
+
+/* ── Hover scale cards ── */
+.nedeka-products .product-card { cursor: pointer; }
+.nedeka-products .card-img-wrap img { transition: transform .38s cubic-bezier(.23,1,.32,1); }
+.nedeka-products .product-card:hover .card-img-wrap img { transform: scale(1.07); }
+
+/* ── Lightbox NEDEKA (mismo sistema que Zodíaco) ── */
+.lb {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: rgba(3,2,10,0.94); backdrop-filter: blur(10px);
+  align-items: center; justify-content: center; padding: 1.5rem;
+}
+.lb.open { display: flex; animation: lbFadeN 0.25s ease; }
+@keyframes lbFadeN { from { opacity:0 } to { opacity:1 } }
+.lb-card {
+  background: rgba(10,5,22,0.99);
+  border: 1px solid rgba(160,63,255,0.4);
+  border-radius: 28px; overflow: hidden;
+  display: flex; max-width: 880px; width: 100%;
+  box-shadow: 0 0 100px rgba(160,63,255,0.3);
+  animation: lbSlideN 0.3s cubic-bezier(0.23,1,0.32,1);
+  position: relative;
+}
+@keyframes lbSlideN { from { transform:scale(0.94);opacity:0 } to { transform:scale(1);opacity:1 } }
+.lb-img { width: 42%; flex-shrink: 0; overflow: hidden; }
+.lb-img img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
+.lb-body {
+  flex: 1; padding: 2.5rem 2rem;
+  display: flex; flex-direction: column; gap: 1rem;
+  justify-content: center; overflow-y: auto;
+}
+.lb-eyebrow {
+  font-family: 'Cinzel', serif; font-size: 0.7rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(201,168,76,0.6);
+}
+.lb-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: #fff; line-height: 1.2; margin: 0;
+}
+.lb-version {
+  display: inline-block; padding: 3px 14px;
+  background: rgba(160,63,255,0.2);
+  border: 1px solid rgba(160,63,255,0.4);
+  border-radius: 999px;
+  font-family: 'Cinzel', serif; font-size: 0.72rem;
+  color: #c084fc; letter-spacing: 0.1em; width: fit-content;
+}
+.lb-desc { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.7; margin: 0; }
+.lb-includes {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0.4rem; list-style: none; padding: 0; margin: 0;
+}
+.lb-includes li { font-size: 0.82rem; color: rgba(255,255,255,0.55); }
+.lb-price-row {
+  display: flex; align-items: baseline; gap: 0.8rem;
+  padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.08);
+}
+.lb-price {
+  font-family: 'Cinzel', serif; font-size: 2.2rem; color: #c9a84c;
+  text-shadow: 0 0 20px rgba(201,168,76,0.3);
+}
+.lb-price-note { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+.lb-btns { display: flex; flex-direction: column; gap: 0.7rem; }
+.lb-btn {
+  padding: 0.85rem 1.5rem; border-radius: 999px;
+  font-family: 'Cinzel', serif; font-size: 0.82rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; text-align: center;
+  transition: all 0.25s; border: none; cursor: pointer; display: block;
+}
+.lb-btn.wa {
+  background: linear-gradient(135deg,rgba(160,63,255,0.9),rgba(255,72,137,0.85));
+  color: #fff; box-shadow: 0 0 25px rgba(160,63,255,0.35);
+}
+.lb-btn.wa:hover { box-shadow: 0 0 45px rgba(160,63,255,0.65); transform: translateY(-2px); }
+.lb-btn.em {
+  background: transparent; color: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+.lb-btn.em:hover { border-color: #c9a84c; color: #c9a84c; }
+.lb-close {
+  position: absolute; top: 1rem; right: 1rem;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 999px; color: rgba(255,255,255,0.5);
+  font-size: 1.2rem; width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.2s;
+}
+.lb-close:hover { background: rgba(255,72,137,0.3); color: #fff; }
+@media (max-width: 640px) {
+  .lb-card { flex-direction: column; max-height: 90vh; overflow-y: auto; }
+  .lb-img { width: 100%; height: 260px; }
+  .lb-body { padding: 1.5rem; }
+  .lb-includes { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -133,8 +231,8 @@
     <div class="section-heading">
       <span class="section-tag">✦ Diseños disponibles ✦</span>
       <h2>Cuadros NEDEKA</h2>
-      <p>Elige tu diseño favorito y añádelo al carrito. El cupón <strong>NEDEKA10</strong> descuenta 10 € solo en cuadros de esta colección y no se acumula con LADYAURA5.</p>
-      <div class="nedeka-coupon-banner">Cupón exclusivo: <strong>NEDEKA10</strong> · 10 € menos solo en cuadros NEDEKA</div>
+      <p>Elige tu diseño favorito y añádelo al carrito. El cupón <strong>NEDEKA10</strong> descuenta <strong>10 € en 1 cuadro NEDEKA</strong> — solo válido en esta colección, no acumulable con LADYAURA5.</p>
+      <div class="nedeka-coupon-banner">🏷️ Cupón exclusivo: <strong>NEDEKA10</strong> · <strong>10 € de descuento en 1 cuadro NEDEKA</strong> · no acumulable</div>
     </div>
     <div class="nedeka-products-grid products-grid">
 
@@ -154,7 +252,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Scarlett Wolf</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
       <article class="product-card"
@@ -173,7 +271,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Alita Colibrí</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
       <article class="product-card"
@@ -192,7 +290,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Bruster Punky</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
       <article class="product-card"
@@ -211,7 +309,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Rania</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
       <article class="product-card"
@@ -230,7 +328,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Sirena Nexralia</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
       <article class="product-card"
@@ -249,7 +347,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Abrazo de Oriana</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
       <article class="product-card"
@@ -268,7 +366,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Alya Diosa Enjoyada</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
       <article class="product-card"
@@ -287,7 +385,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Heart Robogirl</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
       <article class="product-card"
@@ -306,7 +404,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Jacecat</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
       <article class="product-card"
@@ -325,7 +423,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>La Fiesta de los Monigotes</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
 
@@ -345,7 +443,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Ammonet</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
       <article class="product-card"
@@ -364,7 +462,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Aratiana</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
       <article class="product-card"
@@ -383,7 +481,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Bernabé</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
       <article class="product-card"
@@ -402,7 +500,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Cita a Ciegas</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
       <article class="product-card"
@@ -421,7 +519,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Cita en la Playa</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
       <article class="product-card"
@@ -440,7 +538,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Diosa del Cosmos</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
       <article class="product-card"
@@ -459,7 +557,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Hestia Diosa del Fuego</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
       <article class="product-card"
@@ -478,7 +576,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Noche Mágica</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
       <article class="product-card"
@@ -497,7 +595,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Princesa Nesa</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
       <article class="product-card"
@@ -516,7 +614,7 @@
           <div class="product-meta"><span>NEDEKA</span><span>60×90 cm</span></div>
           <h3>Vida en la Selva</h3>
           <p>Diamond painting premium de fantasía dentro de la Colección NEDEKA.</p>
-          <p class="coupon-mini">Cupón especial: <strong>NEDEKA10</strong> · 10 € menos</p>
+          <p class="coupon-mini">🏷️ Cupón <strong>NEDEKA10</strong> · 10 € dto. en 1 cuadro NEDEKA</p>
         </div>
       </article>
     </div>
@@ -528,21 +626,110 @@
 <script src="script.js"></script>
 <script src="carrito.js"></script>
 
-<div class="lightbox" id="lightbox" aria-hidden="true">
-  <button class="lightbox-close" type="button" aria-label="Cerrar">×</button>
-  <div class="lightbox-content">
-    <img id="lightbox-img" src="" alt="">
-    <div class="lightbox-info">
-      <span class="lightbox-eyebrow">✦ Diamond Painting Premium · NEDEKA ✦</span>
-      <h2 id="lightbox-title">Diseño NEDEKA</h2>
-      <p id="lightbox-price">Diamond painting 60×90 cm · Envío incluido</p>
-      <div class="lightbox-actions">
-        <a id="lightbox-whatsapp" class="btn primary" href="#" target="_blank" rel="noopener">💬 Pre-reservar por WhatsApp</a>
-        <a id="lightbox-email" class="btn secondary" href="#" target="_blank" rel="noopener">✉️ Consultar por email</a>
+<!-- LIGHTBOX NEDEKA -->
+<div class="lb" id="lb" onclick="if(event.target===this)closeLB()">
+  <button class="lb-close" onclick="closeLB()" aria-label="Cerrar">×</button>
+  <div class="lb-card">
+    <div class="lb-img"><img id="lbImg" src="" alt="" style="cursor:zoom-in;"></div>
+    <div class="lb-body">
+      <span class="lb-eyebrow">✦ Diamond Painting Premium · NEDEKA ✦</span>
+      <h2 class="lb-title" id="lbTitle">Diseño NEDEKA</h2>
+      <span class="lb-version" id="lbVersion">Colección NEDEKA · 60×90 cm</span>
+      <p class="lb-desc" id="lbDesc">Diamond painting premium de fantasía luminosa. Kit completo con lienzo, diamantes y herramientas.</p>
+      <ul class="lb-includes">
+        <li>📐 Formato 60×90 cm</li>
+        <li>💎 Diamantes alta densidad</li>
+        <li>🎨 Lienzo de alta calidad</li>
+        <li>🛠️ Herramientas incluidas</li>
+        <li>📖 Instrucciones en español</li>
+        <li>✨ Diseño exclusivo NEDEKA</li>
+      </ul>
+      <div class="lb-price-row">
+        <span class="lb-price">79 €</span>
+        <span class="lb-price-note">· Envío incluido · Cupón NEDEKA10 = 69 €</span>
+      </div>
+      <div class="lb-btns" id="lbBtns">
+        <a class="lb-btn em" id="lbEm" href="#" target="_blank" rel="noopener" style="background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.45);font-size:0.75rem;">💬 ¿Dudas? Escríbeme</a>
       </div>
     </div>
   </div>
 </div>
 
+
+<script>
+/* ── LIGHTBOX NEDEKA ── */
+function openLB(card) {
+  var img    = card.dataset.img || card.querySelector('img').src;
+  var nombre = card.dataset.nombre || card.querySelector('h3').textContent;
+  var precio = card.dataset.precio || '79';
+
+  document.getElementById('lbImg').src = img;
+  document.getElementById('lbImg').alt = nombre + ' · Diamond Painting NEDEKA';
+  document.getElementById('lbTitle').textContent = nombre;
+  document.getElementById('lbVersion').textContent = 'Colección NEDEKA · Diamond Painting 60×90 cm';
+  document.getElementById('lbDesc').textContent = 'Diamond painting premium de fantasía. Kit completo con lienzo, diamantes de alta densidad y herramientas. Diseño exclusivo de la Colección NEDEKA.';
+
+  var nameEnc = encodeURIComponent(nombre + ' · NEDEKA');
+  document.getElementById('lbEm').href =
+    'https://wa.me/34621355638?text=' + encodeURIComponent('Hola Lady Aura ✨ Tengo una duda sobre: ' + nombre + ' (Colección NEDEKA). ¡Gracias!');
+
+  // Imagen fullscreen al pinchar
+  var lbImg = document.getElementById('lbImg');
+  lbImg.onclick = function(e) {
+    e.stopPropagation();
+    if (typeof fullscreenOpen === 'function') fullscreenOpen(this.src, this.alt);
+  };
+
+  // Botón carrito
+  if (typeof cartPatchLightbox === 'function') {
+    cartPatchLightbox({
+      dataset: {
+        img: img,
+        nombre: nombre,
+        precio: precio,
+        orient: card.dataset.orient || 'v',
+        coleccion: 'nedeka',
+        collection: 'nedeka'
+      }
+    });
+  }
+
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLB() {
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow = '';
+  document.getElementById('lbImg').src = '';
+}
+
+// Abrir lightbox al pinchar image-open o la card
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.nedeka-products .product-card').forEach(function(card) {
+    // El botón image-open abre el lightbox
+    var opener = card.querySelector('.image-open');
+    if (opener) {
+      opener.addEventListener('click', function(e) {
+        e.stopPropagation();
+        openLB(card);
+      });
+    }
+    // También al pinchar la imagen directamente
+    var img = card.querySelector('.card-img-wrap img');
+    if (img) {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', function(e) {
+        e.stopPropagation();
+        openLB(card);
+      });
+    }
+  });
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLB();
+});
+</script>
 </body>
 </html>
