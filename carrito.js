@@ -105,6 +105,16 @@ function cartInjectFAB() {
   cartUpdateFloating();
 }
 
+
+/* ── Detectar colección para cupones específicos ── */
+function cartGetCollection(card) {
+  const explicit = (card?.dataset?.coleccion || card?.dataset?.collection || '').toLowerCase();
+  if (explicit) return explicit;
+  const page = (location.pathname || '').toLowerCase();
+  if (page.includes('nedeka')) return 'nedeka';
+  return '';
+}
+
 /* ── Inyectar botón "Añadir al carrito" en cada product-card ── */
 function cartInjectButtons() {
   document.querySelectorAll('.product-card:not(.sold-out)').forEach(card => {
@@ -124,7 +134,8 @@ function cartInjectButtons() {
         nombre: nombre,
         img: card.dataset.img || card.querySelector('img')?.src || '',
         precio: Number(card.dataset.precio) || 79,
-        orient: card.dataset.orient || 'v'
+        orient: card.dataset.orient || 'v',
+        collection: cartGetCollection(card)
       });
       this.classList.add('added');
       this.innerHTML = '✓ En el carrito';
@@ -390,7 +401,8 @@ function cartPatchLightbox(card) {
         nombre: card.dataset.nombre,
         img: card.dataset.img || '',
         precio: Number(card.dataset.precio) || 79,
-        orient: card.dataset.orient || 'v'
+        orient: card.dataset.orient || 'v',
+        collection: cartGetCollection(card)
       });
       this.classList.add('added');
       this.textContent = '✓ Añadido';
@@ -416,7 +428,8 @@ function cartPatchLightbox(card) {
       nombre: card.dataset.nombre,
       img: card.dataset.img || '',
       precio: Number(card.dataset.precio) || 79,
-      orient: card.dataset.orient || 'v'
+      orient: card.dataset.orient || 'v',
+        collection: cartGetCollection(card)
     });
     this.classList.add('added');
     this.textContent = '✓ Añadido al carrito';

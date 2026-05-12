@@ -860,8 +860,8 @@ small,
         <span style="color:#a0ffb0">✓ Incluido</span>
       </div>
       <div class="summary-row" id="discount-row" style="display:none;color:#e8c96a;">
-        <span>Cupón LADYAURA5</span>
-        <span id="sum-discount">-5 €</span>
+        <span id="discount-label">Cupón</span>
+        <span id="sum-discount">-0 €</span>
       </div>
       <div class="summary-row summary-total">
         <span>Total</span>
@@ -871,14 +871,14 @@ small,
 
     <!-- CUPÓN DE BIENVENIDA -->
     <div class="coupon-box" id="coupon-box">
-      <p class="coupon-hint">🎁 Cupón de bienvenida: <strong>LADYAURA5</strong> · 5 € de descuento en tu primer pedido</p>
+      <p class="coupon-hint">🎁 Cupones disponibles: <strong>LADYAURA5</strong> · 5 € bienvenida · <strong>NEDEKA10</strong> · 10 € solo en cuadros NEDEKA<br><span style="opacity:.85">Importante: solo se puede usar <strong>un cupón por pedido</strong>. NEDEKA10 y LADYAURA5 no se acumulan.</span></p>
       <label class="coupon-label" for="couponCode">¿Tienes un cupón?</label>
       <div class="coupon-row">
         <input class="coupon-input" id="couponCode" type="text" placeholder="Escribe tu código">
         <button class="coupon-btn" id="applyCouponBtn" type="button" onclick="applyCoupon()">Aplicar</button>
       </div>
       <div class="coupon-applied-row" id="coupon-applied-row">
-        <span>✓ LADYAURA5 aplicado · -5 €</span>
+        <span id="coupon-applied-text">✓ Cupón aplicado</span>
         <button class="coupon-remove" onclick="removeCoupon()" title="Quitar cupón">✕</button>
       </div>
       <p class="coupon-msg" id="couponMessage"></p>
@@ -1001,39 +1001,86 @@ small,
 /* ── Carrito ── */
 const CART_KEY = 'ladyaura_cart';
 
-/* ── CUPÓN ── */
-const COUPON_CODE       = 'LADYAURA5';
-const COUPON_DISCOUNT   = 5;
+/* ── CUPONES ── */
 const COUPON_APPLIED_KEY = 'ladyAuraCouponApplied';
 const COUPON_USED_KEY   = 'ladyAuraCouponUsed';
+
+const COUPONS = {
+  LADYAURA5: {
+    code: 'LADYAURA5',
+    label: 'Cupón LADYAURA5',
+    success: 'Cupón de bienvenida aplicado: -5 €. No acumulable con NEDEKA10.',
+    discount: function(items) {
+      const subtotal = items.reduce((s,i) => s + (Number(i.precio)||79), 0);
+      return Math.min(5, subtotal);
+    },
+    oneUse: true
+  },
+  NEDEKA10: {
+    code: 'NEDEKA10',
+    label: 'Cupón NEDEKA10',
+    success: 'Cupón NEDEKA aplicado: -10 € solo en cuadros NEDEKA. No acumulable con LADYAURA5.',
+    discount: function(items) {
+      const nedekaSubtotal = items
+        .filter(isNedekaItem)
+        .reduce((s,i) => s + (Number(i.precio)||79), 0);
+      return Math.min(10, nedekaSubtotal);
+    },
+    oneUse: false
+  }
+};
+
+function isNedekaItem(item) {
+  const txt = [item.collection, item.coleccion, item.nombre, item.id, item.img]
+    .filter(Boolean).join(' ').toLowerCase();
+  return txt.includes('nedeka');
+}
+
+function getAppliedCoupon() {
+  const code = (localStorage.getItem(COUPON_APPLIED_KEY) || '').toUpperCase();
+  return COUPONS[code] || null;
+}
+
+function getCouponDiscount(items) {
+  const coupon = getAppliedCoupon();
+  if (!coupon) return 0;
+  return coupon.discount(items);
+}
 
 function applyCoupon() {
   const input = document.getElementById('couponCode');
   const msg   = document.getElementById('couponMessage');
   const code  = (input.value || '').trim().toUpperCase();
+  const items = cartGet();
+  const coupon = COUPONS[code];
 
   if (!code) {
     msg.textContent = 'Introduce un código de cupón';
     msg.className = 'coupon-msg err'; return;
   }
-  if (cartGet().length === 0) {
+  if (items.length === 0) {
     msg.textContent = 'Añade algún producto antes de aplicar el cupón';
     msg.className = 'coupon-msg err'; return;
   }
-  if (code !== COUPON_CODE) {
+  if (!coupon) {
     msg.textContent = 'Código de cupón no válido';
     msg.className = 'coupon-msg err'; return;
   }
-  if (localStorage.getItem(COUPON_USED_KEY) === 'true') {
+  if (coupon.oneUse && localStorage.getItem(COUPON_USED_KEY) === 'true') {
     msg.textContent = 'Este cupón de bienvenida ya se ha usado';
     msg.className = 'coupon-msg err'; return;
   }
   if (localStorage.getItem(COUPON_APPLIED_KEY)) {
-    msg.textContent = 'El cupón ya está aplicado';
-    msg.className = 'coupon-msg ok'; return;
+    msg.textContent = 'Ya tienes un cupón aplicado. NEDEKA10 y LADYAURA5 no se pueden usar juntos: quita el actual si quieres cambiarlo.';
+    msg.className = 'coupon-msg err'; return;
   }
-  localStorage.setItem(COUPON_APPLIED_KEY, COUPON_CODE);
-  msg.textContent = 'Cupón de bienvenida aplicado: -5 €';
+  const discount = coupon.discount(items);
+  if (discount <= 0 && code === 'NEDEKA10') {
+    msg.textContent = 'NEDEKA10 solo se puede aplicar si tu carrito tiene cuadros de la Colección NEDEKA';
+    msg.className = 'coupon-msg err'; return;
+  }
+  localStorage.setItem(COUPON_APPLIED_KEY, code);
+  msg.textContent = coupon.success;
   msg.className = 'coupon-msg ok';
   renderCart();
 }
@@ -1078,18 +1125,24 @@ function renderCart() {
   `).join('');
 
   const subtotal = items.reduce((s,i) => s + (Number(i.precio)||79), 0);
-  const couponApplied = localStorage.getItem(COUPON_APPLIED_KEY);
-  const discount = couponApplied ? Math.min(COUPON_DISCOUNT, subtotal) : 0;
+  const couponApplied = getAppliedCoupon();
+  const discount = getCouponDiscount(items);
   const total = Math.max(0, subtotal - discount);
   document.getElementById('sum-count').textContent = items.length + (items.length===1?' diseño':' diseños');
   document.getElementById('sum-total').textContent = total + ' €';
   // Mostrar/ocultar fila descuento
   const discountRow = document.getElementById('discount-row');
-  if (discountRow) discountRow.style.display = couponApplied ? '' : 'none';
+  const discountLabel = document.getElementById('discount-label');
+  const sumDiscount = document.getElementById('sum-discount');
+  if (discountRow) discountRow.style.display = couponApplied && discount > 0 ? '' : 'none';
+  if (discountLabel && couponApplied) discountLabel.textContent = couponApplied.label;
+  if (sumDiscount) sumDiscount.textContent = '-' + discount + ' €';
   // Mostrar cupón aplicado en la caja
   const appliedRow = document.getElementById('coupon-applied-row');
+  const couponAppliedText = document.getElementById('coupon-applied-text');
   const couponBox = document.getElementById('coupon-box');
   if (appliedRow) appliedRow.style.display = couponApplied ? 'flex' : 'none';
+  if (couponAppliedText && couponApplied) couponAppliedText.textContent = '✓ ' + couponApplied.code + ' aplicado · -' + discount + ' €';
   if (couponBox) {
     const input = document.getElementById('couponCode');
     const btn = document.getElementById('applyCouponBtn');
@@ -1115,8 +1168,8 @@ document.getElementById('order-form').addEventListener('submit', async function(
     return;
   }
   const subtotalPedido = items.reduce((s,i) => s + (Number(i.precio)||79), 0);
-  const couponApplied = localStorage.getItem(COUPON_APPLIED_KEY);
-  const discountPedido = couponApplied ? Math.min(COUPON_DISCOUNT, subtotalPedido) : 0;
+  const couponApplied = getAppliedCoupon();
+  const discountPedido = getCouponDiscount(items);
   const totalPedido = Math.max(0, subtotalPedido - discountPedido);
   const paypalUrl = 'https://paypal.me/LadyAuraArt/' + totalPedido + 'EUR';
   const data = {
@@ -1131,7 +1184,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
     notas:     document.getElementById('f-notas').value,
     pedido:    items.map(i => `${i.nombre} · ${i.precio}€`).join(' | '),
     subtotal:  subtotalPedido + ' €',
-    cupon:     couponApplied ? 'LADYAURA5 · -' + discountPedido + ' €' : 'Ninguno',
+    cupon:     couponApplied ? couponApplied.code + ' · -' + discountPedido + ' €' : 'Ninguno',
     total:     totalPedido + ' €',
     metodo_pago: 'Pendiente de pago: Bizum o PayPal',
     bizum: '621 355 638',
@@ -1173,7 +1226,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
 
       // Marcar cupón como usado y limpiar
       if (couponApplied) {
-        localStorage.setItem(COUPON_USED_KEY, 'true');
+        if (couponApplied.oneUse) localStorage.setItem(COUPON_USED_KEY, 'true');
         localStorage.removeItem(COUPON_APPLIED_KEY);
       }
       // Vaciar carrito después de guardar el pedido
