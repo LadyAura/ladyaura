@@ -4,7 +4,7 @@
 
   <url>
     <loc>https://ladyauraart.com/</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -15,104 +15,89 @@
 
   <url>
     <loc>https://ladyauraart.com/zodiaco.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/aries.webp</image:loc>
-      <image:title>Diamond painting zodíaco Aries Diosa Lady Aura Art</image:title>
-    </image:image>
-  </url>
-
-  <url>
-    <loc>https://ladyauraart.com/sirenas.html</loc>
-    <lastmod>2026-05-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/sirena-luna-llena.webp</image:loc>
-      <image:title>Diamond painting sirena luna llena Lady Aura Art</image:title>
+      <image:title>Diamond painting zodíaco Lady Aura Art</image:title>
     </image:image>
   </url>
 
   <url>
     <loc>https://ladyauraart.com/parejas.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/abrazo-luna-roja.webp</image:loc>
-      <image:title>Diamond painting parejas abrazo luna roja Lady Aura Art</image:title>
-    </image:image>
-  </url>
-
-  <url>
-    <loc>https://ladyauraart.com/dragones.html</loc>
-    <lastmod>2026-05-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/guardian-ambar.webp</image:loc>
-      <image:title>Diamond painting dragon Guardian Ambar Lady Aura Art</image:title>
+      <image:title>Diamond painting parejas Lady Aura Art</image:title>
     </image:image>
   </url>
 
   <url>
     <loc>https://ladyauraart.com/paisajes.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/paisaje-invernal-fantasia.webp</image:loc>
-      <image:title>Diamond painting paisaje invernal fantasia Lady Aura Art</image:title>
+      <image:title>Diamond painting paisajes de fantasía Lady Aura Art</image:title>
     </image:image>
   </url>
 
   <url>
     <loc>https://ladyauraart.com/especiales.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/aurora-celestial.webp</image:loc>
-      <image:title>Diamond painting aurora celestial Lady Aura Art</image:title>
+      <image:title>Diamond painting diseños exclusivos Lady Aura Art</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ladyauraart.com/nedeka.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ladyauraart.com/assets/aurora-celestial.webp</image:loc>
+      <image:title>Colección NEDEKA diamond painting premium Lady Aura Art</image:title>
     </image:image>
   </url>
 
   <url>
     <loc>https://ladyauraart.com/personalizados.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.90</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/personalizado-lady-aura.webp</image:loc>
       <image:title>Diamond painting personalizado con foto Lady Aura Art</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/personalizado-4.webp</image:loc>
-      <image:title>Ejemplo retrato personalizado diamond painting Lady Aura Art</image:title>
     </image:image>
   </url>
 
   <url>
     <loc>https://ladyauraart.com/tarot.html</loc>
-    <lastmod>2026-05-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/tarot/la-luna.webp</image:loc>
-      <image:title>Tarot gratis online La Luna Lady Aura Art</image:title>
+      <image:title>Tarot gratis online Lady Aura Art</image:title>
     </image:image>
   </url>
 
   <url>
     <loc>https://ladyauraart.com/colorear.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/aries.webp</image:loc>
-      <image:title>Laminas para colorear adultos fantasy PDF Lady Aura Art</image:title>
+      <image:title>Láminas para colorear adultos fantasy Lady Aura Art</image:title>
     </image:image>
   </url>
 

@@ -123,7 +123,7 @@ function cartInjectButtons() {
         id: card.dataset.img || nombre,
         nombre: nombre,
         img: card.dataset.img || card.querySelector('img')?.src || '',
-        precio: Number(card.dataset.precio) || 94,
+        precio: Number(card.dataset.precio) || 79,
         orient: card.dataset.orient || 'v'
       });
       this.classList.add('added');
@@ -289,7 +289,7 @@ function cartInjectZodiaco() {
         id: 'zodiaco-' + titulo + '-' + (isFem ? 'f' : 'm'),
         nombre: nombre,
         img: imgSrc,
-        precio: Number(card.dataset.precio) || 94,
+        precio: Number(card.dataset.precio) || 79,
         orient: 'v'
       });
       this.classList.add('added');
@@ -389,7 +389,7 @@ function cartPatchLightbox(card) {
         id: card.dataset.img || card.dataset.nombre,
         nombre: card.dataset.nombre,
         img: card.dataset.img || '',
-        precio: Number(card.dataset.precio) || 94,
+        precio: Number(card.dataset.precio) || 79,
         orient: card.dataset.orient || 'v'
       });
       this.classList.add('added');
@@ -415,7 +415,7 @@ function cartPatchLightbox(card) {
       id: card.dataset.img || card.dataset.nombre,
       nombre: card.dataset.nombre,
       img: card.dataset.img || '',
-      precio: Number(card.dataset.precio) || 94,
+      precio: Number(card.dataset.precio) || 79,
       orient: card.dataset.orient || 'v'
     });
     this.classList.add('added');

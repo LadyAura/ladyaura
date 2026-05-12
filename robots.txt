@@ -1,11 +1,11 @@
 User-agent: *
 Allow: /
 
-# Bloquear assets innecesarios para ahorrar crawl budget
+# Bloquear assets innecesarios para ahorrar crawl budget, pero permitir imágenes indexables
 Disallow: /assets/
 Allow: /assets/*.webp
 Allow: /assets/*.png
 Allow: /assets/*.jpg
+Allow: /assets/*.jpeg
 
-# Sitemap
 Sitemap: https://ladyauraart.com/sitemap.xml

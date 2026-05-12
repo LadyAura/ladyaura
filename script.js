@@ -48,7 +48,7 @@ if (lightbox && lightboxImg && closeBtn) {
     if (!opener) return;
     const img   = card.querySelector("img");
     const title = card.querySelector("h3")?.textContent || "Diseño Lady Aura";
-    const price = card.dataset.price || "94";
+    const price = card.dataset.price || "79";
     const oldPrice = card.dataset.oldPrice;
     opener.addEventListener("click", () => {
       try {
@@ -76,8 +76,8 @@ if (lightbox && lightboxImg && closeBtn) {
         lightboxImg.src = imgSrc; lightboxImg.alt = titulo;
         if (lightboxTitle) lightboxTitle.textContent = titulo;
         if (lightboxPrice) lightboxPrice.textContent = "Diamond painting 60×90 cm · Envío incluido";
-        if (lightboxWhatsapp) lightboxWhatsapp.href = buildWhatsappUrl(titulo,"94");
-        if (lightboxEmail)    lightboxEmail.href    = buildEmailUrl(titulo,"94");
+        if (lightboxWhatsapp) lightboxWhatsapp.href = buildWhatsappUrl(titulo,"79");
+        if (lightboxEmail)    lightboxEmail.href    = buildEmailUrl(titulo,"79");
         lightbox.classList.add("active");
         lightbox.setAttribute("aria-hidden","false");
         document.body.style.overflow = "hidden";

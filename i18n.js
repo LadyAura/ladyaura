@@ -6,7 +6,7 @@ const LA_T = {
     /* NAV */
     nav_inicio:'Inicio', nav_zodiaco:'♈ Zodíaco', nav_parejas:'💑 Parejas',
     nav_paisajes:'🏔️ Paisajes', nav_especiales:'✨ Diseños exclusivos',
-    nav_personalizados:'🎨 Personalizados', nav_tarot:'🔮 Tarot', nav_colorear:'🎨 Colorear',
+    nav_personalizados:'🎨 Personalizados', nav_nedeka:'🌙 NEDEKA', nav_tarot:'🔮 Tarot', nav_colorear:'🎨 Colorear',
 
     /* COMÚN — hero strip */
     strip_sinpago:'Sin pago previo', strip_formato:'60 × 90 cm',
@@ -33,6 +33,14 @@ const LA_T = {
     cta_dudas:'¿Te quedaste con dudas?',
     cta_dudas_sub:'Escríbeme directamente. Te cuento todo sobre los cuadros y la pre-reserva sin ningún compromiso.',
     cta_wa:'💬 Hablar con Lady Aura', cta_back:'← Volver al inicio',
+
+
+
+    /* NEDEKA */
+    col_nedeka:'Colección NEDEKA',
+    col_nedeka_sub:'Una colección especial de fantasía luminosa, misterio y magia premium.',
+    btn_nedeka:'Ver NEDEKA →',
+
 
     /* ZODIACO */
     zod_eyebrow:'✦ Colección Zodíaco · Diamond Painting Premium ✦',
@@ -131,7 +139,7 @@ const LA_T = {
     /* NAV */
     nav_inicio:'Home', nav_zodiaco:'♈ Zodiac', nav_parejas:'💑 Couples',
     nav_paisajes:'🏔️ Landscapes', nav_especiales:'✨ Exclusive designs',
-    nav_personalizados:'🎨 Custom art', nav_tarot:'🔮 Tarot', nav_colorear:'🎨 Coloring',
+    nav_personalizados:'🎨 Custom art', nav_nedeka:'🌙 NEDEKA', nav_tarot:'🔮 Tarot', nav_colorear:'🎨 Coloring',
 
     /* COMÚN — hero strip */
     strip_sinpago:'No upfront payment', strip_formato:'60 × 90 cm',
@@ -159,6 +167,12 @@ const LA_T = {
     cta_dudas_sub:'Message me directly. I\'ll tell you everything about the paintings and the no-commitment pre-order.',
     cta_wa:'💬 Chat with Lady Aura', cta_back:'← Back to home',
 
+
+
+    /* NEDEKA */
+    col_nedeka:'NEDEKA Collection',
+    col_nedeka_sub:'A special collection of luminous fantasy, mystery and premium magic.',
+    btn_nedeka:'View NEDEKA →',
     /* ZODIACO */
     zod_eyebrow:'✦ Zodiac Collection · Premium Diamond Painting ✦',
     zod_title:'Your Sign Turned Into<br>Diamond Art',
