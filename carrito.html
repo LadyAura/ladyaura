@@ -1106,7 +1106,7 @@ function renderCart() {
         <p>Diamond painting ${item.orient==='v'?'60×90 cm ↕':'90×60 cm ↔'} · Envío incluido</p>
       </div>
       ${priceHtml}
-      <button class="cart-item-remove" onclick="cartRemove('${item.id.replace(/'/g,"\\'")}'" aria-label="Eliminar">✕</button>
+      <button class="cart-item-remove" onclick="cartRemove(this.dataset.id)" data-id="${item.id.replace(/"/g,'&quot;')}" aria-label="Eliminar">✕</button>
     </div>`;
   }).join('');
 
