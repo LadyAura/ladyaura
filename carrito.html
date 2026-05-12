@@ -1015,12 +1015,21 @@ function getCouponInline() {
   try { return JSON.parse(localStorage.getItem(COUPON_KEY_INLINE)); } catch(e) { return null; }
 }
 
+const NEDEKA60_PRICE = 60;
+
 function calcDiscountInline(items, code) {
   const subtotal = items.reduce((s,i) => s + (Number(i.precio)||79), 0);
-  const nedekaSubtotal = items.filter(isNedekaItemInline).reduce((s,i) => s + (Number(i.precio)||79), 0);
+  const nedekaItems = items.filter(isNedekaItemInline);
+  const nedekaSubtotal = nedekaItems.reduce((s,i) => s + (Number(i.precio)||79), 0);
   if (code === 'LADYAURA5') return subtotal > 0 ? 5 : 0;
   if (code === 'NEDEKA10')  return nedekaSubtotal > 0 ? Math.min(10, nedekaSubtotal) : 0;
+  if (code === 'NEDEKA60')  return nedekaItems.reduce((s,i) => s + Math.max(0, (Number(i.precio)||79) - NEDEKA60_PRICE), 0);
   return 0;
+}
+
+function getPriceWithCoupon(item, code) {
+  if (code === 'NEDEKA60' && isNedekaItemInline(item)) return NEDEKA60_PRICE;
+  return Number(item.precio) || 79;
 }
 
 function applyCoupon() {
@@ -1037,14 +1046,14 @@ function applyCoupon() {
     if(msg){ msg.textContent='Solo se puede usar un cupón por pedido. NEDEKA10 y LADYAURA5 no se pueden usar juntos.'; msg.className='coupon-msg err'; } return;
   }
 
-  if (!['LADYAURA5','NEDEKA10'].includes(code)) {
+  if (!['LADYAURA5','NEDEKA10','NEDEKA60'].includes(code)) {
     if(msg){ msg.textContent='Código de cupón no válido'; msg.className='coupon-msg err'; } return;
   }
   if (code === 'LADYAURA5' && localStorage.getItem(COUPON_USED_KEY) === 'true') {
     if(msg){ msg.textContent='Este cupón de bienvenida ya se ha usado en un pedido anterior'; msg.className='coupon-msg err'; } return;
   }
-  if (code === 'NEDEKA10' && !items.some(isNedekaItemInline)) {
-    if(msg){ msg.textContent='NEDEKA10 solo funciona con cuadros de la Colección NEDEKA'; msg.className='coupon-msg err'; } return;
+  if ((code === 'NEDEKA10' || code === 'NEDEKA60') && !items.some(isNedekaItemInline)) {
+    if(msg){ msg.textContent=code+' solo funciona con cuadros de la Colección NEDEKA'; msg.className='coupon-msg err'; } return;
   }
 
   const discount = calcDiscountInline(items, code);
@@ -1082,22 +1091,32 @@ function renderCart() {
   content.style.display = 'block';
 
   const list = document.getElementById('cart-list');
-  list.innerHTML = items.map(item => `
+  const activeCouponForRender = getCouponInline()?.code || null;
+  list.innerHTML = items.map(item => {
+    const originalPrice = Number(item.precio) || 79;
+    const displayPrice = getPriceWithCoupon(item, activeCouponForRender);
+    const priceHtml = (activeCouponForRender === 'NEDEKA60' && isNedekaItemInline(item))
+      ? `<span class="cart-item-price"><s style="opacity:.4;font-size:.8em;text-decoration:line-through">${originalPrice} €</s>&nbsp;${displayPrice} €</span>`
+      : `<span class="cart-item-price">${originalPrice} €</span>`;
+    return `
     <div class="cart-item">
       <img class="cart-item-img" src="${item.img}" alt="${item.nombre}" onerror="this.style.opacity='0.3'">
       <div class="cart-item-info">
         <h3>${item.nombre}</h3>
         <p>Diamond painting ${item.orient==='v'?'60×90 cm ↕':'90×60 cm ↔'} · Envío incluido</p>
       </div>
-      <span class="cart-item-price">${item.precio} €</span>
-      <button class="cart-item-remove" onclick="cartRemove('${item.id.replace(/'/g,"\\'")}')" aria-label="Eliminar">✕</button>
-    </div>
-  `).join('');
+      ${priceHtml}
+      <button class="cart-item-remove" onclick="cartRemove('${item.id.replace(/'/g,"\\'")}'" aria-label="Eliminar">✕</button>
+    </div>`;
+  }).join('');
 
-  const subtotal = items.reduce((s,i) => s + (Number(i.precio)||79), 0);
   const couponData = getCouponInline();
   const couponCode = couponData ? couponData.code : null;
-  const discount = couponCode ? calcDiscountInline(items, couponCode) : 0;
+  // NEDEKA60: el subtotal ya refleja el precio especial; otros: descuento sobre precio normal
+  const subtotal = couponCode === 'NEDEKA60'
+    ? items.reduce((s,i) => s + getPriceWithCoupon(i, 'NEDEKA60'), 0)
+    : items.reduce((s,i) => s + (Number(i.precio)||79), 0);
+  const discount = (couponCode && couponCode !== 'NEDEKA60') ? calcDiscountInline(items, couponCode) : 0;
   const total = Math.max(0, subtotal - discount);
   document.getElementById('sum-count').textContent = items.length + (items.length===1?' diseño':' diseños');
   document.getElementById('sum-total').textContent = total + ' €';
@@ -1106,17 +1125,31 @@ function renderCart() {
   const discountLabel = document.getElementById('discount-label');
   const sumDiscount = document.getElementById('sum-discount');
   if (discountRow) {
-    discountRow.style.display = (couponCode && discount > 0) ? '' : 'none';
-    if (discountLabel) discountLabel.textContent = 'Cupón ' + (couponCode || '');
-    if (sumDiscount) sumDiscount.textContent = '-' + discount.toFixed(2).replace('.',',') + ' €';
+    const showRow = couponCode === 'NEDEKA60' || (couponCode && discount > 0);
+    discountRow.style.display = showRow ? '' : 'none';
+    if (couponCode === 'NEDEKA60') {
+      const ned60Saving = items.filter(isNedekaItemInline).reduce((s,i) => s + Math.max(0,(Number(i.precio)||79) - NEDEKA60_PRICE), 0);
+      if (discountLabel) discountLabel.textContent = 'Precio especial NEDEKA60';
+      if (sumDiscount) sumDiscount.textContent = '-' + ned60Saving.toFixed(2).replace('.',',') + ' €';
+    } else {
+      if (discountLabel) discountLabel.textContent = 'Cupón ' + (couponCode || '');
+      if (sumDiscount) sumDiscount.textContent = '-' + discount.toFixed(2).replace('.',',') + ' €';
+    }
   }
   // Mostrar cupón aplicado en la caja
   const appliedRow = document.getElementById('coupon-applied-row');
   const couponBox = document.getElementById('coupon-box');
   if (appliedRow) {
-    appliedRow.style.display = (couponCode && discount > 0) ? 'flex' : 'none';
+    const showApplied = couponCode === 'NEDEKA60' || (couponCode && discount > 0);
+    appliedRow.style.display = showApplied ? 'flex' : 'none';
     const appliedSpan = appliedRow.querySelector('span');
-    if (appliedSpan && couponCode) appliedSpan.textContent = `✓ ${couponCode} aplicado · -${discount.toFixed(2).replace('.',',')} €`;
+    if (appliedSpan && couponCode) {
+      if (couponCode === 'NEDEKA60') {
+        appliedSpan.textContent = `✓ NEDEKA60 aplicado · precio especial 60 €/cuadro`;
+      } else {
+        appliedSpan.textContent = `✓ ${couponCode} aplicado · -${discount.toFixed(2).replace('.',',')} €`;
+      }
+    }
   }
   if (couponBox) {
     const input = document.getElementById('coupon-code') || document.getElementById('couponCode');
@@ -1140,10 +1173,13 @@ document.getElementById('order-form').addEventListener('submit', async function(
     btn.textContent = '✨ Enviar pedido y continuar al pago';
     return;
   }
-  const subtotalPedido = items.reduce((s,i) => s + (Number(i.precio)||79), 0);
   const couponDataPedido = getCouponInline();
   const couponApplied = couponDataPedido ? couponDataPedido.code : null;
-  const discountPedido = couponApplied ? calcDiscountInline(items, couponApplied) : 0;
+  // NEDEKA60: precio especial por unidad; otros cupones: descuento sobre subtotal normal
+  const subtotalPedido = couponApplied === 'NEDEKA60'
+    ? items.reduce((s,i) => s + getPriceWithCoupon(i, 'NEDEKA60'), 0)
+    : items.reduce((s,i) => s + (Number(i.precio)||79), 0);
+  const discountPedido = couponApplied === 'NEDEKA60' ? 0 : (couponApplied ? calcDiscountInline(items, couponApplied) : 0);
   const totalPedido = Math.max(0, subtotalPedido - discountPedido);
   const paypalUrl = 'https://paypal.me/LadyAuraArt/' + totalPedido + 'EUR';
   const data = {
@@ -1158,7 +1194,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
     notas:     document.getElementById('f-notas').value,
     pedido:    items.map(i => `${i.nombre} · ${i.precio}€`).join(' | '),
     subtotal:  subtotalPedido + ' €',
-    cupon:     couponApplied ? `${couponApplied} · -${discountPedido} €` : 'Ninguno',
+    cupon:     couponApplied === 'NEDEKA60' ? 'NEDEKA60 · precio especial 60 €/cuadro NEDEKA' : (couponApplied ? `${couponApplied} · -${discountPedido} €` : 'Ninguno'),
     total:     totalPedido + ' €',
     metodo_pago: 'Pendiente de pago: Bizum o PayPal',
     bizum: '621 355 638',
