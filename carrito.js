@@ -18,7 +18,18 @@ function cartSave(items) {
 
 /* ── Añadir al carrito ── */
 function cartAdd(item) {
-  // item = { id, nombre, img, precio, orient }
+  // item = { id, nombre, img, precio, orient, coleccion/collection }
+  item = item || {};
+  const pagePath = (window.location.pathname || '').toLowerCase();
+  const raw = [
+    item.coleccion, item.collection, item.nombre, item.id, item.img, pagePath
+  ].join(' ').toLowerCase();
+
+  if (!item.coleccion && !item.collection && raw.includes('nedeka')) {
+    item.coleccion = 'nedeka';
+    item.collection = 'nedeka';
+  }
+
   const items = cartGet();
   const exists = items.find(i => i.id === item.id);
   if (!exists) {
@@ -123,8 +134,10 @@ function cartInjectButtons() {
         id: card.dataset.img || nombre,
         nombre: nombre,
         img: card.dataset.img || card.querySelector('img')?.src || '',
-        precio: Number(card.dataset.precio) || 79,
-        orient: card.dataset.orient || 'v'
+        precio: Number(card.dataset.precio || card.dataset.price) || 79,
+        orient: card.dataset.orient || 'v',
+        coleccion: card.dataset.coleccion || card.dataset.collection || (location.pathname.toLowerCase().includes('nedeka') ? 'nedeka' : ''),
+        collection: card.dataset.collection || card.dataset.coleccion || (location.pathname.toLowerCase().includes('nedeka') ? 'nedeka' : '')
       });
       this.classList.add('added');
       this.innerHTML = '✓ En el carrito';
@@ -562,3 +575,220 @@ function fullscreenAttach() {
 
 // Llamada inmediata también por si el DOM ya está listo
 if(document.readyState !== "loading") fullscreenInjectStyles();
+
+
+
+/* ============================================================
+   CUPONES LADY AURA · LADYAURA5 + NEDEKA10 NO ACUMULABLES
+   ============================================================ */
+(function(){
+  const COUPON_KEY = 'ladyaura_coupon';
+
+  function normalizeCoupon(code) {
+    return String(code || '').trim().toUpperCase();
+  }
+
+  function isNedekaItem(item) {
+    const raw = [
+      item?.coleccion, item?.collection, item?.categoria, item?.category,
+      item?.nombre, item?.id, item?.img
+    ].join(' ').toLowerCase();
+    return raw.includes('nedeka');
+  }
+
+  function getItemsSafe() {
+    try {
+      if (typeof cartGet === 'function') return cartGet();
+      return JSON.parse(localStorage.getItem('ladyaura_cart')) || [];
+    } catch(e) { return []; }
+  }
+
+  function getCoupon() {
+    try { return JSON.parse(localStorage.getItem(COUPON_KEY)); }
+    catch(e) { return null; }
+  }
+
+  function setCoupon(coupon) {
+    localStorage.setItem(COUPON_KEY, JSON.stringify(coupon));
+    updateCouponUI();
+  }
+
+  function clearCoupon() {
+    localStorage.removeItem(COUPON_KEY);
+    updateCouponUI();
+  }
+
+  function calculateCouponDiscount(items, couponCode) {
+    const code = normalizeCoupon(couponCode);
+    const subtotal = items.reduce((sum, item) => sum + (Number(item.precio) || 79), 0);
+    const nedekaSubtotal = items.filter(isNedekaItem).reduce((sum, item) => sum + (Number(item.precio) || 79), 0);
+
+    if (code === 'LADYAURA5') {
+      return subtotal > 0 ? 5 : 0;
+    }
+    if (code === 'NEDEKA10') {
+      return nedekaSubtotal > 0 ? Math.min(10, nedekaSubtotal) : 0;
+    }
+    return 0;
+  }
+
+  function couponMessage(text, ok) {
+    let box = document.getElementById('coupon-message');
+    const form = document.getElementById('coupon-form') || document.querySelector('.coupon-form') || document.querySelector('[data-coupon-form]');
+    if (!box) {
+      box = document.createElement('p');
+      box.id = 'coupon-message';
+      box.style.marginTop = '.55rem';
+      box.style.fontSize = '.86rem';
+      if (form) form.appendChild(box);
+    }
+    box.textContent = text;
+    box.style.color = ok ? '#a0ffb0' : '#ff9bb8';
+  }
+
+  window.ladyAuraApplyCoupon = function(code) {
+    const items = getItemsSafe();
+    const clean = normalizeCoupon(code);
+    const existing = getCoupon();
+
+    if (!clean) {
+      couponMessage('Escribe un cupón para aplicarlo.', false);
+      return false;
+    }
+
+    if (existing && normalizeCoupon(existing.code) && normalizeCoupon(existing.code) !== clean) {
+      couponMessage('Solo se puede usar un cupón por pedido. NEDEKA10 y LADYAURA5 no se pueden usar juntos.', false);
+      return false;
+    }
+
+    if (!['LADYAURA5','NEDEKA10'].includes(clean)) {
+      couponMessage('Cupón no válido.', false);
+      return false;
+    }
+
+    if (clean === 'NEDEKA10' && !items.some(isNedekaItem)) {
+      couponMessage('NEDEKA10 solo funciona con cuadros de la Colección NEDEKA.', false);
+      return false;
+    }
+
+    const discount = calculateCouponDiscount(items, clean);
+    if (discount <= 0) {
+      couponMessage('Este cupón no se puede aplicar a tu carrito actual.', false);
+      return false;
+    }
+
+    setCoupon({ code: clean, discount: discount });
+    couponMessage(`Cupón ${clean} aplicado: -${discount.toFixed(2).replace('.', ',')} €`, true);
+    return true;
+  };
+
+  window.ladyAuraRemoveCoupon = function() {
+    clearCoupon();
+    couponMessage('Cupón eliminado.', true);
+  };
+
+  function ensureCouponBox() {
+    if (!document.body || !/carrito\.html/i.test(location.pathname)) return;
+    if (document.getElementById('coupon-form')) return;
+
+    const target = document.querySelector('.cart-summary, #cart-summary, .summary-card, .order-summary, main');
+    if (!target) return;
+
+    const box = document.createElement('section');
+    box.className = 'coupon-box';
+    box.innerHTML = `
+      <h3>¿Tienes un cupón?</h3>
+      <form id="coupon-form">
+        <input id="coupon-code" type="text" placeholder="Ej: LADYAURA5 o NEDEKA10" autocomplete="off">
+        <button type="submit">Aplicar</button>
+        <button type="button" id="coupon-remove">Quitar</button>
+      </form>
+      <p class="coupon-help">Solo se puede usar un cupón por pedido. NEDEKA10 es exclusivo para cuadros NEDEKA.</p>
+      <p id="coupon-message"></p>
+    `;
+    target.appendChild(box);
+  }
+
+  function injectCouponStyles() {
+    if (document.getElementById('coupon-style')) return;
+    const style = document.createElement('style');
+    style.id = 'coupon-style';
+    style.textContent = `
+      .coupon-box{margin:1.2rem 0;padding:1rem;border:1px solid rgba(255,217,138,.28);border-radius:18px;background:rgba(255,217,138,.06)}
+      .coupon-box h3{font-family:'Cinzel',serif;color:#e8c96a;font-size:1rem;margin:0 0 .75rem}
+      #coupon-form{display:flex;gap:.5rem;flex-wrap:wrap}
+      #coupon-form input{flex:1;min-width:170px;background:rgba(5,5,16,.7);border:1px solid rgba(160,63,255,.35);border-radius:999px;color:white;padding:.72rem 1rem}
+      #coupon-form button{border:1px solid rgba(255,217,138,.35);border-radius:999px;background:linear-gradient(135deg,rgba(160,63,255,.4),rgba(255,72,137,.25));color:white;padding:.72rem 1rem;cursor:pointer;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.08em}
+      .coupon-help{font-size:.82rem;opacity:.75;margin:.65rem 0 0}
+      .coupon-line{display:flex;justify-content:space-between;gap:1rem;color:#a0ffb0!important}
+    `;
+    document.head.appendChild(style);
+  }
+
+  function updateCouponUI() {
+    const items = getItemsSafe();
+    const coupon = getCoupon();
+    const code = normalizeCoupon(coupon?.code);
+    const discount = code ? calculateCouponDiscount(items, code) : 0;
+
+    const input = document.getElementById('coupon-code');
+    if (input && code) input.value = code;
+
+    // Remove previous dynamic coupon lines
+    document.querySelectorAll('[data-coupon-line="true"]').forEach(el => el.remove());
+
+    if (code && discount > 0) {
+      const totalSelectors = [
+        '#cart-total', '.cart-total', '#total', '.total', '[data-cart-total]'
+      ];
+      const totalEl = totalSelectors.map(s => document.querySelector(s)).find(Boolean);
+
+      // Try to add a visible coupon line before total
+      if (totalEl && totalEl.parentElement) {
+        const line = document.createElement('div');
+        line.className = 'coupon-line';
+        line.setAttribute('data-coupon-line','true');
+        line.innerHTML = `<span>Cupón ${code}</span><strong>-${discount.toFixed(2).replace('.', ',')} €</strong>`;
+        totalEl.parentElement.insertBefore(line, totalEl);
+      }
+
+      // Recalculate visible totals if possible by text
+      const subtotal = items.reduce((sum, item) => sum + (Number(item.precio) || 79), 0);
+      const finalTotal = Math.max(0, subtotal - discount);
+      if (totalEl) {
+        totalEl.textContent = `${finalTotal.toFixed(2).replace('.', ',')} €`;
+      }
+    }
+
+    const msg = document.getElementById('coupon-message');
+    if (msg && code && discount > 0) {
+      msg.textContent = `Cupón ${code} aplicado: -${discount.toFixed(2).replace('.', ',')} €`;
+      msg.style.color = '#a0ffb0';
+    }
+  }
+
+  function bindCouponForm() {
+    ensureCouponBox();
+    injectCouponStyles();
+    const form = document.getElementById('coupon-form');
+    if (form && !form.dataset.bound) {
+      form.dataset.bound = 'true';
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const input = document.getElementById('coupon-code');
+        window.ladyAuraApplyCoupon(input?.value || '');
+      });
+    }
+    const remove = document.getElementById('coupon-remove');
+    if (remove && !remove.dataset.bound) {
+      remove.dataset.bound = 'true';
+      remove.addEventListener('click', function(){ window.ladyAuraRemoveCoupon(); });
+    }
+    updateCouponUI();
+  }
+
+  document.addEventListener('DOMContentLoaded', bindCouponForm);
+  window.addEventListener('storage', updateCouponUI);
+  setTimeout(bindCouponForm, 350);
+  setTimeout(updateCouponUI, 900);
+})();
