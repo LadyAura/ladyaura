@@ -312,6 +312,151 @@
   margin-top: 0.3rem;
 }
 
+
+/* APP TURNOS L.A · acceso bonito */
+.app-turnos-section {
+  padding: 0 8% 5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.app-turnos-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 28px;
+  border: 1px solid rgba(255,217,138,0.32);
+  background:
+    radial-gradient(circle at 12% 20%, rgba(255,217,138,0.18), transparent 28%),
+    radial-gradient(circle at 86% 20%, rgba(255,123,235,0.16), transparent 30%),
+    linear-gradient(135deg, rgba(13,8,33,0.96), rgba(38,16,58,0.88));
+  box-shadow: 0 18px 60px rgba(160,63,255,0.22);
+}
+.app-turnos-card::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: 27px;
+  border: 1px solid rgba(255,255,255,0.06);
+  pointer-events: none;
+}
+.app-turnos-eyebrow {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.75rem;
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,217,138,0.35);
+  background: rgba(255,217,138,0.07);
+  font-family: 'Cinzel', serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.app-turnos-card h2 {
+  margin: 0 0 0.75rem;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.4rem, 3vw, 2.15rem);
+  color: #fff8ff;
+}
+.app-turnos-card p {
+  margin: 0 0 1.25rem;
+  color: rgba(255,255,255,0.66);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.app-turnos-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+.app-turnos-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,217,138,0.42);
+  background: linear-gradient(135deg, rgba(160,63,255,0.95), rgba(255,123,235,0.82));
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 0 28px rgba(160,63,255,0.35);
+  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+}
+.app-turnos-link:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 0 42px rgba(240,163,255,0.5);
+}
+.app-turnos-note {
+  color: rgba(255,255,255,0.48);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+.app-turnos-preview {
+  position: relative;
+  min-height: 210px;
+  border-radius: 24px;
+  border: 1px solid rgba(240,163,255,0.22);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025)),
+    rgba(5,5,16,0.45);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.app-turnos-preview::after {
+  content: 'Turnos L.A';
+  position: absolute;
+  bottom: 18px;
+  right: 20px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: rgba(255,217,138,0.72);
+  text-transform: uppercase;
+}
+.app-phone {
+  width: 118px;
+  height: 168px;
+  border-radius: 24px;
+  border: 1px solid rgba(255,217,138,0.4);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.03)),
+    linear-gradient(135deg, rgba(160,63,255,0.42), rgba(255,123,235,0.22));
+  box-shadow: 0 18px 55px rgba(0,0,0,0.35), 0 0 35px rgba(160,63,255,0.25);
+  padding: 16px 13px;
+}
+.app-phone span {
+  display: block;
+  height: 10px;
+  margin-bottom: 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.24);
+}
+.app-phone span:nth-child(2) { width: 74%; }
+.app-phone span:nth-child(3) { width: 92%; background: rgba(255,217,138,0.32); }
+.app-phone span:nth-child(4) { width: 58%; }
+.app-phone span:nth-child(5) { width: 82%; background: rgba(255,123,235,0.28); }
+@media (max-width: 800px) {
+  .app-turnos-section { padding: 0 5% 3.8rem; }
+  .app-turnos-card { grid-template-columns: 1fr; padding: 1.5rem; text-align: center; }
+  .app-turnos-eyebrow { margin-left: auto; margin-right: auto; }
+  .app-turnos-actions { justify-content: center; }
+  .app-turnos-preview { min-height: 170px; }
+}
+
 /* SOBRE MÍ MINI */
 .about-mini {
   padding: 4rem 8%;
@@ -838,6 +983,36 @@ small,
         </div>
       </a>
 
+    </div>
+  </section>
+
+
+  <!-- APP TURNOS L.A -->
+  <section class="app-turnos-section" aria-labelledby="turnos-la-title">
+    <div class="app-turnos-card">
+      <div class="app-turnos-copy">
+        <span class="app-turnos-eyebrow">✨ Ritual Diamond</span>
+        <h2 id="turnos-la-title">Organiza tu momento Lady Aura</h2>
+        <p>
+          Prepara tus ratitos de calma, ordena tus días y reserva ese momento especial
+          para avanzar en tu diamond painting con la app <strong>Turnos L.A</strong>.
+        </p>
+        <div class="app-turnos-actions">
+          <a class="app-turnos-link" href="https://play.google.com/store/apps/details?id=com.vibo.turnosla" target="_blank" rel="noopener">
+            Organizar mi momento diamond →
+          </a>
+          <span class="app-turnos-note">App gratuita para Android</span>
+        </div>
+      </div>
+      <div class="app-turnos-preview" aria-hidden="true">
+        <div class="app-phone">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
     </div>
   </section>
 
