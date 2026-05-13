@@ -134,7 +134,7 @@ function cartInjectButtons() {
         id: card.dataset.img || nombre,
         nombre: nombre,
         img: card.dataset.img || card.querySelector('img')?.src || '',
-        precio: Number(card.dataset.precio || card.dataset.price) || 79,
+        precio: Number(card.dataset.precio || card.dataset.price) || 84,
         orient: card.dataset.orient || 'v',
         coleccion: card.dataset.coleccion || card.dataset.collection || (location.pathname.toLowerCase().includes('nedeka') ? 'nedeka' : ''),
         collection: card.dataset.collection || card.dataset.coleccion || (location.pathname.toLowerCase().includes('nedeka') ? 'nedeka' : '')
@@ -302,7 +302,7 @@ function cartInjectZodiaco() {
         id: 'zodiaco-' + titulo + '-' + (isFem ? 'f' : 'm'),
         nombre: nombre,
         img: imgSrc,
-        precio: Number(card.dataset.precio) || 79,
+        precio: Number(card.dataset.precio) || 84,
         orient: 'v'
       });
       this.classList.add('added');
@@ -402,7 +402,7 @@ function cartPatchLightbox(card) {
         id: card.dataset.img || card.dataset.nombre,
         nombre: card.dataset.nombre,
         img: card.dataset.img || '',
-        precio: Number(card.dataset.precio) || 79,
+        precio: Number(card.dataset.precio) || 84,
         orient: card.dataset.orient || 'v'
       });
       this.classList.add('added');
@@ -428,7 +428,7 @@ function cartPatchLightbox(card) {
       id: card.dataset.img || card.dataset.nombre,
       nombre: card.dataset.nombre,
       img: card.dataset.img || '',
-      precio: Number(card.dataset.precio) || 79,
+      precio: Number(card.dataset.precio) || 84,
       orient: card.dataset.orient || 'v'
     });
     this.classList.add('added');
@@ -620,8 +620,8 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
 
   function calculateCouponDiscount(items, couponCode) {
     const code = normalizeCoupon(couponCode);
-    const subtotal = items.reduce((sum, item) => sum + (Number(item.precio) || 79), 0);
-    const nedekaSubtotal = items.filter(isNedekaItem).reduce((sum, item) => sum + (Number(item.precio) || 79), 0);
+    const subtotal = items.reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
+    const nedekaSubtotal = items.filter(isNedekaItem).reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
 
     if (code === 'LADYAURA5') {
       return subtotal > 0 ? 5 : 0;
@@ -753,7 +753,7 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
       }
 
       // Recalculate visible totals if possible by text
-      const subtotal = items.reduce((sum, item) => sum + (Number(item.precio) || 79), 0);
+      const subtotal = items.reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
       const finalTotal = Math.max(0, subtotal - discount);
       if (totalEl) {
         totalEl.textContent = `${finalTotal.toFixed(2).replace('.', ',')} €`;
