@@ -889,7 +889,7 @@ small,
     <!-- FORMULARIO -->
     <div class="order-form">
       <p class="form-title" data-i18n="cart_form_title">✨ Confirma tu pedido</p>
-      <p class="form-subtitle">Rellena tus datos, envía el pedido y después podrás pagar directamente por Bizum o PayPal.</p>
+      <p class="form-subtitle">Rellena tus datos y reserva tu lugar en la lista de espera. Te avisaré personalmente cuando la tienda abra y puedas completar tu pedido. 💜</p>
 
       <form id="order-form" novalidate>
         <div class="form-grid">
@@ -943,41 +943,31 @@ small,
         </div>
 
         <div class="form-note">
-          <strong>¿Cómo funciona?</strong> Primero envías tus datos del pedido. Después aparecerán las instrucciones para pagar el total por Bizum o PayPal. Tu cuadro se produce bajo pedido en 2–3 semanas. 💜
+          <strong>¿Cómo funciona?</strong> Envías tus datos y los diseños que te interesan. Cuando la tienda abra oficialmente, serás de las primeras en recibir un aviso personalizado con tus cuadros reservados. <strong>No se cobra nada ahora.</strong> 💜
         </div>
 
-        <button type="submit" class="btn-submit" id="btn-submit">✨ Enviar pedido y continuar al pago</button>
+        <button type="submit" class="btn-submit" id="btn-submit">✨ Reservar mi lugar en la lista de espera</button>
       </form>
     </div>
   </div>
 
-  <!-- CONFIRMACIÓN + PAGO -->
+  <!-- CONFIRMACIÓN LISTA DE ESPERA -->
   <div id="cart-confirm">
-    <span class="confirm-icon">💜</span>
-    <h2>¡Pedido enviado!</h2>
-    <p>Ya me ha llegado tu pedido por email. Ahora puedes pagar el total para dejarlo confirmado.</p>
+    <span class="confirm-icon">🌟</span>
+    <h2>¡Ya estás en la lista de espera!</h2>
+    <p>He recibido tu reserva. Cuando la tienda abra oficialmente, serás de las primeras en saberlo.</p>
+    <p style="color:var(--muted);font-size:0.85rem;margin-top:0.5rem;">Te avisaré personalmente por email. No se ha cobrado nada todavía. 💜</p>
 
-    <div class="payment-box">
-      <p class="payment-total">Total a pagar: <span id="payment-total">0 €</span></p>
-
-      <div class="payment-method">
-        <h3>Opción 1 · Bizum</h3>
-        <p>Envía el Bizum al número:</p>
-        <span class="payment-number">621 355 638</span>
-        <p class="payment-concept">Concepto: <strong id="bizum-concept">Lady Aura + tu nombre</strong></p>
-      </div>
-
-      <div class="payment-method">
-        <h3>Opción 2 · PayPal</h3>
-        <a href="#" id="paypal-pay-link" class="paypal-btn" target="_blank" rel="noopener">💳 Pagar ahora con PayPal</a>
-        <p class="payment-mini">Receptor PayPal: Elisabet Lucas · LadyAuraArt</p>
-      </div>
-
-      <p class="payment-warning">En cuanto reciba la confirmación del pago, tu pedido quedará reservado y empezaré a prepararlo personalmente.</p>
+    <div class="payment-box" style="margin-top:2rem;text-align:center;">
+      <p style="font-family:'Cinzel',serif;color:var(--gold2);font-size:1rem;margin-bottom:0.8rem;">✦ Tu reserva está guardada ✦</p>
+      <p style="color:rgba(255,255,255,0.7);font-size:0.88rem;line-height:1.7;">
+        Puedes ver el estado de tu reserva en <strong style="color:#fff;">📦 Mis pedidos</strong>.<br>
+        Cuando abramos, tu precio y diseños quedarán reservados para ti.
+      </p>
     </div>
 
-    <p style="color:var(--gold2);margin-top:1.2rem;">✦ Tu pedido quedará confirmado en cuanto se reciba el pago ✦</p>
-    <a href="#" id="confirm-wa-link" class="confirm-wa" target="_blank" rel="noopener">💬 Avisar por WhatsApp</a>
+    <p style="color:var(--gold2);margin-top:1.5rem;font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:0.08em;">GRACIAS POR TU CONFIANZA ✨</p>
+    <a href="pedidos.html" class="confirm-wa" style="margin-top:1.2rem;display:inline-block;">📦 Ver mi reserva</a>
   </div>
 
 </main>
@@ -1171,7 +1161,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
   if (items.length === 0) {
     alert('Tu carrito está vacío. Añade al menos un producto antes de enviar el pedido.');
     btn.disabled = false;
-    btn.textContent = '✨ Enviar pedido y continuar al pago';
+    btn.textContent = '✨ Reservar mi lugar en la lista de espera';
     return;
   }
   const couponDataPedido = getCouponInline();
@@ -1197,10 +1187,10 @@ document.getElementById('order-form').addEventListener('submit', async function(
     subtotal:  subtotalPedido + ' €',
     cupon:     couponApplied === 'NEDEKA60' ? 'NEDEKA60 · precio especial 60 €/cuadro NEDEKA' : (couponApplied ? `${couponApplied} · -${discountPedido} €` : 'Ninguno'),
     total:     totalPedido + ' €',
-    metodo_pago: 'Pendiente de pago: Bizum o PayPal',
-    bizum: '621 355 638',
-    paypal: paypalUrl,
-    _subject:  `🛒 Nuevo pedido Lady Aura Art · ${document.getElementById('f-nombre').value}`
+    metodo_pago: 'LISTA DE ESPERA — sin cobro todavía',
+    bizum: 'No aplica (lista de espera)',
+    paypal: 'No aplica (lista de espera)',
+    _subject:  `⭐ Lista de espera Lady Aura Art · ${document.getElementById('f-nombre').value}`
   };
 
   try {
@@ -1221,19 +1211,14 @@ document.getElementById('order-form').addEventListener('submit', async function(
         direccion: data.direccion + ', ' + data.cp + ' ' + data.ciudad + ', ' + data.pais,
         items: items.map(i => ({ nombre: i.nombre, img: i.img, precio: i.precio, orient: i.orient })),
         total: totalPedido,
-        estado: 'procesando' // procesando | enviado | recibido
+        estado: 'lista_espera' // lista_espera | procesando | enviado | recibido
       };
       const orders = JSON.parse(localStorage.getItem('ladyaura_orders') || '[]');
       orders.unshift(order);
       localStorage.setItem('ladyaura_orders', JSON.stringify(orders));
 
-      // Guardar una copia del último pedido para que la pantalla de pago NO dependa del carrito
+      // Guardar una copia del último pedido
       localStorage.setItem('ladyaura_last_order', JSON.stringify(order));
-
-      // Mostrar total y enlaces de pago ANTES de vaciar el carrito
-      document.getElementById('payment-total').textContent = totalPedido + ' €';
-      document.getElementById('paypal-pay-link').href = paypalUrl;
-      document.getElementById('bizum-concept').textContent = 'Lady Aura ' + data.nombre + ' ' + data.apellidos;
 
       // Marcar cupón como usado y limpiar
       if (couponApplied) {
@@ -1257,25 +1242,14 @@ document.getElementById('order-form').addEventListener('submit', async function(
       confirm.appendChild(verPedidos);
       }
 
-      // Botón WhatsApp con resumen
-      const waText = encodeURIComponent(
-        `Hola Lady Aura ✨ Acabo de enviar un pedido desde la web.\n\nNombre: ${data.nombre} ${data.apellidos}\nEmail: ${data.email}\nPedido: ${data.pedido}\nTotal: ${data.total}\n\n¿Puedes confirmarme los detalles? ¡Gracias! 💜`
-      );
-      document.getElementById('confirm-wa-link').href = `https://wa.me/34621355638?text=${waText}`;
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       throw new Error('Error en el envío');
     }
   } catch(err) {
-    // Fallback: abrir WhatsApp con el pedido
-    const items2 = cartGet();
-    const waText = encodeURIComponent(
-      `Hola Lady Aura ✨ Quiero hacer un pedido:\n\n${items2.map(i=>`• ${i.nombre} · ${i.precio}€`).join('\n')}\n\nTotal: ${items2.reduce((s,i)=>s+(Number(i.precio)||79),0)}€\n\nMis datos:\nNombre: ${data.nombre} ${data.apellidos}\nEmail: ${data.email}\nDirección: ${data.direccion}, ${data.cp} ${data.ciudad}, ${data.pais}\n\n¡Gracias! 💜`
-    );
-    window.open(`https://wa.me/34621355638?text=${waText}`, '_blank');
     btn.disabled = false;
-    btn.textContent = '✨ Enviar pedido y continuar al pago';
-    alert('No se pudo enviar el email automático. Se abrirá WhatsApp con tu pedido. ¡Envía el mensaje y te responderé enseguida! 💜');
+    btn.textContent = '✨ Reservar mi lugar en la lista de espera';
+    alert('No se pudo registrar tu reserva. Por favor, inténtalo de nuevo o escríbeme directamente. 💜');
   }
 });
 

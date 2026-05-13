@@ -18,8 +18,8 @@
   --gold2: #e8c96a;
   --purple:#a03fff;
   --pink:  #ff4889;
-  --muted: rgba(255,255,255,0.45);
-  --text:  rgba(255,255,255,0.88);
+  --muted: #f4e8ff;
+  --text:  #fff7ff;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -29,453 +29,241 @@ body {
   font-family: 'Raleway', sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
+  font-size: 18px;
 }
 
 #stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 
 /* ── HEADER ── */
 .site-header {
-  position: sticky; top: 0; z-index: 100;
+  position: sticky; top: 0; z-index: 9999;
   display: flex; align-items: center; gap: 1rem;
-  padding: 0.7rem 5%;
-  background: rgba(5,3,14,0.92);
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(12px);
+  padding: 0.6rem 5%;
+  background: rgba(3,3,10,0.96);
+  border-bottom: 1px solid rgba(160,63,255,0.18);
+  backdrop-filter: blur(20px);
+  min-height: 68px;
 }
-.brand img { height: 38px; display: block; }
-.header-links { margin-left: auto; display: flex; gap: 1.5rem; align-items: center; }
-.header-links a {
-  font-family: 'Cinzel', serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.2s;
+.brand img {
+  width: auto; height: 52px; max-height: 52px; max-width: 200px;
+  object-fit: contain; display: block;
+  filter: drop-shadow(0 0 14px rgba(238,160,255,0.7));
 }
-.header-links a:hover { color: var(--gold2); }
+.menu-toggle {
+  display: none; background: transparent;
+  border: 1px solid rgba(160,63,255,0.3);
+  color: rgba(255,255,255,0.88); width: 40px; height: 40px;
+  border-radius: 10px; font-size: 1.2rem; cursor: pointer;
+  align-items: center; justify-content: center; margin-left: auto;
+}
+.site-header .nav {
+  display: flex; align-items: center; gap: 0.8rem;
+  margin-left: auto; font-family: 'Cinzel', serif;
+  font-size: 0.75rem; letter-spacing: 0.05em;
+  text-transform: uppercase; flex-wrap: wrap;
+}
+.site-header .nav a {
+  color: rgba(255,255,255,0.75); text-decoration: none;
+  padding-bottom: 0.2rem; border-bottom: 2px solid transparent;
+  transition: all 0.2s; white-space: nowrap;
+}
+.site-header .nav a:hover, .site-header .nav a[aria-current="page"] {
+  color: var(--gold2); border-color: var(--gold2); opacity: 1;
+}
+@media (max-width: 900px) {
+  .menu-toggle { display: flex; }
+  .site-header .nav {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: flex-start; gap: 0;
+    background: rgba(3,3,10,0.98);
+    border-bottom: 1px solid rgba(160,63,255,0.2);
+    padding: 1rem 5%; margin: 0;
+  }
+  .site-header .nav.active { display: flex; }
+  .site-header .nav a { width: 100%; padding: 0.75rem 0; border-bottom: 1px solid rgba(160,63,255,0.1); }
+  .site-header .nav a:last-child { border-bottom: none; }
+}
 
-/* ── MAIN ── */
+/* ── LAYOUT ── */
 main {
   position: relative; z-index: 5;
-  max-width: 860px;
-  margin: 0 auto;
+  max-width: 860px; margin: 0 auto;
   padding: 3rem 5% 6rem;
 }
 
 /* ── HERO ── */
 .page-hero { text-align: center; margin-bottom: 3rem; }
 .page-hero .eyebrow {
-  font-family: 'Cinzel', serif;
-  font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+  font-family: 'Cinzel', serif; font-size: 0.72rem;
+  letter-spacing: 0.25em; text-transform: uppercase;
   color: var(--gold); display: block; margin-bottom: 0.8rem;
 }
 .page-hero h1 {
   font-family: 'Cinzel', serif;
-  font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 700;
+  font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700;
   background: linear-gradient(135deg, #fff 0%, var(--gold2) 50%, var(--purple) 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  margin-bottom: 0.5rem;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin-bottom: 0.5rem;
 }
-.page-hero p { color: var(--muted); font-size: 0.88rem; font-weight: 300; }
+.page-hero p { color: var(--muted); font-size: 0.95rem; font-weight: 300; }
+
+/* ── BANNER LISTA DE ESPERA ── */
+.waitlist-banner {
+  background: linear-gradient(135deg, rgba(160,63,255,0.15), rgba(255,72,137,0.1));
+  border: 1px solid rgba(160,63,255,0.35);
+  border-radius: 20px;
+  padding: 1.4rem 1.8rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+.waitlist-banner .wb-icon { font-size: 2rem; display: block; margin-bottom: 0.6rem; }
+.waitlist-banner h2 {
+  font-family: 'Cinzel', serif; font-size: 1rem;
+  color: var(--gold2); margin-bottom: 0.4rem; letter-spacing: 0.08em;
+}
+.waitlist-banner p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
 
 /* ── VACÍO ── */
 #orders-empty {
   text-align: center; padding: 4rem 1rem;
 }
-#orders-empty .empty-icon { font-size: 3.5rem; display: block; margin-bottom: 1.2rem; opacity: 0.4; }
-#orders-empty h2 { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--muted); margin-bottom: 0.7rem; }
-#orders-empty p { color: var(--muted); font-size: 0.85rem; margin-bottom: 2rem; }
+#orders-empty .empty-icon { font-size: 4rem; display: block; margin-bottom: 1.2rem; opacity: 0.5; }
+#orders-empty h2 {
+  font-family: 'Cinzel', serif; font-size: 1.2rem;
+  color: var(--muted); margin-bottom: 0.8rem;
+}
+#orders-empty p { color: var(--muted); font-size: 0.88rem; margin-bottom: 2rem; }
 .btn-shop {
   display: inline-block; padding: 0.9rem 2.2rem;
   background: linear-gradient(135deg, rgba(160,63,255,0.9), rgba(255,72,137,0.85));
-  color: #fff; font-family: 'Cinzel', serif; font-size: 0.8rem;
-  letter-spacing: 0.14em; text-transform: uppercase; border-radius: 999px;
-  text-decoration: none; box-shadow: 0 0 30px rgba(160,63,255,0.35); transition: all 0.25s;
+  color: #fff; font-family: 'Cinzel', serif; font-size: 0.82rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  border-radius: 999px; text-decoration: none;
+  box-shadow: 0 0 30px rgba(160,63,255,0.35); transition: all 0.25s;
 }
 .btn-shop:hover { box-shadow: 0 0 50px rgba(160,63,255,0.6); transform: translateY(-2px); }
 
-/* ── PEDIDO CARD ── */
+/* ── LISTA DE PEDIDOS ── */
+#orders-list { display: flex; flex-direction: column; gap: 1.5rem; }
+
 .order-card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 22px;
   padding: 1.5rem 1.8rem;
-  margin-bottom: 1.5rem;
   transition: border-color 0.2s;
 }
-.order-card:hover { border-color: rgba(160,63,255,0.3); }
+.order-card:hover { border-color: rgba(160,63,255,0.35); }
 
 .order-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1.2rem;
-  flex-wrap: wrap;
+  display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 1rem;
+  margin-bottom: 1.2rem; flex-wrap: wrap;
 }
 .order-id {
-  font-family: 'Cinzel', serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  color: var(--gold);
-  display: block;
-  margin-bottom: 0.25rem;
+  font-family: 'Cinzel', serif; font-size: 0.8rem;
+  letter-spacing: 0.1em; color: var(--gold);
 }
-.order-date { font-size: 0.78rem; color: var(--muted); }
+.order-date { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
 
-/* ── ESTADO BADGE ── */
+/* ── BADGE DE ESTADO ── */
 .status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.9rem;
-  border-radius: 999px;
-  font-family: 'Cinzel', serif;
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-weight: 600;
-  white-space: nowrap;
-  flex-shrink: 0;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.35rem 1rem; border-radius: 999px;
+  font-family: 'Cinzel', serif; font-size: 0.72rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  font-weight: 600; white-space: nowrap;
 }
-.status-procesando {
-  background: rgba(160,63,255,0.12);
-  border: 1px solid rgba(160,63,255,0.35);
-  color: rgba(200,150,255,0.9);
+.status-badge.lista_espera {
+  background: rgba(232,201,106,0.15);
+  border: 1px solid rgba(232,201,106,0.4);
+  color: var(--gold2);
 }
-.status-enviado {
-  background: rgba(255,180,50,0.1);
-  border: 1px solid rgba(255,180,50,0.35);
-  color: rgba(255,200,80,0.95);
+.status-badge.procesando {
+  background: rgba(160,63,255,0.15);
+  border: 1px solid rgba(160,63,255,0.4);
+  color: #d4a0ff;
 }
-.status-recibido {
-  background: rgba(80,200,120,0.1);
-  border: 1px solid rgba(80,200,120,0.35);
-  color: rgba(100,230,140,0.95);
+.status-badge.enviado {
+  background: rgba(100,220,160,0.15);
+  border: 1px solid rgba(100,220,160,0.4);
+  color: #80ffb8;
+}
+.status-badge.recibido {
+  background: rgba(100,180,255,0.15);
+  border: 1px solid rgba(100,180,255,0.4);
+  color: #a0d8ff;
 }
 
 /* ── ITEMS DEL PEDIDO ── */
-.order-items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  margin-bottom: 1.2rem;
-}
+.order-items { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1.2rem; }
 .order-item {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
+  display: flex; align-items: center; gap: 1rem;
   background: rgba(255,255,255,0.03);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 0.55rem 0.8rem;
-  flex: 1;
-  min-width: 200px;
+  border: 1px solid rgba(160,63,255,0.1);
+  border-radius: 14px; padding: 0.8rem 1rem;
 }
-.order-item img {
-  width: 42px;
-  height: 54px;
-  object-fit: cover;
-  border-radius: 7px;
-  border: 1px solid var(--border);
+.order-item-img {
+  width: 60px; height: 78px; object-fit: cover;
+  border-radius: 8px; border: 1px solid rgba(160,63,255,0.2);
   flex-shrink: 0;
 }
-.order-item-info h4 {
-  font-family: 'Cinzel', serif;
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.85);
-  margin-bottom: 0.15rem;
-  line-height: 1.3;
+.order-item-info { flex: 1; min-width: 0; }
+.order-item-name {
+  font-family: 'Cinzel', serif; font-size: 0.88rem;
+  color: #fff; margin-bottom: 0.2rem;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.order-item-info p { font-size: 0.72rem; color: var(--gold2); }
+.order-item-meta { font-size: 0.8rem; color: var(--muted); }
+.order-item-price {
+  font-family: 'Cinzel', serif; font-size: 1rem;
+  color: var(--gold2); flex-shrink: 0;
+}
 
 /* ── FOOTER DEL PEDIDO ── */
 .order-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(160,63,255,0.12);
+  flex-wrap: wrap;
 }
 .order-total {
-  font-family: 'Cinzel', serif;
-  font-size: 1.05rem;
+  font-family: 'Cinzel', serif; font-size: 1rem;
   color: var(--gold2);
 }
-.order-total span { font-size: 0.75rem; color: var(--muted); font-family: 'Raleway', sans-serif; }
+.order-total span { color: var(--muted); font-size: 0.82rem; margin-right: 0.4rem; }
 
-/* ── BOTÓN RECIBIDO ── */
-.btn-recibido {
-  padding: 0.55rem 1.4rem;
-  background: rgba(80,200,120,0.08);
-  border: 1px solid rgba(80,200,120,0.3);
-  border-radius: 999px;
-  color: rgba(100,230,140,0.8);
-  font-family: 'Cinzel', serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.25s;
-}
-.btn-recibido:hover {
-  background: rgba(80,200,120,0.18);
-  border-color: rgba(80,200,120,0.6);
-  color: rgba(120,255,160,1);
-  box-shadow: 0 0 15px rgba(80,200,120,0.2);
-}
-.btn-recibido.done {
-  opacity: 0.5;
-  cursor: default;
-  pointer-events: none;
-}
-
-/* ── NOTA PRIVACIDAD ── */
-.privacy-note {
-  text-align: center;
-  font-size: 0.74rem;
-  color: var(--muted);
-  margin-top: 2.5rem;
-  padding: 1rem;
-  border: 1px solid var(--border);
+/* ── NOTA LISTA ESPERA EN PEDIDO ── */
+.order-waitlist-note {
+  margin-top: 1rem;
+  background: rgba(232,201,106,0.07);
+  border: 1px solid rgba(232,201,106,0.2);
   border-radius: 12px;
-  background: rgba(255,255,255,0.02);
+  padding: 0.8rem 1.1rem;
+  font-size: 0.84rem;
+  color: var(--muted);
   line-height: 1.6;
 }
+.order-waitlist-note strong { color: var(--gold2); }
+
+/* ── BOTÓN LIMPIAR ── */
+.btn-clear {
+  background: none; border: 1px solid rgba(255,72,137,0.25);
+  color: rgba(255,72,137,0.6); font-family: 'Cinzel', serif;
+  font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.5rem 1.2rem; border-radius: 999px; cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-clear:hover { border-color: rgba(255,72,137,0.6); color: #ff4889; }
 
 /* ── FOOTER ── */
 footer {
-  position: relative; z-index: 5;
-  text-align: center; padding: 2rem;
-  border-top: 1px solid var(--border);
+  position: relative; z-index: 5; text-align: center;
+  padding: 2rem; border-top: 1px solid var(--border);
   color: var(--muted); font-size: 0.78rem;
 }
 footer a { color: var(--gold2); text-decoration: none; }
-
-@media (max-width: 600px) {
-  .order-card { padding: 1.2rem; }
-  .order-item { min-width: 100%; }
-  .order-footer { flex-direction: column; align-items: flex-start; }
-}
-</style>
-<style>
-/* ── HEADER UNIFICADO ── */
-.site-header{position:sticky;top:0;z-index:9999;display:flex;align-items:center;gap:1rem;padding:0.6rem 5%;background:rgba(3,3,10,0.96);border-bottom:1px solid rgba(160,63,255,0.18);backdrop-filter:blur(12px);min-height:68px;}
-.site-header .brand img{height:48px;max-width:180px;object-fit:contain;display:block;filter:drop-shadow(0 0 14px rgba(238,160,255,0.7));}
-.menu-toggle{display:none;background:transparent;border:1px solid rgba(160,63,255,0.3);color:rgba(255,255,255,0.88);width:40px;height:40px;border-radius:10px;font-size:1.2rem;cursor:pointer;align-items:center;justify-content:center;margin-left:auto;}
-.site-header .nav{display:flex;gap:0.8rem;margin-left:auto;font-family:"Cinzel",serif;font-size:0.75rem;letter-spacing:0.05em;text-transform:uppercase;flex-wrap:wrap;}
-.site-header .nav a{color:rgba(255,255,255,0.75);text-decoration:none;padding-bottom:0.2rem;border-bottom:2px solid transparent;transition:all 0.2s;white-space:nowrap;}
-.site-header .nav a:hover,.site-header .nav a[aria-current="page"]{color:#e8c96a;border-color:#e8c96a;}
-@media(max-width:900px){.menu-toggle{display:flex;}.site-header .nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:rgba(3,3,10,0.98);border-bottom:1px solid rgba(160,63,255,0.2);padding:1rem 5%;}.site-header .nav.active{display:flex;}.site-header .nav a{padding:0.7rem 0;border-bottom:1px solid rgba(160,63,255,0.1);}}
-
-
-/* ═══════════════════════════════════════
-   LEGIBILIDAD GLOBAL LADY AURA — textos más grandes y visibles
-   Añadido para que los textos pequeños del HTML inline también se vean bien
-═══════════════════════════════════════ */
-:root {
-  --muted: #f4e8ff !important;
-  --text: #fff7ff !important;
-  --white: #fff7ff !important;
-}
-
-body {
-  font-size: 19px !important;
-}
-
-p,
-li,
-small,
-.page-hero p,
-.col-hero p,
-.hero-sub,
-.tirada-sub,
-.tirada-desc,
-.card-desc,
-.product-desc,
-.product-size,
-.reserve-hint,
-.ps-sub,
-.so-sub,
-.sold-notice,
-.ts-text span,
-.faq-a,
-.faq-answer,
-.faq-item p,
-.modal-desc,
-.modal-incluye li,
-.modal-nota,
-.lb-includes li,
-.lb-price-note,
-.lightbox-prelaunch,
-.aviso-digital p,
-.lamina-precio .aviso,
-.tarot-card-meaning,
-.tarot-disclaimer,
-.tarot-card-label,
-.tarot-card-name-text,
-.reading-text,
-.result-text,
-.explanation,
-.help-text,
-.empty-state p,
-#orders-empty p,
-.cart-note,
-.cart-item-meta,
-.order-meta,
-.payment-note,
-.final-microcopy,
-.seo-footer p {
-  color: #f4e8ff !important;
-  opacity: 1 !important;
-  line-height: 1.65 !important;
-}
-
-/* Textos explicativos pequeños */
-.tirada-desc,
-.tirada-sub,
-.tarot-card-meaning,
-.tarot-disclaimer,
-.faq-a,
-.faq-answer,
-.modal-desc,
-.modal-incluye li,
-.modal-nota,
-.lb-includes li,
-.lb-price-note,
-.ps-sub,
-.reserve-hint,
-.sold-notice,
-.so-sub,
-.product-size,
-.page-hero p,
-.col-hero p,
-.hero-sub,
-.aviso-digital p,
-.lamina-precio .aviso,
-#orders-empty p,
-.seo-footer p {
-  font-size: 1rem !important;
-}
-
-/* Etiquetas y navegación pequeñas: suben sin romper diseño */
-.back-bar a,
-.page-topbar a,
-.site-header .nav a,
-.header-links a,
-.col-link,
-.lb-btn,
-.btn-secondary,
-.btn-primary,
-.btn-shop,
-.btn-draw,
-.tarot-btn,
-.page-hero .eyebrow,
-.col-hero-eyebrow,
-.tarot-badge,
-.tirada-count,
-.orient-badge,
-.lb-eyebrow,
-.modal-signo,
-.ps-label,
-.card-price,
-.reserve-hint,
-.product-price-old,
-.page-btn {
-  font-size: max(0.9rem, 15px) !important;
-  opacity: 1 !important;
-}
-
-/* Tarot: prioridad máxima porque era lo más pequeño */
-.tarot-card-label {
-  font-size: 0.88rem !important;
-  letter-spacing: 0.11em !important;
-}
-.tarot-card-name-text {
-  font-size: 1rem !important;
-}
-.tarot-card-meaning {
-  font-size: 1.02rem !important;
-  padding: 0.8rem 0.95rem !important;
-  background: rgba(255,255,255,0.07) !important;
-  border-color: rgba(225,214,255,0.28) !important;
-}
-.tarot-disclaimer {
-  font-size: 0.98rem !important;
-}
-
-/* Cards y modales: mejora lectura sobre fondos oscuros */
-.product-card,
-.card-info,
-.tirada-card,
-.faq-item,
-.modal-card,
-.lightbox-card,
-.tarot-reading,
-.order-card,
-.cart-card,
-.payment-card,
-.summary-card {
-  background-color: rgba(15, 8, 27, 0.92) !important;
-}
-
-/* Móvil: mínimo legible real */
-@media (max-width: 700px) {
-  body { font-size: 18px !important; }
-  p,
-  li,
-  small,
-  .page-hero p,
-  .col-hero p,
-  .hero-sub,
-  .tirada-sub,
-  .tirada-desc,
-  .product-size,
-  .reserve-hint,
-  .ps-sub,
-  .so-sub,
-  .sold-notice,
-  .faq-a,
-  .faq-answer,
-  .modal-desc,
-  .modal-incluye li,
-  .modal-nota,
-  .lb-includes li,
-  .lb-price-note,
-  .tarot-card-meaning,
-  .tarot-disclaimer,
-  #orders-empty p,
-  .seo-footer p {
-    font-size: 1rem !important;
-    line-height: 1.7 !important;
-  }
-
-  .back-bar a,
-  .page-topbar a,
-  .site-header .nav a,
-  .header-links a,
-  .col-link,
-  .lb-btn,
-  .btn-secondary,
-  .btn-primary,
-  .btn-shop,
-  .btn-draw,
-  .tarot-btn,
-  .page-hero .eyebrow,
-  .col-hero-eyebrow,
-  .tarot-badge,
-  .tirada-count,
-  .orient-badge,
-  .lb-eyebrow,
-  .modal-signo,
-  .ps-label,
-  .page-btn {
-    font-size: 0.92rem !important;
-  }
-}
-
 </style>
 </head>
 <body>
@@ -486,16 +274,18 @@ small,
   <a class="brand" href="index.html" aria-label="Lady Aura inicio">
     <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art – Diamond Painting Premium">
   </a>
-  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
-  <nav class="nav" id="nav" aria-label="Navegación principal">
-    <a href="index.html" data-i18n="nav_inicio">Inicio</a>
-    <a href="zodiaco.html" data-i18n="nav_zodiaco">♈ Zodíaco</a>
-    <a href="parejas.html" data-i18n="nav_parejas">💑 Parejas</a>
-    <a href="paisajes.html" data-i18n="nav_paisajes">🏔️ Paisajes</a>
-    <a href="especiales.html" data-i18n="nav_especiales">✨ Diseños exclusivos</a>
-    <a href="personalizados.html" data-i18n="nav_personalizados">🎨 Personalizados</a>
-    <a href="tarot.html" data-i18n="nav_tarot">🔮 Tarot</a>
-    <a href="colorear.html" data-i18n="nav_colorear">🎨 Colorear</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  <nav class="nav" id="nav">
+    <a href="index.html">← Inicio</a>
+    <a href="zodiaco.html">♈ Zodíaco</a>
+    <a href="parejas.html">💑 Parejas</a>
+    <a href="paisajes.html">🏔️ Paisajes</a>
+    <a href="especiales.html">✨ Diseños exclusivos</a>
+    <a href="nedeka.html">🌙 NEDEKA</a>
+    <a href="personalizados.html">🎨 Personalizados</a>
+    <a href="tarot.html">🔮 Tarot</a>
+    <a href="colorear.html">🎨 Colorear</a>
+    <a href="pedidos.html" aria-current="page">📦 Mis pedidos</a>
     <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">🛒<span class="cart-badge" style="display:none">0</span></a>
   </nav>
 </header>
@@ -503,22 +293,28 @@ small,
 <main>
   <div class="page-hero">
     <span class="eyebrow">✦ Lady Aura Art · Diamond Painting Premium ✦</span>
-    <h1 data-i18n="ped_title">📦 Mis pedidos</h1>
-    <p data-i18n="ped_sub">Aquí puedes seguir el estado de todos tus pedidos</p>
+    <h1>📦 Mis pedidos</h1>
+    <p>Aquí puedes ver el estado de tus reservas y pedidos</p>
   </div>
 
+  <!-- Banner informativo lista de espera -->
+  <div class="waitlist-banner">
+    <span class="wb-icon">⏳</span>
+    <h2>Tienda en preparación · Lista de espera activa</h2>
+    <p>La tienda abrirá pronto. Si has reservado, recibirás un aviso personalizado por email cuando puedas completar tu pedido y pagar. <strong style="color:var(--gold2)">No se ha cobrado nada todavía.</strong></p>
+  </div>
+
+  <!-- Vacío -->
   <div id="orders-empty" style="display:none">
-    <span class="empty-icon">📭</span>
-    <h2 data-i18n="ped_empty_title">Aún no tienes pedidos</h2>
-    <p data-i18n="ped_empty_sub">Cuando realices tu primer pedido aparecerá aquí.</p>
-    <a href="index.html" class="btn-shop" data-i18n="ped_btn_shop">✨ Ver colecciones</a>
+    <span class="empty-icon">🌟</span>
+    <h2>Aún no tienes reservas</h2>
+    <p>Explora nuestras colecciones y reserva tu lugar en la lista de espera.</p>
+    <a href="index.html" class="btn-shop">✨ Ver colecciones</a>
   </div>
 
+  <!-- Lista de pedidos -->
   <div id="orders-list"></div>
 
-  <div class="privacy-note" id="privacy-note" style="display:none">
-    🔒 Tus pedidos se guardan solo en este dispositivo. Si cambias de navegador o borras los datos del sitio, esta información desaparecerá. Guarda el email de confirmación como referencia.
-  </div>
 </main>
 
 <footer>
@@ -539,102 +335,107 @@ small,
   document.head.appendChild(st);
 })();
 
-/* ── Lógica ── */
-const ORDERS_KEY = 'ladyaura_orders';
+/* ── Menú móvil ── */
+(function(){
+  const btn = document.getElementById('menuToggle');
+  const nav = document.getElementById('nav');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function(){
+    nav.classList.toggle('active');
+    btn.setAttribute('aria-expanded', nav.classList.contains('active') ? 'true' : 'false');
+  });
+  nav.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){
+      nav.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
 
-function getOrders() {
-  try { return JSON.parse(localStorage.getItem(ORDERS_KEY)) || []; }
-  catch(e) { return []; }
-}
-function saveOrders(orders) {
-  localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
-}
-
-function marcarRecibido(id) {
-  const orders = getOrders();
-  const order = orders.find(o => o.id === id);
-  if (!order) return;
-  order.estado = 'recibido';
-  saveOrders(orders);
-  render();
-}
-
-const ESTADOS = {
-  procesando: { label: '⏳ Procesando',  cls: 'status-procesando' },
-  enviado:    { label: '🚚 Enviado',      cls: 'status-enviado'    },
-  recibido:   { label: '✓ Recibido',      cls: 'status-recibido'   },
+/* ── Estado en español ── */
+const STATUS_LABEL = {
+  lista_espera: '⏳ Lista de espera',
+  procesando:   '🔮 En preparación',
+  enviado:      '🚀 Enviado',
+  recibido:     '✨ Recibido'
 };
 
-function render() {
-  const orders = getOrders();
-  const list   = document.getElementById('orders-list');
-  const empty  = document.getElementById('orders-empty');
-  const note   = document.getElementById('privacy-note');
+function statusClass(estado) {
+  return estado || 'lista_espera';
+}
 
-  if (orders.length === 0) {
+/* ── Renderizar pedidos ── */
+function renderOrders() {
+  const orders = JSON.parse(localStorage.getItem('ladyaura_orders') || '[]');
+  const list = document.getElementById('orders-list');
+  const empty = document.getElementById('orders-empty');
+
+  if (!orders.length) {
     empty.style.display = 'block';
-    note.style.display  = 'none';
     list.innerHTML = '';
     return;
   }
 
   empty.style.display = 'none';
-  note.style.display  = 'block';
 
-  list.innerHTML = orders.map(order => {
-    const est = ESTADOS[order.estado] || ESTADOS.procesando;
-    const itemsHtml = order.items.map(item => `
+  list.innerHTML = orders.map((order, idx) => {
+    const estado = order.estado || 'lista_espera';
+    const label = STATUS_LABEL[estado] || estado;
+    const isWaitlist = estado === 'lista_espera';
+
+    const itemsHtml = (order.items || []).map(item => `
       <div class="order-item">
-        <img src="${item.img}" alt="${item.nombre}" onerror="this.style.opacity='0.2'">
+        <img class="order-item-img" src="${item.img || ''}" alt="${item.nombre || ''}" onerror="this.style.opacity='0.2'">
         <div class="order-item-info">
-          <h4>${item.nombre}</h4>
-          <p>${item.precio} €</p>
+          <div class="order-item-name">${item.nombre || 'Diseño'}</div>
+          <div class="order-item-meta">Diamond painting ${item.orient === 'v' ? '60×90 cm ↕' : '90×60 cm ↔'} · Envío incluido</div>
         </div>
+        <div class="order-item-price">${item.precio || '—'} €</div>
       </div>
     `).join('');
 
-    const yaRecibido = order.estado === 'recibido';
+    const waitlistNote = isWaitlist ? `
+      <div class="order-waitlist-note">
+        <strong>✦ Reserva en lista de espera</strong> — Recibirás un email personalizado cuando la tienda abra. 
+        El precio de <strong>${order.total} €</strong> queda reservado para ti. No se ha cobrado nada todavía.
+      </div>
+    ` : '';
 
     return `
-      <div class="order-card" id="order-${order.id}">
+      <div class="order-card">
         <div class="order-header">
           <div>
-            <span class="order-id">${order.id}</span>
-            <span class="order-date">📅 ${order.fecha} · ${order.nombre}</span>
+            <div class="order-id">${order.id || 'LA-' + idx}</div>
+            <div class="order-date">📅 ${order.fecha || '—'} · ${order.nombre || ''}</div>
           </div>
-          <span class="status-badge ${est.cls}">${est.label}</span>
+          <span class="status-badge ${statusClass(estado)}">${label}</span>
         </div>
 
-        <div class="order-items">${itemsHtml}</div>
+        <div class="order-items">
+          ${itemsHtml}
+        </div>
 
         <div class="order-footer">
-          <div class="order-total">
-            ${order.total} €
-            <span>· ${order.items.length} ${order.items.length === 1 ? 'cuadro' : 'cuadros'} · Envío incluido</span>
-          </div>
-          ${!yaRecibido ? `
-            <button class="btn-recibido" onclick="marcarRecibido('${order.id}')">
-              ✓ Marcar como recibido
-            </button>
-          ` : `
-            <span class="btn-recibido done">✓ Recibido</span>
-          `}
+          <div class="order-total"><span>Total reservado:</span>${order.total} €</div>
+          <button class="btn-clear" onclick="removeOrder(${idx})">Eliminar reserva</button>
         </div>
+
+        ${waitlistNote}
       </div>
     `;
   }).join('');
 }
 
-render();
+function removeOrder(idx) {
+  const orders = JSON.parse(localStorage.getItem('ladyaura_orders') || '[]');
+  orders.splice(idx, 1);
+  localStorage.setItem('ladyaura_orders', JSON.stringify(orders));
+  renderOrders();
+}
+
+renderOrders();
 </script>
-<script>
-(function(){
-  var mt=document.getElementById('menuToggle'),nv=document.getElementById('nav');
-  if(mt&&nv){mt.addEventListener('click',function(){nv.classList.toggle('active');});nv.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nv.classList.remove('active');});});}
-  var cur=window.location.pathname.split('/').pop()||'index.html';
-  document.querySelectorAll('.site-header .nav a').forEach(function(a){if(a.getAttribute('href')===cur)a.setAttribute('aria-current','page');});
-})();
-</script>
+
 <script src="carrito.js"></script>
 </body>
 </html>
