@@ -579,7 +579,7 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
 
 
 /* ============================================================
-   CUPONES LADY AURA · LADYAURA5 + NEDEKA10 NO ACUMULABLES
+   CUPONES LADY AURA · cupón público + códigos privados
    ============================================================ */
 (function(){
   const COUPON_KEY = 'ladyaura_coupon';
@@ -588,27 +588,29 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
     return String(code || '').trim().toUpperCase();
   }
 
-
-  function itemRaw(item) {
-    return [item?.coleccion, item?.collection, item?.categoria, item?.category, item?.nombre, item?.id, item?.img]
-      .filter(Boolean).join(' ').toLowerCase();
-  }
-
   function isBrujiItem(item) {
-    const raw = itemRaw(item);
-    return raw.includes('bruji') || /violeta|salemmiau|medialuna|ayla|anastada|flowerwolf|amor-floral/.test(raw);
+    var raw = [
+      item?.coleccion, item?.collection, item?.categoria, item?.category,
+      item?.img, item?.nombre
+    ].filter(Boolean).join(' ').toLowerCase();
+    return raw.includes('bruji');
   }
 
   function isNedekaItem(item) {
-    const raw = itemRaw(item);
-    return raw.includes('nedeka') || /scarlett|alita|bruster|rania|sirena-nexralia|oriana|heart-robogirl|jacecat|monigotes|ammonet|aratiana|bernabe|cita_|diosa_del_cosmos|hestia|noche_magica|princesa_nesa|vida_en_la_selva/.test(raw);
+    const raw = [
+      item?.coleccion, item?.collection, item?.categoria, item?.category,
+      item?.nombre, item?.id, item?.img
+    ].join(' ').toLowerCase();
+    return raw.includes('nedeka');
   }
 
   function isMaikaItem(item) {
-    const raw = itemRaw(item);
-    return raw.includes('maika') || /artista-de-suenos|hada-de-los-cristales-rojos|muneca-de-flores|nina-del-mar-de-estrellas|galaxia-en-sus-ojos|artista-entre-luces|noche-de-cocoa|artista de sueños|hada de los cristales rojos|muñeca de flores|nina del mar de estrellas|niña del mar de estrellas|galaxia en sus ojos|artista entre luces|noche de cocoa/.test(raw);
+    const raw = [
+      item?.coleccion, item?.collection, item?.categoria, item?.category,
+      item?.nombre, item?.id, item?.img
+    ].join(' ').toLowerCase();
+    return raw.includes('maika');
   }
-
 
   function getItemsSafe() {
     try {
@@ -645,6 +647,12 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
     }
     if (code === 'NEDEKA10') {
       return nedekaSubtotal > 0 ? Math.min(10, nedekaSubtotal) : 0;
+    }
+    if (code === 'NEDEKA60') {
+      const nedekaItems = items.filter(isNedekaItem);
+      let totalDiscount = 0;
+      nedekaItems.forEach(item => { totalDiscount += Math.max(0, (Number(item.precio) || 84) - 60); });
+      return totalDiscount > 0 ? totalDiscount : 0;
     }
     if (code === 'BRUJI10') {
       return brujiSubtotal > 0 ? Math.min(10, brujiSubtotal) : 0;
@@ -691,21 +699,21 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
       return false;
     }
 
-    if (!['LADYAURA5','NEDEKA10','BRUJI10','BRUJI60','MAIKA10'].includes(clean)) {
+    if (!['LADYAURA5','NEDEKA10','NEDEKA60','BRUJI10','BRUJI60','MAIKA10'].includes(clean)) {
       couponMessage('Cupón no válido.', false);
       return false;
     }
 
-    if (clean === 'NEDEKA10' && !items.some(isNedekaItem)) {
-      couponMessage('Este cupón solo funciona con su colección correspondiente.', false);
+    if ((clean === 'NEDEKA10' || clean === 'NEDEKA60') && !items.some(isNedekaItem)) {
+      couponMessage(clean + ' solo funciona con cuadros de la Colección NEDEKA.', false);
       return false;
     }
     if ((clean === 'BRUJI10' || clean === 'BRUJI60') && !items.some(isBrujiItem)) {
-      couponMessage('Este cupón solo funciona con su colección correspondiente.', false);
+      couponMessage(clean + ' solo funciona con cuadros de la Colección BRUJI.', false);
       return false;
     }
     if (clean === 'MAIKA10' && !items.some(isMaikaItem)) {
-      couponMessage('Este cupón solo funciona con su colección correspondiente.', false);
+      couponMessage('MAIKA10 solo funciona con cuadros de la Colección MAIKA.', false);
       return false;
     }
 
@@ -716,7 +724,7 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
     }
 
     setCoupon({ code: clean, discount: discount });
-    couponMessage(`Cupón ${clean} aplicado: -${discount.toFixed(2).replace('.', ',')} €`, true);
+    couponMessage(clean === 'LADYAURA5' ? `Cupón LADYAURA5 aplicado: -${discount.toFixed(2).replace('.', ',')} €` : `Cupón especial aplicado: -${discount.toFixed(2).replace('.', ',')} €`, true);
     return true;
   };
 
@@ -737,11 +745,11 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
     box.innerHTML = `
       <h3>¿Tienes un cupón?</h3>
       <form id="coupon-form">
-        <input id="coupon-code" type="text" placeholder="Escribe tu código" autocomplete="off">
+        <input id="coupon-code" type="text" placeholder="Ej: LADYAURA5" autocomplete="off">
         <button type="submit">Aplicar</button>
         <button type="button" id="coupon-remove">Quitar</button>
       </form>
-      <p class="coupon-help">Solo se puede usar un cupón por pedido. NEDEKA10 es exclusivo para cuadros NEDEKA.</p>
+      <p class="coupon-help">Solo se puede usar un cupón por pedido. Los códigos especiales solo se comparten por privado.</p>
       <p id="coupon-message"></p>
     `;
     target.appendChild(box);
@@ -786,7 +794,7 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
         const line = document.createElement('div');
         line.className = 'coupon-line';
         line.setAttribute('data-coupon-line','true');
-        line.innerHTML = `<span>${code === 'LADYAURA5' ? 'Cupón LADYAURA5' : 'Cupón especial'}</span><strong>-${discount.toFixed(2).replace('.', ',')} €</strong>`;
+        line.innerHTML = `<span>Cupón ${code}</span><strong>-${discount.toFixed(2).replace('.', ',')} €</strong>`;
         totalEl.parentElement.insertBefore(line, totalEl);
       }
 
@@ -800,7 +808,7 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
 
     const msg = document.getElementById('coupon-message');
     if (msg && code && discount > 0) {
-      msg.textContent = `${code === 'LADYAURA5' ? 'Cupón LADYAURA5' : 'Cupón especial'} aplicado: -${discount.toFixed(2).replace('.', ',')} €`;
+      msg.textContent = `Cupón ${code} aplicado: -${discount.toFixed(2).replace('.', ',')} €`;
       msg.style.color = '#a0ffb0';
     }
   }

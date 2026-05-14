@@ -6,7 +6,7 @@ const LA_T = {
     /* NAV */
     nav_inicio:'Inicio', nav_zodiaco:'♈ Zodíaco', nav_parejas:'💑 Parejas',
     nav_paisajes:'🏔️ Paisajes', nav_especiales:'✨ Diseños exclusivos',
-    nav_personalizados:'🎨 Personalizados', nav_nedeka:'🌙 NEDEKA', nav_bruji:'🔮 BRUJI', nav_maika:'🎨 MAIKA', nav_tarot:'🔮 Tarot', nav_colorear:'🎨 Colorear',
+    nav_personalizados:'🎨 Personalizados', nav_nedeka:'🌙 NEDEKA', nav_tarot:'🔮 Tarot', nav_colorear:'🎨 Colorear',
 
     /* COMÚN — hero strip */
     strip_sinpago:'Sin pago previo', strip_formato:'60 × 90 cm',
@@ -131,7 +131,7 @@ const LA_T = {
     /* NAV */
     nav_inicio:'Home', nav_zodiaco:'♈ Zodiac', nav_parejas:'💑 Couples',
     nav_paisajes:'🏔️ Landscapes', nav_especiales:'✨ Exclusive designs',
-    nav_personalizados:'🎨 Custom art', nav_nedeka:'🌙 NEDEKA', nav_bruji:'🔮 BRUJI', nav_maika:'🎨 MAIKA', nav_tarot:'🔮 Tarot', nav_colorear:'🎨 Coloring',
+    nav_personalizados:'🎨 Custom art', nav_nedeka:'🌙 NEDEKA', nav_tarot:'🔮 Tarot', nav_colorear:'🎨 Coloring',
 
     /* COMÚN — hero strip */
     strip_sinpago:'No upfront payment', strip_formato:'60 × 90 cm',

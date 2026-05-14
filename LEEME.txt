@@ -1,9 +1,17 @@
 INSTRUCCIONES RÁPIDAS
 
 Sube/sustituye estos archivos en la raíz de tu web:
+- index.html
+- zodiaco.html
+- paisajes.html
+- especiales.html
+- nedeka.html
+- bruji.html
 - maika.html
+- personalizados.html
+- tarot.html
+- colorear.html
 - carrito.html
-- carrito.js
 - pedidos.html
 - sitemap.xml
 - robots.txt
@@ -11,9 +19,24 @@ Sube/sustituye estos archivos en la raíz de tu web:
 - script.js
 - styles.css
 
-Sube estas imágenes dentro de la carpeta assets si todavía no están:
+IMPORTANTE MENÚ:
+- El menú superior queda unificado en todas las páginas.
+- El orden correcto es: Inicio, Zodíaco, Paisajes, Diseños exclusivos, NEDEKA, BRUJI, MAIKA, Personalizados, Tarot, Colorear, Mis pedidos y Carrito.
+- MAIKA va siempre justo detrás de BRUJI.
+- El menú se convierte en hamburguesa en pantallas medianas/móviles para que no se rompa.
 
-MAIKA:
+CUPONES:
+- LADYAURA5 es el único cupón visible en la web.
+- NEDEKA10 / NEDEKA60, BRUJI10 / BRUJI60 y MAIKA10 siguen siendo códigos privados.
+- MAIKA10 descuenta 10 € en un pedido que incluya al menos un cuadro de MAIKA.
+- Solo se puede usar un cupón por pedido.
+
+SITEMAP / SEO:
+- sitemap.xml incluye MAIKA, BRUJI y NEDEKA.
+- parejas.html no aparece en el sitemap.
+- maika.html queda con SEO propio y preparado como colección madre para futuras subsecciones de MAIKA.
+
+IMÁGENES MAIKA EN ASSETS:
 - artista-de-suenos.webp
 - hada-de-los-cristales-rojos.webp
 - muneca-de-flores.webp
@@ -21,48 +44,3 @@ MAIKA:
 - galaxia-en-sus-ojos.webp
 - artista-entre-luces.webp
 - noche-de-cocoa.webp
-
-NEDEKA:
-- scarlett-wolf.webp
-- alita-colibri.webp
-- bruster-punky.webp
-- rania.webp
-- sirena-nexralia.webp
-- abrazo-de-oriana.webp
-- alya-diosa-enjoyada.webp
-- heart-robogirl.webp
-- jacecat.webp
-- la-fiesta-de-los-monigotes.webp
-- Ammonet.webp
-- Aratiana.webp
-- Bernabe.webp
-- Cita_a_ciegas.webp
-- Cita_en_la_playa.webp
-- Diosa_del_cosmos.webp
-- Hestia_Diosa_del_fuego.webp
-- Noche_magica.webp
-- Princesa_Nesa.webp
-- Vida_en_la_Selva.webp
-
-BRUJI:
-- Violeta.webp
-- Salemmiau.webp
-- Medialuna.webp
-- Anastada.webp
-- FlowerWolf.webp
-- amor-floral.webp
-
-CUPONES:
-- LADYAURA5 es el único cupón visible en la web.
-- NEDEKA10 solo descuenta 10 € en 1 cuadro NEDEKA.
-- BRUJI10 solo descuenta 10 € en 1 cuadro BRUJI.
-- BRUJI60 deja cada cuadro BRUJI a 60 €.
-- NEDEKA60 deja cada cuadro NEDEKA a 60 € si lo usas.
-- MAIKA10 es secreto y descuenta 10 € en 1 cuadro MAIKA.
-- Solo se puede usar un cupón por pedido.
-
-CAMBIO REALIZADO:
-- maika.html tenía restos de SEO y textos BRUJI; queda corregido a MAIKA.
-- MAIKA queda preparada como colección madre para futuras subsecciones propias.
-- MAIKA10 queda añadido al carrito y no se muestra públicamente.
-- sitemap.xml queda actualizado con MAIKA, BRUJI y NEDEKA, y sin Parejas.

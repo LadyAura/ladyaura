@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
   <url>
     <loc>https://ladyauraart.com/</loc>
     <lastmod>2026-05-14</lastmod>
@@ -11,6 +12,7 @@
       <image:title>Lady Aura Art – Diamond Painting Premium España</image:title>
     </image:image>
   </url>
+
   <url>
     <loc>https://ladyauraart.com/zodiaco.html</loc>
     <lastmod>2026-05-14</lastmod>
@@ -18,9 +20,10 @@
     <priority>0.95</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/aries.webp</image:loc>
-      <image:title>Diamond painting zodíaco Aries Lady Aura Art</image:title>
+      <image:title>Diamond painting zodíaco Lady Aura Art</image:title>
     </image:image>
   </url>
+
   <url>
     <loc>https://ladyauraart.com/paisajes.html</loc>
     <lastmod>2026-05-14</lastmod>
@@ -28,9 +31,10 @@
     <priority>0.85</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/paisaje-invernal-fantasia.webp</image:loc>
-      <image:title>Diamond painting paisaje fantasía Lady Aura Art</image:title>
+      <image:title>Diamond painting paisajes fantasía Lady Aura Art</image:title>
     </image:image>
   </url>
+
   <url>
     <loc>https://ladyauraart.com/especiales.html</loc>
     <lastmod>2026-05-14</lastmod>
@@ -38,9 +42,43 @@
     <priority>0.85</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/aurora-celestial.webp</image:loc>
-      <image:title>Diamond painting diseños exclusivos Lady Aura Art</image:title>
+      <image:title>Diseños exclusivos diamond painting Lady Aura Art</image:title>
     </image:image>
   </url>
+
+  <url>
+    <loc>https://ladyauraart.com/nedeka.html</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://ladyauraart.com/assets/scarlett-wolf.webp</image:loc>
+      <image:title>Colección NEDEKA diamond painting Lady Aura Art</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ladyauraart.com/bruji.html</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://ladyauraart.com/assets/Violeta.webp</image:loc>
+      <image:title>Colección BRUJI diamond painting Lady Aura Art</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ladyauraart.com/maika.html</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://ladyauraart.com/assets/artista-de-suenos.webp</image:loc>
+      <image:title>Colección MAIKA diamond painting kawaii Lady Aura Art</image:title>
+    </image:image>
+  </url>
+
   <url>
     <loc>https://ladyauraart.com/personalizados.html</loc>
     <lastmod>2026-05-14</lastmod>
@@ -48,9 +86,10 @@
     <priority>0.9</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/personalizado-lady-aura.webp</image:loc>
-      <image:title>Diamond painting personalizado Lady Aura Art</image:title>
+      <image:title>Diamond painting personalizado con foto Lady Aura Art</image:title>
     </image:image>
   </url>
+
   <url>
     <loc>https://ladyauraart.com/tarot.html</loc>
     <lastmod>2026-05-14</lastmod>
@@ -61,6 +100,7 @@
       <image:title>Tarot gratis online Lady Aura Art</image:title>
     </image:image>
   </url>
+
   <url>
     <loc>https://ladyauraart.com/colorear.html</loc>
     <lastmod>2026-05-14</lastmod>
@@ -68,165 +108,7 @@
     <priority>0.75</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/aries.webp</image:loc>
-      <image:title>Láminas para colorear adultos fantasy Lady Aura Art</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ladyauraart.com/nedeka.html</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.86</priority>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/aurora-celestial.webp</image:loc>
-      <image:title>NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/scarlett-wolf.webp</image:loc>
-      <image:title>Diamond painting Scarlett Wolf · Colección NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/alita-colibri.webp</image:loc>
-      <image:title>Diamond painting Alita Colibrí · Colección NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/bruster-punky.webp</image:loc>
-      <image:title>Diamond painting Bruster Punky · Colección NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/rania.webp</image:loc>
-      <image:title>Diamond painting Rania · Colección NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/sirena-nexralia.webp</image:loc>
-      <image:title>Diamond painting Sirena Nexralia · Colección NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/abrazo-de-oriana.webp</image:loc>
-      <image:title>Diamond painting Abrazo de Oriana · Colección NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/alya-diosa-enjoyada.webp</image:loc>
-      <image:title>Diamond painting Alya Diosa Enjoyada · Colección NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/heart-robogirl.webp</image:loc>
-      <image:title>Diamond painting Heart Robogirl · Colección NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/jacecat.webp</image:loc>
-      <image:title>Diamond painting Jacecat · Colección NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/la-fiesta-de-los-monigotes.webp</image:loc>
-      <image:title>Diamond painting La Fiesta de los Monigotes · Colección NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/Ammonet.webp</image:loc>
-      <image:title>Diamond painting Ammonet · Colección NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/Aratiana.webp</image:loc>
-      <image:title>Diamond painting Aratiana · Colección NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/Bernabe.webp</image:loc>
-      <image:title>Diamond painting Bernabé · Colección NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/Cita_a_ciegas.webp</image:loc>
-      <image:title>Diamond painting Cita a Ciegas · Colección NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/Cita_en_la_playa.webp</image:loc>
-      <image:title>Diamond painting Cita en la Playa · Colección NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/Diosa_del_cosmos.webp</image:loc>
-      <image:title>Diamond painting Diosa del Cosmos · Colección NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/Hestia_Diosa_del_fuego.webp</image:loc>
-      <image:title>Diamond painting Hestia Diosa del Fuego · Colección NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/Noche_magica.webp</image:loc>
-      <image:title>Diamond painting Noche Mágica · Colección NEDEKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/Princesa_Nesa.webp</image:loc>
-      <image:title>Diamond painting Princesa Nesa · Colección NEDEKA</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ladyauraart.com/bruji.html</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.86</priority>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/aurora-celestial.webp</image:loc>
-      <image:title>BRUJI</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/Violeta.webp</image:loc>
-      <image:title>Diamond painting Violeta · Colección BRUJI</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/Salemmiau.webp</image:loc>
-      <image:title>Diamond painting Salemmiau · Colección BRUJI</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/Medialuna.webp</image:loc>
-      <image:title>Diamond painting Medialuna · Colección BRUJI</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/Anastada.webp</image:loc>
-      <image:title>Diamond painting Anastada · Colección BRUJI</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/FlowerWolf.webp</image:loc>
-      <image:title>Diamond painting FlowerWolf · Colección BRUJI</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/amor-floral.webp</image:loc>
-      <image:title>Diamond painting Amor Floral · Colección BRUJI</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ladyauraart.com/maika.html</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.86</priority>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/Medialuna.webp</image:loc>
-      <image:title>MAIKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/artista-de-suenos.webp</image:loc>
-      <image:title>Diamond painting Artista de Sueños · Colección MAIKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/hada-de-los-cristales-rojos.webp</image:loc>
-      <image:title>Diamond painting Hada de los Cristales Rojos · Colección MAIKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/muneca-de-flores.webp</image:loc>
-      <image:title>Diamond painting Muñeca de Flores · Colección MAIKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/nina-del-mar-de-estrellas.webp</image:loc>
-      <image:title>Diamond painting Niña del Mar de Estrellas · Colección MAIKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/galaxia-en-sus-ojos.webp</image:loc>
-      <image:title>Diamond painting Galaxia en sus Ojos · Colección MAIKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/artista-entre-luces.webp</image:loc>
-      <image:title>Diamond painting Artista entre Luces · Colección MAIKA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/noche-de-cocoa.webp</image:loc>
-      <image:title>Diamond painting Noche de Cocoa · Colección MAIKA</image:title>
+      <image:title>Láminas para colorear adultos fantasy PDF Lady Aura Art</image:title>
     </image:image>
   </url>
 </urlset>

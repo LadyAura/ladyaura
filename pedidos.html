@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Mis pedidos – Lady Aura Art</title>
-<meta name="robots" content="noindex">
-<link rel="icon" href="assets/favicon.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Raleway:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<meta content="noindex" name="robots"/>
+<link href="assets/favicon.ico" rel="icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&amp;family=Raleway:ital,wght@0,300;0,400;0,500;1,300&amp;display=swap" rel="stylesheet"/>
 <style>
 :root {
   --bg:    #05030e;
@@ -265,63 +266,71 @@ footer {
 }
 footer a { color: var(--gold2); text-decoration: none; }
 </style>
-</head>
+<style id="lady-aura-nav-fix">
+/* === LADY AURA NAV FIX · menú completo y responsive === */
+.site-header{overflow:visible!important;}
+.site-header .nav,.nav{align-items:center;gap:.55rem!important;}
+.site-header .nav a,.nav a{white-space:nowrap;}
+@media (max-width:1180px){
+  .menu-toggle{display:flex!important;align-items:center;justify-content:center;}
+  .header-button{display:none!important;}
+  .site-header .nav,.nav{
+    display:none;position:absolute;top:100%;left:0;right:0;width:100%;
+    flex-direction:column!important;align-items:flex-start!important;gap:0!important;
+    background:rgba(3,3,10,.985)!important;border-top:1px solid rgba(240,163,255,.18);
+    border-bottom:1px solid rgba(240,163,255,.18);border-radius:0!important;
+    padding:.8rem 5%!important;margin:0!important;box-shadow:0 18px 45px rgba(0,0,0,.45);z-index:99999;
+  }
+  .site-header .nav.active,.nav.active{display:flex!important;}
+  .site-header .nav a,.nav a{width:100%;padding:.75rem 0!important;border-bottom:1px solid rgba(240,163,255,.12)!important;}
+  .site-header .nav a:last-child,.nav a:last-child{border-bottom:none!important;}
+}
+</style></head>
 <body>
-
 <div id="stars"></div>
-
 <header class="site-header" id="site-header">
-  <a class="brand" href="index.html" aria-label="Lady Aura inicio">
-    <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art – Diamond Painting Premium">
-  </a>
-  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-  <nav class="nav" id="nav">
-    <a href="index.html">← Inicio</a>
-    <a href="zodiaco.html">♈ Zodíaco</a>
-    <a href="paisajes.html">🏔️ Paisajes</a>
-    <a href="especiales.html">✨ Diseños exclusivos</a>
-    <a href="nedeka.html">🌙 NEDEKA</a>
-    <a href="bruji.html">🔮 BRUJI</a>
-    <a href="maika.html">🎨 MAIKA</a>
-    <a href="personalizados.html">🎨 Personalizados</a>
-    <a href="tarot.html">🔮 Tarot</a>
-    <a href="colorear.html">🎨 Colorear</a>
-    <a href="pedidos.html" aria-current="page">📦 Mis pedidos</a>
-    <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">🛒<span class="cart-badge" style="display:none">0</span></a>
-  </nav>
+<a aria-label="Lady Aura inicio" class="brand" href="index.html">
+<img alt="Logo Lady Aura Art – Diamond Painting Premium" src="assets/Logo-transparent.webp"/>
+</a>
+<button aria-expanded="false" aria-label="Abrir menú" class="menu-toggle" id="menuToggle">☰</button>
+<nav class="nav" id="nav"><a data-i18n="nav_inicio" href="index.html">Inicio</a>
+<a data-i18n="nav_zodiaco" href="zodiaco.html">♈ Zodíaco</a>
+<a data-i18n="nav_paisajes" href="paisajes.html">🏔️ Paisajes</a>
+<a data-i18n="nav_especiales" href="especiales.html">✨ Diseños exclusivos</a>
+<a data-i18n="nav_nedeka" href="nedeka.html">🌙 NEDEKA</a>
+<a data-i18n="nav_bruji" href="bruji.html">🔮 BRUJI</a>
+<a data-i18n="nav_maika" href="maika.html">🎨 MAIKA</a>
+<a data-i18n="nav_personalizados" href="personalizados.html">🎨 Personalizados</a>
+<a data-i18n="nav_tarot" href="tarot.html">🔮 Tarot</a>
+<a data-i18n="nav_colorear" href="colorear.html">🎨 Colorear</a>
+<a aria-current="page" href="pedidos.html">📦 Mis pedidos</a>
+<a aria-label="Ver carrito" class="cart-nav-link" href="carrito.html">🛒 <span class="cart-badge" style="display:none">0</span></a></nav>
 </header>
-
 <main>
-  <div class="page-hero">
-    <span class="eyebrow">✦ Lady Aura Art · Diamond Painting Premium ✦</span>
-    <h1>📦 Mis pedidos</h1>
-    <p>Aquí puedes ver el estado de tus reservas y pedidos</p>
-  </div>
-
-  <!-- Banner informativo lista de espera -->
-  <div class="waitlist-banner">
-    <span class="wb-icon">⏳</span>
-    <h2>Tienda en preparación · Lista de espera activa</h2>
-    <p>La tienda abrirá pronto. Si has reservado, recibirás un aviso personalizado por email cuando puedas completar tu pedido y pagar. <strong style="color:var(--gold2)">No se ha cobrado nada todavía.</strong></p>
-  </div>
-
-  <!-- Vacío -->
-  <div id="orders-empty" style="display:none">
-    <span class="empty-icon">🌟</span>
-    <h2>Aún no tienes reservas</h2>
-    <p>Explora nuestras colecciones y reserva tu lugar en la lista de espera.</p>
-    <a href="index.html" class="btn-shop">✨ Ver colecciones</a>
-  </div>
-
-  <!-- Lista de pedidos -->
-  <div id="orders-list"></div>
-
+<div class="page-hero">
+<span class="eyebrow">✦ Lady Aura Art · Diamond Painting Premium ✦</span>
+<h1>📦 Mis pedidos</h1>
+<p>Aquí puedes ver el estado de tus reservas y pedidos</p>
+</div>
+<!-- Banner informativo lista de espera -->
+<div class="waitlist-banner">
+<span class="wb-icon">⏳</span>
+<h2>Tienda en preparación · Lista de espera activa</h2>
+<p>La tienda abrirá pronto. Si has reservado, recibirás un aviso personalizado por email cuando puedas completar tu pedido y pagar. <strong style="color:var(--gold2)">No se ha cobrado nada todavía.</strong></p>
+</div>
+<!-- Vacío -->
+<div id="orders-empty" style="display:none">
+<span class="empty-icon">🌟</span>
+<h2>Aún no tienes reservas</h2>
+<p>Explora nuestras colecciones y reserva tu lugar en la lista de espera.</p>
+<a class="btn-shop" href="index.html">✨ Ver colecciones</a>
+</div>
+<!-- Lista de pedidos -->
+<div id="orders-list"></div>
 </main>
-
 <footer>
-  <p>© 2026 <a href="index.html">Lady Aura Art</a> · Diamond Painting Premium · Valencia, España 💜</p>
+<p>© 2026 <a href="index.html">Lady Aura Art</a> · Diamond Painting Premium · Valencia, España 💜</p>
 </footer>
-
 <script>
 /* ── Estrellas ── */
 (function(){
@@ -436,7 +445,6 @@ function removeOrder(idx) {
 
 renderOrders();
 </script>
-
 <script src="carrito.js"></script>
 </body>
 </html>
