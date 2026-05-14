@@ -1002,24 +1002,32 @@ function isNedekaItemInline(item) {
   return raw.includes('nedeka');
 }
 
+function isBrujiItemInline(item) {
+  const raw = [item?.coleccion, item?.collection, item?.categoria, item?.category, item?.nombre, item?.id, item?.img].join(' ').toLowerCase();
+  return raw.includes('bruji') || ['violeta','salemmiau','medialuna','anastada','flowerwolf','amor floral','amor-floral'].some(name => raw.includes(name));
+}
+
 function getCouponInline() {
   try { return JSON.parse(localStorage.getItem(COUPON_KEY_INLINE)); } catch(e) { return null; }
 }
 
-const NEDEKA60_PRICE = 60;
+const SPECIAL_60_PRICE = 60;
 
 function calcDiscountInline(items, code) {
   const subtotal = items.reduce((s,i) => s + (Number(i.precio)||79), 0);
   const nedekaItems = items.filter(isNedekaItemInline);
+  const brujiItems = items.filter(isBrujiItemInline);
   const nedekaSubtotal = nedekaItems.reduce((s,i) => s + (Number(i.precio)||79), 0);
+  const brujiSubtotal = brujiItems.reduce((s,i) => s + (Number(i.precio)||79), 0);
   if (code === 'LADYAURA5') return subtotal > 0 ? 5 : 0;
   if (code === 'NEDEKA10')  return nedekaSubtotal > 0 ? Math.min(10, nedekaSubtotal) : 0;
-  if (code === 'NEDEKA60')  return nedekaItems.reduce((s,i) => s + Math.max(0, (Number(i.precio)||79) - NEDEKA60_PRICE), 0);
+  if (code === 'BRUJI10')   return brujiSubtotal > 0 ? Math.min(10, brujiSubtotal) : 0;
+  if (code === 'BRUJI60')   return brujiItems.reduce((s,i) => s + Math.max(0, (Number(i.precio)||79) - SPECIAL_60_PRICE), 0);
   return 0;
 }
 
 function getPriceWithCoupon(item, code) {
-  if (code === 'NEDEKA60' && isNedekaItemInline(item)) return NEDEKA60_PRICE;
+  if (code === 'BRUJI60' && isBrujiItemInline(item)) return SPECIAL_60_PRICE;
   return Number(item.precio) || 79;
 }
 
@@ -1037,13 +1045,16 @@ function applyCoupon() {
     if(msg){ msg.textContent='Solo se puede usar un cupón por pedido.'; msg.className='coupon-msg err'; } return;
   }
 
-  if (!['LADYAURA5','NEDEKA10','NEDEKA60'].includes(code)) {
+  if (!['LADYAURA5','NEDEKA10','BRUJI10','BRUJI60'].includes(code)) {
     if(msg){ msg.textContent='Código de cupón no válido'; msg.className='coupon-msg err'; } return;
   }
   if (code === 'LADYAURA5' && localStorage.getItem(COUPON_USED_KEY) === 'true') {
     if(msg){ msg.textContent='Este cupón de bienvenida ya se ha usado en un pedido anterior'; msg.className='coupon-msg err'; } return;
   }
-  if ((code === 'NEDEKA10' || code === 'NEDEKA60') && !items.some(isNedekaItemInline)) {
+  if (code === 'NEDEKA10' && !items.some(isNedekaItemInline)) {
+    if(msg){ msg.textContent='Este cupón solo funciona con su colección correspondiente'; msg.className='coupon-msg err'; } return;
+  }
+  if ((code === 'BRUJI10' || code === 'BRUJI60') && !items.some(isBrujiItemInline)) {
     if(msg){ msg.textContent='Este cupón solo funciona con su colección correspondiente'; msg.className='coupon-msg err'; } return;
   }
 
@@ -1086,7 +1097,7 @@ function renderCart() {
   list.innerHTML = items.map(item => {
     const originalPrice = Number(item.precio) || 79;
     const displayPrice = getPriceWithCoupon(item, activeCouponForRender);
-    const priceHtml = (activeCouponForRender === 'NEDEKA60' && isNedekaItemInline(item))
+    const priceHtml = (activeCouponForRender === 'BRUJI60' && isBrujiItemInline(item))
       ? `<span class="cart-item-price"><s style="opacity:.4;font-size:.8em;text-decoration:line-through">${originalPrice} €</s>&nbsp;${displayPrice} €</span>`
       : `<span class="cart-item-price">${originalPrice} €</span>`;
     return `
@@ -1103,11 +1114,11 @@ function renderCart() {
 
   const couponData = getCouponInline();
   const couponCode = couponData ? couponData.code : null;
-  // NEDEKA60: el subtotal ya refleja el precio especial; otros: descuento sobre precio normal
-  const subtotal = couponCode === 'NEDEKA60'
-    ? items.reduce((s,i) => s + getPriceWithCoupon(i, 'NEDEKA60'), 0)
+  // BRUJI60: el subtotal ya refleja el precio especial; otros: descuento sobre precio normal
+  const subtotal = couponCode === 'BRUJI60'
+    ? items.reduce((s,i) => s + getPriceWithCoupon(i, 'BRUJI60'), 0)
     : items.reduce((s,i) => s + (Number(i.precio)||79), 0);
-  const discount = (couponCode && couponCode !== 'NEDEKA60') ? calcDiscountInline(items, couponCode) : 0;
+  const discount = (couponCode && couponCode !== 'BRUJI60') ? calcDiscountInline(items, couponCode) : 0;
   const total = Math.max(0, subtotal - discount);
   document.getElementById('sum-count').textContent = items.length + (items.length===1?' diseño':' diseños');
   document.getElementById('sum-total').textContent = total + ' €';
@@ -1116,12 +1127,12 @@ function renderCart() {
   const discountLabel = document.getElementById('discount-label');
   const sumDiscount = document.getElementById('sum-discount');
   if (discountRow) {
-    const showRow = couponCode === 'NEDEKA60' || (couponCode && discount > 0);
+    const showRow = couponCode === 'BRUJI60' || (couponCode && discount > 0);
     discountRow.style.display = showRow ? '' : 'none';
-    if (couponCode === 'NEDEKA60') {
-      const ned60Saving = items.filter(isNedekaItemInline).reduce((s,i) => s + Math.max(0,(Number(i.precio)||79) - NEDEKA60_PRICE), 0);
+    if (couponCode === 'BRUJI60') {
+      const bruji60Saving = items.filter(isBrujiItemInline).reduce((s,i) => s + Math.max(0,(Number(i.precio)||79) - SPECIAL_60_PRICE), 0);
       if (discountLabel) discountLabel.textContent = 'Cupón especial';
-      if (sumDiscount) sumDiscount.textContent = '-' + ned60Saving.toFixed(2).replace('.',',') + ' €';
+      if (sumDiscount) sumDiscount.textContent = '-' + bruji60Saving.toFixed(2).replace('.',',') + ' €';
     } else {
       if (discountLabel) discountLabel.textContent = couponCode === 'LADYAURA5' ? 'Cupón LADYAURA5' : 'Cupón especial';
       if (sumDiscount) sumDiscount.textContent = '-' + discount.toFixed(2).replace('.',',') + ' €';
@@ -1131,12 +1142,12 @@ function renderCart() {
   const appliedRow = document.getElementById('coupon-applied-row');
   const couponBox = document.getElementById('coupon-box');
   if (appliedRow) {
-    const showApplied = couponCode === 'NEDEKA60' || (couponCode && discount > 0);
+    const showApplied = couponCode === 'BRUJI60' || (couponCode && discount > 0);
     appliedRow.style.display = showApplied ? 'flex' : 'none';
     const appliedSpan = appliedRow.querySelector('span');
     if (appliedSpan && couponCode) {
-      if (couponCode === 'NEDEKA60') {
-        appliedSpan.textContent = `✓ NEDEKA60 aplicado · precio especial 60 €/cuadro`;
+      if (couponCode === 'BRUJI60') {
+        appliedSpan.textContent = `✓ Cupón especial aplicado · precio especial`; 
       } else {
         appliedSpan.textContent = `✓ ${couponCode} aplicado · -${discount.toFixed(2).replace('.',',')} €`;
       }
@@ -1167,10 +1178,10 @@ document.getElementById('order-form').addEventListener('submit', async function(
   const couponDataPedido = getCouponInline();
   const couponApplied = couponDataPedido ? couponDataPedido.code : null;
   // Precio especial por unidad; otros cupones: descuento sobre subtotal normal
-  const subtotalPedido = couponApplied === 'NEDEKA60'
-    ? items.reduce((s,i) => s + getPriceWithCoupon(i, 'NEDEKA60'), 0)
+  const subtotalPedido = couponApplied === 'BRUJI60'
+    ? items.reduce((s,i) => s + getPriceWithCoupon(i, 'BRUJI60'), 0)
     : items.reduce((s,i) => s + (Number(i.precio)||79), 0);
-  const discountPedido = couponApplied === 'NEDEKA60' ? 0 : (couponApplied ? calcDiscountInline(items, couponApplied) : 0);
+  const discountPedido = couponApplied === 'BRUJI60' ? 0 : (couponApplied ? calcDiscountInline(items, couponApplied) : 0);
   const totalPedido = Math.max(0, subtotalPedido - discountPedido);
   const paypalUrl = 'https://paypal.me/LadyAuraArt/' + totalPedido + 'EUR';
   const data = {
@@ -1185,7 +1196,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
     notas:     document.getElementById('f-notas').value,
     pedido:    items.map(i => `${i.nombre} · ${i.precio}€`).join(' | '),
     subtotal:  subtotalPedido + ' €',
-    cupon:     couponApplied === 'NEDEKA60' ? 'Cupón especial aplicado' : (couponApplied ? `Cupón aplicado · -${discountPedido} €` : 'Ninguno'),
+    cupon:     couponApplied === 'BRUJI60' ? 'Cupón especial aplicado · precio especial 60 €/cuadro BRUJI' : (couponApplied ? `Cupón aplicado · -${discountPedido} €` : 'Ninguno'),
     total:     totalPedido + ' €',
     metodo_pago: 'LISTA DE ESPERA — sin cobro todavía',
     bizum: 'No aplica (lista de espera)',

@@ -595,9 +595,9 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
   function isBrujiItem(item) {
     var raw = [
       item?.coleccion, item?.collection, item?.categoria, item?.category,
-      item?.img, item?.nombre
+      item?.id, item?.img, item?.nombre
     ].filter(Boolean).join(' ').toLowerCase();
-    return raw.includes('bruji');
+    return raw.includes('bruji') || ['violeta','salemmiau','medialuna','anastada','flowerwolf','amor floral','amor-floral'].some(name => raw.includes(name));
   }
 
   function isNedekaItem(item) {
