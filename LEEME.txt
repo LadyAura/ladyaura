@@ -1,48 +1,18 @@
 INSTRUCCIONES RÁPIDAS
 
 Sube/sustituye estos archivos en la raíz de tu web:
-- bruji.html
+- index.html
 - nedeka.html
-- sitemap.xml
-- robots.txt
-- i18n.js
-- script.js
-- styles.css
-
-Sube estas imágenes dentro de la carpeta assets si todavía no están:
-
-NEDEKA:
-- scarlett-wolf.webp
-- alita-colibri.webp
-- bruster-punky.webp
-- rania.webp
-- sirena-nexralia.webp
-- abrazo-de-oriana.webp
-- alya-diosa-enjoyada.webp
-- heart-robogirl.webp
-- jacecat.webp
-- la-fiesta-de-los-monigotes.webp
-- Ammonet.webp
-- Aratiana.webp
-- Bernabe.webp
-- Cita_a_ciegas.webp
-- Cita_en_la_playa.webp
-- Diosa_del_cosmos.webp
-- Hestia_Diosa_del_fuego.webp
-- Noche_magica.webp
-- Princesa_Nesa.webp
-- Vida_en_la_Selva.webp
-
-BRUJI:
-- Violeta.webp
-- Salemmiau.webp
-- Medialuna.webp
-- Anastada.webp
-- FlowerWolf.webp
-- amor-floral.webp
+- bruji.html
+- maika.html
 
 IMPORTANTE:
-- NEDEKA10 solo descuenta 10 € en 1 cuadro NEDEKA.
-- BRUJI10 solo descuenta 10 € en 1 cuadro BRUJI.
-- LADYAURA5, NEDEKA10 y BRUJI10 no se pueden usar juntos.
-- Después de subir los archivos, abre ladyauraart.com/bruji.html en modo incógnito para comprobar que las cards salen alineadas.
+- Las portadas superiores ahora llevan rutas con versión (?v=portada-...) para evitar caché.
+- NEDEKA usa arriba: assets/scarlett-wolf.webp
+- BRUJI usa arriba: assets/Violeta.webp
+- MAIKA usa arriba: assets/artista-de-suenos.webp
+- MAIKA debe aparecer en Inicio justo detrás de BRUJI.
+- Solo LADYAURA5 debe verse como cupón público. NEDEKA10, BRUJI10 y MAIKA10 siguen siendo privados y no deben aparecer en textos visibles.
+
+Si al subirlo sigues viendo la imagen anterior, abre en incógnito o añade ?v=2 al final de la URL, por ejemplo:
+https://ladyauraart.com/bruji.html?v=2
