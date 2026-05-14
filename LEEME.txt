@@ -8,6 +8,7 @@ Sube/sustituye estos archivos en la raíz de tu web:
 - i18n.js
 - script.js
 - styles.css
+- parejas.html  (redirige al inicio y queda en noindex para retirar la sección antigua)
 
 Sube estas imágenes dentro de la carpeta assets si todavía no están:
 
@@ -46,3 +47,9 @@ IMPORTANTE:
 - BRUJI10 solo descuenta 10 € en 1 cuadro BRUJI.
 - LADYAURA5, NEDEKA10 y BRUJI10 no se pueden usar juntos.
 - Después de subir los archivos, abre ladyauraart.com/bruji.html en modo incógnito para comprobar que las cards salen alineadas.
+
+CAMBIO REALIZADO:
+- La sección Parejas queda retirada de la web.
+- Se ha eliminado parejas.html del sitemap.
+- Se han quitado las traducciones y referencias de navegación de Parejas.
+- parejas.html queda como redirección noindex al inicio por si Google o alguien entra desde un enlace antiguo.
