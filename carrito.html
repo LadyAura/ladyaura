@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mi carrito – Lady Aura Art</title>
-<meta content="noindex" name="robots"/>
-<link href="assets/favicon.ico" rel="icon"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&amp;family=Raleway:ital,wght@0,300;0,400;0,500;1,300&amp;display=swap" rel="stylesheet"/>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Raleway:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg:    #05030e;
@@ -801,184 +800,183 @@ small,
 }
 
 </style>
-<style id="lady-aura-nav-fix">
-/* === LADY AURA NAV FIX · menú completo y responsive === */
-.site-header{overflow:visible!important;}
-.site-header .nav,.nav{align-items:center;gap:.55rem!important;}
-.site-header .nav a,.nav a{white-space:nowrap;}
-@media (max-width:1180px){
-  .menu-toggle{display:flex!important;align-items:center;justify-content:center;}
-  .header-button{display:none!important;}
-  .site-header .nav,.nav{
-    display:none;position:absolute;top:100%;left:0;right:0;width:100%;
-    flex-direction:column!important;align-items:flex-start!important;gap:0!important;
-    background:rgba(3,3,10,.985)!important;border-top:1px solid rgba(240,163,255,.18);
-    border-bottom:1px solid rgba(240,163,255,.18);border-radius:0!important;
-    padding:.8rem 5%!important;margin:0!important;box-shadow:0 18px 45px rgba(0,0,0,.45);z-index:99999;
-  }
-  .site-header .nav.active,.nav.active{display:flex!important;}
-  .site-header .nav a,.nav a{width:100%;padding:.75rem 0!important;border-bottom:1px solid rgba(240,163,255,.12)!important;}
-  .site-header .nav a:last-child,.nav a:last-child{border-bottom:none!important;}
-}
-</style></head>
+</head>
 <body>
+
 <div id="stars"></div>
+
 <header class="site-header" id="site-header">
-<a aria-label="Lady Aura inicio" class="brand" href="index.html">
-<img alt="Logo Lady Aura Art – Diamond Painting Premium" src="assets/Logo-transparent.webp"/>
-</a>
-<button aria-expanded="false" aria-label="Abrir menú" class="menu-toggle" id="menuToggle">☰</button>
-<nav class="nav" id="nav">
-<a data-i18n="nav_inicio" href="index.html">Inicio</a>
-<a data-i18n="nav_zodiaco" href="zodiaco.html">♈ Zodíaco</a>
-<a data-i18n="nav_paisajes" href="paisajes.html">🏔️ Paisajes</a>
-<a data-i18n="nav_especiales" href="especiales.html">✨ Diseños exclusivos</a>
-<a data-i18n="nav_nedeka" href="nedeka.html">🌙 NEDEKA</a>
-<a data-i18n="nav_bruji" href="bruji.html">🔮 BRUJI</a>
-<a data-i18n="nav_maika" href="maika.html">🎨 MAIKA</a>
-<a data-i18n="nav_personalizados" href="personalizados.html">🎨 Personalizados</a>
-<a data-i18n="nav_tarot" href="tarot.html">🔮 Tarot</a>
-<a data-i18n="nav_colorear" href="colorear.html">🎨 Colorear</a>
-<a href="pedidos.html">📦 Mis pedidos</a>
-<a aria-label="Ver carrito" class="cart-nav-link" href="carrito.html">🛒 <span class="cart-badge" style="display:none">0</span></a>
-</nav>
+  <a class="brand" href="index.html" aria-label="Lady Aura inicio">
+    <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art – Diamond Painting Premium">
+  </a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  <nav class="nav" id="nav">
+    <a href="index.html">← Inicio</a>
+    <a href="zodiaco.html" data-i18n="nav_zodiaco">♈ Zodíaco</a>
+    <a href="paisajes.html" data-i18n="nav_paisajes">🏔️ Paisajes</a>
+    <a href="especiales.html" data-i18n="nav_especiales">✨ Diseños exclusivos</a>
+    <a href="nedeka.html">🌙 NEDEKA</a>
+    <a href="bruji.html">🔮 BRUJI</a>
+    <a href="maika.html" data-i18n="nav_maika">🎨 MAIKA</a>
+    <a href="personalizados.html" data-i18n="nav_personalizados">🎨 Personalizados</a>
+    <a href="tarot.html" data-i18n="nav_tarot">🔮 Tarot</a>
+    <a href="colorear.html" data-i18n="nav_colorear">🎨 Colorear</a>
+    <a href="pedidos.html">📦 Mis pedidos</a>
+    <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">🛒<span class="cart-badge" style="display:none">0</span></a>
+  </nav>
 </header>
+
 <main>
-<div class="page-hero">
-<span class="eyebrow" data-i18n="cart_eyebrow">✦ Lady Aura Art · Diamond Painting Premium ✦</span>
-<h1 data-i18n="cart_title">🛒 Mi carrito</h1>
-<p>Revisa tus selecciones y confirma tu pedido</p>
-</div>
-<!-- VACÍO -->
-<div id="cart-empty" style="display:none">
-<span class="empty-icon">🌟</span>
-<h2 data-i18n="cart_empty_title">Tu carrito está vacío</h2>
-<p data-i18n="cart_empty_sub">Explora nuestras colecciones y encuentra tu diamond painting perfecto.</p>
-<a class="btn-shop" data-i18n="cart_btn_shop" href="index.html">✨ Ver colecciones</a>
-</div>
-<!-- CON ITEMS -->
-<div id="cart-content" style="display:none">
-<div id="cart-list"></div>
-<div class="cart-summary">
-<div class="summary-row">
-<span>Diseños seleccionados</span>
-<span id="sum-count">0</span>
-</div>
-<div class="summary-row">
-<span>Formato</span>
-<span>60×90 cm · Diamond painting premium</span>
-</div>
-<div class="summary-row">
-<span>Envío</span>
-<span style="color:#a0ffb0">✓ Incluido</span>
-</div>
-<div class="summary-row" id="discount-row" style="display:none;color:#e8c96a;">
-<span id="discount-label">Cupón</span>
-<span id="sum-discount">-0 €</span>
-</div>
-<div class="summary-row summary-total">
-<span>Total</span>
-<span id="sum-total">0 €</span>
-</div>
-</div>
-<!-- CUPÓN -->
-<div class="coupon-box" id="coupon-box">
-<p class="coupon-hint">🎁 Cupón de bienvenida: <strong>LADYAURA5</strong> (-5 €, primer pedido)</p>
-<label class="coupon-label" for="couponCode">¿Tienes un cupón?</label>
-<!-- id="coupon-form" previene que carrito.js inyecte una segunda caja -->
-<form id="coupon-form" onsubmit="event.preventDefault(); applyCoupon();">
-<div class="coupon-row">
-<input autocomplete="off" class="coupon-input" id="coupon-code" placeholder="Escribe tu código" type="text"/>
-<button class="coupon-btn" id="applyCouponBtn" type="submit">Aplicar</button>
-</div>
-</form>
-<div class="coupon-applied-row" id="coupon-applied-row">
-<span>✓ Cupón aplicado</span>
-<button class="coupon-remove" onclick="removeCoupon()" title="Quitar cupón">✕</button>
-</div>
-<p class="coupon-msg" id="couponMessage"></p>
-</div>
-<!-- FORMULARIO -->
-<div class="order-form">
-<p class="form-title" data-i18n="cart_form_title">✨ Confirma tu pedido</p>
-<p class="form-subtitle">Rellena tus datos y reserva tu lugar en la lista de espera. Te avisaré personalmente cuando la tienda abra y puedas completar tu pedido. 💜</p>
-<form id="order-form" novalidate="">
-<div class="form-grid">
-<div class="form-group">
-<label for="f-nombre">Nombre *</label>
-<input id="f-nombre" name="nombre" placeholder="Tu nombre" required="" type="text"/>
-</div>
-<div class="form-group">
-<label for="f-apellidos">Apellidos *</label>
-<input id="f-apellidos" name="apellidos" placeholder="Tus apellidos" required="" type="text"/>
-</div>
-<div class="form-group">
-<label for="f-email">Email *</label>
-<input id="f-email" name="email" placeholder="tu@email.com" required="" type="email"/>
-</div>
-<div class="form-group">
-<label for="f-telefono">Teléfono</label>
-<input id="f-telefono" name="telefono" placeholder="+34 600 000 000" type="tel"/>
-</div>
-<div class="form-group full">
-<label for="f-direccion">Dirección de envío *</label>
-<input id="f-direccion" name="direccion" placeholder="Calle, número, piso..." required="" type="text"/>
-</div>
-<div class="form-group">
-<label for="f-ciudad">Ciudad *</label>
-<input id="f-ciudad" name="ciudad" placeholder="Ciudad" required="" type="text"/>
-</div>
-<div class="form-group">
-<label for="f-cp">Código postal *</label>
-<input id="f-cp" name="cp" placeholder="00000" required="" type="text"/>
-</div>
-<div class="form-group full">
-<label for="f-pais">País *</label>
-<select id="f-pais" name="pais" required="">
-<option value="">Selecciona país...</option>
-<option selected="" value="España">España</option>
-<option value="Portugal">Portugal</option>
-<option value="Francia">Francia</option>
-<option value="Italia">Italia</option>
-<option value="Alemania">Alemania</option>
-<option value="México">México</option>
-<option value="Argentina">Argentina</option>
-<option value="Colombia">Colombia</option>
-<option value="Otro">Otro</option>
-</select>
-</div>
-<div class="form-group full">
-<label for="f-notas">Notas adicionales</label>
-<textarea id="f-notas" name="notas" placeholder="¿Algo que quieras comentarme? Personalización, regalo, etc."></textarea>
-</div>
-</div>
-<div class="form-note">
-<strong>¿Cómo funciona?</strong> Envías tus datos y los diseños que te interesan. Cuando la tienda abra oficialmente, serás de las primeras en recibir un aviso personalizado con tus cuadros reservados. <strong>No se cobra nada ahora.</strong> 💜
+  <div class="page-hero">
+    <span class="eyebrow" data-i18n="cart_eyebrow">✦ Lady Aura Art · Diamond Painting Premium ✦</span>
+    <h1 data-i18n="cart_title">🛒 Mi carrito</h1>
+    <p>Revisa tus selecciones y confirma tu pedido</p>
+  </div>
+
+  <!-- VACÍO -->
+  <div id="cart-empty" style="display:none">
+    <span class="empty-icon">🌟</span>
+    <h2 data-i18n="cart_empty_title">Tu carrito está vacío</h2>
+    <p data-i18n="cart_empty_sub">Explora nuestras colecciones y encuentra tu diamond painting perfecto.</p>
+    <a href="index.html" class="btn-shop" data-i18n="cart_btn_shop">✨ Ver colecciones</a>
+  </div>
+
+  <!-- CON ITEMS -->
+  <div id="cart-content" style="display:none">
+
+    <div id="cart-list"></div>
+
+    <div class="cart-summary">
+      <div class="summary-row">
+        <span>Diseños seleccionados</span>
+        <span id="sum-count">0</span>
+      </div>
+      <div class="summary-row">
+        <span>Formato</span>
+        <span>60×90 cm · Diamond painting premium</span>
+      </div>
+      <div class="summary-row">
+        <span>Envío</span>
+        <span style="color:#a0ffb0">✓ Incluido</span>
+      </div>
+      <div class="summary-row" id="discount-row" style="display:none;color:#e8c96a;">
+        <span id="discount-label">Cupón</span>
+        <span id="sum-discount">-0 €</span>
+      </div>
+      <div class="summary-row summary-total">
+        <span>Total</span>
+        <span id="sum-total">0 €</span>
+      </div>
+    </div>
+
+    <!-- CUPÓN -->
+    <div class="coupon-box" id="coupon-box">
+      <p class="coupon-hint">🎁 Cupones disponibles: <strong>LADYAURA5</strong> (-5 €, primer pedido) · <strong>NEDEKA10</strong> (-10 €, solo cuadros NEDEKA)</p>
+      <label class="coupon-label" for="couponCode">¿Tienes un cupón?</label>
+      <!-- id="coupon-form" previene que carrito.js inyecte una segunda caja -->
+      <form id="coupon-form" onsubmit="event.preventDefault(); applyCoupon();">
+        <div class="coupon-row">
+          <input class="coupon-input" id="coupon-code" type="text" placeholder="Escribe tu código" autocomplete="off">
+          <button class="coupon-btn" id="applyCouponBtn" type="submit">Aplicar</button>
         </div>
-<button class="btn-submit" id="btn-submit" type="submit">✨ Reservar mi lugar en la lista de espera</button>
-</form>
-</div>
-</div>
-<!-- CONFIRMACIÓN LISTA DE ESPERA -->
-<div id="cart-confirm">
-<span class="confirm-icon">🌟</span>
-<h2>¡Ya estás en la lista de espera!</h2>
-<p>He recibido tu reserva. Cuando la tienda abra oficialmente, serás de las primeras en saberlo.</p>
-<p style="color:var(--muted);font-size:0.85rem;margin-top:0.5rem;">Te avisaré personalmente por email. No se ha cobrado nada todavía. 💜</p>
-<div class="payment-box" style="margin-top:2rem;text-align:center;">
-<p style="font-family:'Cinzel',serif;color:var(--gold2);font-size:1rem;margin-bottom:0.8rem;">✦ Tu reserva está guardada ✦</p>
-<p style="color:rgba(255,255,255,0.7);font-size:0.88rem;line-height:1.7;">
-        Puedes ver el estado de tu reserva en <strong style="color:#fff;">📦 Mis pedidos</strong>.<br/>
+      </form>
+      <div class="coupon-applied-row" id="coupon-applied-row">
+        <span>✓ Cupón aplicado</span>
+        <button class="coupon-remove" onclick="removeCoupon()" title="Quitar cupón">✕</button>
+      </div>
+      <p class="coupon-msg" id="couponMessage"></p>
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="order-form">
+      <p class="form-title" data-i18n="cart_form_title">✨ Confirma tu pedido</p>
+      <p class="form-subtitle">Rellena tus datos y reserva tu lugar en la lista de espera. Te avisaré personalmente cuando la tienda abra y puedas completar tu pedido. 💜</p>
+
+      <form id="order-form" novalidate>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="f-nombre">Nombre *</label>
+            <input type="text" id="f-nombre" name="nombre" required placeholder="Tu nombre">
+          </div>
+          <div class="form-group">
+            <label for="f-apellidos">Apellidos *</label>
+            <input type="text" id="f-apellidos" name="apellidos" required placeholder="Tus apellidos">
+          </div>
+          <div class="form-group">
+            <label for="f-email">Email *</label>
+            <input type="email" id="f-email" name="email" required placeholder="tu@email.com">
+          </div>
+          <div class="form-group">
+            <label for="f-telefono">Teléfono</label>
+            <input type="tel" id="f-telefono" name="telefono" placeholder="+34 600 000 000">
+          </div>
+          <div class="form-group full">
+            <label for="f-direccion">Dirección de envío *</label>
+            <input type="text" id="f-direccion" name="direccion" required placeholder="Calle, número, piso...">
+          </div>
+          <div class="form-group">
+            <label for="f-ciudad">Ciudad *</label>
+            <input type="text" id="f-ciudad" name="ciudad" required placeholder="Ciudad">
+          </div>
+          <div class="form-group">
+            <label for="f-cp">Código postal *</label>
+            <input type="text" id="f-cp" name="cp" required placeholder="00000">
+          </div>
+          <div class="form-group full">
+            <label for="f-pais">País *</label>
+            <select id="f-pais" name="pais" required>
+              <option value="">Selecciona país...</option>
+              <option value="España" selected>España</option>
+              <option value="Portugal">Portugal</option>
+              <option value="Francia">Francia</option>
+              <option value="Italia">Italia</option>
+              <option value="Alemania">Alemania</option>
+              <option value="México">México</option>
+              <option value="Argentina">Argentina</option>
+              <option value="Colombia">Colombia</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="f-notas">Notas adicionales</label>
+            <textarea id="f-notas" name="notas" placeholder="¿Algo que quieras comentarme? Personalización, regalo, etc."></textarea>
+          </div>
+        </div>
+
+        <div class="form-note">
+          <strong>¿Cómo funciona?</strong> Envías tus datos y los diseños que te interesan. Cuando la tienda abra oficialmente, serás de las primeras en recibir un aviso personalizado con tus cuadros reservados. <strong>No se cobra nada ahora.</strong> 💜
+        </div>
+
+        <button type="submit" class="btn-submit" id="btn-submit">✨ Reservar mi lugar en la lista de espera</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- CONFIRMACIÓN LISTA DE ESPERA -->
+  <div id="cart-confirm">
+    <span class="confirm-icon">🌟</span>
+    <h2>¡Ya estás en la lista de espera!</h2>
+    <p>He recibido tu reserva. Cuando la tienda abra oficialmente, serás de las primeras en saberlo.</p>
+    <p style="color:var(--muted);font-size:0.85rem;margin-top:0.5rem;">Te avisaré personalmente por email. No se ha cobrado nada todavía. 💜</p>
+
+    <div class="payment-box" style="margin-top:2rem;text-align:center;">
+      <p style="font-family:'Cinzel',serif;color:var(--gold2);font-size:1rem;margin-bottom:0.8rem;">✦ Tu reserva está guardada ✦</p>
+      <p style="color:rgba(255,255,255,0.7);font-size:0.88rem;line-height:1.7;">
+        Puedes ver el estado de tu reserva en <strong style="color:#fff;">📦 Mis pedidos</strong>.<br>
         Cuando abramos, tu precio y diseños quedarán reservados para ti.
       </p>
-</div>
-<p style="color:var(--gold2);margin-top:1.5rem;font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:0.08em;">GRACIAS POR TU CONFIANZA ✨</p>
-<a class="confirm-wa" href="pedidos.html" style="margin-top:1.2rem;display:inline-block;">📦 Ver mi reserva</a>
-</div>
+    </div>
+
+    <p style="color:var(--gold2);margin-top:1.5rem;font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:0.08em;">GRACIAS POR TU CONFIANZA ✨</p>
+    <a href="pedidos.html" class="confirm-wa" style="margin-top:1.2rem;display:inline-block;">📦 Ver mi reserva</a>
+  </div>
+
 </main>
+
 <footer>
-<p>© 2026 <a href="index.html">Lady Aura Art</a> · Diamond Painting Premium · Valencia, España 💜</p>
+  <p>© 2026 <a href="index.html">Lady Aura Art</a> · Diamond Painting Premium · Valencia, España 💜</p>
 </footer>
+
 <script>
 /* ── Estrellas ── */
 (function(){
@@ -996,7 +994,7 @@ small,
 /* ── Carrito ── */
 const CART_KEY = 'ladyaura_cart';
 
-/* ── CUPÓN: LADYAURA5 visible + códigos privados por colección ── */
+/* ── CUPÓN: delegado en carrito.js (soporta LADYAURA5 + NEDEKA10) ── */
 const COUPON_KEY_INLINE  = 'ladyaura_coupon';   // misma key que carrito.js
 const COUPON_USED_KEY    = 'ladyAuraCouponUsed'; // solo para LADYAURA5 (primera compra)
 
@@ -1004,42 +1002,25 @@ function isNedekaItemInline(item) {
   const raw = [item?.coleccion, item?.collection, item?.nombre, item?.id, item?.img].join(' ').toLowerCase();
   return raw.includes('nedeka');
 }
-function isBrujiItemInline(item) {
-  const raw = [item?.coleccion, item?.collection, item?.nombre, item?.id, item?.img].join(' ').toLowerCase();
-  return raw.includes('bruji');
-}
-function isMaikaItemInline(item) {
-  const raw = [item?.coleccion, item?.collection, item?.nombre, item?.id, item?.img].join(' ').toLowerCase();
-  return raw.includes('maika');
-}
 
 function getCouponInline() {
   try { return JSON.parse(localStorage.getItem(COUPON_KEY_INLINE)); } catch(e) { return null; }
 }
 
 const NEDEKA60_PRICE = 60;
-const BRUJI60_PRICE = 60;
 
 function calcDiscountInline(items, code) {
   const subtotal = items.reduce((s,i) => s + (Number(i.precio)||79), 0);
   const nedekaItems = items.filter(isNedekaItemInline);
-  const brujiItems = items.filter(isBrujiItemInline);
-  const maikaItems = items.filter(isMaikaItemInline);
   const nedekaSubtotal = nedekaItems.reduce((s,i) => s + (Number(i.precio)||79), 0);
-  const brujiSubtotal = brujiItems.reduce((s,i) => s + (Number(i.precio)||79), 0);
-  const maikaSubtotal = maikaItems.reduce((s,i) => s + (Number(i.precio)||79), 0);
   if (code === 'LADYAURA5') return subtotal > 0 ? 5 : 0;
   if (code === 'NEDEKA10')  return nedekaSubtotal > 0 ? Math.min(10, nedekaSubtotal) : 0;
   if (code === 'NEDEKA60')  return nedekaItems.reduce((s,i) => s + Math.max(0, (Number(i.precio)||79) - NEDEKA60_PRICE), 0);
-  if (code === 'BRUJI10')   return brujiSubtotal > 0 ? Math.min(10, brujiSubtotal) : 0;
-  if (code === 'BRUJI60')   return brujiItems.reduce((s,i) => s + Math.max(0, (Number(i.precio)||79) - BRUJI60_PRICE), 0);
-  if (code === 'MAIKA10')   return maikaSubtotal > 0 ? Math.min(10, maikaSubtotal) : 0;
   return 0;
 }
 
 function getPriceWithCoupon(item, code) {
   if (code === 'NEDEKA60' && isNedekaItemInline(item)) return NEDEKA60_PRICE;
-  if (code === 'BRUJI60' && isBrujiItemInline(item)) return BRUJI60_PRICE;
   return Number(item.precio) || 79;
 }
 
@@ -1054,10 +1035,10 @@ function applyCoupon() {
 
   const existing = getCouponInline();
   if (existing && existing.code && existing.code !== code) {
-    if(msg){ msg.textContent='Solo se puede usar un cupón por pedido.'; msg.className='coupon-msg err'; } return;
+    if(msg){ msg.textContent='Solo se puede usar un cupón por pedido. NEDEKA10 y LADYAURA5 no se pueden usar juntos.'; msg.className='coupon-msg err'; } return;
   }
 
-  if (!['LADYAURA5','NEDEKA10','NEDEKA60','BRUJI10','BRUJI60','MAIKA10'].includes(code)) {
+  if (!['LADYAURA5','NEDEKA10','NEDEKA60'].includes(code)) {
     if(msg){ msg.textContent='Código de cupón no válido'; msg.className='coupon-msg err'; } return;
   }
   if (code === 'LADYAURA5' && localStorage.getItem(COUPON_USED_KEY) === 'true') {
@@ -1065,12 +1046,6 @@ function applyCoupon() {
   }
   if ((code === 'NEDEKA10' || code === 'NEDEKA60') && !items.some(isNedekaItemInline)) {
     if(msg){ msg.textContent=code+' solo funciona con cuadros de la Colección NEDEKA'; msg.className='coupon-msg err'; } return;
-  }
-  if ((code === 'BRUJI10' || code === 'BRUJI60') && !items.some(isBrujiItemInline)) {
-    if(msg){ msg.textContent=code+' solo funciona con cuadros de la Colección BRUJI'; msg.className='coupon-msg err'; } return;
-  }
-  if (code === 'MAIKA10' && !items.some(isMaikaItemInline)) {
-    if(msg){ msg.textContent='MAIKA10 solo funciona con cuadros de la Colección MAIKA'; msg.className='coupon-msg err'; } return;
   }
 
   const discount = calcDiscountInline(items, code);
@@ -1112,8 +1087,7 @@ function renderCart() {
   list.innerHTML = items.map(item => {
     const originalPrice = Number(item.precio) || 79;
     const displayPrice = getPriceWithCoupon(item, activeCouponForRender);
-    const isSpecial60 = (activeCouponForRender === 'NEDEKA60' && isNedekaItemInline(item)) || (activeCouponForRender === 'BRUJI60' && isBrujiItemInline(item));
-    const priceHtml = isSpecial60
+    const priceHtml = (activeCouponForRender === 'NEDEKA60' && isNedekaItemInline(item))
       ? `<span class="cart-item-price"><s style="opacity:.4;font-size:.8em;text-decoration:line-through">${originalPrice} €</s>&nbsp;${displayPrice} €</span>`
       : `<span class="cart-item-price">${originalPrice} €</span>`;
     return `
@@ -1131,10 +1105,10 @@ function renderCart() {
   const couponData = getCouponInline();
   const couponCode = couponData ? couponData.code : null;
   // NEDEKA60: el subtotal ya refleja el precio especial; otros: descuento sobre precio normal
-  const subtotal = (couponCode === 'NEDEKA60' || couponCode === 'BRUJI60')
-    ? items.reduce((s,i) => s + getPriceWithCoupon(i, couponCode), 0)
+  const subtotal = couponCode === 'NEDEKA60'
+    ? items.reduce((s,i) => s + getPriceWithCoupon(i, 'NEDEKA60'), 0)
     : items.reduce((s,i) => s + (Number(i.precio)||79), 0);
-  const discount = (couponCode && couponCode !== 'NEDEKA60' && couponCode !== 'BRUJI60') ? calcDiscountInline(items, couponCode) : 0;
+  const discount = (couponCode && couponCode !== 'NEDEKA60') ? calcDiscountInline(items, couponCode) : 0;
   const total = Math.max(0, subtotal - discount);
   document.getElementById('sum-count').textContent = items.length + (items.length===1?' diseño':' diseños');
   document.getElementById('sum-total').textContent = total + ' €';
@@ -1143,18 +1117,14 @@ function renderCart() {
   const discountLabel = document.getElementById('discount-label');
   const sumDiscount = document.getElementById('sum-discount');
   if (discountRow) {
-    const showRow = couponCode === 'NEDEKA60' || couponCode === 'BRUJI60' || (couponCode && discount > 0);
+    const showRow = couponCode === 'NEDEKA60' || (couponCode && discount > 0);
     discountRow.style.display = showRow ? '' : 'none';
     if (couponCode === 'NEDEKA60') {
       const ned60Saving = items.filter(isNedekaItemInline).reduce((s,i) => s + Math.max(0,(Number(i.precio)||79) - NEDEKA60_PRICE), 0);
-      if (discountLabel) discountLabel.textContent = 'Precio especial';
+      if (discountLabel) discountLabel.textContent = 'Precio especial NEDEKA60';
       if (sumDiscount) sumDiscount.textContent = '-' + ned60Saving.toFixed(2).replace('.',',') + ' €';
-    } else if (couponCode === 'BRUJI60') {
-      const bruji60Saving = items.filter(isBrujiItemInline).reduce((s,i) => s + Math.max(0,(Number(i.precio)||79) - BRUJI60_PRICE), 0);
-      if (discountLabel) discountLabel.textContent = 'Precio especial';
-      if (sumDiscount) sumDiscount.textContent = '-' + bruji60Saving.toFixed(2).replace('.',',') + ' €';
     } else {
-      if (discountLabel) discountLabel.textContent = couponCode === 'LADYAURA5' ? 'Cupón LADYAURA5' : 'Cupón especial';
+      if (discountLabel) discountLabel.textContent = 'Cupón ' + (couponCode || '');
       if (sumDiscount) sumDiscount.textContent = '-' + discount.toFixed(2).replace('.',',') + ' €';
     }
   }
@@ -1162,23 +1132,22 @@ function renderCart() {
   const appliedRow = document.getElementById('coupon-applied-row');
   const couponBox = document.getElementById('coupon-box');
   if (appliedRow) {
-    const showApplied = couponCode === 'NEDEKA60' || couponCode === 'BRUJI60' || (couponCode && discount > 0);
+    const showApplied = couponCode === 'NEDEKA60' || (couponCode && discount > 0);
     appliedRow.style.display = showApplied ? 'flex' : 'none';
     const appliedSpan = appliedRow.querySelector('span');
     if (appliedSpan && couponCode) {
-      if (couponCode === 'NEDEKA60' || couponCode === 'BRUJI60') {
-        appliedSpan.textContent = `✓ Cupón especial aplicado · precio especial 60 €/cuadro`;
+      if (couponCode === 'NEDEKA60') {
+        appliedSpan.textContent = `✓ NEDEKA60 aplicado · precio especial 60 €/cuadro`;
       } else {
-        appliedSpan.textContent = couponCode === 'LADYAURA5' ? `✓ LADYAURA5 aplicado · -${discount.toFixed(2).replace('.',',')} €` : `✓ Cupón especial aplicado · -${discount.toFixed(2).replace('.',',')} €`;
+        appliedSpan.textContent = `✓ ${couponCode} aplicado · -${discount.toFixed(2).replace('.',',')} €`;
       }
     }
   }
   if (couponBox) {
     const input = document.getElementById('coupon-code') || document.getElementById('couponCode');
     const btn = document.getElementById('applyCouponBtn');
-    const couponAppliedOk = couponCode === 'NEDEKA60' || couponCode === 'BRUJI60' || (couponCode && discount > 0);
-    if (input) input.style.display = couponAppliedOk ? 'none' : '';
-    if (btn) btn.style.display = couponAppliedOk ? 'none' : '';
+    if (input) input.style.display = (couponCode && discount > 0) ? 'none' : '';
+    if (btn) btn.style.display = (couponCode && discount > 0) ? 'none' : '';
   }
 }
 
@@ -1199,10 +1168,10 @@ document.getElementById('order-form').addEventListener('submit', async function(
   const couponDataPedido = getCouponInline();
   const couponApplied = couponDataPedido ? couponDataPedido.code : null;
   // NEDEKA60: precio especial por unidad; otros cupones: descuento sobre subtotal normal
-  const subtotalPedido = (couponApplied === 'NEDEKA60' || couponApplied === 'BRUJI60')
-    ? items.reduce((s,i) => s + getPriceWithCoupon(i, couponApplied), 0)
+  const subtotalPedido = couponApplied === 'NEDEKA60'
+    ? items.reduce((s,i) => s + getPriceWithCoupon(i, 'NEDEKA60'), 0)
     : items.reduce((s,i) => s + (Number(i.precio)||79), 0);
-  const discountPedido = (couponApplied === 'NEDEKA60' || couponApplied === 'BRUJI60') ? 0 : (couponApplied ? calcDiscountInline(items, couponApplied) : 0);
+  const discountPedido = couponApplied === 'NEDEKA60' ? 0 : (couponApplied ? calcDiscountInline(items, couponApplied) : 0);
   const totalPedido = Math.max(0, subtotalPedido - discountPedido);
   const paypalUrl = 'https://paypal.me/LadyAuraArt/' + totalPedido + 'EUR';
   const data = {
@@ -1217,7 +1186,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
     notas:     document.getElementById('f-notas').value,
     pedido:    items.map(i => `${i.nombre} · ${i.precio}€`).join(' | '),
     subtotal:  subtotalPedido + ' €',
-    cupon:     couponApplied ? (couponApplied === 'LADYAURA5' ? `LADYAURA5 · -${discountPedido} €` : 'Cupón especial privado aplicado') : 'Ninguno',
+    cupon:     couponApplied === 'NEDEKA60' ? 'NEDEKA60 · precio especial 60 €/cuadro NEDEKA' : (couponApplied ? `${couponApplied} · -${discountPedido} €` : 'Ninguno'),
     total:     totalPedido + ' €',
     metodo_pago: 'LISTA DE ESPERA — sin cobro todavía',
     bizum: 'No aplica (lista de espera)',
@@ -1287,6 +1256,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
 
 renderCart();
 </script>
+
 <script>
 /* ── Menú móvil ── */
 (function(){
@@ -1307,6 +1277,7 @@ renderCart();
   });
 })();
 </script>
+
 <script src="carrito.js"></script>
 </body>
 </html>
