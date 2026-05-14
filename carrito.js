@@ -33,7 +33,8 @@ function cartAdd(item) {
     item.coleccion = 'bruji';
     item.collection = 'bruji';
   }
-  if (!item.coleccion && !item.collection && (raw.includes('maika') || pagePath.includes('maika'))) {
+  const maikaImgList = ['artista-de-suenos','hada-de-los-cristales-rojos','muneca-de-flores','nina-del-mar-de-estrellas','galaxia-en-sus-ojos','artista-entre-luces','noche-de-cocoa','the-beautiful-and-the-broken','tata','ten-thousand-whys','resilience','from-zero','cupid','break-me-more','hello-how-are-you','superheroes'];
+  if (!item.coleccion && !item.collection && (raw.includes('maika') || pagePath.includes('maika') || maikaImgList.some(function(n){ return raw.includes(n); }))) {
     item.coleccion = 'maika';
     item.collection = 'maika';
   }
@@ -609,9 +610,15 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
       item?.coleccion, item?.collection, item?.categoria, item?.category,
       item?.img, item?.nombre, item?.id
     ].filter(Boolean).join(' ').toLowerCase();
-    // También detectar por pathname si viene de maika.html
-    var path = (typeof window !== 'undefined' ? window.location.pathname : '').toLowerCase();
-    return raw.includes('maika') || (path.includes('maika') && !raw.includes('nedeka') && !raw.includes('bruji'));
+    if (raw.includes('maika')) return true;
+    // Detección por nombre de imagen (cuadros MAIKA sin coleccion guardada)
+    var maikaImgs = [
+      'artista-de-suenos','hada-de-los-cristales-rojos','muneca-de-flores',
+      'nina-del-mar-de-estrellas','galaxia-en-sus-ojos','artista-entre-luces',
+      'noche-de-cocoa','the-beautiful-and-the-broken','tata','ten-thousand-whys',
+      'resilience','from-zero','cupid','break-me-more','hello-how-are-you','superheroes'
+    ];
+    return maikaImgs.some(function(name) { return raw.includes(name); });
   }
 
   function isNedekaItem(item) {
