@@ -43,9 +43,7 @@ BRUJI:
 - amor-floral.webp
 
 IMPORTANTE:
-- NEDEKA10 solo descuenta 10 € en 1 cuadro NEDEKA.
-- BRUJI10 solo descuenta 10 € en 1 cuadro BRUJI.
-- LADYAURA5, NEDEKA10 y BRUJI10 no se pueden usar juntos.
+- LADYAURA5 es el único cupón visible en la web. Los cupones privados de colaboradoras siguen funcionando en el carrito, pero no deben mostrarse públicamente.
 - Después de subir los archivos, abre ladyauraart.com/bruji.html en modo incógnito para comprobar que las cards salen alineadas.
 
 CAMBIO REALIZADO:

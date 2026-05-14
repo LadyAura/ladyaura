@@ -870,7 +870,7 @@ small,
 
     <!-- CUPÓN -->
     <div class="coupon-box" id="coupon-box">
-      <p class="coupon-hint">🎁 Cupones disponibles: <strong>LADYAURA5</strong> (-5 €, primer pedido) · <strong>NEDEKA10</strong> (-10 €, solo cuadros NEDEKA)</p>
+      <p class="coupon-hint">🎁 Cupón de bienvenida: <strong>LADYAURA5</strong> (-5 € en tu primer pedido)</p>
       <label class="coupon-label" for="couponCode">¿Tienes un cupón?</label>
       <!-- id="coupon-form" previene que carrito.js inyecte una segunda caja -->
       <form id="coupon-form" onsubmit="event.preventDefault(); applyCoupon();">
@@ -993,9 +993,9 @@ small,
 /* ── Carrito ── */
 const CART_KEY = 'ladyaura_cart';
 
-/* ── CUPÓN: delegado en carrito.js (soporta LADYAURA5 + NEDEKA10) ── */
+/* ── CUPÓN: delegado en carrito.js ── */
 const COUPON_KEY_INLINE  = 'ladyaura_coupon';   // misma key que carrito.js
-const COUPON_USED_KEY    = 'ladyAuraCouponUsed'; // solo para LADYAURA5 (primera compra)
+const COUPON_USED_KEY    = 'ladyAuraCouponUsed'; // cupón de bienvenida
 
 function isNedekaItemInline(item) {
   const raw = [item?.coleccion, item?.collection, item?.nombre, item?.id, item?.img].join(' ').toLowerCase();
@@ -1034,7 +1034,7 @@ function applyCoupon() {
 
   const existing = getCouponInline();
   if (existing && existing.code && existing.code !== code) {
-    if(msg){ msg.textContent='Solo se puede usar un cupón por pedido. NEDEKA10 y LADYAURA5 no se pueden usar juntos.'; msg.className='coupon-msg err'; } return;
+    if(msg){ msg.textContent='Solo se puede usar un cupón por pedido.'; msg.className='coupon-msg err'; } return;
   }
 
   if (!['LADYAURA5','NEDEKA10','NEDEKA60'].includes(code)) {
@@ -1044,14 +1044,14 @@ function applyCoupon() {
     if(msg){ msg.textContent='Este cupón de bienvenida ya se ha usado en un pedido anterior'; msg.className='coupon-msg err'; } return;
   }
   if ((code === 'NEDEKA10' || code === 'NEDEKA60') && !items.some(isNedekaItemInline)) {
-    if(msg){ msg.textContent=code+' solo funciona con cuadros de la Colección NEDEKA'; msg.className='coupon-msg err'; } return;
+    if(msg){ msg.textContent='Este cupón solo funciona con su colección correspondiente'; msg.className='coupon-msg err'; } return;
   }
 
   const discount = calcDiscountInline(items, code);
   if (discount <= 0) { if(msg){ msg.textContent='Este cupón no se puede aplicar a tu carrito actual'; msg.className='coupon-msg err'; } return; }
 
   localStorage.setItem(COUPON_KEY_INLINE, JSON.stringify({ code, discount }));
-  if(msg){ msg.textContent=`Cupón ${code} aplicado: -${discount.toFixed(2).replace('.',',')} €`; msg.className='coupon-msg ok'; }
+  if(msg){ msg.textContent=(code === 'LADYAURA5' ? `Cupón LADYAURA5 aplicado: -${discount.toFixed(2).replace('.',',')} €` : `Cupón especial aplicado: -${discount.toFixed(2).replace('.',',')} €`); msg.className='coupon-msg ok'; }
   renderCart();
 }
 
@@ -1120,10 +1120,10 @@ function renderCart() {
     discountRow.style.display = showRow ? '' : 'none';
     if (couponCode === 'NEDEKA60') {
       const ned60Saving = items.filter(isNedekaItemInline).reduce((s,i) => s + Math.max(0,(Number(i.precio)||79) - NEDEKA60_PRICE), 0);
-      if (discountLabel) discountLabel.textContent = 'Precio especial NEDEKA60';
+      if (discountLabel) discountLabel.textContent = 'Cupón especial';
       if (sumDiscount) sumDiscount.textContent = '-' + ned60Saving.toFixed(2).replace('.',',') + ' €';
     } else {
-      if (discountLabel) discountLabel.textContent = 'Cupón ' + (couponCode || '');
+      if (discountLabel) discountLabel.textContent = couponCode === 'LADYAURA5' ? 'Cupón LADYAURA5' : 'Cupón especial';
       if (sumDiscount) sumDiscount.textContent = '-' + discount.toFixed(2).replace('.',',') + ' €';
     }
   }
@@ -1166,7 +1166,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
   }
   const couponDataPedido = getCouponInline();
   const couponApplied = couponDataPedido ? couponDataPedido.code : null;
-  // NEDEKA60: precio especial por unidad; otros cupones: descuento sobre subtotal normal
+  // Precio especial por unidad; otros cupones: descuento sobre subtotal normal
   const subtotalPedido = couponApplied === 'NEDEKA60'
     ? items.reduce((s,i) => s + getPriceWithCoupon(i, 'NEDEKA60'), 0)
     : items.reduce((s,i) => s + (Number(i.precio)||79), 0);
@@ -1185,7 +1185,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
     notas:     document.getElementById('f-notas').value,
     pedido:    items.map(i => `${i.nombre} · ${i.precio}€`).join(' | '),
     subtotal:  subtotalPedido + ' €',
-    cupon:     couponApplied === 'NEDEKA60' ? 'NEDEKA60 · precio especial 60 €/cuadro NEDEKA' : (couponApplied ? `${couponApplied} · -${discountPedido} €` : 'Ninguno'),
+    cupon:     couponApplied === 'NEDEKA60' ? 'Cupón especial aplicado' : (couponApplied ? `Cupón aplicado · -${discountPedido} €` : 'Ninguno'),
     total:     totalPedido + ' €',
     metodo_pago: 'LISTA DE ESPERA — sin cobro todavía',
     bizum: 'No aplica (lista de espera)',
