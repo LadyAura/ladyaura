@@ -33,6 +33,10 @@ function cartAdd(item) {
     item.coleccion = 'bruji';
     item.collection = 'bruji';
   }
+  if (!item.coleccion && !item.collection && raw.includes('maika')) {
+    item.coleccion = 'maika';
+    item.collection = 'maika';
+  }
 
   const items = cartGet();
   const exists = items.find(i => i.id === item.id);
@@ -140,8 +144,8 @@ function cartInjectButtons() {
         img: card.dataset.img || card.querySelector('img')?.src || '',
         precio: Number(card.dataset.precio || card.dataset.price) || 84,
         orient: card.dataset.orient || 'v',
-        coleccion: card.dataset.coleccion || card.dataset.collection || (location.pathname.toLowerCase().includes('nedeka') ? 'nedeka' : location.pathname.toLowerCase().includes('bruji') ? 'bruji' : ''),
-        collection: card.dataset.collection || card.dataset.coleccion || (location.pathname.toLowerCase().includes('nedeka') ? 'nedeka' : location.pathname.toLowerCase().includes('bruji') ? 'bruji' : '')
+        coleccion: card.dataset.coleccion || card.dataset.collection || (location.pathname.toLowerCase().includes('nedeka') ? 'nedeka' : location.pathname.toLowerCase().includes('bruji') ? 'bruji' : location.pathname.toLowerCase().includes('maika') ? 'maika' : ''),
+        collection: card.dataset.collection || card.dataset.coleccion || (location.pathname.toLowerCase().includes('nedeka') ? 'nedeka' : location.pathname.toLowerCase().includes('bruji') ? 'bruji' : location.pathname.toLowerCase().includes('maika') ? 'maika' : '')
       });
       this.classList.add('added');
       this.innerHTML = '✓ En el carrito';
@@ -600,6 +604,14 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
     return raw.includes('bruji') || ['violeta','salemmiau','medialuna','anastada','flowerwolf','amor floral','amor-floral'].some(name => raw.includes(name));
   }
 
+  function isMaikaItem(item) {
+    var raw = [
+      item?.coleccion, item?.collection, item?.categoria, item?.category,
+      item?.img, item?.nombre
+    ].filter(Boolean).join(' ').toLowerCase();
+    return raw.includes('maika');
+  }
+
   function isNedekaItem(item) {
     const raw = [
       item?.coleccion, item?.collection, item?.categoria, item?.category,
@@ -653,6 +665,10 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
       brujiItems.forEach(item => { totalDiscount += Math.max(0, (Number(item.precio) || 84) - 60); });
       return totalDiscount > 0 ? totalDiscount : 0;
     }
+    if (code === 'MAIKA10') {
+      const maikaSubtotal = items.filter(isMaikaItem).reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
+      return maikaSubtotal > 0 ? Math.min(10, maikaSubtotal) : 0;
+    }
     return 0;
   }
 
@@ -685,7 +701,7 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
       return false;
     }
 
-    if (!['LADYAURA5','NEDEKA10','BRUJI10','BRUJI60'].includes(clean)) {
+    if (!['LADYAURA5','NEDEKA10','BRUJI10','BRUJI60','MAIKA10'].includes(clean)) {
       couponMessage('Cupón no válido.', false);
       return false;
     }
@@ -698,6 +714,10 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
       couponMessage('Este cupón solo funciona con cuadros de la Colección BRUJI.', false);
       return false;
     }
+    if (clean === 'MAIKA10' && !items.some(isMaikaItem)) {
+      couponMessage('Cupón no válido.', false);
+      return false;
+    }
 
     const discount = calculateCouponDiscount(items, clean);
     if (discount <= 0) {
@@ -706,7 +726,7 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
     }
 
     setCoupon({ code: clean, discount: discount });
-    couponMessage(`${clean === 'LADYAURA5' ? 'Cupón LADYAURA5' : 'Cupón especial'} aplicado: -${discount.toFixed(2).replace('.', ',')} €`, true);
+    couponMessage(`${clean === 'LADYAURA5' ? 'Cupón LADYAURA5' : clean === 'NEDEKA10' ? 'Cupón NEDEKA10' : clean === 'BRUJI10' ? 'Cupón BRUJI10' : 'Descuento especial'} aplicado: -${discount.toFixed(2).replace('.', ',')} €`, true);
     return true;
   };
 
