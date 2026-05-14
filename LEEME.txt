@@ -44,3 +44,9 @@ IMÁGENES MAIKA EN ASSETS:
 - galaxia-en-sus-ojos.webp
 - artista-entre-luces.webp
 - noche-de-cocoa.webp
+
+
+CAMBIO NUEVO:
+- Menú unificado en todas las páginas con MAIKA justo detrás de BRUJI.
+- MAIKA añadida al inicio como tarjeta de colección.
+- Los cupones privados de colaboradoras quedan ocultos en la web pública; solo queda visible LADYAURA5.
