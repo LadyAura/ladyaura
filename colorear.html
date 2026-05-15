@@ -910,7 +910,7 @@ small,
     <div class="welcome-coupon-copy">
       <span class="welcome-coupon-badge">🎁 Regalo de bienvenida</span>
       <h2>Cupón de bienvenida</h2>
-      <p class="welcome-coupon-main">Usa el código en el carrito y recibe 5 € de descuento en tu primera compra.</p>
+      <p class="welcome-coupon-main">Usa el código en el carrito y recibe 5 € de descuento en tu primera compra de lienzos.</p>
     </div>
     <div class="welcome-coupon-ticket" aria-label="Código de cupón LADYAURA5">
       <span class="welcome-coupon-ticket-label">Código</span>
@@ -1730,5 +1730,46 @@ if(mt&&nav){mt.addEventListener('click',function(){nav.classList.toggle('open');
 })();
 </script>
 <script src="carrito.js"></script>
+
+<!-- LIGHTBOX NEDEKA -->
+<div id="nedeka-lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center;padding:1rem;" onclick="cerrarLightbox()">
+  <div style="position:relative;max-width:90vw;max-height:90vh;" onclick="event.stopPropagation()">
+    <img id="nedeka-lb-img" src="" alt="" style="max-width:90vw;max-height:85vh;object-fit:contain;border-radius:12px;display:block;">
+    <div id="nedeka-lb-titulo" style="text-align:center;font-family:'Cinzel',serif;color:#c9a84c;font-size:.9rem;letter-spacing:.15em;margin-top:.8rem;"></div>
+    <button onclick="cerrarLightbox()" style="position:absolute;top:-1rem;right:-1rem;background:#1e1040;border:1px solid rgba(201,168,76,.4);color:#c9a84c;width:36px;height:36px;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">✕</button>
+  </div>
+</div>
+
+<style>
+#nedeka-lightbox { display:none; }
+#nedeka-lightbox.open { display:flex !important; }
+.nedeka-img-click { cursor:zoom-in; transition:transform .2s; }
+.nedeka-img-click:hover { transform:scale(1.03); }
+</style>
+
+<script>
+function abrirLightbox(src, titulo) {
+  document.getElementById('nedeka-lb-img').src = src;
+  document.getElementById('nedeka-lb-titulo').textContent = titulo;
+  document.getElementById('nedeka-lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function cerrarLightbox() {
+  document.getElementById('nedeka-lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') cerrarLightbox(); });
+
+// Hacer clickables todas las imágenes de la sección NEDEKA
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('#nedeka img').forEach(function(img){
+    img.classList.add('nedeka-img-click');
+    var titulo = img.closest('.lamina-doble') ? img.closest('.lamina-doble').querySelector('.lamina-nombre').textContent : '';
+    img.addEventListener('click', function(){
+      abrirLightbox(img.src, titulo);
+    });
+  });
+});
+</script>
 </body>
 </html>
