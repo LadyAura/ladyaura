@@ -6,7 +6,7 @@ const LA_T = {
     /* NAV */
     nav_inicio:'Inicio', nav_zodiaco:'♈ Zodíaco', nav_parejas:'💑 Parejas',
     nav_paisajes:'🏔️ Paisajes', nav_especiales:'✨ Diseños exclusivos',
-    nav_personalizados:'🎨 Personalizados', nav_nedeka:'🌙 NEDEKA', nav_tarot:'🔮 Tarot', nav_colorear:'🎨 Colorear',
+    nav_maika:'🎨 MAIKA', nav_personalizados:'🎨 Personalizados', nav_nedeka:'🌙 NEDEKA', nav_colorear:'🎨 Colorear',
 
     /* COMÚN — hero strip */
     strip_sinpago:'Sin pago previo', strip_formato:'60 × 90 cm',
@@ -63,18 +63,6 @@ const LA_T = {
     esp_title:'✨ Diseños exclusivos',
     esp_desc:'Gatitos, princesas, magia estelar, elfas y mucho más. Todo lo que enamora y no cabe en ninguna otra categoría.',
 
-    /* TAROT */
-    tar_eyebrow_es:'✦ Gratis · Sin registro · En español ✦',
-    tar_title_es:'Echar las Cartas del Tarot Gratis<br>Tiradas Online en Español 🔮',
-    tar_desc_es:'Deja que el universo hable. Elige tu tirada, baraja las cartas y descubre el mensaje que tienen para ti hoy.',
-    tar_btn_start:'✨ Empezar mi tirada',
-    tar_cual:'¿Que tirada quieres?',
-    tar_elige:'Elige una y pulsa el boton para barajar las cartas 🌙',
-    tar_btn_day:'🌙 Tirada Diaria', tar_btn_week:'🌟 Tirada Semanal', tar_btn_love:'❤️ Tirada de Amor',
-    tar_shop_eyebrow:'✦ Lady Aura Art · Diamond Painting Premium ✦',
-    tar_shop_title:'🖼️ Cuadros de Tarot',
-    tar_shop_desc:'Diamond painting de las 22 Arcanos Mayores. Diseños exclusivos.',
-
     /* COLOREAR */
     col_eyebrow:'✦ Arte Digital · PDF A4 · Descarga inmediata ✦',
     col_title:'🎨 Láminas para Colorear Adultos<br>Estilo Fantasy · PDF A4',
@@ -129,9 +117,9 @@ const LA_T = {
 
   en: {
     /* NAV */
-    nav_inicio:'Home', nav_zodiaco:'♈ Zodiac', nav_parejas:'💑 Couples',
+    nav_inicio:'Home', nav_zodiaco:'♈ Horoscope', nav_parejas:'💑 Couples',
     nav_paisajes:'🏔️ Landscapes', nav_especiales:'✨ Exclusive designs',
-    nav_personalizados:'🎨 Custom art', nav_nedeka:'🌙 NEDEKA', nav_tarot:'🔮 Tarot', nav_colorear:'🎨 Coloring',
+    nav_personalizados:'🎨 Custom art', nav_nedeka:'🌙 NEDEKA', nav_colorear:'🎨 Coloring',
 
     /* COMÚN — hero strip */
     strip_sinpago:'No upfront payment', strip_formato:'60 × 90 cm',
@@ -160,13 +148,13 @@ const LA_T = {
     cta_wa:'💬 Chat with Lady Aura', cta_back:'← Back to home',
 
     /* ZODIACO */
-    zod_eyebrow:'✦ Zodiac Collection · Premium Diamond Painting ✦',
+    zod_eyebrow:'✦ Horoscope Collection · Premium Diamond Painting ✦',
     zod_title:'Your Sign Turned Into<br>Diamond Art',
     zod_desc:'24 exclusive designs — 12 Goddesses and 12 Celestial Portraits. Each sign in its most magical and brilliant version. Premium 60×90 cm format.',
     zod_badge1:'✦ 24 designs available', zod_badge2:'💎 60×90 cm premium',
     zod_badge3:'✦ Free pre-order', zod_badge4:'🚀 Never sold out',
     zod_strip_nunca:'Never sold out', zod_strip_nunca_sub:'Your sign always available',
-    zod_sub:'All 12 Zodiac Signs',
+    zod_sub:'All 12 Horoscope Signs',
     zod_desc2:'Each sign in its feminine and masculine version. Click on the design you want to see more details and pre-order.',
     zod_tab_fem:'♀ Feminine', zod_tab_masc:'♂ Masculine',
     zod_nosigno:'Can\'t find your sign?<br>Message me directly',
@@ -188,22 +176,10 @@ const LA_T = {
     esp_title:'✨ Exclusive designs',
     esp_desc:'Kittens, princesses, stellar magic, elves and much more. Everything that enchants and fits no other category.',
 
-    /* TAROT */
-    tar_eyebrow_es:'✦ Free · No sign-up · In English ✦',
-    tar_title_es:'Free Online Tarot Card Reading<br>Love, Daily & Weekly Spreads 🔮',
-    tar_desc_es:'Let the universe speak. Choose your spread, shuffle the cards and discover the message they hold for you today.',
-    tar_btn_start:'✨ Start my reading',
-    tar_cual:'Which spread do you want?',
-    tar_elige:'Choose one and press the button to shuffle the cards 🌙',
-    tar_btn_day:'🌙 Daily Reading', tar_btn_week:'🌟 Weekly Reading', tar_btn_love:'❤️ Love Reading',
-    tar_shop_eyebrow:'✦ Lady Aura Art · Premium Diamond Painting ✦',
-    tar_shop_title:'🖼️ Tarot Diamond Paintings',
-    tar_shop_desc:'Diamond painting of the 22 Major Arcana. Exclusive designs.',
-
     /* COLOREAR */
     col_eyebrow:'✦ Digital Art · A4 PDF · Instant download ✦',
     col_title:'🎨 Adult Coloring Pages<br>Fantasy Style · A4 PDF',
-    col_desc:'Download, print and color with your own markers. Fantasy-style adult coloring pages: mermaids, zodiac and goddesses. High resolution A4 PDF, instant delivery.',
+    col_desc:'Download, print and color with your own markers. Fantasy-style adult coloring pages: mermaids, horoscope and goddesses. High resolution A4 PDF, instant delivery.',
     col_gratis_sub:'One free page, no sign up.',
     col_que_recibes:'What do you get?',
     col_badge:'✦ FREE SAMPLE PAGE · FREE DOWNLOAD ✦',
@@ -275,3 +251,40 @@ function setLang(lang) { applyLang(lang); }
 document.addEventListener('DOMContentLoaded', function() {
   applyLang(localStorage.getItem('la_lang') || 'es');
 });
+
+
+/* Refuerzo global: traduce textos comunes aunque la pagina no tenga todas las etiquetas data-i18n. */
+const LA_TEXT_EN = {
+  'Inicio':'Home','? Horoscopo':'? Horoscope','? Horoscopo':'? Horoscope','Personalizados':'Custom art','Colorear':'Coloring','Ver colecciones ?':'View collections ?','? Ver colecciones':'? View collections','?? Preg?ntame':'?? Ask me','Elige tu colecci?n':'Choose your collection','Cada colecci?n tiene su propia magia. ?Cu?l es la tuya?':'Each collection has its own magic. Which one is yours?','Colecci?n especial':'Special collection','Colecci?n NEDEKA':'NEDEKA Collection','Fantas?a luminosa, misterio y magia visual en formato premium.':'Luminous fantasy, mystery and visual magic in premium format.','Ver colecci?n ?':'View collection ?','? Colecci?n permanente':'? Permanent collection','Horoscopo':'Horoscope','24 dise?os ? 12 Diosas y 12 Retratos Celestiales. Tu signo, en su versi?n m?s m?gica. Nunca se agotan.':'24 designs, goddesses and celestial portraits. Your sign in its most magical version. Never sold out.','Ver los 24 signos ?':'See all signs ?','Colecci?n BRUJI':'BRUJI Collection','Brujer?a tierna, magia oscura y fantas?a encantada.':'Tender witchcraft, soft dark magic and enchanted fantasy.','Colecci?n MAIKA':'MAIKA Collection','Arte kawaii, ternura, fantas?a luminosa y personajes llenos de color.':'Kawaii art, tenderness, luminous fantasy and colorful characters.','Paisajes':'Landscapes','Mundos imposibles y naturaleza m?gica. Para decorar y so?ar.':'Impossible worlds and magical nature. Made to decorate and dream.','Ver paisajes ?':'View landscapes ?','Tu Retrato':'Your Portrait','Manda tu foto y la convierto en arte de diamantes. Tu signo, tu estilo, tu magia.':'Send your photo and I will turn it into diamond art. Your sign, your style, your magic.','Quiero el m?o ?':'I want mine ?','Gatitos, princesas, magia estelar y mucho m?s. Lo inclasificable.':'Kittens, princesses, starlit magic and much more. The unclassifiable.','Ver dise?os ?':'View designs ?','L?minas para Colorear':'Coloring Pages','L?minas fantasy para adultos en PDF A4. Una l?mina gratis sin registro.':'Fantasy coloring pages for adults in A4 PDF. One free page, no sign-up.','Ver l?minas ?':'View pages ?','Calidad premium':'Premium quality','Diamantes alta densidad ? Lienzo premium antidesvanecimiento':'High-density diamonds ? Premium fade-resistant canvas','Arte original ? No masivo ? No en Amazon':'Original art ? Not mass-produced ? Not on Amazon','Formato 60?90 cm':'60?90 cm format','Grande, impactante, decorativo':'Large, striking, decorative','Pre-reserva gratis':'Free pre-order','Sin pago ? Sin compromiso ? T? decides':'No payment ? No commitment ? You decide','Regalo de bienvenida':'Welcome gift','5 ? menos en tu primer pedido':'5 ? off your first order','Cup?n de bienvenida':'Welcome coupon','C?digo':'Code','Ver colecciones':'View collections','Ver signos':'See signs','Pre-reserva sin compromiso':'Pre-order with no commitment','Pre-reservar por WhatsApp':'Reserve by WhatsApp','?Dudas? Escr?beme':'Questions? Message me','A?adir al carrito':'Add to cart','A?adido':'Added','Lista de espera':'Waitlist','Vertical':'Vertical','Horizontal':'Horizontal','Env?o incluido':'Shipping included','Kit completo':'Full kit','Sin pago previo':'No upfront payment','Nunca se agotan':'Never sold out','Tu signo siempre disponible':'Your sign is always available','Volver al inicio':'Back to home','Hablar con Lady Aura':'Chat with Lady Aura','Mis pedidos':'My orders','Mi carrito':'My cart','Tu carrito est? vac?o':'Your cart is empty','Confirma tu pedido':'Confirm your order','Nombre *':'First name *','Apellidos *':'Last name *','Tel?fono':'Phone','Direcci?n de env?o *':'Shipping address *','Ciudad *':'City *','C?digo postal *':'Postal code *','Pa?s *':'Country *','Notas adicionales':'Additional notes','Enviar':'Send','Confirmar pedido':'Confirm order','No se cobra nada ahora.':'Nothing is charged now.','Organiza tu momento Lady Aura':'Organize your Lady Aura moment','Organizar mi momento diamond ?':'Organize my diamond moment ?'
+};
+function laTranslateLoose(lang){
+  document.documentElement.setAttribute('lang', lang);
+  document.querySelectorAll('.lang-es').forEach(el => el.style.display = lang === 'en' ? 'none' : '');
+  document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.getElementById('btn-' + lang); if (btn) btn.classList.add('active');
+  if (lang !== 'en') return;
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(node){
+      if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      const p = node.parentElement;
+      if (!p || ['SCRIPT','STYLE','TEXTAREA','INPUT'].includes(p.tagName)) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  const nodes=[]; while(walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node => {
+    const raw = node.nodeValue.trim();
+    if (LA_TEXT_EN[raw]) node.nodeValue = node.nodeValue.replace(raw, LA_TEXT_EN[raw]);
+  });
+}
+const __laOldApplyLang = typeof applyLang === 'function' ? applyLang : null;
+applyLang = function(lang){
+  if (__laOldApplyLang) __laOldApplyLang(lang);
+  localStorage.setItem('la_lang', lang);
+  localStorage.setItem('ladyaura-lang', lang);
+  laTranslateLoose(lang);
+  window.dispatchEvent(new CustomEvent('ladyAuraLangChanged', {detail:{lang}}));
+};
+setLang = function(lang){ applyLang(lang); };
+document.addEventListener('DOMContentLoaded', function(){ applyLang(localStorage.getItem('la_lang') || localStorage.getItem('ladyaura-lang') || 'es'); });

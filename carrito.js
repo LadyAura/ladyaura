@@ -664,6 +664,12 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
     if (code === 'NEDEKA10') {
       return nedekaSubtotal > 0 ? Math.min(10, nedekaSubtotal) : 0;
     }
+    if (code === 'NEDEKA60') {
+      const nedekaItems = items.filter(isNedekaItem);
+      let totalDiscount = 0;
+      nedekaItems.forEach(item => { totalDiscount += Math.max(0, (Number(item.precio) || 84) - 60); });
+      return totalDiscount > 0 ? totalDiscount : 0;
+    }
     if (code === 'BRUJI10') {
       return brujiSubtotal > 0 ? Math.min(10, brujiSubtotal) : 0;
     }
@@ -717,13 +723,13 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
       return false;
     }
 
-    if (!['LADYAURA5','NEDEKA10','BRUJI10','BRUJI60','MAIKA10','MAIKA60'].includes(clean)) {
+    if (!['LADYAURA5','NEDEKA10','NEDEKA60','BRUJI10','BRUJI60','MAIKA10','MAIKA60'].includes(clean)) {
       couponMessage('Cupón no válido.', false);
       return false;
     }
 
-    if (clean === 'NEDEKA10' && !items.some(isNedekaItem)) {
-      couponMessage('NEDEKA10 solo funciona con cuadros de la Colección NEDEKA.', false);
+    if ((clean === 'NEDEKA10' || clean === 'NEDEKA60') && !items.some(isNedekaItem)) {
+      couponMessage('Este cup\u00f3n solo funciona con cuadros de la Colecci\u00f3n NEDEKA.', false);
       return false;
     }
     if ((clean === 'BRUJI10' || clean === 'BRUJI60') && !items.some(isBrujiItem)) {
@@ -742,7 +748,7 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
     }
 
     setCoupon({ code: clean, discount: discount });
-    couponMessage(`${clean === 'LADYAURA5' ? 'Cupón LADYAURA5' : clean === 'NEDEKA10' ? 'Cupón NEDEKA10' : clean === 'BRUJI10' ? 'Cupón BRUJI10' : 'Descuento especial'} aplicado: -${discount.toFixed(2).replace('.', ',')} €`, true);
+    couponMessage(`${clean === 'LADYAURA5' ? 'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + clean} aplicado: -${discount.toFixed(2).replace('.', ',')} \u20ac`, true);
     return true;
   };
 
@@ -812,7 +818,7 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
         const line = document.createElement('div');
         line.className = 'coupon-line';
         line.setAttribute('data-coupon-line','true');
-        line.innerHTML = `<span>${code === 'LADYAURA5' ? 'Cupón LADYAURA5' : 'Cupón especial'}</span><strong>-${discount.toFixed(2).replace('.', ',')} €</strong>`;
+        line.innerHTML = `<span>${code === 'LADYAURA5' ? 'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code}</span><strong>-${discount.toFixed(2).replace('.', ',')} €</strong>`;
         totalEl.parentElement.insertBefore(line, totalEl);
       }
 
@@ -826,7 +832,7 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
 
     const msg = document.getElementById('coupon-message');
     if (msg && code && discount > 0) {
-      msg.textContent = `${code === 'LADYAURA5' ? 'Cupón LADYAURA5' : 'Cupón especial'} aplicado: -${discount.toFixed(2).replace('.', ',')} €`;
+      msg.textContent = `${code === 'LADYAURA5' ? 'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code} aplicado: -${discount.toFixed(2).replace('.', ',')} €`;
       msg.style.color = '#a0ffb0';
     }
   }

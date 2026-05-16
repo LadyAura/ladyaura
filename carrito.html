@@ -843,19 +843,20 @@ small,
     <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art – Diamond Painting Premium">
   </a>
   <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-  <nav class="nav" id="nav">
-    <a href="index.html">← Inicio</a>
-    <a href="zodiaco.html" data-i18n="nav_zodiaco">♈ Zodíaco</a>
-    <a href="paisajes.html" data-i18n="nav_paisajes">🏔️ Paisajes</a>
-    <a href="especiales.html" data-i18n="nav_especiales">✨ Diseños exclusivos</a>
+  <nav class="nav" id="nav" aria-label="Navegación principal">
+    <a href="index.html">Inicio</a>
+    <a href="horoscopo.html">♈ Horoscopo</a>
+    <a href="especiales.html">✨ AURA</a>
     <a href="nedeka.html">🌙 NEDEKA</a>
     <a href="bruji.html">🔮 BRUJI</a>
-    <a href="personalizados.html" data-i18n="nav_personalizados">🎨 Personalizados</a>
-    <a href="tarot.html" data-i18n="nav_tarot">🔮 Tarot</a>
-    <a href="colorear.html" data-i18n="nav_colorear">🎨 Colorear</a>
+    <a href="maika.html">🎨 MAIKA</a>
+    <a href="circulo-aura.html"><span class="red-circle-dot" aria-hidden="true"></span>CIRCULO AURA</a>
+    <a href="personalizados.html">🎨 Personalizados</a>
+    <a href="colorear.html">🎨 Colorear</a>
     <a href="pedidos.html">📦 Mis pedidos</a>
-    <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">🛒<span class="cart-badge" style="display:none">0</span></a>
+    <a href="carrito.html" class="cart-nav-link" aria-current="page" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">🛒<span class="cart-badge" style="display:none">0</span></a>
   </nav>
+  <a class="header-button" href="horoscopo.html">Ver colecciones ✨</a>
 </header>
 
 <main>
@@ -903,7 +904,7 @@ small,
 
     <!-- CUPÓN -->
     <div class="coupon-box" id="coupon-box">
-      <p class="coupon-hint">🎁 Cupón de bienvenida visible: <strong>LADYAURA5</strong> (-5 €, primer pedido)</p>
+      <p class="coupon-hint" style="display:none">🎁 Cupón de bienvenida visible: <strong>LADYAURA5</strong> (-5 €, primer pedido)</p>
       <label class="coupon-label" for="couponCode">¿Tienes un cupón?</label>
       <!-- id="coupon-form" previene que carrito.js inyecte una segunda caja -->
       <form id="coupon-form" onsubmit="event.preventDefault(); applyCoupon();">
@@ -1061,27 +1062,37 @@ function getCouponInline() {
   try { return JSON.parse(localStorage.getItem(COUPON_KEY_INLINE)); } catch(e) { return null; }
 }
 
-const NEDEKA60_PRICE = 60;
+const SPECIAL60_PRICE = 60;
+const NORMAL_PRICE = 84;
+function isSpecial60Coupon(code) { return ['NEDEKA60','BRUJI60','MAIKA60'].includes(code); }
+function itemMatchesSpecial60(item, code) {
+  if (code === 'NEDEKA60') return isNedekaItemInline(item);
+  if (code === 'BRUJI60') return isBrujiItemInline(item);
+  if (code === 'MAIKA60') return isMaikaItemInline(item);
+  return false;
+}
 
 function calcDiscountInline(items, code) {
-  const subtotal = items.reduce((s,i) => s + (Number(i.precio)||79), 0);
+  const subtotal = items.reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
   const nedekaItems = items.filter(isNedekaItemInline);
   const brujiItems  = items.filter(isBrujiItemInline);
   const maikaItems  = items.filter(isMaikaItemInline);
-  const nedekaSubtotal = nedekaItems.reduce((s,i) => s + (Number(i.precio)||79), 0);
-  const brujiSubtotal  = brujiItems.reduce((s,i) => s + (Number(i.precio)||79), 0);
-  const maikaSubtotal  = maikaItems.reduce((s,i) => s + (Number(i.precio)||79), 0);
+  const nedekaSubtotal = nedekaItems.reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
+  const brujiSubtotal  = brujiItems.reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
+  const maikaSubtotal  = maikaItems.reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
   if (code === 'LADYAURA5') return subtotal > 0 ? 5 : 0;
   if (code === 'NEDEKA10')  return nedekaSubtotal > 0 ? Math.min(10, nedekaSubtotal) : 0;
   if (code === 'BRUJI10')   return brujiSubtotal > 0 ? Math.min(10, brujiSubtotal) : 0;
   if (code === 'MAIKA10')   return maikaSubtotal > 0 ? Math.min(10, maikaSubtotal) : 0;
-  if (code === 'NEDEKA60')  return nedekaItems.reduce((s,i) => s + Math.max(0, (Number(i.precio)||79) - NEDEKA60_PRICE), 0);
+  if (isSpecial60Coupon(code)) return items
+    .filter(item => itemMatchesSpecial60(item, code))
+    .reduce((s,i) => s + Math.max(0, (Number(i.precio)||NORMAL_PRICE) - SPECIAL60_PRICE), 0);
   return 0;
 }
 
 function getPriceWithCoupon(item, code) {
-  if (code === 'NEDEKA60' && isNedekaItemInline(item)) return NEDEKA60_PRICE;
-  return Number(item.precio) || 79;
+  if (isSpecial60Coupon(code) && itemMatchesSpecial60(item, code)) return SPECIAL60_PRICE;
+  return Number(item.precio) || NORMAL_PRICE;
 }
 
 function applyCoupon() {
@@ -1098,7 +1109,7 @@ function applyCoupon() {
     if(msg){ msg.textContent='Solo se puede usar un cupón por pedido.'; msg.className='coupon-msg err'; } return;
   }
 
-  if (!['LADYAURA5','NEDEKA10','NEDEKA60','BRUJI10','MAIKA10'].includes(code)) {
+  if (!['LADYAURA5','NEDEKA10','NEDEKA60','BRUJI10','BRUJI60','MAIKA10','MAIKA60'].includes(code)) {
     if(msg){ msg.textContent='Código de cupón no válido'; msg.className='coupon-msg err'; } return;
   }
   if (code === 'LADYAURA5' && localStorage.getItem(COUPON_USED_KEY) === 'true') {
@@ -1107,10 +1118,10 @@ function applyCoupon() {
   if ((code === 'NEDEKA10' || code === 'NEDEKA60') && !items.some(isNedekaItemInline)) {
     if(msg){ msg.textContent='Este cupón solo funciona con cuadros de la Colección NEDEKA'; msg.className='coupon-msg err'; } return;
   }
-  if (code === 'BRUJI10' && !items.some(isBrujiItemInline)) {
+  if ((code === 'BRUJI10' || code === 'BRUJI60') && !items.some(isBrujiItemInline)) {
     if(msg){ msg.textContent='Este cupón solo funciona con cuadros de la Colección BRUJI'; msg.className='coupon-msg err'; } return;
   }
-  if (code === 'MAIKA10' && !items.some(isMaikaItemInline)) {
+  if ((code === 'MAIKA10' || code === 'MAIKA60') && !items.some(isMaikaItemInline)) {
     if(msg){ msg.textContent='Este cupón solo funciona con cuadros de la Colección MAIKA'; msg.className='coupon-msg err'; } return;
   }
 
@@ -1118,7 +1129,7 @@ function applyCoupon() {
   if (discount <= 0) { if(msg){ msg.textContent='Este cupón no se puede aplicar a tu carrito actual'; msg.className='coupon-msg err'; } return; }
 
   localStorage.setItem(COUPON_KEY_INLINE, JSON.stringify({ code, discount }));
-  if(msg){ msg.textContent=`${code === 'LADYAURA5' ? 'Cupón LADYAURA5' : 'Cupón especial'} aplicado: -${discount.toFixed(2).replace('.',',')} €`; msg.className='coupon-msg ok'; }
+  if(msg){ msg.textContent=`${code === 'LADYAURA5' ? 'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code} aplicado: -${discount.toFixed(2).replace('.',',')} \u20ac`; msg.className='coupon-msg ok'; }
   renderCart();
 }
 
@@ -1151,9 +1162,9 @@ function renderCart() {
   const list = document.getElementById('cart-list');
   const activeCouponForRender = getCouponInline()?.code || null;
   list.innerHTML = items.map(item => {
-    const originalPrice = Number(item.precio) || 79;
+    const originalPrice = Number(item.precio) || NORMAL_PRICE;
     const displayPrice = getPriceWithCoupon(item, activeCouponForRender);
-    const priceHtml = (activeCouponForRender === 'NEDEKA60' && isNedekaItemInline(item))
+    const priceHtml = (isSpecial60Coupon(activeCouponForRender) && itemMatchesSpecial60(item, activeCouponForRender))
       ? `<span class="cart-item-price"><s style="opacity:.4;font-size:.8em;text-decoration:line-through">${originalPrice} €</s>&nbsp;${displayPrice} €</span>`
       : `<span class="cart-item-price">${originalPrice} €</span>`;
     return `
@@ -1170,11 +1181,11 @@ function renderCart() {
 
   const couponData = getCouponInline();
   const couponCode = couponData ? couponData.code : null;
-  // NEDEKA60: el subtotal ya refleja el precio especial; otros: descuento sobre precio normal
-  const subtotal = couponCode === 'NEDEKA60'
-    ? items.reduce((s,i) => s + getPriceWithCoupon(i, 'NEDEKA60'), 0)
-    : items.reduce((s,i) => s + (Number(i.precio)||79), 0);
-  const discount = (couponCode && couponCode !== 'NEDEKA60') ? calcDiscountInline(items, couponCode) : 0;
+  // Los cupones 60 ya reflejan el precio especial; los demas descuentan sobre precio normal
+  const subtotal = isSpecial60Coupon(couponCode)
+    ? items.reduce((s,i) => s + getPriceWithCoupon(i, couponCode), 0)
+    : items.reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
+  const discount = (couponCode && !isSpecial60Coupon(couponCode)) ? calcDiscountInline(items, couponCode) : 0;
   const total = Math.max(0, subtotal - discount);
   document.getElementById('sum-count').textContent = items.length + (items.length===1?' diseño':' diseños');
   document.getElementById('sum-total').textContent = total + ' €';
@@ -1183,12 +1194,12 @@ function renderCart() {
   const discountLabel = document.getElementById('discount-label');
   const sumDiscount = document.getElementById('sum-discount');
   if (discountRow) {
-    const showRow = couponCode === 'NEDEKA60' || (couponCode && discount > 0);
+    const showRow = isSpecial60Coupon(couponCode) || (couponCode && discount > 0);
     discountRow.style.display = showRow ? '' : 'none';
-    if (couponCode === 'NEDEKA60') {
-      const ned60Saving = items.filter(isNedekaItemInline).reduce((s,i) => s + Math.max(0,(Number(i.precio)||79) - NEDEKA60_PRICE), 0);
-      if (discountLabel) discountLabel.textContent = 'Precio especial NEDEKA60';
-      if (sumDiscount) sumDiscount.textContent = '-' + ned60Saving.toFixed(2).replace('.',',') + ' €';
+    if (isSpecial60Coupon(couponCode)) {
+      const specialSaving = calcDiscountInline(items, couponCode);
+      if (discountLabel) discountLabel.textContent = 'Precio especial ' + couponCode;
+      if (sumDiscount) sumDiscount.textContent = '-' + specialSaving.toFixed(2).replace('.',',') + ' \u20ac';
     } else {
       if (discountLabel) discountLabel.textContent = 'Cupón ' + (couponCode || '');
       if (sumDiscount) sumDiscount.textContent = '-' + discount.toFixed(2).replace('.',',') + ' €';
@@ -1198,22 +1209,22 @@ function renderCart() {
   const appliedRow = document.getElementById('coupon-applied-row');
   const couponBox = document.getElementById('coupon-box');
   if (appliedRow) {
-    const showApplied = couponCode === 'NEDEKA60' || (couponCode && discount > 0);
+    const showApplied = isSpecial60Coupon(couponCode) || (couponCode && discount > 0);
     appliedRow.style.display = showApplied ? 'flex' : 'none';
     const appliedSpan = appliedRow.querySelector('span');
     if (appliedSpan && couponCode) {
-      if (couponCode === 'NEDEKA60') {
-        appliedSpan.textContent = `✓ NEDEKA60 aplicado · precio especial 60 €/cuadro`;
+      if (isSpecial60Coupon(couponCode)) {
+        appliedSpan.textContent = `\u2713 ${couponCode} aplicado \u00b7 precio especial 60 \u20ac/cuadro`;
       } else {
-        appliedSpan.textContent = `✓ ${couponCode} aplicado · -${discount.toFixed(2).replace('.',',')} €`;
+        appliedSpan.textContent = `\u2713 ${couponCode} aplicado \u00b7 -${discount.toFixed(2).replace('.',',')} \u20ac`;
       }
     }
   }
   if (couponBox) {
     const input = document.getElementById('coupon-code') || document.getElementById('couponCode');
     const btn = document.getElementById('applyCouponBtn');
-    if (input) input.style.display = (couponCode && discount > 0) ? 'none' : '';
-    if (btn) btn.style.display = (couponCode && discount > 0) ? 'none' : '';
+    if (input) input.style.display = ((isSpecial60Coupon(couponCode) || (couponCode && discount > 0))) ? 'none' : '';
+    if (btn) btn.style.display = ((isSpecial60Coupon(couponCode) || (couponCode && discount > 0))) ? 'none' : '';
   }
 }
 
@@ -1233,11 +1244,11 @@ document.getElementById('order-form').addEventListener('submit', async function(
   }
   const couponDataPedido = getCouponInline();
   const couponApplied = couponDataPedido ? couponDataPedido.code : null;
-  // NEDEKA60: precio especial por unidad; otros cupones: descuento sobre subtotal normal
-  const subtotalPedido = couponApplied === 'NEDEKA60'
-    ? items.reduce((s,i) => s + getPriceWithCoupon(i, 'NEDEKA60'), 0)
-    : items.reduce((s,i) => s + (Number(i.precio)||79), 0);
-  const discountPedido = couponApplied === 'NEDEKA60' ? 0 : (couponApplied ? calcDiscountInline(items, couponApplied) : 0);
+  // Los cupones 60 aplican precio especial por unidad; los demas descuentan sobre subtotal normal
+  const subtotalPedido = isSpecial60Coupon(couponApplied)
+    ? items.reduce((s,i) => s + getPriceWithCoupon(i, couponApplied), 0)
+    : items.reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
+  const discountPedido = isSpecial60Coupon(couponApplied) ? 0 : (couponApplied ? calcDiscountInline(items, couponApplied) : 0);
   const totalPedido = Math.max(0, subtotalPedido - discountPedido);
   const paypalUrl = 'https://paypal.me/LadyAuraArt/' + totalPedido + 'EUR';
   const data = {
@@ -1253,7 +1264,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
     notas:     document.getElementById('f-notas').value,
     pedido:    items.map(i => `${i.nombre} · ${i.precio}€`).join(' | '),
     subtotal:  subtotalPedido + ' €',
-    cupon:     couponApplied === 'NEDEKA60' ? 'NEDEKA60 · precio especial 60 €/cuadro NEDEKA' : (couponApplied ? `${couponApplied} · -${discountPedido} €` : 'Ninguno'),
+    cupon:     isSpecial60Coupon(couponApplied) ? `${couponApplied} \u00b7 precio especial 60 \u20ac/cuadro` : (couponApplied ? `${couponApplied} \u00b7 -${discountPedido} \u20ac` : 'Ninguno'),
     total:     totalPedido + ' €',
     metodo_pago: 'LISTA DE ESPERA — sin cobro todavía',
     bizum: 'No aplica (lista de espera)',

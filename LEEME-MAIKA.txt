@@ -1,0 +1,28 @@
+CAMBIO MAIKA · THE BEAUTIFUL AND THE BROKEN
+
+Sube/sustituye en la raíz:
+- maika.html
+- carrito.html
+- carrito.js
+- pedidos.html
+
+Sube dentro de la carpeta assets:
+- the-beautiful-and-the-broken.webp
+- tata.webp
+- ten-thousand-whys.webp
+- resilience.webp
+- from-zero.webp
+- cupid.webp
+- break-me-more.webp
+- hello-how-are-you.webp
+- superheroes.webp
+
+Cambios:
+- La subcolección nueva aparece primero dentro de MAIKA.
+- Título de subcolección en inglés: The Beautiful and the Broken.
+- Nombres de diseños en inglés.
+- Al final aparece: End of The Beautiful and the Broken collection.
+- Después siguen los diseños MAIKA que ya estaban.
+- SEO de MAIKA actualizado.
+- Cupón privado MAIKA10 añadido al carrito: descuenta 10 € en cuadros MAIKA.
+- MAIKA10 no se anuncia públicamente en la caja de cupones; solo se muestra LADYAURA5 como cupón visible.

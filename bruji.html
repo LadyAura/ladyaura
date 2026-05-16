@@ -461,28 +461,30 @@
   .lb-body { padding: 1.5rem; }
   .lb-includes { grid-template-columns: 1fr; }
 }
+.card-artist{font-size:0.75rem;color:rgba(201,168,76,0.75);margin:0 0 0.3rem;font-style:italic;letter-spacing:0.03em;}
 </style>
 </head>
 <body>
 <div aria-hidden="true" class="stars" id="stars"></div>
 <div class="scarcity-bar" role="alert"><span>✦ Colección BRUJI · Diamond painting premium de magia y brujería dentro de Lady Aura Art 💜</span></div>
-<header class="site-header">
-<a aria-label="Lady Aura inicio" class="brand" href="index.html"><img alt="Logo Lady Aura – Diamond Painting Premium" src="assets/Logo-transparent.webp"/></a>
-<button aria-label="Abrir menú" class="menu-toggle" id="menuToggle">☰</button>
-<nav aria-label="Navegación principal" class="nav" id="nav">
-<a href="index.html">Inicio</a>
-<a href="zodiaco.html">♈ Zodíaco</a>
-<a href="paisajes.html">🏔️ Paisajes</a>
-<a href="especiales.html">✨ Diseños exclusivos</a>
-<a href="nedeka.html">🌙 NEDEKA</a>
-<a aria-current="page" href="bruji.html">🔮 BRUJI</a>
-<a href="maika.html">🎨 MAIKA</a>
-<a href="personalizados.html">🎨 Personalizados</a>
-<a href="tarot.html">🔮 Tarot</a>
-<a href="colorear.html">🎨 Colorear</a>
-<a aria-label="Ver carrito" class="cart-nav-link" href="carrito.html">🛒 <span class="cart-badge" style="display:none">0</span></a>
-</nav>
-<a class="header-button" href="index.html#colecciones">Ver colecciones ✨</a>
+<header class="site-header" id="site-header">
+  <a class="brand" href="index.html" aria-label="Lady Aura inicio">
+    <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art – Diamond Painting Premium">
+  </a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  <nav class="nav" id="nav" aria-label="Navegación principal">
+    <a href="index.html">Inicio</a>
+    <a href="horoscopo.html">♈ Horoscopo</a>
+    <a href="especiales.html">✨ AURA</a>
+    <a href="nedeka.html">🌙 NEDEKA</a>
+    <a href="bruji.html" aria-current="page">🔮 BRUJI</a>
+    <a href="maika.html">🎨 MAIKA</a>
+    <a href="circulo-aura.html"><span class="red-circle-dot" aria-hidden="true"></span>CIRCULO AURA</a>
+    <a href="personalizados.html">🎨 Personalizados</a>
+    <a href="colorear.html">🎨 Colorear</a>
+    <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">🛒<span class="cart-badge" style="display:none">0</span></a>
+  </nav>
+  <a class="header-button" href="horoscopo.html">Ver colecciones ✨</a>
 </header>
 <main>
 <section class="nedeka-hero">
@@ -518,6 +520,7 @@
 <div class="card-info">
 <div class="product-meta"><span>BRUJI</span><span>60×90 cm</span></div>
 <h3>Violeta</h3>
+          <p class="card-artist">✦ Lady Aura Art · Colección BRUJI</p>
 <p>Brujita kawaii con poción mágica. Diamond painting premium de la Colección BRUJI.</p>
 </div>
 </article>
@@ -529,6 +532,7 @@
 <div class="card-info">
 <div class="product-meta"><span>BRUJI</span><span>60×90 cm</span></div>
 <h3>Salemmiau</h3>
+          <p class="card-artist">✦ Lady Aura Art · Colección BRUJI</p>
 <p>Gato brujo con sombrero de hechicero entre flores de galaxia. Diamond painting premium de la Colección BRUJI.</p>
 </div>
 </article>
@@ -540,6 +544,7 @@
 <div class="card-info">
 <div class="product-meta"><span>BRUJI</span><span>60×90 cm</span></div>
 <h3>Ayla, luz de luna</h3>
+          <p class="card-artist">✦ Lady Aura Art · Colección BRUJI</p>
 <p>Hada con linterna sobre luna creciente sobre ciudad encantada. Diamond painting premium de la Colección BRUJI.</p>
 </div>
 </article>
@@ -551,6 +556,7 @@
 <div class="card-info">
 <div class="product-meta"><span>BRUJI</span><span>60×90 cm</span></div>
 <h3>Anastada</h3>
+          <p class="card-artist">✦ Lady Aura Art · Colección BRUJI</p>
 <p>Chica oscura con araña y telaraña en tonos violeta. Diamond painting premium de la Colección BRUJI.</p>
 </div>
 </article>
@@ -562,6 +568,7 @@
 <div class="card-info">
 <div class="product-meta"><span>BRUJI</span><span>60×90 cm</span></div>
 <h3>FlowerWolf</h3>
+          <p class="card-artist">✦ Lady Aura Art · Colección BRUJI</p>
 <p>Lobo mágico con flores y cristales bajo la luna. Diamond painting premium de la Colección BRUJI.</p>
 </div>
 </article>
@@ -573,14 +580,13 @@
 <div class="card-info">
 <div class="product-meta"><span>BRUJI</span><span>60×90 cm</span></div>
 <h3>Amor Floral</h3>
+          <p class="card-artist">✦ Lady Aura Art · Colección BRUJI</p>
 <p>Madre e hija entre flores mágicas bajo arcoíris luminoso. Diamond painting premium de la Colección BRUJI.</p>
 </div>
 </article>
 </div>
 </section>
-<section aria-label="Información SEO Colección BRUJI" class="seo-footer">
-<p><strong>Colección BRUJI de Lady Aura Art:</strong> cuadros de diamond painting premium con estética de brujería bonita, magia oscura suave y fantasía encantada. Diseños como Violeta, Salemmiau, Medialuna, Anastada, FlowerWolf y Amor Floral en formato 60×90 cm, con kit completo, envío incluido.</p>
-</section>
+
 </main>
 <footer><p>© 2026 <a href="index.html">Lady Aura Art</a> · Colección BRUJI · Diamond Painting Premium · Valencia, España 💜</p></footer>
 <script src="i18n.js"></script>

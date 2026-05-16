@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diamond Painting Diseños exclusivos – Cuadros Premium Exclusivos | Lady Aura Art</title>
+<title>Diamond Painting AURA – Cuadros Premium Exclusivos | Lady Aura Art</title>
 <meta name="description" content="Cuadros diamond painting especiales premium Lady Aura Art. Gatitos mágicos, princesas, elfas y arte de fantasía exclusivo 60×90 cm. Pre-reserva gratis.">
 <meta name="keywords" content="diamond painting especiales, cuadro diamond painting gatitos, diamond painting princesa, diamond painting elfa España">
 <meta name="author" content="Lady Aura Art">
@@ -12,20 +12,20 @@
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ladyauraart.com/especiales.html">
-<meta property="og:title" content="Diamond Painting Diseños exclusivos | Lady Aura Art">
+<meta property="og:title" content="Diamond Painting AURA | Lady Aura Art">
 <meta property="og:description" content="Cuadros diamond painting especiales premium Lady Aura Art. Gatitos mágicos, princesas, elfas y arte de fantasía exclusivo 60×90 cm. Pre-reserva gratis.">
 <meta property="og:image" content="https://ladyauraart.com/assets/aurora-celestial.webp">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Lady Aura Art">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Diamond Painting Diseños exclusivos | Lady Aura Art">
+<meta name="twitter:title" content="Diamond Painting AURA | Lady Aura Art">
 <meta name="twitter:image" content="https://ladyauraart.com/assets/aurora-celestial.webp">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [{
     "@type": "WebPage",
-    "name": "Diamond Painting Diseños exclusivos | Lady Aura Art",
+    "name": "Diamond Painting AURA | Lady Aura Art",
     "description": "Cuadros diamond painting especiales premium Lady Aura Art. Gatitos mágicos, princesas, elfas y arte de fantasía exclusivo 60×90 cm. Pre-reserva gratis.",
     "url": "https://ladyauraart.com/especiales.html",
     "inLanguage": "es-ES",
@@ -33,7 +33,7 @@
       "@type": "BreadcrumbList",
       "itemListElement": [
         {"@type":"ListItem","position":1,"name":"Inicio","item":"https://ladyauraart.com"},
-        {"@type":"ListItem","position":2,"name":"Colección Diseños exclusivos","item":"https://ladyauraart.com/especiales.html"}
+        {"@type":"ListItem","position":2,"name":"Colección AURA","item":"https://ladyauraart.com/especiales.html"}
       ]
     }
   }]
@@ -69,7 +69,7 @@ body{background:var(--purple-dark);color:var(--white);font-family:'Cormorant Gar
 .ps-label{font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:0.1em;color:var(--gold2);}
 .ps-sub{font-size:0.75rem;color:var(--muted);}
 .products-section{padding:3rem clamp(1rem,4vw,4rem);width:100%;box-sizing:border-box;}
-.products-grid{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))!important;gap:clamp(0.9rem,2vw,1.5rem)!important;width:100%!important;max-width:1280px!important;margin:0 auto!important;box-sizing:border-box!important;align-items:stretch;}
+.products-grid{display:grid!important;grid-template-columns:repeat(5,1fr)!important;gap:clamp(0.9rem,2vw,1.5rem)!important;width:100%!important;max-width:1280px!important;margin:0 auto!important;box-sizing:border-box!important;align-items:start;}
 .product-card{background:rgba(13,8,33,0.85);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;transition:all 0.3s;position:relative;min-width:0;}
 .product-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 12px 50px rgba(160,63,255,0.3);}
 .product-card.sold-out{cursor:default;}
@@ -78,6 +78,10 @@ body{background:var(--purple-dark);color:var(--white);font-family:'Cormorant Gar
 .product-card:not(.sold-out):hover .card-img-wrap img{transform:scale(1.05);transition:transform 0.4s;}
 .orient-badge{position:absolute;bottom:8px;left:8px;padding:3px 10px;border-radius:999px;font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.1em;color:#fff;backdrop-filter:blur(4px);}
 .card-info{padding:1rem 1.1rem 1.2rem;}
+.artist-line{font-size:0.76rem;color:rgba(255,217,138,0.68);margin:0.15rem 0 0.45rem;}
+.subcollection-heading{grid-column:1/-1;text-align:center;margin:2.4rem auto 0.6rem;max-width:760px;}
+.subcollection-heading h2{font-family:'Cinzel',serif;font-size:clamp(1.5rem,3vw,2.4rem);color:var(--white);margin:0 0 0.5rem;}
+.subcollection-heading p{color:var(--muted);line-height:1.6;margin:0;}
 .card-info h3{font-family:'Cinzel',serif;font-size:1rem;color:var(--white);margin-bottom:0.4rem;letter-spacing:0.04em;line-height:1.3;}
 .card-price{font-family:'Cinzel',serif;font-size:0.95rem;color:var(--gold2);line-height:1.35;}
 .reserve-hint{font-size:0.72rem;color:rgba(160,63,255,0.7);font-family:'Cormorant Garamond',serif;}
@@ -138,7 +142,8 @@ footer a:hover{color:var(--gold2);}
 }
 @media(max-width:640px){
   .products-section{padding:2.2rem 0.85rem;}
-  .products-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:0.85rem!important;}
+  .products-grid{grid-template-columns:repeat(4,1fr)!important;gap:0.85rem!important;}
+@media(max-width:900px){.products-grid{grid-template-columns:repeat(3,1fr)!important;}}
   .card-info{padding:0.75rem 0.7rem 0.9rem;}
   .card-info h3{font-size:0.82rem;line-height:1.25;}
   .card-price{font-size:0.78rem;}
@@ -151,7 +156,7 @@ footer a:hover{color:var(--gold2);}
   .btn-secondary{margin-left:0;margin-top:0.8rem;display:block;text-align:center;}
 }
 @media(max-width:380px){
-  .products-grid{grid-template-columns:1fr!important;}
+  .products-grid{grid-template-columns:repeat(2,1fr)!important;}
 }
 
 
@@ -360,6 +365,7 @@ small,
   }
 }
 
+.card-artist{font-size:0.75rem;color:rgba(201,168,76,0.75);margin:0 0 0.3rem;font-style:italic;letter-spacing:0.03em;}
 </style>
 </head>
 <body>
@@ -368,28 +374,27 @@ small,
   <a class="brand" href="index.html" aria-label="Lady Aura inicio">
     <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art – Diamond Painting Premium">
   </a>
-  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
   <nav class="nav" id="nav" aria-label="Navegación principal">
-    <a href="index.html" data-i18n="nav_inicio">Inicio</a>
-    <a href="zodiaco.html" data-i18n="nav_zodiaco">♈ Zodíaco</a>
-    <a href="paisajes.html" data-i18n="nav_paisajes">🏔️ Paisajes</a>
-    <a href="especiales.html" data-i18n="esp_title" data-i18n="nav_especiales">✨ Diseños exclusivos</a>
+    <a href="index.html">Inicio</a>
+    <a href="horoscopo.html">♈ Horoscopo</a>
+    <a href="especiales.html" aria-current="page">✨ AURA</a>
     <a href="nedeka.html">🌙 NEDEKA</a>
     <a href="bruji.html">🔮 BRUJI</a>
-    <a href="maika.html" data-i18n="nav_maika">🎨 MAIKA</a>
+    <a href="maika.html">🎨 MAIKA</a>
     
-    <a href="personalizados.html" data-i18n="nav_personalizados">🎨 Personalizados</a>
-    <a href="tarot.html" data-i18n="nav_tarot">🔮 Tarot</a>
-    <a href="colorear.html" data-i18n="nav_colorear">🎨 Colorear</a>
+    <a href="personalizados.html">🎨 Personalizados</a>
+    <a href="colorear.html">🎨 Colorear</a>
     <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">🛒<span class="cart-badge" style="display:none">0</span></a>
   </nav>
+  <a class="header-button" href="horoscopo.html">Ver colecciones ✨</a>
 </header>
 <main style="position:relative;z-index:5;">
   <section class="col-hero">
     <div class="col-hero-img"><img src="assets/aurora-celestial.webp" alt="Diamond painting aurora celestial – Lady Aura Art" loading="eager"></div>
     <div class="col-hero-content">
       <span class="col-hero-eyebrow" data-i18n="esp_eyebrow">✦ Lady Aura Art · Diamond Painting Premium ✦</span>
-      <h1>✨ Diseños exclusivos</h1>
+      <h1>AURA</h1>
       <p data-i18n="esp_desc">Gatitos, princesas, magia estelar, elfas y mucho más. Todo lo que enamora y no cabe en ninguna otra categoría.</p>
     </div>
   </section>
@@ -401,7 +406,7 @@ small,
     <div class="ps-item"><span class="ps-icon">💌</span><span class="ps-label" data-i18n="strip_reserva">Pre-reserva gratis</span><span class="ps-sub" data-i18n="strip_reserva_sub">Sin compromiso</span></div>
   </div>
   
-<section class="welcome-coupon-banner" aria-label="Cupón de bienvenida Lady Aura Art">
+<section class="welcome-coupon-banner" style="display:none" aria-label="Cupón de bienvenida Lady Aura Art">
   <div class="welcome-coupon-inner">
     <div class="welcome-coupon-glow" aria-hidden="true"></div>
     <div class="welcome-coupon-copy">
@@ -419,716 +424,275 @@ small,
 </section>
 
 <section id="productos" class="products-section">
-    <div class="products-grid">
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Amor inesperado" data-img="assets/amor-inesperado.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Amor%20inesperado.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Amor%20inesperado&body=Quiero%20pre-reservar%3A%20Amor%20inesperado.%2060x90%2C%2084€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/amor-inesperado.webp" alt="Diamond painting amor inesperado Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Amor inesperado</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
+  <div class="products-grid">
 
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Balcón encantado" data-img="assets/balcon-encantado.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Balcón%20encantado.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Balcón%20encantado&body=Quiero%20pre-reservar%3A%20Balcón%20encantado.%2060x90%2C%2084€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/balcon-encantado.webp" alt="Diamond painting balcón encantado Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Balcón encantado</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Una noche acogedora" data-img="assets/una-noche-acogedora.webp" data-orient="h"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Una%20noche%20acogedora.%2090x60%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Una%20noche%20acogedora&body=Quiero%20pre-reservar%3A%20Una%20noche%20acogedora.%2090x60%2C%2084€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/una-noche-acogedora.webp" alt="Diamond painting una noche acogedora Lady Aura Art" style="width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span>
-        </div>
-        <div class="card-info">
-          <h3>Una noche acogedora</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Chica etérea" data-img="assets/Chica_eterea.png" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Chica%20etérea.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Chica%20etérea&body=Quiero%20pre-reservar%3A%20Chica%20etérea.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/Chica_eterea.png" alt="Diamond painting chica etérea Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Chica etérea</h3>
-          <p class="card-price">84 € · <span class="reserve-hint" data-i18n="card_prereserva">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Jardín mágico" data-img="assets/Jardin_magico.png" data-orient="h"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Jardín%20mágico.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Jardín%20mágico&body=Quiero%20pre-reservar%3A%20Jardín%20mágico.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/Jardin_magico.png" alt="Diamond painting jardín mágico Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center;display:block;">
-          <span class="orient-badge" style="background:rgba(30,80,180,0.85);">↔ Horizontal</span>
-        </div>
-        <div class="card-info">
-          <h3>Jardín mágico</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Momento mágico" data-img="assets/Momento_magico.png" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Momento%20mágico.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Momento%20mágico&body=Quiero%20pre-reservar%3A%20Momento%20mágico.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/Momento_magico.png" alt="Diamond painting momento mágico Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Momento mágico</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Paseo mágico bajo la luna" data-img="assets/paseo-magico-bajo-la-luna.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Paseo%20m%C3%A1gico%20bajo%20la%20luna.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Paseo%20m%C3%A1gico%20bajo%20la%20luna&body=Quiero%20pre-reservar%3A%20Paseo%20m%C3%A1gico%20bajo%20la%20luna.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/paseo-magico-bajo-la-luna.webp" alt="Diamond painting paseo mágico bajo la luna Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Paseo mágico bajo la luna</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Princesa bajo la aurora boreal" data-img="assets/princesa-bajo-la-aurora-boreal.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Princesa%20bajo%20la%20aurora%20boreal.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Princesa%20bajo%20la%20aurora%20boreal&body=Quiero%20pre-reservar%3A%20Princesa%20bajo%20la%20aurora%20boreal.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/princesa-bajo-la-aurora-boreal.webp" alt="Diamond painting princesa bajo la aurora boreal Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Princesa bajo la aurora boreal</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Vampiresca" data-img="assets/vampiresca.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Vampiresca.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Vampiresca&body=Quiero%20pre-reservar%3A%20Vampiresca.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/vampiresca.webp" alt="Diamond painting vampiresca Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Vampiresca</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Reina eclipse" data-img="assets/reina-eclipse.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Reina%20eclipse.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Reina%20eclipse&body=Quiero%20pre-reservar%3A%20Reina%20eclipse.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/reina-eclipse.webp" alt="Diamond painting reina eclipse Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Reina eclipse</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Oráculo del Zodiaco" data-img="assets/oraculo-del-zodiaco.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Or%C3%A1culo%20del%20Zodiaco.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Or%C3%A1culo%20del%20Zodiaco&body=Quiero%20pre-reservar%3A%20Or%C3%A1culo%20del%20Zodiaco.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/oraculo-del-zodiaco.webp" alt="Diamond painting oráculo del zodiaco Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Oráculo del Zodiaco</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Alma en el espejo" data-img="assets/alma-en-el-espejo.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Alma%20en%20el%20espejo.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Alma%20en%20el%20espejo&body=Quiero%20pre-reservar%3A%20Alma%20en%20el%20espejo.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/alma-en-el-espejo.webp" alt="Diamond painting alma en el espejo Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Alma en el espejo</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Dama de la oscuridad" data-img="assets/dama-de-la-oscuridad.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Dama%20de%20la%20oscuridad.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Dama%20de%20la%20oscuridad&body=Quiero%20pre-reservar%3A%20Dama%20de%20la%20oscuridad.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/dama-de-la-oscuridad.webp" alt="Diamond painting dama de la oscuridad Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Dama de la oscuridad</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Esencia de luz" data-img="assets/esencia-de-luz.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Esencia%20de%20luz.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Esencia%20de%20luz&body=Quiero%20pre-reservar%3A%20Esencia%20de%20luz.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/esencia-de-luz.webp" alt="Diamond painting esencia de luz Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Esencia de luz</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Luminosa al atardecer" data-img="assets/luminosa-al-atardecer.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Luminosa%20al%20atardecer.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Luminosa%20al%20atardecer&body=Quiero%20pre-reservar%3A%20Luminosa%20al%20atardecer.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/luminosa-al-atardecer.webp" alt="Diamond painting luminosa al atardecer Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Luminosa al atardecer</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Paisaje cósmico floral" data-img="assets/paisaje-cosmico-floral.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Paisaje%20c%C3%B3smico%20floral.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Paisaje%20c%C3%B3smico%20floral&body=Quiero%20pre-reservar%3A%20Paisaje%20c%C3%B3smico%20floral.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/paisaje-cosmico-floral.webp" alt="Diamond painting paisaje cósmico floral Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Paisaje cósmico floral</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Paisaje cósmico" data-img="assets/paisaje-cosmico.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Paisaje%20c%C3%B3smico.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Paisaje%20c%C3%B3smico&body=Quiero%20pre-reservar%3A%20Paisaje%20c%C3%B3smico.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/paisaje-cosmico.webp" alt="Diamond painting paisaje cósmico Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Paisaje cósmico</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Aura angelical" data-img="assets/aura-angelical.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Aura%20angelical.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Aura%20angelical&body=Quiero%20pre-reservar%3A%20Aura%20angelical.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/aura-angelical.webp" alt="Diamond painting aura angelical Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Aura angelical</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Aura peligrosa" data-img="assets/aura-peligrosa.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Aura%20peligrosa.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Aura%20peligrosa&body=Quiero%20pre-reservar%3A%20Aura%20peligrosa.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/aura-peligrosa.webp" alt="Diamond painting aura peligrosa Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Aura peligrosa</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Hada de la Luna" data-img="assets/hada-de-la-luna.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Hada%20de%20la%20Luna.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Hada%20de%20la%20Luna&body=Quiero%20pre-reservar%3A%20Hada%20de%20la%20Luna.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/hada-de-la-luna.webp" alt="Diamond painting hada de la luna Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Hada de la Luna</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Hada de los Cristales" data-img="assets/hada-de-los-cristales.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Hada%20de%20los%20Cristales.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Hada%20de%20los%20Cristales&body=Quiero%20pre-reservar%3A%20Hada%20de%20los%20Cristales.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/hada-de-los-cristales.webp" alt="Diamond painting hada de los cristales Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Hada de los Cristales</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Hada primavera nocturna" data-img="assets/hada-primavera-nocturna.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Hada%20primavera%20nocturna.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Hada%20primavera%20nocturna&body=Quiero%20pre-reservar%3A%20Hada%20primavera%20nocturna.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/hada-primavera-nocturna.webp" alt="Diamond painting hada primavera nocturna Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Hada primavera nocturna</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Luna de Cristal" data-img="assets/luna-de-cristal.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Luna%20de%20Cristal.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Luna%20de%20Cristal&body=Quiero%20pre-reservar%3A%20Luna%20de%20Cristal.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/luna-de-cristal.webp" alt="Diamond painting luna de cristal Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Luna de Cristal</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Noche dulce" data-img="assets/noche-dulce.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Noche%20dulce.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Noche%20dulce&body=Quiero%20pre-reservar%3A%20Noche%20dulce.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/noche-dulce.webp" alt="Diamond painting noche dulce Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Noche dulce</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Sol de Abril" data-img="assets/sol-de-abril.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sol%20de%20Abril.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Sol%20de%20Abril&body=Quiero%20pre-reservar%3A%20Sol%20de%20Abril.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/sol-de-abril.webp" alt="Diamond painting sol de abril Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Sol de Abril</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Magia etérea" data-img="assets/magia-eterea.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Magia%20etérea.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Magia%20etérea&body=Quiero%20pre-reservar%3A%20Magia%20etérea.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/magia-eterea.webp" alt="Diamond painting magia etérea Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Magia etérea</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Mundo mágico" data-img="assets/mundo-magico.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Mundo%20mágico.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Mundo%20mágico&body=Quiero%20pre-reservar%3A%20Mundo%20mágico.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/mundo-magico.webp" alt="Diamond painting mundo mágico Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Mundo mágico</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Noche de gatitos mágicos" data-img="assets/noche-de-gatitos-magicos.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Noche%20de%20gatitos%20mágicos.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Noche%20de%20gatitos%20mágicos&body=Quiero%20pre-reservar%3A%20Noche%20de%20gatitos%20mágicos.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/noche-de-gatitos-magicos.webp" alt="Diamond painting noche gatitos mágicos Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Noche de gatitos mágicos</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Elección" data-img="assets/eleccion.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Elección.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Elección&body=Quiero%20pre-reservar%3A%20Elección.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/eleccion.webp" alt="Diamond painting Elección Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Elección</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="En el borde del fin" data-img="assets/en-el-borde-del-fin.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20En%20el%20borde%20del%20fin.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–En%20el%20borde%20del%20fin&body=Quiero%20pre-reservar%3A%20En%20el%20borde%20del%20fin.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/en-el-borde-del-fin.webp" alt="Diamond painting En el borde del fin Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>En el borde del fin</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-
-      </div>
-
-<div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="El Guardián Ámbar" data-img="assets/guardian-ambar.webp" data-orient="h"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20El%20Guardián%20Ámbar.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–El%20Guardián%20Ámbar&body=Quiero%20pre-reservar%3A%20El%20Guardián%20Ámbar.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/guardian-ambar.webp" alt="Diamond painting El Guardián Ámbar Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 30%;display:block;">
-          <span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span>
-        </div>
-        <div class="card-info">
-          <h3>El Guardián Ámbar</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-<div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="El Guardián Esmeralda" data-img="assets/guardian-esmeralda.webp" data-orient="h"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20El%20Guardián%20Esmeralda.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–El%20Guardián%20Esmeralda&body=Quiero%20pre-reservar%3A%20El%20Guardián%20Esmeralda.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/guardian-esmeralda.webp" alt="Diamond painting El Guardián Esmeralda Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 30%;display:block;">
-          <span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span>
-        </div>
-        <div class="card-info">
-          <h3>El Guardián Esmeralda</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-<div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="El Guardián Rubí" data-img="assets/guardian-rubi.webp" data-orient="h"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20El%20Guardián%20Rubí.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–El%20Guardián%20Rubí&body=Quiero%20pre-reservar%3A%20El%20Guardián%20Rubí.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/guardian-rubi.webp" alt="Diamond painting El Guardián Rubí Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 30%;display:block;">
-          <span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span>
-        </div>
-        <div class="card-info">
-          <h3>El Guardián Rubí</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-<div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="El Guardián Zafiro" data-img="assets/guardian-zafiro.webp" data-orient="h"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20El%20Guardián%20Zafiro.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–El%20Guardián%20Zafiro&body=Quiero%20pre-reservar%3A%20El%20Guardián%20Zafiro.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/guardian-zafiro.webp" alt="Diamond painting El Guardián Zafiro Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 30%;display:block;">
-          <span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span>
-        </div>
-        <div class="card-info">
-          <h3>El Guardián Zafiro</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Aurora celestial" data-img="assets/aurora-celestial.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Aurora%20celestial.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Aurora%20celestial&body=Quiero%20pre-reservar%3A%20Aurora%20celestial.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/aurora-celestial.webp" alt="Diamond painting aurora celestial Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Aurora celestial</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Elfa Eternity" data-img="assets/elfa-eternity.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Elfa%20Eternity.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Elfa%20Eternity&body=Quiero%20pre-reservar%3A%20Elfa%20Eternity.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/elfa-eternity.webp" alt="Diamond painting Elfa Eternity Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Elfa Eternity</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-<div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Sirena del abismo marino" data-img="assets/sirena-abismo-marino.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20del%20abismo%20marino.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Sirena%20del%20abismo%20marino&body=Quiero%20pre-reservar%3A%20Sirena%20del%20abismo%20marino.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/sirena-abismo-marino.webp" alt="Diamond painting sirena del abismo marino Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Sirena del abismo marino</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-<div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Sirena bajo la luna mágica" data-img="assets/sirena-luna-magica.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20bajo%20la%20luna%20mágica.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Sirena%20bajo%20la%20luna%20mágica&body=Quiero%20pre-reservar%3A%20Sirena%20bajo%20la%20luna%20mágica.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/sirena-luna-magica.webp" alt="Diamond painting sirena luna mágica Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Sirena bajo la luna mágica</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-<div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Sirena bajo la luna llena" data-img="assets/sirena-luna-llena.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20bajo%20la%20luna%20llena.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Sirena%20bajo%20la%20luna%20llena&body=Quiero%20pre-reservar%3A%20Sirena%20bajo%20la%20luna%20llena.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/sirena-luna-llena.webp" alt="Diamond painting sirena luna llena Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Sirena bajo la luna llena</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-<div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Sirena siniestra" data-img="assets/sirena-siniestra.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20siniestra.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Sirena%20siniestra&body=Quiero%20pre-reservar%3A%20Sirena%20siniestra.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/sirena-siniestra.webp" alt="Diamond painting sirena siniestra del abismo Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Sirena siniestra</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Princesa y unicornio" data-img="assets/mujer-unicornio.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Princesa%20y%20unicornio.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Princesa%20y%20unicornio&body=Quiero%20pre-reservar%3A%20Princesa%20y%20unicornio.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/mujer-unicornio.webp" alt="Diamond painting princesa unicornio Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Princesa y unicornio</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Gatitos en el tejado místico" data-img="assets/gatitos-tejado-mistico.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Gatitos%20en%20el%20tejado%20místico.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Gatitos%20en%20el%20tejado%20místico&body=Quiero%20pre-reservar%3A%20Gatitos%20en%20el%20tejado%20místico.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/gatitos-tejado-mistico.webp" alt="Diamond painting gatitos tejado místico Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Gatitos en el tejado místico</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Conejito adorable" data-img="assets/conejito-adorable.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Conejito%20adorable.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Conejito%20adorable&body=Quiero%20pre-reservar%3A%20Conejito%20adorable.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/conejito-adorable.webp" alt="Diamond painting conejito adorable Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Conejito adorable</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Reina oscura" data-img="assets/reina-oscura.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Reina%20oscura.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Reina%20oscura&body=Quiero%20pre-reservar%3A%20Reina%20oscura.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/reina-oscura.webp" alt="Diamond painting reina oscura Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Reina oscura</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Mística serena" data-img="assets/mistica-serena.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Mística%20serena.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Mística%20serena&body=Quiero%20pre-reservar%3A%20Mística%20serena.%2060x90%2C%2094€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/mistica-serena.webp" alt="Diamond painting mística serena Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Mística serena</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-
-      <div class="product-card sold-out" data-orient="h">
-        <div class="card-img-wrap" style="position:relative;">
-          <img loading="lazy" src="assets/empoderada.webp" alt="Empoderada – Agotado Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;filter:grayscale(30%) brightness(0.75);">
-          <div class="sold-out-overlay" style="position:absolute;inset:0;background:rgba(5,3,14,0.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.4rem;backdrop-filter:blur(2px);">
-            <span style="font-family:'Cinzel',serif;font-size:1.4rem;color:#c9a84c;">✦</span>
-            <span style="font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.22em;text-transform:uppercase;color:#fff0ff;font-weight:700;">Agotado</span>
-          </div>
-        </div>
-        <div class="card-info"><h3>Empoderada</h3></div>
-      </div>
-
-      <div class="product-card sold-out" data-orient="v">
-        <div class="card-img-wrap" style="position:relative;">
-          <img loading="lazy" src="assets/abrazo-amoroso.webp" alt="Abrazo amoroso – Edición agotada Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;filter:grayscale(30%) brightness(0.75);">
-          <div class="sold-out-overlay" style="position:absolute;inset:0;background:rgba(5,3,14,0.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.4rem;backdrop-filter:blur(2px);">
-            <span style="font-family:'Cinzel',serif;font-size:1.4rem;color:#c9a84c;">✦</span>
-            <span style="font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.22em;text-transform:uppercase;color:#fff0ff;font-weight:700;">Agotado</span>
-          </div>
-        </div>
-        <div class="card-info">
-          <h3>Abrazo amoroso</h3>
-        </div>
-      </div>
-
-      <div class="product-card sold-out" data-orient="h">
-        <div class="card-img-wrap" style="position:relative;">
-          <img loading="lazy" src="assets/el-amor-de-mi-vida.webp" alt="El amor de mi vida – Agotado Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;filter:grayscale(30%) brightness(0.75);">
-          <div class="sold-out-overlay" style="position:absolute;inset:0;background:rgba(5,3,14,0.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.4rem;backdrop-filter:blur(2px);">
-            <span style="font-family:'Cinzel',serif;font-size:1.4rem;color:#c9a84c;">✦</span>
-            <span style="font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.22em;text-transform:uppercase;color:#fff0ff;font-weight:700;">Agotado</span>
-          </div>
-        </div>
-        <div class="card-info"><h3>El amor de mi vida</h3></div>
-      </div>
-
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Abrazo bajo la luna roja" data-img="assets/abrazo-luna-roja.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Abrazo%20bajo%20la%20luna%20roja.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Abrazo%20bajo%20la%20luna%20roja&body=Quiero%20pre-reservar%3A%20Abrazo%20bajo%20la%20luna%20roja.%2060x90%2C%2084€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/abrazo-luna-roja.webp" alt="Diamond painting abrazo luna roja Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Abrazo bajo la luna roja</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Bruja enamorada" data-img="assets/bruja-enamorada.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Bruja%20enamorada.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Bruja%20enamorada&body=Quiero%20pre-reservar%3A%20Bruja%20enamorada.%2060x90%2C%2084€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/bruja-enamorada.webp" alt="Diamond painting bruja enamorada Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Bruja enamorada</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Noche bajo las estrellas" data-img="assets/abrazo-cielo-estrellado.webp" data-orient="v"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Noche%20bajo%20las%20estrellas.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Noche%20bajo%20las%20estrellas&body=Quiero%20pre-reservar%3A%20Noche%20bajo%20las%20estrellas.%2060x90%2C%2084€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/abrazo-cielo-estrellado.webp" alt="Diamond painting noche estrellas Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Noche bajo las estrellas</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Pareja enamorada en la ciudad" data-img="assets/pareja-enamorada-en-la-ciudad.webp" data-orient="h"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Pareja%20enamorada%20en%20la%20ciudad.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Pareja%20enamorada%20en%20la%20ciudad&body=Quiero%20pre-reservar%3A%20Pareja%20enamorada%20en%20la%20ciudad.%2060x90%2C%2084€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/pareja-enamorada-en-la-ciudad.webp" alt="Diamond painting pareja ciudad Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 30%;display:block;">
-          <span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span>
-        </div>
-        <div class="card-info">
-          <h3>Pareja enamorada en la ciudad</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-      <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
-           data-nombre="Cena romántica" data-img="assets/cena-romantica.webp" data-orient="h"
-           data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Cena%20romántica.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Cena%20romántica&body=Quiero%20pre-reservar%3A%20Cena%20romántica.%2060x90%2C%2084€.">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/cena-romantica.webp" alt="Diamond painting cena romántica Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 30%;display:block;">
-          <span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span>
-        </div>
-        <div class="card-info">
-          <h3>Cena romántica</h3>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
-      </div>
-      <div class="product-card sold-out">
-        <div class="card-img-wrap">
-          <img loading="lazy" src="assets/abrazo-celestial.webp" alt="Diamond painting abrazo celestial agotada Lady Aura" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;">
-          <div class="sold-overlay"><span class="so-sym">✦</span><span class="so-txt">Agotada</span><span class="so-sub">Esta pieza ya encontró su hogar</span></div>
-          <span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span>
-        </div>
-        <div class="card-info">
-          <h3>Abrazo celestial</h3>
-          <p class="sold-notice">✦ Edición agotada · <a href="https://wa.me/34621355638?text=Me%20interesa%20Abrazo%20celestial%20cuando%20vuelva" target="_blank" rel="noopener">Lista de espera</a></p>
-        </div>
-      </div>
-
-      </div>
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Amor inesperado" data-img="assets/amor-inesperado.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Amor%20inesperado.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Amor%20inesperado&body=Quiero%20pre-reservar%3A%20Amor%20inesperado.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/amor-inesperado.webp" alt="Diamond painting Amor inesperado Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Amor inesperado</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
     </div>
-  </section>
-    <section class="cta-section">
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Balcón encantado" data-img="assets/balcon-encantado.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Balcón%20encantado.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Balcón%20encantado&body=Quiero%20pre-reservar%3A%20Balcón%20encantado.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/balcon-encantado.webp" alt="Diamond painting Balcón encantado Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Balcón encantado</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Una noche acogedora" data-img="assets/una-noche-acogedora.webp" data-orient="h" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Una%20noche%20acogedora.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Una%20noche%20acogedora&body=Quiero%20pre-reservar%3A%20Una%20noche%20acogedora.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/una-noche-acogedora.webp" alt="Diamond painting Una noche acogedora Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span></div>
+      <div class="card-info"><h3>Una noche acogedora</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Chica etérea" data-img="assets/Chica_eterea.png" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Chica%20etérea.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Chica%20etérea&body=Quiero%20pre-reservar%3A%20Chica%20etérea.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/Chica_eterea.png" alt="Diamond painting Chica etérea Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Chica etérea</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Jardín mágico" data-img="assets/Jardin_magico.png" data-orient="h" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Jardín%20mágico.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Jardín%20mágico&body=Quiero%20pre-reservar%3A%20Jardín%20mágico.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/Jardin_magico.png" alt="Diamond painting Jardín mágico Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span></div>
+      <div class="card-info"><h3>Jardín mágico</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Momento mágico" data-img="assets/Momento_magico.png" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Momento%20mágico.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Momento%20mágico&body=Quiero%20pre-reservar%3A%20Momento%20mágico.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/Momento_magico.png" alt="Diamond painting Momento mágico Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Momento mágico</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Paseo mágico bajo la luna" data-img="assets/paseo-magico-bajo-la-luna.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Paseo%20mágico%20bajo%20la%20luna.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Paseo%20mágico%20bajo%20la%20luna&body=Quiero%20pre-reservar%3A%20Paseo%20mágico%20bajo%20la%20luna.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/paseo-magico-bajo-la-luna.webp" alt="Diamond painting Paseo mágico bajo la luna Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Paseo mágico bajo la luna</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Princesa bajo la aurora boreal" data-img="assets/princesa-bajo-la-aurora-boreal.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Princesa%20bajo%20la%20aurora%20boreal.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Princesa%20bajo%20la%20aurora%20boreal&body=Quiero%20pre-reservar%3A%20Princesa%20bajo%20la%20aurora%20boreal.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/princesa-bajo-la-aurora-boreal.webp" alt="Diamond painting Princesa bajo la aurora boreal Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Princesa bajo la aurora boreal</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Vampiresca" data-img="assets/vampiresca.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Vampiresca.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Vampiresca&body=Quiero%20pre-reservar%3A%20Vampiresca.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/vampiresca.webp" alt="Diamond painting Vampiresca Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Vampiresca</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Reina eclipse" data-img="assets/reina-eclipse.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Reina%20eclipse.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Reina%20eclipse&body=Quiero%20pre-reservar%3A%20Reina%20eclipse.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/reina-eclipse.webp" alt="Diamond painting Reina eclipse Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Reina eclipse</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Oráculo del Zodiaco" data-img="assets/oraculo-del-zodiaco.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Oráculo%20del%20Zodiaco.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Oráculo%20del%20Zodiaco&body=Quiero%20pre-reservar%3A%20Oráculo%20del%20Zodiaco.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/oraculo-del-zodiaco.webp" alt="Diamond painting Oráculo del Zodiaco Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Oráculo del Zodiaco</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Alma en el espejo" data-img="assets/alma-en-el-espejo.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Alma%20en%20el%20espejo.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Alma%20en%20el%20espejo&body=Quiero%20pre-reservar%3A%20Alma%20en%20el%20espejo.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/alma-en-el-espejo.webp" alt="Diamond painting Alma en el espejo Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Alma en el espejo</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Dama de la oscuridad" data-img="assets/dama-de-la-oscuridad.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Dama%20de%20la%20oscuridad.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Dama%20de%20la%20oscuridad&body=Quiero%20pre-reservar%3A%20Dama%20de%20la%20oscuridad.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/dama-de-la-oscuridad.webp" alt="Diamond painting Dama de la oscuridad Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Dama de la oscuridad</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Esencia de luz" data-img="assets/esencia-de-luz.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Esencia%20de%20luz.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Esencia%20de%20luz&body=Quiero%20pre-reservar%3A%20Esencia%20de%20luz.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/esencia-de-luz.webp" alt="Diamond painting Esencia de luz Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Esencia de luz</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Luminosa al atardecer" data-img="assets/luminosa-al-atardecer.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Luminosa%20al%20atardecer.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Luminosa%20al%20atardecer&body=Quiero%20pre-reservar%3A%20Luminosa%20al%20atardecer.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/luminosa-al-atardecer.webp" alt="Diamond painting Luminosa al atardecer Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Luminosa al atardecer</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Paisaje cósmico floral" data-img="assets/paisaje-cosmico-floral.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Paisaje%20cósmico%20floral.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Paisaje%20cósmico%20floral&body=Quiero%20pre-reservar%3A%20Paisaje%20cósmico%20floral.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/paisaje-cosmico-floral.webp" alt="Diamond painting Paisaje cósmico floral Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Paisaje cósmico floral</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Paisaje cósmico" data-img="assets/paisaje-cosmico.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Paisaje%20cósmico.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Paisaje%20cósmico&body=Quiero%20pre-reservar%3A%20Paisaje%20cósmico.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/paisaje-cosmico.webp" alt="Diamond painting Paisaje cósmico Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Paisaje cósmico</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Aura angelical" data-img="assets/aura-angelical.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Aura%20angelical.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Aura%20angelical&body=Quiero%20pre-reservar%3A%20Aura%20angelical.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/aura-angelical.webp" alt="Diamond painting Aura angelical Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Aura angelical</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Aura peligrosa" data-img="assets/aura-peligrosa.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Aura%20peligrosa.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Aura%20peligrosa&body=Quiero%20pre-reservar%3A%20Aura%20peligrosa.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/aura-peligrosa.webp" alt="Diamond painting Aura peligrosa Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Aura peligrosa</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Hada de la Luna" data-img="assets/hada-de-la-luna.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Hada%20de%20la%20Luna.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Hada%20de%20la%20Luna&body=Quiero%20pre-reservar%3A%20Hada%20de%20la%20Luna.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/hada-de-la-luna.webp" alt="Diamond painting Hada de la Luna Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Hada de la Luna</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Hada de los Cristales" data-img="assets/hada-de-los-cristales.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Hada%20de%20los%20Cristales.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Hada%20de%20los%20Cristales&body=Quiero%20pre-reservar%3A%20Hada%20de%20los%20Cristales.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/hada-de-los-cristales.webp" alt="Diamond painting Hada de los Cristales Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Hada de los Cristales</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Hada primavera nocturna" data-img="assets/hada-primavera-nocturna.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Hada%20primavera%20nocturna.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Hada%20primavera%20nocturna&body=Quiero%20pre-reservar%3A%20Hada%20primavera%20nocturna.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/hada-primavera-nocturna.webp" alt="Diamond painting Hada primavera nocturna Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Hada primavera nocturna</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Luna de Cristal" data-img="assets/luna-de-cristal.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Luna%20de%20Cristal.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Luna%20de%20Cristal&body=Quiero%20pre-reservar%3A%20Luna%20de%20Cristal.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/luna-de-cristal.webp" alt="Diamond painting Luna de Cristal Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Luna de Cristal</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Noche dulce" data-img="assets/noche-dulce.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Noche%20dulce.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Noche%20dulce&body=Quiero%20pre-reservar%3A%20Noche%20dulce.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/noche-dulce.webp" alt="Diamond painting Noche dulce Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Noche dulce</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Sol de Abril" data-img="assets/sol-de-abril.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sol%20de%20Abril.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Sol%20de%20Abril&body=Quiero%20pre-reservar%3A%20Sol%20de%20Abril.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/sol-de-abril.webp" alt="Diamond painting Sol de Abril Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Sol de Abril</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Magia etérea" data-img="assets/magia-eterea.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Magia%20etérea.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Magia%20etérea&body=Quiero%20pre-reservar%3A%20Magia%20etérea.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/magia-eterea.webp" alt="Diamond painting Magia etérea Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Magia etérea</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Mundo mágico" data-img="assets/mundo-magico.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Mundo%20mágico.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Mundo%20mágico&body=Quiero%20pre-reservar%3A%20Mundo%20mágico.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/mundo-magico.webp" alt="Diamond painting Mundo mágico Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Mundo mágico</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Noche de gatitos mágicos" data-img="assets/noche-de-gatitos-magicos.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Noche%20de%20gatitos%20mágicos.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Noche%20de%20gatitos%20mágicos&body=Quiero%20pre-reservar%3A%20Noche%20de%20gatitos%20mágicos.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/noche-de-gatitos-magicos.webp" alt="Diamond painting Noche de gatitos mágicos Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Noche de gatitos mágicos</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Elección" data-img="assets/eleccion.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Elección.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Elección&body=Quiero%20pre-reservar%3A%20Elección.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/eleccion.webp" alt="Diamond painting Elección Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Elección</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="En el borde del fin" data-img="assets/en-el-borde-del-fin.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20En%20el%20borde%20del%20fin.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–En%20el%20borde%20del%20fin&body=Quiero%20pre-reservar%3A%20En%20el%20borde%20del%20fin.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/en-el-borde-del-fin.webp" alt="Diamond painting En el borde del fin Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>En el borde del fin</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Aurora celestial" data-img="assets/aurora-celestial.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Aurora%20celestial.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Aurora%20celestial&body=Quiero%20pre-reservar%3A%20Aurora%20celestial.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/aurora-celestial.webp" alt="Diamond painting Aurora celestial Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Aurora celestial</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Elfa Eternity" data-img="assets/elfa-eternity.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Elfa%20Eternity.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Elfa%20Eternity&body=Quiero%20pre-reservar%3A%20Elfa%20Eternity.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/elfa-eternity.webp" alt="Diamond painting Elfa Eternity Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Elfa Eternity</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Sirena del abismo marino" data-img="assets/sirena-abismo-marino.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20del%20abismo%20marino.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Sirena%20del%20abismo%20marino&body=Quiero%20pre-reservar%3A%20Sirena%20del%20abismo%20marino.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/sirena-abismo-marino.webp" alt="Diamond painting Sirena del abismo marino Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Sirena del abismo marino</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Sirena bajo la luna mágica" data-img="assets/sirena-luna-magica.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20bajo%20la%20luna%20mágica.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Sirena%20bajo%20la%20luna%20mágica&body=Quiero%20pre-reservar%3A%20Sirena%20bajo%20la%20luna%20mágica.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/sirena-luna-magica.webp" alt="Diamond painting Sirena bajo la luna mágica Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Sirena bajo la luna mágica</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Sirena bajo la luna llena" data-img="assets/sirena-luna-llena.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20bajo%20la%20luna%20llena.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Sirena%20bajo%20la%20luna%20llena&body=Quiero%20pre-reservar%3A%20Sirena%20bajo%20la%20luna%20llena.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/sirena-luna-llena.webp" alt="Diamond painting Sirena bajo la luna llena Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Sirena bajo la luna llena</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Sirena siniestra" data-img="assets/sirena-siniestra.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Sirena%20siniestra.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Sirena%20siniestra&body=Quiero%20pre-reservar%3A%20Sirena%20siniestra.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/sirena-siniestra.webp" alt="Diamond painting Sirena siniestra Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Sirena siniestra</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Princesa y unicornio" data-img="assets/mujer-unicornio.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Princesa%20y%20unicornio.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Princesa%20y%20unicornio&body=Quiero%20pre-reservar%3A%20Princesa%20y%20unicornio.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/mujer-unicornio.webp" alt="Diamond painting Princesa y unicornio Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Princesa y unicornio</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Gatitos en el tejado místico" data-img="assets/gatitos-tejado-mistico.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Gatitos%20en%20el%20tejado%20místico.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Gatitos%20en%20el%20tejado%20místico&body=Quiero%20pre-reservar%3A%20Gatitos%20en%20el%20tejado%20místico.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/gatitos-tejado-mistico.webp" alt="Diamond painting Gatitos en el tejado místico Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Gatitos en el tejado místico</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Conejito adorable" data-img="assets/conejito-adorable.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Conejito%20adorable.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Conejito%20adorable&body=Quiero%20pre-reservar%3A%20Conejito%20adorable.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/conejito-adorable.webp" alt="Diamond painting Conejito adorable Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Conejito adorable</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Reina oscura" data-img="assets/reina-oscura.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Reina%20oscura.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Reina%20oscura&body=Quiero%20pre-reservar%3A%20Reina%20oscura.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/reina-oscura.webp" alt="Diamond painting Reina oscura Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Reina oscura</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Mística serena" data-img="assets/mistica-serena.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Mística%20serena.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Mística%20serena&body=Quiero%20pre-reservar%3A%20Mística%20serena.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/mistica-serena.webp" alt="Diamond painting Mística serena Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Mística serena</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Empoderada" data-img="assets/empoderada.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Empoderada.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Empoderada&body=Quiero%20pre-reservar%3A%20Empoderada.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/empoderada.webp" alt="Diamond painting Empoderada Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>Empoderada</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Jardín mágico paisaje" data-img="assets/jardin-magico.webp" data-orient="h" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Jardín%20mágico.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Jardín%20mágico&body=Quiero%20pre-reservar%3A%20Jardín%20mágico.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/jardin-magico.webp" alt="Diamond painting Jardín mágico Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span></div>
+      <div class="card-info"><h3>Jardín mágico</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Bajo la luna" data-img="assets/bajo-la-luna.webp" data-orient="h" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Bajo%20la%20luna.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Bajo%20la%20luna&body=Quiero%20pre-reservar%3A%20Bajo%20la%20luna.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/bajo-la-luna.webp" alt="Diamond painting Bajo la luna Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 30%;display:block;"><span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span></div>
+      <div class="card-info"><h3>Bajo la luna</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="El mágico puente de las flores" data-img="assets/el-magico-puente-de-las-flores.webp" data-orient="h" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20El%20mágico%20puente%20de%20las%20flores.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–El%20mágico%20puente%20de%20las%20flores&body=Quiero%20pre-reservar%3A%20El%20mágico%20puente%20de%20las%20flores.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/el-magico-puente-de-las-flores.webp" alt="Diamond painting El mágico puente de las flores Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 30%;display:block;"><span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span></div>
+      <div class="card-info"><h3>El mágico puente de las flores</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Amapolas mágicas" data-img="assets/amapolas-magicas.webp" data-orient="h" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Amapolas%20mágicas.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Amapolas%20mágicas&body=Quiero%20pre-reservar%3A%20Amapolas%20mágicas.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/amapolas-magicas.webp" alt="Diamond painting Amapolas mágicas Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 30%;display:block;"><span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span></div>
+      <div class="card-info"><h3>Amapolas mágicas</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Isla maravilla" data-img="assets/isla-maravilla.webp" data-orient="h" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Isla%20maravilla.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Isla%20maravilla&body=Quiero%20pre-reservar%3A%20Isla%20maravilla.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/isla-maravilla.webp" alt="Diamond painting Isla maravilla Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 30%;display:block;"><span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span></div>
+      <div class="card-info"><h3>Isla maravilla</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Libertad infinita" data-img="assets/libertad-infinita.webp" data-orient="h" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Libertad%20infinita.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Libertad%20infinita&body=Quiero%20pre-reservar%3A%20Libertad%20infinita.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/libertad-infinita.webp" alt="Diamond painting Libertad infinita Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 30%;display:block;"><span class="orient-badge" style="background:rgba(200,50,130,0.85);">↔ Horizontal</span></div>
+      <div class="card-info"><h3>Libertad infinita</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="El árbol de la vida" data-img="assets/el-arbol-de-la-vida.webp" data-orient="v" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20El%20árbol%20de%20la%20vida.%2060x90%2C%2084€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–El%20árbol%20de%20la%20vida&body=Quiero%20pre-reservar%3A%20El%20árbol%20de%20la%20vida.%2060x90%2C%2084€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/el-arbol-de-la-vida.webp" alt="Diamond painting El árbol de la vida Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↕ Vertical</span></div>
+      <div class="card-info"><h3>El árbol de la vida</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+    <div class="product-card" role="button" tabindex="0" onclick="openLB(this)" data-nombre="Trébol de la suerte" data-img="assets/treblo-de-la-suerte.webp" data-orient="h" data-wa="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Quiero%20pre-reservar%3A%20Trébol%20de%20la%20suerte.%2060x90%2C%2094€.%20¡Gracias!" data-em="https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=Pre-reserva–Trébol%20de%20la%20suerte&body=Quiero%20pre-reservar%3A%20Trébol%20de%20la%20suerte.%2060x90%2C%2094€.">
+      <div class="card-img-wrap"><img loading="lazy" src="assets/treblo-de-la-suerte.webp" alt="Diamond painting Trébol de la suerte Lady Aura Art" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center center;display:block;"><span class="orient-badge" style="background:rgba(120,50,220,0.85);">↔ Horizontal</span></div>
+      <div class="card-info"><h3>Trébol de la suerte</h3><p class="card-artist">✦ Lady Aura Art · AURA</p><p class="card-price">94 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
+    </div>
+
+  </div>
+</section>
+  <section class="cta-section">
     <h2 data-i18n="cta_dudas">¿Te quedaste con dudas?</h2>
     <p data-i18n="cta_dudas_sub">Escríbeme directamente. Te cuento todo sobre los cuadros y la pre-reserva sin ningún compromiso.</p>
-    <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Vengo%20de%20la%20colección%20Diseños%20exclusivos%20y%20quiero%20saber%20más" target="_blank" rel="noopener" class="btn-primary" data-i18n="cta_wa">💬 Hablar con Lady Aura</a>
+    <a href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%20✨%20Vengo%20de%20la%20colección%20AURA%20y%20quiero%20saber%20más" target="_blank" rel="noopener" class="btn-primary" data-i18n="cta_wa">💬 Hablar con Lady Aura</a>
     <a href="index.html" class="btn-secondary" data-i18n="cta_back">← Volver al inicio</a>
   </section>
-  <nav class="collections-nav">
-    <a href="zodiaco.html" class="col-link">♈ Zodíaco</a>
-    
-    <a href="paisajes.html" class="col-link">🏔️ Paisajes</a>
-    <a href="especiales.html" class="col-link current">✨ Diseños exclusivos</a>
-    <a href="tarot.html" class="col-link">🔮 Tarot</a>
-    <a href="colorear.html" class="col-link">🎨 Colorear</a>
+  <nav class="collections-nav" aria-label="Otras colecciones">
+    <a href="horoscopo.html" class="col-link">♈ Zodíaco</a>
+    <a href="especiales.html" class="col-link current">AURA</a>
+    <a href="circulo-aura.html" class="col-link">⭕ CIRCULO AURA</a>
+    <a href="nedeka.html" class="col-link">NEDEKA</a>
+    <a href="bruji.html" class="col-link">BRUJI</a>
+    <a href="maika.html" class="col-link">MAIKA</a>
+    <a href="personalizados.html" class="col-link">Personalizados</a>
+    <a href="colorear.html" class="col-link">Colorear</a>
   </nav>
 </main>
 <footer>

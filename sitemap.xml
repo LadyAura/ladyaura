@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
@@ -9,29 +9,7 @@
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/Logo.png</image:loc>
-      <image:title>Lady Aura Art – Diamond Painting Premium España</image:title>
-    </image:image>
-  </url>
-
-  <url>
-    <loc>https://ladyauraart.com/zodiaco.html</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.95</priority>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/aries.webp</image:loc>
-      <image:title>Diamond painting zodíaco Lady Aura Art</image:title>
-    </image:image>
-  </url>
-
-  <url>
-    <loc>https://ladyauraart.com/paisajes.html</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/paisaje-invernal-fantasia.webp</image:loc>
-      <image:title>Diamond painting paisajes fantasía Lady Aura Art</image:title>
+      <image:title>Lady Aura Art â€“ Diamond Painting Premium EspaÃ±a</image:title>
     </image:image>
   </url>
 
@@ -42,7 +20,7 @@
     <priority>0.85</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/aurora-celestial.webp</image:loc>
-      <image:title>Diseños exclusivos diamond painting Lady Aura Art</image:title>
+      <image:title>DiseÃ±os exclusivos diamond painting Lady Aura Art</image:title>
     </image:image>
   </url>
 
@@ -53,7 +31,7 @@
     <priority>0.90</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/scarlett-wolf.webp</image:loc>
-      <image:title>Colección NEDEKA diamond painting Lady Aura Art</image:title>
+      <image:title>ColecciÃ³n NEDEKA diamond painting Lady Aura Art</image:title>
     </image:image>
   </url>
 
@@ -64,7 +42,7 @@
     <priority>0.90</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/Violeta.webp</image:loc>
-      <image:title>Colección BRUJI diamond painting Lady Aura Art</image:title>
+      <image:title>ColecciÃ³n BRUJI diamond painting Lady Aura Art</image:title>
     </image:image>
   </url>
 
@@ -75,7 +53,7 @@
     <priority>0.90</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/artista-de-suenos.webp</image:loc>
-      <image:title>Colección MAIKA diamond painting kawaii Lady Aura Art</image:title>
+      <image:title>ColecciÃ³n MAIKA diamond painting kawaii Lady Aura Art</image:title>
     </image:image>
   </url>
 
@@ -91,24 +69,14 @@
   </url>
 
   <url>
-    <loc>https://ladyauraart.com/tarot.html</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/tarot/la-luna.webp</image:loc>
-      <image:title>Tarot gratis online Lady Aura Art</image:title>
-    </image:image>
-  </url>
-
-  <url>
     <loc>https://ladyauraart.com/colorear.html</loc>
     <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <image:image>
       <image:loc>https://ladyauraart.com/assets/aries.webp</image:loc>
-      <image:title>Láminas para colorear adultos fantasy PDF Lady Aura Art</image:title>
+      <image:title>LÃ¡minas para colorear adultos fantasy PDF Lady Aura Art</image:title>
     </image:image>
   </url>
+  <url><loc>https://ladyauraart.com/horoscopo.html</loc></url>
 </urlset>
