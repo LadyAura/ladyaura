@@ -621,6 +621,15 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
     return maikaImgs.some(function(name) { return raw.includes(name); });
   }
 
+  function isBambarelleItem(item) {
+    var raw = [
+      item?.coleccion, item?.collection, item?.categoria, item?.category,
+      item?.img, item?.nombre, item?.id
+    ].filter(Boolean).join(' ').toLowerCase();
+    return raw.includes('bambarelle') || raw.includes('bambarella') || raw.includes('circulo-aura') || raw.includes('circulo aura') ||
+      ['aura dorada','gatita arcoiris','dama dorada celestial','guardianas del bosque azul'].some(function(n){ return raw.includes(n); });
+  }
+
   function isNedekaItem(item) {
     const raw = [
       item?.coleccion, item?.collection, item?.categoria, item?.category,
@@ -691,6 +700,10 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
       maikaItems.forEach(item => { totalDiscount += Math.max(0, (Number(item.precio) || 84) - 60); });
       return totalDiscount > 0 ? totalDiscount : 0;
     }
+    if (code === 'ALI10') {
+      const bambaSubtotal = items.filter(isBambarelleItem).reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
+      return bambaSubtotal > 0 ? Math.min(10, bambaSubtotal) : 0;
+    }
     return 0;
   }
 
@@ -723,7 +736,7 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
       return false;
     }
 
-    if (!['LADYAURA5','NEDEKA10','NEDEKA60','BRUJI10','BRUJI60','MAIKA10','MAIKA60'].includes(clean)) {
+    if (!['LADYAURA5','NEDEKA10','NEDEKA60','BRUJI10','BRUJI60','MAIKA10','MAIKA60','ALI10'].includes(clean)) {
       couponMessage('Cupón no válido.', false);
       return false;
     }
@@ -738,6 +751,10 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
     }
     if ((clean === 'MAIKA10' || clean === 'MAIKA60') && !items.some(isMaikaItem)) {
       couponMessage('Cupón no válido.', false);
+      return false;
+    }
+    if (clean === 'ALI10' && !items.some(isBambarelleItem)) {
+      couponMessage('Este cupón solo funciona con obras del Círculo Aura (Bambarelle71).', false);
       return false;
     }
 
