@@ -1057,6 +1057,11 @@ function isMaikaItemInline(item) {
   const raw = [item?.coleccion, item?.collection, item?.nombre, item?.id, item?.img].join(' ').toLowerCase();
   return raw.includes('maika');
 }
+function isBambarelleItemInline(item) {
+  const raw = [item?.coleccion, item?.collection, item?.nombre, item?.id, item?.img].join(' ').toLowerCase();
+  return raw.includes('bambarelle') || raw.includes('bambarella') || raw.includes('circulo-aura') || raw.includes('circulo aura') ||
+    ['aura dorada','gatita arcoiris','dama dorada celestial','guardianas del bosque azul'].some(n => raw.includes(n));
+}
 
 function getCouponInline() {
   try { return JSON.parse(localStorage.getItem(COUPON_KEY_INLINE)); } catch(e) { return null; }
@@ -1084,6 +1089,10 @@ function calcDiscountInline(items, code) {
   if (code === 'NEDEKA10')  return nedekaSubtotal > 0 ? Math.min(10, nedekaSubtotal) : 0;
   if (code === 'BRUJI10')   return brujiSubtotal > 0 ? Math.min(10, brujiSubtotal) : 0;
   if (code === 'MAIKA10')   return maikaSubtotal > 0 ? Math.min(10, maikaSubtotal) : 0;
+  if (code === 'ALI10') {
+    const bambaSubtotal = items.filter(isBambarelleItemInline).reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
+    return bambaSubtotal > 0 ? Math.min(10, bambaSubtotal) : 0;
+  }
   if (isSpecial60Coupon(code)) return items
     .filter(item => itemMatchesSpecial60(item, code))
     .reduce((s,i) => s + Math.max(0, (Number(i.precio)||NORMAL_PRICE) - SPECIAL60_PRICE), 0);
@@ -1109,7 +1118,7 @@ function applyCoupon() {
     if(msg){ msg.textContent='Solo se puede usar un cupón por pedido.'; msg.className='coupon-msg err'; } return;
   }
 
-  if (!['LADYAURA5','NEDEKA10','NEDEKA60','BRUJI10','BRUJI60','MAIKA10','MAIKA60'].includes(code)) {
+  if (!['LADYAURA5','NEDEKA10','NEDEKA60','BRUJI10','BRUJI60','MAIKA10','MAIKA60','ALI10'].includes(code)) {
     if(msg){ msg.textContent='Código de cupón no válido'; msg.className='coupon-msg err'; } return;
   }
   if (code === 'LADYAURA5' && localStorage.getItem(COUPON_USED_KEY) === 'true') {
@@ -1123,6 +1132,9 @@ function applyCoupon() {
   }
   if ((code === 'MAIKA10' || code === 'MAIKA60') && !items.some(isMaikaItemInline)) {
     if(msg){ msg.textContent='Este cupón solo funciona con cuadros de la Colección MAIKA'; msg.className='coupon-msg err'; } return;
+  }
+  if (code === 'ALI10' && !items.some(isBambarelleItemInline)) {
+    if(msg){ msg.textContent='Este cupón solo funciona con obras del Círculo Aura (Bambarelle71)'; msg.className='coupon-msg err'; } return;
   }
 
   const discount = calcDiscountInline(items, code);
