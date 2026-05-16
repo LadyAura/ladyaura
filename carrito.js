@@ -145,8 +145,8 @@ function cartInjectButtons() {
         img: card.dataset.img || card.querySelector('img')?.src || '',
         precio: Number(card.dataset.precio || card.dataset.price) || 84,
         orient: card.dataset.orient || 'v',
-        coleccion: card.dataset.coleccion || card.dataset.collection || (location.pathname.toLowerCase().includes('nedeka') ? 'nedeka' : location.pathname.toLowerCase().includes('bruji') ? 'bruji' : location.pathname.toLowerCase().includes('maika') ? 'maika' : card.dataset.coleccion || card.dataset.collection || ''),
-        collection: card.dataset.collection || card.dataset.coleccion || (location.pathname.toLowerCase().includes('nedeka') ? 'nedeka' : location.pathname.toLowerCase().includes('bruji') ? 'bruji' : location.pathname.toLowerCase().includes('maika') ? 'maika' : card.dataset.coleccion || card.dataset.collection || '')
+        coleccion: card.dataset.coleccion || card.dataset.collection || (location.pathname.toLowerCase().includes('nedeka') ? 'nedeka' : location.pathname.toLowerCase().includes('bruji') ? 'bruji' : location.pathname.toLowerCase().includes('maika') ? 'maika' : location.pathname.toLowerCase().includes('circulo-aura') ? 'bambarelle71' : card.dataset.coleccion || card.dataset.collection || ''),
+        collection: card.dataset.collection || card.dataset.coleccion || (location.pathname.toLowerCase().includes('nedeka') ? 'nedeka' : location.pathname.toLowerCase().includes('bruji') ? 'bruji' : location.pathname.toLowerCase().includes('maika') ? 'maika' : location.pathname.toLowerCase().includes('circulo-aura') ? 'bambarelle71' : card.dataset.coleccion || card.dataset.collection || '')
       });
       this.classList.add('added');
       this.innerHTML = '✓ En el carrito';
