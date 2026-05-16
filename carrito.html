@@ -336,6 +336,39 @@ main {
 .form-group textarea { resize: vertical; min-height: 80px; }
 .form-group select option { background: #0d0821; }
 
+
+.kit-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.25rem;
+}
+.kit-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  color: var(--text);
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 0.92rem !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  cursor: pointer;
+}
+.kit-option input {
+  width: auto;
+  accent-color: var(--pink);
+}
+.kit-help {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
 .form-note {
   font-size: 0.76rem;
   color: var(--muted);
@@ -937,6 +970,20 @@ small,
             </select>
           </div>
           <div class="form-group full">
+            <label>¿Quieres incluir kit de herramientas?</label>
+            <div class="kit-options" role="radiogroup" aria-label="Kit de herramientas">
+              <label class="kit-option" for="f-kit-si">
+                <input type="radio" id="f-kit-si" name="kit_herramientas" value="Sí, quiero recibir el kit de herramientas" required checked>
+                <span>Sí, quiero recibir el kit de herramientas</span>
+              </label>
+              <label class="kit-option" for="f-kit-no">
+                <input type="radio" id="f-kit-no" name="kit_herramientas" value="No, ya tengo mis propias herramientas" required>
+                <span>No, ya tengo mis propias herramientas</span>
+              </label>
+            </div>
+            <p class="kit-help">El kit incluye las herramientas básicas para empezar el diamond painting.</p>
+          </div>
+          <div class="form-group full">
             <label for="f-notas">Notas adicionales</label>
             <textarea id="f-notas" name="notas" placeholder="¿Algo que quieras comentarme? Personalización, regalo, etc."></textarea>
           </div>
@@ -1202,6 +1249,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
     ciudad:    document.getElementById('f-ciudad').value,
     cp:        document.getElementById('f-cp').value,
     pais:      document.getElementById('f-pais').value,
+    kit_herramientas: (document.querySelector('input[name="kit_herramientas"]:checked') || {}).value || 'No indicado',
     notas:     document.getElementById('f-notas').value,
     pedido:    items.map(i => `${i.nombre} · ${i.precio}€`).join(' | '),
     subtotal:  subtotalPedido + ' €',
@@ -1228,6 +1276,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
         fecha: new Date().toLocaleDateString('es-ES', {day:'2-digit',month:'2-digit',year:'numeric'}),
         nombre: data.nombre + ' ' + data.apellidos,
         email: data.email,
+        kit_herramientas: data.kit_herramientas,
         direccion: data.direccion + ', ' + data.cp + ' ' + data.ciudad + ', ' + data.pais,
         items: items.map(i => ({ nombre: i.nombre, img: i.img, precio: i.precio, orient: i.orient })),
         total: totalPedido,
