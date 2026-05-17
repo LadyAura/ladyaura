@@ -99,7 +99,7 @@ if (lightbox && lightboxImg && closeBtn) {
 /* ── PAGINACIÓN ── */
 (function(){
   const ITEMS_PER_PAGE = 10;
-  const grid = document.querySelector('.products-grid');
+  const grid = null;
   if (!grid) return;
   const allCards = Array.from(grid.children);
   if (allCards.length <= ITEMS_PER_PAGE) return;
@@ -122,4 +122,80 @@ if (lightbox && lightboxImg && closeBtn) {
     const next=document.createElement('button'); next.className='page-btn'+(currentPage===totalPages?' disabled':''); next.textContent='→'; next.onclick=()=>{ if(currentPage<totalPages)showPage(currentPage+1); }; pag.appendChild(next);
   }
   showPage(1);
+})();
+
+/* ── PAGINACIÓN GLOBAL DE TARJETAS ── */
+(function(){
+  const DEFAULT_ITEMS_PER_PAGE = 10;
+  const gridSelectors = [
+    '.products-grid',
+    '.grid-laminas',
+    '.gallery-grid',
+    '.collections-grid',
+    '.tools-grid',
+    '#zodiacGrid'
+  ];
+  const grids = Array.from(document.querySelectorAll(gridSelectors.join(',')));
+  if (!grids.length) return;
+
+  grids.forEach(grid => {
+    if (grid.dataset.ladyAuraPaged === '1') return;
+    const cards = Array.from(grid.children).filter(el => {
+      return el.nodeType === 1 && !el.classList.contains('pagination');
+    });
+    const itemsPerPage = grid.id === 'zodiacGrid' ? 5 : DEFAULT_ITEMS_PER_PAGE;
+    if (cards.length <= itemsPerPage) return;
+
+    grid.dataset.ladyAuraPaged = '1';
+    const totalPages = Math.ceil(cards.length / itemsPerPage);
+    let currentPage = 1;
+    const pag = document.createElement('div');
+    pag.className = 'pagination lady-aura-pagination';
+    pag.setAttribute('aria-label', 'Paginación de tarjetas');
+    grid.parentNode.insertBefore(pag, grid.nextSibling);
+
+    function showPage(page, shouldScroll) {
+      currentPage = Math.max(1, Math.min(totalPages, page));
+      cards.forEach((card, i) => {
+        card.style.display = (i >= (currentPage - 1) * itemsPerPage && i < currentPage * itemsPerPage) ? '' : 'none';
+      });
+      renderPagination();
+      if (shouldScroll) {
+        window.scrollTo({ top: grid.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
+      }
+    }
+
+    function renderPagination() {
+      pag.innerHTML = '';
+      const prev = document.createElement('button');
+      prev.type = 'button';
+      prev.className = 'page-btn' + (currentPage === 1 ? ' disabled' : '');
+      prev.textContent = '←';
+      prev.setAttribute('aria-label', 'Página anterior');
+      prev.disabled = currentPage === 1;
+      prev.onclick = () => showPage(currentPage - 1, true);
+      pag.appendChild(prev);
+
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'page-btn' + (i === currentPage ? ' active' : '');
+        btn.textContent = i;
+        btn.setAttribute('aria-label', 'Página ' + i);
+        btn.onclick = () => showPage(i, true);
+        pag.appendChild(btn);
+      }
+
+      const next = document.createElement('button');
+      next.type = 'button';
+      next.className = 'page-btn' + (currentPage === totalPages ? ' disabled' : '');
+      next.textContent = '→';
+      next.setAttribute('aria-label', 'Página siguiente');
+      next.disabled = currentPage === totalPages;
+      next.onclick = () => showPage(currentPage + 1, true);
+      pag.appendChild(next);
+    }
+
+    showPage(1, false);
+  });
 })();

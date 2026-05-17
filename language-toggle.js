@@ -69,7 +69,12 @@
       '.goog-te-banner-frame,.goog-te-balloon-frame,.goog-logo-link{display:none!important}',
       'body{top:0!important}',
       'body > .skiptranslate{display:none!important}',
+      '.lady-aura-pagination,.pagination{display:flex!important;align-items:center!important;justify-content:center!important;gap:.45rem!important;flex-wrap:wrap!important;margin:2rem auto 0!important;padding:0 1rem!important}',
+      '.lady-aura-pagination .page-btn,.pagination .page-btn{min-width:38px!important;height:36px!important;border:1px solid rgba(255,217,138,.28)!important;border-radius:999px!important;background:rgba(8,4,20,.72)!important;color:rgba(255,255,255,.88)!important;font-family:Cinzel,serif!important;font-size:.82rem!important;cursor:pointer!important;box-shadow:0 8px 20px rgba(0,0,0,.24)!important}',
+      '.lady-aura-pagination .page-btn.active,.pagination .page-btn.active{background:linear-gradient(135deg,rgba(160,63,255,.74),rgba(255,72,137,.55))!important;border-color:rgba(255,217,138,.48)!important;color:#fff!important}',
+      '.lady-aura-pagination .page-btn.disabled,.pagination .page-btn.disabled,.lady-aura-pagination .page-btn:disabled,.pagination .page-btn:disabled{opacity:.4!important;cursor:default!important}',
       '@media(max-width:1180px){.site-header{min-height:64px!important;justify-content:flex-start!important}.site-header .brand img{max-height:48px!important;max-width:150px!important}.site-header .menu-toggle{display:flex!important;order:97;margin-left:auto!important}.site-header .lady-aura-header-actions{margin-left:.35rem!important;order:99!important}.site-header .nav .cart-nav-link{display:none!important}.lady-aura-header-actions .cart-nav-link{position:relative!important}.site-header .nav{position:absolute!important;top:calc(100% + .45rem)!important;right:clamp(.7rem,4vw,2rem)!important;left:auto!important;display:none!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:.35rem!important;min-width:230px!important;width:max-content!important;max-width:min(92vw,330px)!important;padding:.72rem!important;border:1px solid rgba(255,217,138,.18)!important;border-radius:18px!important;background:rgba(8,4,20,.97)!important;box-shadow:0 18px 42px rgba(0,0,0,.45)!important;backdrop-filter:blur(18px)!important;z-index:10001!important;flex:none!important}.site-header .nav.active{display:flex!important}.site-header .nav a{width:100%!important;justify-content:flex-end!important;text-align:right!important;min-height:37px!important;padding:.62rem .72rem!important;font-size:.74rem!important}.lady-aura-language button{width:30px;height:27px;font-size:16px}}',
+      '@media(max-width:760px){.products-grid,.grid-laminas,.gallery-grid,.collections-grid,.tools-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:.72rem!important}.product-card,.lamina-doble,.gallery-card,.col-card,.tool-card{min-width:0!important;width:auto!important}.product-card h3,.lamina-nombre,.gallery-card-label,.col-card-tag,.tool-card h3{overflow-wrap:anywhere!important}#zodiacGrid .zod-pair{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:.72rem!important;padding:.72rem!important}#zodiacGrid .zod-center{grid-column:1/-1!important;order:-1!important}#zodiacGrid .zod-card{min-width:0!important}.zod-ci{padding:.55rem!important}.zod-ci h3{font-size:.78rem!important}.zod-ci p{font-size:.72rem!important}}',
       '@media(max-width:560px){.site-header{padding:.55rem .72rem!important;gap:.38rem!important}.site-header .brand img{max-width:132px!important;max-height:42px!important}.site-header .menu-toggle{width:36px!important;height:34px!important}.lady-aura-header-actions{gap:.28rem!important;margin-left:.25rem!important}.lady-aura-header-actions .cart-nav-link{min-width:34px!important;min-height:31px!important;padding:.18rem .34rem!important}.lady-aura-language{gap:2px;padding:2px}.lady-aura-language button{width:27px;height:25px;font-size:15px}}'
     ].join('');
     document.head.appendChild(style);
@@ -246,11 +251,100 @@
     });
   }
 
+  function paginateCardGrids(reset) {
+    var selectors = [
+      '.products-grid',
+      '.grid-laminas',
+      '.gallery-grid',
+      '.collections-grid',
+      '.tools-grid',
+      '#zodiacGrid'
+    ].join(',');
+
+    document.querySelectorAll(selectors).forEach(function (grid) {
+      if (reset) {
+        delete grid.dataset.ladyAuraPaged;
+        if (grid.nextElementSibling && grid.nextElementSibling.classList.contains('lady-aura-pagination')) {
+          grid.nextElementSibling.remove();
+        }
+      }
+      if (grid.nextElementSibling && grid.nextElementSibling.classList.contains('pagination') && !grid.nextElementSibling.classList.contains('lady-aura-pagination')) {
+        grid.nextElementSibling.remove();
+      }
+      if (grid.dataset.ladyAuraPaged === '1') return;
+
+      var cards = Array.prototype.slice.call(grid.children).filter(function (el) {
+        return el.nodeType === 1 && !el.classList.contains('pagination');
+      });
+      var itemsPerPage = grid.id === 'zodiacGrid' ? 5 : 10;
+      if (cards.length <= itemsPerPage) return;
+
+      grid.dataset.ladyAuraPaged = '1';
+      var totalPages = Math.ceil(cards.length / itemsPerPage);
+      var currentPage = 1;
+      var pag = document.createElement('div');
+      pag.className = 'pagination lady-aura-pagination';
+      pag.setAttribute('aria-label', 'Paginacion de tarjetas');
+      grid.parentNode.insertBefore(pag, grid.nextSibling);
+
+      function showPage(page, shouldScroll) {
+        currentPage = Math.max(1, Math.min(totalPages, page));
+        cards.forEach(function (card, i) {
+          card.style.display = (i >= (currentPage - 1) * itemsPerPage && i < currentPage * itemsPerPage) ? '' : 'none';
+        });
+        renderPagination();
+        if (shouldScroll) {
+          window.scrollTo({ top: grid.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
+        }
+      }
+
+      function renderPagination() {
+        pag.innerHTML = '';
+        var prev = document.createElement('button');
+        prev.type = 'button';
+        prev.className = 'page-btn' + (currentPage === 1 ? ' disabled' : '');
+        prev.textContent = '←';
+        prev.disabled = currentPage === 1;
+        prev.setAttribute('aria-label', 'Pagina anterior');
+        prev.addEventListener('click', function () { showPage(currentPage - 1, true); });
+        pag.appendChild(prev);
+
+        for (var i = 1; i <= totalPages; i += 1) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'page-btn' + (i === currentPage ? ' active' : '');
+          btn.textContent = i;
+          btn.setAttribute('aria-label', 'Pagina ' + i);
+          btn.addEventListener('click', (function (page) {
+            return function () { showPage(page, true); };
+          })(i));
+          pag.appendChild(btn);
+        }
+
+        var next = document.createElement('button');
+        next.type = 'button';
+        next.className = 'page-btn' + (currentPage === totalPages ? ' disabled' : '');
+        next.textContent = '→';
+        next.disabled = currentPage === totalPages;
+        next.setAttribute('aria-label', 'Pagina siguiente');
+        next.addEventListener('click', function () { showPage(currentPage + 1, true); });
+        pag.appendChild(next);
+      }
+
+      showPage(1, false);
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     addStyles();
     normalizeHeader();
     addToggle();
     bindMobileMenu();
+    setTimeout(function () { paginateCardGrids(false); }, 0);
     applyLanguage(getInitialLanguage(), { reload: false });
+  });
+
+  window.addEventListener('ladyAuraLangChanged', function () {
+    setTimeout(function () { paginateCardGrids(true); }, 0);
   });
 })();
