@@ -4,10 +4,55 @@
    ============================================================ */
 
 const CART_KEY = 'ladyaura_cart';
+const CART_IMAGE_FALLBACKS = {
+  'bambarella71-sueno-de-colores.webp': 'assets/bambarella71-gatita-arcoiris.webp'
+};
+
+function cartNormalizeImage(src, item) {
+  src = String(src || '').trim();
+  const raw = [
+    src, item?.nombre, item?.id, item?.coleccion, item?.collection
+  ].filter(Boolean).join(' ').toLowerCase();
+
+  for (const brokenName in CART_IMAGE_FALLBACKS) {
+    if (raw.includes(brokenName.replace('.webp', '')) || raw.includes(brokenName)) {
+      return CART_IMAGE_FALLBACKS[brokenName];
+    }
+  }
+  if (!src) {
+    if (raw.includes('maika')) return 'assets/artista-de-suenos.webp';
+    if (raw.includes('bruji')) return 'assets/Violeta.webp';
+    if (raw.includes('nedeka')) return 'assets/scarlett-wolf.webp';
+    if (raw.includes('bambarelle') || raw.includes('bambarella') || raw.includes('circulo')) return 'assets/bambarella71-aura-dorada.webp';
+    return 'assets/Logo-transparent.webp';
+  }
+  if (/^(https?:|data:|blob:|file:)/i.test(src)) return src;
+  if (src.startsWith('assets/')) return src;
+  if (!src.includes('/')) return 'assets/' + src;
+  return src;
+}
+
+function cartBuildId(item) {
+  const parts = [
+    item?.coleccion || item?.collection || 'lady-aura',
+    item?.nombre || item?.id || item?.img || 'producto'
+  ];
+  return parts.join('-').toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
 
 /* ── Leer / guardar ── */
 function cartGet() {
-  try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
+  try {
+    return (JSON.parse(localStorage.getItem(CART_KEY)) || []).map(function(item) {
+      item = item || {};
+      item.img = cartNormalizeImage(item.img, item);
+      item.id = cartBuildId(item);
+      return item;
+    });
+  }
   catch(e) { return []; }
 }
 function cartSave(items) {
@@ -38,6 +83,8 @@ function cartAdd(item) {
     item.coleccion = 'maika';
     item.collection = 'maika';
   }
+  item.img = cartNormalizeImage(item.img, item);
+  item.id = cartBuildId(item);
 
   const items = cartGet();
   const exists = items.find(i => i.id === item.id);
@@ -412,7 +459,9 @@ function cartPatchLightbox(card) {
         nombre: card.dataset.nombre,
         img: card.dataset.img || '',
         precio: Number(card.dataset.precio) || 84,
-        orient: card.dataset.orient || 'v'
+        orient: card.dataset.orient || 'v',
+        coleccion: card.dataset.coleccion || card.dataset.collection || '',
+        collection: card.dataset.collection || card.dataset.coleccion || ''
       });
       this.classList.add('added');
       this.textContent = '✓ Añadido';
@@ -438,7 +487,9 @@ function cartPatchLightbox(card) {
       nombre: card.dataset.nombre,
       img: card.dataset.img || '',
       precio: Number(card.dataset.precio) || 84,
-      orient: card.dataset.orient || 'v'
+      orient: card.dataset.orient || 'v',
+      coleccion: card.dataset.coleccion || card.dataset.collection || '',
+      collection: card.dataset.collection || card.dataset.coleccion || ''
     });
     this.classList.add('added');
     this.textContent = '✓ Añadido al carrito';
