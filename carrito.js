@@ -5,7 +5,10 @@
 
 const CART_KEY = 'ladyaura_cart';
 const CART_IMAGE_FALLBACKS = {
-  'bambarella71-sueno-de-colores.webp': 'assets/bambarella71-gatita-arcoiris.webp'
+  'tarde-de-lectura.webp': 'assets/tarde-de-lectura.webp',
+  'chica-del-pozo.webp': 'assets/chica-del-pozo.webp',
+  'jardinera-de-suenos.webp': 'assets/jardinera-de-suenos.webp',
+  'bambarella71-sueno-de-colores.webp': 'assets/bambarella71-sueno-de-colores.png'
 };
 
 function cartNormalizeImage(src, item) {
@@ -14,6 +17,9 @@ function cartNormalizeImage(src, item) {
     src, item?.nombre, item?.id, item?.coleccion, item?.collection
   ].filter(Boolean).join(' ').toLowerCase();
 
+  if (raw.includes('sueno-de-colores') || raw.includes('sueño de colores')) {
+    return 'assets/bambarella71-sueno-de-colores.png';
+  }
   for (const brokenName in CART_IMAGE_FALLBACKS) {
     if (raw.includes(brokenName.replace('.webp', '')) || raw.includes(brokenName)) {
       return CART_IMAGE_FALLBACKS[brokenName];
