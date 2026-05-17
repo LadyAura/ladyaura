@@ -1062,6 +1062,11 @@ function isBambarelleItemInline(item) {
   return raw.includes('bambarelle') || raw.includes('bambarella') || raw.includes('circulo-aura') || raw.includes('circulo aura') ||
     ['aura dorada','gatita arcoiris','dama dorada celestial','guardianas del bosque azul'].some(n => raw.includes(n));
 }
+function isFonsinItemInline(item) {
+  const raw = [item?.coleccion, item?.collection, item?.nombre, item?.id, item?.img].join(' ').toLowerCase();
+  return raw.includes('fonsin11') || raw.includes('fonsin11_diamond') ||
+    ['guardian del umbral magico','panda zen','buho vitral real','alma hippie arcoiris','tortuguita arcoiris'].some(n => raw.includes(n));
+}
 
 function getCouponInline() {
   try { return JSON.parse(localStorage.getItem(COUPON_KEY_INLINE)); } catch(e) { return null; }
@@ -1112,13 +1117,16 @@ function calcDiscountInline(items, code) {
   const nedekaItems = items.filter(isNedekaItemInline);
   const brujiItems  = items.filter(isBrujiItemInline);
   const maikaItems  = items.filter(isMaikaItemInline);
+  const fonsinItems = items.filter(isFonsinItemInline);
   const nedekaSubtotal = nedekaItems.reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
   const brujiSubtotal  = brujiItems.reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
   const maikaSubtotal  = maikaItems.reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
+  const fonsinSubtotal = fonsinItems.reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
   if (code === 'LADYAURA5') return subtotal > 0 ? 5 : 0;
   if (code === 'NEDEKA10')  return nedekaSubtotal > 0 ? Math.min(10, nedekaSubtotal) : 0;
   if (code === 'BRUJI10')   return brujiSubtotal > 0 ? Math.min(10, brujiSubtotal) : 0;
   if (code === 'MAIKA10')   return maikaSubtotal > 0 ? Math.min(10, maikaSubtotal) : 0;
+  if (code === 'FON10')     return fonsinSubtotal > 0 ? Math.min(10, fonsinSubtotal) : 0;
   if (code === 'ALI10') {
     const bambaSubtotal = items.filter(isBambarelleItemInline).reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
     return bambaSubtotal > 0 ? Math.min(10, bambaSubtotal) : 0;
@@ -1148,7 +1156,7 @@ function applyCoupon() {
     if(msg){ msg.textContent='Solo se puede usar un cupón por pedido.'; msg.className='coupon-msg err'; } return;
   }
 
-  if (!['LADYAURA5','NEDEKA10','NEDEKA60','BRUJI10','BRUJI60','MAIKA10','MAIKA60','ALI10'].includes(code)) {
+  if (!['LADYAURA5','NEDEKA10','NEDEKA60','BRUJI10','BRUJI60','MAIKA10','MAIKA60','ALI10','FON10'].includes(code)) {
     if(msg){ msg.textContent='Código de cupón no válido'; msg.className='coupon-msg err'; } return;
   }
   if (code === 'LADYAURA5' && localStorage.getItem(COUPON_USED_KEY) === 'true') {
@@ -1165,6 +1173,9 @@ function applyCoupon() {
   }
   if (code === 'ALI10' && !items.some(isBambarelleItemInline)) {
     if(msg){ msg.textContent='Este cupón solo funciona con obras del Círculo Aura (Bambarelle71)'; msg.className='coupon-msg err'; } return;
+  }
+  if (code === 'FON10' && !items.some(isFonsinItemInline)) {
+    if(msg){ msg.textContent='Este cupon solo funciona con cuadros de Fonsin11_diamond'; msg.className='coupon-msg err'; } return;
   }
 
   const discount = calcDiscountInline(items, code);
