@@ -749,6 +749,20 @@ if(document.readyState !== "loading") {
       ['aura dorada','gatita arcoiris','dama dorada celestial','guardianas del bosque azul'].some(function(n){ return raw.includes(n); });
   }
 
+  function isFonsinItem(item) {
+    var raw = [
+      item?.coleccion, item?.collection, item?.categoria, item?.category,
+      item?.img, item?.nombre, item?.id
+    ].filter(Boolean).join(' ').toLowerCase();
+    return raw.includes('fonsin11') || raw.includes('fonsin11_diamond') || [
+      'guardian del umbral magico',
+      'panda zen',
+      'buho vitral real',
+      'alma hippie arcoiris',
+      'tortuguita arcoiris'
+    ].some(function(n){ return raw.includes(n); });
+  }
+
   function isNedekaItem(item) {
     const raw = [
       item?.coleccion, item?.collection, item?.categoria, item?.category,
@@ -823,6 +837,10 @@ if(document.readyState !== "loading") {
       const bambaSubtotal = items.filter(isBambarelleItem).reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
       return bambaSubtotal > 0 ? Math.min(10, bambaSubtotal) : 0;
     }
+    if (code === 'FON10') {
+      const fonsinSubtotal = items.filter(isFonsinItem).reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
+      return fonsinSubtotal > 0 ? Math.min(10, fonsinSubtotal) : 0;
+    }
     return 0;
   }
 
@@ -855,7 +873,7 @@ if(document.readyState !== "loading") {
       return false;
     }
 
-    if (!['LADYAURA5','NEDEKA10','NEDEKA60','BRUJI10','BRUJI60','MAIKA10','MAIKA60','ALI10'].includes(clean)) {
+    if (!['LADYAURA5','NEDEKA10','NEDEKA60','BRUJI10','BRUJI60','MAIKA10','MAIKA60','ALI10','FON10'].includes(clean)) {
       couponMessage('Cupón no válido.', false);
       return false;
     }
@@ -874,6 +892,10 @@ if(document.readyState !== "loading") {
     }
     if (clean === 'ALI10' && !items.some(isBambarelleItem)) {
       couponMessage('Este cupón solo funciona con obras del Círculo Aura (Bambarelle71).', false);
+      return false;
+    }
+    if (clean === 'FON10' && !items.some(isFonsinItem)) {
+      couponMessage('Este cupon solo funciona con cuadros de Fonsin11_diamond.', false);
       return false;
     }
 
