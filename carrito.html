@@ -1069,6 +1069,36 @@ function getCouponInline() {
 
 const SPECIAL60_PRICE = 60;
 const NORMAL_PRICE = 84;
+const CART_IMAGE_FALLBACKS_INLINE = {
+  'tarde-de-lectura.webp': 'assets/tarde-de-lectura.webp',
+  'chica-del-pozo.webp': 'assets/chica-del-pozo.webp',
+  'jardinera-de-suenos.webp': 'assets/jardinera-de-suenos.webp',
+  'bambarella71-sueno-de-colores.webp': 'assets/bambarella71-sueno-de-colores.png'
+};
+function escapeHtmlInline(value) {
+  return String(value || '').replace(/[&<>"']/g, function(ch) {
+    return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[ch];
+  });
+}
+function normalizeCartImageInline(src, item) {
+  src = String(src || '').trim();
+  const raw = [src, item?.nombre, item?.id, item?.coleccion, item?.collection].filter(Boolean).join(' ').toLowerCase();
+  if (raw.includes('sueno-de-colores') || raw.includes('sueño de colores')) return 'assets/bambarella71-sueno-de-colores.png';
+  for (const brokenName in CART_IMAGE_FALLBACKS_INLINE) {
+    if (raw.includes(brokenName) || raw.includes(brokenName.replace('.webp', ''))) return CART_IMAGE_FALLBACKS_INLINE[brokenName];
+  }
+  if (!src) {
+    if (raw.includes('maika')) return 'assets/artista-de-suenos.webp';
+    if (raw.includes('bruji')) return 'assets/Violeta.webp';
+    if (raw.includes('nedeka')) return 'assets/scarlett-wolf.webp';
+    if (raw.includes('bambarelle') || raw.includes('bambarella') || raw.includes('circulo')) return 'assets/bambarella71-aura-dorada.webp';
+    return 'assets/Logo-transparent.webp';
+  }
+  if (/^(https?:|data:|blob:|file:)/i.test(src)) return src;
+  if (src.startsWith('assets/')) return src;
+  if (!src.includes('/')) return 'assets/' + src;
+  return src;
+}
 function isSpecial60Coupon(code) { return ['NEDEKA60','BRUJI60','MAIKA60'].includes(code); }
 function itemMatchesSpecial60(item, code) {
   if (code === 'NEDEKA60') return isNedekaItemInline(item);
@@ -1176,18 +1206,21 @@ function renderCart() {
   list.innerHTML = items.map(item => {
     const originalPrice = Number(item.precio) || NORMAL_PRICE;
     const displayPrice = getPriceWithCoupon(item, activeCouponForRender);
+    const imageSrc = escapeHtmlInline(normalizeCartImageInline(item.img, item));
+    const itemName = escapeHtmlInline(item.nombre || 'Producto Lady Aura');
+    const itemId = escapeHtmlInline(item.id || item.nombre || item.img || imageSrc);
     const priceHtml = (isSpecial60Coupon(activeCouponForRender) && itemMatchesSpecial60(item, activeCouponForRender))
       ? `<span class="cart-item-price"><s style="opacity:.4;font-size:.8em;text-decoration:line-through">${originalPrice} €</s>&nbsp;${displayPrice} €</span>`
       : `<span class="cart-item-price">${originalPrice} €</span>`;
     return `
     <div class="cart-item">
-      <img class="cart-item-img" src="${item.img}" alt="${item.nombre}" onerror="this.style.opacity='0.3'">
+      <img class="cart-item-img" src="${imageSrc}" alt="${itemName}" onerror="this.src='assets/Logo-transparent.webp';this.onerror=null;">
       <div class="cart-item-info">
-        <h3>${item.nombre}</h3>
+        <h3>${itemName}</h3>
         <p>Diamond painting ${item.orient==='v'?'60×90 cm ↕':'90×60 cm ↔'} · Envío incluido</p>
       </div>
       ${priceHtml}
-      <button class="cart-item-remove" onclick="cartRemove(this.dataset.id)" data-id="${item.id.replace(/"/g,'&quot;')}" aria-label="Eliminar">✕</button>
+      <button class="cart-item-remove" onclick="cartRemove(this.dataset.id)" data-id="${itemId}" aria-label="Eliminar">✕</button>
     </div>`;
   }).join('');
 
@@ -1370,5 +1403,6 @@ renderCart();
 </script>
 
 <script src="carrito.js"></script>
+<script src="language-toggle.js"></script>
 </body>
 </html>
