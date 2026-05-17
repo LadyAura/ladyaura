@@ -378,6 +378,43 @@ function cartInjectZodiaco() {
     // Añadir debajo de la imagen/nombre
     card.appendChild(btn);
   });
+
+  document.querySelectorAll('.zod-card:not(.sold-out)').forEach(card => {
+    if (card.querySelector('.btn-add-cart')) return;
+    const titleEl = card.querySelector('h3');
+    const imgEl = card.querySelector('img');
+    const nombre = (titleEl?.textContent || imgEl?.alt || 'Horoscopo Lady Aura')
+      .replace(/\s+Lady Aura\s*$/i, '')
+      .trim();
+    const imgSrc = imgEl ? (imgEl.getAttribute('src') || imgEl.src || '') : '';
+
+    const btn = document.createElement('button');
+    btn.className = 'btn-add-cart';
+    btn.innerHTML = '🛒 Añadir al carrito';
+    btn.style.cssText = 'display:block;width:100%;margin-top:0.5rem;padding:0.45rem 0.8rem;background:linear-gradient(135deg,rgba(160,63,255,0.15),rgba(255,72,137,0.1));border:1px solid rgba(160,63,255,0.4);border-radius:999px;color:rgba(255,255,255,0.85);font-family:Cinzel,serif;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.25s;';
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      cartAdd({
+        id: 'zodiaco-' + nombre,
+        nombre: nombre,
+        img: imgSrc,
+        precio: Number(card.dataset.precio) || 84,
+        orient: card.dataset.orient || 'v',
+        coleccion: 'zodiaco',
+        collection: 'zodiaco'
+      });
+      this.classList.add('added');
+      this.innerHTML = '✓ En el carrito';
+      setTimeout(() => {
+        this.classList.remove('added');
+        this.innerHTML = '🛒 Añadir al carrito';
+      }, 2000);
+    });
+
+    const info = card.querySelector('.zod-ci') || card;
+    info.appendChild(btn);
+  });
 }
 
 /* ── Inyectar botón en láminas kawaii de colorear.html ── */
@@ -424,6 +461,7 @@ document.addEventListener('DOMContentLoaded', function() {
   cartInjectFAB();
   cartInjectButtons();
   cartInjectColorear();
+  cartInjectZodiaco();
   // Reintento para páginas que generan cards dinámicamente (zodiaco)
   setTimeout(function() {
     cartInjectButtons();
@@ -449,13 +487,18 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   fullscreenInjectStyles();
+  fullscreenAttach();
+  fullscreenBindDelegated();
 });
 
 /* ── Patch del openLB para añadir botón dentro del lightbox ── */
 // Se llama desde cada página que tenga openLB
 function cartPatchLightbox(card) {
   const btns = document.getElementById('lbBtns') || document.querySelector('.lb-btns');
-  if (!btns) return;
+  if (!btns) {
+    fullscreenAttach();
+    return;
+  }
   if (btns.querySelector('.lb-btn-cart')) {
     // Actualizar el onclick del botón existente
     const b = btns.querySelector('.lb-btn-cart');
@@ -476,6 +519,7 @@ function cartPatchLightbox(card) {
         this.textContent = '🛒 Añadir al carrito';
       }, 2000);
     };
+    fullscreenAttach();
     return;
   }
   const btn = document.createElement('button');
@@ -505,6 +549,7 @@ function cartPatchLightbox(card) {
     }, 2000);
   };
   btns.insertBefore(btn, btns.firstChild);
+  fullscreenAttach();
 }
 
 /* ============================================================
@@ -629,7 +674,8 @@ function fullscreenAttach() {
     '#fs-img',          // evitar recursión
   ].join(',');
 
-  document.querySelectorAll('#lbImg, .lb-img img, .modal-img img').forEach(img => {
+  document.querySelectorAll('#lbImg, .lb-img img, .lb-img-wrap img, .modal-img img').forEach(img => {
+    if (img.id === 'fs-img') return;
     if (img.dataset.fsAttached) return;
     img.dataset.fsAttached = '1';
     img.addEventListener('click', function(e) {
@@ -640,7 +686,22 @@ function fullscreenAttach() {
 }
 
 // Llamada inmediata también por si el DOM ya está listo
-if(document.readyState !== "loading") fullscreenInjectStyles();
+function fullscreenBindDelegated() {
+  if (document.documentElement.dataset.fsDelegated) return;
+  document.documentElement.dataset.fsDelegated = '1';
+  document.addEventListener('click', function(e) {
+    const img = e.target.closest('#lbImg, .lb-img img, .lb-img-wrap img, .modal-img img');
+    if (!img || img.id === 'fs-img' || !img.src) return;
+    e.stopPropagation();
+    fullscreenOpen(img.src, img.alt);
+  }, true);
+}
+
+if(document.readyState !== "loading") {
+  fullscreenInjectStyles();
+  fullscreenAttach();
+  fullscreenBindDelegated();
+}
 
 
 
