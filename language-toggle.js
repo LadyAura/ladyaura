@@ -50,14 +50,16 @@
     var style = document.createElement('style');
     style.id = 'lady-aura-language-styles';
     style.textContent = [
-      '.site-header{display:flex!important;align-items:center!important;gap:.8rem!important;overflow:visible!important}',
+      '.site-header{position:sticky!important;top:0!important;z-index:10000!important;display:flex!important;align-items:center!important;gap:.75rem!important;justify-content:space-between!important;width:100%!important;min-height:70px!important;padding:.72rem clamp(.85rem,4vw,3.2rem)!important;background:rgba(5,5,16,.88)!important;backdrop-filter:blur(18px)!important;border-bottom:1px solid rgba(255,217,138,.16)!important;box-shadow:0 8px 26px rgba(0,0,0,.28)!important;overflow:visible!important}',
       '.site-header .brand{display:inline-flex!important;align-items:center!important;flex:0 0 auto!important}',
-      '.site-header .brand img{display:block!important;max-height:58px!important;width:auto!important;object-fit:contain!important}',
-      '.site-header .nav{align-items:center!important;gap:.55rem!important}',
-      '.site-header .nav a{white-space:nowrap!important}',
-      '.site-header .menu-toggle{width:42px;height:38px;border:1px solid rgba(255,217,138,.28);border-radius:999px;background:rgba(8,4,20,.68);color:#fff;font-size:1.2rem;line-height:1;cursor:pointer;align-items:center;justify-content:center;flex:0 0 auto}',
-      '.site-header .header-button{white-space:nowrap!important}',
-      '.lady-aura-header-actions{display:flex;align-items:center;gap:.45rem;margin-left:.35rem;position:relative;z-index:10002}',
+      '.site-header .brand img{display:block!important;height:auto!important;max-height:54px!important;max-width:165px!important;width:auto!important;object-fit:contain!important}',
+      '.site-header .nav{display:flex!important;align-items:center!important;justify-content:center!important;gap:.42rem!important;flex:1 1 auto!important;min-width:0!important}',
+      '.site-header .nav a{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:.38rem!important;min-height:34px!important;padding:.36rem .74rem!important;border:1px solid rgba(255,217,138,.16)!important;border-radius:999px!important;background:rgba(12,7,29,.34)!important;color:rgba(255,255,255,.78)!important;font-family:Cinzel,serif!important;font-size:clamp(.62rem,.74vw,.76rem)!important;line-height:1!important;letter-spacing:.08em!important;text-decoration:none!important;text-transform:uppercase!important;white-space:nowrap!important;box-shadow:none!important;transition:color .18s,border-color .18s,background .18s,transform .18s!important}',
+      '.site-header .nav a:hover,.site-header .nav a[aria-current="page"]{color:#e8c97a!important;border-color:rgba(232,201,122,.45)!important;background:rgba(160,63,255,.13)!important;transform:translateY(-1px)!important}',
+      '.site-header .red-circle-dot{display:inline-block!important;width:.68em!important;height:.68em!important;min-width:.68em!important;border:2px solid #ff2d6f!important;border-radius:50%!important;box-shadow:0 0 10px rgba(255,45,111,.55)!important;vertical-align:-.04em!important}',
+      '.site-header .menu-toggle{display:none;width:42px!important;height:38px!important;border:1px solid rgba(255,217,138,.28)!important;border-radius:999px!important;background:rgba(8,4,20,.68)!important;color:#fff!important;font-size:1.2rem!important;line-height:1!important;cursor:pointer!important;align-items:center!important;justify-content:center!important;flex:0 0 auto!important}',
+      '.site-header .header-button{display:none!important}',
+      '.lady-aura-header-actions{display:flex!important;align-items:center!important;gap:.45rem!important;margin-left:.25rem!important;position:relative!important;z-index:10002!important;flex:0 0 auto!important}',
       '.lady-aura-header-actions .cart-nav-link{display:inline-flex!important;align-items:center;justify-content:center;min-width:38px;min-height:34px;padding:.25rem .45rem!important;border:1px solid rgba(255,217,138,.25);border-radius:999px;background:rgba(8,4,20,.55);text-decoration:none!important}',
       '.lady-aura-language{display:flex;align-items:center;gap:4px;padding:3px;border:1px solid rgba(255,217,138,.32);border-radius:999px;background:rgba(8,4,20,.64);box-shadow:0 8px 22px rgba(0,0,0,.24);backdrop-filter:blur(10px);font-family:Arial,sans-serif}',
       '.lady-aura-language button{width:32px;height:28px;border:0;border-radius:999px;background:transparent;color:#fff;cursor:pointer;font-size:17px;line-height:1;display:inline-flex;align-items:center;justify-content:center;transition:transform .18s,background .18s,box-shadow .18s}',
@@ -67,10 +69,49 @@
       '.goog-te-banner-frame,.goog-te-balloon-frame,.goog-logo-link{display:none!important}',
       'body{top:0!important}',
       'body > .skiptranslate{display:none!important}',
-      '@media(max-width:1180px){.site-header{position:sticky!important;min-height:68px;justify-content:flex-start!important}.site-header .header-button{display:none!important}.site-header .menu-toggle{display:flex!important;order:97;margin-left:auto}.site-header .lady-aura-header-actions{margin-left:.4rem;order:99}.site-header .nav .cart-nav-link{display:none!important}.lady-aura-header-actions .cart-nav-link{position:relative!important}.site-header .nav{position:absolute!important;top:100%!important;right:4%!important;left:auto!important;display:none!important;flex-direction:column!important;align-items:flex-end!important;min-width:220px!important;width:max-content!important;max-width:min(92vw,320px)!important;padding:.9rem 1rem!important;border:1px solid rgba(255,217,138,.18)!important;border-radius:18px!important;background:rgba(8,4,20,.96)!important;box-shadow:0 18px 42px rgba(0,0,0,.45)!important;backdrop-filter:blur(18px)!important;z-index:10001!important}.site-header .nav.active{display:flex!important}.site-header .nav a{width:100%!important;text-align:right!important;padding:.65rem 0!important;border-bottom:1px solid rgba(255,217,138,.12)!important}.site-header .nav a:last-child{border-bottom:none!important}.lady-aura-language button{width:30px;height:27px;font-size:16px}}',
-      '@media(max-width:560px){.site-header{padding-right:.75rem!important}.site-header .brand img{max-width:150px;height:auto}.lady-aura-header-actions{gap:.32rem}.lady-aura-header-actions .cart-nav-link{min-width:34px;min-height:31px;padding:.18rem .35rem!important}.lady-aura-language{gap:2px;padding:2px}.lady-aura-language button{width:27px;height:25px;font-size:15px}}'
+      '@media(max-width:1180px){.site-header{min-height:64px!important;justify-content:flex-start!important}.site-header .brand img{max-height:48px!important;max-width:150px!important}.site-header .menu-toggle{display:flex!important;order:97;margin-left:auto!important}.site-header .lady-aura-header-actions{margin-left:.35rem!important;order:99!important}.site-header .nav .cart-nav-link{display:none!important}.lady-aura-header-actions .cart-nav-link{position:relative!important}.site-header .nav{position:absolute!important;top:calc(100% + .45rem)!important;right:clamp(.7rem,4vw,2rem)!important;left:auto!important;display:none!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:.35rem!important;min-width:230px!important;width:max-content!important;max-width:min(92vw,330px)!important;padding:.72rem!important;border:1px solid rgba(255,217,138,.18)!important;border-radius:18px!important;background:rgba(8,4,20,.97)!important;box-shadow:0 18px 42px rgba(0,0,0,.45)!important;backdrop-filter:blur(18px)!important;z-index:10001!important;flex:none!important}.site-header .nav.active{display:flex!important}.site-header .nav a{width:100%!important;justify-content:flex-end!important;text-align:right!important;min-height:37px!important;padding:.62rem .72rem!important;font-size:.74rem!important}.lady-aura-language button{width:30px;height:27px;font-size:16px}}',
+      '@media(max-width:560px){.site-header{padding:.55rem .72rem!important;gap:.38rem!important}.site-header .brand img{max-width:132px!important;max-height:42px!important}.site-header .menu-toggle{width:36px!important;height:34px!important}.lady-aura-header-actions{gap:.28rem!important;margin-left:.25rem!important}.lady-aura-header-actions .cart-nav-link{min-width:34px!important;min-height:31px!important;padding:.18rem .34rem!important}.lady-aura-language{gap:2px;padding:2px}.lady-aura-language button{width:27px;height:25px;font-size:15px}}'
     ].join('');
     document.head.appendChild(style);
+  }
+
+  function normalizeHeader() {
+    var header = document.getElementById('site-header') || document.querySelector('.site-header') || document.querySelector('header.header') || document.querySelector('header');
+    if (!header || header.dataset.ladyAuraNormalized === '1') return;
+    header.dataset.ladyAuraNormalized = '1';
+    header.id = 'site-header';
+    header.className = 'site-header';
+    header.removeAttribute('style');
+
+    var current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    var links = [
+      ['index.html', 'Inicio'],
+      ['horoscopo.html', '♈ Horoscopo'],
+      ['especiales.html', '✨ AURA'],
+      ['nedeka.html', '🌙 NEDEKA'],
+      ['bruji.html', '🔮 BRUJI'],
+      ['maika.html', '🎨 MAIKA'],
+      ['circulo-aura.html', '<span class="red-circle-dot" aria-hidden="true"></span>CIRCULO AURA'],
+      ['personalizados.html', '🎨 Personalizados'],
+      ['colorear.html', '🎨 Colorear'],
+      ['pedidos.html', '📦 Mis pedidos']
+    ];
+
+    var navHtml = links.map(function (link) {
+      var active = current === link[0] ? ' aria-current="page"' : '';
+      return '<a href="' + link[0] + '"' + active + '>' + link[1] + '</a>';
+    }).join('');
+
+    var cartActive = current === 'carrito.html' ? ' aria-current="page"' : '';
+    header.innerHTML = [
+      '<a class="brand" href="index.html" aria-label="Lady Aura inicio"><img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art - Diamond Painting Premium"></a>',
+      '<button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>',
+      '<nav class="nav" id="nav" aria-label="Navegacion principal">' + navHtml + '</nav>',
+      '<div class="lady-aura-header-actions" aria-label="Carrito e idioma"><a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito"' + cartActive + ' style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">🛒<span class="cart-badge" style="display:none">0</span></a></div>'
+    ].join('');
+    if (typeof window.cartUpdateBadge === 'function') {
+      window.cartUpdateBadge();
+    }
   }
 
   function ensureGoogleWidget() {
@@ -207,6 +248,7 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     addStyles();
+    normalizeHeader();
     addToggle();
     bindMobileMenu();
     applyLanguage(getInitialLanguage(), { reload: false });
