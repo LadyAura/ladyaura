@@ -33,7 +33,7 @@ function cartAdd(item) {
     item.coleccion = 'bruji';
     item.collection = 'bruji';
   }
-  const maikaImgList = ['artista-de-suenos','hada-de-los-cristales-rojos','muneca-de-flores','nina-del-mar-de-estrellas','galaxia-en-sus-ojos','artista-entre-luces','noche-de-cocoa','the-beautiful-and-the-broken','tata','ten-thousand-whys','resilience','from-zero','cupid','break-me-more','hello-how-are-you','superheroes'];
+  const maikaImgList = ['artista-de-suenos','hada-de-los-cristales-rojos','muneca-de-flores','nina-del-mar-de-estrellas','galaxia-en-sus-ojos','artista-entre-luces','noche-de-cocoa','the-beautiful-and-the-broken','tata','ten-thousand-whys','resilience','from-zero','cupid','break-me-more','hello-how-are-you','superheroes','tarde-de-lectura','chica-del-pozo','jardinera-de-suenos'];
   if (!item.coleccion && !item.collection && (raw.includes('maika') || pagePath.includes('maika') || maikaImgList.some(function(n){ return raw.includes(n); }))) {
     item.coleccion = 'maika';
     item.collection = 'maika';
@@ -616,7 +616,8 @@ if(document.readyState !== "loading") fullscreenInjectStyles();
       'artista-de-suenos','hada-de-los-cristales-rojos','muneca-de-flores',
       'nina-del-mar-de-estrellas','galaxia-en-sus-ojos','artista-entre-luces',
       'noche-de-cocoa','the-beautiful-and-the-broken','tata','ten-thousand-whys',
-      'resilience','from-zero','cupid','break-me-more','hello-how-are-you','superheroes'
+      'resilience','from-zero','cupid','break-me-more','hello-how-are-you','superheroes',
+      'tarde-de-lectura','chica-del-pozo','jardinera-de-suenos'
     ];
     return maikaImgs.some(function(name) { return raw.includes(name); });
   }
