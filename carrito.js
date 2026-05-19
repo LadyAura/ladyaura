@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    LADY AURA ART · carrito.js
    Carrito global con localStorage. Funciona en todas las páginas.
    ============================================================ */
@@ -101,6 +101,7 @@ function cartAdd(item) {
   } else {
     cartShowToast(item.nombre, true);
   }
+  if (typeof window.ladyAuraApplyInlineLanguage === 'function') window.ladyAuraApplyInlineLanguage(localStorage.getItem('ladyaura_site_lang') || localStorage.getItem('la_lang') || localStorage.getItem('ladyaura-lang') || 'es');
 }
 
 /* ── Eliminar ── */
@@ -135,8 +136,8 @@ function cartShowToast(nombre, yaEsta) {
     document.body.appendChild(toast);
   }
   toast.innerHTML = yaEsta
-    ? `<span>✨</span> <em>${nombre}</em> ya está en tu carrito`
-    : `<span>🛒</span> <em>${nombre}</em> añadido al carrito`;
+    ? `<span>✨</span> <em class="notranslate" translate="no">${nombre}</em> <span class="lang-es">ya está en tu carrito</span><span class="lang-en" style="display:none">is already in your cart</span>`
+    : `<span>🛒</span> <em class="notranslate" translate="no">${nombre}</em> <span class="lang-es">añadido al carrito</span><span class="lang-en" style="display:none">added to cart</span>`;
   toast.classList.remove('out');
   toast.classList.add('in');
   clearTimeout(toast._t);
@@ -187,7 +188,7 @@ function cartInjectButtons() {
 
     const btn = document.createElement('button');
     btn.className = 'btn-add-cart';
-    btn.innerHTML = '🛒 Añadir al carrito';
+    btn.innerHTML = '🛒 <span class="lang-es">Añadir al carrito</span><span class="lang-en" style="display:none">Add to cart</span>';
     btn.setAttribute('aria-label', `Añadir ${nombre} al carrito`);
 
     btn.addEventListener('click', function(e) {
@@ -202,10 +203,10 @@ function cartInjectButtons() {
         collection: card.dataset.collection || card.dataset.coleccion || (location.pathname.toLowerCase().includes('nedeka') ? 'nedeka' : location.pathname.toLowerCase().includes('bruji') ? 'bruji' : location.pathname.toLowerCase().includes('maika') ? 'maika' : location.pathname.toLowerCase().includes('circulo-aura') ? 'bambarelle71' : card.dataset.coleccion || card.dataset.collection || '')
       });
       this.classList.add('added');
-      this.innerHTML = '✓ En el carrito';
+      this.innerHTML = '✓ <span class="lang-es">En el carrito</span><span class="lang-en" style="display:none">In cart</span>';
       setTimeout(() => {
         this.classList.remove('added');
-        this.innerHTML = '🛒 Añadir al carrito';
+        this.innerHTML = '🛒 <span class="lang-es">Añadir al carrito</span><span class="lang-en" style="display:none">Add to cart</span>';
       }, 2000);
     });
 
@@ -356,7 +357,7 @@ function cartInjectZodiaco() {
 
     const btn = document.createElement('button');
     btn.className = 'btn-add-cart';
-    btn.innerHTML = '🛒 Añadir al carrito';
+    btn.innerHTML = '🛒 <span class="lang-es">Añadir al carrito</span><span class="lang-en" style="display:none">Add to cart</span>';
     btn.style.cssText = 'display:block;width:100%;margin-top:0.5rem;padding:0.45rem 0.8rem;background:linear-gradient(135deg,rgba(160,63,255,0.15),rgba(255,72,137,0.1));border:1px solid rgba(160,63,255,0.4);border-radius:999px;color:rgba(255,255,255,0.85);font-family:Cinzel,serif;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.25s;';
     btn.addEventListener('click', function(e) {
       e.stopPropagation();
@@ -368,10 +369,10 @@ function cartInjectZodiaco() {
         orient: 'v'
       });
       this.classList.add('added');
-      this.innerHTML = '✓ En el carrito';
+      this.innerHTML = '✓ <span class="lang-es">En el carrito</span><span class="lang-en" style="display:none">In cart</span>';
       setTimeout(() => {
         this.classList.remove('added');
-        this.innerHTML = '🛒 Añadir al carrito';
+        this.innerHTML = '🛒 <span class="lang-es">Añadir al carrito</span><span class="lang-en" style="display:none">Add to cart</span>';
       }, 2000);
     });
 
@@ -390,7 +391,7 @@ function cartInjectZodiaco() {
 
     const btn = document.createElement('button');
     btn.className = 'btn-add-cart';
-    btn.innerHTML = '🛒 Añadir al carrito';
+    btn.innerHTML = '🛒 <span class="lang-es">Añadir al carrito</span><span class="lang-en" style="display:none">Add to cart</span>';
     btn.style.cssText = 'display:block;width:100%;margin-top:0.5rem;padding:0.45rem 0.8rem;background:linear-gradient(135deg,rgba(160,63,255,0.15),rgba(255,72,137,0.1));border:1px solid rgba(160,63,255,0.4);border-radius:999px;color:rgba(255,255,255,0.85);font-family:Cinzel,serif;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.25s;';
     btn.addEventListener('click', function(e) {
       e.preventDefault();
@@ -405,10 +406,10 @@ function cartInjectZodiaco() {
         collection: 'zodiaco'
       });
       this.classList.add('added');
-      this.innerHTML = '✓ En el carrito';
+      this.innerHTML = '✓ <span class="lang-es">En el carrito</span><span class="lang-en" style="display:none">In cart</span>';
       setTimeout(() => {
         this.classList.remove('added');
-        this.innerHTML = '🛒 Añadir al carrito';
+        this.innerHTML = '🛒 <span class="lang-es">Añadir al carrito</span><span class="lang-en" style="display:none">Add to cart</span>';
       }, 2000);
     });
 
@@ -430,7 +431,7 @@ function cartInjectColorear() {
 
     const btn = document.createElement('button');
     btn.className = 'btn-add-cart';
-    btn.innerHTML = '🛒 Añadir al carrito';
+    btn.innerHTML = '🛒 <span class="lang-es">Añadir al carrito</span><span class="lang-en" style="display:none">Add to cart</span>';
     btn.style.marginTop = '0.5rem';
     btn.addEventListener('click', function(e) {
       e.stopPropagation();
@@ -442,10 +443,10 @@ function cartInjectColorear() {
         orient: 'v'
       });
       this.classList.add('added');
-      this.innerHTML = '✓ En el carrito';
+      this.innerHTML = '✓ <span class="lang-es">En el carrito</span><span class="lang-en" style="display:none">In cart</span>';
       setTimeout(() => {
         this.classList.remove('added');
-        this.innerHTML = '🛒 Añadir al carrito';
+        this.innerHTML = '🛒 <span class="lang-es">Añadir al carrito</span><span class="lang-en" style="display:none">Add to cart</span>';
       }, 2000);
     });
 
@@ -513,10 +514,10 @@ function cartPatchLightbox(card) {
         collection: card.dataset.collection || card.dataset.coleccion || ''
       });
       this.classList.add('added');
-      this.textContent = '✓ Añadido';
+      this.innerHTML = '✓ <span class="lang-es">Añadido</span><span class="lang-en" style="display:none">Added</span>';
       setTimeout(() => {
         this.classList.remove('added');
-        this.textContent = '🛒 Añadir al carrito';
+        this.innerHTML = '🛒 <span class="lang-es">Añadir al carrito</span><span class="lang-en" style="display:none">Add to cart</span>';
       }, 2000);
     };
     fullscreenAttach();
@@ -524,7 +525,7 @@ function cartPatchLightbox(card) {
   }
   const btn = document.createElement('button');
   btn.className = 'lb-btn lb-btn-cart';
-  btn.textContent = '🛒 Añadir al carrito';
+  btn.innerHTML = '🛒 <span class="lang-es">Añadir al carrito</span><span class="lang-en" style="display:none">Add to cart</span>';
   btn.style.cssText = `
     background: linear-gradient(135deg,rgba(160,63,255,0.2),rgba(255,72,137,0.15));
     border: 1px solid rgba(160,63,255,0.5);
@@ -542,10 +543,10 @@ function cartPatchLightbox(card) {
       collection: card.dataset.collection || card.dataset.coleccion || ''
     });
     this.classList.add('added');
-    this.textContent = '✓ Añadido al carrito';
+    this.innerHTML = '✓ <span class="lang-es">Añadido al carrito</span><span class="lang-en" style="display:none">Added to cart</span>';
     setTimeout(() => {
       this.classList.remove('added');
-      this.textContent = '🛒 Añadir al carrito';
+      this.innerHTML = '🛒 <span class="lang-es">Añadir al carrito</span><span class="lang-en" style="display:none">Add to cart</span>';
     }, 2000);
   };
   btns.insertBefore(btn, btns.firstChild);
@@ -844,7 +845,7 @@ if(document.readyState !== "loading") {
     return 0;
   }
 
-  function couponMessage(text, ok) {
+  function couponMessage(text, ok, textEn) {
     let box = document.getElementById('coupon-message');
     const form = document.getElementById('coupon-form') || document.querySelector('.coupon-form') || document.querySelector('[data-coupon-form]');
     if (!box) {
@@ -854,8 +855,11 @@ if(document.readyState !== "loading") {
       box.style.fontSize = '.86rem';
       if (form) form.appendChild(box);
     }
-    box.textContent = text;
+    box.innerHTML = textEn
+      ? `<span class="lang-es">${text}</span><span class="lang-en" style="display:none">${textEn}</span>`
+      : text;
     box.style.color = ok ? '#a0ffb0' : '#ff9bb8';
+    if (typeof window.ladyAuraApplyInlineLanguage === 'function') window.ladyAuraApplyInlineLanguage(localStorage.getItem('ladyaura_site_lang') || localStorage.getItem('la_lang') || localStorage.getItem('ladyaura-lang') || 'es');
   }
 
   window.ladyAuraApplyCoupon = function(code) {
@@ -864,55 +868,55 @@ if(document.readyState !== "loading") {
     const existing = getCoupon();
 
     if (!clean) {
-      couponMessage('Escribe un cupón para aplicarlo.', false);
+      couponMessage('Escribe un cupón para aplicarlo.', false, 'Enter a coupon to apply it.');
       return false;
     }
 
     if (existing && normalizeCoupon(existing.code) && normalizeCoupon(existing.code) !== clean) {
-      couponMessage('Solo se puede usar un cupón por pedido.', false);
+      couponMessage('Solo se puede usar un cupón por pedido.', false, 'Only one coupon can be used per order.');
       return false;
     }
 
     if (!['LADYAURA5','NEDEKA10','NEDEKA60','BRUJI10','BRUJI60','MAIKA10','MAIKA60','ALI10','FON10'].includes(clean)) {
-      couponMessage('Cupón no válido.', false);
+      couponMessage('Cupón no válido.', false, 'Invalid coupon.');
       return false;
     }
 
     if ((clean === 'NEDEKA10' || clean === 'NEDEKA60') && !items.some(isNedekaItem)) {
-      couponMessage('Este cup\u00f3n solo funciona con cuadros de la Colecci\u00f3n NEDEKA.', false);
+      couponMessage('Este cup\u00f3n solo funciona con cuadros de la Colecci\u00f3n NEDEKA.', false, 'This coupon only works with canvases from the NEDEKA Collection.');
       return false;
     }
     if ((clean === 'BRUJI10' || clean === 'BRUJI60') && !items.some(isBrujiItem)) {
-      couponMessage('Este cupón solo funciona con cuadros de la Colección BRUJI.', false);
+      couponMessage('Este cupón solo funciona con cuadros de la Colección BRUJI.', false, 'This coupon only works with canvases from the BRUJI Collection.');
       return false;
     }
     if ((clean === 'MAIKA10' || clean === 'MAIKA60') && !items.some(isMaikaItem)) {
-      couponMessage('Cupón no válido.', false);
+      couponMessage('Cupón no válido.', false, 'Invalid coupon.');
       return false;
     }
     if (clean === 'ALI10' && !items.some(isBambarelleItem)) {
-      couponMessage('Este cupón solo funciona con obras del Círculo Aura (Bambarelle71).', false);
+      couponMessage('Este cupón solo funciona con obras del Círculo Aura (Bambarelle71).', false, 'This coupon only works with works from Círculo Aura (Bambarelle71).');
       return false;
     }
     if (clean === 'FON10' && !items.some(isFonsinItem)) {
-      couponMessage('Este cupon solo funciona con cuadros de Fonsin11_diamond.', false);
+      couponMessage('Este cupon solo funciona con cuadros de Fonsin11_diamond.', false, 'This coupon only works with canvases from Fonsin11_diamond.');
       return false;
     }
 
     const discount = calculateCouponDiscount(items, clean);
     if (discount <= 0) {
-      couponMessage('Este cupón no se puede aplicar a tu carrito actual.', false);
+      couponMessage('Este cupón no se puede aplicar a tu carrito actual.', false, 'This coupon cannot be applied to your current cart.');
       return false;
     }
 
     setCoupon({ code: clean, discount: discount });
-    couponMessage(`${clean === 'LADYAURA5' ? 'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + clean} aplicado: -${discount.toFixed(2).replace('.', ',')} \u20ac`, true);
+    couponMessage(`${clean === 'LADYAURA5' ? 'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + clean} aplicado: -${discount.toFixed(2).replace('.', ',')} \u20ac`, true, `${clean === 'LADYAURA5' ? 'LADYAURA5 coupon' : clean + ' coupon'} applied: -${discount.toFixed(2).replace('.', ',')} \u20ac`);
     return true;
   };
 
   window.ladyAuraRemoveCoupon = function() {
     clearCoupon();
-    couponMessage('Cupón eliminado.', true);
+    couponMessage('Cupón eliminado.', true, 'Coupon removed.');
   };
 
   function ensureCouponBox() {
@@ -925,16 +929,17 @@ if(document.readyState !== "loading") {
     const box = document.createElement('section');
     box.className = 'coupon-box';
     box.innerHTML = `
-      <h3>¿Tienes un cupón?</h3>
+      <h3><span class="lang-es">¿Tienes un cupón?</span><span class="lang-en" style="display:none">Have a coupon?</span></h3>
       <form id="coupon-form">
-        <input id="coupon-code" type="text" placeholder="Ej: LADYAURA5" autocomplete="off">
-        <button type="submit">Aplicar</button>
-        <button type="button" id="coupon-remove">Quitar</button>
+        <input id="coupon-code" type="text" placeholder="Ej: LADYAURA5" data-placeholder-es="Ej: LADYAURA5" data-placeholder-en="E.g. LADYAURA5" autocomplete="off">
+        <button type="submit"><span class="lang-es">Aplicar</span><span class="lang-en" style="display:none">Apply</span></button>
+        <button type="button" id="coupon-remove"><span class="lang-es">Quitar</span><span class="lang-en" style="display:none">Remove</span></button>
       </form>
-      <p class="coupon-help">Solo se puede usar un cupón por pedido.</p>
+      <p class="coupon-help"><span class="lang-es">Solo se puede usar un cupón por pedido.</span><span class="lang-en" style="display:none">Only one coupon can be used per order.</span></p>
       <p id="coupon-message"></p>
     `;
     target.appendChild(box);
+    if (typeof window.ladyAuraApplyInlineLanguage === 'function') window.ladyAuraApplyInlineLanguage(localStorage.getItem('ladyaura_site_lang') || localStorage.getItem('la_lang') || localStorage.getItem('ladyaura-lang') || 'es');
   }
 
   function injectCouponStyles() {
@@ -976,7 +981,9 @@ if(document.readyState !== "loading") {
         const line = document.createElement('div');
         line.className = 'coupon-line';
         line.setAttribute('data-coupon-line','true');
-        line.innerHTML = `<span>${code === 'LADYAURA5' ? 'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code}</span><strong>-${discount.toFixed(2).replace('.', ',')} €</strong>`;
+        const couponLabelEs = code === 'LADYAURA5' ? 'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code;
+        const couponLabelEn = code === 'LADYAURA5' ? 'LADYAURA5 coupon' : code + ' coupon';
+        line.innerHTML = `<span><span class="lang-es">${couponLabelEs}</span><span class="lang-en" style="display:none">${couponLabelEn}</span></span><strong>-${discount.toFixed(2).replace('.', ',')} €</strong>`;
         totalEl.parentElement.insertBefore(line, totalEl);
       }
 
@@ -990,9 +997,12 @@ if(document.readyState !== "loading") {
 
     const msg = document.getElementById('coupon-message');
     if (msg && code && discount > 0) {
-      msg.textContent = `${code === 'LADYAURA5' ? 'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code} aplicado: -${discount.toFixed(2).replace('.', ',')} €`;
+      const appliedLabelEs = code === 'LADYAURA5' ? 'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code;
+      const appliedLabelEn = code === 'LADYAURA5' ? 'LADYAURA5 coupon' : code + ' coupon';
+      msg.innerHTML = `<span class="lang-es">${appliedLabelEs} aplicado: -${discount.toFixed(2).replace('.', ',')} €</span><span class="lang-en" style="display:none">${appliedLabelEn} applied: -${discount.toFixed(2).replace('.', ',')} €</span>`;
       msg.style.color = '#a0ffb0';
     }
+    if (typeof window.ladyAuraApplyInlineLanguage === 'function') window.ladyAuraApplyInlineLanguage(localStorage.getItem('ladyaura_site_lang') || localStorage.getItem('la_lang') || localStorage.getItem('ladyaura-lang') || 'es');
   }
 
   function bindCouponForm() {

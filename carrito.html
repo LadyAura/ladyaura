@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -1224,6 +1224,7 @@ function renderCart() {
     const imageSrc = escapeHtmlInline(normalizeCartImageInline(item.img, item));
     const itemName = escapeHtmlInline(item.nombre || 'Producto Lady Aura');
     const itemId = escapeHtmlInline(item.id || item.nombre || item.img || imageSrc);
+    const itemFormat = item.orient==='v' ? '60×90 cm ↕' : '90×60 cm ↔';
     const priceHtml = (isSpecial60Coupon(activeCouponForRender) && itemMatchesSpecial60(item, activeCouponForRender))
       ? `<span class="cart-item-price"><s style="opacity:.4;font-size:.8em;text-decoration:line-through">${originalPrice} €</s>&nbsp;${displayPrice} €</span>`
       : `<span class="cart-item-price">${originalPrice} €</span>`;
@@ -1231,13 +1232,15 @@ function renderCart() {
     <div class="cart-item">
       <img class="cart-item-img" src="${imageSrc}" alt="${itemName}" onerror="this.src='assets/Logo-transparent.webp';this.onerror=null;">
       <div class="cart-item-info">
-        <h3>${itemName}</h3>
-        <p>Diamond painting ${item.orient==='v'?'60×90 cm ↕':'90×60 cm ↔'} · Envío incluido</p>
+        <h3 class="notranslate" translate="no">${itemName}</h3>
+        <p><span class="lang-es">Diamond painting ${itemFormat} · Envío incluido</span><span class="lang-en" style="display:none">Diamond painting ${itemFormat} · Shipping included</span></p>
       </div>
       ${priceHtml}
       <button class="cart-item-remove" onclick="cartRemove(this.dataset.id)" data-id="${itemId}" aria-label="Eliminar">✕</button>
     </div>`;
   }).join('');
+  if (typeof window.ladyAuraProtectProductTitles === 'function') window.ladyAuraProtectProductTitles();
+  if (typeof window.ladyAuraApplyInlineLanguage === 'function') window.ladyAuraApplyInlineLanguage(localStorage.getItem('ladyaura_site_lang') || localStorage.getItem('la_lang') || localStorage.getItem('ladyaura-lang') || 'es');
 
   const couponData = getCouponInline();
   const couponCode = couponData ? couponData.code : null;

@@ -179,11 +179,61 @@
     });
   }
 
+  function toggleInlineLanguage(lang) {
+    document.querySelectorAll('.lang-es').forEach(function (el) {
+      el.style.display = lang === 'en' ? 'none' : '';
+    });
+    document.querySelectorAll('.lang-en').forEach(function (el) {
+      el.style.display = lang === 'en' ? '' : 'none';
+    });
+    document.querySelectorAll('[data-placeholder-es][data-placeholder-en]').forEach(function (el) {
+      el.setAttribute('placeholder', lang === 'en' ? el.getAttribute('data-placeholder-en') : el.getAttribute('data-placeholder-es'));
+    });
+  }
+
+  function protectProductTitles() {
+    [
+      '.product-card h3',
+      '.zod-card h3',
+      '.sign-card h3',
+      '.cart-item-info h3',
+      '#lbTitle',
+      '.lamina-nombre',
+      '.gallery-card-label'
+    ].forEach(function (selector) {
+      document.querySelectorAll(selector).forEach(function (el) {
+        el.classList.add('notranslate');
+        el.setAttribute('translate', 'no');
+      });
+    });
+  }
+
+  window.ladyAuraApplyInlineLanguage = toggleInlineLanguage;
+  window.ladyAuraProtectProductTitles = protectProductTitles;
+
+  var languageObserverTimer = null;
+  function refreshDynamicLanguage() {
+    clearTimeout(languageObserverTimer);
+    languageObserverTimer = setTimeout(function () {
+      var lang = getStoredLanguage() || document.documentElement.getAttribute('lang') || 'es';
+      protectProductTitles();
+      toggleInlineLanguage(lang);
+    }, 60);
+  }
+
+  function startLanguageObserver() {
+    if (window.__ladyAuraLanguageObserverStarted || !document.body || !window.MutationObserver) return;
+    window.__ladyAuraLanguageObserverStarted = true;
+    new MutationObserver(refreshDynamicLanguage).observe(document.body, { childList: true, subtree: true });
+  }
+
   function applyLanguage(lang, options) {
     var shouldReload = options && options.reload;
     saveLanguage(lang);
     setHtmlLanguage(lang);
     updateButtons(lang);
+    protectProductTitles();
+    toggleInlineLanguage(lang);
 
     if (lang === 'en') {
       setTranslateCookie('en');
@@ -200,6 +250,7 @@
         location.reload();
       }
     }
+    window.dispatchEvent(new CustomEvent('ladyAuraLangChanged', { detail: { lang: lang } }));
   }
 
   function addToggle() {
@@ -342,6 +393,7 @@
     bindMobileMenu();
     setTimeout(function () { paginateCardGrids(false); }, 0);
     applyLanguage(getInitialLanguage(), { reload: false });
+    startLanguageObserver();
   });
 
   window.addEventListener('ladyAuraLangChanged', function () {
