@@ -80,6 +80,14 @@ footer a{color:var(--gold);text-decoration:none;}
 .lb-btn{padding:0.85rem 1.5rem;border-radius:999px;font-family:'Cinzel',serif;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;text-align:center;cursor:pointer;border:none;width:100%;}
 .lb-btn-cart{background:linear-gradient(135deg,rgba(160,63,255,0.9),rgba(255,72,137,0.85));color:#fff;box-shadow:0 0 25px rgba(160,63,255,0.35);}
 .card-artist{font-size:0.75rem;color:rgba(201,168,76,0.75);margin:0 0 0.3rem;font-style:italic;letter-spacing:0.03em;}
+
+.product-specs{margin:.65rem 0 .8rem;padding:.75rem .8rem;border:1px solid rgba(255,217,138,.22);border-radius:14px;background:linear-gradient(135deg,rgba(255,217,138,.075),rgba(160,63,255,.075));box-shadow:inset 0 0 18px rgba(255,255,255,.025)}
+.product-specs .spec-title{display:block;font-family:"Cinzel",serif;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold,#ffd98a);margin-bottom:.45rem}
+.product-specs ul{list-style:none;margin:0;padding:0;display:grid;gap:.28rem}
+.product-specs li{position:relative;padding-left:.9rem;font-size:.82rem;line-height:1.35;color:rgba(255,255,255,.78)}
+.product-specs li::before{content:"";position:absolute;left:0;top:.58em;width:.32rem;height:.32rem;border-radius:50%;background:var(--gold,#ffd98a);box-shadow:0 0 8px rgba(255,217,138,.55)}
+@media(max-width:760px){.product-specs{padding:.65rem .7rem}.product-specs li{font-size:.78rem}}
+
 </style>
 </head>
 <body>
@@ -134,9 +142,17 @@ footer a{color:var(--gold);text-decoration:none;}
         </div>
         <div class="card-info">
           <h3>Aura dorada</h3>
-          <p class="card-artist">✦ Artista: Bambarelle71</p>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
+<div class="product-specs" aria-label="Detalles del lienzo Aura dorada">
+<span class="spec-title">Lienzo: Aura dorada</span>
+<ul>
+<li>Diamante cuadrado de resina y especiales</li>
+<li>Tama&ntilde;o 60x90</li>
+<li>Lienzo Velvet Premium</li>
+<li>Pegamento vertido</li>
+<li>Opci&oacute;n de quitar el kit de iniciaci&oacute;n</li>
+</ul>
+</div>
+<p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
       </div>
       <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
            data-nombre="Gatita arcoíris" data-img="assets/bambarella71-gatita-arcoiris.webp" data-orient="v"
@@ -147,9 +163,17 @@ footer a{color:var(--gold);text-decoration:none;}
         </div>
         <div class="card-info">
           <h3>Gatita arcoíris</h3>
-          <p class="card-artist">✦ Artista: Bambarelle71</p>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
+<div class="product-specs" aria-label="Detalles del lienzo Gatita arcoíris">
+<span class="spec-title">Lienzo: Gatita arcoíris</span>
+<ul>
+<li>Diamante cuadrado de resina y especiales</li>
+<li>Tama&ntilde;o 60x90</li>
+<li>Lienzo Velvet Premium</li>
+<li>Pegamento vertido</li>
+<li>Opci&oacute;n de quitar el kit de iniciaci&oacute;n</li>
+</ul>
+</div>
+<p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
       </div>
       <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
            data-nombre="Dama dorada celestial" data-img="assets/bambarella71-dama-dragon-dorado.webp" data-orient="v"
@@ -160,9 +184,17 @@ footer a{color:var(--gold);text-decoration:none;}
         </div>
         <div class="card-info">
           <h3>Dama dorada celestial</h3>
-          <p class="card-artist">✦ Artista: Bambarelle71</p>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
+<div class="product-specs" aria-label="Detalles del lienzo Dama dorada celestial">
+<span class="spec-title">Lienzo: Dama dorada celestial</span>
+<ul>
+<li>Diamante cuadrado de resina y especiales</li>
+<li>Tama&ntilde;o 60x90</li>
+<li>Lienzo Velvet Premium</li>
+<li>Pegamento vertido</li>
+<li>Opci&oacute;n de quitar el kit de iniciaci&oacute;n</li>
+</ul>
+</div>
+<p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
       </div>
       <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
            data-nombre="Sueño de colores" data-img="assets/bambarella71-sueno-de-colores.png" data-orient="v"
@@ -173,9 +205,17 @@ footer a{color:var(--gold);text-decoration:none;}
         </div>
         <div class="card-info">
           <h3>Sueño de colores</h3>
-          <p class="card-artist">✦ Artista: Bambarelle71</p>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
+<div class="product-specs" aria-label="Detalles del lienzo Sueño de colores">
+<span class="spec-title">Lienzo: Sueño de colores</span>
+<ul>
+<li>Diamante cuadrado de resina y especiales</li>
+<li>Tama&ntilde;o 60x90</li>
+<li>Lienzo Velvet Premium</li>
+<li>Pegamento vertido</li>
+<li>Opci&oacute;n de quitar el kit de iniciaci&oacute;n</li>
+</ul>
+</div>
+<p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
       </div>
       <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
            data-nombre="Guardianas del bosque azul" data-img="assets/bambarella71-guardianas-del-bosque.webp" data-orient="v"
@@ -186,9 +226,17 @@ footer a{color:var(--gold);text-decoration:none;}
         </div>
         <div class="card-info">
           <h3>Guardianas del bosque azul</h3>
-          <p class="card-artist">✦ Artista: Bambarelle71</p>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
+<div class="product-specs" aria-label="Detalles del lienzo Guardianas del bosque azul">
+<span class="spec-title">Lienzo: Guardianas del bosque azul</span>
+<ul>
+<li>Diamante cuadrado de resina y especiales</li>
+<li>Tama&ntilde;o 60x90</li>
+<li>Lienzo Velvet Premium</li>
+<li>Pegamento vertido</li>
+<li>Opci&oacute;n de quitar el kit de iniciaci&oacute;n</li>
+</ul>
+</div>
+<p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
       </div>
       <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
            data-nombre="Guardian del umbral magico" data-img="assets/fonsin11-guardian-umbral-magico.webp" data-orient="v" data-coleccion="fonsin11_diamond" data-collection="fonsin11_diamond"
@@ -199,9 +247,17 @@ footer a{color:var(--gold);text-decoration:none;}
         </div>
         <div class="card-info">
           <h3>Guardian del umbral magico</h3>
-          <p class="card-artist">✦ Artista: Fonsin11_diamond</p>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
+<div class="product-specs" aria-label="Detalles del lienzo Guardian del umbral magico">
+<span class="spec-title">Lienzo: Guardian del umbral magico</span>
+<ul>
+<li>Diamante cuadrado de resina y especiales</li>
+<li>Tama&ntilde;o 60x90</li>
+<li>Lienzo Velvet Premium</li>
+<li>Pegamento vertido</li>
+<li>Opci&oacute;n de quitar el kit de iniciaci&oacute;n</li>
+</ul>
+</div>
+<p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
       </div>
       <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
            data-nombre="Panda zen" data-img="assets/fonsin11-panda-zen.webp" data-orient="v" data-coleccion="fonsin11_diamond" data-collection="fonsin11_diamond"
@@ -212,9 +268,17 @@ footer a{color:var(--gold);text-decoration:none;}
         </div>
         <div class="card-info">
           <h3>Panda zen</h3>
-          <p class="card-artist">✦ Artista: Fonsin11_diamond</p>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
+<div class="product-specs" aria-label="Detalles del lienzo Panda zen">
+<span class="spec-title">Lienzo: Panda zen</span>
+<ul>
+<li>Diamante cuadrado de resina y especiales</li>
+<li>Tama&ntilde;o 60x90</li>
+<li>Lienzo Velvet Premium</li>
+<li>Pegamento vertido</li>
+<li>Opci&oacute;n de quitar el kit de iniciaci&oacute;n</li>
+</ul>
+</div>
+<p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
       </div>
       <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
            data-nombre="Buho vitral real" data-img="assets/fonsin11-buho-vitral-real.webp" data-orient="v" data-coleccion="fonsin11_diamond" data-collection="fonsin11_diamond"
@@ -225,9 +289,17 @@ footer a{color:var(--gold);text-decoration:none;}
         </div>
         <div class="card-info">
           <h3>Buho vitral real</h3>
-          <p class="card-artist">✦ Artista: Fonsin11_diamond</p>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
+<div class="product-specs" aria-label="Detalles del lienzo Buho vitral real">
+<span class="spec-title">Lienzo: Buho vitral real</span>
+<ul>
+<li>Diamante cuadrado de resina y especiales</li>
+<li>Tama&ntilde;o 60x90</li>
+<li>Lienzo Velvet Premium</li>
+<li>Pegamento vertido</li>
+<li>Opci&oacute;n de quitar el kit de iniciaci&oacute;n</li>
+</ul>
+</div>
+<p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
       </div>
       <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
            data-nombre="Alma hippie arcoiris" data-img="assets/fonsin11-alma-hippie-arcoiris.webp" data-orient="v" data-coleccion="fonsin11_diamond" data-collection="fonsin11_diamond"
@@ -238,9 +310,17 @@ footer a{color:var(--gold);text-decoration:none;}
         </div>
         <div class="card-info">
           <h3>Alma hippie arcoiris</h3>
-          <p class="card-artist">✦ Artista: Fonsin11_diamond</p>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
+<div class="product-specs" aria-label="Detalles del lienzo Alma hippie arcoiris">
+<span class="spec-title">Lienzo: Alma hippie arcoiris</span>
+<ul>
+<li>Diamante cuadrado de resina y especiales</li>
+<li>Tama&ntilde;o 60x90</li>
+<li>Lienzo Velvet Premium</li>
+<li>Pegamento vertido</li>
+<li>Opci&oacute;n de quitar el kit de iniciaci&oacute;n</li>
+</ul>
+</div>
+<p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
       </div>
       <div class="product-card" role="button" tabindex="0" onclick="openLB(this)"
            data-nombre="Tortuguita arcoiris" data-img="assets/fonsin11-tortuguita-arcoiris.webp" data-orient="v" data-coleccion="fonsin11_diamond" data-collection="fonsin11_diamond"
@@ -251,9 +331,17 @@ footer a{color:var(--gold);text-decoration:none;}
         </div>
         <div class="card-info">
           <h3>Tortuguita arcoiris</h3>
-          <p class="card-artist">✦ Artista: Fonsin11_diamond</p>
-          <p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p>
-        </div>
+<div class="product-specs" aria-label="Detalles del lienzo Tortuguita arcoiris">
+<span class="spec-title">Lienzo: Tortuguita arcoiris</span>
+<ul>
+<li>Diamante cuadrado de resina y especiales</li>
+<li>Tama&ntilde;o 60x90</li>
+<li>Lienzo Velvet Premium</li>
+<li>Pegamento vertido</li>
+<li>Opci&oacute;n de quitar el kit de iniciaci&oacute;n</li>
+</ul>
+</div>
+<p class="card-price">84 € · <span class="reserve-hint">✦ Pre-reserva sin compromiso</span></p></div>
       </div>
     </div>
   </section>
