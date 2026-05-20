@@ -5,6 +5,15 @@
   var COOKIE_DOMAIN = location.hostname && location.hostname !== 'localhost' ? ';domain=' + location.hostname : '';
   var GOOGLE_SCRIPT_ID = 'google-translate-script';
   var WIDGET_ID = 'google_translate_element';
+  var SUPPORTED_LANGS = ['es', 'en', 'fr', 'de', 'it', 'pt'];
+  var LANG_META = {
+    es: { flag: 'ES', title: 'Espanol', label: 'Ver en espanol' },
+    en: { flag: 'EN', title: 'English', label: 'View in English' },
+    fr: { flag: 'FR', title: 'Francais', label: 'Voir en francais' },
+    de: { flag: 'DE', title: 'Deutsch', label: 'Auf Deutsch anzeigen' },
+    it: { flag: 'IT', title: 'Italiano', label: 'Vedi in italiano' },
+    pt: { flag: 'PT', title: 'Portugues', label: 'Ver em portugues' }
+  };
 
   function getStoredLanguage() {
     try {
@@ -29,12 +38,12 @@
 
   function getInitialLanguage() {
     var stored = getStoredLanguage();
-    if (stored === 'en' || stored === 'es') return stored;
+    if (SUPPORTED_LANGS.indexOf(stored) !== -1) return stored;
     return browserPrefersEnglish() ? 'en' : 'es';
   }
 
   function setTranslateCookie(lang) {
-    var value = lang === 'en' ? '/es/en' : '/es/es';
+    var value = lang === 'es' ? '/es/es' : '/es/' + lang;
     document.cookie = 'googtrans=' + value + ';path=/' + COOKIE_DOMAIN;
     document.cookie = 'googtrans=' + value + ';path=/';
   }
@@ -61,8 +70,8 @@
       '.site-header .header-button{display:none!important}',
       '.lady-aura-header-actions{display:flex!important;align-items:center!important;gap:.45rem!important;margin-left:.25rem!important;position:relative!important;z-index:10002!important;flex:0 0 auto!important}',
       '.lady-aura-header-actions .cart-nav-link{display:inline-flex!important;align-items:center;justify-content:center;min-width:38px;min-height:34px;padding:.25rem .45rem!important;border:1px solid rgba(255,217,138,.25);border-radius:999px;background:rgba(8,4,20,.55);text-decoration:none!important}',
-      '.lady-aura-language{display:flex;align-items:center;gap:4px;padding:3px;border:1px solid rgba(255,217,138,.32);border-radius:999px;background:rgba(8,4,20,.64);box-shadow:0 8px 22px rgba(0,0,0,.24);backdrop-filter:blur(10px);font-family:Arial,sans-serif}',
-      '.lady-aura-language button{width:32px;height:28px;border:0;border-radius:999px;background:transparent;color:#fff;cursor:pointer;font-size:17px;line-height:1;display:inline-flex;align-items:center;justify-content:center;transition:transform .18s,background .18s,box-shadow .18s}',
+      '.lady-aura-language{display:flex;align-items:center;gap:2px;padding:3px;border:1px solid rgba(255,217,138,.32);border-radius:999px;background:rgba(8,4,20,.64);box-shadow:0 8px 22px rgba(0,0,0,.24);backdrop-filter:blur(10px);font-family:Arial,sans-serif}',
+      '.lady-aura-language button{width:31px;height:27px;border:0;border-radius:999px;background:transparent;color:#fff;cursor:pointer;font-size:11px;font-weight:700;letter-spacing:.04em;line-height:1;display:inline-flex;align-items:center;justify-content:center;transition:transform .18s,background .18s,box-shadow .18s}',
       '.lady-aura-language button:hover{transform:translateY(-1px);background:rgba(255,255,255,.10)}',
       '.lady-aura-language button[aria-pressed="true"]{background:linear-gradient(135deg,rgba(160,63,255,.72),rgba(255,72,137,.55));box-shadow:0 0 18px rgba(160,63,255,.42)}',
       '#google_translate_element{position:fixed!important;left:-9999px!important;top:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important;display:block!important;opacity:.01!important;pointer-events:none!important}',
@@ -73,9 +82,9 @@
       '.lady-aura-pagination .page-btn,.pagination .page-btn{min-width:38px!important;height:36px!important;border:1px solid rgba(255,217,138,.28)!important;border-radius:999px!important;background:rgba(8,4,20,.72)!important;color:rgba(255,255,255,.88)!important;font-family:Cinzel,serif!important;font-size:.82rem!important;cursor:pointer!important;box-shadow:0 8px 20px rgba(0,0,0,.24)!important}',
       '.lady-aura-pagination .page-btn.active,.pagination .page-btn.active{background:linear-gradient(135deg,rgba(160,63,255,.74),rgba(255,72,137,.55))!important;border-color:rgba(255,217,138,.48)!important;color:#fff!important}',
       '.lady-aura-pagination .page-btn.disabled,.pagination .page-btn.disabled,.lady-aura-pagination .page-btn:disabled,.pagination .page-btn:disabled{opacity:.4!important;cursor:default!important}',
-      '@media(max-width:1180px){.site-header{min-height:64px!important;justify-content:flex-start!important}.site-header .brand img{max-height:48px!important;max-width:150px!important}.site-header .menu-toggle{display:flex!important;order:97;margin-left:auto!important}.site-header .lady-aura-header-actions{margin-left:.35rem!important;order:99!important}.site-header .nav .cart-nav-link{display:none!important}.lady-aura-header-actions .cart-nav-link{position:relative!important}.site-header .nav{position:absolute!important;top:calc(100% + .45rem)!important;right:clamp(.7rem,4vw,2rem)!important;left:auto!important;display:none!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:.35rem!important;min-width:230px!important;width:max-content!important;max-width:min(92vw,330px)!important;padding:.72rem!important;border:1px solid rgba(255,217,138,.18)!important;border-radius:18px!important;background:rgba(8,4,20,.97)!important;box-shadow:0 18px 42px rgba(0,0,0,.45)!important;backdrop-filter:blur(18px)!important;z-index:10001!important;flex:none!important}.site-header .nav.active{display:flex!important}.site-header .nav a{width:100%!important;justify-content:flex-end!important;text-align:right!important;min-height:37px!important;padding:.62rem .72rem!important;font-size:.74rem!important}.lady-aura-language button{width:30px;height:27px;font-size:16px}}',
-      '@media(max-width:760px){.products-grid,.grid-laminas,.gallery-grid,.collections-grid,.tools-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:.72rem!important}.product-card,.lamina-doble,.gallery-card,.col-card,.tool-card{min-width:0!important;width:auto!important}.product-card h3,.lamina-nombre,.gallery-card-label,.col-card-tag,.tool-card h3{overflow-wrap:anywhere!important}#zodiacGrid .zod-pair{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:.72rem!important;padding:.72rem!important}#zodiacGrid .zod-center{grid-column:1/-1!important;order:-1!important}#zodiacGrid .zod-card{min-width:0!important}.zod-ci{padding:.55rem!important}.zod-ci h3{font-size:.78rem!important}.zod-ci p{font-size:.72rem!important}}',
-      '@media(max-width:560px){.site-header{padding:.55rem .72rem!important;gap:.38rem!important}.site-header .brand img{max-width:132px!important;max-height:42px!important}.site-header .menu-toggle{width:36px!important;height:34px!important}.lady-aura-header-actions{gap:.28rem!important;margin-left:.25rem!important}.lady-aura-header-actions .cart-nav-link{min-width:34px!important;min-height:31px!important;padding:.18rem .34rem!important}.lady-aura-language{gap:2px;padding:2px}.lady-aura-language button{width:27px;height:25px;font-size:15px}}'
+      '@media(max-width:1180px){.site-header{min-height:64px!important;justify-content:flex-start!important}.site-header .brand img{max-height:48px!important;max-width:150px!important}.site-header .menu-toggle{display:flex!important;order:97;margin-left:auto!important}.site-header .lady-aura-header-actions{margin-left:.35rem!important;order:99!important}.site-header .nav .cart-nav-link{display:none!important}.lady-aura-header-actions .cart-nav-link{position:relative!important}.site-header .nav{position:absolute!important;top:calc(100% + .45rem)!important;right:clamp(.7rem,4vw,2rem)!important;left:auto!important;display:none!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:.35rem!important;min-width:230px!important;width:max-content!important;max-width:min(92vw,330px)!important;padding:.72rem!important;border:1px solid rgba(255,217,138,.18)!important;border-radius:18px!important;background:rgba(8,4,20,.97)!important;box-shadow:0 18px 42px rgba(0,0,0,.45)!important;backdrop-filter:blur(18px)!important;z-index:10001!important;flex:none!important}.site-header .nav.active{display:flex!important}.site-header .nav a{width:100%!important;justify-content:flex-end!important;text-align:right!important;min-height:37px!important;padding:.62rem .72rem!important;font-size:.74rem!important}.lady-aura-language button{width:30px;height:25px;font-size:11px}}',
+      '@media(max-width:760px){.products-grid,.grid-laminas,.gallery-grid,.collections-grid,.tools-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:.72rem!important}.product-card,.lamina-doble,.gallery-card,.col-card,.tool-card{min-width:0!important;width:auto!important}.product-card h3,.lamina-nombre,.gallery-card-label,.col-card-tag,.tool-card h3{overflow-wrap:anywhere!important}#zodiacGrid .zod-pair{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:.72rem!important;padding:.72rem!important}#zodiacGrid .zod-center{grid-column:1/-1!important;order:-1!important}#zodiacGrid .zod-card{min-width:0!important}.zod-ci{padding:.55rem!important}.zod-ci h3{font-size:.78rem!important}.zod-ci p{font-size:.72rem!important}.lady-aura-language{max-width:118px;flex-wrap:wrap;justify-content:center;border-radius:14px}.lady-aura-language button{width:28px;height:23px;font-size:10px}}',
+      '@media(max-width:560px){.site-header{padding:.55rem .72rem!important;gap:.38rem!important}.site-header .brand img{max-width:132px!important;max-height:42px!important}.site-header .menu-toggle{width:36px!important;height:34px!important}.lady-aura-header-actions{gap:.28rem!important;margin-left:.25rem!important}.lady-aura-header-actions .cart-nav-link{min-width:34px!important;min-height:31px!important;padding:.18rem .34rem!important}.lady-aura-language{gap:2px;padding:2px;max-width:92px}.lady-aura-language button{width:28px;height:22px;font-size:10px}}'
     ].join('');
     document.head.appendChild(style);
   }
@@ -131,7 +140,7 @@
       if (!window.google || !window.google.translate || !window.google.translate.TranslateElement) return;
       new window.google.translate.TranslateElement({
         pageLanguage: 'es',
-        includedLanguages: 'es,en',
+        includedLanguages: SUPPORTED_LANGS.join(','),
         autoDisplay: false
       }, WIDGET_ID);
     };
@@ -153,7 +162,7 @@
       tries += 1;
       var combo = document.querySelector('.goog-te-combo');
       if (combo) {
-        combo.value = lang === 'en' ? 'en' : '';
+        combo.value = lang === 'es' ? '' : lang;
         if (typeof Event === 'function') {
           combo.dispatchEvent(new Event('change', { bubbles: true }));
         } else {
@@ -169,8 +178,9 @@
 
   function setHtmlLanguage(lang) {
     document.documentElement.setAttribute('lang', lang);
-    document.documentElement.classList.toggle('translated-en', lang === 'en');
-    document.documentElement.classList.toggle('translated-es', lang === 'es');
+    SUPPORTED_LANGS.forEach(function (code) {
+      document.documentElement.classList.toggle('translated-' + code, lang === code);
+    });
   }
 
   function updateButtons(lang) {
@@ -216,10 +226,10 @@
     updateButtons(lang);
     protectArtworkTitles(document);
 
-    if (lang === 'en') {
-      setTranslateCookie('en');
+    if (lang !== 'es') {
+      setTranslateCookie(lang);
       ensureGoogleWidget();
-      syncGoogleCombo('en');
+      syncGoogleCombo(lang);
       if (shouldReload) {
         setTimeout(function () {
           location.reload();
@@ -249,7 +259,10 @@
     var wrap = document.createElement('div');
     wrap.className = 'lady-aura-language';
     wrap.setAttribute('aria-label', 'Selector de idioma');
-    wrap.innerHTML = '<button type="button" data-lady-aura-lang="es" aria-label="Ver en español" title="Español">🇪🇸</button><button type="button" data-lady-aura-lang="en" aria-label="View in English" title="English">🇬🇧</button>';
+    wrap.innerHTML = SUPPORTED_LANGS.map(function (code) {
+      var meta = LANG_META[code];
+      return '<button type="button" data-lady-aura-lang="' + code + '" aria-label="' + meta.label + '" title="' + meta.title + '">' + meta.flag + '</button>';
+    }).join('');
     wrap.addEventListener('click', function (event) {
       var button = event.target.closest('[data-lady-aura-lang]');
       if (!button) return;
