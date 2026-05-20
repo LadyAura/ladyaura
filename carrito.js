@@ -361,6 +361,35 @@ function cartInjectStyles() {
       color: #c9a84c;
       white-space: nowrap;
     }
+    .lb-price {
+      display: grid !important;
+      gap: 0.35rem !important;
+      font-family: 'Cinzel', serif !important;
+      font-size: 0.92rem !important;
+      line-height: 1.25 !important;
+      letter-spacing: 0.04em !important;
+      color: #e8c97a !important;
+    }
+    .lb-price-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.9rem;
+      padding: 0.42rem 0.65rem;
+      border: 1px solid rgba(232,201,122,0.2);
+      border-radius: 12px;
+      background: rgba(232,201,122,0.055);
+    }
+    .lb-price-option span {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+    }
+    .lb-price-option strong {
+      color: #e8c97a;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
 
     /* === FAB FLOTANTE === */
     #cart-fab {
@@ -597,10 +626,8 @@ function cartPatchLightbox(card) {
   const currentPrice = cartProductPrice(card);
   const lbPrice = document.querySelector('.lb-price');
   if (lbPrice) {
-    lbPrice.style.display = 'grid';
-    lbPrice.style.gap = '.25rem';
-    lbPrice.style.lineHeight = '1.35';
-    lbPrice.innerHTML = `<span>60x90 cm - ${currentPrice} €</span><span>40x60 cm - 66 €</span>`;
+    lbPrice.removeAttribute('style');
+    lbPrice.innerHTML = `<span class="lb-price-option"><span>60x90 cm</span><strong>${currentPrice} €</strong></span><span class="lb-price-option"><span>40x60 cm</span><strong>66 €</strong></span>`;
   }
   if (!btns) {
     fullscreenAttach();
