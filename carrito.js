@@ -594,6 +594,14 @@ document.addEventListener('DOMContentLoaded', function() {
 // Se llama desde cada página que tenga openLB
 function cartPatchLightbox(card) {
   const btns = document.getElementById('lbBtns') || document.querySelector('.lb-btns');
+  const currentPrice = cartProductPrice(card);
+  const lbPrice = document.querySelector('.lb-price');
+  if (lbPrice) {
+    lbPrice.style.display = 'grid';
+    lbPrice.style.gap = '.25rem';
+    lbPrice.style.lineHeight = '1.35';
+    lbPrice.innerHTML = `<span>60x90 cm - ${currentPrice} €</span><span>40x60 cm - 66 €</span>`;
+  }
   if (!btns) {
     fullscreenAttach();
     return;
@@ -636,7 +644,7 @@ function cartPatchLightbox(card) {
     options.appendChild(btn);
   }
 
-  addLightboxSize('60x90', cartProductPrice(card));
+  addLightboxSize('60x90', currentPrice);
   addLightboxSize('40x60', 66);
   btns.insertBefore(options, btns.firstChild);
   fullscreenAttach();
