@@ -31,15 +31,19 @@
     } catch (error) {}
   }
 
-  function browserPrefersEnglish() {
+  function browserPreferredLanguage() {
     var languages = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || navigator.userLanguage || ''];
-    return /^en\b/i.test(languages[0] || '');
+    for (var i = 0; i < languages.length; i += 1) {
+      var code = String(languages[i] || '').toLowerCase().split('-')[0];
+      if (SUPPORTED_LANGS.indexOf(code) !== -1) return code;
+    }
+    return 'es';
   }
 
   function getInitialLanguage() {
     var stored = getStoredLanguage();
     if (SUPPORTED_LANGS.indexOf(stored) !== -1) return stored;
-    return browserPrefersEnglish() ? 'en' : 'es';
+    return browserPreferredLanguage();
   }
 
   function setTranslateCookie(lang) {
