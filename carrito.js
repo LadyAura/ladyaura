@@ -238,7 +238,7 @@ function cartInjectButtons() {
       }
 
       addSizeOption('60x90', currentPrice);
-      addSizeOption('40x60', 64);
+      addSizeOption('40x60', 66);
       info.appendChild(options);
       return;
     }
@@ -511,7 +511,7 @@ function cartInjectZodiaco() {
     }
 
     addZodiacSize('60x90', Number(card.dataset.precio || card.dataset.price) || 84);
-    addZodiacSize('40x60', 64);
+    addZodiacSize('40x60', 66);
     info.appendChild(options);
   });
 }
@@ -637,7 +637,7 @@ function cartPatchLightbox(card) {
   }
 
   addLightboxSize('60x90', cartProductPrice(card));
-  addLightboxSize('40x60', 64);
+  addLightboxSize('40x60', 66);
   btns.insertBefore(options, btns.firstChild);
   fullscreenAttach();
 }

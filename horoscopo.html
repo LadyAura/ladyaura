@@ -60,7 +60,7 @@
       <span class="badge" id="lbBadge"></span>
       <h2 id="lbTitle" class="notranslate" translate="no"></h2>
       <p id="lbDesc"></p>
-      <p class="lb-price">60x90 cm - 84 € · 40x60 cm - 64 €</p>
+      <p class="lb-price">60x90 cm - 84 € · 40x60 cm - 66 €</p>
       <p><span class="lang-es">Pre-reserva sin pago ni compromiso · Envío incluido</span><span class="lang-en" style="display:none">No-payment pre-order · Free shipping included</span></p>
       <div class="lb-actions" id="lbBtns"></div>
     </div>
@@ -90,7 +90,7 @@ const LABELS = {
 };
 function currentLang(){return localStorage.getItem('la_lang') || document.documentElement.lang || 'es'}
 function signText(sign,type){const en=currentLang()==='en'; if(type===0)return (en?'Goddess ':'Diosa ')+sign.name; if(type===1)return (en?'Celestial portrait of ':'Retrato celestial de ')+sign.name; return sign.name+' · '+(en?LABELS.en[type]:LABELS.es[type]);}
-function renderZodiac(){const lang=currentLang();const lab=LABELS[lang]||LABELS.es;const grid=document.getElementById('zodiacGrid');grid.innerHTML='';SIGNS.forEach(sign=>{for(let row=0;row<2;row++){const left=row*2,right=row*2+1;const div=document.createElement('div');div.className='zod-pair';div.innerHTML=card(sign,left,lab[left])+`<div class="zod-center"><span class="zs">${sign.symbol}</span><span class="zn">${sign.name}</span><span class="zd">${sign.dates}</span><span class="ze">${sign.element}</span><span class="zp">60x90: 84 € · 40x60: 64 €</span></div>`+card(sign,right,lab[right]);grid.appendChild(div)}})}
+function renderZodiac(){const lang=currentLang();const lab=LABELS[lang]||LABELS.es;const grid=document.getElementById('zodiacGrid');grid.innerHTML='';SIGNS.forEach(sign=>{for(let row=0;row<2;row++){const left=row*2,right=row*2+1;const div=document.createElement('div');div.className='zod-pair';div.innerHTML=card(sign,left,lab[left])+`<div class="zod-center"><span class="zs">${sign.symbol}</span><span class="zn">${sign.name}</span><span class="zd">${sign.dates}</span><span class="ze">${sign.element}</span><span class="zp">60x90: 84 € · 40x60: 66 €</span></div>`+card(sign,right,lab[right]);grid.appendChild(div)}})}
 function card(sign,i,label){return `<article class="zod-card" data-precio="84" data-price="84" data-orient="v" onclick="openSign('${sign.name}',${i})"><span class="zod-vtag">${label}</span><img class="notranslate" translate="no" src="assets/${sign.imgs[i]}" alt="${signText(sign,i)} Lady Aura"><div class="zod-ci"><h3 class="notranslate" translate="no">${signText(sign,i)}</h3><p>Diamante de resina cuadrado. Lienzo premium velvet. Pegamento vertido. Opción de quitar kit de iniciación.</p></div></article>`}
 function openSign(name,i){const sign=SIGNS.find(s=>s.name===name);const title=signText(sign,i);document.getElementById('lbImg').src='assets/'+sign.imgs[i];document.getElementById('lbImg').alt=title;document.getElementById('lbBadge').textContent=sign.symbol+' · '+sign.element;document.getElementById('lbTitle').textContent=title;document.getElementById('lbDesc').textContent='Diamante de resina cuadrado. Lienzo premium velvet. Pegamento vertido. Opción de quitar kit de iniciación.';document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';if(typeof cartPatchLightbox==='function'){cartPatchLightbox({dataset:{img:sign.imgs[i],nombre:title,orient:'v',precio:84,coleccion:'zodiaco',collection:'zodiaco'}});}}
 function closeLB(){document.getElementById('lb').classList.remove('open');document.body.style.overflow=''}
