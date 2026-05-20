@@ -179,52 +179,34 @@
     });
   }
 
-  function toggleInlineLanguage(lang) {
-    document.querySelectorAll('.lang-es').forEach(function (el) {
-      el.style.display = lang === 'en' ? 'none' : '';
-    });
-    document.querySelectorAll('.lang-en').forEach(function (el) {
-      el.style.display = lang === 'en' ? '' : 'none';
-    });
-    document.querySelectorAll('[data-placeholder-es][data-placeholder-en]').forEach(function (el) {
-      el.setAttribute('placeholder', lang === 'en' ? el.getAttribute('data-placeholder-en') : el.getAttribute('data-placeholder-es'));
-    });
-  }
-
-  function protectProductTitles() {
-    [
+  function protectArtworkTitles(root) {
+    var scope = root && root.querySelectorAll ? root : document;
+    var selectors = [
       '.product-card h3',
       '.zod-card h3',
       '.sign-card h3',
       '.cart-item-info h3',
       '#lbTitle',
-      '.lamina-nombre',
-      '.gallery-card-label'
-    ].forEach(function (selector) {
-      document.querySelectorAll(selector).forEach(function (el) {
-        el.classList.add('notranslate');
-        el.setAttribute('translate', 'no');
-      });
+      '.lb-title',
+      '.gallery-card-label',
+      '[data-artwork-title]'
+    ].join(',');
+
+    scope.querySelectorAll(selectors).forEach(function (el) {
+      el.classList.add('notranslate');
+      el.setAttribute('translate', 'no');
+      if (!el.getAttribute('data-no-translate')) {
+        el.setAttribute('data-no-translate', 'artwork-title');
+      }
     });
-  }
 
-  window.ladyAuraApplyInlineLanguage = toggleInlineLanguage;
-  window.ladyAuraProtectProductTitles = protectProductTitles;
-
-  var languageObserverTimer = null;
-  function refreshDynamicLanguage() {
-    clearTimeout(languageObserverTimer);
-    languageObserverTimer = setTimeout(function () {
-      var lang = getStoredLanguage() || document.documentElement.getAttribute('lang') || 'es';
-      protectProductTitles();
-      toggleInlineLanguage(lang);
-    }, 60);
-  }
-
-  function startLanguageObserver() {
-    if (window.__ladyAuraLanguageObserverStarted || !document.body || !window.MutationObserver) return;
-    window.__ladyAuraLanguageObserverStarted = true;
-    new MutationObserver(refreshDynamicLanguage).observe(document.body, { childList: true, subtree: true });
+    scope.querySelectorAll('img[alt]').forEach(function (img) {
+      var alt = img.getAttribute('alt') || '';
+      if (/diamond painting/i.test(alt) || /Lady Aura/i.test(alt)) {
+        img.classList.add('notranslate');
+        img.setAttribute('translate', 'no');
+      }
+    });
   }
 
   function applyLanguage(lang, options) {
@@ -232,8 +214,7 @@
     saveLanguage(lang);
     setHtmlLanguage(lang);
     updateButtons(lang);
-    protectProductTitles();
-    toggleInlineLanguage(lang);
+    protectArtworkTitles(document);
 
     if (lang === 'en') {
       setTranslateCookie('en');
@@ -250,7 +231,6 @@
         location.reload();
       }
     }
-    window.dispatchEvent(new CustomEvent('ladyAuraLangChanged', { detail: { lang: lang } }));
   }
 
   function addToggle() {
@@ -391,12 +371,21 @@
     normalizeHeader();
     addToggle();
     bindMobileMenu();
+    protectArtworkTitles(document);
+    var titleObserver = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        mutation.addedNodes.forEach(function (node) {
+          if (node.nodeType === 1) protectArtworkTitles(node);
+        });
+      });
+    });
+    titleObserver.observe(document.body, { childList: true, subtree: true });
     setTimeout(function () { paginateCardGrids(false); }, 0);
     applyLanguage(getInitialLanguage(), { reload: false });
-    startLanguageObserver();
   });
 
   window.addEventListener('ladyAuraLangChanged', function () {
+    protectArtworkTitles(document);
     setTimeout(function () { paginateCardGrids(true); }, 0);
   });
 })();

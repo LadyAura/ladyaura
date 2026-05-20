@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -886,7 +886,7 @@ small,
       </div>
       <div class="summary-row">
         <span>Formato</span>
-        <span>60×90 cm · Diamond painting premium</span>
+        <span>60×90 cm y 40x50 cm · Diamond painting premium</span>
       </div>
       <div class="summary-row">
         <span>Envío</span>
@@ -948,12 +948,8 @@ small,
             <input type="text" id="f-direccion" name="direccion" required placeholder="Calle, número, piso...">
           </div>
           <div class="form-group">
-            <label for="f-poblacion">Población *</label>
-            <input type="text" id="f-poblacion" name="poblacion" required placeholder="Población">
-          </div>
-          <div class="form-group">
-            <label for="f-provincia">Provincia *</label>
-            <input type="text" id="f-provincia" name="provincia" required placeholder="Provincia">
+            <label for="f-ciudad">Ciudad *</label>
+            <input type="text" id="f-ciudad" name="ciudad" required placeholder="Ciudad">
           </div>
           <div class="form-group">
             <label for="f-cp">Código postal *</label>
@@ -1224,7 +1220,7 @@ function renderCart() {
     const imageSrc = escapeHtmlInline(normalizeCartImageInline(item.img, item));
     const itemName = escapeHtmlInline(item.nombre || 'Producto Lady Aura');
     const itemId = escapeHtmlInline(item.id || item.nombre || item.img || imageSrc);
-    const itemFormat = item.orient==='v' ? '60×90 cm ↕' : '90×60 cm ↔';
+    const itemSize = escapeHtmlInline(item.tamano || item.size || (item.orient==='v'?'60×90 cm ↕':'90×60 cm ↔'));
     const priceHtml = (isSpecial60Coupon(activeCouponForRender) && itemMatchesSpecial60(item, activeCouponForRender))
       ? `<span class="cart-item-price"><s style="opacity:.4;font-size:.8em;text-decoration:line-through">${originalPrice} €</s>&nbsp;${displayPrice} €</span>`
       : `<span class="cart-item-price">${originalPrice} €</span>`;
@@ -1232,15 +1228,13 @@ function renderCart() {
     <div class="cart-item">
       <img class="cart-item-img" src="${imageSrc}" alt="${itemName}" onerror="this.src='assets/Logo-transparent.webp';this.onerror=null;">
       <div class="cart-item-info">
-        <h3 class="notranslate" translate="no">${itemName}</h3>
-        <p><span class="lang-es">Diamond painting ${itemFormat} · Envío incluido</span><span class="lang-en" style="display:none">Diamond painting ${itemFormat} · Shipping included</span></p>
+        <h3>${itemName}</h3>
+        <p>Diamond painting ${itemSize} · Envío incluido</p>
       </div>
       ${priceHtml}
       <button class="cart-item-remove" onclick="cartRemove(this.dataset.id)" data-id="${itemId}" aria-label="Eliminar">✕</button>
     </div>`;
   }).join('');
-  if (typeof window.ladyAuraProtectProductTitles === 'function') window.ladyAuraProtectProductTitles();
-  if (typeof window.ladyAuraApplyInlineLanguage === 'function') window.ladyAuraApplyInlineLanguage(localStorage.getItem('ladyaura_site_lang') || localStorage.getItem('la_lang') || localStorage.getItem('ladyaura-lang') || 'es');
 
   const couponData = getCouponInline();
   const couponCode = couponData ? couponData.code : null;
@@ -1320,13 +1314,12 @@ document.getElementById('order-form').addEventListener('submit', async function(
     email:     document.getElementById('f-email').value,
     telefono:  document.getElementById('f-telefono').value,
     direccion: document.getElementById('f-direccion').value,
-    poblacion: document.getElementById('f-poblacion').value,
-    provincia: document.getElementById('f-provincia').value,
+    ciudad:    document.getElementById('f-ciudad').value,
     cp:        document.getElementById('f-cp').value,
     pais:      document.getElementById('f-pais').value,
     kit_herramientas: (document.querySelector('input[name="kit_herramientas"]:checked') || {}).value || 'No indicado',
     notas:     document.getElementById('f-notas').value,
-    pedido:    items.map(i => `${i.nombre} · ${i.precio}€`).join(' | '),
+    pedido:    items.map(i => `${i.nombre} · ${i.tamano || i.size || (i.orient==='v'?'60x90 cm':'90x60 cm')} · ${i.precio}€`).join(' | '),
     subtotal:  subtotalPedido + ' €',
     cupon:     isSpecial60Coupon(couponApplied) ? `${couponApplied} \u00b7 precio especial 60 \u20ac/cuadro` : (couponApplied ? `${couponApplied} \u00b7 -${discountPedido} \u20ac` : 'Ninguno'),
     total:     totalPedido + ' €',
@@ -1352,10 +1345,8 @@ document.getElementById('order-form').addEventListener('submit', async function(
         nombre: data.nombre + ' ' + data.apellidos,
         email: data.email,
         kit_herramientas: data.kit_herramientas,
-        direccion: data.direccion + ', ' + data.cp + ' ' + data.poblacion + ', ' + data.provincia + ', ' + data.pais,
-        poblacion: data.poblacion,
-        provincia: data.provincia,
-        items: items.map(i => ({ nombre: i.nombre, img: i.img, precio: i.precio, orient: i.orient })),
+        direccion: data.direccion + ', ' + data.cp + ' ' + data.ciudad + ', ' + data.pais,
+        items: items.map(i => ({ nombre: i.nombre, img: i.img, precio: i.precio, orient: i.orient, tamano: i.tamano || i.size || '' })),
         total: totalPedido,
         estado: 'lista_espera' // lista_espera | procesando | enviado | recibido
       };
