@@ -849,7 +849,7 @@ small,
       <h2 class="lb-title" id="lbTitle"></h2>
       <span class="lb-orient" id="lbOrient"></span>
       <ul class="lb-includes">
-        <li data-i18n="lb_formato">📐 formatos 60×90 cm y 40x50 cm</li>
+        <li data-i18n="lb_formato">📐 formatos 60×90 cm y 40x60 cm</li>
         <li data-i18n="lb_diamantes">💎 Diamantes cuadrados de alta densidad</li>
         <li data-i18n="lb_lienzo">🎨 Lienzo de alta calidad premium</li>
         <li data-i18n="lb_herram">🛠️ Herramientas incluidas</li>
@@ -876,7 +876,7 @@ function openLB(card) {
   document.getElementById('lbImg').src = card.dataset.img;
   document.getElementById('lbImg').alt = card.dataset.nombre;
   document.getElementById('lbTitle').textContent = card.dataset.nombre;
-  document.getElementById('lbOrient').textContent = orient === 'v' ? '↕ Cuadro Vertical · 60×90 cm y 40x50 cm' : '↔ Cuadro Horizontal · 60×90 cm y 40x50 cm';
+  document.getElementById('lbOrient').textContent = orient === 'v' ? '↕ Cuadro Vertical · 60×90 cm y 40x60 cm' : '↔ Cuadro Horizontal · 60×90 cm y 40x60 cm';
   document.getElementById('lbEm').href = card.dataset.em;
   document.getElementById('lb').classList.add('open');
   if(typeof cartPatchLightbox==='function') cartPatchLightbox(card);
