@@ -923,7 +923,7 @@ small,
     <!-- FORMULARIO -->
     <div class="order-form">
       <p class="form-title" data-i18n="cart_form_title">✨ Confirma tu pedido</p>
-      <p class="form-subtitle">Rellena tus datos y reserva tu lugar en la lista de espera. Te avisaré personalmente cuando la tienda abra y puedas completar tu pedido. 💜</p>
+      <p class="form-subtitle">Rellena tus datos y apúntate a la lista de espera. Producción por orden de reserva. Te avisaré personalmente para continuar con tu pedido. 💜</p>
 
       <form id="order-form" novalidate>
         <div class="form-grid">
@@ -991,10 +991,10 @@ small,
         </div>
 
         <div class="form-note">
-          <strong>¿Cómo funciona?</strong> Envías tus datos y los diseños que te interesan. Cuando la tienda abra oficialmente, serás de las primeras en recibir un aviso personalizado con tus cuadros reservados. <strong>No se cobra nada ahora.</strong> 💜
+          <strong>¿Cómo funciona?</strong> Envías tus datos y los diseños que te interesan. Lista de espera abierta: producción por orden de reserva y aviso personalizado sobre tus cuadros reservados. <strong>No se cobra nada ahora.</strong> 💜
         </div>
 
-        <button type="submit" class="btn-submit" id="btn-submit">✨ Reservar mi lugar en la lista de espera</button>
+        <button type="submit" class="btn-submit" id="btn-submit">✨ Apúntate a la lista de espera</button>
       </form>
     </div>
   </div>
@@ -1003,14 +1003,14 @@ small,
   <div id="cart-confirm">
     <span class="confirm-icon">🌟</span>
     <h2>¡Ya estás en la lista de espera!</h2>
-    <p>He recibido tu reserva. Cuando la tienda abra oficialmente, serás de las primeras en saberlo.</p>
+    <p>He recibido tu reserva. Ya formas parte de la lista de espera.</p>
     <p style="color:var(--muted);font-size:0.85rem;margin-top:0.5rem;">Te avisaré personalmente por email. No se ha cobrado nada todavía. 💜</p>
 
     <div class="payment-box" style="margin-top:2rem;text-align:center;">
       <p style="font-family:'Cinzel',serif;color:var(--gold2);font-size:1rem;margin-bottom:0.8rem;">✦ Tu reserva está guardada ✦</p>
       <p style="color:rgba(255,255,255,0.7);font-size:0.88rem;line-height:1.7;">
         Puedes ver el estado de tu reserva en <strong style="color:#fff;">📦 Mis pedidos</strong>.<br>
-        Cuando abramos, tu precio y diseños quedarán reservados para ti.
+        Tu precio y diseños quedan reservados para ti.
       </p>
     </div>
 
@@ -1296,7 +1296,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
   if (items.length === 0) {
     alert('Tu carrito está vacío. Añade al menos un producto antes de enviar el pedido.');
     btn.disabled = false;
-    btn.textContent = '✨ Reservar mi lugar en la lista de espera';
+    btn.textContent = '✨ Apúntate a la lista de espera';
     return;
   }
   const couponDataPedido = getCouponInline();
@@ -1385,7 +1385,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
     }
   } catch(err) {
     btn.disabled = false;
-    btn.textContent = '✨ Reservar mi lugar en la lista de espera';
+    btn.textContent = '✨ Apúntate a la lista de espera';
     alert('No se pudo registrar tu reserva. Por favor, inténtalo de nuevo o escríbeme directamente. 💜');
   }
 });

@@ -295,21 +295,21 @@ footer a { color: var(--gold2); text-decoration: none; }
   <div class="page-hero">
     <span class="eyebrow">✦ Lady Aura Art · Diamond Painting Premium ✦</span>
     <h1>📦 Mis pedidos</h1>
-    <p>Aquí puedes ver el estado de tus reservas y pedidos</p>
+    <p>Aquí puedes ver tus reservas y pedidos</p>
   </div>
 
   <!-- Banner informativo lista de espera -->
   <div class="waitlist-banner">
     <span class="wb-icon">⏳</span>
-    <h2>Tienda en preparación · Lista de espera activa</h2>
-    <p>La tienda abrirá pronto. Si has reservado, recibirás un aviso personalizado por email cuando puedas completar tu pedido y pagar. <strong style="color:var(--gold2)">No se ha cobrado nada todavía.</strong></p>
+    <h2>Lista de espera abierta</h2>
+    <p>Producción por orden de reserva. Si has reservado, recibirás un aviso personalizado por email para continuar con tu pedido. <strong style="color:var(--gold2)">No se ha cobrado nada todavía.</strong></p>
   </div>
 
   <!-- Vacío -->
   <div id="orders-empty" style="display:none">
     <span class="empty-icon">🌟</span>
     <h2>Aún no tienes reservas</h2>
-    <p>Explora nuestras colecciones y reserva tu lugar en la lista de espera.</p>
+    <p>Explora nuestras colecciones y apúntate a la lista de espera.</p>
     <a href="index.html" class="btn-shop">✨ Ver colecciones</a>
   </div>
 
@@ -356,7 +356,7 @@ footer a { color: var(--gold2); text-decoration: none; }
 /* ── Estado en español ── */
 const STATUS_LABEL = {
   lista_espera: '⏳ Lista de espera',
-  procesando:   '🔮 En preparación',
+  procesando:   '🔮 Producción por orden de reserva',
   enviado:      '🚀 Enviado',
   recibido:     '✨ Recibido'
 };
@@ -397,7 +397,7 @@ function renderOrders() {
 
     const waitlistNote = isWaitlist ? `
       <div class="order-waitlist-note">
-        <strong>✦ Reserva en lista de espera</strong> — Recibirás un email personalizado cuando la tienda abra. 
+        <strong>✦ Lista de espera abierta</strong> — Recibirás un email personalizado sobre tu reserva. 
         El precio de <strong>${order.total} €</strong> queda reservado para ti. No se ha cobrado nada todavía.
       </div>
     ` : '';
