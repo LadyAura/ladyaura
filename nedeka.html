@@ -185,6 +185,172 @@
   .lb-includes { grid-template-columns: 1fr; }
 }
 .card-artist{font-size:0.75rem;color:rgba(201,168,76,0.75);margin:0 0 0.3rem;font-style:italic;letter-spacing:0.03em;}
+
+/* Ajuste global de tarjetas, ventanas e idioma responsive */
+.product-card,
+.gallery-card,
+.design-card,
+.item-card,
+.card {
+  min-width: 0;
+}
+
+.product-card img,
+.gallery-card img,
+.design-card img,
+.item-card img,
+.card img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+.product-card .image-frame,
+.product-card .art-frame,
+.product-card .card-image,
+.product-card .product-image,
+.gallery-card .image-frame,
+.gallery-card .art-frame,
+.gallery-card .card-image,
+.design-card .image-frame,
+.design-card .art-frame,
+.design-card .card-image,
+.item-card .image-frame,
+.item-card .art-frame,
+.item-card .card-image {
+  aspect-ratio: 2 / 3 !important;
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+.product-card .image-frame img,
+.product-card .art-frame img,
+.product-card .card-image img,
+.product-card .product-image img,
+.gallery-card .image-frame img,
+.gallery-card .art-frame img,
+.gallery-card .card-image img,
+.design-card .image-frame img,
+.design-card .art-frame img,
+.design-card .card-image img,
+.item-card .image-frame img,
+.item-card .art-frame img,
+.item-card .card-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.lb,
+.t-lb,
+.lightbox,
+.modal-overlay,
+#nedeka-lightbox {
+  z-index: 2147482000 !important;
+}
+
+#fs-overlay {
+  z-index: 2147483300 !important;
+}
+
+#fs-close {
+  z-index: 2147483400 !important;
+}
+
+body.aura-modal-open .site-header,
+body.aura-modal-open header.site-header,
+body.aura-modal-open .header,
+body.aura-modal-open .topbar {
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+.aura-universal-close,
+.aura-floating-close {
+  position: fixed !important;
+  top: max(14px, env(safe-area-inset-top)) !important;
+  right: max(14px, env(safe-area-inset-right)) !important;
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(255,255,255,.38) !important;
+  background: rgba(7, 3, 18, .94) !important;
+  color: #fff !important;
+  font-size: 30px !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  line-height: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  box-shadow: 0 12px 34px rgba(0,0,0,.45), 0 0 0 2px rgba(162,76,255,.25) !important;
+  z-index: 2147483200 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+.aura-floating-close[hidden] {
+  display: none !important;
+}
+
+.site-header {
+  isolation: isolate;
+  overflow: visible !important;
+}
+
+.site-header .nav {
+  min-width: 0;
+}
+
+.site-header .cart-nav-link,
+.cart-nav-link {
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    min-height: 64px !important;
+    overflow: visible !important;
+  }
+
+  .site-header .brand,
+  .site-header .logo,
+  .site-header .brand-link {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    overflow: visible !important;
+  }
+
+  .site-header .brand img,
+  .site-header .logo img,
+  .site-header .brand-link img {
+    max-width: min(142px, 36vw) !important;
+    max-height: 44px !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  .lady-aura-header-actions {
+    flex: 0 0 auto !important;
+    max-width: 128px !important;
+  }
+
+  .lady-aura-language {
+    max-width: 88px !important;
+  }
+
+  .aura-universal-close,
+  .aura-floating-close {
+    top: max(10px, env(safe-area-inset-top)) !important;
+    right: max(10px, env(safe-area-inset-right)) !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -715,5 +881,104 @@ document.addEventListener('keydown', function(e) {
 });
 </script>
 <script src="language-toggle.js"></script>
+<script>
+(function(){
+  var overlaySelector = '.lb, .t-lb, .lightbox, .modal-overlay, #nedeka-lightbox';
+
+  function isOpen(el){
+    if (!el) return false;
+    if (el.classList.contains('open') || el.classList.contains('active') || el.classList.contains('show') || el.classList.contains('visible')) return true;
+    if (el.id === 'nedeka-lightbox') {
+      var cs = window.getComputedStyle(el);
+      return cs.display !== 'none' && cs.visibility !== 'hidden' && el.getAttribute('aria-hidden') !== 'true';
+    }
+    return false;
+  }
+
+  function getFloatingClose(){
+    var btn = document.querySelector('.aura-floating-close');
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'aura-floating-close';
+      btn.setAttribute('aria-label', 'Cerrar');
+      btn.textContent = '×';
+      btn.hidden = true;
+      btn.addEventListener('click', closeAuraPanel);
+      document.body.appendChild(btn);
+    }
+    return btn;
+  }
+
+  function anyPanelOpen(){
+    return Array.prototype.some.call(document.querySelectorAll(overlaySelector), isOpen);
+  }
+
+  function updateCloseVisibility(){
+    var open = anyPanelOpen() && !(document.getElementById('fs-overlay') && document.getElementById('fs-overlay').classList.contains('open'));
+    document.body.classList.toggle('aura-modal-open', anyPanelOpen());
+    var btn = getFloatingClose();
+    btn.hidden = !open;
+    btn.style.display = open ? 'flex' : 'none';
+  }
+
+  function closeAuraPanel(){
+    if (document.getElementById('fs-overlay') && document.getElementById('fs-overlay').classList.contains('open') && typeof window.fullscreenClose === 'function') {
+      window.fullscreenClose();
+      updateCloseVisibility();
+      return;
+    }
+
+    ['closeLightbox','closeModal','closeProductModal','closeTarotLightbox','closeNedekaLightbox','closeLB','closeLb','closeTLightbox'].forEach(function(name){
+      if (typeof window[name] === 'function') {
+        try { window[name](); } catch(e) {}
+      }
+    });
+
+    document.querySelectorAll(overlaySelector).forEach(function(el){
+      el.classList.remove('open','active','show','visible');
+      el.setAttribute('aria-hidden','true');
+      if (el.id === 'nedeka-lightbox') el.style.display = 'none';
+    });
+
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+    updateCloseVisibility();
+  }
+
+  function ensureAuraCloseButtons(){
+    document.querySelectorAll(overlaySelector).forEach(function(panel){
+      if (!panel.querySelector('.aura-universal-close')) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'aura-universal-close';
+        btn.setAttribute('aria-label', 'Cerrar');
+        btn.textContent = '×';
+        btn.addEventListener('click', closeAuraPanel);
+        panel.appendChild(btn);
+      }
+    });
+    updateCloseVisibility();
+  }
+
+  document.addEventListener('DOMContentLoaded', ensureAuraCloseButtons);
+  document.addEventListener('click', function(){
+    setTimeout(ensureAuraCloseButtons, 30);
+    setTimeout(updateCloseVisibility, 180);
+    setTimeout(updateCloseVisibility, 420);
+  }, true);
+  document.addEventListener('keydown', function(ev){
+    if (ev.key === 'Escape' && anyPanelOpen()) closeAuraPanel();
+  });
+
+  new MutationObserver(function(){
+    ensureAuraCloseButtons();
+  }).observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['class','style','aria-hidden'] });
+
+  setInterval(updateCloseVisibility, 500);
+  window.closeAuraPanel = closeAuraPanel;
+  window.ensureAuraCloseButtons = ensureAuraCloseButtons;
+})();
+</script>
 </body>
 </html>
