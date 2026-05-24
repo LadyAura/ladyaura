@@ -335,6 +335,8 @@ main {
 }
 .form-group textarea { resize: vertical; min-height: 80px; }
 .form-group select option { background: #0d0821; }
+.country-other-field { display: none; margin-top: 0.7rem; }
+.country-other-field.is-visible { display: flex; }
 
 
 .kit-options {
@@ -948,12 +950,16 @@ small,
             <input type="text" id="f-direccion" name="direccion" required placeholder="Calle, número, piso...">
           </div>
           <div class="form-group">
-            <label for="f-ciudad">Ciudad *</label>
-            <input type="text" id="f-ciudad" name="ciudad" required placeholder="Ciudad">
+            <label for="f-ciudad">Población / ciudad *</label>
+            <input type="text" id="f-ciudad" name="poblacion" required placeholder="Población o ciudad">
           </div>
           <div class="form-group">
             <label for="f-cp">Código postal *</label>
             <input type="text" id="f-cp" name="cp" required placeholder="00000">
+          </div>
+          <div class="form-group">
+            <label for="f-provincia">Provincia / estado *</label>
+            <input type="text" id="f-provincia" name="provincia" required placeholder="Provincia, estado o región">
           </div>
           <div class="form-group full">
             <label for="f-pais">País *</label>
@@ -969,6 +975,10 @@ small,
               <option value="Colombia">Colombia</option>
               <option value="Otro">Otro</option>
             </select>
+            <div class="form-group country-other-field" id="country-other-field">
+              <label for="f-pais-otro">Escribe tu país *</label>
+              <input type="text" id="f-pais-otro" name="pais_otro" placeholder="Ej. United States">
+            </div>
           </div>
           <div class="form-group full">
             <label>¿Quieres incluir kit de herramientas?</label>
@@ -1074,6 +1084,10 @@ function getCouponInline() {
 
 const SPECIAL60_PRICE = 60;
 const NORMAL_PRICE = 84;
+const SMALL_FORMAT_PRICE = 66;
+const CURRENT_PRICE_OVERRIDES = [
+  { test: /trebol|trébol|treblo-de-la-suerte|suerte/i, price: 94 }
+];
 const CART_IMAGE_FALLBACKS_INLINE = {
   'tarde-de-lectura.webp': 'assets/tarde-de-lectura.webp',
   'chica-del-pozo.webp': 'assets/chica-del-pozo.webp',
@@ -1111,35 +1125,52 @@ function itemMatchesSpecial60(item, code) {
   if (code === 'MAIKA60') return isMaikaItemInline(item);
   return false;
 }
+function cartItemSearchText(item) {
+  return [item?.nombre, item?.id, item?.img, item?.coleccion, item?.collection, item?.tamano, item?.size].filter(Boolean).join(' ');
+}
+function isSmallFormatItem(item) {
+  return /40\s*[x×]\s*60/i.test(cartItemSearchText(item));
+}
+function getCurrentCartPrice(item) {
+  const savedPrice = Number(item?.precio);
+  if (savedPrice > 0 && savedPrice <= 10) return savedPrice;
+  if (isSmallFormatItem(item)) return SMALL_FORMAT_PRICE;
+
+  const raw = cartItemSearchText(item);
+  const override = CURRENT_PRICE_OVERRIDES.find(entry => entry.test.test(raw));
+  if (override) return override.price;
+
+  return NORMAL_PRICE;
+}
 
 function calcDiscountInline(items, code) {
-  const subtotal = items.reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
+  const subtotal = items.reduce((s,i) => s + getCurrentCartPrice(i), 0);
   const nedekaItems = items.filter(isNedekaItemInline);
   const brujiItems  = items.filter(isBrujiItemInline);
   const maikaItems  = items.filter(isMaikaItemInline);
   const fonsinItems = items.filter(isFonsinItemInline);
-  const nedekaSubtotal = nedekaItems.reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
-  const brujiSubtotal  = brujiItems.reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
-  const maikaSubtotal  = maikaItems.reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
-  const fonsinSubtotal = fonsinItems.reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
+  const nedekaSubtotal = nedekaItems.reduce((s,i) => s + getCurrentCartPrice(i), 0);
+  const brujiSubtotal  = brujiItems.reduce((s,i) => s + getCurrentCartPrice(i), 0);
+  const maikaSubtotal  = maikaItems.reduce((s,i) => s + getCurrentCartPrice(i), 0);
+  const fonsinSubtotal = fonsinItems.reduce((s,i) => s + getCurrentCartPrice(i), 0);
   if (code === 'LADYAURA5') return subtotal > 0 ? 5 : 0;
   if (code === 'NEDEKA10')  return nedekaSubtotal > 0 ? Math.min(10, nedekaSubtotal) : 0;
   if (code === 'BRUJI10')   return brujiSubtotal > 0 ? Math.min(10, brujiSubtotal) : 0;
   if (code === 'MAIKA10')   return maikaSubtotal > 0 ? Math.min(10, maikaSubtotal) : 0;
   if (code === 'FON10')     return fonsinSubtotal > 0 ? Math.min(10, fonsinSubtotal) : 0;
   if (code === 'ALI10') {
-    const bambaSubtotal = items.filter(isBambarelleItemInline).reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
+    const bambaSubtotal = items.filter(isBambarelleItemInline).reduce((s,i) => s + getCurrentCartPrice(i), 0);
     return bambaSubtotal > 0 ? Math.min(10, bambaSubtotal) : 0;
   }
   if (isSpecial60Coupon(code)) return items
     .filter(item => itemMatchesSpecial60(item, code))
-    .reduce((s,i) => s + Math.max(0, (Number(i.precio)||NORMAL_PRICE) - SPECIAL60_PRICE), 0);
+    .reduce((s,i) => s + Math.max(0, getCurrentCartPrice(i) - SPECIAL60_PRICE), 0);
   return 0;
 }
 
 function getPriceWithCoupon(item, code) {
   if (isSpecial60Coupon(code) && itemMatchesSpecial60(item, code)) return SPECIAL60_PRICE;
-  return Number(item.precio) || NORMAL_PRICE;
+  return getCurrentCartPrice(item);
 }
 
 function applyCoupon() {
@@ -1215,7 +1246,8 @@ function renderCart() {
   const list = document.getElementById('cart-list');
   const activeCouponForRender = getCouponInline()?.code || null;
   list.innerHTML = items.map(item => {
-    const originalPrice = Number(item.precio) || NORMAL_PRICE;
+    const savedPrice = Number(item.precio) || getCurrentCartPrice(item);
+    const originalPrice = getCurrentCartPrice(item);
     const displayPrice = getPriceWithCoupon(item, activeCouponForRender);
     const imageSrc = escapeHtmlInline(normalizeCartImageInline(item.img, item));
     const itemName = escapeHtmlInline(item.nombre || 'Producto Lady Aura');
@@ -1223,7 +1255,9 @@ function renderCart() {
     const itemSize = escapeHtmlInline(item.tamano || item.size || (item.orient==='v'?'60×90 cm ↕':'90×60 cm ↔'));
     const priceHtml = (isSpecial60Coupon(activeCouponForRender) && itemMatchesSpecial60(item, activeCouponForRender))
       ? `<span class="cart-item-price"><s style="opacity:.4;font-size:.8em;text-decoration:line-through">${originalPrice} €</s>&nbsp;${displayPrice} €</span>`
-      : `<span class="cart-item-price">${originalPrice} €</span>`;
+      : (savedPrice !== originalPrice
+        ? `<span class="cart-item-price"><s style="opacity:.4;font-size:.8em;text-decoration:line-through">${savedPrice} €</s>&nbsp;${originalPrice} € <small style="display:block;opacity:.65;font-size:.68em;">precio actual</small></span>`
+        : `<span class="cart-item-price">${originalPrice} €</span>`);
     return `
     <div class="cart-item">
       <img class="cart-item-img" src="${imageSrc}" alt="${itemName}" onerror="this.src='assets/Logo-transparent.webp';this.onerror=null;">
@@ -1241,7 +1275,7 @@ function renderCart() {
   // Los cupones 60 ya reflejan el precio especial; los demas descuentan sobre precio normal
   const subtotal = isSpecial60Coupon(couponCode)
     ? items.reduce((s,i) => s + getPriceWithCoupon(i, couponCode), 0)
-    : items.reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
+    : items.reduce((s,i) => s + getCurrentCartPrice(i), 0);
   const discount = (couponCode && !isSpecial60Coupon(couponCode)) ? calcDiscountInline(items, couponCode) : 0;
   const total = Math.max(0, subtotal - discount);
   document.getElementById('sum-count').textContent = items.length + (items.length===1?' diseño':' diseños');
@@ -1286,8 +1320,30 @@ function renderCart() {
 }
 
 /* ── Formulario → Formspree ── */
+function updateCountryOtherField() {
+  const countrySelect = document.getElementById('f-pais');
+  const otherWrap = document.getElementById('country-other-field');
+  const otherInput = document.getElementById('f-pais-otro');
+  const isOther = countrySelect && countrySelect.value === 'Otro';
+  if (otherWrap) otherWrap.classList.toggle('is-visible', isOther);
+  if (otherInput) otherInput.required = isOther;
+  if (!isOther && otherInput) otherInput.value = '';
+}
+function getSelectedCountry() {
+  const selected = document.getElementById('f-pais').value;
+  if (selected !== 'Otro') return selected;
+  return document.getElementById('f-pais-otro').value.trim();
+}
+document.getElementById('f-pais').addEventListener('change', updateCountryOtherField);
+updateCountryOtherField();
+
 document.getElementById('order-form').addEventListener('submit', async function(e) {
   e.preventDefault();
+  updateCountryOtherField();
+  if (!this.checkValidity()) {
+    this.reportValidity();
+    return;
+  }
   const btn = document.getElementById('btn-submit');
   btn.disabled = true;
   btn.textContent = 'Enviando...';
@@ -1304,7 +1360,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
   // Los cupones 60 aplican precio especial por unidad; los demas descuentan sobre subtotal normal
   const subtotalPedido = isSpecial60Coupon(couponApplied)
     ? items.reduce((s,i) => s + getPriceWithCoupon(i, couponApplied), 0)
-    : items.reduce((s,i) => s + (Number(i.precio)||NORMAL_PRICE), 0);
+    : items.reduce((s,i) => s + getCurrentCartPrice(i), 0);
   const discountPedido = isSpecial60Coupon(couponApplied) ? 0 : (couponApplied ? calcDiscountInline(items, couponApplied) : 0);
   const totalPedido = Math.max(0, subtotalPedido - discountPedido);
   const paypalUrl = 'https://paypal.me/LadyAuraArt/' + totalPedido + 'EUR';
@@ -1314,12 +1370,15 @@ document.getElementById('order-form').addEventListener('submit', async function(
     email:     document.getElementById('f-email').value,
     telefono:  document.getElementById('f-telefono').value,
     direccion: document.getElementById('f-direccion').value,
+    poblacion: document.getElementById('f-ciudad').value,
     ciudad:    document.getElementById('f-ciudad').value,
     cp:        document.getElementById('f-cp').value,
-    pais:      document.getElementById('f-pais').value,
+    provincia: document.getElementById('f-provincia').value,
+    pais:      getSelectedCountry(),
+    pais_seleccionado: document.getElementById('f-pais').value,
     kit_herramientas: (document.querySelector('input[name="kit_herramientas"]:checked') || {}).value || 'No indicado',
     notas:     document.getElementById('f-notas').value,
-    pedido:    items.map(i => `${i.nombre} · ${i.tamano || i.size || (i.orient==='v'?'60x90 cm':'90x60 cm')} · ${i.precio}€`).join(' | '),
+    pedido:    items.map(i => `${i.nombre} · ${i.tamano || i.size || (i.orient==='v'?'60x90 cm':'90x60 cm')} · ${getCurrentCartPrice(i)}€`).join(' | '),
     subtotal:  subtotalPedido + ' €',
     cupon:     isSpecial60Coupon(couponApplied) ? `${couponApplied} \u00b7 precio especial 60 \u20ac/cuadro` : (couponApplied ? `${couponApplied} \u00b7 -${discountPedido} \u20ac` : 'Ninguno'),
     total:     totalPedido + ' €',
@@ -1345,8 +1404,11 @@ document.getElementById('order-form').addEventListener('submit', async function(
         nombre: data.nombre + ' ' + data.apellidos,
         email: data.email,
         kit_herramientas: data.kit_herramientas,
-        direccion: data.direccion + ', ' + data.cp + ' ' + data.ciudad + ', ' + data.pais,
-        items: items.map(i => ({ nombre: i.nombre, img: i.img, precio: i.precio, orient: i.orient, tamano: i.tamano || i.size || '' })),
+        direccion: data.direccion + ', ' + data.cp + ' ' + data.poblacion + ', ' + data.provincia + ', ' + data.pais,
+        poblacion: data.poblacion,
+        provincia: data.provincia,
+        pais: data.pais,
+        items: items.map(i => ({ nombre: i.nombre, img: i.img, precio: getCurrentCartPrice(i), precio_guardado: i.precio, orient: i.orient, tamano: i.tamano || i.size || '' })),
         total: totalPedido,
         estado: 'lista_espera' // lista_espera | procesando | enviado | recibido
       };
