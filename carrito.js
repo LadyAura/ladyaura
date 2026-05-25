@@ -690,7 +690,7 @@ function fullscreenInjectStyles() {
     #fs-overlay {
       position: fixed;
       inset: 0;
-      z-index: 999999;
+      z-index: 2147483300;
       background: rgba(0,0,0,0.96);
       display: flex;
       align-items: center;
@@ -721,7 +721,7 @@ function fullscreenInjectStyles() {
       position: fixed;
       top: 1.2rem;
       right: 1.4rem;
-      z-index: 1000000;
+      z-index: 2147483400;
       background: rgba(13,8,33,0.85);
       border: 1px solid rgba(160,63,255,0.4);
       color: rgba(255,255,255,0.85);
@@ -788,8 +788,10 @@ function fullscreenClose() {
   const closeBtn = document.getElementById('fs-close');
   if (overlay) overlay.classList.remove('open');
   if (closeBtn) closeBtn.classList.remove('visible');
-  document.body.style.overflow = '';
+  const stillInProductPanel = document.querySelector('.lb.open, .t-lb.open, .lightbox.open, .modal-overlay.open, #nedeka-lightbox.open');
+  document.body.style.overflow = stillInProductPanel ? 'hidden' : '';
 }
+window.fullscreenClose = fullscreenClose;
 
 /* Enganchar click en imagen del lightbox */
 function fullscreenAttach() {
