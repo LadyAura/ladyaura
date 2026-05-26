@@ -135,6 +135,33 @@
     'assets/sirena-perla-rosa-50x70.webp'
   ];
 
+  const aura50x70Batch = [
+    'assets/abrazo-amoroso-50x70.webp',
+    'assets/abrazo-celestial-50x70.webp',
+    'assets/abrazo-cielo-estrellado-50x70.webp',
+    'assets/abrazo-luna-roja-50x70.webp',
+    'assets/alma-en-el-espejo-50x70.webp',
+    'assets/amor-inesperado-50x70.webp',
+    'assets/aura-angelical-50x70.webp',
+    'assets/aura-aurora-de-mariposa-50x70.webp',
+    'assets/aura-diosa-de-los-caballos-50x70.webp',
+    'assets/aura-guardiana-de-la-brujula-50x70.webp',
+    'assets/aura-peligrosa-50x70.webp',
+    'assets/aura-promesa-al-atardecer-50x70.webp',
+    'assets/aura-susurro-del-bosque-50x70.webp',
+    'assets/aura-viajero-de-las-estrellas-50x70.webp',
+    'assets/aurora-celestial-50x70.webp',
+    'assets/balcon-encantado-50x70.webp',
+    'assets/chica-eterea-50x70.webp',
+    'assets/conejito-adorable-50x70.webp',
+    'assets/conejitos-carinosos-50x70.webp',
+    'assets/bruja-enamorada-50x70.webp',
+    'assets/dama-de-la-oscuridad-50x70.webp',
+    'assets/el-arbol-de-la-vida-50x70.webp',
+    'assets/eleccion-50x70.webp',
+    'assets/elfa-eternity-50x70.webp'
+  ];
+
   const store = createImagePairStore();
 
   function hydrateProductCards() {
@@ -145,6 +172,9 @@
 
     store.registerBatch(originalBatch);
     store.registerBatch(nedeka50x70Batch.map(function(src) {
+      return { src: src, kind: 'version_50x70' };
+    }));
+    store.registerBatch(aura50x70Batch.map(function(src) {
       return { src: src, kind: 'version_50x70' };
     }));
 
@@ -158,7 +188,9 @@
       card.dataset.pairStatus = pair.status;
     });
 
+    window.LADY_AURA_IMAGE_PAIRS = store.list();
     window.NEDEKA_IMAGE_PAIRS = store.list();
+    window.AURA_IMAGE_PAIRS = store.list();
   }
 
   window.LadyAuraImagePairs = {
@@ -170,6 +202,7 @@
     getProductPair: store.get,
     resolveImageForSize: resolveImageForSize,
     nedeka50x70Batch: nedeka50x70Batch,
+    aura50x70Batch: aura50x70Batch,
     hydrateProductCards: hydrateProductCards
   };
 
