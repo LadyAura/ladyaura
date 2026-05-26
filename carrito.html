@@ -339,38 +339,6 @@ main {
 .country-other-field.is-visible { display: flex; }
 
 
-.kit-options {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-  margin-top: 0.25rem;
-}
-.kit-option {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  color: var(--text);
-  font-family: 'Raleway', sans-serif !important;
-  font-size: 0.92rem !important;
-  letter-spacing: 0 !important;
-  text-transform: none !important;
-  cursor: pointer;
-}
-.kit-option input {
-  width: auto;
-  accent-color: var(--pink);
-}
-.kit-help {
-  margin-top: 0.35rem;
-  color: var(--muted);
-  font-size: 0.8rem;
-  line-height: 1.5;
-}
-
 .form-note {
   font-size: 0.76rem;
   color: var(--muted);
@@ -1167,20 +1135,6 @@ body.aura-modal-open .topbar {
             </div>
           </div>
           <div class="form-group full">
-            <label>¿Quieres incluir kit de herramientas?</label>
-            <div class="kit-options" role="radiogroup" aria-label="Kit de herramientas">
-              <label class="kit-option" for="f-kit-si">
-                <input type="radio" id="f-kit-si" name="kit_herramientas" value="Sí, quiero recibir el kit de herramientas" required checked>
-                <span>Sí, quiero recibir el kit de herramientas</span>
-              </label>
-              <label class="kit-option" for="f-kit-no">
-                <input type="radio" id="f-kit-no" name="kit_herramientas" value="No, ya tengo mis propias herramientas" required>
-                <span>No, ya tengo mis propias herramientas</span>
-              </label>
-            </div>
-            <p class="kit-help">El kit incluye las herramientas básicas para empezar el diamond painting.</p>
-          </div>
-          <div class="form-group full">
             <label for="f-notas">Notas adicionales</label>
             <textarea id="f-notas" name="notas" placeholder="¿Algo que quieras comentarme? Personalización, regalo, etc."></textarea>
           </div>
@@ -1528,7 +1482,6 @@ const CUSTOMER_FIELD_IDS = [
 ];
 
 function getCustomerFormData() {
-  const kitChecked = document.querySelector('input[name="kit_herramientas"]:checked');
   return {
     nombre: document.getElementById('f-nombre')?.value.trim() || '',
     apellidos: document.getElementById('f-apellidos')?.value.trim() || '',
@@ -1539,8 +1492,7 @@ function getCustomerFormData() {
     cp: document.getElementById('f-cp')?.value.trim() || '',
     provincia: document.getElementById('f-provincia')?.value.trim() || '',
     pais_seleccionado: document.getElementById('f-pais')?.value || '',
-    pais_otro: document.getElementById('f-pais-otro')?.value.trim() || '',
-    kit_herramientas: kitChecked ? kitChecked.value : ''
+    pais_otro: document.getElementById('f-pais-otro')?.value.trim() || ''
   };
 }
 
@@ -1567,8 +1519,7 @@ function getSavedCustomerData() {
       direccion: lastOrder.direccion || '',
       poblacion: lastOrder.poblacion || '',
       provincia: lastOrder.provincia || '',
-      pais_seleccionado: lastOrder.pais || '',
-      kit_herramientas: lastOrder.kit_herramientas || ''
+      pais_seleccionado: lastOrder.pais || ''
     };
   } catch(e) {
     return null;
@@ -1606,11 +1557,6 @@ function restoreCustomerFormData() {
   }
   if (otherCountry && saved.pais_otro && !otherCountry.value) otherCountry.value = saved.pais_otro;
 
-  if (saved.kit_herramientas && window.CSS && CSS.escape) {
-    const kit = document.querySelector(`input[name="kit_herramientas"][value="${CSS.escape(saved.kit_herramientas)}"]`);
-    if (kit) kit.checked = true;
-  }
-
   updateCountryOtherField();
 }
 
@@ -1619,9 +1565,6 @@ function bindCustomerDataAutosave() {
     const field = document.getElementById(id);
     if (!field) return;
     field.addEventListener('input', function() { saveCustomerFormData(); });
-    field.addEventListener('change', function() { saveCustomerFormData(); });
-  });
-  document.querySelectorAll('input[name="kit_herramientas"]').forEach(function(field) {
     field.addEventListener('change', function() { saveCustomerFormData(); });
   });
 }
@@ -1684,7 +1627,6 @@ document.getElementById('order-form').addEventListener('submit', async function(
     provincia: document.getElementById('f-provincia').value,
     pais:      getSelectedCountry(),
     pais_seleccionado: document.getElementById('f-pais').value,
-    kit_herramientas: (document.querySelector('input[name="kit_herramientas"]:checked') || {}).value || 'No indicado',
     notas:     document.getElementById('f-notas').value,
     pedido:    items.map(i => `${i.nombre} · ${i.tamano || i.size || (i.orient==='v'?'60x90 cm':'90x60 cm')} · ${getCurrentCartPrice(i)}€`).join(' | '),
     subtotal:  subtotalPedido + ' €',
@@ -1713,7 +1655,6 @@ document.getElementById('order-form').addEventListener('submit', async function(
         nombre: data.nombre + ' ' + data.apellidos,
         email: data.email,
         telefono: data.telefono,
-        kit_herramientas: data.kit_herramientas,
         direccion: data.direccion + ', ' + data.cp + ' ' + data.poblacion + ', ' + data.provincia + ', ' + data.pais,
         poblacion: data.poblacion,
         provincia: data.provincia,
