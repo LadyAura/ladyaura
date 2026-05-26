@@ -201,11 +201,15 @@ function cartProductPriceForSize(card, size) {
 }
 
 function cartProductImageForSize(card, size) {
+  const wants50x70 = /50\s*x\s*70|70\s*x\s*50/i.test(String(size || ''));
   if (window.LadyAuraImagePairs && typeof window.LadyAuraImagePairs.resolveImageForSize === 'function') {
-    return window.LadyAuraImagePairs.resolveImageForSize(card, size);
+    const pairedImage = window.LadyAuraImagePairs.resolveImageForSize(card, size);
+    if (pairedImage && (!wants50x70 || pairedImage !== (card.dataset.originalImage || card.dataset.img))) return pairedImage;
   }
-  if (/50\s*x\s*70|70\s*x\s*50/i.test(String(size || ''))) {
-    return card.dataset.image50x70 || card.dataset.originalImage || card.dataset.img || card.querySelector('img')?.src || '';
+  if (wants50x70) {
+    const originalImage = card.dataset.originalImage || card.dataset.img || card.querySelector('img')?.getAttribute('src') || '';
+    const derivedImage = originalImage.replace(/\.(webp|png|jpe?g)(\?.*)?$/i, '-50x70.webp$2');
+    return card.dataset.image50x70 || derivedImage || originalImage;
   }
   return card.dataset.originalImage || card.dataset.img || card.querySelector('img')?.src || '';
 }
@@ -213,13 +217,26 @@ function cartProductImageForSize(card, size) {
 function cartPreviewProductImageForSize(card, size) {
   const nextImage = cartProductImageForSize(card, size);
   if (!nextImage) return;
+  const fallbackImage = card.dataset.originalImage || card.dataset.img || '';
 
   const cardImage = card.querySelector('.card-img-wrap img, img');
-  if (cardImage) cardImage.src = nextImage;
+  if (cardImage) {
+    cardImage.onerror = function() {
+      this.onerror = null;
+      if (fallbackImage) this.src = fallbackImage;
+    };
+    cardImage.src = nextImage;
+  }
 
   const lb = document.getElementById('lb');
   const lbImage = document.getElementById('lbImg');
-  if (lb && lb.classList.contains('open') && lbImage) lbImage.src = nextImage;
+  if (lb && lb.classList.contains('open') && lbImage) {
+    lbImage.onerror = function() {
+      this.onerror = null;
+      if (fallbackImage) this.src = fallbackImage;
+    };
+    lbImage.src = nextImage;
+  }
 }
 
 function cartInjectButtons() {
