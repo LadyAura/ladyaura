@@ -211,9 +211,15 @@ function cartProductPriceForSize(card, size) {
 
 function cartProductImageForSize(card, size) {
   const wants50x70 = /50\s*x\s*70|70\s*x\s*50/i.test(String(size || ''));
+  const wants40x60 = /40\s*x\s*60|60\s*x\s*40/i.test(String(size || ''));
   if (window.LadyAuraImagePairs && typeof window.LadyAuraImagePairs.resolveImageForSize === 'function') {
     const pairedImage = window.LadyAuraImagePairs.resolveImageForSize(card, size);
-    if (pairedImage && (!wants50x70 || pairedImage !== (card.dataset.originalImage || card.dataset.img))) return pairedImage;
+    if (pairedImage && (!wants50x70 || pairedImage !== (card.dataset.originalImage || card.dataset.img))) {
+      if (!wants40x60 || pairedImage !== (card.dataset.originalImage || card.dataset.img)) return pairedImage;
+    }
+  }
+  if (wants40x60) {
+    return card.dataset.image40x60 || card.dataset.originalImage || card.dataset.img || card.querySelector?.('img')?.src || '';
   }
   if (wants50x70) {
     const originalImage = card.dataset.originalImage || card.dataset.img || card.querySelector?.('img')?.getAttribute('src') || '';
