@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   'use strict';
 
   var STORAGE_KEY = 'ladyaura_site_lang';
@@ -113,15 +113,15 @@
     var current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
     var links = [
       ['index.html', 'Inicio'],
-      ['horoscopo.html', '♈ Horoscopo'],
-      ['especiales.html', '✨ AURA'],
-      ['nedeka.html', '🌙 NEDEKA'],
-      ['bruji.html', '🔮 BRUJI'],
-      ['maika.html', '🎨 MAIKA'],
+      ['horoscopo.html', 'Horoscopo'],
+      ['especiales.html', 'AURA'],
+      ['nedeka.html', 'NEDEKA'],
+      ['bruji.html', 'BRUJI'],
+      ['maika.html', 'MAIKA'],
       ['circulo-aura.html', '<span class="red-circle-dot" aria-hidden="true"></span>CIRCULO AURA'],
-      ['personalizados.html', '🎨 Personalizados'],
-      ['colorear.html', '🎨 Colorear'],
-      ['pedidos.html', '📦 Mis pedidos']
+      ['personalizados.html', 'Personalizados'],
+      ['colorear.html', 'Colorear'],
+      ['pedidos.html', 'Mis pedidos']
     ];
 
     var navHtml = links.map(function (link) {
@@ -132,9 +132,9 @@
     var cartActive = current === 'carrito.html' ? ' aria-current="page"' : '';
     header.innerHTML = [
       '<a class="brand" href="index.html" aria-label="Lady Aura inicio"><img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art - Diamond Painting Premium"></a>',
-      '<button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>',
+      '<button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false">Menu</button>',
       '<nav class="nav" id="nav" aria-label="Navegacion principal">' + navHtml + '</nav>',
-      '<div class="lady-aura-header-actions" aria-label="Carrito e idioma"><a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito"' + cartActive + ' style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">🛒<span class="cart-badge" style="display:none">0</span></a></div>'
+      '<div class="lady-aura-header-actions" aria-label="Carrito e idioma"><a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito"' + cartActive + ' style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">Carrito<span class="cart-badge" style="display:none">0</span></a></div>'
     ].join('');
     if (typeof window.cartUpdateBadge === 'function') {
       window.cartUpdateBadge();
@@ -359,7 +359,7 @@
         var prev = document.createElement('button');
         prev.type = 'button';
         prev.className = 'page-btn' + (currentPage === 1 ? ' disabled' : '');
-        prev.textContent = '←';
+        prev.textContent = 'â†';
         prev.disabled = currentPage === 1;
         prev.setAttribute('aria-label', 'Pagina anterior');
         prev.addEventListener('click', function () { showPage(currentPage - 1, true); });
@@ -380,7 +380,7 @@
         var next = document.createElement('button');
         next.type = 'button';
         next.className = 'page-btn' + (currentPage === totalPages ? ' disabled' : '');
-        next.textContent = '→';
+        next.textContent = 'â†’';
         next.disabled = currentPage === totalPages;
         next.setAttribute('aria-label', 'Pagina siguiente');
         next.addEventListener('click', function () { showPage(currentPage + 1, true); });

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -885,19 +885,18 @@ body.aura-modal-open .topbar {
   <a class="brand" href="index.html" aria-label="Lady Aura inicio">
     <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art  Diamond Painting Premium">
   </a>
-  <button class="menu-toggle" id="menuToggle" aria-label="Abrir men" aria-expanded="false" type="button">?</button>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir men" aria-expanded="false" type="button">Menu</button>
   <nav class="nav" id="nav" aria-label="Navegacin principal">
     <a href="index.html" data-i18n="nav_inicio">Inicio</a>
     <a href="zodiaco.html" data-i18n="nav_zodiaco">? Zodaco</a>
     <a href="paisajes.html" data-i18n="nav_paisajes">??? Paisajes</a>
-    <a href="especiales.html" data-i18n="nav_especiales">? Diseos exclusivos</a>
-    <a href="nedeka.html">?? NEDEKA</a>
-    <a href="bruji.html">?? BRUJI</a>
+    <a href="nedeka.html">NEDEKA</a>
+    <a href="bruji.html">BRUJI</a>
     <a href="maika.html" data-i18n="nav_maika">?? MAIKA</a>
     <a href="personalizados.html" data-i18n="nav_personalizados">?? Personalizados</a>
     <a href="tarot.html" data-i18n="nav_tarot">?? Tarot</a>
     <a href="colorear.html" data-i18n="nav_colorear">?? Colorear</a>
-    <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">??<span class="cart-badge" style="display:none">0</span></a>
+    <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">Carrito<span class="cart-badge" style="display:none">0</span></a>
   </nav>
 </header>
 
@@ -1593,7 +1592,7 @@ function setLangTarot(lang) {
       btn.type = 'button';
       btn.className = 'aura-floating-close';
       btn.setAttribute('aria-label', 'Cerrar');
-      btn.textContent = '×';
+      btn.textContent = 'Ã—';
       btn.hidden = true;
       btn.addEventListener('click', closeAuraPanel);
       document.body.appendChild(btn);
@@ -1644,7 +1643,7 @@ function setLangTarot(lang) {
         btn.type = 'button';
         btn.className = 'aura-universal-close';
         btn.setAttribute('aria-label', 'Cerrar');
-        btn.textContent = '×';
+        btn.textContent = 'Ã—';
         btn.addEventListener('click', closeAuraPanel);
         panel.appendChild(btn);
       }

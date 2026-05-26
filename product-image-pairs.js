@@ -123,43 +123,33 @@
     'assets/ammonet-50x70.webp',
     'assets/aratiana-50x70.webp',
     'assets/bernabe-50x70.webp',
+    'assets/abrazo-de-oriana-50x70.webp',
+    'assets/bruster-punky-50x70.webp',
     'assets/caminante-galactica-50x70.webp',
+    'assets/cita-a-ciegas-50x70.webp',
     'assets/contigo-me-siento-en-casa-50x70.webp',
     'assets/diosa-del-oceano-50x70.webp',
     'assets/elfa-del-bosque-neon-50x70.webp',
+    'assets/heart-robogirl-50x70.webp',
+    'assets/hestia-diosa-del-fuego-50x70.webp',
     'assets/mariquita-de-flores-50x70.webp',
     'assets/nedeka-ojo-cosmico-50x70.webp',
     'assets/nedeka-reina-del-papiro-50x70.webp',
+    'assets/princesa-nesa-50x70.webp',
+    'assets/rania-50x70.webp',
     'assets/scarlett-wolf-50x70.webp',
     'assets/sirena-nexralia-50x70.webp',
-    'assets/sirena-perla-rosa-50x70.webp'
+    'assets/sirena-perla-rosa-50x70.webp',
+    'assets/viaje-en-dirigible-50x70.webp',
+    'assets/vida-en-la-selva-50x70.webp'
   ];
 
   const aura50x70Batch = [
-    'assets/abrazo-amoroso-50x70.webp',
-    'assets/abrazo-celestial-50x70.webp',
-    'assets/abrazo-cielo-estrellado-50x70.webp',
-    'assets/abrazo-luna-roja-50x70.webp',
-    'assets/alma-en-el-espejo-50x70.webp',
-    'assets/amor-inesperado-50x70.webp',
-    'assets/aura-angelical-50x70.webp',
-    'assets/aura-aurora-de-mariposa-50x70.webp',
-    'assets/aura-diosa-de-los-caballos-50x70.webp',
-    'assets/aura-guardiana-de-la-brujula-50x70.webp',
-    'assets/aura-peligrosa-50x70.webp',
-    'assets/aura-promesa-al-atardecer-50x70.webp',
-    'assets/aura-susurro-del-bosque-50x70.webp',
-    'assets/aura-viajero-de-las-estrellas-50x70.webp',
-    'assets/aurora-celestial-50x70.webp',
-    'assets/balcon-encantado-50x70.webp',
-    'assets/chica-eterea-50x70.webp',
-    'assets/conejito-adorable-50x70.webp',
-    'assets/conejitos-carinosos-50x70.webp',
-    'assets/bruja-enamorada-50x70.webp',
-    'assets/dama-de-la-oscuridad-50x70.webp',
-    'assets/el-arbol-de-la-vida-50x70.webp',
-    'assets/eleccion-50x70.webp',
-    'assets/elfa-eternity-50x70.webp'
+    'assets/almas-de-luz-50x70.webp',
+    'assets/hada-del-lago-lunar-50x70.webp',
+    'assets/arbol-de-cristal-lunar-50x70.webp',
+    'assets/abrazo-bajo-la-luna-roja-50x70.webp',
+    'assets/rincon-encantado-de-magia-y-luz-50x70.webp'
   ];
 
   const store = createImagePairStore();

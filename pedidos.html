@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mis pedidos – Lady Aura Art</title>
+<title>Mis pedidos â€“ Lady Aura Art</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +34,7 @@ body {
 
 #stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 
-/* ── HEADER ── */
+/* â”€â”€ HEADER â”€â”€ */
 .site-header {
   position: sticky; top: 0; z-index: 9999;
   display: flex; align-items: center; gap: 1rem;
@@ -84,14 +84,14 @@ body {
   .site-header .nav a:last-child { border-bottom: none; }
 }
 
-/* ── LAYOUT ── */
+/* â”€â”€ LAYOUT â”€â”€ */
 main {
   position: relative; z-index: 5;
   max-width: 860px; margin: 0 auto;
   padding: 3rem 5% 6rem;
 }
 
-/* ── HERO ── */
+/* â”€â”€ HERO â”€â”€ */
 .page-hero { text-align: center; margin-bottom: 3rem; }
 .page-hero .eyebrow {
   font-family: 'Cinzel', serif; font-size: 0.72rem;
@@ -107,7 +107,7 @@ main {
 }
 .page-hero p { color: var(--muted); font-size: 0.95rem; font-weight: 300; }
 
-/* ── BANNER LISTA DE ESPERA ── */
+/* â”€â”€ BANNER LISTA DE ESPERA â”€â”€ */
 .waitlist-banner {
   background: linear-gradient(135deg, rgba(160,63,255,0.15), rgba(255,72,137,0.1));
   border: 1px solid rgba(160,63,255,0.35);
@@ -123,7 +123,32 @@ main {
 }
 .waitlist-banner p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
 
-/* ── VACÍO ── */
+.email-reminder {
+  background:
+    radial-gradient(circle at top left, rgba(232,201,106,0.15), transparent 42%),
+    linear-gradient(135deg, rgba(160,63,255,0.12), rgba(255,72,137,0.08));
+  border: 1px solid rgba(232,201,106,0.32);
+  border-radius: 20px;
+  padding: 1.25rem 1.6rem;
+  margin: -1.2rem 0 2.5rem;
+  text-align: center;
+  box-shadow: 0 18px 55px rgba(0,0,0,0.22);
+}
+.email-reminder h2 {
+  font-family: 'Cinzel', serif;
+  color: var(--gold2);
+  font-size: clamp(1.05rem, 2.6vw, 1.45rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+.email-reminder p {
+  color: rgba(255,255,255,0.78);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+/* â”€â”€ VACÃO â”€â”€ */
 #orders-empty {
   text-align: center; padding: 4rem 1rem;
 }
@@ -143,7 +168,7 @@ main {
 }
 .btn-shop:hover { box-shadow: 0 0 50px rgba(160,63,255,0.6); transform: translateY(-2px); }
 
-/* ── LISTA DE PEDIDOS ── */
+/* â”€â”€ LISTA DE PEDIDOS â”€â”€ */
 #orders-list { display: flex; flex-direction: column; gap: 1.5rem; }
 
 .order-card {
@@ -166,7 +191,7 @@ main {
 }
 .order-date { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
 
-/* ── BADGE DE ESTADO ── */
+/* â”€â”€ BADGE DE ESTADO â”€â”€ */
 .status-badge {
   display: inline-flex; align-items: center; gap: 0.4rem;
   padding: 0.35rem 1rem; border-radius: 999px;
@@ -195,7 +220,7 @@ main {
   color: #a0d8ff;
 }
 
-/* ── ITEMS DEL PEDIDO ── */
+/* â”€â”€ ITEMS DEL PEDIDO â”€â”€ */
 .order-items { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1.2rem; }
 .order-item {
   display: flex; align-items: center; gap: 1rem;
@@ -220,7 +245,7 @@ main {
   color: var(--gold2); flex-shrink: 0;
 }
 
-/* ── FOOTER DEL PEDIDO ── */
+/* â”€â”€ FOOTER DEL PEDIDO â”€â”€ */
 .order-footer {
   display: flex; align-items: center;
   justify-content: space-between; gap: 1rem;
@@ -234,7 +259,7 @@ main {
 }
 .order-total span { color: var(--muted); font-size: 0.82rem; margin-right: 0.4rem; }
 
-/* ── NOTA LISTA ESPERA EN PEDIDO ── */
+/* â”€â”€ NOTA LISTA ESPERA EN PEDIDO â”€â”€ */
 .order-waitlist-note {
   margin-top: 1rem;
   background: rgba(232,201,106,0.07);
@@ -246,8 +271,18 @@ main {
   line-height: 1.6;
 }
 .order-waitlist-note strong { color: var(--gold2); }
+.order-spam-note {
+  margin-top: 0.85rem;
+  color: rgba(255,255,255,0.78);
+}
+.order-spam-note strong {
+  color: var(--gold2);
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
 
-/* ── BOTÓN LIMPIAR ── */
+/* â”€â”€ BOTÃ“N LIMPIAR â”€â”€ */
 .btn-clear {
   background: none; border: 1px solid rgba(255,72,137,0.25);
   color: rgba(255,72,137,0.6); font-family: 'Cinzel', serif;
@@ -257,7 +292,7 @@ main {
 }
 .btn-clear:hover { border-color: rgba(255,72,137,0.6); color: #ff4889; }
 
-/* ── FOOTER ── */
+/* â”€â”€ FOOTER â”€â”€ */
 footer {
   position: relative; z-index: 5; text-align: center;
   padding: 2rem; border-top: 1px solid var(--border);
@@ -432,45 +467,50 @@ body.aura-modal-open .topbar {
 
 <header class="site-header" id="site-header">
   <a class="brand" href="index.html" aria-label="Lady Aura inicio">
-    <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art – Diamond Painting Premium">
+    <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art â€“ Diamond Painting Premium">
   </a>
-  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-  <nav class="nav" id="nav" aria-label="Navegación principal">
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menÃº" aria-expanded="false">Menu</button>
+  <nav class="nav" id="nav" aria-label="NavegaciÃ³n principal">
     <a href="index.html">Inicio</a>
-    <a href="horoscopo.html">♈ Horoscopo</a>
-    <a href="especiales.html">✨ AURA</a>
-    <a href="nedeka.html">🌙 NEDEKA</a>
-    <a href="bruji.html">🔮 BRUJI</a>
-    <a href="maika.html">🎨 MAIKA</a>
+    <a href="horoscopo.html">Horoscopo</a>
+    
+    <a href="especiales.html">AURA</a><a href="nedeka.html">NEDEKA</a>
+    <a href="bruji.html">BRUJI</a>
+    <a href="maika.html">MAIKA</a>
     <a href="circulo-aura.html"><span class="red-circle-dot" aria-hidden="true"></span>CIRCULO AURA</a>
-    <a href="personalizados.html">🎨 Personalizados</a>
-    <a href="colorear.html">🎨 Colorear</a>
-    <a href="pedidos.html" aria-current="page">📦 Mis pedidos</a>
-    <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">🛒<span class="cart-badge" style="display:none">0</span></a>
+    <a href="personalizados.html">Personalizados</a>
+    <a href="colorear.html">Colorear</a>
+    <a href="pedidos.html" aria-current="page">ðŸ“¦ Mis pedidos</a>
+    <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">Carrito<span class="cart-badge" style="display:none">0</span></a>
   </nav>
-  <a class="header-button" href="horoscopo.html">Ver colecciones ✨</a>
+  <a class="header-button" href="horoscopo.html">Ver colecciones</a>
 </header>
 
 <main>
   <div class="page-hero">
-    <span class="eyebrow">✦ Lady Aura Art · Diamond Painting Premium ✦</span>
-    <h1>📦 Mis pedidos</h1>
-    <p>Aquí puedes ver tus reservas y pedidos</p>
+    <span class="eyebrow">âœ¦ Lady Aura Art Â· Diamond Painting Premium âœ¦</span>
+    <h1>ðŸ“¦ Mis pedidos</h1>
+    <p>AquÃ­ puedes ver tus reservas y pedidos</p>
   </div>
 
   <!-- Banner informativo lista de espera -->
   <div class="waitlist-banner">
-    <span class="wb-icon">⏳</span>
+    <span class="wb-icon">â³</span>
     <h2>Lista de espera abierta</h2>
-    <p>Producción por orden de reserva. Si has reservado, recibirás un aviso personalizado por email para continuar con tu pedido. <strong style="color:var(--gold2)">No se ha cobrado nada todavía.</strong></p>
+    <p>ProducciÃ³n por orden de reserva. Si has reservado, recibirÃ¡s un aviso personalizado por email para continuar con tu pedido. <strong style="color:var(--gold2)">No se ha cobrado nada todavÃ­a.</strong></p>
   </div>
 
-  <!-- Vacío -->
+  <div class="email-reminder">
+    <h2>Revisa tambiÃ©n spam</h2>
+    <p>A veces mis emails pueden llegar allÃ­. Ã‰chale un vistazo de vez en cuando para no perderte el aviso sobre tu reserva.</p>
+  </div>
+
+  <!-- VacÃ­o -->
   <div id="orders-empty" style="display:none">
-    <span class="empty-icon">🌟</span>
-    <h2>Aún no tienes reservas</h2>
-    <p>Explora nuestras colecciones y apúntate a la lista de espera.</p>
-    <a href="index.html" class="btn-shop">✨ Ver colecciones</a>
+    <span class="empty-icon">ðŸŒŸ</span>
+    <h2>AÃºn no tienes reservas</h2>
+    <p>Explora nuestras colecciones y apÃºntate a la lista de espera.</p>
+    <a href="index.html" class="btn-shop">âœ¨ Ver colecciones</a>
   </div>
 
   <!-- Lista de pedidos -->
@@ -479,11 +519,11 @@ body.aura-modal-open .topbar {
 </main>
 
 <footer>
-  <p>© 2026 <a href="index.html">Lady Aura Art</a> · Diamond Painting Premium · Valencia, España 💜</p>
+  <p>Â© 2026 <a href="index.html">Lady Aura Art</a> Â· Diamond Painting Premium Â· Valencia, EspaÃ±a ðŸ’œ</p>
 </footer>
 
 <script>
-/* ── Estrellas ── */
+/* â”€â”€ Estrellas â”€â”€ */
 (function(){
   var c = document.getElementById('stars');
   for(var i=0;i<80;i++){
@@ -496,7 +536,7 @@ body.aura-modal-open .topbar {
   document.head.appendChild(st);
 })();
 
-/* ── Menú móvil ── */
+/* â”€â”€ MenÃº mÃ³vil â”€â”€ */
 (function(){
   const btn = document.getElementById('menuToggle');
   const nav = document.getElementById('nav');
@@ -513,19 +553,19 @@ body.aura-modal-open .topbar {
   });
 })();
 
-/* ── Estado en español ── */
+/* â”€â”€ Estado en espaÃ±ol â”€â”€ */
 const STATUS_LABEL = {
-  lista_espera: '⏳ Lista de espera',
-  procesando:   '🔮 Producción por orden de reserva',
-  enviado:      '🚀 Enviado',
-  recibido:     '✨ Recibido'
+  lista_espera: 'â³ Lista de espera',
+  procesando:   'ðŸ”® ProducciÃ³n por orden de reserva',
+  enviado:      'ðŸš€ Enviado',
+  recibido:     'âœ¨ Recibido'
 };
 
 function statusClass(estado) {
   return estado || 'lista_espera';
 }
 
-/* ── Renderizar pedidos ── */
+/* â”€â”€ Renderizar pedidos â”€â”€ */
 function renderOrders() {
   const orders = JSON.parse(localStorage.getItem('ladyaura_orders') || '[]');
   const list = document.getElementById('orders-list');
@@ -548,17 +588,18 @@ function renderOrders() {
       <div class="order-item">
         <img class="order-item-img" src="${item.img || ''}" alt="${item.nombre || ''}" onerror="this.style.opacity='0.2'">
         <div class="order-item-info">
-          <div class="order-item-name">${item.nombre || 'Diseño'}</div>
-          <div class="order-item-meta">Diamond painting ${item.orient === 'v' ? '60×90 cm ↕' : '90×60 cm ↔'} · Envío incluido</div>
+          <div class="order-item-name">${item.nombre || 'DiseÃ±o'}</div>
+          <div class="order-item-meta">Diamond painting ${item.orient === 'v' ? '60Ã—90 cm â†•' : '90Ã—60 cm â†”'} Â· EnvÃ­o incluido</div>
         </div>
-        <div class="order-item-price">${item.precio || '—'} €</div>
+        <div class="order-item-price">${item.precio || 'â€”'} â‚¬</div>
       </div>
     `).join('');
 
     const waitlistNote = isWaitlist ? `
       <div class="order-waitlist-note">
-        <strong>✦ Lista de espera abierta</strong> — Recibirás un email personalizado sobre tu reserva. 
-        El precio de <strong>${order.total} €</strong> queda reservado para ti. No se ha cobrado nada todavía.
+        <strong>âœ¦ Lista de espera abierta</strong> â€” RecibirÃ¡s un email personalizado sobre tu reserva. 
+        El precio de <strong>${order.total} â‚¬</strong> queda reservado para ti. No se ha cobrado nada todavÃ­a.
+        <div class="order-spam-note"><strong>Revisa spam de vez en cuando:</strong> a veces mis emails pueden llegar allÃ­.</div>
       </div>
     ` : '';
 
@@ -567,7 +608,7 @@ function renderOrders() {
         <div class="order-header">
           <div>
             <div class="order-id">${order.id || 'LA-' + idx}</div>
-            <div class="order-date">📅 ${order.fecha || '—'} · ${order.nombre || ''}</div>
+            <div class="order-date">ðŸ“… ${order.fecha || 'â€”'} Â· ${order.nombre || ''}</div>
           </div>
           <span class="status-badge ${statusClass(estado)}">${label}</span>
         </div>
@@ -577,7 +618,7 @@ function renderOrders() {
         </div>
 
         <div class="order-footer">
-          <div class="order-total"><span>Total reservado:</span>${order.total} €</div>
+          <div class="order-total"><span>Total reservado:</span>${order.total} â‚¬</div>
           <button class="btn-clear" onclick="removeOrder(${idx})">Eliminar reserva</button>
         </div>
 
@@ -620,7 +661,7 @@ renderOrders();
       btn.type = 'button';
       btn.className = 'aura-floating-close';
       btn.setAttribute('aria-label', 'Cerrar');
-      btn.textContent = '×';
+      btn.textContent = 'Ã—';
       btn.hidden = true;
       btn.addEventListener('click', closeAuraPanel);
       document.body.appendChild(btn);
@@ -671,7 +712,7 @@ renderOrders();
         btn.type = 'button';
         btn.className = 'aura-universal-close';
         btn.setAttribute('aria-label', 'Cerrar');
-        btn.textContent = '×';
+        btn.textContent = 'Ã—';
         btn.addEventListener('click', closeAuraPanel);
         panel.appendChild(btn);
       }
