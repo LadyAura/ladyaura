@@ -1,0 +1,182 @@
+[
+  {
+    "baseName": "abejita dorada",
+    "originalImage": "assets/abejita-dorada.webp",
+    "image50x70": "assets/abejita-dorada-50x70.webp",
+    "status": "matched"
+  },
+  {
+    "baseName": "abrazo de oriana",
+    "originalImage": "assets/abrazo-de-oriana.webp",
+    "image50x70": null,
+    "status": "missing_50x70"
+  },
+  {
+    "baseName": "alita colibri",
+    "originalImage": "assets/alita-colibri.webp",
+    "image50x70": "assets/alita-colibri-50x70.webp",
+    "status": "matched"
+  },
+  {
+    "baseName": "alya diosa enjoyada",
+    "originalImage": "assets/alya-diosa-enjoyada.webp",
+    "image50x70": "assets/alya-diosa-enjoyada-50x70.webp",
+    "status": "matched"
+  },
+  {
+    "baseName": "ammonet",
+    "originalImage": "assets/Ammonet.webp",
+    "image50x70": "assets/ammonet-50x70.webp",
+    "status": "matched"
+  },
+  {
+    "baseName": "aratiana",
+    "originalImage": "assets/Aratiana.webp",
+    "image50x70": "assets/aratiana-50x70.webp",
+    "status": "matched"
+  },
+  {
+    "baseName": "bernabe",
+    "originalImage": "assets/Bernabe.webp",
+    "image50x70": "assets/bernabe-50x70.webp",
+    "status": "matched"
+  },
+  {
+    "baseName": "bruster punky",
+    "originalImage": "assets/bruster-punky.webp",
+    "image50x70": null,
+    "status": "missing_50x70"
+  },
+  {
+    "baseName": "caminante galactica",
+    "originalImage": "assets/caminante-galactica.webp",
+    "image50x70": "assets/caminante-galactica-50x70.webp",
+    "status": "matched"
+  },
+  {
+    "baseName": "cita a ciegas",
+    "originalImage": "assets/Cita_a_ciegas.webp",
+    "image50x70": null,
+    "status": "missing_50x70"
+  },
+  {
+    "baseName": "cita en la playa",
+    "originalImage": "assets/Cita_en_la_playa.webp",
+    "image50x70": null,
+    "status": "missing_50x70"
+  },
+  {
+    "baseName": "contigo me siento en casa",
+    "originalImage": "assets/contigo-me-siento-en-casa.webp",
+    "image50x70": "assets/contigo-me-siento-en-casa-50x70.webp",
+    "status": "matched"
+  },
+  {
+    "baseName": "diosa del cosmos",
+    "originalImage": "assets/Diosa_del_cosmos.webp",
+    "image50x70": null,
+    "status": "missing_50x70"
+  },
+  {
+    "baseName": "diosa del oceano",
+    "originalImage": "assets/diosa-del-oceano.webp",
+    "image50x70": "assets/diosa-del-oceano-50x70.webp",
+    "status": "matched"
+  },
+  {
+    "baseName": "elfa del bosque neon",
+    "originalImage": "assets/elfa-del-bosque-neon.webp",
+    "image50x70": "assets/elfa-del-bosque-neon-50x70.webp",
+    "status": "matched"
+  },
+  {
+    "baseName": "heart robogirl",
+    "originalImage": "assets/heart-robogirl.webp",
+    "image50x70": null,
+    "status": "missing_50x70"
+  },
+  {
+    "baseName": "hestia diosa del fuego",
+    "originalImage": "assets/Hestia_Diosa_del_fuego.webp",
+    "image50x70": null,
+    "status": "missing_50x70"
+  },
+  {
+    "baseName": "jacecat",
+    "originalImage": "assets/jacecat.webp",
+    "image50x70": null,
+    "status": "missing_50x70"
+  },
+  {
+    "baseName": "la fiesta de los monigotes",
+    "originalImage": "assets/la-fiesta-de-los-monigotes.webp",
+    "image50x70": null,
+    "status": "missing_50x70"
+  },
+  {
+    "baseName": "mariquita de flores",
+    "originalImage": "assets/mariquita-de-flores.webp",
+    "image50x70": "assets/mariquita-de-flores-50x70.webp",
+    "status": "matched"
+  },
+  {
+    "baseName": "nedeka ojo cosmico",
+    "originalImage": "assets/nedeka-ojo-cosmico.webp",
+    "image50x70": "assets/nedeka-ojo-cosmico-50x70.webp",
+    "status": "matched"
+  },
+  {
+    "baseName": "nedeka reina del papiro",
+    "originalImage": "assets/nedeka-reina-del-papiro.webp",
+    "image50x70": "assets/nedeka-reina-del-papiro-50x70.webp",
+    "status": "matched"
+  },
+  {
+    "baseName": "noche magica",
+    "originalImage": "assets/Noche_magica.webp",
+    "image50x70": null,
+    "status": "missing_50x70"
+  },
+  {
+    "baseName": "princesa nesa",
+    "originalImage": "assets/Princesa_Nesa.webp",
+    "image50x70": null,
+    "status": "missing_50x70"
+  },
+  {
+    "baseName": "rania",
+    "originalImage": "assets/rania.webp",
+    "image50x70": null,
+    "status": "missing_50x70"
+  },
+  {
+    "baseName": "scarlett wolf",
+    "originalImage": "assets/scarlett-wolf.webp",
+    "image50x70": "assets/scarlett-wolf-50x70.webp",
+    "status": "matched"
+  },
+  {
+    "baseName": "sirena nexralia",
+    "originalImage": "assets/sirena-nexralia.webp",
+    "image50x70": "assets/sirena-nexralia-50x70.webp",
+    "status": "matched"
+  },
+  {
+    "baseName": "sirena perla rosa",
+    "originalImage": "assets/sirena-perla-rosa.webp",
+    "image50x70": "assets/sirena-perla-rosa-50x70.webp",
+    "status": "matched"
+  },
+  {
+    "baseName": "viaje en dirigible",
+    "originalImage": "assets/viaje-en-dirigible.webp",
+    "image50x70": null,
+    "status": "missing_50x70"
+  },
+  {
+    "baseName": "vida en la selva",
+    "originalImage": "assets/Vida_en_la_Selva.webp",
+    "image50x70": null,
+    "status": "missing_50x70"
+  }
+]

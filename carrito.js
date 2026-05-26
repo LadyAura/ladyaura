@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    LADY AURA ART · carrito.js
    Carrito global con localStorage. Funciona en todas las páginas.
    ============================================================ */
@@ -67,6 +67,7 @@ function cartSave(items) {
   localStorage.setItem(CART_KEY, JSON.stringify(items));
   cartUpdateBadge();
   cartUpdateFloating();
+  window.dispatchEvent(new CustomEvent('ladyaura:cart-updated', { detail: { items: items } }));
 }
 
 /* ── Añadir al carrito ── */
@@ -190,6 +191,37 @@ function cartProductPrice(card) {
 }
 
 /* ── Inyectar botón "Añadir al carrito" en cada product-card ── */
+function cartProductPriceForSize(card, size) {
+  const normalizedSize = String(size || '').toLowerCase().replace(/\s+/g, '');
+  if (normalizedSize === '50x70' || normalizedSize === '70x50') {
+    return Number(card.dataset.price50x70 || card.dataset.precio50x70) || 76;
+  }
+  if (normalizedSize === '40x60') return Number(card.dataset.price40x60 || card.dataset.precio40x60) || 66;
+  return cartProductPrice(card);
+}
+
+function cartProductImageForSize(card, size) {
+  if (window.LadyAuraImagePairs && typeof window.LadyAuraImagePairs.resolveImageForSize === 'function') {
+    return window.LadyAuraImagePairs.resolveImageForSize(card, size);
+  }
+  if (/50\s*x\s*70|70\s*x\s*50/i.test(String(size || ''))) {
+    return card.dataset.image50x70 || card.dataset.originalImage || card.dataset.img || card.querySelector('img')?.src || '';
+  }
+  return card.dataset.originalImage || card.dataset.img || card.querySelector('img')?.src || '';
+}
+
+function cartPreviewProductImageForSize(card, size) {
+  const nextImage = cartProductImageForSize(card, size);
+  if (!nextImage) return;
+
+  const cardImage = card.querySelector('.card-img-wrap img, img');
+  if (cardImage) cardImage.src = nextImage;
+
+  const lb = document.getElementById('lb');
+  const lbImage = document.getElementById('lbImg');
+  if (lb && lb.classList.contains('open') && lbImage) lbImage.src = nextImage;
+}
+
 function cartInjectButtons() {
   document.querySelectorAll('.product-card:not(.sold-out)').forEach(card => {
     const nombre = card.dataset.nombre;
@@ -213,12 +245,15 @@ function cartInjectButtons() {
         btn.type = 'button';
         btn.textContent = `Añadir ${size} al carrito`;
         btn.setAttribute('aria-label', `Añadir ${nombre} ${size} cm al carrito`);
+        btn.addEventListener('mouseenter', () => cartPreviewProductImageForSize(card, size));
+        btn.addEventListener('focus', () => cartPreviewProductImageForSize(card, size));
         btn.addEventListener('click', function(e) {
           e.stopPropagation(); // no abre el lightbox
+          cartPreviewProductImageForSize(card, size);
           cartAdd({
             id: (card.dataset.img || nombre) + '-' + size,
             nombre: nombre,
-            img: card.dataset.img || card.querySelector('img')?.src || '',
+            img: cartProductImageForSize(card, size),
             precio: price,
             tamano: size + ' cm',
             size: size + ' cm',
@@ -237,8 +272,9 @@ function cartInjectButtons() {
         options.appendChild(row);
       }
 
-      addSizeOption('60x90', currentPrice);
-      addSizeOption('40x60', 66);
+      addSizeOption('60x90', cartProductPriceForSize(card, '60x90'));
+      addSizeOption('50x70', cartProductPriceForSize(card, '50x70'));
+      addSizeOption('40x60', cartProductPriceForSize(card, '40x60'));
       info.appendChild(options);
       return;
     }
@@ -255,7 +291,7 @@ function cartInjectButtons() {
       cartAdd({
         id: card.dataset.img || nombre,
         nombre: nombre,
-        img: card.dataset.img || card.querySelector('img')?.src || '',
+        img: cartProductImageForSize(card, size),
         precio: Number(card.dataset.precio || card.dataset.price) || 84,
         orient: card.dataset.orient || 'v',
         coleccion: card.dataset.coleccion || card.dataset.collection || (location.pathname.toLowerCase().includes('nedeka') ? 'nedeka' : location.pathname.toLowerCase().includes('bruji') ? 'bruji' : location.pathname.toLowerCase().includes('maika') ? 'maika' : location.pathname.toLowerCase().includes('circulo-aura') ? 'bambarelle71' : card.dataset.coleccion || card.dataset.collection || ''),
@@ -627,7 +663,7 @@ function cartPatchLightbox(card) {
   const lbPrice = document.querySelector('.lb-price');
   if (lbPrice) {
     lbPrice.removeAttribute('style');
-    lbPrice.innerHTML = `<span class="lb-price-option"><span>60x90 cm</span><strong>${currentPrice} €</strong></span><span class="lb-price-option"><span>40x60 cm</span><strong>66 €</strong></span>`;
+    lbPrice.innerHTML = `<span class="lb-price-option"><span>60x90 cm</span><strong>${cartProductPriceForSize(card, '60x90')} €</strong></span><span class="lb-price-option"><span>50x70 cm</span><strong>${cartProductPriceForSize(card, '50x70')} €</strong></span><span class="lb-price-option"><span>40x60 cm</span><strong>${cartProductPriceForSize(card, '40x60')} €</strong></span>`;
   }
   if (!btns) {
     fullscreenAttach();
@@ -649,11 +685,14 @@ function cartPatchLightbox(card) {
       color: rgba(255,255,255,0.9);
       cursor: pointer;
     `;
+    btn.addEventListener('mouseenter', () => cartPreviewProductImageForSize(card, size));
+    btn.addEventListener('focus', () => cartPreviewProductImageForSize(card, size));
     btn.onclick = function() {
+      cartPreviewProductImageForSize(card, size);
       cartAdd({
         id: (card.dataset.img || card.dataset.nombre) + '-' + size,
         nombre: card.dataset.nombre,
-        img: card.dataset.img || '',
+        img: cartProductImageForSize(card, size),
         precio: price,
         tamano: size + ' cm',
         size: size + ' cm',
@@ -671,8 +710,9 @@ function cartPatchLightbox(card) {
     options.appendChild(btn);
   }
 
-  addLightboxSize('60x90', currentPrice);
-  addLightboxSize('40x60', 66);
+  addLightboxSize('60x90', cartProductPriceForSize(card, '60x90'));
+  addLightboxSize('50x70', cartProductPriceForSize(card, '50x70'));
+  addLightboxSize('40x60', cartProductPriceForSize(card, '40x60'));
   btns.insertBefore(options, btns.firstChild);
   fullscreenAttach();
 }
@@ -1086,6 +1126,10 @@ if(document.readyState !== "loading") {
     const code = normalizeCoupon(coupon?.code);
     const discount = code ? calculateCouponDiscount(items, code) : 0;
 
+    if (code && coupon && Number(coupon.discount) !== discount) {
+      localStorage.setItem(COUPON_KEY, JSON.stringify({ code: code, discount: discount }));
+    }
+
     const input = document.getElementById('coupon-code');
     if (input && code) input.value = code;
 
@@ -1144,6 +1188,7 @@ if(document.readyState !== "loading") {
 
   document.addEventListener('DOMContentLoaded', bindCouponForm);
   window.addEventListener('storage', updateCouponUI);
+  window.addEventListener('ladyaura:cart-updated', updateCouponUI);
   setTimeout(bindCouponForm, 350);
   setTimeout(updateCouponUI, 900);
 })();
