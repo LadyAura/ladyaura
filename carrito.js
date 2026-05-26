@@ -51,11 +51,20 @@ function cartBuildId(item) {
     .replace(/^-+|-+$/g, '');
 }
 
+function cartNormalizeItemPrice(item) {
+  const sizeText = [item?.tamano, item?.size, item?.id].filter(Boolean).join(' ');
+  if (/(?:50\s*(?:x|×)\s*70|70\s*(?:x|×)\s*50)/i.test(sizeText)) item.precio = 76;
+  else if (/40\s*(?:x|×)\s*60/i.test(sizeText)) item.precio = 66;
+  item.price = item.precio;
+  return item;
+}
+
 /* ── Leer / guardar ── */
 function cartGet() {
   try {
     return (JSON.parse(localStorage.getItem(CART_KEY)) || []).map(function(item) {
       item = item || {};
+      item = cartNormalizeItemPrice(item);
       item.img = cartNormalizeImage(item.img, item);
       item.id = cartBuildId(item);
       return item;
@@ -207,11 +216,11 @@ function cartProductImageForSize(card, size) {
     if (pairedImage && (!wants50x70 || pairedImage !== (card.dataset.originalImage || card.dataset.img))) return pairedImage;
   }
   if (wants50x70) {
-    const originalImage = card.dataset.originalImage || card.dataset.img || card.querySelector('img')?.getAttribute('src') || '';
+    const originalImage = card.dataset.originalImage || card.dataset.img || card.querySelector?.('img')?.getAttribute('src') || '';
     const derivedImage = originalImage.replace(/\.(webp|png|jpe?g)(\?.*)?$/i, '-50x70.webp$2');
     return card.dataset.image50x70 || derivedImage || originalImage;
   }
-  return card.dataset.originalImage || card.dataset.img || card.querySelector('img')?.src || '';
+  return card.dataset.originalImage || card.dataset.img || card.querySelector?.('img')?.src || '';
 }
 
 function cartPreviewProductImageForSize(card, size) {
@@ -219,7 +228,7 @@ function cartPreviewProductImageForSize(card, size) {
   if (!nextImage) return;
   const fallbackImage = card.dataset.originalImage || card.dataset.img || '';
 
-  const cardImage = card.querySelector('.card-img-wrap img, img');
+  const cardImage = card.querySelector?.('.card-img-wrap img, img');
   if (cardImage) {
     cardImage.onerror = function() {
       this.onerror = null;
@@ -723,7 +732,8 @@ function cartPatchLightbox(card) {
     `;
     btn.addEventListener('mouseenter', () => cartPreviewProductImageForSize(card, size));
     btn.addEventListener('focus', () => cartPreviewProductImageForSize(card, size));
-    btn.onclick = function() {
+    btn.onclick = function(e) {
+      if (e) e.stopPropagation();
       cartPreviewProductImageForSize(card, size);
       cartAdd({
         id: (card.dataset.img || card.dataset.nombre) + '-' + size,

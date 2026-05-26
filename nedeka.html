@@ -991,6 +991,8 @@ function openLB(card) {
   var img    = card.dataset.img || card.querySelector('img').src;
   var nombre = card.dataset.nombre || card.querySelector('h3').textContent;
   var precio = card.dataset.precio || '84';
+  var originalImage = card.dataset.originalImage || img;
+  var image50x70 = card.dataset.image50x70 || img.replace(/\.(webp|png|jpe?g)(\?.*)?$/i, '-50x70.webp$2');
 
   document.getElementById('lbImg').src = img;
   document.getElementById('lbImg').alt = nombre + ' · Diamond Painting NEDEKA';
@@ -1016,8 +1018,12 @@ function openLB(card) {
     cartPatchLightbox({
       dataset: {
         img: img,
+        originalImage: originalImage,
+        image50x70: image50x70,
         nombre: nombre,
         precio: precio,
+        price50x70: '76',
+        price40x60: '66',
         orient: card.dataset.orient || 'v',
         coleccion: 'nedeka',
         collection: 'nedeka'

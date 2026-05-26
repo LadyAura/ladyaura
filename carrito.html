@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -1275,6 +1275,7 @@ function getCouponInline() {
 
 const SPECIAL60_PRICE = 60;
 const NORMAL_PRICE = 84;
+const MEDIUM_FORMAT_PRICE = 76;
 const SMALL_FORMAT_PRICE = 66;
 const CURRENT_PRICE_OVERRIDES = [
   { test: /trebol|trébol|treblo-de-la-suerte|suerte/i, price: 94 }
@@ -1320,11 +1321,15 @@ function cartItemSearchText(item) {
   return [item?.nombre, item?.id, item?.img, item?.coleccion, item?.collection, item?.tamano, item?.size].filter(Boolean).join(' ');
 }
 function isSmallFormatItem(item) {
-  return /40\s*[x×]\s*60/i.test(cartItemSearchText(item));
+  return /40\s*(?:x|×|Ã—)\s*60/i.test(cartItemSearchText(item));
+}
+function isMediumFormatItem(item) {
+  return /(?:50\s*(?:x|×|Ã—)\s*70|70\s*(?:x|×|Ã—)\s*50)/i.test(cartItemSearchText(item));
 }
 function getCurrentCartPrice(item) {
   const savedPrice = Number(item?.precio);
   if (savedPrice > 0 && savedPrice <= 10) return savedPrice;
+  if (isMediumFormatItem(item)) return MEDIUM_FORMAT_PRICE;
   if (isSmallFormatItem(item)) return SMALL_FORMAT_PRICE;
 
   const raw = cartItemSearchText(item);
@@ -1437,7 +1442,6 @@ function renderCart() {
   const list = document.getElementById('cart-list');
   const activeCouponForRender = getCouponInline()?.code || null;
   list.innerHTML = items.map(item => {
-    const savedPrice = Number(item.precio) || getCurrentCartPrice(item);
     const originalPrice = getCurrentCartPrice(item);
     const displayPrice = getPriceWithCoupon(item, activeCouponForRender);
     const imageSrc = escapeHtmlInline(normalizeCartImageInline(item.img, item));
@@ -1446,9 +1450,7 @@ function renderCart() {
     const itemSize = escapeHtmlInline(item.tamano || item.size || (item.orient==='v'?'60×90 cm ↕':'90×60 cm ↔'));
     const priceHtml = (isSpecial60Coupon(activeCouponForRender) && itemMatchesSpecial60(item, activeCouponForRender))
       ? `<span class="cart-item-price"><s style="opacity:.4;font-size:.8em;text-decoration:line-through">${originalPrice} €</s>&nbsp;${displayPrice} €</span>`
-      : (savedPrice !== originalPrice
-        ? `<span class="cart-item-price"><s style="opacity:.4;font-size:.8em;text-decoration:line-through">${savedPrice} €</s>&nbsp;${originalPrice} € <small style="display:block;opacity:.65;font-size:.68em;">precio actual</small></span>`
-        : `<span class="cart-item-price">${originalPrice} €</span>`);
+      : `<span class="cart-item-price">${originalPrice} €</span>`;
     return `
     <div class="cart-item">
       <img class="cart-item-img" src="${imageSrc}" alt="${itemName}" onerror="this.src='assets/Logo-transparent.webp';this.onerror=null;">
