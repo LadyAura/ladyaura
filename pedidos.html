@@ -1,542 +1,98 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mis pedidos â€“ Lady Aura Art</title>
+<title>Mis pedidos - Lady Aura Art</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Raleway:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <style>
-:root {
-  --bg:    #05030e;
-  --card:  rgba(13,8,33,0.9);
-  --border:rgba(160,63,255,0.18);
-  --gold:  #c9a84c;
-  --gold2: #e8c96a;
-  --purple:#a03fff;
-  --pink:  #ff4889;
-  --muted: #f4e8ff;
-  --text:  #fff7ff;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Raleway', sans-serif;
-  min-height: 100vh;
-  overflow-x: hidden;
-  font-size: 18px;
-}
-
-#stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-
-/* â”€â”€ HEADER â”€â”€ */
-.site-header {
-  position: sticky; top: 0; z-index: 9999;
-  display: flex; align-items: center; gap: 1rem;
-  padding: 0.6rem 5%;
-  background: rgba(3,3,10,0.96);
-  border-bottom: 1px solid rgba(160,63,255,0.18);
-  backdrop-filter: blur(20px);
-  min-height: 68px;
-}
-.brand img {
-  width: auto; height: 52px; max-height: 52px; max-width: 200px;
-  object-fit: contain; display: block;
-  filter: drop-shadow(0 0 14px rgba(238,160,255,0.7));
-}
-.menu-toggle {
-  display: none; background: transparent;
-  border: 1px solid rgba(160,63,255,0.3);
-  color: rgba(255,255,255,0.88); width: 40px; height: 40px;
-  border-radius: 10px; font-size: 1.2rem; cursor: pointer;
-  align-items: center; justify-content: center; margin-left: auto;
-}
-.site-header .nav {
-  display: flex; align-items: center; gap: 0.8rem;
-  margin-left: auto; font-family: 'Cinzel', serif;
-  font-size: 0.75rem; letter-spacing: 0.05em;
-  text-transform: uppercase; flex-wrap: wrap;
-}
-.site-header .nav a {
-  color: rgba(255,255,255,0.75); text-decoration: none;
-  padding-bottom: 0.2rem; border-bottom: 2px solid transparent;
-  transition: all 0.2s; white-space: nowrap;
-}
-.site-header .nav a:hover, .site-header .nav a[aria-current="page"] {
-  color: var(--gold2); border-color: var(--gold2); opacity: 1;
-}
-@media (max-width: 900px) {
-  .menu-toggle { display: flex; }
-  .site-header .nav {
-    display: none; position: absolute; top: 100%; left: 0; right: 0;
-    flex-direction: column; align-items: flex-start; gap: 0;
-    background: rgba(3,3,10,0.98);
-    border-bottom: 1px solid rgba(160,63,255,0.2);
-    padding: 1rem 5%; margin: 0;
-  }
-  .site-header .nav.active { display: flex; }
-  .site-header .nav a { width: 100%; padding: 0.75rem 0; border-bottom: 1px solid rgba(160,63,255,0.1); }
-  .site-header .nav a:last-child { border-bottom: none; }
-}
-
-/* â”€â”€ LAYOUT â”€â”€ */
-main {
-  position: relative; z-index: 5;
-  max-width: 860px; margin: 0 auto;
-  padding: 3rem 5% 6rem;
-}
-
-/* â”€â”€ HERO â”€â”€ */
-.page-hero { text-align: center; margin-bottom: 3rem; }
-.page-hero .eyebrow {
-  font-family: 'Cinzel', serif; font-size: 0.72rem;
-  letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--gold); display: block; margin-bottom: 0.8rem;
-}
-.page-hero h1 {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700;
-  background: linear-gradient(135deg, #fff 0%, var(--gold2) 50%, var(--purple) 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text; margin-bottom: 0.5rem;
-}
-.page-hero p { color: var(--muted); font-size: 0.95rem; font-weight: 300; }
-
-/* â”€â”€ BANNER LISTA DE ESPERA â”€â”€ */
-.waitlist-banner {
-  background: linear-gradient(135deg, rgba(160,63,255,0.15), rgba(255,72,137,0.1));
-  border: 1px solid rgba(160,63,255,0.35);
-  border-radius: 20px;
-  padding: 1.4rem 1.8rem;
-  margin-bottom: 2.5rem;
-  text-align: center;
-}
-.waitlist-banner .wb-icon { font-size: 2rem; display: block; margin-bottom: 0.6rem; }
-.waitlist-banner h2 {
-  font-family: 'Cinzel', serif; font-size: 1rem;
-  color: var(--gold2); margin-bottom: 0.4rem; letter-spacing: 0.08em;
-}
-.waitlist-banner p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
-
-.email-reminder {
-  background:
-    radial-gradient(circle at top left, rgba(232,201,106,0.15), transparent 42%),
-    linear-gradient(135deg, rgba(160,63,255,0.12), rgba(255,72,137,0.08));
-  border: 1px solid rgba(232,201,106,0.32);
-  border-radius: 20px;
-  padding: 1.25rem 1.6rem;
-  margin: -1.2rem 0 2.5rem;
-  text-align: center;
-  box-shadow: 0 18px 55px rgba(0,0,0,0.22);
-}
-.email-reminder h2 {
-  font-family: 'Cinzel', serif;
-  color: var(--gold2);
-  font-size: clamp(1.05rem, 2.6vw, 1.45rem);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 0.45rem;
-}
-.email-reminder p {
-  color: rgba(255,255,255,0.78);
-  font-size: 0.92rem;
-  line-height: 1.7;
-}
-
-/* â”€â”€ VACÃO â”€â”€ */
-#orders-empty {
-  text-align: center; padding: 4rem 1rem;
-}
-#orders-empty .empty-icon { font-size: 4rem; display: block; margin-bottom: 1.2rem; opacity: 0.5; }
-#orders-empty h2 {
-  font-family: 'Cinzel', serif; font-size: 1.2rem;
-  color: var(--muted); margin-bottom: 0.8rem;
-}
-#orders-empty p { color: var(--muted); font-size: 0.88rem; margin-bottom: 2rem; }
-.btn-shop {
-  display: inline-block; padding: 0.9rem 2.2rem;
-  background: linear-gradient(135deg, rgba(160,63,255,0.9), rgba(255,72,137,0.85));
-  color: #fff; font-family: 'Cinzel', serif; font-size: 0.82rem;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  border-radius: 999px; text-decoration: none;
-  box-shadow: 0 0 30px rgba(160,63,255,0.35); transition: all 0.25s;
-}
-.btn-shop:hover { box-shadow: 0 0 50px rgba(160,63,255,0.6); transform: translateY(-2px); }
-
-/* â”€â”€ LISTA DE PEDIDOS â”€â”€ */
-#orders-list { display: flex; flex-direction: column; gap: 1.5rem; }
-
-.order-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 22px;
-  padding: 1.5rem 1.8rem;
-  transition: border-color 0.2s;
-}
-.order-card:hover { border-color: rgba(160,63,255,0.35); }
-
-.order-header {
-  display: flex; align-items: flex-start;
-  justify-content: space-between; gap: 1rem;
-  margin-bottom: 1.2rem; flex-wrap: wrap;
-}
-.order-id {
-  font-family: 'Cinzel', serif; font-size: 0.8rem;
-  letter-spacing: 0.1em; color: var(--gold);
-}
-.order-date { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
-
-/* â”€â”€ BADGE DE ESTADO â”€â”€ */
-.status-badge {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  padding: 0.35rem 1rem; border-radius: 999px;
-  font-family: 'Cinzel', serif; font-size: 0.72rem;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  font-weight: 600; white-space: nowrap;
-}
-.status-badge.lista_espera {
-  background: rgba(232,201,106,0.15);
-  border: 1px solid rgba(232,201,106,0.4);
-  color: var(--gold2);
-}
-.status-badge.procesando {
-  background: rgba(160,63,255,0.15);
-  border: 1px solid rgba(160,63,255,0.4);
-  color: #d4a0ff;
-}
-.status-badge.enviado {
-  background: rgba(100,220,160,0.15);
-  border: 1px solid rgba(100,220,160,0.4);
-  color: #80ffb8;
-}
-.status-badge.recibido {
-  background: rgba(100,180,255,0.15);
-  border: 1px solid rgba(100,180,255,0.4);
-  color: #a0d8ff;
-}
-
-/* â”€â”€ ITEMS DEL PEDIDO â”€â”€ */
-.order-items { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1.2rem; }
-.order-item {
-  display: flex; align-items: center; gap: 1rem;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(160,63,255,0.1);
-  border-radius: 14px; padding: 0.8rem 1rem;
-}
-.order-item-img {
-  width: 60px; height: 78px; object-fit: cover;
-  border-radius: 8px; border: 1px solid rgba(160,63,255,0.2);
-  flex-shrink: 0;
-}
-.order-item-info { flex: 1; min-width: 0; }
-.order-item-name {
-  font-family: 'Cinzel', serif; font-size: 0.88rem;
-  color: #fff; margin-bottom: 0.2rem;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.order-item-meta { font-size: 0.8rem; color: var(--muted); }
-.order-item-price {
-  font-family: 'Cinzel', serif; font-size: 1rem;
-  color: var(--gold2); flex-shrink: 0;
-}
-
-/* â”€â”€ FOOTER DEL PEDIDO â”€â”€ */
-.order-footer {
-  display: flex; align-items: center;
-  justify-content: space-between; gap: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(160,63,255,0.12);
-  flex-wrap: wrap;
-}
-.order-total {
-  font-family: 'Cinzel', serif; font-size: 1rem;
-  color: var(--gold2);
-}
-.order-total span { color: var(--muted); font-size: 0.82rem; margin-right: 0.4rem; }
-
-/* â”€â”€ NOTA LISTA ESPERA EN PEDIDO â”€â”€ */
-.order-waitlist-note {
-  margin-top: 1rem;
-  background: rgba(232,201,106,0.07);
-  border: 1px solid rgba(232,201,106,0.2);
-  border-radius: 12px;
-  padding: 0.8rem 1.1rem;
-  font-size: 0.84rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-.order-waitlist-note strong { color: var(--gold2); }
-.order-spam-note {
-  margin-top: 0.85rem;
-  color: rgba(255,255,255,0.78);
-}
-.order-spam-note strong {
-  color: var(--gold2);
-  font-family: 'Cinzel', serif;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-/* â”€â”€ BOTÃ“N LIMPIAR â”€â”€ */
-.btn-clear {
-  background: none; border: 1px solid rgba(255,72,137,0.25);
-  color: rgba(255,72,137,0.6); font-family: 'Cinzel', serif;
-  font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 0.5rem 1.2rem; border-radius: 999px; cursor: pointer;
-  transition: all 0.2s;
-}
-.btn-clear:hover { border-color: rgba(255,72,137,0.6); color: #ff4889; }
-
-/* â”€â”€ FOOTER â”€â”€ */
-footer {
-  position: relative; z-index: 5; text-align: center;
-  padding: 2rem; border-top: 1px solid var(--border);
-  color: var(--muted); font-size: 0.78rem;
-}
-footer a { color: var(--gold2); text-decoration: none; }
-/* Ajuste global de tarjetas, ventanas e idioma responsive */
-.product-card,
-.gallery-card,
-.design-card,
-.item-card,
-.card {
-  min-width: 0;
-}
-
-.product-card img,
-.gallery-card img,
-.design-card img,
-.item-card img,
-.card img {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-}
-
-.product-card .image-frame,
-.product-card .art-frame,
-.product-card .card-image,
-.product-card .product-image,
-.gallery-card .image-frame,
-.gallery-card .art-frame,
-.gallery-card .card-image,
-.design-card .image-frame,
-.design-card .art-frame,
-.design-card .card-image,
-.item-card .image-frame,
-.item-card .art-frame,
-.item-card .card-image {
-  aspect-ratio: 2 / 3 !important;
-  width: 100% !important;
-  overflow: hidden !important;
-}
-
-.product-card .image-frame img,
-.product-card .art-frame img,
-.product-card .card-image img,
-.product-card .product-image img,
-.gallery-card .image-frame img,
-.gallery-card .art-frame img,
-.gallery-card .card-image img,
-.design-card .image-frame img,
-.design-card .art-frame img,
-.design-card .card-image img,
-.item-card .image-frame img,
-.item-card .art-frame img,
-.item-card .card-image img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center !important;
-}
-
-.lb,
-.t-lb,
-.lightbox,
-.modal-overlay,
-#nedeka-lightbox {
-  z-index: 2147482000 !important;
-}
-
-#fs-overlay {
-  z-index: 2147483300 !important;
-}
-
-#fs-close {
-  z-index: 2147483400 !important;
-}
-
-body.aura-modal-open .site-header,
-body.aura-modal-open header.site-header,
-body.aura-modal-open .header,
-body.aura-modal-open .topbar {
-  z-index: 1 !important;
-  pointer-events: none !important;
-}
-
-.aura-universal-close,
-.aura-floating-close {
-  position: fixed !important;
-  top: max(14px, env(safe-area-inset-top)) !important;
-  right: max(14px, env(safe-area-inset-right)) !important;
-  width: 48px !important;
-  height: 48px !important;
-  min-width: 48px !important;
-  min-height: 48px !important;
-  border-radius: 999px !important;
-  border: 1px solid rgba(255,255,255,.38) !important;
-  background: rgba(7, 3, 18, .94) !important;
-  color: #fff !important;
-  font-size: 30px !important;
-  font-family: Arial, Helvetica, sans-serif !important;
-  line-height: 1 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  cursor: pointer !important;
-  box-shadow: 0 12px 34px rgba(0,0,0,.45), 0 0 0 2px rgba(162,76,255,.25) !important;
-  z-index: 2147483200 !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: none !important;
-}
-
-.aura-floating-close[hidden] {
-  display: none !important;
-}
-
-.site-header {
-  isolation: isolate;
-  overflow: visible !important;
-}
-
-.site-header .nav {
-  min-width: 0;
-}
-
-.site-header .cart-nav-link,
-.cart-nav-link {
-  flex: 0 0 auto !important;
-  white-space: nowrap !important;
-}
-
-@media (max-width: 760px) {
-  .site-header {
-    min-height: 64px !important;
-    overflow: visible !important;
-  }
-
-  .site-header .brand,
-  .site-header .logo,
-  .site-header .brand-link {
-    min-width: 0 !important;
-    flex: 1 1 auto !important;
-    overflow: visible !important;
-  }
-
-  .site-header .brand img,
-  .site-header .logo img,
-  .site-header .brand-link img {
-    max-width: min(142px, 36vw) !important;
-    max-height: 44px !important;
-    width: auto !important;
-    height: auto !important;
-    object-fit: contain !important;
-  }
-
-  .lady-aura-header-actions {`r`n    flex: 0 0 auto !important;`r`n    max-width: 158px !important;`r`n    overflow: visible !important;`r`n  }
-
-  .lady-aura-language {`r`n    max-width: 82px !important;`r`n  }
-
-  .aura-universal-close,
-  .aura-floating-close {
-    top: max(10px, env(safe-area-inset-top)) !important;
-    right: max(10px, env(safe-area-inset-right)) !important;
-  }
-}
+:root{--bg:#05030e;--card:rgba(13,8,33,.9);--border:rgba(160,63,255,.2);--gold:#e8c96a;--muted:#f4e8ff;--text:#fff7ff}
+body{margin:0;background:radial-gradient(circle at 50% 0%,rgba(160,63,255,.18),transparent 30rem),var(--bg);color:var(--text);font-family:"Cormorant Garamond",Georgia,serif;min-height:100vh}
+main{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:3.5rem 5% 6rem}
+.page-hero{text-align:center;margin-bottom:2.6rem}
+.page-hero .eyebrow{display:block;font-family:"Cinzel",serif;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.page-hero h1{font-family:"Cinzel",serif;font-size:clamp(2rem,5vw,3rem);margin:0 0 .55rem;background:linear-gradient(135deg,#fff,var(--gold),#a03fff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.page-hero p,.info-card p,#orders-empty p{color:rgba(255,255,255,.78);line-height:1.65}
+.info-card{background:linear-gradient(135deg,rgba(160,63,255,.14),rgba(255,72,137,.08));border:1px solid var(--border);border-radius:20px;padding:1.35rem 1.6rem;margin-bottom:1.4rem;text-align:center;box-shadow:0 18px 55px rgba(0,0,0,.22)}
+.info-card h2{font-family:"Cinzel",serif;color:var(--gold);font-size:1rem;letter-spacing:.08em;text-transform:uppercase;margin:.2rem 0 .45rem}
+#orders-empty{text-align:center;padding:4rem 1rem}
+#orders-empty .empty-icon{font-size:3.2rem;display:block;margin-bottom:1.1rem;opacity:.55}
+#orders-empty h2{font-family:"Cinzel",serif;font-size:1.2rem;color:#fff;margin:.2rem 0 .65rem}
+.btn-shop{display:inline-block;margin-top:.6rem;padding:.9rem 2.2rem;background:linear-gradient(135deg,rgba(160,63,255,.9),rgba(255,72,137,.85));color:#fff;font-family:"Cinzel",serif;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;border-radius:999px;text-decoration:none;box-shadow:0 0 30px rgba(160,63,255,.35)}
+#orders-list{display:grid;gap:1.35rem}
+.order-card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:1.45rem 1.6rem}
+.order-header,.order-footer{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.order-header{margin-bottom:1rem}
+.order-id,.order-total,.status-badge{font-family:"Cinzel",serif;color:var(--gold);letter-spacing:.06em}
+.order-date,.order-item-meta{color:rgba(255,255,255,.7);font-size:.88rem}
+.status-badge{display:inline-flex;border:1px solid rgba(232,201,106,.35);background:rgba(232,201,106,.1);border-radius:999px;padding:.35rem .85rem;font-size:.72rem;text-transform:uppercase}
+.order-items{display:grid;gap:.8rem;margin-bottom:1rem}
+.order-item{display:flex;align-items:center;gap:.9rem;background:rgba(255,255,255,.03);border:1px solid rgba(160,63,255,.12);border-radius:14px;padding:.75rem .9rem}
+.order-item-img{width:60px;height:78px;object-fit:cover;border-radius:8px;border:1px solid rgba(160,63,255,.22);flex:0 0 auto}
+.order-item-info{flex:1;min-width:0}.order-item-name{font-family:"Cinzel",serif;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.order-item-price{font-family:"Cinzel",serif;color:var(--gold);white-space:nowrap}
+.order-footer{padding-top:1rem;border-top:1px solid rgba(160,63,255,.14)}
+.btn-clear{background:none;border:1px solid rgba(255,72,137,.28);color:rgba(255,180,210,.82);font-family:"Cinzel",serif;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:.5rem 1.2rem;border-radius:999px;cursor:pointer}
+.order-waitlist-note{margin-top:1rem;background:rgba(232,201,106,.07);border:1px solid rgba(232,201,106,.2);border-radius:12px;padding:.85rem 1rem;color:rgba(255,255,255,.78);line-height:1.6}
+footer{text-align:center;padding:2rem;color:rgba(255,255,255,.65);border-top:1px solid rgba(160,63,255,.18)}
+footer a{color:var(--gold)}
+@media(max-width:680px){main{padding:2.5rem 5% 4rem}.order-item{align-items:flex-start}.order-item-price{width:100%;text-align:left}}
 </style>
 </head>
 <body>
-
-<div id="stars"></div>
-
 <header class="site-header" id="site-header">
-  <a class="brand" href="index.html" aria-label="Lady Aura inicio">
-    <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art â€“ Diamond Painting Premium">
-  </a>
-  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menÃº" aria-expanded="false">Menu</button>
-  <nav class="nav" id="nav" aria-label="NavegaciÃ³n principal">
+  <a class="brand" href="index.html" aria-label="Lady Aura inicio"><img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art"></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">Menu</button>
+  <nav class="nav" id="nav" aria-label="Navegacion principal">
     <a href="index.html">Inicio</a>
     <a href="horoscopo.html">Horoscopo</a>
-    
-    <a href="especiales.html">AURA</a><a href="nedeka.html">NEDEKA</a>
+    <a href="especiales.html">AURA</a>
+    <a href="nedeka.html">NEDEKA</a>
     <a href="bruji.html">BRUJI</a>
     <a href="maika.html">MAIKA</a>
     <a href="circulo-aura.html"><span class="red-circle-dot" aria-hidden="true"></span>CIRCULO AURA</a>
     <a href="personalizados.html">Personalizados</a>
     <a href="colorear.html">Colorear</a>
-    <a href="pedidos.html" aria-current="page">ðŸ“¦ Mis pedidos</a>
+    <a href="pedidos.html" aria-current="page">Mis pedidos</a>
     <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;">Carrito<span class="cart-badge" style="display:none">0</span></a>
   </nav>
-  <a class="header-button" href="horoscopo.html">Ver colecciones</a>
 </header>
 
 <main>
   <div class="page-hero">
-    <span class="eyebrow">âœ¦ Lady Aura Art Â· Diamond Painting Premium âœ¦</span>
-    <h1>ðŸ“¦ Mis pedidos</h1>
-    <p>AquÃ­ puedes ver tus reservas y pedidos</p>
+    <span class="eyebrow">Lady Aura Art - Diamond Painting Premium</span>
+    <h1>Mis pedidos</h1>
+    <p>Aqui puedes ver tus reservas y pedidos.</p>
   </div>
 
-  <!-- Banner informativo lista de espera -->
-  <div class="waitlist-banner">
-    <span class="wb-icon">â³</span>
+  <div class="info-card">
     <h2>Lista de espera abierta</h2>
-    <p>ProducciÃ³n por orden de reserva. Si has reservado, recibirÃ¡s un aviso personalizado por email para continuar con tu pedido. <strong style="color:var(--gold2)">No se ha cobrado nada todavÃ­a.</strong></p>
+    <p>Produccion por orden de reserva. Si has reservado, recibiras un aviso personalizado por email para continuar con tu pedido. <strong style="color:var(--gold)">No se ha cobrado nada todavia.</strong></p>
   </div>
 
-  <div class="email-reminder">
-    <h2>Revisa tambiÃ©n spam</h2>
-    <p>A veces mis emails pueden llegar allÃ­. Ã‰chale un vistazo de vez en cuando para no perderte el aviso sobre tu reserva.</p>
+  <div class="info-card">
+    <h2>Revisa tambien spam</h2>
+    <p>A veces mis emails pueden llegar alli. Echale un vistazo de vez en cuando para no perderte el aviso sobre tu reserva.</p>
   </div>
 
-  <!-- VacÃ­o -->
   <div id="orders-empty" style="display:none">
-    <span class="empty-icon">ðŸŒŸ</span>
-    <h2>AÃºn no tienes reservas</h2>
-    <p>Explora nuestras colecciones y apÃºntate a la lista de espera.</p>
-    <a href="index.html" class="btn-shop">âœ¨ Ver colecciones</a>
+    <span class="empty-icon">◇</span>
+    <h2>Aun no tienes reservas</h2>
+    <p>Explora nuestras colecciones y apuntate a la lista de espera.</p>
+    <a href="index.html" class="btn-shop">Ver colecciones</a>
   </div>
 
-  <!-- Lista de pedidos -->
   <div id="orders-list"></div>
-
 </main>
 
-<footer>
-  <p>Â© 2026 <a href="index.html">Lady Aura Art</a> Â· Diamond Painting Premium Â· Valencia, EspaÃ±a ðŸ’œ</p>
-</footer>
+<footer><p>2026 <a href="index.html">Lady Aura Art</a> - Diamond Painting Premium - Valencia, Espana</p></footer>
 
 <script>
-/* â”€â”€ Estrellas â”€â”€ */
-(function(){
-  var c = document.getElementById('stars');
-  for(var i=0;i<80;i++){
-    var s=document.createElement('div');
-    s.style.cssText='position:absolute;border-radius:50%;background:#fff;width:'+(Math.random()*2+0.4)+'px;height:'+(Math.random()*2+0.4)+'px;top:'+(Math.random()*100)+'%;left:'+(Math.random()*100)+'%;opacity:'+(Math.random()*0.35+0.06)+';animation:tw '+(Math.random()*3+2)+'s ease-in-out infinite alternate;animation-delay:'+(Math.random()*4)+'s;';
-    c.appendChild(s);
-  }
-  var st=document.createElement('style');
-  st.textContent='@keyframes tw{from{opacity:0.06}to{opacity:0.5}}';
-  document.head.appendChild(st);
-})();
-
-/* â”€â”€ MenÃº mÃ³vil â”€â”€ */
 (function(){
   const btn = document.getElementById('menuToggle');
   const nav = document.getElementById('nav');
@@ -545,27 +101,19 @@ body.aura-modal-open .topbar {
     nav.classList.toggle('active');
     btn.setAttribute('aria-expanded', nav.classList.contains('active') ? 'true' : 'false');
   });
-  nav.querySelectorAll('a').forEach(function(link){
-    link.addEventListener('click', function(){
-      nav.classList.remove('active');
-      btn.setAttribute('aria-expanded', 'false');
-    });
-  });
 })();
 
-/* â”€â”€ Estado en espaÃ±ol â”€â”€ */
 const STATUS_LABEL = {
-  lista_espera: 'â³ Lista de espera',
-  procesando:   'ðŸ”® ProducciÃ³n por orden de reserva',
-  enviado:      'ðŸš€ Enviado',
-  recibido:     'âœ¨ Recibido'
+  lista_espera: 'Lista de espera',
+  procesando: 'Produccion por orden de reserva',
+  enviado: 'Enviado',
+  recibido: 'Recibido'
 };
 
-function statusClass(estado) {
-  return estado || 'lista_espera';
+function money(value) {
+  return (value || 0) + ' EUR';
 }
 
-/* â”€â”€ Renderizar pedidos â”€â”€ */
 function renderOrders() {
   const orders = JSON.parse(localStorage.getItem('ladyaura_orders') || '[]');
   const list = document.getElementById('orders-list');
@@ -578,53 +126,28 @@ function renderOrders() {
   }
 
   empty.style.display = 'none';
-
-  list.innerHTML = orders.map((order, idx) => {
+  list.innerHTML = orders.map(function(order, idx) {
     const estado = order.estado || 'lista_espera';
-    const label = STATUS_LABEL[estado] || estado;
-    const isWaitlist = estado === 'lista_espera';
+    const itemsHtml = (order.items || []).map(function(item) {
+      const size = item.tamano || item.size || (item.orient === 'v' ? '60x90 cm' : '90x60 cm');
+      return '<div class="order-item">' +
+        '<img class="order-item-img" src="' + (item.img || '') + '" alt="' + (item.nombre || '') + '">' +
+        '<div class="order-item-info"><div class="order-item-name">' + (item.nombre || 'Diseno') + '</div>' +
+        '<div class="order-item-meta">Diamond painting ' + size + ' - Envio incluido</div></div>' +
+        '<div class="order-item-price">' + money(item.precio) + '</div>' +
+      '</div>';
+    }).join('');
 
-    const itemsHtml = (order.items || []).map(item => `
-      <div class="order-item">
-        <img class="order-item-img" src="${item.img || ''}" alt="${item.nombre || ''}" onerror="this.style.opacity='0.2'">
-        <div class="order-item-info">
-          <div class="order-item-name">${item.nombre || 'DiseÃ±o'}</div>
-          <div class="order-item-meta">Diamond painting ${item.orient === 'v' ? '60Ã—90 cm â†•' : '90Ã—60 cm â†”'} Â· EnvÃ­o incluido</div>
-        </div>
-        <div class="order-item-price">${item.precio || 'â€”'} â‚¬</div>
-      </div>
-    `).join('');
+    const waitlistNote = estado === 'lista_espera'
+      ? '<div class="order-waitlist-note"><strong>Lista de espera abierta.</strong> Recibiras un email personalizado sobre tu reserva. El precio de <strong>' + money(order.total) + '</strong> queda reservado para ti. No se ha cobrado nada todavia.<div class="order-spam-note"><strong>Revisa spam de vez en cuando:</strong> a veces mis emails pueden llegar alli.</div></div>'
+      : '';
 
-    const waitlistNote = isWaitlist ? `
-      <div class="order-waitlist-note">
-        <strong>âœ¦ Lista de espera abierta</strong> â€” RecibirÃ¡s un email personalizado sobre tu reserva. 
-        El precio de <strong>${order.total} â‚¬</strong> queda reservado para ti. No se ha cobrado nada todavÃ­a.
-        <div class="order-spam-note"><strong>Revisa spam de vez en cuando:</strong> a veces mis emails pueden llegar allÃ­.</div>
-      </div>
-    ` : '';
-
-    return `
-      <div class="order-card">
-        <div class="order-header">
-          <div>
-            <div class="order-id">${order.id || 'LA-' + idx}</div>
-            <div class="order-date">ðŸ“… ${order.fecha || 'â€”'} Â· ${order.nombre || ''}</div>
-          </div>
-          <span class="status-badge ${statusClass(estado)}">${label}</span>
-        </div>
-
-        <div class="order-items">
-          ${itemsHtml}
-        </div>
-
-        <div class="order-footer">
-          <div class="order-total"><span>Total reservado:</span>${order.total} â‚¬</div>
-          <button class="btn-clear" onclick="removeOrder(${idx})">Eliminar reserva</button>
-        </div>
-
-        ${waitlistNote}
-      </div>
-    `;
+    return '<div class="order-card">' +
+      '<div class="order-header"><div><div class="order-id">' + (order.id || 'LA-' + idx) + '</div><div class="order-date">' + (order.fecha || '') + ' - ' + (order.nombre || '') + '</div></div><span class="status-badge">' + (STATUS_LABEL[estado] || estado) + '</span></div>' +
+      '<div class="order-items">' + itemsHtml + '</div>' +
+      '<div class="order-footer"><div class="order-total"><span>Total reservado: </span>' + money(order.total) + '</div><button class="btn-clear" onclick="removeOrder(' + idx + ')">Eliminar reserva</button></div>' +
+      waitlistNote +
+    '</div>';
   }).join('');
 }
 
@@ -637,107 +160,7 @@ function removeOrder(idx) {
 
 renderOrders();
 </script>
-
 <script src="carrito.js"></script>
 <script src="language-toggle.js"></script>
-<script>
-(function(){
-  var overlaySelector = '.lb, .t-lb, .lightbox, .modal-overlay, #nedeka-lightbox';
-
-  function isOpen(el){
-    if (!el) return false;
-    if (el.classList.contains('open') || el.classList.contains('active') || el.classList.contains('show') || el.classList.contains('visible')) return true;
-    if (el.id === 'nedeka-lightbox') {
-      var cs = window.getComputedStyle(el);
-      return cs.display !== 'none' && cs.visibility !== 'hidden' && el.getAttribute('aria-hidden') !== 'true';
-    }
-    return false;
-  }
-
-  function getFloatingClose(){
-    var btn = document.querySelector('.aura-floating-close');
-    if (!btn) {
-      btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'aura-floating-close';
-      btn.setAttribute('aria-label', 'Cerrar');
-      btn.textContent = 'Ã—';
-      btn.hidden = true;
-      btn.addEventListener('click', closeAuraPanel);
-      document.body.appendChild(btn);
-    }
-    return btn;
-  }
-
-  function anyPanelOpen(){
-    return Array.prototype.some.call(document.querySelectorAll(overlaySelector), isOpen);
-  }
-
-  function updateCloseVisibility(){
-    var open = anyPanelOpen() && !(document.getElementById('fs-overlay') && document.getElementById('fs-overlay').classList.contains('open'));
-    document.body.classList.toggle('aura-modal-open', anyPanelOpen());
-    var btn = getFloatingClose();
-    btn.hidden = !open;
-    btn.style.display = open ? 'flex' : 'none';
-  }
-
-  function closeAuraPanel(){
-    if (document.getElementById('fs-overlay') && document.getElementById('fs-overlay').classList.contains('open') && typeof window.fullscreenClose === 'function') {
-      window.fullscreenClose();
-      updateCloseVisibility();
-      return;
-    }
-
-    ['closeLightbox','closeModal','closeProductModal','closeTarotLightbox','closeNedekaLightbox','closeLB','closeLb','closeTLightbox'].forEach(function(name){
-      if (typeof window[name] === 'function') {
-        try { window[name](); } catch(e) {}
-      }
-    });
-
-    document.querySelectorAll(overlaySelector).forEach(function(el){
-      el.classList.remove('open','active','show','visible');
-      el.setAttribute('aria-hidden','true');
-      if (el.id === 'nedeka-lightbox') el.style.display = 'none';
-    });
-
-    document.body.style.overflow = '';
-    document.documentElement.style.overflow = '';
-    updateCloseVisibility();
-  }
-
-  function ensureAuraCloseButtons(){
-    document.querySelectorAll(overlaySelector).forEach(function(panel){
-      if (!panel.querySelector('.aura-universal-close')) {
-        var btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'aura-universal-close';
-        btn.setAttribute('aria-label', 'Cerrar');
-        btn.textContent = 'Ã—';
-        btn.addEventListener('click', closeAuraPanel);
-        panel.appendChild(btn);
-      }
-    });
-    updateCloseVisibility();
-  }
-
-  document.addEventListener('DOMContentLoaded', ensureAuraCloseButtons);
-  document.addEventListener('click', function(){
-    setTimeout(ensureAuraCloseButtons, 30);
-    setTimeout(updateCloseVisibility, 180);
-    setTimeout(updateCloseVisibility, 420);
-  }, true);
-  document.addEventListener('keydown', function(ev){
-    if (ev.key === 'Escape' && anyPanelOpen()) closeAuraPanel();
-  });
-
-  new MutationObserver(function(){
-    ensureAuraCloseButtons();
-  }).observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['class','style','aria-hidden'] });
-
-  setInterval(updateCloseVisibility, 500);
-  window.closeAuraPanel = closeAuraPanel;
-  window.ensureAuraCloseButtons = ensureAuraCloseButtons;
-})();
-</script>
 </body>
 </html>
