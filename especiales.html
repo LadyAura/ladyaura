@@ -3,46 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AURA · Diamond Painting Premium | Lady Aura Art</title>
-<meta name="description" content="Colección AURA de Lady Aura Art: diseños fantasy premium en diamond painting con formatos 60x90 cm, 50x70 cm y 40x60 cm.">
+<title>AURA - Diamond Painting Premium | Lady Aura Art</title>
+<meta name="description" content="Colecci&oacute;n AURA de Lady Aura Art: dise&ntilde;os fantasy premium en diamond painting con formatos 60x90 cm, 50x70 cm y 40x60 cm.">
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 <link rel="stylesheet" href="styles.css">
 <style>
-:root{--bg:#050510;--panel:#10081f;--line:rgba(255,217,138,.22);--gold:#f1cf7a;--muted:rgba(255,255,255,.72)}
+:root{--bg:#050510;--panel:#10081f;--panel2:#170a2b;--line:rgba(241,207,122,.26);--gold:#f1cf7a;--muted:rgba(255,255,255,.78);--pink:#d76cff;--violet:#6b2da3}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(circle at 50% 0%,rgba(160,63,255,.24),transparent 36rem),#050510;color:#fff;font-family:Raleway,Arial,sans-serif}
-.aura-hero{min-height:48vh;padding:7rem 6% 4rem;text-align:center;display:grid;place-items:center;background:linear-gradient(180deg,rgba(5,5,16,.74),rgba(5,5,16,.94)),url("assets/almas-de-luz-60x90.webp") center 28%/cover no-repeat}
-.aura-hero h1{font-family:Cinzel,Georgia,serif;font-size:clamp(2.5rem,8vw,5.8rem);line-height:1;margin:.3rem 0;color:#fff7ff;text-shadow:0 0 28px rgba(160,63,255,.8)}
-.aura-hero p{max-width:760px;margin:.8rem auto 0;color:rgba(255,255,255,.84);font-size:1.08rem;line-height:1.65}
-.eyebrow{font-family:Cinzel,serif;color:var(--gold);letter-spacing:.22em;text-transform:uppercase;font-size:.75rem}
-.products-section{max-width:1240px;margin:0 auto;padding:3.8rem 5% 5rem}
+body{margin:0;background:radial-gradient(circle at 50% 0%,rgba(188,82,255,.18),transparent 34rem),linear-gradient(180deg,#050510,#070112 42%,#050510);color:#fff;font-family:Raleway,Arial,sans-serif}
+.aura-hero{min-height:62vh;padding:7.5rem 6% 4.5rem;text-align:center;display:grid;place-items:center;position:relative;isolation:isolate;background:url("assets/almas-de-luz-60x90.webp") center 22%/cover no-repeat}
+.aura-hero:before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(4,3,12,.42),rgba(4,3,12,.78) 54%,rgba(5,5,16,.98)),radial-gradient(circle at 50% 36%,rgba(210,108,255,.28),transparent 28rem)}
+.aura-hero:after{content:"";position:absolute;inset:auto 0 0;height:8rem;z-index:-1;background:linear-gradient(180deg,transparent,#050510)}
+.aura-hero h1{font-family:Cinzel,Georgia,serif;font-size:clamp(3.2rem,9vw,7.4rem);line-height:.94;margin:.8rem 0;color:#fff7ff;text-shadow:0 0 24px rgba(216,108,255,.74),0 0 60px rgba(0,0,0,.75)}
+.aura-hero p{max-width:860px;margin:.85rem auto 0;color:rgba(255,255,255,.9);font-size:clamp(1rem,2vw,1.18rem);line-height:1.75;text-shadow:0 2px 18px rgba(0,0,0,.86)}
+.eyebrow{display:inline-flex;align-items:center;justify-content:center;font-family:Cinzel,serif;color:var(--gold);letter-spacing:.22em;text-transform:uppercase;font-size:.75rem}
+.aura-hero .eyebrow{border:1px solid rgba(241,207,122,.32);border-radius:999px;background:rgba(8,4,18,.58);padding:.55rem 1rem;box-shadow:0 12px 28px rgba(0,0,0,.26)}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.9rem}
+.hero-btn{min-width:220px;border-radius:999px;border:1px solid rgba(255,255,255,.14);padding:1rem 1.4rem;text-decoration:none;color:#fff;font-family:Cinzel,serif;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(7,4,17,.7);box-shadow:0 16px 32px rgba(0,0,0,.24)}
+.hero-btn.primary{background:linear-gradient(135deg,#7b2eb6,#d45cff);border-color:rgba(255,255,255,.22)}
+.products-section{max-width:1240px;margin:0 auto;padding:4rem 5% 5rem}
 .section-head{text-align:center;margin-bottom:2rem}
-.section-head h2{font-family:Cinzel,Georgia,serif;font-size:clamp(1.6rem,4vw,3rem);margin:.2rem 0}
-.section-head p{color:var(--muted);margin:.4rem auto;max-width:720px;line-height:1.6}
-.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem}
-.product-card{background:linear-gradient(180deg,rgba(18,8,34,.94),rgba(8,4,18,.98));border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;box-shadow:0 18px 42px rgba(0,0,0,.28);transition:transform .2s,border-color .2s}
-.product-card:hover{transform:translateY(-5px);border-color:rgba(241,207,122,.5)}
+.section-head h2{font-family:Cinzel,Georgia,serif;font-size:clamp(2rem,5vw,4rem);line-height:1;margin:.45rem 0;color:#ffd9ff;text-shadow:0 0 26px rgba(210,108,255,.52)}
+.section-head p{color:var(--muted);margin:.4rem auto;max-width:760px;line-height:1.7;font-size:1.02rem}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.35rem;align-items:start}
+.product-card{background:linear-gradient(180deg,rgba(18,8,34,.96),rgba(8,4,18,.99));border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;box-shadow:0 20px 50px rgba(0,0,0,.36);transition:transform .2s,border-color .2s,box-shadow .2s}
+.product-card:hover{transform:translateY(-5px);border-color:rgba(241,207,122,.58);box-shadow:0 26px 60px rgba(0,0,0,.48)}
 .card-img-wrap{position:relative;overflow:hidden;background:#090414}
 .card-img-wrap img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .35s}
 .product-card:hover .card-img-wrap img{transform:scale(1.045)}
-.image-open{position:absolute;right:.7rem;bottom:.7rem;border:1px solid rgba(255,255,255,.18);background:rgba(5,5,16,.72);color:#fff;border-radius:999px;padding:.45rem .8rem;font-family:Cinzel,serif;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
-.card-info{padding:1rem}
-.product-meta{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.75rem}
-.product-meta span{font-family:Cinzel,serif;font-size:.62rem;color:var(--gold);border:1px solid rgba(241,207,122,.24);border-radius:999px;padding:.25rem .5rem;background:rgba(241,207,122,.06)}
-.card-info h3{font-family:Cinzel,Georgia,serif;margin:.2rem 0 .5rem;font-size:1.05rem}
-.card-info p{margin:0;color:var(--muted);line-height:1.55;font-size:.92rem}
-.lb{display:none;position:fixed;inset:0;z-index:20000;background:rgba(3,2,10,.94);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:1rem}
+.image-open{position:absolute;left:0;right:0;bottom:0;border:0;border-top:1px solid rgba(255,255,255,.14);background:linear-gradient(180deg,rgba(5,5,16,.08),rgba(5,5,16,.82));color:#fff;padding:.85rem .8rem;font-family:Cinzel,serif;font-weight:700;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;cursor:pointer}
+.card-info{padding:1.1rem 1rem 1rem}
+.product-meta{display:flex;gap:.38rem;flex-wrap:wrap;margin-bottom:.85rem}
+.product-meta span{font-family:Cinzel,serif;font-weight:700;font-size:.6rem;color:var(--gold);border:1px solid rgba(241,207,122,.28);border-radius:999px;padding:.28rem .55rem;background:rgba(241,207,122,.06)}
+.card-info h3{font-family:Cinzel,Georgia,serif;margin:.2rem 0 .55rem;font-size:1.2rem;color:#fff7ff;text-shadow:0 0 18px rgba(210,108,255,.3)}
+.card-info p{margin:0;color:rgba(255,255,255,.86);line-height:1.55;font-size:.94rem}
+.product-card .size-options,.product-card .cart-size-buttons{display:grid!important;gap:.62rem!important;margin-top:1rem!important}
+.product-card .add-to-cart,.product-card .cart-add,.product-card button[data-add-to-cart],.product-card .btn-add-cart{width:100%!important;border-radius:999px!important;border:1px solid rgba(214,98,255,.55)!important;background:linear-gradient(135deg,rgba(70,22,105,.92),rgba(70,13,55,.94))!important;color:#fff!important;padding:.75rem 1rem!important;font-family:Cinzel,serif!important;font-weight:700!important;letter-spacing:.06em!important;text-transform:uppercase!important}
+.lb{display:none;position:fixed;inset:0;z-index:20000;background:rgba(3,2,10,.92);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:1rem}
 .lb.open{display:flex}
-.lb-card{position:relative;display:grid;grid-template-columns:minmax(260px,42%) 1fr;max-width:980px;width:100%;background:#0b0618;border:1px solid rgba(241,207,122,.3);border-radius:22px;overflow:hidden}
-.lb-card img{width:100%;height:100%;max-height:82vh;object-fit:cover}
-.lb-info{padding:2rem;display:flex;flex-direction:column;gap:.8rem;justify-content:center}
-.lb-info h2{font-family:Cinzel,Georgia,serif;font-size:clamp(1.5rem,4vw,2.6rem);margin:0}
-.lb-price{font-family:Cinzel,serif;color:var(--gold);line-height:1.7}
-.lb-desc,.lb-note{color:var(--muted);line-height:1.6}
+.lb-card{position:relative;display:grid;grid-template-columns:minmax(300px,43%) 1fr;max-width:1060px;width:100%;background:linear-gradient(180deg,#100820,#090414);border:1px solid rgba(115,48,161,.62);border-radius:22px;overflow:hidden;box-shadow:0 32px 90px rgba(0,0,0,.62)}
+.lb-card img{width:100%;height:100%;max-height:84vh;object-fit:cover;background:#080311}
+.lb-info{padding:2.2rem;display:flex;flex-direction:column;gap:1rem;justify-content:center}
+.lb-info h2{font-family:Cinzel,Georgia,serif;font-size:clamp(2rem,4.5vw,3.7rem);line-height:1;margin:0;color:#ffd1ff;text-shadow:0 0 22px rgba(210,108,255,.55)}
+.lb-price{display:grid;gap:.55rem;margin:.1rem 0;color:var(--gold)}
+.lb-price-option{display:flex!important;align-items:center!important;justify-content:space-between!important;width:100%!important;border:1px solid rgba(241,207,122,.28)!important;border-radius:999px!important;background:rgba(241,207,122,.07)!important;color:#fff!important;padding:.62rem .85rem!important;font-family:Cinzel,serif!important;font-weight:700!important;letter-spacing:.02em!important}
+.lb-price-option.active{background:linear-gradient(135deg,rgba(93,37,143,.85),rgba(60,14,66,.85))!important;border-color:rgba(241,207,122,.65)!important;box-shadow:0 0 18px rgba(210,108,255,.24)}
+.lb-desc,.lb-note{color:rgba(255,255,255,.86);line-height:1.65;font-size:1rem}
+.lb-features{display:grid;grid-template-columns:1fr 1fr;gap:.7rem 1rem;color:rgba(255,255,255,.86);font-size:.9rem}
+.lb-btns{display:grid!important;gap:.72rem!important;margin-top:.2rem!important}
+.lb-size-options{display:grid!important;gap:.72rem!important;width:100%!important}
+.lb-btn-cart,.lb-btns button,.lb-btn{width:100%!important;border-radius:999px!important;border:1px solid rgba(214,98,255,.58)!important;background:linear-gradient(135deg,rgba(70,22,105,.96),rgba(70,13,55,.96))!important;color:#fff!important;padding:.95rem 1.2rem!important;font-family:Cinzel,serif!important;font-weight:700!important;letter-spacing:.08em!important;text-transform:uppercase!important;text-align:center!important;text-decoration:none!important}
+.lb-btn.em{background:rgba(8,4,18,.55)!important;border-color:rgba(255,255,255,.1)!important;color:rgba(255,255,255,.74)!important}
 .lb-close{position:absolute;top:.8rem;right:.8rem;width:42px;height:42px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(8,4,20,.8);color:#fff;font-size:1.5rem;cursor:pointer;z-index:2}
 footer{text-align:center;padding:1.5rem 5%;color:rgba(255,255,255,.56);border-top:1px solid rgba(255,255,255,.08)}
 footer a{color:var(--gold)}
-@media(max-width:760px){.lb-card{grid-template-columns:1fr}.lb-card img{max-height:58vh}.aura-hero{padding-top:5.5rem}}
+@media(max-width:760px){.aura-hero{min-height:58vh;padding-top:6rem}.hero-actions{gap:.7rem}.hero-btn{min-width:min(100%,260px)}.lb{padding:.55rem}.lb-card{grid-template-columns:1fr;max-height:94vh;overflow:auto}.lb-card img{max-height:56vh}.lb-info{padding:1.35rem}.lb-features{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -66,37 +81,41 @@ footer a{color:var(--gold)}
 <main>
   <section class="aura-hero">
     <div>
-      <span class="eyebrow">Lady Aura Art · Coleccion AURA</span>
-      <h1>AURA</h1>
-      <p>Diseños fantasy premium preparados para diamond painting. Cada tamaño puede variar ligeramente de encuadre para conservar la mejor composición.</p>
+      <span class="eyebrow">Nueva colecci&oacute;n - Lady Aura Art</span>
+      <h1>Colecci&oacute;n AURA</h1>
+      <p>Una selecci&oacute;n especial de diamond painting premium con fantas&iacute;a luminosa, mundos m&aacute;gicos y piezas pensadas para enamorar desde el primer vistazo.</p>
+      <div class="hero-actions">
+        <a class="hero-btn primary" href="#productos">Ver cuadros AURA</a>
+        <a class="hero-btn" href="https://wa.me/34621355638?text=Hola%20Lady%20Aura%2C%20quiero%20preguntar%20por%20la%20coleccion%20AURA." target="_blank" rel="noopener">Preguntar por AURA</a>
+      </div>
     </div>
   </section>
 
   <section id="productos" class="products-section">
     <div class="section-head">
-      <span class="eyebrow">Nuevos diseños</span>
+      <span class="eyebrow">Nuevos dise&ntilde;os</span>
       <h2>Cuadros AURA</h2>
-      <p>Formatos disponibles: 60x90 cm, 50x70 cm y 40x60 cm. El formato 50x70 usa la imagen específica preparada para esa medida.</p>
+      <p>Formatos disponibles: 60x90 cm, 50x70 cm y 40x60 cm. 60x90 y 40x60 comparten la imagen principal; 50x70 usa la imagen espec&iacute;fica preparada para esa medida.</p>
     </div>
 
     <div class="products-grid">
-      <article class="product-card" data-nombre="Almas de Luz" data-precio="84" data-price="84" data-img="assets/almas-de-luz-60x90.webp" data-image50x70="assets/almas-de-luz-50x70.webp" data-image40x60="assets/almas-de-luz-40x60.webp" data-orient="v" data-coleccion="aura" data-collection="aura">
+      <article class="product-card" data-nombre="Almas de Luz" data-precio="84" data-price="84" data-img="assets/almas-de-luz-60x90.webp" data-image50x70="assets/almas-de-luz-50x70.webp" data-image40x60="assets/almas-de-luz-60x90.webp" data-orient="v" data-coleccion="aura" data-collection="aura">
         <div class="card-img-wrap"><img src="assets/almas-de-luz-60x90.webp" alt="Diamond painting Almas de Luz Lady Aura Art" loading="lazy"><button class="image-open" type="button">Ver imagen</button></div>
         <div class="card-info"><div class="product-meta"><span>AURA</span><span>60x90 cm - 84 &euro;</span><span>50x70 cm - 76 &euro;</span><span>40x60 cm - 66 &euro;</span></div><h3>Almas de Luz</h3><p>Diamante de resina cuadrado. Lienzo premium velvet. Pegamento vertido.</p></div>
       </article>
-      <article class="product-card" data-nombre="Hada del Lago Lunar" data-precio="84" data-price="84" data-img="assets/hada-del-lago-lunar-60x90.webp" data-image50x70="assets/hada-del-lago-lunar-50x70.webp" data-image40x60="assets/hada-del-lago-lunar-40x60.webp" data-orient="v" data-coleccion="aura" data-collection="aura">
+      <article class="product-card" data-nombre="Hada del Lago Lunar" data-precio="84" data-price="84" data-img="assets/hada-del-lago-lunar-60x90.webp" data-image50x70="assets/hada-del-lago-lunar-50x70.webp" data-image40x60="assets/hada-del-lago-lunar-60x90.webp" data-orient="v" data-coleccion="aura" data-collection="aura">
         <div class="card-img-wrap"><img src="assets/hada-del-lago-lunar-60x90.webp" alt="Diamond painting Hada del Lago Lunar Lady Aura Art" loading="lazy"><button class="image-open" type="button">Ver imagen</button></div>
         <div class="card-info"><div class="product-meta"><span>AURA</span><span>60x90 cm - 84 &euro;</span><span>50x70 cm - 76 &euro;</span><span>40x60 cm - 66 &euro;</span></div><h3>Hada del Lago Lunar</h3><p>Diamante de resina cuadrado. Lienzo premium velvet. Pegamento vertido.</p></div>
       </article>
-      <article class="product-card" data-nombre="Arbol de Cristal Lunar" data-precio="84" data-price="84" data-img="assets/arbol-de-cristal-lunar-60x90.webp" data-image50x70="assets/arbol-de-cristal-lunar-50x70.webp" data-image40x60="assets/arbol-de-cristal-lunar-40x60.webp" data-orient="v" data-coleccion="aura" data-collection="aura">
+      <article class="product-card" data-nombre="Arbol de Cristal Lunar" data-precio="84" data-price="84" data-img="assets/arbol-de-cristal-lunar-60x90.webp" data-image50x70="assets/arbol-de-cristal-lunar-50x70.webp" data-image40x60="assets/arbol-de-cristal-lunar-60x90.webp" data-orient="v" data-coleccion="aura" data-collection="aura">
         <div class="card-img-wrap"><img src="assets/arbol-de-cristal-lunar-60x90.webp" alt="Diamond painting Arbol de Cristal Lunar Lady Aura Art" loading="lazy"><button class="image-open" type="button">Ver imagen</button></div>
         <div class="card-info"><div class="product-meta"><span>AURA</span><span>60x90 cm - 84 &euro;</span><span>50x70 cm - 76 &euro;</span><span>40x60 cm - 66 &euro;</span></div><h3>Arbol de Cristal Lunar</h3><p>Diamante de resina cuadrado. Lienzo premium velvet. Pegamento vertido.</p></div>
       </article>
-      <article class="product-card" data-nombre="Abrazo Bajo la Luna Roja" data-precio="84" data-price="84" data-img="assets/abrazo-bajo-la-luna-roja-60x90.webp" data-image50x70="assets/abrazo-bajo-la-luna-roja-50x70.webp" data-image40x60="assets/abrazo-bajo-la-luna-roja-40x60.webp" data-orient="v" data-coleccion="aura" data-collection="aura">
+      <article class="product-card" data-nombre="Abrazo Bajo la Luna Roja" data-precio="84" data-price="84" data-img="assets/abrazo-bajo-la-luna-roja-60x90.webp" data-image50x70="assets/abrazo-bajo-la-luna-roja-50x70.webp" data-image40x60="assets/abrazo-bajo-la-luna-roja-60x90.webp" data-orient="v" data-coleccion="aura" data-collection="aura">
         <div class="card-img-wrap"><img src="assets/abrazo-bajo-la-luna-roja-60x90.webp" alt="Diamond painting Abrazo Bajo la Luna Roja Lady Aura Art" loading="lazy"><button class="image-open" type="button">Ver imagen</button></div>
         <div class="card-info"><div class="product-meta"><span>AURA</span><span>60x90 cm - 84 &euro;</span><span>50x70 cm - 76 &euro;</span><span>40x60 cm - 66 &euro;</span></div><h3>Abrazo Bajo la Luna Roja</h3><p>Diamante de resina cuadrado. Lienzo premium velvet. Pegamento vertido.</p></div>
       </article>
-      <article class="product-card" data-nombre="Rincon Encantado de Magia y Luz" data-precio="84" data-price="84" data-img="assets/rincon-encantado-de-magia-y-luz-60x90.webp" data-image50x70="assets/rincon-encantado-de-magia-y-luz-50x70.webp" data-image40x60="assets/rincon-encantado-de-magia-y-luz-40x60.webp" data-orient="v" data-coleccion="aura" data-collection="aura">
+      <article class="product-card" data-nombre="Rincon Encantado de Magia y Luz" data-precio="84" data-price="84" data-img="assets/rincon-encantado-de-magia-y-luz-60x90.webp" data-image50x70="assets/rincon-encantado-de-magia-y-luz-50x70.webp" data-image40x60="assets/rincon-encantado-de-magia-y-luz-60x90.webp" data-orient="v" data-coleccion="aura" data-collection="aura">
         <div class="card-img-wrap"><img src="assets/rincon-encantado-de-magia-y-luz-60x90.webp" alt="Diamond painting Rincon Encantado de Magia y Luz Lady Aura Art" loading="lazy"><button class="image-open" type="button">Ver imagen</button></div>
         <div class="card-info"><div class="product-meta"><span>AURA</span><span>60x90 cm - 84 &euro;</span><span>50x70 cm - 76 &euro;</span><span>40x60 cm - 66 &euro;</span></div><h3>Rincon Encantado de Magia y Luz</h3><p>Diamante de resina cuadrado. Lienzo premium velvet. Pegamento vertido.</p></div>
       </article>
@@ -106,21 +125,31 @@ footer a{color:var(--gold)}
 
 <div class="lb" id="lb" onclick="closeLB()">
   <div class="lb-card" onclick="event.stopPropagation()">
-    <button class="lb-close" type="button" onclick="closeLB()">×</button>
+    <button class="lb-close" type="button" onclick="closeLB()">&times;</button>
     <img id="lbImg" src="" alt="">
     <div class="lb-info">
-      <span class="eyebrow" id="lbVersion">Coleccion AURA</span>
+      <span class="eyebrow" id="lbVersion">Colecci&oacute;n AURA</span>
       <h2 id="lbTitle"></h2>
-      <p class="lb-price">60x90 cm - 84 € | 50x70 cm - 76 € | 40x60 cm - 66 €</p>
-      <p class="lb-desc" id="lbDesc">Diamond painting premium de fantasia luminosa. Diseño exclusivo de Lady Aura Art.</p>
-      <p class="lb-note">El encuadre puede variar ligeramente segun el tamaño para conservar la mejor composicion.</p>
+      <div class="lb-price" aria-label="Formatos disponibles">
+        <span class="lb-price-option active"><span>60x90 cm</span><strong>84 &euro;</strong></span>
+        <span class="lb-price-option"><span>50x70 cm</span><strong>76 &euro;</strong></span>
+        <span class="lb-price-option"><span>40x60 cm</span><strong>66 &euro;</strong></span>
+      </div>
+      <p class="lb-desc" id="lbDesc">Diamond painting premium de fantas&iacute;a luminosa. Dise&ntilde;o exclusivo de Lady Aura Art.</p>
+      <p class="lb-note">El encuadre puede variar ligeramente seg&uacute;n el tama&ntilde;o para conservar la mejor composici&oacute;n.</p>
+      <div class="lb-features">
+        <span>Diamantes cuadrados de alta densidad</span>
+        <span>Lienzo premium velvet</span>
+        <span>Herramientas incluidas</span>
+        <span>Instrucciones en espa&ntilde;ol</span>
+      </div>
       <div class="lb-btns" id="lbBtns"></div>
-      <a class="lb-btn em" id="lbEm" href="https://wa.me/34621355638" target="_blank" rel="noopener">Dudas? Escribeme</a>
+      <a class="lb-btn em" id="lbEm" href="https://wa.me/34621355638" target="_blank" rel="noopener">Dudas? Escr&iacute;beme</a>
     </div>
   </div>
 </div>
 
-<footer><p>© 2026 <a href="index.html">Lady Aura Art</a> · Coleccion AURA · Diamond Painting Premium</p></footer>
+<footer><p>2026 <a href="index.html">Lady Aura Art</a> - Colecci&oacute;n AURA - Diamond Painting Premium</p></footer>
 
 <script src="product-image-pairs.js"></script>
 <script src="carrito.js"></script>
@@ -130,7 +159,7 @@ function openLB(card) {
   var img = card.dataset.img;
   var nombre = card.dataset.nombre;
   document.getElementById('lbImg').src = img;
-  document.getElementById('lbImg').alt = nombre + ' · Diamond Painting AURA';
+  document.getElementById('lbImg').alt = nombre + ' - Diamond Painting AURA';
   document.getElementById('lbTitle').textContent = nombre;
   document.getElementById('lbEm').href = 'https://wa.me/34621355638?text=' + encodeURIComponent('Hola Lady Aura, tengo una duda sobre: ' + nombre + ' (Coleccion AURA).');
   if (typeof cartPatchLightbox === 'function') {
