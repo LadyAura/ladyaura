@@ -696,17 +696,36 @@ document.addEventListener('DOMContentLoaded', function() {
 // Se llama desde cada página que tenga openLB
 function cartPatchLightbox(card) {
   const btns = document.getElementById('lbBtns') || document.querySelector('.lb-btns');
-  const currentPrice = cartProductPrice(card);
+  const data = Object.assign({}, card && card.dataset ? card.dataset : {});
+  if (!data.img && card && typeof card.querySelector === 'function') data.img = card.querySelector('img')?.getAttribute('src') || '';
+  if (!data.nombre && card && typeof card.querySelector === 'function') data.nombre = card.querySelector('h3')?.textContent || '';
+  const lightboxCard = { dataset: data };
+
+  function setLightboxSize(size) {
+    const nextImage = cartProductImageForSize(lightboxCard, size);
+    const fallbackImage = data.originalImage || data.img || '';
+    const lbImage = document.getElementById('lbImg');
+    if (lbImage && nextImage) {
+      lbImage.onerror = function() {
+        this.onerror = null;
+        if (fallbackImage) this.src = fallbackImage;
+      };
+      lbImage.src = nextImage;
+    }
+    if (btns) btns.dataset.selectedSize = size;
+  }
+
   const lbPrice = document.querySelector('.lb-price');
   if (lbPrice) {
     lbPrice.removeAttribute('style');
-    lbPrice.innerHTML = `<button class="lb-price-option active" type="button" data-size="60x90"><span>60x90 cm</span><strong>${cartProductPriceForSize(card, '60x90')} €</strong></button><button class="lb-price-option" type="button" data-size="50x70"><span>50x70 cm</span><strong>${cartProductPriceForSize(card, '50x70')} €</strong></button><button class="lb-price-option" type="button" data-size="40x60"><span>40x60 cm</span><strong>${cartProductPriceForSize(card, '40x60')} €</strong></button>`;
+    lbPrice.innerHTML = `<button class="lb-price-option active" type="button" data-size="60x90"><span>60x90 cm</span><strong>${cartProductPriceForSize(lightboxCard, '60x90')} €</strong></button><button class="lb-price-option" type="button" data-size="50x70"><span>50x70 cm</span><strong>${cartProductPriceForSize(lightboxCard, '50x70')} €</strong></button><button class="lb-price-option" type="button" data-size="40x60"><span>40x60 cm</span><strong>${cartProductPriceForSize(lightboxCard, '40x60')} €</strong></button>`;
     lbPrice.querySelectorAll('.lb-price-option').forEach(option => {
       option.addEventListener('click', function(e) {
+        e.preventDefault();
         e.stopPropagation();
         lbPrice.querySelectorAll('.lb-price-option').forEach(el => el.classList.remove('active'));
         this.classList.add('active');
-        cartPreviewProductImageForSize(card, this.dataset.size);
+        setLightboxSize(this.dataset.size);
       });
     });
   }
@@ -723,6 +742,7 @@ function cartPatchLightbox(card) {
   function addLightboxSize(size, price) {
     const btn = document.createElement('button');
     btn.className = 'lb-btn lb-btn-cart';
+    btn.type = 'button';
     btn.textContent = `Añadir ${size} al carrito`;
     btn.style.cssText = `
       background: linear-gradient(135deg,rgba(160,63,255,0.2),rgba(255,72,137,0.15));
@@ -730,21 +750,23 @@ function cartPatchLightbox(card) {
       color: rgba(255,255,255,0.9);
       cursor: pointer;
     `;
-    btn.addEventListener('mouseenter', () => cartPreviewProductImageForSize(card, size));
-    btn.addEventListener('focus', () => cartPreviewProductImageForSize(card, size));
-    btn.onclick = function(e) {
-      if (e) e.stopPropagation();
-      cartPreviewProductImageForSize(card, size);
+    btn.addEventListener('mouseenter', () => setLightboxSize(size));
+    btn.addEventListener('focus', () => setLightboxSize(size));
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+      setLightboxSize(size);
       cartAdd({
-        id: (card.dataset.img || card.dataset.nombre) + '-' + size,
-        nombre: card.dataset.nombre,
-        img: cartProductImageForSize(card, size),
+        id: (data.img || data.nombre) + '-' + size,
+        nombre: data.nombre,
+        img: cartProductImageForSize(lightboxCard, size),
         precio: price,
         tamano: size + ' cm',
         size: size + ' cm',
-        orient: card.dataset.orient || 'v',
-        coleccion: card.dataset.coleccion || card.dataset.collection || '',
-        collection: card.dataset.collection || card.dataset.coleccion || ''
+        orient: data.orient || 'v',
+        coleccion: data.coleccion || data.collection || '',
+        collection: data.collection || data.coleccion || ''
       });
       this.classList.add('added');
       this.textContent = '✓ Añadido al carrito';
@@ -752,14 +774,15 @@ function cartPatchLightbox(card) {
         this.classList.remove('added');
         this.textContent = `Añadir ${size} al carrito`;
       }, 2000);
-    };
+    }, true);
     options.appendChild(btn);
   }
 
-  addLightboxSize('60x90', cartProductPriceForSize(card, '60x90'));
-  addLightboxSize('50x70', cartProductPriceForSize(card, '50x70'));
-  addLightboxSize('40x60', cartProductPriceForSize(card, '40x60'));
+  addLightboxSize('60x90', cartProductPriceForSize(lightboxCard, '60x90'));
+  addLightboxSize('50x70', cartProductPriceForSize(lightboxCard, '50x70'));
+  addLightboxSize('40x60', cartProductPriceForSize(lightboxCard, '40x60'));
   btns.insertBefore(options, btns.firstChild);
+  setLightboxSize('60x90');
   fullscreenAttach();
 }
 
