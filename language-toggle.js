@@ -2,7 +2,7 @@
   'use strict';
 
   var STORAGE_KEY = 'ladyaura_site_lang';
-  var COOKIE_DOMAIN = location.hostname && location.hostname !== 'localhost' ? ';domain=' + location.hostname : '';
+  var COOKIE_DOMAIN = location.hostname && location.hostname !== 'localhost' ?';domain=' + location.hostname : '';
   var GOOGLE_SCRIPT_ID = 'google-translate-script';
   var WIDGET_ID = 'google_translate_element';
   var SUPPORTED_LANGS = ['es', 'en', 'fr', 'de', 'it', 'pt'];
@@ -32,7 +32,7 @@
   }
 
   function browserPreferredLanguage() {
-    var languages = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || navigator.userLanguage || ''];
+    var languages = navigator.languages && navigator.languages.length ?navigator.languages : [navigator.language || navigator.userLanguage || ''];
     for (var i = 0; i < languages.length; i += 1) {
       var code = String(languages[i] || '').toLowerCase().split('-')[0];
       if (SUPPORTED_LANGS.indexOf(code) !== -1) return code;
@@ -47,7 +47,7 @@
   }
 
   function setTranslateCookie(lang) {
-    var value = lang === 'es' ? '/es/es' : '/es/' + lang;
+    var value = lang === 'es' ?'/es/es' : '/es/' + lang;
     document.cookie = 'googtrans=' + value + ';path=/' + COOKIE_DOMAIN;
     document.cookie = 'googtrans=' + value + ';path=/';
   }
@@ -64,6 +64,7 @@
     style.id = 'lady-aura-language-styles';
     style.textContent = [
       '.site-header{position:sticky!important;top:0!important;z-index:10000!important;display:flex!important;align-items:center!important;gap:.75rem!important;justify-content:space-between!important;width:100%!important;min-height:70px!important;padding:.72rem clamp(.85rem,4vw,3.2rem)!important;background:rgba(5,5,16,.88)!important;backdrop-filter:blur(18px)!important;border-bottom:1px solid rgba(255,217,138,.16)!important;box-shadow:0 8px 26px rgba(0,0,0,.28)!important;overflow:visible!important}',
+      '.scarcity-bar{display:none!important}',
       '.site-header .brand{display:inline-flex!important;align-items:center!important;flex:0 0 auto!important}',
       '.site-header .brand img{display:block!important;height:auto!important;max-height:54px!important;max-width:165px!important;width:auto!important;object-fit:contain!important}',
       '.site-header .nav{display:flex!important;align-items:center!important;justify-content:center!important;gap:.42rem!important;flex:1 1 auto!important;min-width:0!important}',
@@ -125,11 +126,11 @@
     ];
 
     var navHtml = links.map(function (link) {
-      var active = current === link[0] ? ' aria-current="page"' : '';
+      var active = current === link[0] ?' aria-current="page"' : '';
       return '<a href="' + link[0] + '"' + active + '>' + link[1] + '</a>';
     }).join('');
 
-    var cartActive = current === 'carrito.html' ? ' aria-current="page"' : '';
+    var cartActive = current === 'carrito.html' ?' aria-current="page"' : '';
     header.innerHTML = [
       '<a class="brand" href="index.html" aria-label="Lady Aura inicio"><img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art - Diamond Painting Premium"></a>',
       '<button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false">Menu</button>',
@@ -175,7 +176,7 @@
       tries += 1;
       var combo = document.querySelector('.goog-te-combo');
       if (combo) {
-        combo.value = lang === 'es' ? '' : lang;
+        combo.value = lang === 'es' ?'' : lang;
         if (typeof Event === 'function') {
           combo.dispatchEvent(new Event('change', { bubbles: true }));
         } else {
@@ -198,12 +199,12 @@
 
   function updateButtons(lang) {
     document.querySelectorAll('[data-lady-aura-lang]').forEach(function (button) {
-      button.setAttribute('aria-pressed', button.getAttribute('data-lady-aura-lang') === lang ? 'true' : 'false');
+      button.setAttribute('aria-pressed', button.getAttribute('data-lady-aura-lang') === lang ?'true' : 'false');
     });
   }
 
   function protectArtworkTitles(root) {
-    var scope = root && root.querySelectorAll ? root : document;
+    var scope = root && root.querySelectorAll ?root : document;
     var selectors = [
       '.product-card h3',
       '.zod-card h3',
@@ -298,7 +299,7 @@
       event.preventDefault();
       event.stopImmediatePropagation();
       var isOpen = nav.classList.toggle('active');
-      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      menuToggle.setAttribute('aria-expanded', isOpen ?'true' : 'false');
     }, true);
     nav.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
@@ -346,7 +347,7 @@
       function showPage(page, shouldScroll) {
         currentPage = Math.max(1, Math.min(totalPages, page));
         cards.forEach(function (card, i) {
-          card.style.display = (i >= (currentPage - 1) * itemsPerPage && i < currentPage * itemsPerPage) ? '' : 'none';
+          card.style.display = (i >= (currentPage - 1) * itemsPerPage && i < currentPage * itemsPerPage) ?'' : 'none';
         });
         renderPagination();
         if (shouldScroll) {
@@ -358,8 +359,8 @@
         pag.innerHTML = '';
         var prev = document.createElement('button');
         prev.type = 'button';
-        prev.className = 'page-btn' + (currentPage === 1 ? ' disabled' : '');
-        prev.textContent = 'â†';
+        prev.className = 'page-btn' + (currentPage === 1 ?' disabled' : '');
+        prev.textContent = '<';
         prev.disabled = currentPage === 1;
         prev.setAttribute('aria-label', 'Pagina anterior');
         prev.addEventListener('click', function () { showPage(currentPage - 1, true); });
@@ -368,7 +369,7 @@
         for (var i = 1; i <= totalPages; i += 1) {
           var btn = document.createElement('button');
           btn.type = 'button';
-          btn.className = 'page-btn' + (i === currentPage ? ' active' : '');
+          btn.className = 'page-btn' + (i === currentPage ?' active' : '');
           btn.textContent = i;
           btn.setAttribute('aria-label', 'Pagina ' + i);
           btn.addEventListener('click', (function (page) {
@@ -379,8 +380,8 @@
 
         var next = document.createElement('button');
         next.type = 'button';
-        next.className = 'page-btn' + (currentPage === totalPages ? ' disabled' : '');
-        next.textContent = 'â†’';
+        next.className = 'page-btn' + (currentPage === totalPages ?' disabled' : '');
+        next.textContent = '>';
         next.disabled = currentPage === totalPages;
         next.setAttribute('aria-label', 'Pagina siguiente');
         next.addEventListener('click', function () { showPage(currentPage + 1, true); });
@@ -391,8 +392,41 @@
     });
   }
 
+  function fixMojibakeText(root) {
+    function bad() {
+      return String.fromCodePoint.apply(String, arguments);
+    }
+    var replacements = [
+      [bad(0xc3,0xa1),'á'],[bad(0xc3,0xa9),'é'],[bad(0xc3,0xad),'í'],[bad(0xc3,0xb3),'ó'],[bad(0xc3,0xba),'ú'],[bad(0xc3,0xb1),'ñ'],[bad(0xc3,0xbc),'ü'],
+      [bad(0xc3,0x81),'Á'],[bad(0xc3,0x89),'É'],[bad(0xc3,0x8d),'Í'],[bad(0xc3,0x93),'Ó'],[bad(0xc3,0x9a),'Ú'],[bad(0xc3,0x91),'Ñ'],[bad(0xc3,0x9c),'Ü'],
+      [bad(0xc2,0xb7),'·'],[bad(0xc2,0xa9),'©'],[bad(0xc2,0xbf),'¿'],[bad(0xc2,0xa1),'¡'],
+      [bad(0xe2,0x20ac,0x201c),'–'],[bad(0xe2,0x20ac,0x201d),'—'],[bad(0xe2,0x20ac,0x2122),'’'],[bad(0xe2,0x20ac,0x153),'“'],[bad(0xe2,0x20ac,0x9d),'”'],
+      [bad(0xe2,0x201a,0xac),'€'],[bad(0xe2,0x153,0xa6),'✦'],[bad(0xe2,0x153,0xa8),'✨'],[bad(0xe2,0x2020,0x2019),'→'],[bad(0xe2,0x2020,0x2022),'↕'],[bad(0xe2,0x2020,0x201d),'↔'],
+      [bad(0xf0,0x178,0x2019,0x201c),'💜'],[bad(0xf0,0x178,0x201c,0xa6),'📦'],[bad(0xf0,0x178,0x17d,0xa8),'🎨'],[bad(0xf0,0x178,0x2019,0xac),'💬'],[bad(0xf0,0x178,0x2019,0x17d),'💎'],[bad(0xf0,0x178,0x161,0x20ac),'🚀'],[bad(0xf0,0x178,0x201d,0xae),'🔮']
+    ];
+    function clean(value) {
+      if (!value) return value;
+      replacements.forEach(function (pair) {
+        value = value.split(pair[0]).join(pair[1]);
+      });
+      return value;
+    }
+    var walker = document.createTreeWalker(root || document.body, NodeFilter.SHOW_TEXT);
+    var node;
+    while ((node = walker.nextNode())) {
+      if (node.parentNode && /^(SCRIPT|STYLE|NOSCRIPT)$/i.test(node.parentNode.nodeName)) continue;
+      node.nodeValue = clean(node.nodeValue);
+    }
+    Array.prototype.forEach.call((root || document).querySelectorAll('[alt],[title],[aria-label]'), function (el) {
+      ['alt','title','aria-label'].forEach(function (attr) {
+        if (el.hasAttribute(attr)) el.setAttribute(attr, clean(el.getAttribute(attr)));
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     addStyles();
+    fixMojibakeText(document.body);
     normalizeHeader();
     addToggle();
     bindMobileMenu();
@@ -401,6 +435,7 @@
       mutations.forEach(function (mutation) {
         mutation.addedNodes.forEach(function (node) {
           if (node.nodeType === 1) protectArtworkTitles(node);
+          if (node.nodeType === 1) fixMojibakeText(node);
         });
       });
     });

@@ -4,6 +4,7 @@
 (function() {
   const SIZE_50X70_RE = /(?:50\s*x\s*70|70\s*x\s*50)/i;
   const SIZE_50X70_REPLACE = /(?:50\s*x\s*70|70\s*x\s*50)/gi;
+  const SIZE_VARIANT_REPLACE = /(?:50\s*x\s*70|70\s*x\s*50|60\s*x\s*90|90\s*x\s*60|40\s*x\s*60|60\s*x\s*40)/gi;
   const IMAGE_EXT_RE = /\.(?:avif|webp|png|jpe?g|gif|svg)$/i;
 
   function cleanFilename(filename) {
@@ -20,7 +21,7 @@
       .toLowerCase()
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
-      .replace(SIZE_50X70_REPLACE, ' ')
+      .replace(SIZE_VARIANT_REPLACE, ' ')
       .replace(/[-_()]+/g, ' ')
       .replace(/[^a-z0-9\s]+/g, ' ')
       .replace(/\s+/g, ' ')
@@ -28,7 +29,7 @@
   }
 
   function classifyImage(filename) {
-    return SIZE_50X70_RE.test(cleanFilename(filename)) ? 'version_50x70' : 'original';
+    return SIZE_50X70_RE.test(cleanFilename(filename)) ?'version_50x70' : 'original';
   }
 
   function createImagePairStore(initialImages) {
@@ -46,7 +47,7 @@
     }
 
     function addImage(image) {
-      const src = typeof image === 'string' ? image : image && image.src;
+      const src = typeof image === 'string' ?image : image && image.src;
       if (!src) return;
 
       const baseName = normalizeName(src);
@@ -54,7 +55,7 @@
 
       const kind = (image && image.kind) || classifyImage(src);
       const group = ensureGroup(baseName);
-      const bucket = kind === 'version_50x70' ? group.versions50x70 : group.originals;
+      const bucket = kind === 'version_50x70' ?group.versions50x70 : group.originals;
 
       if (!bucket.includes(src)) bucket.push(src);
     }
@@ -93,7 +94,7 @@
     function get(baseNameOrFilename) {
       const baseName = normalizeName(baseNameOrFilename);
       const group = groups.get(baseName);
-      return group ? toProduct(group) : null;
+      return group ?toProduct(group) : null;
     }
 
     registerBatch(initialImages || []);
@@ -174,7 +175,7 @@
 
       card.dataset.baseName = pair.baseName;
       card.dataset.originalImage = pair.originalImage || card.dataset.img || '';
-      card.dataset.image50x70 = pair.image50x70 || '';
+      card.dataset.image50x70 = pair.image50x70 || card.dataset.image50x70 || '';
       card.dataset.pairStatus = pair.status;
     });
 

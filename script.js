@@ -55,7 +55,7 @@ if (lightbox && lightboxImg && closeBtn) {
         lightboxImg.src = img.src; lightboxImg.alt = img.alt;
         if (lightboxTitle) lightboxTitle.textContent = title;
         if (lightboxPrice) lightboxPrice.innerHTML = oldPrice
-          ? `Diamond painting 60×90 cm · <span style="text-decoration:line-through;opacity:0.6">${oldPrice} €</span> <strong>${price} €</strong> · Envío incluido`
+          ?`Diamond painting 60×90 cm · <span style="text-decoration:line-through;opacity:0.6">${oldPrice} €</span> <strong>${price} €</strong> · Envío incluido`
           : `Diamond painting 60×90 cm · Envío incluido`;
         if (lightboxWhatsapp) lightboxWhatsapp.href = buildWhatsappUrl(title, price);
         if (lightboxEmail)    lightboxEmail.href    = buildEmailUrl(title, price);
@@ -108,7 +108,7 @@ if (lightbox && lightboxImg && closeBtn) {
   function showPage(page) {
     currentPage = page;
     allCards.forEach((card,i) => {
-      card.style.display = (i>=(page-1)*ITEMS_PER_PAGE && i<page*ITEMS_PER_PAGE) ? '' : 'none';
+      card.style.display = (i>=(page-1)*ITEMS_PER_PAGE && i<page*ITEMS_PER_PAGE) ?'' : 'none';
     });
     renderPagination();
     window.scrollTo({top: grid.offsetTop-100, behavior:'smooth'});
@@ -132,8 +132,7 @@ if (lightbox && lightboxImg && closeBtn) {
     '.grid-laminas',
     '.gallery-grid',
     '.collections-grid',
-    '.tools-grid',
-    '#zodiacGrid'
+    '.tools-grid'
   ];
   const grids = Array.from(document.querySelectorAll(gridSelectors.join(',')));
   if (!grids.length) return;
@@ -143,7 +142,7 @@ if (lightbox && lightboxImg && closeBtn) {
     const cards = Array.from(grid.children).filter(el => {
       return el.nodeType === 1 && !el.classList.contains('pagination');
     });
-    const itemsPerPage = grid.id === 'zodiacGrid' ? 5 : DEFAULT_ITEMS_PER_PAGE;
+    const itemsPerPage = DEFAULT_ITEMS_PER_PAGE;
     if (cards.length <= itemsPerPage) return;
 
     grid.dataset.ladyAuraPaged = '1';
@@ -157,7 +156,7 @@ if (lightbox && lightboxImg && closeBtn) {
     function showPage(page, shouldScroll) {
       currentPage = Math.max(1, Math.min(totalPages, page));
       cards.forEach((card, i) => {
-        card.style.display = (i >= (currentPage - 1) * itemsPerPage && i < currentPage * itemsPerPage) ? '' : 'none';
+        card.style.display = (i >= (currentPage - 1) * itemsPerPage && i < currentPage * itemsPerPage) ?'' : 'none';
       });
       renderPagination();
       if (shouldScroll) {
@@ -169,7 +168,7 @@ if (lightbox && lightboxImg && closeBtn) {
       pag.innerHTML = '';
       const prev = document.createElement('button');
       prev.type = 'button';
-      prev.className = 'page-btn' + (currentPage === 1 ? ' disabled' : '');
+      prev.className = 'page-btn' + (currentPage === 1 ?' disabled' : '');
       prev.textContent = '←';
       prev.setAttribute('aria-label', 'Página anterior');
       prev.disabled = currentPage === 1;
@@ -179,7 +178,7 @@ if (lightbox && lightboxImg && closeBtn) {
       for (let i = 1; i <= totalPages; i++) {
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'page-btn' + (i === currentPage ? ' active' : '');
+        btn.className = 'page-btn' + (i === currentPage ?' active' : '');
         btn.textContent = i;
         btn.setAttribute('aria-label', 'Página ' + i);
         btn.onclick = () => showPage(i, true);
@@ -188,7 +187,7 @@ if (lightbox && lightboxImg && closeBtn) {
 
       const next = document.createElement('button');
       next.type = 'button';
-      next.className = 'page-btn' + (currentPage === totalPages ? ' disabled' : '');
+      next.className = 'page-btn' + (currentPage === totalPages ?' disabled' : '');
       next.textContent = '→';
       next.setAttribute('aria-label', 'Página siguiente');
       next.disabled = currentPage === totalPages;

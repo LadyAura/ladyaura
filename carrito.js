@@ -127,7 +127,7 @@ function cartUpdateBadge() {
   const count = cartGet().length;
   document.querySelectorAll('.cart-badge').forEach(el => {
     el.textContent = count;
-    el.style.display = count > 0 ? 'flex' : 'none';
+    el.style.display = count > 0 ?'flex' : 'none';
   });
 }
 
@@ -137,7 +137,7 @@ function cartUpdateFloating() {
   const fab = document.getElementById('cart-fab');
   if (!fab) return;
   fab.querySelector('.cart-fab-count').textContent = count;
-  fab.style.display = count > 0 ? 'flex' : 'none';
+  fab.style.display = count > 0 ?'flex' : 'none';
 }
 
 /* ── Toast de confirmación ── */
@@ -149,7 +149,7 @@ function cartShowToast(nombre, yaEsta) {
     document.body.appendChild(toast);
   }
   toast.innerHTML = yaEsta
-    ? `<span>✨</span> <em>${nombre}</em> ya está en tu carrito`
+    ?`<span>✨</span> <em>${nombre}</em> ya está en tu carrito`
     : `<span>🛒</span> <em>${nombre}</em> añadido al carrito`;
   toast.classList.remove('out');
   toast.classList.add('in');
@@ -195,8 +195,8 @@ function cartInjectFAB() {
 function cartProductPrice(card) {
   const dataPrice = Number(card.dataset.precio || card.dataset.price);
   if (dataPrice) return dataPrice;
-  const visiblePrice = (card.querySelector('.card-price')?.textContent || '').match(/(\d+(?:[,.]\d+)?)\s*(?:€|â‚¬)/);
-  return visiblePrice ? Number(visiblePrice[1].replace(',', '.')) : 84;
+  const visiblePrice = (card.querySelector('.card-price')?.textContent || '').match(/(\d+(?:[,.]\d+)?)\s*(?:€|EUR)?/i);
+  return visiblePrice ?Number(visiblePrice[1].replace(',', '.')) : 84;
 }
 
 /* ── Inyectar botón "Añadir al carrito" en cada product-card ── */
@@ -212,14 +212,17 @@ function cartProductPriceForSize(card, size) {
 function cartProductImageForSize(card, size) {
   const wants50x70 = /50\s*x\s*70|70\s*x\s*50/i.test(String(size || ''));
   const wants40x60 = /40\s*x\s*60|60\s*x\s*40/i.test(String(size || ''));
+  if (wants40x60) {
+    return card.dataset.image40x60 || card.dataset.originalImage || card.dataset.img || card.querySelector?.('img')?.src || '';
+  }
+  if (wants50x70 && card.dataset.image50x70) {
+    return card.dataset.image50x70;
+  }
   if (window.LadyAuraImagePairs && typeof window.LadyAuraImagePairs.resolveImageForSize === 'function') {
     const pairedImage = window.LadyAuraImagePairs.resolveImageForSize(card, size);
     if (pairedImage && (!wants50x70 || pairedImage !== (card.dataset.originalImage || card.dataset.img))) {
       if (!wants40x60 || pairedImage !== (card.dataset.originalImage || card.dataset.img)) return pairedImage;
     }
-  }
-  if (wants40x60) {
-    return card.dataset.image40x60 || card.dataset.originalImage || card.dataset.img || card.querySelector?.('img')?.src || '';
   }
   if (wants50x70) {
     const originalImage = card.dataset.originalImage || card.dataset.img || card.querySelector?.('img')?.getAttribute('src') || '';
@@ -264,7 +267,7 @@ function cartInjectButtons() {
       const info = card.querySelector('.card-info');
       if (!info) return;
       const currentPrice = cartProductPrice(card);
-      const collection = card.dataset.coleccion || card.dataset.collection || (location.pathname.toLowerCase().includes('nedeka') ? 'nedeka' : location.pathname.toLowerCase().includes('bruji') ? 'bruji' : location.pathname.toLowerCase().includes('maika') ? 'maika' : location.pathname.toLowerCase().includes('circulo-aura') ? 'bambarelle71' : card.dataset.coleccion || card.dataset.collection || '');
+      const collection = card.dataset.coleccion || card.dataset.collection || (location.pathname.toLowerCase().includes('nedeka') ?'nedeka' : location.pathname.toLowerCase().includes('bruji') ?'bruji' : location.pathname.toLowerCase().includes('maika') ?'maika' : location.pathname.toLowerCase().includes('circulo-aura') ?'bambarelle71' : card.dataset.coleccion || card.dataset.collection || '');
       const options = document.createElement('div');
       options.className = 'cart-size-options';
 
@@ -326,8 +329,8 @@ function cartInjectButtons() {
         img: cartProductImageForSize(card, size),
         precio: Number(card.dataset.precio || card.dataset.price) || 84,
         orient: card.dataset.orient || 'v',
-        coleccion: card.dataset.coleccion || card.dataset.collection || (location.pathname.toLowerCase().includes('nedeka') ? 'nedeka' : location.pathname.toLowerCase().includes('bruji') ? 'bruji' : location.pathname.toLowerCase().includes('maika') ? 'maika' : location.pathname.toLowerCase().includes('circulo-aura') ? 'bambarelle71' : card.dataset.coleccion || card.dataset.collection || ''),
-        collection: card.dataset.collection || card.dataset.coleccion || (location.pathname.toLowerCase().includes('nedeka') ? 'nedeka' : location.pathname.toLowerCase().includes('bruji') ? 'bruji' : location.pathname.toLowerCase().includes('maika') ? 'maika' : location.pathname.toLowerCase().includes('circulo-aura') ? 'bambarelle71' : card.dataset.coleccion || card.dataset.collection || '')
+        coleccion: card.dataset.coleccion || card.dataset.collection || (location.pathname.toLowerCase().includes('nedeka') ?'nedeka' : location.pathname.toLowerCase().includes('bruji') ?'bruji' : location.pathname.toLowerCase().includes('maika') ?'maika' : location.pathname.toLowerCase().includes('circulo-aura') ?'bambarelle71' : card.dataset.coleccion || card.dataset.collection || ''),
+        collection: card.dataset.collection || card.dataset.coleccion || (location.pathname.toLowerCase().includes('nedeka') ?'nedeka' : location.pathname.toLowerCase().includes('bruji') ?'bruji' : location.pathname.toLowerCase().includes('maika') ?'maika' : location.pathname.toLowerCase().includes('circulo-aura') ?'bambarelle71' : card.dataset.coleccion || card.dataset.collection || '')
       });
       this.classList.add('added');
       this.innerHTML = '✓ En el carrito';
@@ -542,8 +545,8 @@ function cartInjectZodiaco() {
     if (!titulo) return;
     const isFem = card.dataset.fem === '1';
     const imgEl = card.querySelector('img');
-    const imgSrc = imgEl ? imgEl.src : '';
-    const nombre = (isFem ? 'Diosa ' : 'Retrato Celestial de ') + titulo;
+    const imgSrc = imgEl ?imgEl.src : '';
+    const nombre = (isFem ?'Diosa ' : 'Retrato Celestial de ') + titulo;
 
     const btn = document.createElement('button');
     btn.className = 'btn-add-cart';
@@ -552,7 +555,7 @@ function cartInjectZodiaco() {
     btn.addEventListener('click', function(e) {
       e.stopPropagation();
       cartAdd({
-        id: 'zodiaco-' + titulo + '-' + (isFem ? 'f' : 'm'),
+        id: 'zodiaco-' + titulo + '-' + (isFem ?'f' : 'm'),
         nombre: nombre,
         img: imgSrc,
         precio: Number(card.dataset.precio) || 84,
@@ -577,7 +580,7 @@ function cartInjectZodiaco() {
     const nombre = (titleEl?.textContent || imgEl?.alt || 'Horoscopo Lady Aura')
       .replace(/\s+Lady Aura\s*$/i, '')
       .trim();
-    const imgSrc = imgEl ? (imgEl.getAttribute('src') || imgEl.src || '') : '';
+    const imgSrc = imgEl ?(imgEl.getAttribute('src') || imgEl.src || '') : '';
 
     const info = card.querySelector('.zod-ci') || card;
     const options = document.createElement('div');
@@ -633,7 +636,7 @@ function cartInjectColorear() {
     const nombre = nombreEl.textContent.trim();
     if (nombre === 'Lámina personalizada') return; // precio variable, skip
     const img = card.querySelector('img');
-    const imgSrc = img ? img.src : '';
+    const imgSrc = img ?img.src : '';
 
     const btn = document.createElement('button');
     btn.className = 'btn-add-cart';
@@ -702,7 +705,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Se llama desde cada página que tenga openLB
 function cartPatchLightbox(card) {
   const btns = document.getElementById('lbBtns') || document.querySelector('.lb-btns');
-  const data = Object.assign({}, card && card.dataset ? card.dataset : {});
+  const data = Object.assign({}, card && card.dataset ?card.dataset : {});
   if (!data.img && card && typeof card.querySelector === 'function') data.img = card.querySelector('img')?.getAttribute('src') || '';
   if (!data.nombre && card && typeof card.querySelector === 'function') data.nombre = card.querySelector('h3')?.textContent || '';
   const lightboxCard = { dataset: data };
@@ -904,7 +907,7 @@ function fullscreenClose() {
   if (overlay) overlay.classList.remove('open');
   if (closeBtn) closeBtn.classList.remove('visible');
   const stillInProductPanel = document.querySelector('.lb.open, .t-lb.open, .lightbox.open, .modal-overlay.open, #nedeka-lightbox.open');
-  document.body.style.overflow = stillInProductPanel ? 'hidden' : '';
+  document.body.style.overflow = stillInProductPanel ?'hidden' : '';
 }
 window.fullscreenClose = fullscreenClose;
 
@@ -1043,45 +1046,45 @@ if(document.readyState !== "loading") {
     const brujiSubtotal = items.filter(isBrujiItem).reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
 
     if (code === 'LADYAURA5') {
-      return subtotal > 0 ? 5 : 0;
+      return subtotal > 0 ?5 : 0;
     }
     if (code === 'NEDEKA10') {
-      return nedekaSubtotal > 0 ? Math.min(10, nedekaSubtotal) : 0;
+      return nedekaSubtotal > 0 ?Math.min(10, nedekaSubtotal) : 0;
     }
     if (code === 'NEDEKA60') {
       const nedekaItems = items.filter(isNedekaItem);
       let totalDiscount = 0;
       nedekaItems.forEach(item => { totalDiscount += Math.max(0, (Number(item.precio) || 84) - 60); });
-      return totalDiscount > 0 ? totalDiscount : 0;
+      return totalDiscount > 0 ?totalDiscount : 0;
     }
     if (code === 'BRUJI10') {
-      return brujiSubtotal > 0 ? Math.min(10, brujiSubtotal) : 0;
+      return brujiSubtotal > 0 ?Math.min(10, brujiSubtotal) : 0;
     }
     if (code === 'BRUJI60') {
       // Descuento secreto: cada cuadro BRUJI queda a 60€
       const brujiItems = items.filter(isBrujiItem);
       let totalDiscount = 0;
       brujiItems.forEach(item => { totalDiscount += Math.max(0, (Number(item.precio) || 84) - 60); });
-      return totalDiscount > 0 ? totalDiscount : 0;
+      return totalDiscount > 0 ?totalDiscount : 0;
     }
     if (code === 'MAIKA10') {
       const maikaSubtotal = items.filter(isMaikaItem).reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
-      return maikaSubtotal > 0 ? Math.min(10, maikaSubtotal) : 0;
+      return maikaSubtotal > 0 ?Math.min(10, maikaSubtotal) : 0;
     }
     if (code === 'MAIKA60') {
       // Descuento secreto diseñadora: cada cuadro MAIKA queda a 60€
       const maikaItems = items.filter(isMaikaItem);
       let totalDiscount = 0;
       maikaItems.forEach(item => { totalDiscount += Math.max(0, (Number(item.precio) || 84) - 60); });
-      return totalDiscount > 0 ? totalDiscount : 0;
+      return totalDiscount > 0 ?totalDiscount : 0;
     }
     if (code === 'ALI10') {
       const bambaSubtotal = items.filter(isBambarelleItem).reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
-      return bambaSubtotal > 0 ? Math.min(10, bambaSubtotal) : 0;
+      return bambaSubtotal > 0 ?Math.min(10, bambaSubtotal) : 0;
     }
     if (code === 'FON10') {
       const fonsinSubtotal = items.filter(isFonsinItem).reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
-      return fonsinSubtotal > 0 ? Math.min(10, fonsinSubtotal) : 0;
+      return fonsinSubtotal > 0 ?Math.min(10, fonsinSubtotal) : 0;
     }
     return 0;
   }
@@ -1097,7 +1100,7 @@ if(document.readyState !== "loading") {
       if (form) form.appendChild(box);
     }
     box.textContent = text;
-    box.style.color = ok ? '#a0ffb0' : '#ff9bb8';
+    box.style.color = ok ?'#a0ffb0' : '#ff9bb8';
   }
 
   window.ladyAuraApplyCoupon = function(code) {
@@ -1148,7 +1151,7 @@ if(document.readyState !== "loading") {
     }
 
     setCoupon({ code: clean, discount: discount });
-    couponMessage(`${clean === 'LADYAURA5' ? 'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + clean} aplicado: -${discount.toFixed(2).replace('.', ',')} \u20ac`, true);
+    couponMessage(`${clean === 'LADYAURA5' ?'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + clean} aplicado: -${discount.toFixed(2).replace('.', ',')} \u20ac`, true);
     return true;
   };
 
@@ -1199,7 +1202,7 @@ if(document.readyState !== "loading") {
     const items = getItemsSafe();
     const coupon = getCoupon();
     const code = normalizeCoupon(coupon?.code);
-    const discount = code ? calculateCouponDiscount(items, code) : 0;
+    const discount = code ?calculateCouponDiscount(items, code) : 0;
 
     if (code && coupon && Number(coupon.discount) !== discount) {
       localStorage.setItem(COUPON_KEY, JSON.stringify({ code: code, discount: discount }));
@@ -1222,7 +1225,7 @@ if(document.readyState !== "loading") {
         const line = document.createElement('div');
         line.className = 'coupon-line';
         line.setAttribute('data-coupon-line','true');
-        line.innerHTML = `<span>${code === 'LADYAURA5' ? 'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code}</span><strong>-${discount.toFixed(2).replace('.', ',')} €</strong>`;
+        line.innerHTML = `<span>${code === 'LADYAURA5' ?'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code}</span><strong>-${discount.toFixed(2).replace('.', ',')} €</strong>`;
         totalEl.parentElement.insertBefore(line, totalEl);
       }
 
@@ -1236,7 +1239,7 @@ if(document.readyState !== "loading") {
 
     const msg = document.getElementById('coupon-message');
     if (msg && code && discount > 0) {
-      msg.textContent = `${code === 'LADYAURA5' ? 'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code} aplicado: -${discount.toFixed(2).replace('.', ',')} €`;
+      msg.textContent = `${code === 'LADYAURA5' ?'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code} aplicado: -${discount.toFixed(2).replace('.', ',')} €`;
       msg.style.color = '#a0ffb0';
     }
   }

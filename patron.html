@@ -199,7 +199,7 @@ select:focus{outline:none;border-color:var(--purple);}
 .header-button { display: none; }
 .brand-story-inner { grid-template-columns: 1fr; gap: 1.5rem; }
 .header-button').forEach(function(el){
-    el.innerHTML = isEN ? 'See designs ✨' : 'Ver diseños ✨';
+    el.innerHTML = isEN ?'See designs ✨' : 'Ver diseños ✨';
   }
 .header { position:sticky;top:0;z-index:100; }
 /* Ajuste global de tarjetas, ventanas e idioma responsive */
@@ -352,9 +352,15 @@ body.aura-modal-open .topbar {
     object-fit: contain !important;
   }
 
-  .lady-aura-header-actions {`r`n    flex: 0 0 auto !important;`r`n    max-width: 158px !important;`r`n    overflow: visible !important;`r`n  }
+  .lady-aura-header-actions {
+    flex: 0 0 auto !important;
+    max-width: 158px !important;
+    overflow: visible !important;
+  }
 
-  .lady-aura-language {`r`n    max-width: 82px !important;`r`n  }
+  .lady-aura-language {
+    max-width: 82px !important;
+  }
 
   .aura-universal-close,
   .aura-floating-close {
@@ -406,7 +412,7 @@ body.aura-modal-open .topbar {
       <div style="font-size:13px;color:#f0eaff;font-weight:700;margin-bottom:4px;">✨ ¿Cómo funciona?</div>
       <div style="font-size:12px;color:#9988bb;line-height:1.7;">
         1️⃣ Sube tu imagen &nbsp;→&nbsp; 2️⃣ Genera la vista previa gratuita<br>
-        3️⃣ ¿Te gusta? &nbsp;→&nbsp; <strong style="color:#f5c842;">Pídeme el PDF sin marcas de agua por solo 1€ 💌</strong>
+        3️⃣ ¿Te gusta?&nbsp;→&nbsp; <strong style="color:#f5c842;">Pídeme el PDF sin marcas de agua por solo 1€ 💌</strong>
       </div>
     </div>
   </div>
@@ -1533,7 +1539,7 @@ updateSpec();
     document.body.classList.toggle('aura-modal-open', anyPanelOpen());
     var btn = getFloatingClose();
     btn.hidden = !open;
-    btn.style.display = open ? 'flex' : 'none';
+    btn.style.display = open ?'flex' : 'none';
   }
 
   function closeAuraPanel(){

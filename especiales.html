@@ -6,11 +6,14 @@
 <title>AURA - Diamond Painting Premium | Lady Aura Art</title>
 <meta name="description" content="Colecci&oacute;n AURA de Lady Aura Art: dise&ntilde;os fantasy premium en diamond painting con formatos 60x90 cm, 50x70 cm y 40x60 cm.">
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
 :root{--bg:#050510;--panel:#10081f;--panel2:#170a2b;--line:rgba(241,207,122,.26);--gold:#f1cf7a;--muted:rgba(255,255,255,.78);--pink:#d76cff;--violet:#6b2da3}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(circle at 50% 0%,rgba(188,82,255,.18),transparent 34rem),linear-gradient(180deg,#050510,#070112 42%,#050510);color:#fff;font-family:Raleway,Arial,sans-serif}
+body{margin:0;background:radial-gradient(circle at 50% 0%,rgba(188,82,255,.18),transparent 34rem),linear-gradient(180deg,#050510,#070112 42%,#050510);color:#fff;font-family:"Cormorant Garamond",Georgia,serif;font-size:18px}
 .aura-hero{min-height:62vh;padding:7.5rem 6% 4.5rem;text-align:center;display:grid;place-items:center;position:relative;isolation:isolate;background:url("assets/almas-de-luz-60x90.webp") center 22%/cover no-repeat}
 .aura-hero:before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(4,3,12,.42),rgba(4,3,12,.78) 54%,rgba(5,5,16,.98)),radial-gradient(circle at 50% 36%,rgba(210,108,255,.28),transparent 28rem)}
 .aura-hero:after{content:"";position:absolute;inset:auto 0 0;height:8rem;z-index:-1;background:linear-gradient(180deg,transparent,#050510)}
@@ -21,6 +24,12 @@ body{margin:0;background:radial-gradient(circle at 50% 0%,rgba(188,82,255,.18),t
 .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.9rem}
 .hero-btn{min-width:220px;border-radius:999px;border:1px solid rgba(255,255,255,.14);padding:1rem 1.4rem;text-decoration:none;color:#fff;font-family:Cinzel,serif;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(7,4,17,.7);box-shadow:0 16px 32px rgba(0,0,0,.24)}
 .hero-btn.primary{background:linear-gradient(135deg,#7b2eb6,#d45cff);border-color:rgba(255,255,255,.22)}
+.aura-intro{padding:3.8rem 8% 2rem;max-width:1080px;margin:0 auto}
+.aura-intro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.aura-feature{background:rgba(15,8,27,.82);border:1px solid rgba(160,63,255,.24);border-radius:22px;padding:1.35rem;box-shadow:0 0 30px rgba(160,63,255,.16)}
+.aura-feature span{display:block;font-size:1.6rem;margin-bottom:.55rem}
+.aura-feature strong{display:block;font-family:"Cinzel",serif;color:var(--gold);font-size:.88rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem}
+.aura-feature p{margin:0;color:rgba(255,255,255,.76);line-height:1.55}
 .products-section{max-width:1240px;margin:0 auto;padding:4rem 5% 5rem}
 .section-head{text-align:center;margin-bottom:2rem}
 .section-head h2{font-family:Cinzel,Georgia,serif;font-size:clamp(2rem,5vw,4rem);line-height:1;margin:.45rem 0;color:#ffd9ff;text-shadow:0 0 26px rgba(210,108,255,.52)}
@@ -57,7 +66,7 @@ body{margin:0;background:radial-gradient(circle at 50% 0%,rgba(188,82,255,.18),t
 .lb-close{position:absolute;top:.8rem;right:.8rem;width:42px;height:42px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(8,4,20,.8);color:#fff;font-size:1.5rem;cursor:pointer;z-index:2}
 footer{text-align:center;padding:1.5rem 5%;color:rgba(255,255,255,.56);border-top:1px solid rgba(255,255,255,.08)}
 footer a{color:var(--gold)}
-@media(max-width:760px){.aura-hero{min-height:58vh;padding-top:6rem}.hero-actions{gap:.7rem}.hero-btn{min-width:min(100%,260px)}.lb{padding:.55rem}.lb-card{grid-template-columns:1fr;max-height:94vh;overflow:auto}.lb-card img{max-height:56vh}.lb-info{padding:1.35rem}.lb-features{grid-template-columns:1fr}}
+@media(max-width:760px){.aura-hero{min-height:58vh;padding-top:6rem}.hero-actions{gap:.7rem}.hero-btn{min-width:min(100%,260px)}.aura-intro{padding:3rem 5% 1rem}.aura-intro-grid{grid-template-columns:1fr}.lb{padding:.55rem}.lb-card{grid-template-columns:1fr;max-height:94vh;overflow:auto}.lb-card img{max-height:56vh}.lb-info{padding:1.35rem}.lb-features{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -91,11 +100,30 @@ footer a{color:var(--gold)}
     </div>
   </section>
 
+  <section class="aura-intro" aria-label="Detalles de la coleccion AURA">
+    <div class="aura-intro-grid">
+      <div class="aura-feature">
+        <span>🌙</span>
+        <strong>Estetica propia</strong>
+        <p>Una coleccion con identidad diferenciada dentro del universo Lady Aura.</p>
+      </div>
+      <div class="aura-feature">
+        <span>💎</span>
+        <strong>Formato premium</strong>
+        <p>Disenos pensados para diamond painting 60x90 cm, 50x70 cm y 40x60 cm, con presencia y detalle.</p>
+      </div>
+      <div class="aura-feature">
+        <span>✨</span>
+        <strong>Pre-reserva facil</strong>
+        <p>Consulta sin pago previo y sin compromiso antes de confirmar tu cuadro.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="productos" class="products-section">
     <div class="section-head">
       <span class="eyebrow">Nuevos dise&ntilde;os</span>
       <h2>Cuadros AURA</h2>
-      <p>Formatos disponibles: 60x90 cm, 50x70 cm y 40x60 cm. 60x90 y 40x60 comparten la imagen principal; 50x70 usa la imagen espec&iacute;fica preparada para esa medida.</p>
     </div>
 
     <div class="products-grid">
@@ -141,7 +169,6 @@ footer a{color:var(--gold)}
         <span>Diamantes cuadrados de alta densidad</span>
         <span>Lienzo premium velvet</span>
         <span>Herramientas incluidas</span>
-        <span>Instrucciones en espa&ntilde;ol</span>
       </div>
       <div class="lb-btns" id="lbBtns"></div>
       <a class="lb-btn em" id="lbEm" href="https://wa.me/34621355638" target="_blank" rel="noopener">Dudas? Escr&iacute;beme</a>
@@ -158,8 +185,9 @@ footer a{color:var(--gold)}
 function openLB(card) {
   var img = card.dataset.img;
   var nombre = card.dataset.nombre;
-  document.getElementById('lbImg').src = img;
-  document.getElementById('lbImg').alt = nombre + ' - Diamond Painting AURA';
+  var lbImg = document.getElementById('lbImg');
+  lbImg.src = img;
+  lbImg.alt = nombre + ' - Diamond Painting AURA';
   document.getElementById('lbTitle').textContent = nombre;
   document.getElementById('lbEm').href = 'https://wa.me/34621355638?text=' + encodeURIComponent('Hola Lady Aura, tengo una duda sobre: ' + nombre + ' (Coleccion AURA).');
   if (typeof cartPatchLightbox === 'function') {
@@ -181,6 +209,7 @@ function openLB(card) {
   }
   document.getElementById('lb').classList.add('open');
   document.body.style.overflow = 'hidden';
+  bindAuraSizePreview(card);
 }
 function closeLB() {
   document.getElementById('lb').classList.remove('open');
@@ -201,6 +230,30 @@ document.addEventListener('click', function(e) {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeLB();
 });
+function auraImageForSize(card, size) {
+  if (/50\s*x\s*70|70\s*x\s*50/i.test(size || '')) return card.dataset.image50x70 || card.dataset.img;
+  return card.dataset.img;
+}
+function bindAuraSizePreview(card) {
+  var lbImg = document.getElementById('lbImg');
+  document.querySelectorAll('.lb-price-option').forEach(function(option) {
+    option.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      document.querySelectorAll('.lb-price-option').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      option.classList.add('active');
+      lbImg.src = auraImageForSize(card, option.dataset.size || option.textContent || '');
+    });
+  });
+  document.querySelectorAll('.lb-btn-cart').forEach(function(button) {
+    var size = button.textContent || '';
+    button.addEventListener('mouseenter', function() { lbImg.src = auraImageForSize(card, size); });
+    button.addEventListener('focus', function() { lbImg.src = auraImageForSize(card, size); });
+    button.addEventListener('click', function() { lbImg.src = auraImageForSize(card, size); }, true);
+  });
+}
 </script>
 </body>
 </html>

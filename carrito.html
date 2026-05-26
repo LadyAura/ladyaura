@@ -977,9 +977,15 @@ body.aura-modal-open .topbar {
     object-fit: contain !important;
   }
 
-  .lady-aura-header-actions {`r`n    flex: 0 0 auto !important;`r`n    max-width: 158px !important;`r`n    overflow: visible !important;`r`n  }
+  .lady-aura-header-actions {
+    flex: 0 0 auto !important;
+    max-width: 158px !important;
+    overflow: visible !important;
+  }
 
-  .lady-aura-language {`r`n    max-width: 82px !important;`r`n  }
+  .lady-aura-language {
+    max-width: 82px !important;
+  }
 
   .aura-universal-close,
   .aura-floating-close {
@@ -1136,7 +1142,7 @@ body.aura-modal-open .topbar {
           </div>
           <div class="form-group full">
             <label for="f-notas">Notas adicionales</label>
-            <textarea id="f-notas" name="notas" placeholder="¿Algo que quieras comentarme? Personalización, regalo, etc."></textarea>
+            <textarea id="f-notas" name="notas" placeholder="¿Algo que quieras comentarme?Personalización, regalo, etc."></textarea>
           </div>
         </div>
 
@@ -1303,14 +1309,14 @@ function calcDiscountInline(items, code) {
   const brujiSubtotal  = brujiItems.reduce((s,i) => s + getCurrentCartPrice(i), 0);
   const maikaSubtotal  = maikaItems.reduce((s,i) => s + getCurrentCartPrice(i), 0);
   const fonsinSubtotal = fonsinItems.reduce((s,i) => s + getCurrentCartPrice(i), 0);
-  if (code === 'LADYAURA5') return subtotal > 0 ? 5 : 0;
-  if (code === 'NEDEKA10')  return nedekaSubtotal > 0 ? Math.min(10, nedekaSubtotal) : 0;
-  if (code === 'BRUJI10')   return brujiSubtotal > 0 ? Math.min(10, brujiSubtotal) : 0;
-  if (code === 'MAIKA10')   return maikaSubtotal > 0 ? Math.min(10, maikaSubtotal) : 0;
-  if (code === 'FON10')     return fonsinSubtotal > 0 ? Math.min(10, fonsinSubtotal) : 0;
+  if (code === 'LADYAURA5') return subtotal > 0 ?5 : 0;
+  if (code === 'NEDEKA10')  return nedekaSubtotal > 0 ?Math.min(10, nedekaSubtotal) : 0;
+  if (code === 'BRUJI10')   return brujiSubtotal > 0 ?Math.min(10, brujiSubtotal) : 0;
+  if (code === 'MAIKA10')   return maikaSubtotal > 0 ?Math.min(10, maikaSubtotal) : 0;
+  if (code === 'FON10')     return fonsinSubtotal > 0 ?Math.min(10, fonsinSubtotal) : 0;
   if (code === 'ALI10') {
     const bambaSubtotal = items.filter(isBambarelleItemInline).reduce((s,i) => s + getCurrentCartPrice(i), 0);
-    return bambaSubtotal > 0 ? Math.min(10, bambaSubtotal) : 0;
+    return bambaSubtotal > 0 ?Math.min(10, bambaSubtotal) : 0;
   }
   if (isSpecial60Coupon(code)) return items
     .filter(item => itemMatchesSpecial60(item, code))
@@ -1326,7 +1332,7 @@ function getPriceWithCoupon(item, code) {
 function applyCoupon() {
   const input = document.getElementById('coupon-code') || document.getElementById('couponCode');
   const msg   = document.getElementById('couponMessage');
-  const code  = (input ? input.value : '').trim().toUpperCase();
+  const code  = (input ?input.value : '').trim().toUpperCase();
   const items = cartGet();
 
   if (!code) { if(msg){ msg.textContent='Introduce un código de cupón'; msg.className='coupon-msg err'; } return; }
@@ -1363,7 +1369,7 @@ function applyCoupon() {
   if (discount <= 0) { if(msg){ msg.textContent='Este cupón no se puede aplicar a tu carrito actual'; msg.className='coupon-msg err'; } return; }
 
   localStorage.setItem(COUPON_KEY_INLINE, JSON.stringify({ code, discount }));
-  if(msg){ msg.textContent=`${code === 'LADYAURA5' ? 'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code} aplicado: -${discount.toFixed(2).replace('.',',')} \u20ac`; msg.className='coupon-msg ok'; }
+  if(msg){ msg.textContent=`${code === 'LADYAURA5' ?'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code} aplicado: -${discount.toFixed(2).replace('.',',')} \u20ac`; msg.className='coupon-msg ok'; }
   renderCart();
 }
 
@@ -1403,7 +1409,7 @@ function renderCart() {
     const itemId = escapeHtmlInline(item.id || item.nombre || item.img || imageSrc);
     const itemSize = escapeHtmlInline(item.tamano || item.size || (item.orient==='v'?'60×90 cm ↕':'90×60 cm ↔'));
     const priceHtml = (isSpecial60Coupon(activeCouponForRender) && itemMatchesSpecial60(item, activeCouponForRender))
-      ? `<span class="cart-item-price"><s style="opacity:.4;font-size:.8em;text-decoration:line-through">${originalPrice} €</s>&nbsp;${displayPrice} €</span>`
+      ?`<span class="cart-item-price"><s style="opacity:.4;font-size:.8em;text-decoration:line-through">${originalPrice} €</s>&nbsp;${displayPrice} €</span>`
       : `<span class="cart-item-price">${originalPrice} €</span>`;
     return `
     <div class="cart-item">
@@ -1418,12 +1424,12 @@ function renderCart() {
   }).join('');
 
   const couponData = getCouponInline();
-  const couponCode = couponData ? couponData.code : null;
+  const couponCode = couponData ?couponData.code : null;
   // Los cupones 60 ya reflejan el precio especial; los demas descuentan sobre precio normal
   const subtotal = isSpecial60Coupon(couponCode)
-    ? items.reduce((s,i) => s + getPriceWithCoupon(i, couponCode), 0)
+    ?items.reduce((s,i) => s + getPriceWithCoupon(i, couponCode), 0)
     : items.reduce((s,i) => s + getCurrentCartPrice(i), 0);
-  const discount = (couponCode && !isSpecial60Coupon(couponCode)) ? calcDiscountInline(items, couponCode) : 0;
+  const discount = (couponCode && !isSpecial60Coupon(couponCode)) ?calcDiscountInline(items, couponCode) : 0;
   const total = Math.max(0, subtotal - discount);
   document.getElementById('sum-count').textContent = items.length + (items.length===1?' diseño':' diseños');
   document.getElementById('sum-total').textContent = total + ' €';
@@ -1433,7 +1439,7 @@ function renderCart() {
   const sumDiscount = document.getElementById('sum-discount');
   if (discountRow) {
     const showRow = isSpecial60Coupon(couponCode) || (couponCode && discount > 0);
-    discountRow.style.display = showRow ? '' : 'none';
+    discountRow.style.display = showRow ?'' : 'none';
     if (isSpecial60Coupon(couponCode)) {
       const specialSaving = calcDiscountInline(items, couponCode);
       if (discountLabel) discountLabel.textContent = 'Precio especial ' + couponCode;
@@ -1448,7 +1454,7 @@ function renderCart() {
   const couponBox = document.getElementById('coupon-box');
   if (appliedRow) {
     const showApplied = isSpecial60Coupon(couponCode) || (couponCode && discount > 0);
-    appliedRow.style.display = showApplied ? 'flex' : 'none';
+    appliedRow.style.display = showApplied ?'flex' : 'none';
     const appliedSpan = appliedRow.querySelector('span');
     if (appliedSpan && couponCode) {
       if (isSpecial60Coupon(couponCode)) {
@@ -1461,8 +1467,8 @@ function renderCart() {
   if (couponBox) {
     const input = document.getElementById('coupon-code') || document.getElementById('couponCode');
     const btn = document.getElementById('applyCouponBtn');
-    if (input) input.style.display = ((isSpecial60Coupon(couponCode) || (couponCode && discount > 0))) ? 'none' : '';
-    if (btn) btn.style.display = ((isSpecial60Coupon(couponCode) || (couponCode && discount > 0))) ? 'none' : '';
+    if (input) input.style.display = ((isSpecial60Coupon(couponCode) || (couponCode && discount > 0))) ?'none' : '';
+    if (btn) btn.style.display = ((isSpecial60Coupon(couponCode) || (couponCode && discount > 0))) ?'none' : '';
   }
 }
 
@@ -1552,7 +1558,7 @@ function restoreCustomerFormData() {
     const hasOption = Array.from(countrySelect.options).some(function(option) {
       return option.value === savedCountry;
     });
-    countrySelect.value = hasOption ? savedCountry : 'Otro';
+    countrySelect.value = hasOption ?savedCountry : 'Otro';
     if (!hasOption && otherCountry && !otherCountry.value) otherCountry.value = savedCountry;
   }
   if (otherCountry && saved.pais_otro && !otherCountry.value) otherCountry.value = saved.pais_otro;
@@ -1607,12 +1613,12 @@ document.getElementById('order-form').addEventListener('submit', async function(
     return;
   }
   const couponDataPedido = getCouponInline();
-  const couponApplied = couponDataPedido ? couponDataPedido.code : null;
+  const couponApplied = couponDataPedido ?couponDataPedido.code : null;
   // Los cupones 60 aplican precio especial por unidad; los demas descuentan sobre subtotal normal
   const subtotalPedido = isSpecial60Coupon(couponApplied)
-    ? items.reduce((s,i) => s + getPriceWithCoupon(i, couponApplied), 0)
+    ?items.reduce((s,i) => s + getPriceWithCoupon(i, couponApplied), 0)
     : items.reduce((s,i) => s + getCurrentCartPrice(i), 0);
-  const discountPedido = isSpecial60Coupon(couponApplied) ? 0 : (couponApplied ? calcDiscountInline(items, couponApplied) : 0);
+  const discountPedido = isSpecial60Coupon(couponApplied) ?0 : (couponApplied ?calcDiscountInline(items, couponApplied) : 0);
   const totalPedido = Math.max(0, subtotalPedido - discountPedido);
   const paypalUrl = 'https://paypal.me/LadyAuraArt/' + totalPedido + 'EUR';
   const data = {
@@ -1630,7 +1636,7 @@ document.getElementById('order-form').addEventListener('submit', async function(
     notas:     document.getElementById('f-notas').value,
     pedido:    items.map(i => `${i.nombre} · ${i.tamano || i.size || (i.orient==='v'?'60x90 cm':'90x60 cm')} · ${getCurrentCartPrice(i)}€`).join(' | '),
     subtotal:  subtotalPedido + ' €',
-    cupon:     isSpecial60Coupon(couponApplied) ? `${couponApplied} \u00b7 precio especial 60 \u20ac/cuadro` : (couponApplied ? `${couponApplied} \u00b7 -${discountPedido} \u20ac` : 'Ninguno'),
+    cupon:     isSpecial60Coupon(couponApplied) ?`${couponApplied} \u00b7 precio especial 60 \u20ac/cuadro` : (couponApplied ?`${couponApplied} \u00b7 -${discountPedido} \u20ac` : 'Ninguno'),
     total:     totalPedido + ' €',
     metodo_pago: 'LISTA DE ESPERA — sin cobro todavía',
     bizum: 'No aplica (lista de espera)',
@@ -1715,7 +1721,7 @@ renderCart();
 
   btn.addEventListener('click', function(){
     nav.classList.toggle('active');
-    btn.setAttribute('aria-expanded', nav.classList.contains('active') ? 'true' : 'false');
+    btn.setAttribute('aria-expanded', nav.classList.contains('active') ?'true' : 'false');
   });
 
   nav.querySelectorAll('a').forEach(function(link){
@@ -1767,7 +1773,7 @@ renderCart();
     document.body.classList.toggle('aura-modal-open', anyPanelOpen());
     var btn = getFloatingClose();
     btn.hidden = !open;
-    btn.style.display = open ? 'flex' : 'none';
+    btn.style.display = open ?'flex' : 'none';
   }
 
   function closeAuraPanel(){

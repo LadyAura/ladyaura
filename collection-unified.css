@@ -1,0 +1,318 @@
+/* Shared collection polish for Lady Aura collection pages */
+:root {
+  --collection-bg: #050510;
+  --collection-panel: rgba(12, 6, 24, .9);
+  --collection-border: rgba(210, 95, 255, .24);
+  --collection-gold: #f7d77e;
+  --collection-text: #fff6ff;
+}
+
+.scarcity-bar,
+.urgency-bar,
+.urgency-strip,
+[data-i18n="urgency"] {
+  display: none !important;
+}
+
+body {
+  background:
+    radial-gradient(circle at 50% -10%, rgba(174, 70, 255, .18), transparent 36rem),
+    radial-gradient(circle at 100% 12%, rgba(255, 112, 190, .12), transparent 28rem),
+    var(--collection-bg) !important;
+  color: var(--collection-text);
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+}
+
+.nedeka-hero,
+.bruji-hero,
+.maika-hero,
+.col-hero {
+  position: relative !important;
+  min-height: 58vh !important;
+  display: grid !important;
+  place-items: center !important;
+  padding: clamp(4.5rem, 7vw, 7rem) 1.5rem 4.5rem !important;
+  overflow: hidden !important;
+  border-bottom: 1px solid rgba(210, 95, 255, .18) !important;
+}
+
+.col-hero {
+  background: url("assets/bambarella71-guardianas-del-bosque.webp") center 25%/cover no-repeat !important;
+}
+
+.nedeka-hero::after,
+.bruji-hero::after,
+.maika-hero::after,
+.col-hero::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    linear-gradient(180deg, rgba(5, 5, 16, .54), rgba(5, 5, 16, .78) 62%, #050510 100%),
+    radial-gradient(circle at center, transparent 0, rgba(5, 5, 16, .5) 70%) !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+.col-hero-img {
+  display: none !important;
+}
+
+.nedeka-hero-inner,
+.bruji-hero-inner,
+.maika-hero-inner,
+.col-hero-content {
+  position: relative !important;
+  z-index: 1 !important;
+  width: min(920px, 100%) !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+.nedeka-eyebrow,
+.bruji-eyebrow,
+.maika-eyebrow,
+.col-hero-eyebrow,
+.section-tag,
+.product-kicker,
+.lb-eyebrow {
+  color: var(--collection-gold) !important;
+  font-family: "Cinzel", serif !important;
+  letter-spacing: .18em !important;
+  text-transform: uppercase !important;
+}
+
+.nedeka-hero h1,
+.bruji-hero h1,
+.maika-hero h1,
+.col-hero h1 {
+  margin: .65rem 0 1rem !important;
+  font-family: "Cinzel", serif !important;
+  font-size: clamp(3rem, 8vw, 6.4rem) !important;
+  line-height: .9 !important;
+  color: #fff !important;
+  text-shadow: 0 0 28px rgba(239, 166, 255, .55) !important;
+}
+
+.nedeka-hero p,
+.bruji-hero p,
+.maika-hero p,
+.col-hero p {
+  max-width: 760px !important;
+  margin: 0 auto 1.6rem !important;
+  font-size: clamp(1.08rem, 2vw, 1.35rem) !important;
+  line-height: 1.7 !important;
+  color: rgba(255, 246, 255, .92) !important;
+}
+
+.nedeka-intro,
+.bruji-intro,
+.maika-intro,
+.promise-strip {
+  padding: 4rem 1.25rem !important;
+}
+
+.nedeka-intro-grid,
+.bruji-intro-grid,
+.maika-intro-grid,
+.promise-grid {
+  width: min(1040px, 100%) !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 1.1rem !important;
+}
+
+.nedeka-feature,
+.bruji-feature,
+.maika-feature,
+.promise-card {
+  min-height: 150px !important;
+  padding: 1.45rem !important;
+  border: 1px solid rgba(210, 95, 255, .22) !important;
+  border-radius: 22px !important;
+  background: rgba(15, 8, 27, .66) !important;
+  box-shadow: 0 18px 52px rgba(0, 0, 0, .2) !important;
+}
+
+.nedeka-feature strong,
+.bruji-feature strong,
+.maika-feature strong,
+.promise-card h3 {
+  display: block !important;
+  margin: .55rem 0 .45rem !important;
+  color: var(--collection-gold) !important;
+  font-family: "Cinzel", serif !important;
+  letter-spacing: .08em !important;
+}
+
+.nedeka-feature p,
+.bruji-feature p,
+.maika-feature p,
+.promise-card p {
+  margin: 0 !important;
+  line-height: 1.55 !important;
+  color: rgba(255, 246, 255, .84) !important;
+}
+
+.nedeka-products,
+.bruji-products,
+.maika-products,
+.products-section {
+  padding: 4.2rem 1.25rem !important;
+}
+
+.nedeka-products-grid,
+.bruji-products-grid,
+.maika-products-grid,
+.products-grid {
+  width: min(1240px, 100%) !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)) !important;
+  gap: 1.35rem !important;
+}
+
+.product-card {
+  border: 1px solid var(--collection-border) !important;
+  border-radius: 22px !important;
+  overflow: hidden !important;
+  background: linear-gradient(180deg, rgba(19, 9, 34, .98), rgba(7, 4, 15, .98)) !important;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .38) !important;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease !important;
+}
+
+.product-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(243, 167, 255, .58) !important;
+  box-shadow: 0 28px 86px rgba(162, 72, 222, .24) !important;
+}
+
+.card-img-wrap,
+.product-image,
+.img-wrap {
+  position: relative !important;
+  overflow: hidden !important;
+  background: #090512 !important;
+}
+
+.card-img-wrap img,
+.product-image img,
+.product-card > img {
+  width: 100% !important;
+  aspect-ratio: 3 / 4 !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+}
+
+.image-open {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  border: 0 !important;
+  border-top: 1px solid rgba(255, 255, 255, .16) !important;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, .78)) !important;
+  color: #fff !important;
+  padding: .85rem !important;
+  font-family: "Cinzel", serif !important;
+  letter-spacing: .09em !important;
+  text-transform: uppercase !important;
+}
+
+.card-info,
+.product-info {
+  padding: 1.25rem !important;
+}
+
+.product-card h3,
+.card-info h3,
+.product-title {
+  margin: .7rem 0 .55rem !important;
+  font-family: "Cinzel", serif !important;
+  font-size: 1.35rem !important;
+  color: #fff !important;
+}
+
+.format-chip,
+.tag,
+.pill,
+.card-badge,
+.artist-badge {
+  border: 1px solid rgba(247, 215, 126, .35) !important;
+  border-radius: 999px !important;
+  color: var(--collection-gold) !important;
+  background: rgba(247, 215, 126, .06) !important;
+  font-family: "Cinzel", serif !important;
+}
+
+.product-card .btn,
+.add-cart-btn,
+.btn-cart,
+.card-cart-btn {
+  border-radius: 999px !important;
+  border: 1px solid rgba(210, 95, 255, .52) !important;
+  background: linear-gradient(90deg, rgba(78, 22, 116, .96), rgba(92, 17, 64, .92)) !important;
+  color: #fff !important;
+  font-family: "Cinzel", serif !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+.lb,
+.lightbox {
+  backdrop-filter: blur(18px) !important;
+  background: rgba(4, 2, 9, .72) !important;
+}
+
+.lb-card,
+.lightbox-card {
+  border: 1px solid rgba(210, 95, 255, .26) !important;
+  border-radius: 26px !important;
+  background: rgba(10, 5, 22, .98) !important;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, .55) !important;
+  overflow: hidden !important;
+}
+
+.lb-title,
+.lightbox-title {
+  font-family: "Cinzel", serif !important;
+  color: #fff !important;
+}
+
+.lb-price-option {
+  border: 1px solid rgba(247, 215, 126, .2) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, .04) !important;
+}
+
+.lb-price-option.active,
+.lb-price-option:hover {
+  border-color: rgba(210, 95, 255, .62) !important;
+  background: rgba(85, 29, 128, .65) !important;
+}
+
+.lb-btn,
+.lb-btn-cart {
+  border-radius: 999px !important;
+  font-family: "Cinzel", serif !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+@media (max-width: 760px) {
+  .nedeka-intro-grid,
+  .bruji-intro-grid,
+  .maika-intro-grid,
+  .promise-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .nedeka-hero,
+  .bruji-hero,
+  .maika-hero,
+  .col-hero {
+    min-height: 56vh !important;
+    padding-top: 4.25rem !important;
+  }
+}

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -338,9 +338,15 @@ body.aura-modal-open .topbar {
     object-fit: contain !important;
   }
 
-  .lady-aura-header-actions {`r`n    flex: 0 0 auto !important;`r`n    max-width: 158px !important;`r`n    overflow: visible !important;`r`n  }
+  .lady-aura-header-actions {
+    flex: 0 0 auto !important;
+    max-width: 158px !important;
+    overflow: visible !important;
+  }
 
-  .lady-aura-language {`r`n    max-width: 82px !important;`r`n  }
+  .lady-aura-language {
+    max-width: 82px !important;
+  }
 
   .aura-universal-close,
   .aura-floating-close {
@@ -349,10 +355,10 @@ body.aura-modal-open .topbar {
   }
 }
 </style>
+  <link rel="stylesheet" href="collection-unified.css">
 </head>
 <body>
 <div class="stars" id="stars" aria-hidden="true"></div>
-<div class="scarcity-bar" role="alert"><span>✦ Colección NEDEKA · Diamond painting premium de fantasía dentro de Lady Aura Art 💜</span></div>
 <header class="site-header" id="site-header">
   <a class="brand" href="index.html" aria-label="Lady Aura inicio">
     <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art – Diamond Painting Premium">
@@ -956,7 +962,7 @@ body.aura-modal-open .topbar {
 
 <!-- LIGHTBOX NEDEKA -->
 <div class="lb" id="lb" onclick="if(event.target===this)closeLB()">
-  <button class="lb-close" onclick="closeLB()" aria-label="Cerrar">×</button>
+  <button class="lb-close" onclick="closeLB()" aria-label="Cerrar">&times;</button>
   <div class="lb-card">
     <div class="lb-img"><img id="lbImg" src="" alt="" style="cursor:zoom-in;"></div>
     <div class="lb-body">
@@ -969,8 +975,7 @@ body.aura-modal-open .topbar {
         <li>📐 formatos 60×90 cm, 50x70 cm y 40x60 cm</li>
         <li>💎 Diamantes cuadrados de alta densidad</li>
         <li>🎨 Lienzo de alta calidad</li>
-        <li>🛠️ Herramientas incluidas</li>
-        <li>📖 Instrucciones en español</li>
+        <li>Herramientas incluidas</li>
         <li>✨ Diseño exclusivo NEDEKA</li>
       </ul>
       <div class="lb-price-row">
@@ -978,7 +983,7 @@ body.aura-modal-open .topbar {
         <span class="lb-price-note">· Envío incluido</span>
       </div>
       <div class="lb-btns" id="lbBtns">
-        <a class="lb-btn em" id="lbEm" href="#" target="_blank" rel="noopener" style="background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.45);font-size:0.75rem;">💬 ¿Dudas? Escríbeme</a>
+        <a class="lb-btn em" id="lbEm" href="#" target="_blank" rel="noopener" style="background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.45);font-size:0.75rem;">💬 ¿Dudas?Escríbeme</a>
       </div>
     </div>
   </div>
@@ -1090,7 +1095,7 @@ document.addEventListener('keydown', function(e) {
       btn.type = 'button';
       btn.className = 'aura-floating-close';
       btn.setAttribute('aria-label', 'Cerrar');
-      btn.textContent = '×';
+      btn.textContent = '\u00d7';
       btn.hidden = true;
       btn.addEventListener('click', closeAuraPanel);
       document.body.appendChild(btn);
@@ -1107,7 +1112,7 @@ document.addEventListener('keydown', function(e) {
     document.body.classList.toggle('aura-modal-open', anyPanelOpen());
     var btn = getFloatingClose();
     btn.hidden = !open;
-    btn.style.display = open ? 'flex' : 'none';
+    btn.style.display = open ?'flex' : 'none';
   }
 
   function closeAuraPanel(){
@@ -1141,7 +1146,7 @@ document.addEventListener('keydown', function(e) {
         btn.type = 'button';
         btn.className = 'aura-universal-close';
         btn.setAttribute('aria-label', 'Cerrar');
-        btn.textContent = '×';
+        btn.textContent = '\u00d7';
         btn.addEventListener('click', closeAuraPanel);
         panel.appendChild(btn);
       }
