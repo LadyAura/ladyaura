@@ -415,6 +415,17 @@ function cartInjectStyles() {
       border: 1px solid rgba(232,201,122,0.2);
       border-radius: 12px;
       background: rgba(232,201,122,0.055);
+      color: inherit;
+      cursor: pointer;
+      transition: border-color .2s ease, background .2s ease, transform .2s ease;
+    }
+    .lb-price-option:hover,
+    .lb-price-option:focus-visible,
+    .lb-price-option.active {
+      border-color: rgba(232,201,122,0.55);
+      background: rgba(160,63,255,0.2);
+      outline: none;
+      transform: translateY(-1px);
     }
     .lb-price-option span {
       color: rgba(255,255,255,0.72);
@@ -663,7 +674,15 @@ function cartPatchLightbox(card) {
   const lbPrice = document.querySelector('.lb-price');
   if (lbPrice) {
     lbPrice.removeAttribute('style');
-    lbPrice.innerHTML = `<span class="lb-price-option"><span>60x90 cm</span><strong>${cartProductPriceForSize(card, '60x90')} €</strong></span><span class="lb-price-option"><span>50x70 cm</span><strong>${cartProductPriceForSize(card, '50x70')} €</strong></span><span class="lb-price-option"><span>40x60 cm</span><strong>${cartProductPriceForSize(card, '40x60')} €</strong></span>`;
+    lbPrice.innerHTML = `<button class="lb-price-option active" type="button" data-size="60x90"><span>60x90 cm</span><strong>${cartProductPriceForSize(card, '60x90')} €</strong></button><button class="lb-price-option" type="button" data-size="50x70"><span>50x70 cm</span><strong>${cartProductPriceForSize(card, '50x70')} €</strong></button><button class="lb-price-option" type="button" data-size="40x60"><span>40x60 cm</span><strong>${cartProductPriceForSize(card, '40x60')} €</strong></button>`;
+    lbPrice.querySelectorAll('.lb-price-option').forEach(option => {
+      option.addEventListener('click', function(e) {
+        e.stopPropagation();
+        lbPrice.querySelectorAll('.lb-price-option').forEach(el => el.classList.remove('active'));
+        this.classList.add('active');
+        cartPreviewProductImageForSize(card, this.dataset.size);
+      });
+    });
   }
   if (!btns) {
     fullscreenAttach();
