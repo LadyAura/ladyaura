@@ -699,6 +699,7 @@ document.addEventListener('DOMContentLoaded', function() {
   fullscreenInjectStyles();
   fullscreenAttach();
   fullscreenBindDelegated();
+  fullscreenBindProductFallback();
 });
 
 /* ── Patch del openLB para añadir botón dentro del lightbox ── */
@@ -866,7 +867,14 @@ function fullscreenInjectStyles() {
     .lb-img-wrap img,
     .lb-img img,
     #lbImg,
-    .modal-img img { cursor: zoom-in !important; }
+    .modal-img img,
+    .product-card .card-img-wrap img,
+    .product-card > img,
+    .zod-card img,
+    .ts-card img,
+    .obra-card img,
+    .lamina-card img,
+    .image-open { cursor: zoom-in !important; }
   `;
   document.head.appendChild(style);
 }
@@ -942,10 +950,60 @@ function fullscreenBindDelegated() {
   }, true);
 }
 
+function fullscreenBindProductFallback() {
+  if (document.documentElement.dataset.fsProductFallback) return;
+  document.documentElement.dataset.fsProductFallback = '1';
+
+  const cardSelector = [
+    '.product-card',
+    '.zod-card',
+    '.ts-card',
+    '.obra-card',
+    '.lamina-card'
+  ].join(',');
+  const triggerSelector = [
+    '.image-open',
+    '.card-img-wrap img',
+    '.product-card > img',
+    '.zod-card img',
+    '.ts-card img',
+    '.obra-card img',
+    '.lamina-card img'
+  ].join(',');
+
+  function panelIsOpen() {
+    return !!document.querySelector([
+      '.lb.open',
+      '.t-lb.open',
+      '.lightbox.open',
+      '.lightbox.active',
+      '.modal-overlay.open',
+      '#nedeka-lightbox.open',
+      '#fs-overlay.open'
+    ].join(','));
+  }
+
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('#fs-overlay, #fs-close, .lb, .t-lb, .lightbox, .modal-overlay, #nedeka-lightbox')) return;
+    const trigger = e.target.closest(triggerSelector);
+    if (!trigger) return;
+    const card = trigger.closest(cardSelector);
+    if (!card) return;
+    const img = card.querySelector('img');
+    if (!img || !img.src) return;
+
+    window.setTimeout(function() {
+      if (panelIsOpen()) return;
+      fullscreenOpen(img.currentSrc || img.src, img.alt || card.dataset.nombre || '');
+    }, 80);
+  }, false);
+}
+
 if(document.readyState !== "loading") {
   fullscreenInjectStyles();
   fullscreenAttach();
   fullscreenBindDelegated();
+  fullscreenBindProductFallback();
 }
 
 
