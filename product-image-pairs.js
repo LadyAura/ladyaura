@@ -153,7 +153,12 @@
     'assets/hada-del-lago-lunar-50x70.webp',
     'assets/arbol-de-cristal-lunar-50x70.webp',
     'assets/abrazo-bajo-la-luna-roja-50x70.webp',
-    'assets/rincon-encantado-de-magia-y-luz-50x70.webp'
+    'assets/rincon-encantado-de-magia-y-luz-50x70.webp',
+    'assets/aura-luna-rosa-de-cristal-50x70.webp',
+    'assets/aura-guardianas-de-luz-violeta-50x70.webp',
+    'assets/aura-princesa-unicornio-lunar-50x70.webp',
+    'assets/aura-rincon-de-hada-y-luna-50x70.webp',
+    'assets/aura-eleccion-del-sol-y-la-luna-50x70.webp'
   ];
 
   const store = createImagePairStore();
