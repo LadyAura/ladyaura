@@ -25,6 +25,17 @@
   </url>
 
   <url>
+    <loc>https://ladyauraart.com/bruji.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+    <image:image>
+      <image:loc>https://ladyauraart.com/assets/Violeta.webp</image:loc>
+      <image:title>Colección BRUJI en preparación Lady Aura Art</image:title>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://ladyauraart.com/maika.html</loc>
     <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
