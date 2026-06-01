@@ -5,7 +5,7 @@
   var COOKIE_DOMAIN = location.hostname && location.hostname !== 'localhost' ?';domain=' + location.hostname : '';
   var GOOGLE_SCRIPT_ID = 'google-translate-script';
   var WIDGET_ID = 'google_translate_element';
-  var SUPPORTED_LANGS = ['es', 'en', 'fr', 'de', 'it', 'pt'];
+  var SUPPORTED_LANGS = ['en', 'es', 'fr', 'de', 'it', 'pt'];
   var LANG_META = {
     es: { flag: '', title: 'Espanol', label: 'Ver en espanol' },
     en: { flag: '', title: 'English', label: 'View in English' },
