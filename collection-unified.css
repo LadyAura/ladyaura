@@ -24,7 +24,6 @@ body {
 }
 
 .nedeka-hero,
-.bruji-hero,
 .maika-hero,
 .col-hero {
   position: relative !important;
@@ -41,7 +40,6 @@ body {
 }
 
 .nedeka-hero::after,
-.bruji-hero::after,
 .maika-hero::after,
 .col-hero::after {
   content: "" !important;
@@ -59,7 +57,6 @@ body {
 }
 
 .nedeka-hero-inner,
-.bruji-hero-inner,
 .maika-hero-inner,
 .col-hero-content {
   position: relative !important;
@@ -70,7 +67,6 @@ body {
 }
 
 .nedeka-eyebrow,
-.bruji-eyebrow,
 .maika-eyebrow,
 .col-hero-eyebrow,
 .section-tag,
@@ -83,7 +79,6 @@ body {
 }
 
 .nedeka-hero h1,
-.bruji-hero h1,
 .maika-hero h1,
 .col-hero h1 {
   margin: .65rem 0 1rem !important;
@@ -95,7 +90,6 @@ body {
 }
 
 .nedeka-hero p,
-.bruji-hero p,
 .maika-hero p,
 .col-hero p {
   max-width: 760px !important;
@@ -106,14 +100,12 @@ body {
 }
 
 .nedeka-intro,
-.bruji-intro,
 .maika-intro,
 .promise-strip {
   padding: 4rem 1.25rem !important;
 }
 
 .nedeka-intro-grid,
-.bruji-intro-grid,
 .maika-intro-grid,
 .promise-grid {
   width: min(1040px, 100%) !important;
@@ -124,7 +116,6 @@ body {
 }
 
 .nedeka-feature,
-.bruji-feature,
 .maika-feature,
 .promise-card {
   min-height: 150px !important;
@@ -136,7 +127,6 @@ body {
 }
 
 .nedeka-feature strong,
-.bruji-feature strong,
 .maika-feature strong,
 .promise-card h3 {
   display: block !important;
@@ -147,7 +137,6 @@ body {
 }
 
 .nedeka-feature p,
-.bruji-feature p,
 .maika-feature p,
 .promise-card p {
   margin: 0 !important;
@@ -156,14 +145,12 @@ body {
 }
 
 .nedeka-products,
-.bruji-products,
 .maika-products,
 .products-section {
   padding: 4.2rem 1.25rem !important;
 }
 
 .nedeka-products-grid,
-.bruji-products-grid,
 .maika-products-grid,
 .products-grid {
   width: min(1240px, 100%) !important;
@@ -302,14 +289,12 @@ body {
 
 @media (max-width: 760px) {
   .nedeka-intro-grid,
-  .bruji-intro-grid,
   .maika-intro-grid,
   .promise-grid {
     grid-template-columns: 1fr !important;
   }
 
   .nedeka-hero,
-  .bruji-hero,
   .maika-hero,
   .col-hero {
     min-height: 56vh !important;

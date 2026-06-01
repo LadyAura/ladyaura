@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   'use strict';
 
   var STORAGE_KEY = 'ladyaura_site_lang';
@@ -117,7 +117,6 @@
       ['horoscopo.html', 'Horoscopo'],
       ['especiales.html', 'AURA'],
       ['nedeka.html', 'NEDEKA'],
-      ['bruji.html', 'BRUJI'],
       ['maika.html', 'MAIKA'],
       ['circulo-aura.html', '<span class="red-circle-dot" aria-hidden="true"></span>CIRCULO AURA'],
       ['personalizados.html', 'Personalizados'],
