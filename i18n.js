@@ -9,7 +9,7 @@ const LA_T = {
     nav_maika:'🎨 MAIKA', nav_personalizados:'🎨 Personalizados', nav_nedeka:'🌙 NEDEKA', nav_colorear:'🎨 Colorear',
 
     /* COMÚN — hero strip */
-    strip_sinpago:'Sin pago previo', strip_formato:'60x90 cm y 40x60 cm',
+    strip_sinpago:'Sin pago previo', strip_formato:'60x90 cm, 50x70 cm y 40x60 cm',
     strip_formato_sub:'Formatos premium', strip_kit:'Kit completo',
     strip_kit_sub:'Diamantes + lienzo + herramientas', strip_reserva:'Pre-reserva gratis',
     strip_reserva_sub:'Sin compromiso',
@@ -23,11 +23,11 @@ const LA_T = {
 
     /* COMÚN — lightbox */
     lb_eyebrow:'✦ Diamond Painting Premium · Lady Aura Art ✦',
-    lb_formato:'Formatos 60x90 cm y 40x60 cm', lb_diamantes:'💎 Diamantes cuadrados de alta densidad',
+    lb_formato:'Formatos 60x90 cm, 50x70 cm y 40x60 cm', lb_diamantes:'💎 Diamantes cuadrados de alta densidad',
     lb_lienzo:'🎨 Lienzo de alta calidad premium', lb_herram:'🛠️ Herramientas incluidas',
     lb_instruc:'📖 Instrucciones en español', lb_diseno:'✨ Diseño exclusivo Lady Aura',
     lb_envio:'✈️ Envío incluido', lb_add_cart:'🛒 Añadir al carrito',
-    lb_added:'✓ Añadido', lb_dudas:'💬 ¿Dudas?Escríbeme',
+    lb_added:'✓ Añadido', lb_dudas:'💬 ¿Dudas? Escríbeme',
 
     /* COMÚN — CTA final */
     cta_dudas:'¿Te quedaste con dudas?',
@@ -95,7 +95,7 @@ const LA_T = {
     cart_telefono:'Teléfono', cart_direccion:'Dirección de envío *',
     cart_ciudad:'Ciudad *', cart_cp:'Código postal *', cart_pais:'País *',
     cart_notas:'Notas adicionales',
-    cart_nota:'¿Cómo funciona?Al enviar este formulario me llegará tu pedido por email. Te contactaré en menos de 24h con los detalles del pago. Tu cuadro se produce bajo pedido en 2–3 semanas. 💜',
+    cart_nota:'¿Cómo funciona? Al enviar este formulario me llegará tu pedido por email. Te contactaré en menos de 24h con los detalles del pago. Tu cuadro se produce bajo pedido en 2–3 semanas. 💜',
     cart_btn_confirm:'✨ Confirmar pedido',
     cart_confirm_title:'¡Pedido recibido!',
     cart_confirm_sub1:'Gracias por tu confianza. Te he enviado una copia a tu email.',
@@ -103,7 +103,7 @@ const LA_T = {
     cart_confirm_sub3:'✦ Cada cuadro se produce con amor, especialmente para ti ✦',
     cart_wa_btn:'💬 Hablar por WhatsApp',
     cart_sum_items:'Diseños seleccionados', cart_sum_format:'Formato',
-    cart_sum_format_val:'60x90 cm y 40x60 cm · Diamond painting premium',
+    cart_sum_format_val:'60x90 cm, 50x70 cm y 40x60 cm · Diamond painting premium',
     cart_sum_envio:'Envío', cart_sum_envio_val:'✓ Incluido', cart_sum_total:'Total',
 
     /* PEDIDOS */
@@ -122,7 +122,7 @@ const LA_T = {
     nav_personalizados:'🎨 Custom art', nav_nedeka:'🌙 NEDEKA', nav_colorear:'🎨 Coloring',
 
     /* COMÚN — hero strip */
-    strip_sinpago:'No upfront payment', strip_formato:'60x90 cm and 40x60 cm',
+    strip_sinpago:'No upfront payment', strip_formato:'60x90 cm, 50x70 cm and 40x60 cm',
     strip_formato_sub:'Premium formats', strip_kit:'Full kit',
     strip_kit_sub:'Diamonds + canvas + tools', strip_reserva:'Free pre-order',
     strip_reserva_sub:'No commitment',
@@ -136,11 +136,11 @@ const LA_T = {
 
     /* COMÚN — lightbox */
     lb_eyebrow:'✦ Premium Diamond Painting · Lady Aura Art ✦',
-    lb_formato:'60x90 cm and 40x60 cm formats', lb_diamantes:'💎 High-density square diamonds',
+    lb_formato:'60x90 cm, 50x70 cm and 40x60 cm formats', lb_diamantes:'💎 High-density square diamonds',
     lb_lienzo:'🎨 Premium quality canvas', lb_herram:'🛠️ Tools included',
     lb_instruc:'📖 Instructions included', lb_diseno:'✨ Exclusive Lady Aura design',
     lb_envio:'✈️ Free shipping', lb_add_cart:'🛒 Add to cart',
-    lb_added:'✓ Added', lb_dudas:'💬 Questions?Message me',
+    lb_added:'✓ Added', lb_dudas:'💬 Questions? Message me',
 
     /* COMÚN — CTA final */
     cta_dudas:'Still have questions?',
@@ -216,7 +216,7 @@ const LA_T = {
     cart_confirm_sub3:'✦ Each piece is made with love, especially for you ✦',
     cart_wa_btn:'💬 Chat on WhatsApp',
     cart_sum_items:'Selected designs', cart_sum_format:'Format',
-    cart_sum_format_val:'60x90 cm and 40x60 cm · Premium diamond painting',
+    cart_sum_format_val:'60x90 cm, 50x70 cm and 40x60 cm · Premium diamond painting',
     cart_sum_envio:'Shipping', cart_sum_envio_val:'✓ Free', cart_sum_total:'Total',
 
     /* PEDIDOS */
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Refuerzo global: traduce textos comunes aunque la pagina no tenga todas las etiquetas data-i18n. */
 const LA_TEXT_EN = {
-  'Inicio':'Home','Horoscopo':'Horoscope','Horoscopo':'Horoscope','Personalizados':'Custom art','Colorear':'Coloring','Ver colecciones':'View collections','Ver colecciones':'View collections','Preguntame':'Ask me','Elige tu coleccion':'Choose your collection','Cada coleccion tiene su propia magia. Cual es la tuya?':'Each collection has its own magic. Which one is yours?','Coleccion especial':'Special collection','Coleccion NEDEKA':'NEDEKA Collection','Fantasia luminosa, misterio y magia visual en formato premium.':'Luminous fantasy, mystery and visual magic in premium format.','Ver coleccion':'View collection','Coleccion permanente':'Permanent collection','Horoscopo':'Horoscope','24 disenos - 12 Diosas y 12 Retratos Celestiales. Tu signo, en su version mas magica. Nunca se agotan.':'24 designs, goddesses and celestial portraits. Your sign in its most magical version. Never sold out.','Ver los 24 signos':'See all signs','Coleccion MAIKA':'MAIKA Collection','Arte kawaii, ternura, fantasia luminosa y personajes llenos de color.':'Kawaii art, tenderness, luminous fantasy and colorful characters.','Paisajes':'Landscapes','Mundos imposibles y naturaleza magica. Para decorar y sonar.':'Impossible worlds and magical nature. Made to decorate and dream.','Ver paisajes':'View landscapes','Tu Retrato':'Your Portrait','Manda tu foto y la convierto en arte de diamantes. Tu signo, tu estilo, tu magia.':'Send your photo and I will turn it into diamond art. Your sign, your style, your magic.','Quiero el mio':'I want mine','Gatitos, princesas, magia estelar y mucho mas. Lo inclasificable.':'Kittens, princesses, starlit magic and much more. The unclassifiable.','Ver disenos':'View designs','Laminas para Colorear':'Coloring Pages','Laminas fantasy para adultos en PDF A4. Una lamina gratis sin registro.':'Fantasy coloring pages for adults in A4 PDF. One free page, no sign-up.','Ver laminas':'View pages','Calidad premium':'Premium quality','Diamantes cuadrados de alta densidad - Lienzo premium antidesvanecimiento':'High-density square diamonds - Premium fade-resistant canvas','Arte original - No masivo - No en Amazon':'Original art - Not mass-produced - Not on Amazon','Formato 60x90 cm':'60x90 cm format','Grande, impactante, decorativo':'Large, striking, decorative','Pre-reserva gratis':'Free pre-order','Sin pago - Sin compromiso - Tu decides':'No payment - No commitment - You decide','Regalo de bienvenida':'Welcome gift','5 euros menos en tu primer pedido':'5 euros off your first order','Cupon de bienvenida':'Welcome coupon','Codigo':'Code','Ver colecciones':'View collections','Ver signos':'See signs','Pre-reserva sin compromiso':'Pre-order with no commitment','Pre-reservar por WhatsApp':'Reserve by WhatsApp','Dudas?Escribeme':'Questions?Message me','Anadir al carrito':'Add to cart','Anadido':'Added','Lista de espera':'Waitlist','Vertical':'Vertical','Horizontal':'Horizontal','Envio incluido':'Shipping included','Kit completo':'Full kit','Sin pago previo':'No upfront payment','Nunca se agotan':'Never sold out','Tu signo siempre disponible':'Your sign is always available','Volver al inicio':'Back to home','Hablar con Lady Aura':'Chat with Lady Aura','Mis pedidos':'My orders','Mi carrito':'My cart','Tu carrito esta vacio':'Your cart is empty','Confirma tu pedido':'Confirm your order','Nombre *':'First name *','Apellidos *':'Last name *','Telefono':'Phone','Direccion de envio *':'Shipping address *','Ciudad *':'City *','Codigo postal *':'Postal code *','Pais *':'Country *','Notas adicionales':'Additional notes','Enviar':'Send','Confirmar pedido':'Confirm order','No se cobra nada ahora.':'Nothing is charged now.','Organiza tu momento Lady Aura':'Organize your Lady Aura moment','Organizar mi momento diamond':'Organize my diamond moment'
+  'Inicio':'Home','Hor\u00f3scopo':'Horoscope','Personalizados':'Custom art','Colorear':'Coloring','Ver colecciones':'View collections','Preg\u00fantame':'Ask me','Elige tu colecci\u00f3n':'Choose your collection','Cada colecci\u00f3n tiene su propia magia. \u00bfCu\u00e1l es la tuya?':'Each collection has its own magic. Which one is yours?','Colecci\u00f3n especial':'Special collection','Colecci\u00f3n NEDEKA':'NEDEKA Collection','Fantas\u00eda luminosa, misterio y magia visual en formato premium.':'Luminous fantasy, mystery and visual magic in premium format.','Ver colecci\u00f3n':'View collection','Colecci\u00f3n permanente':'Permanent collection','24 dise\u00f1os - 12 Diosas y 12 Retratos Celestiales. Tu signo, en su versi\u00f3n m\u00e1s m\u00e1gica. Nunca se agotan.':'24 designs, goddesses and celestial portraits. Your sign in its most magical version. Never sold out.','Ver los 24 signos':'See all signs','Colecci\u00f3n MAIKA':'MAIKA Collection','Arte kawaii, ternura, fantas\u00eda luminosa y personajes llenos de color.':'Kawaii art, tenderness, luminous fantasy and colorful characters.','Paisajes':'Landscapes','Mundos imposibles y naturaleza m\u00e1gica. Para decorar y so\u00f1ar.':'Impossible worlds and magical nature. Made to decorate and dream.','Ver paisajes':'View landscapes','Tu Retrato':'Your Portrait','Manda tu foto y la convierto en arte de diamantes. Tu signo, tu estilo, tu magia.':'Send your photo and I will turn it into diamond art. Your sign, your style, your magic.','Quiero el m\u00edo':'I want mine','Gatitos, princesas, magia estelar y mucho m\u00e1s. Lo inclasificable.':'Kittens, princesses, starlit magic and much more. The unclassifiable.','Ver dise\u00f1os':'View designs','L\u00e1minas para Colorear':'Coloring Pages','L\u00e1minas fantasy para adultos en PDF A4. Una l\u00e1mina gratis sin registro.':'Fantasy coloring pages for adults in A4 PDF. One free page, no sign-up.','Ver l\u00e1minas':'View pages','Calidad premium':'Premium quality','Diamantes cuadrados de alta densidad - Lienzo premium antidesvanecimiento':'High-density square diamonds - Premium fade-resistant canvas','Arte original - No masivo - No en Amazon':'Original art - Not mass-produced - Not on Amazon','Formato 60x90 cm':'60x90 cm format','Grande, impactante, decorativo':'Large, striking, decorative','Pre-reserva gratis':'Free pre-order','Sin pago - Sin compromiso - T\u00fa decides':'No payment - No commitment - You decide','Regalo de bienvenida':'Welcome gift','5 euros menos en tu primer pedido':'5 euros off your first order','Cup\u00f3n de bienvenida':'Welcome coupon','C\u00f3digo':'Code','Ver signos':'See signs','Pre-reserva sin compromiso':'Pre-order with no commitment','Pre-reservar por WhatsApp':'Reserve by WhatsApp','Dudas? Escr\u00edbeme':'Questions? Message me','A\u00f1adir al carrito':'Add to cart','A\u00f1adido':'Added','Lista de espera':'Waitlist','Vertical':'Vertical','Horizontal':'Horizontal','Env\u00edo incluido':'Shipping included','Kit completo':'Full kit','Sin pago previo':'No upfront payment','Nunca se agotan':'Never sold out','Tu signo siempre disponible':'Your sign is always available','Volver al inicio':'Back to home','Hablar con Lady Aura':'Chat with Lady Aura','Mis pedidos':'My orders','Mi carrito':'My cart','Tu carrito est\u00e1 vac\u00edo':'Your cart is empty','Confirma tu pedido':'Confirm your order','Nombre *':'First name *','Apellidos *':'Last name *','Tel\u00e9fono':'Phone','Direcci\u00f3n de env\u00edo *':'Shipping address *','Ciudad *':'City *','C\u00f3digo postal *':'Postal code *','Pa\u00eds *':'Country *','Notas adicionales':'Additional notes','Enviar':'Send','Confirmar pedido':'Confirm order','No se cobra nada ahora.':'Nothing is charged now.','Organiza tu momento Lady Aura':'Organize your Lady Aura moment','Organizar mi momento diamond':'Organize my diamond moment'
 };
 function laTranslateLoose(lang){
   document.documentElement.setAttribute('lang', lang);
