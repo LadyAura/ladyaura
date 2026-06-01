@@ -1215,43 +1215,6 @@ if(document.readyState !== "loading") {
     catch(e) { return null; }
   }
 
-  function getPostalCode() {
-    const field = document.getElementById('f-cp') || document.querySelector('[name="cp"], [name="postal-code"], [autocomplete="postal-code"]');
-    return field ? String(field.value || '').trim() : '';
-  }
-
-  function isMadridDDPPostalCode() {
-    return getPostalCode().startsWith('28');
-  }
-
-  function getTypedCouponCode() {
-    const input = document.getElementById('coupon-code') || document.getElementById('couponCode');
-    return normalizeCoupon(input?.value || '');
-  }
-
-  function ensureMadridCouponNotice() {
-    const couponBox = document.getElementById('coupon-box') || document.querySelector('.coupon-box');
-    if (!couponBox) return null;
-    let notice = document.getElementById('madrid-ddp-coupon-notice');
-    if (!notice) {
-      notice = document.createElement('div');
-      notice.id = 'madrid-ddp-coupon-notice';
-      notice.className = 'madrid-ddp-coupon-notice';
-      notice.innerHTML = '<strong>✨ Envío especial Madrid</strong><br><br>Tu código postal tiene una tarifa de envío especial DDP aplicada por el proveedor.<br>Por eso, los cupones no pueden aplicarse en pedidos con código postal 28.<br><br>Hemos actualizado el total automáticamente para que el pedido quede correcto 💜';
-      couponBox.appendChild(notice);
-    }
-    return notice;
-  }
-
-  function updateMadridCouponNotice(hasCouponText) {
-    const notice = ensureMadridCouponNotice();
-    const shouldShow = isMadridDDPPostalCode() && hasCouponText;
-    if (notice) notice.style.display = shouldShow ? 'block' : 'none';
-    const input = document.getElementById('coupon-code') || document.getElementById('couponCode');
-    if (input) input.classList.toggle('coupon-input-invalid-zone', shouldShow);
-    return shouldShow;
-  }
-
   function setCoupon(coupon) {
     localStorage.setItem(COUPON_KEY, JSON.stringify(coupon));
     updateCouponUI();
@@ -1324,12 +1287,6 @@ if(document.readyState !== "loading") {
 
     if (!clean) {
       couponMessage('Escribe un cupón para aplicarlo.', false);
-      return false;
-    }
-
-    if (isMadridDDPPostalCode()) {
-      updateMadridCouponNotice(clean);
-      couponMessage('Los cupones no son acumulables con envíos especiales a códigos postales 28.', false);
       return false;
     }
 
@@ -1410,9 +1367,6 @@ if(document.readyState !== "loading") {
       #coupon-form button{border:1px solid rgba(255,217,138,.35);border-radius:999px;background:linear-gradient(135deg,rgba(160,63,255,.4),rgba(255,72,137,.25));color:white;padding:.72rem 1rem;cursor:pointer;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.08em}
       .coupon-help{font-size:.82rem;opacity:.75;margin:.65rem 0 0}
       .coupon-line{display:flex;justify-content:space-between;gap:1rem;color:#a0ffb0!important}
-      .coupon-input-invalid-zone{border-color:rgba(255,126,179,.82)!important;box-shadow:0 0 0 2px rgba(255,126,179,.12)}
-      .madrid-ddp-coupon-notice{display:none;margin-top:1rem;padding:1rem 1.1rem;border:1px solid rgba(232,201,106,.34);border-radius:18px;background:linear-gradient(135deg,rgba(255,217,138,.10),rgba(160,63,255,.12));color:rgba(255,255,255,.86);font-size:.88rem;line-height:1.65}
-      .madrid-ddp-coupon-notice strong{font-family:'Cinzel',serif;color:#e8c96a;letter-spacing:.04em}
     `;
     document.head.appendChild(style);
   }
@@ -1421,26 +1375,19 @@ if(document.readyState !== "loading") {
     const items = getItemsSafe();
     const coupon = getCoupon();
     const code = normalizeCoupon(coupon?.code);
-    const typedCode = getTypedCouponCode();
-    const madridBlockedCode = isMadridDDPPostalCode() ? (code || typedCode) : '';
-    if (madridBlockedCode && code) {
-      localStorage.removeItem(COUPON_KEY);
-    }
-    const effectiveCode = madridBlockedCode ? '' : code;
-    const discount = effectiveCode ?calculateCouponDiscount(items, effectiveCode) : 0;
-    updateMadridCouponNotice(madridBlockedCode);
+    const discount = code ?calculateCouponDiscount(items, code) : 0;
 
-    if (effectiveCode && coupon && Number(coupon.discount) !== discount) {
-      localStorage.setItem(COUPON_KEY, JSON.stringify({ code: effectiveCode, discount: discount }));
+    if (code && coupon && Number(coupon.discount) !== discount) {
+      localStorage.setItem(COUPON_KEY, JSON.stringify({ code: code, discount: discount }));
     }
 
     const input = document.getElementById('coupon-code');
-    if (input && code && !madridBlockedCode) input.value = code;
+    if (input && code) input.value = code;
 
     // Remove previous dynamic coupon lines
     document.querySelectorAll('[data-coupon-line="true"]').forEach(el => el.remove());
 
-    if (effectiveCode && discount > 0) {
+    if (code && discount > 0) {
       const totalSelectors = [
         '#cart-total', '.cart-total', '#total', '.total', '[data-cart-total]'
       ];
@@ -1451,7 +1398,7 @@ if(document.readyState !== "loading") {
         const line = document.createElement('div');
         line.className = 'coupon-line';
         line.setAttribute('data-coupon-line','true');
-        line.innerHTML = `<span>${effectiveCode === 'LADYAURA5' ?'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + effectiveCode}</span><strong>-${discount.toFixed(2).replace('.', ',')} €</strong>`;
+        line.innerHTML = `<span>${code === 'LADYAURA5' ?'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code}</span><strong>-${discount.toFixed(2).replace('.', ',')} €</strong>`;
         totalEl.parentElement.insertBefore(line, totalEl);
       }
 
@@ -1464,11 +1411,8 @@ if(document.readyState !== "loading") {
     }
 
     const msg = document.getElementById('coupon-message');
-    if (msg && madridBlockedCode) {
-      msg.textContent = 'Los cupones no son acumulables con envíos especiales a códigos postales 28.';
-      msg.style.color = '#ff9bb8';
-    } else if (msg && effectiveCode && discount > 0) {
-      msg.textContent = `${effectiveCode === 'LADYAURA5' ?'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + effectiveCode} aplicado: -${discount.toFixed(2).replace('.', ',')} €`;
+    if (msg && code && discount > 0) {
+      msg.textContent = `${code === 'LADYAURA5' ?'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code} aplicado: -${discount.toFixed(2).replace('.', ',')} €`;
       msg.style.color = '#a0ffb0';
     }
   }
@@ -1494,12 +1438,6 @@ if(document.readyState !== "loading") {
   }
 
   document.addEventListener('DOMContentLoaded', bindCouponForm);
-  document.addEventListener('input', function(e) {
-    if (e.target && (e.target.id === 'f-cp' || e.target.id === 'coupon-code' || e.target.id === 'couponCode')) updateCouponUI();
-  });
-  document.addEventListener('change', function(e) {
-    if (e.target && (e.target.id === 'f-cp' || e.target.id === 'coupon-code' || e.target.id === 'couponCode')) updateCouponUI();
-  });
   window.addEventListener('storage', updateCouponUI);
   window.addEventListener('ladyaura:cart-updated', updateCouponUI);
   setTimeout(bindCouponForm, 350);
