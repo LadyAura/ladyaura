@@ -27,16 +27,45 @@ body {
 .maika-hero,
 .col-hero {
   position: relative !important;
-  min-height: 58vh !important;
+  min-height: 66vh !important;
   display: grid !important;
   place-items: center !important;
-  padding: clamp(4.5rem, 7vw, 7rem) 1.5rem 4.5rem !important;
+  padding: clamp(5rem, 7vw, 7rem) 1.5rem 4.75rem !important;
   overflow: hidden !important;
   border-bottom: 1px solid rgba(210, 95, 255, .18) !important;
 }
 
+.nedeka-page-hero,
+.maika-hero,
 .col-hero {
-  background: url("assets/bambarella71-guardianas-del-bosque.webp") center 25%/cover no-repeat !important;
+  place-items: center !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+.nedeka-page-hero::before {
+  background:
+    linear-gradient(180deg, rgba(5, 5, 16, .34), rgba(5, 5, 16, .42) 45%, rgba(5, 5, 16, .9) 100%),
+    radial-gradient(circle at 50% 38%, rgba(255, 217, 138, .15), transparent 30rem),
+    url("assets/nedeka-reina-del-papiro.webp?v=portada-nedeka-5") center 26% / cover no-repeat !important;
+  filter: saturate(1.18) brightness(.96) !important;
+  transform: none !important;
+}
+
+.maika-hero::before {
+  background:
+    linear-gradient(180deg, rgba(5, 5, 16, .28), rgba(5, 5, 16, .4) 45%, rgba(5, 5, 16, .9) 100%),
+    radial-gradient(circle at 50% 38%, rgba(255, 182, 219, .18), transparent 30rem),
+    url("assets/maika-camino-de-los-suenos.webp?v=portada-maika-5") center 34% / cover no-repeat !important;
+  filter: saturate(1.2) brightness(1.02) !important;
+  transform: none !important;
+}
+
+.col-hero {
+  background:
+    linear-gradient(180deg, rgba(5, 5, 16, .28), rgba(5, 5, 16, .4) 45%, rgba(5, 5, 16, .9) 100%),
+    radial-gradient(circle at 50% 38%, rgba(255, 217, 138, .18), transparent 30rem),
+    url("assets/bambarella71-guardianas-del-bosque.webp?v=portada-circulo-4") center 30% / cover no-repeat !important;
 }
 
 .nedeka-hero::after,
@@ -46,8 +75,8 @@ body {
   position: absolute !important;
   inset: 0 !important;
   background:
-    linear-gradient(180deg, rgba(5, 5, 16, .54), rgba(5, 5, 16, .78) 62%, #050510 100%),
-    radial-gradient(circle at center, transparent 0, rgba(5, 5, 16, .5) 70%) !important;
+    linear-gradient(180deg, rgba(5, 5, 16, .08), rgba(5, 5, 16, .3) 48%, #050510 100%),
+    radial-gradient(circle at center, transparent 0, rgba(5, 5, 16, .22) 78%) !important;
   z-index: 0 !important;
   pointer-events: none !important;
 }
@@ -64,6 +93,26 @@ body {
   width: min(920px, 100%) !important;
   margin: 0 auto !important;
   text-align: center !important;
+}
+
+.nedeka-page-hero .nedeka-hero-inner,
+.maika-hero .nedeka-hero-inner,
+.col-hero-content {
+  width: min(920px, 100%) !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+.nedeka-page-hero p,
+.maika-hero p,
+.col-hero p {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.nedeka-page-hero .nedeka-actions,
+.maika-hero .nedeka-actions {
+  justify-content: center !important;
 }
 
 .nedeka-eyebrow,
@@ -299,5 +348,24 @@ body {
   .col-hero {
     min-height: 56vh !important;
     padding-top: 4.25rem !important;
+    place-items: center !important;
+    padding-left: 1.1rem !important;
+    padding-right: 1.1rem !important;
+    background-size: cover !important;
+    background-position: center top !important;
+  }
+
+  .nedeka-page-hero::before,
+  .maika-hero::before {
+    background-position: center top !important;
+    background-size: cover !important;
+  }
+
+  .nedeka-page-hero .nedeka-hero-inner,
+  .maika-hero .nedeka-hero-inner,
+  .col-hero-content {
+    width: min(920px, 100%) !important;
+    text-align: center !important;
+    margin: 0 auto !important;
   }
 }

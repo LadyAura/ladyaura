@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Admin carritos - Lady Aura Art</title>
+  <style>
+    :root{color-scheme:dark;--bg:#090513;--panel:#120b24;--line:rgba(255,255,255,.14);--text:#fff7ff;--muted:#d8c8e8;--gold:#e8c96a;--pink:#ff7eb3}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,rgba(160,63,255,.22),transparent 34%),var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+    main{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:32px 0 56px}
+    h1{margin:0 0 8px;font-family:Georgia,serif;color:var(--gold);font-size:clamp(1.6rem,4vw,2.4rem)}
+    p{color:var(--muted);line-height:1.55}.panel{background:rgba(18,11,36,.9);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+    label{display:block;color:var(--gold);font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;margin:0 0 7px}
+    input{width:100%;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.06);color:var(--text);padding:12px 14px;font-size:1rem}
+    button{border:0;border-radius:999px;background:linear-gradient(135deg,#e8c96a,#ff7eb3);color:#14051f;font-weight:700;padding:12px 18px;cursor:pointer}
+    .row{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:12px;padding:14px}.stat strong{display:block;color:var(--gold);font-size:1.5rem}
+    table{width:100%;border-collapse:collapse;background:rgba(18,11,36,.72);border:1px solid var(--line);border-radius:12px;overflow:hidden}th,td{text-align:left;border-bottom:1px solid var(--line);padding:12px;vertical-align:top}th{color:var(--gold);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}td{font-size:.92rem}.muted{color:var(--muted)}.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 9px;font-size:.78rem}.paid{color:#a7ffbf}.abandoned{color:#ff9bb8}.checkout_started{color:#e8c96a}.cart{color:#b9ddff}.error{color:#ff9bb8}.hidden{display:none!important}
+    @media(max-width:760px){.row,.stats{grid-template-columns:1fr}table{display:block;overflow-x:auto}main{width:min(100% - 20px,1180px);padding-top:20px}}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Carritos privados</h1>
+    <p>Panel privado para consultar carritos, datos de clienta si existen, totales y estado de pago.</p>
+
+    <section class="panel" id="setup-panel">
+      <div class="row">
+        <div>
+          <label for="api-url">URL privada de administración</label>
+          <input id="api-url" type="url" placeholder="https://tu-dominio.com/api/abandoned-carts">
+        </div>
+        <div>
+          <label for="api-token">Clave privada</label>
+          <input id="api-token" type="password" placeholder="Solo para ti">
+        </div>
+        <button id="load-btn" type="button">Ver carritos</button>
+      </div>
+      <p class="muted">Esta página no guarda la clave. La API debe validar el token y devolver solo datos autorizados.</p>
+      <p id="status" class="error"></p>
+    </section>
+
+    <section class="stats hidden" id="stats">
+      <div class="stat"><span class="muted">Carritos</span><strong id="stat-total">0</strong></div>
+      <div class="stat"><span class="muted">Sin pagar</span><strong id="stat-open">0</strong></div>
+      <div class="stat"><span class="muted">Abandonados</span><strong id="stat-abandoned">0</strong></div>
+      <div class="stat"><span class="muted">Pagados</span><strong id="stat-paid">0</strong></div>
+    </section>
+
+    <section class="panel hidden" id="table-panel">
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha/hora</th>
+            <th>Clienta</th>
+            <th>Productos</th>
+            <th>Total</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody id="cart-rows"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="private-cart-config.js"></script>
+  <script>
+    const DEFAULT_ADMIN_URL = window.LADY_AURA_CART_ADMIN_API_URL || window.LADY_AURA_CART_API_URL || '';
+    const apiUrl = document.getElementById('api-url');
+    const apiToken = document.getElementById('api-token');
+    const statusEl = document.getElementById('status');
+    apiUrl.value = DEFAULT_ADMIN_URL;
+
+    function escapeHtml(value) {
+      return String(value || '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+    }
+
+    function normalizeRows(data) {
+      if (Array.isArray(data)) return data;
+      if (Array.isArray(data.carts)) return data.carts;
+      if (Array.isArray(data.carritos)) return data.carritos;
+      return [];
+    }
+
+    function formatDate(value) {
+      if (!value) return '';
+      const date = new Date(value);
+      return Number.isNaN(date.getTime()) ? value : date.toLocaleString('es-ES');
+    }
+
+    function render(data) {
+      const rows = normalizeRows(data);
+      const body = document.getElementById('cart-rows');
+      body.innerHTML = rows.map(cart => {
+        const customer = cart.customer || cart.cliente || {};
+        const items = cart.items || cart.productos || [];
+        const state = cart.status || cart.estado || 'cart';
+        const client = [customer.nombre_completo, customer.nombre, customer.email].filter(Boolean).join('<br>');
+        const products = items.map(item => `${escapeHtml(item.nombre || item.producto)}<br><span class="muted">${escapeHtml(item.tamano || item.size)} · ${escapeHtml(item.precio)} €</span>`).join('<hr style="border-color:rgba(255,255,255,.12)">');
+        return `<tr><td>${escapeHtml(formatDate(cart.updated_at || cart.fecha_hora || cart.created_at))}<br><span class="muted">${escapeHtml(cart.session_id || '')}</span></td><td>${client || '<span class="muted">Sin datos todavía</span>'}</td><td>${products || '<span class="muted">Sin productos</span>'}</td><td>${escapeHtml(cart.total || 0)} €</td><td><span class="pill ${escapeHtml(state)}">${escapeHtml(state)}</span></td></tr>`;
+      }).join('');
+      document.getElementById('stat-total').textContent = rows.length;
+      document.getElementById('stat-paid').textContent = rows.filter(c => (c.status || c.estado) === 'paid').length;
+      document.getElementById('stat-abandoned').textContent = rows.filter(c => (c.status || c.estado) === 'abandoned').length;
+      document.getElementById('stat-open').textContent = rows.filter(c => !['paid','abandoned'].includes(c.status || c.estado)).length;
+      document.getElementById('stats').classList.remove('hidden');
+      document.getElementById('table-panel').classList.remove('hidden');
+    }
+
+    document.getElementById('load-btn').addEventListener('click', async () => {
+      statusEl.textContent = '';
+      const url = apiUrl.value.trim();
+      const token = apiToken.value.trim();
+      if (!url || !token) {
+        statusEl.textContent = 'Falta la URL privada o la clave.';
+        return;
+      }
+      try {
+        const res = await fetch(url, { headers: { Authorization: 'Bearer ' + token, Accept: 'application/json' } });
+        if (!res.ok) throw new Error('No autorizado o API no disponible');
+        render(await res.json());
+      } catch (err) {
+        statusEl.textContent = 'No pude cargar los carritos. Revisa la URL privada, la clave y la API.';
+      }
+    });
+  </script>
+</body>
+</html>

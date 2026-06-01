@@ -109,8 +109,26 @@ main, footer, .site-header, .shipping-banner { position: relative; z-index: 1; }
 .nav a {
   opacity: 1; padding-bottom: .2rem;
   border-bottom: 2px solid transparent; transition: all .2s;
+  display: inline-flex; align-items: center; gap: .38rem;
 }
 .nav a:hover { color: var(--pink); border-color: var(--pink); opacity: 1; }
+.nav-icon-dot {
+  display: inline-block;
+  width: .72em;
+  height: .72em;
+  min-width: .72em;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--nav-dot-a, #e8c97a), var(--nav-dot-b, #a03fff));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--nav-dot-a, #e8c97a) 20%, transparent), 0 0 13px color-mix(in srgb, var(--nav-dot-b, #a03fff) 60%, transparent);
+}
+.nav-icon-home { --nav-dot-a: #fff1a8; --nav-dot-b: #e8c97a; }
+.nav-icon-zodiac { --nav-dot-a: #86e7ff; --nav-dot-b: #a03fff; }
+.nav-icon-aura { --nav-dot-a: #f4d9ff; --nav-dot-b: #ff7bd5; }
+.nav-icon-nedeka { --nav-dot-a: #ffd98a; --nav-dot-b: #2dd4bf; }
+.nav-icon-maika { --nav-dot-a: #ffb7d8; --nav-dot-b: #8b5cf6; }
+.nav-icon-custom { --nav-dot-a: #c7f9ff; --nav-dot-b: #f59e0b; }
+.nav-icon-orders { --nav-dot-a: #d8b4fe; --nav-dot-b: #60a5fa; }
+.nav-icon-cart { --nav-dot-a: #a7f3d0; --nav-dot-b: #22c55e; }
 .header-button {
   display: inline-flex; align-items: center; justify-content: center;
   padding: .6rem 1.1rem; border-radius: 999px; border: 1px solid var(--border);

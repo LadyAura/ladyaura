@@ -847,6 +847,9 @@ function cartPatchLightbox(card) {
   if (!data.img && card && typeof card.querySelector === 'function') data.img = card.querySelector('img')?.getAttribute('src') || '';
   if (!data.nombre && card && typeof card.querySelector === 'function') data.nombre = card.querySelector('h3')?.textContent || '';
   const lightboxCard = { dataset: data };
+  const lightboxSizes = data.no50x70 === '1' || data.no50x70 === 'true'
+    ? ['60x90', '40x60']
+    : ['60x90', '50x70', '40x60'];
 
   function setLightboxSize(size) {
     const nextImage = cartProductImageForSize(lightboxCard, size);
@@ -866,6 +869,9 @@ function cartPatchLightbox(card) {
   if (lbPrice) {
     lbPrice.removeAttribute('style');
     lbPrice.innerHTML = `<button class="lb-price-option active" type="button" data-size="60x90"><span>60x90 cm</span><strong>${cartProductPriceForSize(lightboxCard, '60x90')} €</strong></button><button class="lb-price-option" type="button" data-size="50x70"><span>50x70 cm</span><strong>${cartProductPriceForSize(lightboxCard, '50x70')} €</strong></button><button class="lb-price-option" type="button" data-size="40x60"><span>40x60 cm</span><strong>${cartProductPriceForSize(lightboxCard, '40x60')} €</strong></button>`;
+    if (lightboxSizes.length === 2) {
+      lbPrice.innerHTML = lightboxSizes.map((size, index) => `<button class="lb-price-option${index === 0 ? ' active' : ''}" type="button" data-size="${size}"><span>${size} cm</span><strong>${cartProductPriceForSize(lightboxCard, size)} €</strong></button>`).join('');
+    }
     lbPrice.querySelectorAll('.lb-price-option').forEach(option => {
       option.addEventListener('click', function(e) {
         e.preventDefault();
@@ -887,6 +893,7 @@ function cartPatchLightbox(card) {
   options.style.cssText = 'display:grid;gap:.65rem;width:100%;';
 
   function addLightboxSize(size, price) {
+    if (!lightboxSizes.includes(size)) return;
     const btn = document.createElement('button');
     btn.className = 'lb-btn lb-btn-cart';
     btn.type = 'button';

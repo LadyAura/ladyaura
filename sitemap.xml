@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
@@ -43,17 +43,6 @@
     <image:image>
       <image:loc>https://ladyauraart.com/assets/personalizado-lady-aura.webp</image:loc>
       <image:title>Diamond painting personalizado con foto Lady Aura Art</image:title>
-    </image:image>
-  </url>
-
-  <url>
-    <loc>https://ladyauraart.com/colorear.html</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>https://ladyauraart.com/assets/aries.webp</image:loc>
-      <image:title>LÃ¡minas para colorear adultos fantasy PDF Lady Aura Art</image:title>
     </image:image>
   </url>
   <url><loc>https://ladyauraart.com/horoscopo.html</loc></url>
