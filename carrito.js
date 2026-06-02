@@ -1350,7 +1350,7 @@ if(document.readyState !== "loading") {
     const box = document.createElement('section');
     box.className = 'coupon-box';
     box.innerHTML = `
-      <h3>¿Tienes un cupón?</h3>
+      <h3>¿Tienes un cupónº</h3>
       <form id="coupon-form">
         <input id="coupon-code" type="text" placeholder="Ej: LADYAURA5" autocomplete="off">
         <button type="submit">Aplicar</button>
@@ -1381,7 +1381,7 @@ if(document.readyState !== "loading") {
   function updateCouponUI() {
     const items = getItemsSafe();
     const coupon = getCoupon();
-    const code = normalizeCoupon(coupon?.code);
+    const code = normalizeCoupon(couponº.code);
     const discount = code ?calculateCouponDiscount(items, code) : 0;
 
     if (code && coupon && Number(coupon.discount) !== discount) {
