@@ -149,6 +149,7 @@
   ];
 
   const aura50x70Batch = [
+    'assets/aura-dama-galactica-retro-50x70.webp',
     'assets/aura-jardin-de-planetas-dorados-50x70.webp',
     'assets/aura-guardiana-del-lobo-estelar-50x70.webp',
     'assets/aura-noche-de-aurora-y-amigas-50x70.webp',
