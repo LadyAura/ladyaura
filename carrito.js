@@ -1202,6 +1202,14 @@ if(document.readyState !== "loading") {
     ].some(function(n){ return raw.includes(n); });
   }
 
+  function isEvitaItem(item) {
+    var raw = [
+      item?.coleccion, item?.collection, item?.categoria, item?.category,
+      item?.img, item?.nombre, item?.id
+    ].filter(Boolean).join(' ').toLowerCase();
+    return raw.includes('evita') || raw.includes('evitaanimations') || raw.includes('evita animations');
+  }
+
   function isNedekaItem(item) {
     const raw = [
       item?.coleccion, item?.collection, item?.categoria, item?.category,
@@ -1270,6 +1278,10 @@ if(document.readyState !== "loading") {
       const fonsinSubtotal = items.filter(isFonsinItem).reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
       return fonsinSubtotal > 0 ?Math.min(10, fonsinSubtotal) : 0;
     }
+    if (code === 'EVI10') {
+      const evitaSubtotal = items.filter(isEvitaItem).reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
+      return evitaSubtotal > 0 ?Math.min(10, evitaSubtotal) : 0;
+    }
     return 0;
   }
 
@@ -1302,7 +1314,7 @@ if(document.readyState !== "loading") {
       return false;
     }
 
-    if (!['LADYAURA5','NEDEKA10','NEDEKA60','MAIKA10','MAIKA60','ALI10','FON10'].includes(clean)) {
+    if (!['LADYAURA5','NEDEKA10','NEDEKA60','MAIKA10','MAIKA60','ALI10','FON10','EVI10'].includes(clean)) {
       couponMessage('Cupón no válido.', false);
       return false;
     }
@@ -1321,6 +1333,10 @@ if(document.readyState !== "loading") {
     }
     if (clean === 'FON10' && !items.some(isFonsinItem)) {
       couponMessage('Este cupon solo funciona con cuadros de Fonsin11_diamond.', false);
+      return false;
+    }
+    if (clean === 'EVI10' && !items.some(isEvitaItem)) {
+      couponMessage('Este cupon solo funciona con cuadros de evitaanimations.', false);
       return false;
     }
 
