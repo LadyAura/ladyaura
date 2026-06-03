@@ -149,6 +149,12 @@
   ];
 
   const aura50x70Batch = [
+    'assets/aura-jardin-de-planetas-dorados-50x70.webp',
+    'assets/aura-guardiana-del-lobo-estelar-50x70.webp',
+    'assets/aura-noche-de-aurora-y-amigas-50x70.webp',
+    'assets/aura-princesa-amatista-lunar-50x70.webp',
+    'assets/aura-hechicera-de-luna-roja-50x70.webp',
+    'assets/aura-mariposa-de-luz-violeta-50x70.webp',
     'assets/almas-de-luz-50x70.webp',
     'assets/hada-del-lago-lunar-50x70.webp',
     'assets/arbol-de-cristal-lunar-50x70.webp',
