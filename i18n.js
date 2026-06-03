@@ -157,7 +157,7 @@ const LA_T = {
     zod_sub:'All 12 Horoscope Signs',
     zod_desc2:'Each sign in its feminine and masculine version. Click on the design you want to see more details and pre-order.',
     zod_tab_fem:'♀ Feminine', zod_tab_masc:'♂ Masculine',
-    zod_nosigno:'Can\'t find your signº<br>Message me directly',
+    zod_nosigno:'Can\'t find your sign?<br>Message me directly',
     zod_nosigno_sub:'All signs are always available. If you have any questions or want to know more before pre-ordering, I\'m here.',
     zod_wa:'💬 Chat with Lady Aura', zod_back:'← Back to home',
 

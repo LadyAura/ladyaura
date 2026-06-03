@@ -24,13 +24,13 @@ window.LADY_AURA_CART_ADMIN_API_URL = 'https://tu-dominio.com/api/abandoned-cart
     "apellidos": "Apellidos",
     "email": "email@dominio.com"
   },
-  "total": 84,
+  "total": 89,
   "updated_at": "2026-05-29T12:00:00.000Z",
   "items": [
     {
       "nombre": "Producto",
       "tamano": "60x90",
-      "precio": 84,
+      "precio": 89,
       "cupon": "LADYAURA5",
       "fecha_hora": "2026-05-29T12:00:00.000Z"
     }
@@ -58,8 +58,8 @@ Respuesta esperada:
       "updated_at": "2026-05-29T12:00:00.000Z",
       "status": "abandoned",
       "customer": { "nombre_completo": "Nombre Apellidos", "email": "email@dominio.com" },
-      "total": 84,
-      "items": [{ "nombre": "Producto", "tamano": "60x90", "precio": 84 }]
+      "total": 89,
+      "items": [{ "nombre": "Producto", "tamano": "60x90", "precio": 89 }]
     }
   ]
 }

@@ -4,6 +4,9 @@
    ============================================================ */
 
 const CART_KEY = 'ladyaura_cart';
+const NORMAL_FORMAT_PRICE = 89;
+const MEDIUM_FORMAT_PRICE = 79;
+const SMALL_FORMAT_PRICE = 66;
 const LADY_AURA_CART_SESSION_KEY = 'ladyaura_cart_session_id';
 const LADY_AURA_CART_LAST_ACTIVE_KEY = 'ladyaura_cart_last_active_at';
 const LADY_AURA_CART_PAID_KEY = 'ladyaura_cart_paid_at';
@@ -33,7 +36,7 @@ function cartGetSessionId() {
 function cartReadCouponCode() {
   try {
     const coupon = JSON.parse(localStorage.getItem('ladyaura_coupon') || 'null');
-    return coupon && coupon.code ? String(coupon.code).toUpperCase() : '';
+    return coupon && coupon?.code ? String(coupon?.code).toUpperCase() : '';
   } catch(e) {
     return '';
   }
@@ -72,7 +75,7 @@ function cartBuildTrackingPayload(status, extra) {
     status: status || 'cart',
     estado: status || 'cart',
     coupon: couponCode || null,
-    cupon: couponCode || null,
+    coupon: couponCode || null,
     customer: cartReadCustomerData(),
     cliente: cartReadCustomerData(),
     total: total,
@@ -84,7 +87,7 @@ function cartBuildTrackingPayload(status, extra) {
         tamano: item.tamano || item.size || '',
         size: item.tamano || item.size || '',
         precio: Number(item.precio || item.price) || 0,
-        cupon: couponCode || null,
+        coupon: couponCode || null,
         fecha_hora: new Date().toISOString()
       };
     })
@@ -183,8 +186,9 @@ function cartBuildId(item) {
 
 function cartNormalizeItemPrice(item) {
   const sizeText = [item?.tamano, item?.size, item?.id].filter(Boolean).join(' ');
-  if (/(?:50\s*(?:x|×)\s*70|70\s*(?:x|×)\s*50)/i.test(sizeText)) item.precio = 76;
-  else if (/40\s*(?:x|×)\s*60/i.test(sizeText)) item.precio = 66;
+  if (/(?:50\s*(?:x|×)\s*70|70\s*(?:x|×)\s*50)/i.test(sizeText)) item.precio = MEDIUM_FORMAT_PRICE;
+  else if (/(?:60\s*(?:x|×)\s*90|90\s*(?:x|×)\s*60)/i.test(sizeText)) item.precio = NORMAL_FORMAT_PRICE;
+  else if (/40\s*(?:x|×)\s*60/i.test(sizeText)) item.precio = SMALL_FORMAT_PRICE;
   item.price = item.precio;
   return item;
 }
@@ -243,7 +247,7 @@ function cartAdd(item) {
         nombre: item.nombre || '',
         tamano: item.tamano || item.size || '',
         precio: Number(item.precio || item.price) || 0,
-        cupon: cartReadCouponCode() || null,
+        coupon: cartReadCouponCode() || null,
         fecha_hora: new Date().toISOString()
       }
     });
@@ -333,16 +337,19 @@ function cartProductPrice(card) {
   const dataPrice = Number(card.dataset.precio || card.dataset.price);
   if (dataPrice) return dataPrice;
   const visiblePrice = (card.querySelector('.card-price')?.textContent || '').match(/(\d+(?:[,.]\d+)?)\s*(?:€|EUR)?/i);
-  return visiblePrice ?Number(visiblePrice[1].replace(',', '.')) : 84;
+  return visiblePrice ?Number(visiblePrice[1].replace(',', '.')) : NORMAL_FORMAT_PRICE;
 }
 
 /* ── Inyectar botón "Añadir al carrito" en cada product-card ── */
 function cartProductPriceForSize(card, size) {
   const normalizedSize = String(size || '').toLowerCase().replace(/\s+/g, '');
   if (normalizedSize === '50x70' || normalizedSize === '70x50') {
-    return Number(card.dataset.price50x70 || card.dataset.precio50x70) || 76;
+    return Number(card.dataset.price50x70 || card.dataset.precio50x70) || MEDIUM_FORMAT_PRICE;
   }
-  if (normalizedSize === '40x60') return Number(card.dataset.price40x60 || card.dataset.precio40x60) || 66;
+  if (normalizedSize === '60x90' || normalizedSize === '90x60') {
+    return Number(card.dataset.price60x90 || card.dataset.precio60x90 || card.dataset.price || card.dataset.precio) || NORMAL_FORMAT_PRICE;
+  }
+  if (normalizedSize === '40x60') return Number(card.dataset.price40x60 || card.dataset.precio40x60) || SMALL_FORMAT_PRICE;
   return cartProductPrice(card);
 }
 
@@ -464,7 +471,7 @@ function cartInjectButtons() {
         id: card.dataset.img || nombre,
         nombre: nombre,
         img: cartProductImageForSize(card, size),
-        precio: Number(card.dataset.precio || card.dataset.price) || 84,
+        precio: cartProductPriceForSize(card, size),
         orient: card.dataset.orient || 'v',
         coleccion: card.dataset.coleccion || card.dataset.collection || (location.pathname.toLowerCase().includes('nedeka') ?'nedeka' : location.pathname.toLowerCase().includes('maika') ?'maika' : location.pathname.toLowerCase().includes('circulo-aura') ?'bambarelle71' : card.dataset.coleccion || card.dataset.collection || ''),
         collection: card.dataset.collection || card.dataset.coleccion || (location.pathname.toLowerCase().includes('nedeka') ?'nedeka' : location.pathname.toLowerCase().includes('maika') ?'maika' : location.pathname.toLowerCase().includes('circulo-aura') ?'bambarelle71' : card.dataset.coleccion || card.dataset.collection || '')
@@ -695,7 +702,7 @@ function cartInjectZodiaco() {
         id: 'zodiaco-' + titulo + '-' + (isFem ?'f' : 'm'),
         nombre: nombre,
         img: imgSrc,
-        precio: Number(card.dataset.precio) || 84,
+        precio: NORMAL_FORMAT_PRICE,
         orient: 'v'
       });
       this.classList.add('added');
@@ -758,8 +765,8 @@ function cartInjectZodiaco() {
       options.appendChild(row);
     }
 
-    addZodiacSize('60x90', Number(card.dataset.precio || card.dataset.price) || 84);
-    addZodiacSize('40x60', 66);
+    addZodiacSize('60x90', Number(card.dataset.precio || card.dataset.price) || NORMAL_FORMAT_PRICE);
+    addZodiacSize('40x60', SMALL_FORMAT_PRICE);
     info.appendChild(options);
   });
 }
@@ -1244,8 +1251,8 @@ if(document.readyState !== "loading") {
 
   function calculateCouponDiscount(items, couponCode) {
     const code = normalizeCoupon(couponCode);
-    const subtotal = items.reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
-    const nedekaSubtotal = items.filter(isNedekaItem).reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
+    const subtotal = items.reduce((sum, item) => sum + (Number(item.precio) || NORMAL_FORMAT_PRICE), 0);
+    const nedekaSubtotal = items.filter(isNedekaItem).reduce((sum, item) => sum + (Number(item.precio) || NORMAL_FORMAT_PRICE), 0);
 
     if (code === 'LADYAURA5') {
       return subtotal > 0 ?5 : 0;
@@ -1256,30 +1263,30 @@ if(document.readyState !== "loading") {
     if (code === 'NEDEKA60') {
       const nedekaItems = items.filter(isNedekaItem);
       let totalDiscount = 0;
-      nedekaItems.forEach(item => { totalDiscount += Math.max(0, (Number(item.precio) || 84) - 60); });
+      nedekaItems.forEach(item => { totalDiscount += Math.max(0, (Number(item.precio) || NORMAL_FORMAT_PRICE) - 60); });
       return totalDiscount > 0 ?totalDiscount : 0;
     }
     if (code === 'MAIKA10') {
-      const maikaSubtotal = items.filter(isMaikaItem).reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
+      const maikaSubtotal = items.filter(isMaikaItem).reduce((sum, item) => sum + (Number(item.precio) || NORMAL_FORMAT_PRICE), 0);
       return maikaSubtotal > 0 ?Math.min(10, maikaSubtotal) : 0;
     }
     if (code === 'MAIKA60') {
       // Descuento secreto diseñadora: cada cuadro MAIKA queda a 60€
       const maikaItems = items.filter(isMaikaItem);
       let totalDiscount = 0;
-      maikaItems.forEach(item => { totalDiscount += Math.max(0, (Number(item.precio) || 84) - 60); });
+      maikaItems.forEach(item => { totalDiscount += Math.max(0, (Number(item.precio) || NORMAL_FORMAT_PRICE) - 60); });
       return totalDiscount > 0 ?totalDiscount : 0;
     }
     if (code === 'ALI10') {
-      const bambaSubtotal = items.filter(isBambarelleItem).reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
+      const bambaSubtotal = items.filter(isBambarelleItem).reduce((sum, item) => sum + (Number(item.precio) || NORMAL_FORMAT_PRICE), 0);
       return bambaSubtotal > 0 ?Math.min(10, bambaSubtotal) : 0;
     }
     if (code === 'FON10') {
-      const fonsinSubtotal = items.filter(isFonsinItem).reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
+      const fonsinSubtotal = items.filter(isFonsinItem).reduce((sum, item) => sum + (Number(item.precio) || NORMAL_FORMAT_PRICE), 0);
       return fonsinSubtotal > 0 ?Math.min(10, fonsinSubtotal) : 0;
     }
     if (code === 'EVI10') {
-      const evitaSubtotal = items.filter(isEvitaItem).reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
+      const evitaSubtotal = items.filter(isEvitaItem).reduce((sum, item) => sum + (Number(item.precio) || NORMAL_FORMAT_PRICE), 0);
       return evitaSubtotal > 0 ?Math.min(10, evitaSubtotal) : 0;
     }
     return 0;
@@ -1305,12 +1312,12 @@ if(document.readyState !== "loading") {
     const existing = getCoupon();
 
     if (!clean) {
-      couponMessage('Escribe un cupón para aplicarlo.', false);
+      couponMessage('Escribe un cuón para aplicarlo.', false);
       return false;
     }
 
     if (existing && normalizeCoupon(existing.code) && normalizeCoupon(existing.code) !== clean) {
-      couponMessage('Solo se puede usar un cupón por pedido.', false);
+      couponMessage('Solo se puede usar un cuón por pedido.', false);
       return false;
     }
 
@@ -1320,7 +1327,7 @@ if(document.readyState !== "loading") {
     }
 
     if ((clean === 'NEDEKA10' || clean === 'NEDEKA60') && !items.some(isNedekaItem)) {
-      couponMessage('Este cup\u00f3n solo funciona con cuadros de la Colecci\u00f3n NEDEKA.', false);
+      couponMessage('Este cu\u00f3n solo funciona con cuadros de la Colecci\u00f3n NEDEKA.', false);
       return false;
     }
     if ((clean === 'MAIKA10' || clean === 'MAIKA60') && !items.some(isMaikaItem)) {
@@ -1328,21 +1335,21 @@ if(document.readyState !== "loading") {
       return false;
     }
     if (clean === 'ALI10' && !items.some(isBambarelleItem)) {
-      couponMessage('Este cupón solo funciona con obras del Círculo Aura (Bambarelle71).', false);
+      couponMessage('Este cuón solo funciona con obras del Círculo Aura (Bambarelle71).', false);
       return false;
     }
     if (clean === 'FON10' && !items.some(isFonsinItem)) {
-      couponMessage('Este cupon solo funciona con cuadros de Fonsin11_diamond.', false);
+      couponMessage('Este coupon solo funciona con cuadros de Fonsin11_diamond.', false);
       return false;
     }
     if (clean === 'EVI10' && !items.some(isEvitaItem)) {
-      couponMessage('Este cupon solo funciona con cuadros de evitaanimations.', false);
+      couponMessage('Este coupon solo funciona con cuadros de evitaanimations.', false);
       return false;
     }
 
     const discount = calculateCouponDiscount(items, clean);
     if (discount <= 0) {
-      couponMessage('Este cupón no se puede aplicar a tu carrito actual.', false);
+      couponMessage('Este cuón no se puede aplicar a tu carrito actual.', false);
       return false;
     }
 
@@ -1366,13 +1373,13 @@ if(document.readyState !== "loading") {
     const box = document.createElement('section');
     box.className = 'coupon-box';
     box.innerHTML = `
-      <h3>¿Tienes un cupónº</h3>
+      <h3>¿Tienes un cupón?</h3>
       <form id="coupon-form">
         <input id="coupon-code" type="text" placeholder="Ej: LADYAURA5" autocomplete="off">
         <button type="submit">Aplicar</button>
         <button type="button" id="coupon-remove">Quitar</button>
       </form>
-      <p class="coupon-help">Solo se puede usar un cupón por pedido.</p>
+      <p class="coupon-help">Solo se puede usar un cuón por pedido.</p>
       <p id="coupon-message"></p>
     `;
     target.appendChild(box);
@@ -1397,7 +1404,7 @@ if(document.readyState !== "loading") {
   function updateCouponUI() {
     const items = getItemsSafe();
     const coupon = getCoupon();
-    const code = normalizeCoupon(couponº.code);
+    const code = normalizeCoupon(coupon?.code);
     const discount = code ?calculateCouponDiscount(items, code) : 0;
 
     if (code && coupon && Number(coupon.discount) !== discount) {
@@ -1426,7 +1433,7 @@ if(document.readyState !== "loading") {
       }
 
       // Recalculate visible totals if possible by text
-      const subtotal = items.reduce((sum, item) => sum + (Number(item.precio) || 84), 0);
+      const subtotal = items.reduce((sum, item) => sum + (Number(item.precio) || NORMAL_FORMAT_PRICE), 0);
       const finalTotal = Math.max(0, subtotal - discount);
       if (totalEl) {
         totalEl.textContent = `${finalTotal.toFixed(2).replace('.', ',')} €`;
