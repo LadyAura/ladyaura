@@ -24,7 +24,6 @@ body {
 }
 
 .nedeka-hero,
-.maika-hero,
 .col-hero {
   position: relative !important;
   min-height: 66vh !important;
@@ -36,7 +35,6 @@ body {
 }
 
 .nedeka-page-hero,
-.maika-hero,
 .col-hero {
   place-items: center !important;
   padding-left: 1.5rem !important;
@@ -52,15 +50,6 @@ body {
   transform: none !important;
 }
 
-.maika-hero::before {
-  background:
-    linear-gradient(180deg, rgba(5, 5, 16, .28), rgba(5, 5, 16, .4) 45%, rgba(5, 5, 16, .9) 100%),
-    radial-gradient(circle at 50% 38%, rgba(255, 182, 219, .18), transparent 30rem),
-    url("assets/maika-camino-de-los-suenos.webp?v=portada-maika-5") center 34% / cover no-repeat !important;
-  filter: saturate(1.2) brightness(1.02) !important;
-  transform: none !important;
-}
-
 .col-hero {
   background:
     linear-gradient(180deg, rgba(5, 5, 16, .28), rgba(5, 5, 16, .4) 45%, rgba(5, 5, 16, .9) 100%),
@@ -69,7 +58,6 @@ body {
 }
 
 .nedeka-hero::after,
-.maika-hero::after,
 .col-hero::after {
   content: "" !important;
   position: absolute !important;
@@ -86,7 +74,6 @@ body {
 }
 
 .nedeka-hero-inner,
-.maika-hero-inner,
 .col-hero-content {
   position: relative !important;
   z-index: 1 !important;
@@ -96,7 +83,6 @@ body {
 }
 
 .nedeka-page-hero .nedeka-hero-inner,
-.maika-hero .nedeka-hero-inner,
 .col-hero-content {
   width: min(920px, 100%) !important;
   margin: 0 auto !important;
@@ -104,19 +90,16 @@ body {
 }
 
 .nedeka-page-hero p,
-.maika-hero p,
 .col-hero p {
   margin-left: auto !important;
   margin-right: auto !important;
 }
 
-.nedeka-page-hero .nedeka-actions,
-.maika-hero .nedeka-actions {
+.nedeka-page-hero .nedeka-actions{
   justify-content: center !important;
 }
 
 .nedeka-eyebrow,
-.maika-eyebrow,
 .col-hero-eyebrow,
 .section-tag,
 .product-kicker,
@@ -128,7 +111,6 @@ body {
 }
 
 .nedeka-hero h1,
-.maika-hero h1,
 .col-hero h1 {
   margin: .65rem 0 1rem !important;
   font-family: "Cinzel", serif !important;
@@ -139,7 +121,6 @@ body {
 }
 
 .nedeka-hero p,
-.maika-hero p,
 .col-hero p {
   max-width: 760px !important;
   margin: 0 auto 1.6rem !important;
@@ -149,13 +130,11 @@ body {
 }
 
 .nedeka-intro,
-.maika-intro,
 .promise-strip {
   padding: 4rem 1.25rem !important;
 }
 
 .nedeka-intro-grid,
-.maika-intro-grid,
 .promise-grid {
   width: min(1040px, 100%) !important;
   margin: 0 auto !important;
@@ -165,7 +144,6 @@ body {
 }
 
 .nedeka-feature,
-.maika-feature,
 .promise-card {
   min-height: 150px !important;
   padding: 1.45rem !important;
@@ -176,7 +154,6 @@ body {
 }
 
 .nedeka-feature strong,
-.maika-feature strong,
 .promise-card h3 {
   display: block !important;
   margin: .55rem 0 .45rem !important;
@@ -186,7 +163,6 @@ body {
 }
 
 .nedeka-feature p,
-.maika-feature p,
 .promise-card p {
   margin: 0 !important;
   line-height: 1.55 !important;
@@ -194,13 +170,11 @@ body {
 }
 
 .nedeka-products,
-.maika-products,
 .products-section {
   padding: 4.2rem 1.25rem !important;
 }
 
 .nedeka-products-grid,
-.maika-products-grid,
 .products-grid {
   width: min(1240px, 100%) !important;
   margin: 0 auto !important;
@@ -338,13 +312,11 @@ body {
 
 @media (max-width: 760px) {
   .nedeka-intro-grid,
-  .maika-intro-grid,
   .promise-grid {
     grid-template-columns: 1fr !important;
   }
 
   .nedeka-hero,
-  .maika-hero,
   .col-hero {
     min-height: 56vh !important;
     padding-top: 4.25rem !important;
@@ -356,16 +328,3 @@ body {
   }
 
   .nedeka-page-hero::before,
-  .maika-hero::before {
-    background-position: center top !important;
-    background-size: cover !important;
-  }
-
-  .nedeka-page-hero .nedeka-hero-inner,
-  .maika-hero .nedeka-hero-inner,
-  .col-hero-content {
-    width: min(920px, 100%) !important;
-    text-align: center !important;
-    margin: 0 auto !important;
-  }
-}

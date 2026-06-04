@@ -11,9 +11,6 @@ const LADY_AURA_CART_SESSION_KEY = 'ladyaura_cart_session_id';
 const LADY_AURA_CART_LAST_ACTIVE_KEY = 'ladyaura_cart_last_active_at';
 const LADY_AURA_CART_PAID_KEY = 'ladyaura_cart_paid_at';
 const CART_IMAGE_FALLBACKS = {
-  'tarde-de-lectura.webp': 'assets/tarde-de-lectura.webp',
-  'chica-del-pozo.webp': 'assets/chica-del-pozo.webp',
-  'jardinera-de-suenos.webp': 'assets/jardinera-de-suenos.webp',
   'bambarella71-sueno-de-colores.webp': 'assets/bambarella71-sueno-de-colores.png'
 };
 
@@ -160,7 +157,6 @@ function cartNormalizeImage(src, item) {
     }
   }
   if (!src) {
-    if (raw.includes('maika')) return 'assets/artista-de-suenos.webp';
     if (raw.includes('nedeka')) return 'assets/scarlett-wolf.webp';
     if (raw.includes('bambarelle') || raw.includes('bambarella') || raw.includes('circulo')) return 'assets/bambarella71-aura-dorada.webp';
     return 'assets/Logo-transparent.webp';
@@ -227,11 +223,6 @@ function cartAdd(item) {
   if (!item.coleccion && !item.collection && raw.includes('nedeka')) {
     item.coleccion = 'nedeka';
     item.collection = 'nedeka';
-  }
-  const maikaImgList = ['artista-de-suenos','hada-de-los-cristales-rojos','muneca-de-flores','nina-del-mar-de-estrellas','galaxia-en-sus-ojos','artista-entre-luces','noche-de-cocoa','the-beautiful-and-the-broken','tata','ten-thousand-whys','resilience','from-zero','cupid','break-me-more','hello-how-are-you','superheroes','tarde-de-lectura','chica-del-pozo','jardinera-de-suenos'];
-  if (!item.coleccion && !item.collection && (raw.includes('maika') || pagePath.includes('maika') || maikaImgList.some(function(n){ return raw.includes(n); }))) {
-    item.coleccion = 'maika';
-    item.collection = 'maika';
   }
   item.img = cartNormalizeImage(item.img, item);
   item.id = cartBuildId(item);
@@ -411,7 +402,7 @@ function cartInjectButtons() {
       const info = card.querySelector('.card-info');
       if (!info) return;
       const currentPrice = cartProductPrice(card);
-      const collection = card.dataset.coleccion || card.dataset.collection || (location.pathname.toLowerCase().includes('nedeka') ?'nedeka' : location.pathname.toLowerCase().includes('maika') ?'maika' : location.pathname.toLowerCase().includes('circulo-aura') ?'bambarelle71' : card.dataset.coleccion || card.dataset.collection || '');
+      const collection = card.dataset.coleccion || card.dataset.collection || (location.pathname.toLowerCase().includes('nedeka') ?'nedeka' : location.pathname.toLowerCase().includes('circulo-aura') ?'bambarelle71' : card.dataset.coleccion || card.dataset.collection || '');
       const options = document.createElement('div');
       options.className = 'cart-size-options';
 
@@ -473,8 +464,8 @@ function cartInjectButtons() {
         img: cartProductImageForSize(card, size),
         precio: cartProductPriceForSize(card, size),
         orient: card.dataset.orient || 'v',
-        coleccion: card.dataset.coleccion || card.dataset.collection || (location.pathname.toLowerCase().includes('nedeka') ?'nedeka' : location.pathname.toLowerCase().includes('maika') ?'maika' : location.pathname.toLowerCase().includes('circulo-aura') ?'bambarelle71' : card.dataset.coleccion || card.dataset.collection || ''),
-        collection: card.dataset.collection || card.dataset.coleccion || (location.pathname.toLowerCase().includes('nedeka') ?'nedeka' : location.pathname.toLowerCase().includes('maika') ?'maika' : location.pathname.toLowerCase().includes('circulo-aura') ?'bambarelle71' : card.dataset.coleccion || card.dataset.collection || '')
+        coleccion: card.dataset.coleccion || card.dataset.collection || (location.pathname.toLowerCase().includes('nedeka') ?'nedeka' : location.pathname.toLowerCase().includes('circulo-aura') ?'bambarelle71' : card.dataset.coleccion || card.dataset.collection || ''),
+        collection: card.dataset.collection || card.dataset.coleccion || (location.pathname.toLowerCase().includes('nedeka') ?'nedeka' : location.pathname.toLowerCase().includes('circulo-aura') ?'bambarelle71' : card.dataset.coleccion || card.dataset.collection || '')
       });
       this.classList.add('added');
       this.innerHTML = '✓ En el carrito';
@@ -1168,24 +1159,6 @@ if(document.readyState !== "loading") {
   function normalizeCoupon(code) {
     return String(code || '').trim().toUpperCase();
   }
-
-  function isMaikaItem(item) {
-    var raw = [
-      item?.coleccion, item?.collection, item?.categoria, item?.category,
-      item?.img, item?.nombre, item?.id
-    ].filter(Boolean).join(' ').toLowerCase();
-    if (raw.includes('maika')) return true;
-    // Detección por nombre de imagen (cuadros MAIKA sin coleccion guardada)
-    var maikaImgs = [
-      'artista-de-suenos','hada-de-los-cristales-rojos','muneca-de-flores',
-      'nina-del-mar-de-estrellas','galaxia-en-sus-ojos','artista-entre-luces',
-      'noche-de-cocoa','the-beautiful-and-the-broken','tata','ten-thousand-whys',
-      'resilience','from-zero','cupid','break-me-more','hello-how-are-you','superheroes',
-      'tarde-de-lectura','chica-del-pozo','jardinera-de-suenos'
-    ];
-    return maikaImgs.some(function(name) { return raw.includes(name); });
-  }
-
   function isBambarelleItem(item) {
     var raw = [
       item?.coleccion, item?.collection, item?.categoria, item?.category,
@@ -1266,17 +1239,6 @@ if(document.readyState !== "loading") {
       nedekaItems.forEach(item => { totalDiscount += Math.max(0, (Number(item.precio) || NORMAL_FORMAT_PRICE) - 60); });
       return totalDiscount > 0 ?totalDiscount : 0;
     }
-    if (code === 'MAIKA10') {
-      const maikaSubtotal = items.filter(isMaikaItem).reduce((sum, item) => sum + (Number(item.precio) || NORMAL_FORMAT_PRICE), 0);
-      return maikaSubtotal > 0 ?Math.min(10, maikaSubtotal) : 0;
-    }
-    if (code === 'MAIKA60') {
-      // Descuento secreto diseñadora: cada cuadro MAIKA queda a 60€
-      const maikaItems = items.filter(isMaikaItem);
-      let totalDiscount = 0;
-      maikaItems.forEach(item => { totalDiscount += Math.max(0, (Number(item.precio) || NORMAL_FORMAT_PRICE) - 60); });
-      return totalDiscount > 0 ?totalDiscount : 0;
-    }
     if (code === 'ALI10') {
       const bambaSubtotal = items.filter(isBambarelleItem).reduce((sum, item) => sum + (Number(item.precio) || NORMAL_FORMAT_PRICE), 0);
       return bambaSubtotal > 0 ?Math.min(10, bambaSubtotal) : 0;
@@ -1321,17 +1283,13 @@ if(document.readyState !== "loading") {
       return false;
     }
 
-    if (!['LADYAURA5','NEDEKA10','NEDEKA60','MAIKA10','MAIKA60','ALI10','FON10','EVI10'].includes(clean)) {
+    if (!['LADYAURA5','NEDEKA10','NEDEKA60','ALI10','FON10','EVI10'].includes(clean)) {
       couponMessage('Cupón no válido.', false);
       return false;
     }
 
     if ((clean === 'NEDEKA10' || clean === 'NEDEKA60') && !items.some(isNedekaItem)) {
       couponMessage('Este cu\u00f3n solo funciona con cuadros de la Colecci\u00f3n NEDEKA.', false);
-      return false;
-    }
-    if ((clean === 'MAIKA10' || clean === 'MAIKA60') && !items.some(isMaikaItem)) {
-      couponMessage('Cupón no válido.', false);
       return false;
     }
     if (clean === 'ALI10' && !items.some(isBambarelleItem)) {
