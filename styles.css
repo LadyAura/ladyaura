@@ -123,8 +123,6 @@ main, footer, .site-header, .shipping-banner { position: relative; z-index: 1; }
 }
 .nav-icon-home { --nav-dot-a: #fff1a8; --nav-dot-b: #e8c97a; }
 .nav-icon-zodiac { --nav-dot-a: #86e7ff; --nav-dot-b: #a03fff; }
-.nav-icon-aura { --nav-dot-a: #f4d9ff; --nav-dot-b: #ff7bd5; }
-.nav-icon-nedeka { --nav-dot-a: #ffd98a; --nav-dot-b: #2dd4bf; }
 .nav-icon-custom { --nav-dot-a: #c7f9ff; --nav-dot-b: #f59e0b; }
 .nav-icon-orders { --nav-dot-a: #d8b4fe; --nav-dot-b: #60a5fa; }
 .nav-icon-cart { --nav-dot-a: #a7f3d0; --nav-dot-b: #22c55e; }

@@ -10,9 +10,7 @@ const SMALL_FORMAT_PRICE = 66;
 const LADY_AURA_CART_SESSION_KEY = 'ladyaura_cart_session_id';
 const LADY_AURA_CART_LAST_ACTIVE_KEY = 'ladyaura_cart_last_active_at';
 const LADY_AURA_CART_PAID_KEY = 'ladyaura_cart_paid_at';
-const CART_IMAGE_FALLBACKS = {
-  'bambarella71-sueno-de-colores.webp': 'assets/bambarella71-sueno-de-colores.png'
-};
+const CART_IMAGE_FALLBACKS = {};
 
 function cartGetTrackingEndpoint() {
   return window.LADY_AURA_CART_API_URL || localStorage.getItem('LADY_AURA_CART_API_URL') || '';
@@ -147,18 +145,14 @@ function cartNormalizeImage(src, item) {
   const raw = [
     src, item?.nombre, item?.id, item?.coleccion, item?.collection
   ].filter(Boolean).join(' ').toLowerCase();
-
-  if (raw.includes('sueno-de-colores') || raw.includes('sueño de colores')) {
-    return 'assets/bambarella71-sueno-de-colores.png';
-  }
   for (const brokenName in CART_IMAGE_FALLBACKS) {
     if (raw.includes(brokenName.replace('.webp', '')) || raw.includes(brokenName)) {
       return CART_IMAGE_FALLBACKS[brokenName];
     }
   }
   if (!src) {
-    if (raw.includes('nedeka')) return 'assets/scarlett-wolf.webp';
-    if (raw.includes('bambarelle') || raw.includes('bambarella') || raw.includes('circulo')) return 'assets/bambarella71-aura-dorada.webp';
+   
+   
     return 'assets/Logo-transparent.webp';
   }
   if (/^(https?:|data:|blob:|file:)/i.test(src)) return src;
@@ -219,11 +213,6 @@ function cartAdd(item) {
   const raw = [
     item.coleccion, item.collection, item.nombre, item.id, item.img, pagePath
   ].join(' ').toLowerCase();
-
-  if (!item.coleccion && !item.collection && raw.includes('nedeka')) {
-    item.coleccion = 'nedeka';
-    item.collection = 'nedeka';
-  }
   item.img = cartNormalizeImage(item.img, item);
   item.id = cartBuildId(item);
 
@@ -402,7 +391,7 @@ function cartInjectButtons() {
       const info = card.querySelector('.card-info');
       if (!info) return;
       const currentPrice = cartProductPrice(card);
-      const collection = card.dataset.coleccion || card.dataset.collection || (location.pathname.toLowerCase().includes('nedeka') ?'nedeka' : location.pathname.toLowerCase().includes('circulo-aura') ?'bambarelle71' : card.dataset.coleccion || card.dataset.collection || '');
+      const collection = card.dataset.coleccion || card.dataset.collection || (card.dataset.coleccion || card.dataset.collection || '');
       const options = document.createElement('div');
       options.className = 'cart-size-options';
 
@@ -464,8 +453,8 @@ function cartInjectButtons() {
         img: cartProductImageForSize(card, size),
         precio: cartProductPriceForSize(card, size),
         orient: card.dataset.orient || 'v',
-        coleccion: card.dataset.coleccion || card.dataset.collection || (location.pathname.toLowerCase().includes('nedeka') ?'nedeka' : location.pathname.toLowerCase().includes('circulo-aura') ?'bambarelle71' : card.dataset.coleccion || card.dataset.collection || ''),
-        collection: card.dataset.collection || card.dataset.coleccion || (location.pathname.toLowerCase().includes('nedeka') ?'nedeka' : location.pathname.toLowerCase().includes('circulo-aura') ?'bambarelle71' : card.dataset.coleccion || card.dataset.collection || '')
+        coleccion: card.dataset.coleccion || card.dataset.collection || (card.dataset.coleccion || card.dataset.collection || ''),
+        collection: card.dataset.collection || card.dataset.coleccion || (card.dataset.coleccion || card.dataset.collection || '')
       });
       this.classList.add('added');
       this.innerHTML = '✓ En el carrito';
@@ -1056,7 +1045,7 @@ function fullscreenClose() {
   const closeBtn = document.getElementById('fs-close');
   if (overlay) overlay.classList.remove('open');
   if (closeBtn) closeBtn.classList.remove('visible');
-  const stillInProductPanel = document.querySelector('.lb.open, .t-lb.open, .lightbox.open, .modal-overlay.open, #nedeka-lightbox.open');
+  const stillInProductPanel = document.querySelector('.lb.open, .t-lb.open, .lightbox.open, .modal-overlay.open');
   document.body.style.overflow = stillInProductPanel ?'hidden' : '';
 }
 window.fullscreenClose = fullscreenClose;
@@ -1120,13 +1109,12 @@ function fullscreenBindProductFallback() {
       '.lightbox.open',
       '.lightbox.active',
       '.modal-overlay.open',
-      '#nedeka-lightbox.open',
       '#fs-overlay.open'
     ].join(','));
   }
 
   document.addEventListener('click', function(e) {
-    if (e.target.closest('#fs-overlay, #fs-close, .lb, .t-lb, .lightbox, .modal-overlay, #nedeka-lightbox')) return;
+    if (e.target.closest('#fs-overlay, #fs-close, .lb, .t-lb, .lightbox, .modal-overlay')) return;
     const trigger = e.target.closest(triggerSelector);
     if (!trigger) return;
     const card = trigger.closest(cardSelector);
@@ -1159,46 +1147,7 @@ if(document.readyState !== "loading") {
   function normalizeCoupon(code) {
     return String(code || '').trim().toUpperCase();
   }
-  function isBambarelleItem(item) {
-    var raw = [
-      item?.coleccion, item?.collection, item?.categoria, item?.category,
-      item?.img, item?.nombre, item?.id
-    ].filter(Boolean).join(' ').toLowerCase();
-    return raw.includes('bambarelle') || raw.includes('bambarella') || raw.includes('circulo-aura') || raw.includes('circulo aura') ||
-      ['aura dorada','gatita arcoiris','dama dorada celestial','guardianas del bosque azul'].some(function(n){ return raw.includes(n); });
-  }
-
-  function isFonsinItem(item) {
-    var raw = [
-      item?.coleccion, item?.collection, item?.categoria, item?.category,
-      item?.img, item?.nombre, item?.id
-    ].filter(Boolean).join(' ').toLowerCase();
-    return raw.includes('fonsin11') || raw.includes('fonsin11_diamond') || [
-      'guardian del umbral magico',
-      'panda zen',
-      'buho vitral real',
-      'alma hippie arcoiris',
-      'tortuguita arcoiris'
-    ].some(function(n){ return raw.includes(n); });
-  }
-
-  function isEvitaItem(item) {
-    var raw = [
-      item?.coleccion, item?.collection, item?.categoria, item?.category,
-      item?.img, item?.nombre, item?.id
-    ].filter(Boolean).join(' ').toLowerCase();
-    return raw.includes('evita') || raw.includes('evitaanimations') || raw.includes('evita animations');
-  }
-
-  function isNedekaItem(item) {
-    const raw = [
-      item?.coleccion, item?.collection, item?.categoria, item?.category,
-      item?.nombre, item?.id, item?.img
-    ].join(' ').toLowerCase();
-    return raw.includes('nedeka');
-  }
-
-  function getItemsSafe() {
+function getItemsSafe() {
     try {
       if (typeof cartGet === 'function') return cartGet();
       return JSON.parse(localStorage.getItem('ladyaura_cart')) || [];
@@ -1225,32 +1174,7 @@ if(document.readyState !== "loading") {
   function calculateCouponDiscount(items, couponCode) {
     const code = normalizeCoupon(couponCode);
     const subtotal = items.reduce((sum, item) => sum + (Number(item.precio) || NORMAL_FORMAT_PRICE), 0);
-    const nedekaSubtotal = items.filter(isNedekaItem).reduce((sum, item) => sum + (Number(item.precio) || NORMAL_FORMAT_PRICE), 0);
-
-    if (code === 'LADYAURA5') {
-      return subtotal > 0 ?5 : 0;
-    }
-    if (code === 'NEDEKA10') {
-      return nedekaSubtotal > 0 ?Math.min(10, nedekaSubtotal) : 0;
-    }
-    if (code === 'NEDEKA60') {
-      const nedekaItems = items.filter(isNedekaItem);
-      let totalDiscount = 0;
-      nedekaItems.forEach(item => { totalDiscount += Math.max(0, (Number(item.precio) || NORMAL_FORMAT_PRICE) - 60); });
-      return totalDiscount > 0 ?totalDiscount : 0;
-    }
-    if (code === 'ALI10') {
-      const bambaSubtotal = items.filter(isBambarelleItem).reduce((sum, item) => sum + (Number(item.precio) || NORMAL_FORMAT_PRICE), 0);
-      return bambaSubtotal > 0 ?Math.min(10, bambaSubtotal) : 0;
-    }
-    if (code === 'FON10') {
-      const fonsinSubtotal = items.filter(isFonsinItem).reduce((sum, item) => sum + (Number(item.precio) || NORMAL_FORMAT_PRICE), 0);
-      return fonsinSubtotal > 0 ?Math.min(10, fonsinSubtotal) : 0;
-    }
-    if (code === 'EVI10') {
-      const evitaSubtotal = items.filter(isEvitaItem).reduce((sum, item) => sum + (Number(item.precio) || NORMAL_FORMAT_PRICE), 0);
-      return evitaSubtotal > 0 ?Math.min(10, evitaSubtotal) : 0;
-    }
+    if (code === 'LADYAURA5') return subtotal > 0 ? 5 : 0;
     return 0;
   }
 
@@ -1283,25 +1207,8 @@ if(document.readyState !== "loading") {
       return false;
     }
 
-    if (!['LADYAURA5','NEDEKA10','NEDEKA60','ALI10','FON10','EVI10'].includes(clean)) {
+    if (!['LADYAURA5'].includes(clean)) {
       couponMessage('Cupón no válido.', false);
-      return false;
-    }
-
-    if ((clean === 'NEDEKA10' || clean === 'NEDEKA60') && !items.some(isNedekaItem)) {
-      couponMessage('Este cu\u00f3n solo funciona con cuadros de la Colecci\u00f3n NEDEKA.', false);
-      return false;
-    }
-    if (clean === 'ALI10' && !items.some(isBambarelleItem)) {
-      couponMessage('Este cuón solo funciona con obras del Círculo Aura (Bambarelle71).', false);
-      return false;
-    }
-    if (clean === 'FON10' && !items.some(isFonsinItem)) {
-      couponMessage('Este coupon solo funciona con cuadros de Fonsin11_diamond.', false);
-      return false;
-    }
-    if (clean === 'EVI10' && !items.some(isEvitaItem)) {
-      couponMessage('Este coupon solo funciona con cuadros de evitaanimations.', false);
       return false;
     }
 
