@@ -1,5 +1,5 @@
 /* ============================================================
-   LADY AURA ART · i18n.js  — Traducción ES / EN completa
+   LADY AURA ART · i18n.js  � Traducción ES / EN completa
    ============================================================ */
 const LA_T = {
   es: {
@@ -7,20 +7,20 @@ const LA_T = {
     nav_inicio:'Inicio', nav_zodiaco:'♈ Zodíaco', nav_parejas:'💑 Parejas',
     nav_paisajes:'🏔️ Paisajes', nav_personalizados:'🎨 Personalizados', nav_colorear:'🎨 Colorear',
 
-    /* COMÚN — hero strip */
+    /* COMÚN � hero strip */
     strip_sinpago:'Sin pago previo', strip_formato:'60x90 cm, 50x70 cm y 40x60 cm',
     strip_formato_sub:'Formatos premium', strip_kit:'Kit completo',
     strip_kit_sub:'Diamantes + lienzo + herramientas', strip_reserva:'Pre-reserva gratis',
     strip_reserva_sub:'Sin compromiso',
 
-    /* COMÚN — cards */
+    /* COMÚN � cards */
     card_vertical:'↕ Vertical', card_horizontal:'↔ Horizontal',
     card_prereserva:'✦ Pre-reserva sin compromiso',
     card_agotado:'Agotada', card_agotado2:'Agotado',
     card_agotado_sub:'Esta pieza ya encontró su hogar',
     card_lista_espera:'Lista de espera',
 
-    /* COMÚN — lightbox */
+    /* COMÚN � lightbox */
     lb_eyebrow:'✦ Diamond Painting Premium · Lady Aura Art ✦',
     lb_formato:'Formatos 60x90 cm, 50x70 cm y 40x60 cm', lb_diamantes:'💎 Diamantes cuadrados de alta densidad',
     lb_lienzo:'🎨 Lienzo de alta calidad premium', lb_herram:'🛠️ Herramientas incluidas',
@@ -28,7 +28,7 @@ const LA_T = {
     lb_envio:'✈️ Envío incluido', lb_add_cart:'🛒 Añadir al carrito',
     lb_added:'✓ Añadido', lb_dudas:'💬 ¿Dudas? Escríbeme',
 
-    /* COMÚN — CTA final */
+    /* COMÚN � CTA final */
     cta_dudas:'¿Te quedaste con dudas?',
     cta_dudas_sub:'Escríbeme directamente. Te cuento todo sobre los cuadros y la pre-reserva sin ningún compromiso.',
     cta_wa:'💬 Hablar con Lady Aura', cta_back:'← Volver al inicio',
@@ -36,13 +36,13 @@ const LA_T = {
     /* ZODIACO */
     zod_eyebrow:'✦ Colección Zodíaco · Diamond Painting Premium ✦',
     zod_title:'Tu Signo Convertido<br>en Arte con Diamantes',
-    zod_desc:'24 diseños exclusivos — 12 Diosas y 12 Retratos Celestiales. Cada signo, en su versión más mágica y brillante. Formato premium 60×90 cm.',
+    zod_desc:'24 diseños exclusivos � 12 Diosas y 12 Retratos Celestiales. Cada signo, en su versión más mágica y brillante. Formato premium 60×90 cm.',
     zod_badge1:'✦ 24 diseños disponibles', zod_badge2:'💎 60×90 cm premium',
-    zod_badge3:'✦ Pre-reserva gratis', zod_badge4:'🚀 Nunca se agotan',
+    zod_badge3:'✦ Pre-reserva gratis', zod_badge4:'� Nunca se agotan',
     zod_strip_nunca:'Nunca se agotan', zod_strip_nunca_sub:'Tu signo siempre disponible',
     zod_sub:'Los 12 Signos del Zodíaco',
     zod_desc2:'Cada signo en su versión femenina y masculina. Pincha en el diseño que quieras para ver más detalles y reservar.',
-    zod_tab_fem:'♀ Femenino', zod_tab_masc:'♂ Masculino',
+    zod_tab_fem:'� Femenino', zod_tab_masc:'♂ Masculino',
     zod_nosigno:'¿No encuentras tu signo?<br>Escríbeme directamente',
     zod_nosigno_sub:'Todos los signos están siempre disponibles. Si tienes alguna duda o quieres saber más antes de reservar, estoy aquí.',
     zod_wa:'💬 Hablar con Lady Aura', zod_back:'← Volver al inicio',
@@ -74,10 +74,10 @@ const LA_T = {
     /* PERSONALIZADOS */
     per_eyebrow:'✦ Diseño Exclusivo · Solo para ti · Lady Aura Art ✦',
     per_title:'Tu Retrato<br>Convertido en Magia',
-    per_desc:'Mándame tu foto y la convierto en un cuadro diamond painting de fantasía único. Tu cara, tu signo, tu historia — en diamantes.',
+    per_desc:'Mándame tu foto y la convierto en un cuadro diamond painting de fantasía único. Tu cara, tu signo, tu historia � en diamantes.',
     per_btn_pedir:'💬 Pedir mi personalizado',
     per_btn_ver:'Ver ejemplos ↓',
-    per_paso1_t:'Mandas tu foto', per_paso1_s:'Por WhatsApp o email',
+    per_paso1_t:'Mandas tu foto', per_paso1_s:'Por email',
     per_paso2_t:'Yo creo el diseño', per_paso2_s:'Estilo fantasía exclusivo',
     per_paso3_t:'Tú apruebas', per_paso3_s:'Ves el diseño antes de confirmar',
     per_strip1:'60 × 90 cm premium', per_strip2:'Kit completo con diamantes',
@@ -94,13 +94,13 @@ const LA_T = {
     cart_telefono:'Teléfono', cart_direccion:'Dirección de envío *',
     cart_ciudad:'Ciudad *', cart_cp:'Código postal *', cart_pais:'País *',
     cart_notas:'Notas adicionales',
-    cart_nota:'¿Cómo funciona? Al enviar este formulario me llegará tu pedido por email. Te contactaré en menos de 24h con los detalles del pago. Tu cuadro se produce bajo pedido en 2–3 semanas. 💜',
+    cart_nota:'¿Cómo funciona? Al enviar este formulario me llegará tu pedido por email. Te contactaré en menos de 24h con los detalles del pago. Tu cuadro se produce bajo pedido en 2�3 semanas. 💜',
     cart_btn_confirm:'✨ Confirmar pedido',
     cart_confirm_title:'¡Pedido recibido!',
     cart_confirm_sub1:'Gracias por tu confianza. Te he enviado una copia a tu email.',
     cart_confirm_sub2:'Me pondré en contacto contigo en menos de 24h para coordinar el pago y confirmar los detalles de tu pedido.',
     cart_confirm_sub3:'✦ Cada cuadro se produce con amor, especialmente para ti ✦',
-    cart_wa_btn:'💬 Hablar por WhatsApp',
+    cart_wa_btn:'💬 Hablar por email',
     cart_sum_items:'Diseños seleccionados', cart_sum_format:'Formato',
     cart_sum_format_val:'60x90 cm, 50x70 cm y 40x60 cm · Diamond painting premium',
     cart_sum_envio:'Envío', cart_sum_envio_val:'✓ Incluido', cart_sum_total:'Total',
@@ -120,20 +120,20 @@ const LA_T = {
     nav_paisajes:'🏔️ Landscapes',
     nav_personalizados:'🎨 Custom art', nav_colorear:'🎨 Coloring',
 
-    /* COMÚN — hero strip */
+    /* COMÚN � hero strip */
     strip_sinpago:'No upfront payment', strip_formato:'60x90 cm, 50x70 cm and 40x60 cm',
     strip_formato_sub:'Premium formats', strip_kit:'Full kit',
     strip_kit_sub:'Diamonds + canvas + tools', strip_reserva:'Free pre-order',
     strip_reserva_sub:'No commitment',
 
-    /* COMÚN — cards */
+    /* COMÚN � cards */
     card_vertical:'↕ Vertical', card_horizontal:'↔ Horizontal',
     card_prereserva:'✦ Pre-order, no commitment',
     card_agotado:'Sold out', card_agotado2:'Sold out',
     card_agotado_sub:'This piece has found its home',
     card_lista_espera:'Join waitlist',
 
-    /* COMÚN — lightbox */
+    /* COMÚN � lightbox */
     lb_eyebrow:'✦ Premium Diamond Painting · Lady Aura Art ✦',
     lb_formato:'60x90 cm, 50x70 cm and 40x60 cm formats', lb_diamantes:'💎 High-density square diamonds',
     lb_lienzo:'🎨 Premium quality canvas', lb_herram:'🛠️ Tools included',
@@ -141,7 +141,7 @@ const LA_T = {
     lb_envio:'✈️ Free shipping', lb_add_cart:'🛒 Add to cart',
     lb_added:'✓ Added', lb_dudas:'💬 Questions? Message me',
 
-    /* COMÚN — CTA final */
+    /* COMÚN � CTA final */
     cta_dudas:'Still have questions?',
     cta_dudas_sub:'Message me directly. I\'ll tell you everything about the paintings and the no-commitment pre-order.',
     cta_wa:'💬 Chat with Lady Aura', cta_back:'← Back to home',
@@ -149,13 +149,13 @@ const LA_T = {
     /* ZODIACO */
     zod_eyebrow:'✦ Horoscope Collection · Premium Diamond Painting ✦',
     zod_title:'Your Sign Turned Into<br>Diamond Art',
-    zod_desc:'24 exclusive designs — 12 Goddesses and 12 Celestial Portraits. Each sign in its most magical and brilliant version. Premium 60×90 cm format.',
+    zod_desc:'24 exclusive designs � 12 Goddesses and 12 Celestial Portraits. Each sign in its most magical and brilliant version. Premium 60×90 cm format.',
     zod_badge1:'✦ 24 designs available', zod_badge2:'💎 60×90 cm premium',
-    zod_badge3:'✦ Free pre-order', zod_badge4:'🚀 Never sold out',
+    zod_badge3:'✦ Free pre-order', zod_badge4:'� Never sold out',
     zod_strip_nunca:'Never sold out', zod_strip_nunca_sub:'Your sign always available',
     zod_sub:'All 12 Horoscope Signs',
     zod_desc2:'Each sign in its feminine and masculine version. Click on the design you want to see more details and pre-order.',
-    zod_tab_fem:'♀ Feminine', zod_tab_masc:'♂ Masculine',
+    zod_tab_fem:'� Feminine', zod_tab_masc:'♂ Masculine',
     zod_nosigno:'Can\'t find your sign?<br>Message me directly',
     zod_nosigno_sub:'All signs are always available. If you have any questions or want to know more before pre-ordering, I\'m here.',
     zod_wa:'💬 Chat with Lady Aura', zod_back:'← Back to home',
@@ -187,10 +187,10 @@ const LA_T = {
     /* PERSONALIZADOS */
     per_eyebrow:'✦ Exclusive Design · Just for you · Lady Aura Art ✦',
     per_title:'Your Portrait<br>Turned Into Magic',
-    per_desc:'Send me your photo and I\'ll turn it into a unique fantasy diamond painting. Your face, your sign, your story — in diamonds.',
+    per_desc:'Send me your photo and I\'ll turn it into a unique fantasy diamond painting. Your face, your sign, your story � in diamonds.',
     per_btn_pedir:'💬 Order my custom piece',
     per_btn_ver:'See examples ↓',
-    per_paso1_t:'Send your photo', per_paso1_s:'Via WhatsApp or email',
+    per_paso1_t:'Send your photo', per_paso1_s:'Via Email or email',
     per_paso2_t:'I create the design', per_paso2_s:'Exclusive fantasy style',
     per_paso3_t:'You approve', per_paso3_s:'See the design before confirming',
     per_strip1:'60 × 90 cm premium', per_strip2:'Full kit with diamonds',
@@ -207,13 +207,13 @@ const LA_T = {
     cart_telefono:'Phone', cart_direccion:'Shipping address *',
     cart_ciudad:'City *', cart_cp:'Postal code *', cart_pais:'Country *',
     cart_notas:'Additional notes',
-    cart_nota:'How it works: when you submit this form I\'ll receive your order by email. I\'ll contact you within 24h with payment details. Your piece is made to order in 2–3 weeks. 💜',
+    cart_nota:'How it works: when you submit this form I\'ll receive your order by email. I\'ll contact you within 24h with payment details. Your piece is made to order in 2�3 weeks. 💜',
     cart_btn_confirm:'✨ Confirm order',
     cart_confirm_title:'Order received!',
     cart_confirm_sub1:'Thank you for your trust. I\'ve sent a copy to your email.',
     cart_confirm_sub2:'I\'ll contact you within 24h to arrange payment and confirm your order details.',
     cart_confirm_sub3:'✦ Each piece is made with love, especially for you ✦',
-    cart_wa_btn:'💬 Chat on WhatsApp',
+    cart_wa_btn:'💬 Chat on Email',
     cart_sum_items:'Selected designs', cart_sum_format:'Format',
     cart_sum_format_val:'60x90 cm, 50x70 cm and 40x60 cm · Premium diamond painting',
     cart_sum_envio:'Shipping', cart_sum_envio_val:'✓ Free', cart_sum_total:'Total',
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Refuerzo global: traduce textos comunes aunque la pagina no tenga todas las etiquetas data-i18n. */
 const LA_TEXT_EN = {
-  'Inicio':'Home','Hor\u00f3scopo':'Horoscope','Personalizados':'Custom art','Colorear':'Coloring','Ver colecciones':'View collections','Preg\u00fantame':'Ask me','Elige tu colecci\u00f3n':'Choose your collection','Cada colecci\u00f3n tiene su propia magia. \u00bfCu\u00e1l es la tuya?':'Each collection has its own magic. Which one is yours?','Colecci\u00f3n especial':'Special collection','Ver colecci\u00f3n':'View collection','Colecci\u00f3n permanente':'Permanent collection','24 dise\u00f1os - 12 Diosas y 12 Retratos Celestiales. Tu signo, en su versi\u00f3n m\u00e1s m\u00e1gica. Nunca se agotan.':'24 designs, goddesses and celestial portraits. Your sign in its most magical version. Never sold out.','Ver los 24 signos':'See all signs','Paisajes':'Landscapes','Mundos imposibles y naturaleza m\u00e1gica. Para decorar y so\u00f1ar.':'Impossible worlds and magical nature. Made to decorate and dream.','Ver paisajes':'View landscapes','Tu Retrato':'Your Portrait','Manda tu foto y la convierto en arte de diamantes. Tu signo, tu estilo, tu magia.':'Send your photo and I will turn it into diamond art. Your sign, your style, your magic.','Quiero el m\u00edo':'I want mine','Ver dise\u00f1os':'View designs','L\u00e1minas para Colorear':'Coloring Pages','L\u00e1minas fantasy para adultos en PDF A4. Una l\u00e1mina gratis sin registro.':'Fantasy coloring pages for adults in A4 PDF. One free page, no sign-up.','Ver l\u00e1minas':'View pages','Calidad premium':'Premium quality','Diamantes cuadrados de alta densidad - Lienzo premium antidesvanecimiento':'High-density square diamonds - Premium fade-resistant canvas','Arte original - No masivo - No en Amazon':'Original art - Not mass-produced - Not on Amazon','Formato 60x90 cm':'60x90 cm format','Grande, impactante, decorativo':'Large, striking, decorative','Pre-reserva gratis':'Free pre-order','Sin pago - Sin compromiso - T\u00fa decides':'No payment - No commitment - You decide','Regalo de bienvenida':'Welcome gift','5 euros menos en tu primer pedido':'5 euros off your first order','Cup\u00f3n de bienvenida':'Welcome coupon','C\u00f3digo':'Code','Ver signos':'See signs','Pre-reserva sin compromiso':'Pre-order with no commitment','Pre-reservar por WhatsApp':'Reserve by WhatsApp','Dudas? Escr\u00edbeme':'Questions? Message me','A\u00f1adir al carrito':'Add to cart','A\u00f1adido':'Added','Lista de espera':'Waitlist','Vertical':'Vertical','Horizontal':'Horizontal','Env\u00edo incluido':'Shipping included','Kit completo':'Full kit','Sin pago previo':'No upfront payment','Nunca se agotan':'Never sold out','Tu signo siempre disponible':'Your sign is always available','Volver al inicio':'Back to home','Hablar con Lady Aura':'Chat with Lady Aura','Mis pedidos':'My orders','Mi carrito':'My cart','Tu carrito est\u00e1 vac\u00edo':'Your cart is empty','Confirma tu pedido':'Confirm your order','Nombre *':'First name *','Apellidos *':'Last name *','Tel\u00e9fono':'Phone','Direcci\u00f3n de env\u00edo *':'Shipping address *','Ciudad *':'City *','C\u00f3digo postal *':'Postal code *','Pa\u00eds *':'Country *','Notas adicionales':'Additional notes','Enviar':'Send','Confirmar pedido':'Confirm order','No se cobra nada ahora.':'Nothing is charged now.','Organiza tu momento Lady Aura':'Organize your Lady Aura moment','Organizar mi momento diamond':'Organize my diamond moment'
+  'Inicio':'Home','Hor\u00f3scopo':'Horoscope','Personalizados':'Custom art','Colorear':'Coloring','Ver colecciones':'View collections','Preg\u00fantame':'Ask me','Elige tu colecci\u00f3n':'Choose your collection','Cada colecci\u00f3n tiene su propia magia. \u00bfCu\u00e1l es la tuya?':'Each collection has its own magic. Which one is yours?','Colecci\u00f3n especial':'Special collection','Ver colecci\u00f3n':'View collection','Colecci\u00f3n permanente':'Permanent collection','24 dise\u00f1os - 12 Diosas y 12 Retratos Celestiales. Tu signo, en su versi\u00f3n m\u00e1s m\u00e1gica. Nunca se agotan.':'24 designs, goddesses and celestial portraits. Your sign in its most magical version. Never sold out.','Ver los 24 signos':'See all signs','Paisajes':'Landscapes','Mundos imposibles y naturaleza m\u00e1gica. Para decorar y so\u00f1ar.':'Impossible worlds and magical nature. Made to decorate and dream.','Ver paisajes':'View landscapes','Tu Retrato':'Your Portrait','Manda tu foto y la convierto en arte de diamantes. Tu signo, tu estilo, tu magia.':'Send your photo and I will turn it into diamond art. Your sign, your style, your magic.','Quiero el m\u00edo':'I want mine','Ver dise\u00f1os':'View designs','L\u00e1minas para Colorear':'Coloring Pages','L\u00e1minas fantasy para adultos en PDF A4. Una l\u00e1mina gratis sin registro.':'Fantasy coloring pages for adults in A4 PDF. One free page, no sign-up.','Ver l\u00e1minas':'View pages','Calidad premium':'Premium quality','Diamantes cuadrados de alta densidad - Lienzo premium antidesvanecimiento':'High-density square diamonds - Premium fade-resistant canvas','Arte original - No masivo - No en Amazon':'Original art - Not mass-produced - Not on Amazon','Formato 60x90 cm':'60x90 cm format','Grande, impactante, decorativo':'Large, striking, decorative','Pre-reserva gratis':'Free pre-order','Sin pago - Sin compromiso - T\u00fa decides':'No payment - No commitment - You decide','Regalo de bienvenida':'Welcome gift',' menos en tu primer pedido':' off your first order','Cup\u00f3n de bienvenida':'Welcome coupon','C\u00f3digo':'Code','Ver signos':'See signs','Pre-reserva sin compromiso':'Pre-order with no commitment','Pre-reservar por email':'Reserve by Email','Dudas? Escr\u00edbeme':'Questions? Message me','A\u00f1adir al carrito':'Add to cart','A\u00f1adido':'Added','Lista de espera':'Waitlist','Vertical':'Vertical','Horizontal':'Horizontal','Env\u00edo incluido':'Shipping included','Kit completo':'Full kit','Sin pago previo':'No upfront payment','Nunca se agotan':'Never sold out','Tu signo siempre disponible':'Your sign is always available','Volver al inicio':'Back to home','Hablar con Lady Aura':'Chat with Lady Aura','Mis pedidos':'My orders','Mi carrito':'My cart','Tu carrito est\u00e1 vac\u00edo':'Your cart is empty','Confirma tu pedido':'Confirm your order','Nombre *':'First name *','Apellidos *':'Last name *','Tel\u00e9fono':'Phone','Direcci\u00f3n de env\u00edo *':'Shipping address *','Ciudad *':'City *','C\u00f3digo postal *':'Postal code *','Pa\u00eds *':'Country *','Notas adicionales':'Additional notes','Enviar':'Send','Confirmar pedido':'Confirm order','No se cobra nada ahora.':'Nothing is charged now.','Organiza tu momento Lady Aura':'Organize your Lady Aura moment','Organizar mi momento diamond':'Organize my diamond moment'
 };
 function laTranslateLoose(lang){
   document.documentElement.setAttribute('lang', lang);

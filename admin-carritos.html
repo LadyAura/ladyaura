@@ -96,8 +96,8 @@
         const items = cart.items || cart.productos || [];
         const state = cart.status || cart.estado || 'cart';
         const client = [customer.nombre_completo, customer.nombre, customer.email].filter(Boolean).join('<br>');
-        const products = items.map(item => `${escapeHtml(item.nombre || item.producto)}<br><span class="muted">${escapeHtml(item.tamano || item.size)} · ${escapeHtml(item.precio)} €</span>`).join('<hr style="border-color:rgba(255,255,255,.12)">');
-        return `<tr><td>${escapeHtml(formatDate(cart.updated_at || cart.fecha_hora || cart.created_at))}<br><span class="muted">${escapeHtml(cart.session_id || '')}</span></td><td>${client || '<span class="muted">Sin datos todavía</span>'}</td><td>${products || '<span class="muted">Sin productos</span>'}</td><td>${escapeHtml(cart.total || 0)} €</td><td><span class="pill ${escapeHtml(state)}">${escapeHtml(state)}</span></td></tr>`;
+        const products = items.map(item => `${escapeHtml(item.nombre || item.producto)}<br><span class="muted">${escapeHtml(item.tamano || item.size)} ·</span>`).join('<hr style="border-color:rgba(255,255,255,.12)">');
+        return `<tr><td>${escapeHtml(formatDate(cart.updated_at || cart.fecha_hora || cart.created_at))}<br><span class="muted">${escapeHtml(cart.session_id || '')}</span></td><td>${client || '<span class="muted">Sin datos todavía</span>'}</td><td>${products || '<span class="muted">Sin productos</span>'}</td><td></td><td><span class="pill ${escapeHtml(state)}">${escapeHtml(state)}</span></td></tr>`;
       }).join('');
       document.getElementById('stat-total').textContent = rows.length;
       document.getElementById('stat-paid').textContent = rows.filter(c => (c.status || c.estado) === 'paid').length;

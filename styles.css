@@ -641,8 +641,8 @@ p { color: var(--muted); line-height: 1.6; margin: .4rem 0; }
 }
 .product-actions { margin-top: auto; padding-top: .38rem; display: flex; gap: .4rem; flex-wrap: wrap; }
 .mini-btn { padding: .55rem .85rem; font-size: .75rem; flex: 1; min-width: 110px; letter-spacing: .07em; }
-.whatsapp-btn { background: linear-gradient(135deg,#25d366,#128c7e) !important; border-color: rgba(37,211,102,.5) !important; }
-.whatsapp-btn:hover { box-shadow: 0 0 20px rgba(37,211,102,.5) !important; }
+.email-btn { background: linear-gradient(135deg,#25d366,#128c7e) !important; border-color: rgba(37,211,102,.5) !important; }
+.email-btn:hover { box-shadow: 0 0 20px rgba(37,211,102,.5) !important; }
 .email-btn { background: rgba(18,10,31,.7) !important; border-color: var(--border) !important; }
 
 /* ════════════════════════════════════
@@ -758,7 +758,7 @@ p { color: var(--muted); line-height: 1.6; margin: .4rem 0; }
 }
 .contact-card:hover { transform: translateY(-3px); box-shadow: 0 0 28px rgba(237,147,255,.35); }
 .icon { width: 54px; height: 54px; flex: 0 0 54px; display: grid; place-items: center; border-radius: 15px; background: linear-gradient(135deg,var(--purple-deep),var(--rose)); font-size: 1.7rem; color: white; font-family: "Cinzel", serif; font-weight: 700; }
-.contact-card.whatsapp  .icon { background: linear-gradient(135deg,#25d366,#128c7e); }
+.contact-card.email-contact  .icon { background: linear-gradient(135deg,#25d366,#128c7e); }
 .contact-card.instagram .icon { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
 .contact-card.facebook  .icon { background: linear-gradient(135deg,#1877f2,#0a5dc2); }
 .contact-card.youtube   .icon { background: linear-gradient(135deg,#ff0000,#cc0000); }

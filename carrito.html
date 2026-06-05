@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mi carrito – Lady Aura Art</title>
+<title>Mi carrito � Lady Aura Art</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,8 +13,8 @@
 :root { --bg: #05030e; --card: rgba(13,8,33,0.9); --border:rgba(160,63,255,0.18); --gold: #c9a84c; --gold2: #e8c96a; --purple:#a03fff; --pink: #ff4889; --muted: rgba(255,255,255,0.45); --text: rgba(255,255,255,0.88);
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; } body { background: var(--bg); color: var(--text); font-family: 'Raleway', sans-serif; min-height: 100vh; overflow-x: hidden;
-} /* ── ESTRELLAS ── */
-#stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; } /* ── HEADER ESTILO INDEX + MENÚ MÓVIL ── */
+} /* �� ESTRELLAS �� */
+#stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; } /* �� HEADER ESTILO INDEX + MENÚ MÓVIL �� */
 .site-header { position: sticky; top: 0; z-index: 9999; display: flex; align-items: center; gap: 1rem; padding: 0.6rem 5%; background: rgba(3,3,10,0.96); border-bottom: 1px solid rgba(160,63,255,0.18); backdrop-filter: blur(20px); min-height: 68px;
 }
 .brand img { width: auto; height: 52px; max-height: 52px; max-width: 200px; object-fit: contain; display: block; filter: drop-shadow(0 0 14px rgba(238,160,255,0.7));
@@ -29,9 +29,9 @@
 .site-header .nav a[aria-current="page"] { color: var(--gold2); border-color: var(--gold2); opacity: 1;
 }
 @media (max-width: 900px) { .menu-toggle { display: flex; } .site-header { position: sticky; } .site-header .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 0; background: rgba(3,3,10,0.98); border-bottom: 1px solid rgba(160,63,255,0.2); padding: 1rem 5%; margin: 0; } .site-header .nav.active { display: flex; } .site-header .nav a { width: 100%; padding: 0.75rem 0; border-bottom: 1px solid rgba(160,63,255,0.1); } .site-header .nav a:last-child { border-bottom: none; }
-} /* ── LAYOUT ── */
+} /* �� LAYOUT �� */
 main { position: relative; z-index: 5; max-width: 900px; margin: 0 auto; padding: 3rem 5% 6rem;
-} /* ── HERO TÍTULO ── */
+} /* �� HERO TÍTULO �� */
 .page-hero { text-align: center; margin-bottom: 3rem;
 }
 .page-hero .eyebrow { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.8rem;
@@ -39,7 +39,7 @@ main { position: relative; z-index: 5; max-width: 900px; margin: 0 auto; padding
 .page-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; background: linear-gradient(135deg, #fff 0%, var(--gold2) 50%, var(--purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem;
 }
 .page-hero p { color: var(--muted); font-size: 0.9rem; font-weight: 300;
-} /* ── ESTADO VACÍO ── */
+} /* �� ESTADO VACÍO �� */
 #cart-empty { text-align: center; padding: 4rem 1rem;
 }
 #cart-empty .empty-icon { font-size: 4rem; display: block; margin-bottom: 1.2rem; opacity: 0.5; }
@@ -48,7 +48,7 @@ main { position: relative; z-index: 5; max-width: 900px; margin: 0 auto; padding
 #cart-empty p { color: var(--muted); font-size: 0.88rem; margin-bottom: 2rem; }
 .btn-shop { display: inline-block; padding: 0.9rem 2.2rem; background: linear-gradient(135deg, rgba(160,63,255,0.9), rgba(255,72,137,0.85)); color: #fff; font-family: 'Cinzel', serif; font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; border-radius: 999px; text-decoration: none; box-shadow: 0 0 30px rgba(160,63,255,0.35); transition: all 0.25s;
 }
-.btn-shop:hover { box-shadow: 0 0 50px rgba(160,63,255,0.6); transform: translateY(-2px); } /* ── LISTA DE ITEMS ── */
+.btn-shop:hover { box-shadow: 0 0 50px rgba(160,63,255,0.6); transform: translateY(-2px); } /* �� LISTA DE ITEMS �� */
 #cart-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; } .cart-item { display: flex; gap: 1.2rem; align-items: center; background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 1rem 1.2rem; transition: border-color 0.2s;
 }
 .cart-item:hover { border-color: rgba(160,63,255,0.35); }
@@ -63,7 +63,7 @@ main { position: relative; z-index: 5; max-width: 900px; margin: 0 auto; padding
 }
 .cart-item-remove { background: none; border: none; color: rgba(255,255,255,0.25); font-size: 1.1rem; cursor: pointer; padding: 0.3rem; border-radius: 6px; transition: color 0.2s, background 0.2s; flex-shrink: 0;
 }
-.cart-item-remove:hover { color: #ff4889; background: rgba(255,72,137,0.1); } /* ── RESUMEN ── */
+.cart-item-remove:hover { color: #ff4889; background: rgba(255,72,137,0.1); } /* �� RESUMEN �� */
 .cart-summary { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 1.5rem 1.8rem; margin-bottom: 2.5rem;
 }
 .summary-row { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; color: var(--muted);
@@ -71,7 +71,7 @@ main { position: relative; z-index: 5; max-width: 900px; margin: 0 auto; padding
 .summary-row:last-child { border-bottom: none; }
 .summary-total { font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--gold2); font-weight: 700; padding-top: 0.8rem !important;
 }
-.summary-total span { font-size: 1.05rem; } /* ── FORMULARIO DE PEDIDO ── */
+.summary-total span { font-size: 1.05rem; } /* �� FORMULARIO DE PEDIDO �� */
 .order-form { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 2rem 2rem;
 }
 .form-title { font-family: 'Cinzel', serif; font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;
@@ -103,7 +103,7 @@ main { position: relative; z-index: 5; max-width: 900px; margin: 0 auto; padding
 .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 .closed-notice { background: radial-gradient(circle at top left, rgba(232,201,106,0.18), transparent 48%), rgba(13,8,33,0.95); border: 1px solid rgba(232,201,106,0.34); border-radius: 18px; padding: 1.1rem 1.25rem; margin: 0 0 1.4rem; color: rgba(255,255,255,0.86); line-height: 1.6; text-align: center; }
 .closed-notice strong { display: block; font-family: 'Cinzel', serif; color: var(--gold2); font-size: 0.9rem; letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 0.35rem; }
-.order-form.is-closed input, .order-form.is-closed textarea, .order-form.is-closed select { opacity: 0.55; cursor: not-allowed; } /* ── CONFIRMACIÓN ── */
+.order-form.is-closed input, .order-form.is-closed textarea, .order-form.is-closed select { opacity: 0.55; cursor: not-allowed; } /* �� CONFIRMACIÓN �� */
 #cart-confirm { display: none; text-align: center; padding: 3rem 1rem;
 }
 #cart-confirm .confirm-icon { font-size: 4rem; display: block; margin-bottom: 1.5rem; }
@@ -117,7 +117,7 @@ main { position: relative; z-index: 5; max-width: 900px; margin: 0 auto; padding
 #cart-confirm .email-reminder p { color: rgba(255,255,255,0.78); font-size: 0.95rem; margin: 0;
 }
 #cart-confirm .confirm-wa { display: inline-block; margin-top: 1.5rem; padding: 0.9rem 2rem; background: linear-gradient(135deg, rgba(160,63,255,0.9), rgba(255,72,137,0.85)); color: #fff; font-family: 'Cinzel', serif; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; text-decoration: none; box-shadow: 0 0 25px rgba(160,63,255,0.4);
-} /* ── PANTALLA FINAL DE PAGO ── */
+} /* �� PANTALLA FINAL DE PAGO �� */
 .payment-box { max-width: 680px; margin: 1.8rem auto 0; text-align: left; background: radial-gradient(circle at top left, rgba(160,63,255,0.22), transparent 42%), radial-gradient(circle at bottom right, rgba(255,72,137,0.16), transparent 42%), rgba(13,8,33,0.96); border: 1px solid rgba(232,201,106,0.22); border-radius: 28px; padding: 1.6rem; box-shadow: 0 18px 60px rgba(0,0,0,0.35);
 }
 .payment-total { text-align: center; font-family: 'Cinzel', serif; color: var(--gold2); font-size: 1.25rem; margin-bottom: 1.1rem;
@@ -139,12 +139,12 @@ main { position: relative; z-index: 5; max-width: 900px; margin: 0 auto; padding
 .payment-warning { margin-top: 1rem; color: rgba(255,255,255,0.62); font-size: 0.8rem; line-height: 1.55;
 }
 @media (max-width:600px){ .payment-box { padding: 1.1rem; border-radius: 22px; } .payment-total { font-size: 1.05rem; } .payment-number { font-size: 1.15rem; }
-} /* ── FOOTER ── */
+} /* �� FOOTER �� */
 footer { position: relative; z-index: 5; text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.78rem;
 }
-footer a { color: var(--gold2); text-decoration: none; } /* ── RESPONSIVE ── */
+footer a { color: var(--gold2); text-decoration: none; } /* �� RESPONSIVE �� */
 @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } .cart-item-img { width: 55px; height: 70px; } .order-form { padding: 1.5rem 1.2rem; }
-} /* ═══════════════════════════════════════ LEGIBILIDAD GLOBAL LADY AURA — textos más grandes y visibles Añadido para que los textos pequeños del HTML inline también se vean bien
+} /* ═══════════════════════════════════════ LEGIBILIDAD GLOBAL LADY AURA � textos más grandes y visibles Añadido para que los textos pequeños del HTML inline también se vean bien
 ═══════════════════════════════════════ */
 :root { --muted: #f4e8ff !important; --text: #fff7ff !important; --white: #fff7ff !important;
 } body { font-size: 19px !important;
@@ -174,7 +174,7 @@ small,
 .lb-price-note,
 .lightbox-prelaunch,
 .aviso-digital p,
-.lámina-precio .aviso,
+.lámina-detalle .aviso,
 .tarot-card-meaning,
 .tarot-disclaimer,
 .tarot-card-label,
@@ -212,7 +212,7 @@ small,
 .col-hero p,
 .hero-sub,
 .aviso-digital p,
-.lámina-precio .aviso,
+.lámina-detalle .aviso,
 #orders-empty p,
 .seo-footer p { font-size: 1rem !important;
 } /* Etiquetas y navegación pequeñas: suben sin romper diseño */
@@ -261,7 +261,7 @@ small,
 .summary-card { background-color: rgba(15, 8, 27, 0.92) !important;
 } /* Móvil: mínimo legible real */
 @media (max-width: 700px) { body { font-size: 18px !important; } p, li, small, .page-hero p, .col-hero p, .hero-sub, .tirada-sub, .tirada-desc, .product-size, .reserve-hint, .ps-sub, .so-sub, .sold-notice, .faq-a, .faq-answer, .modal-desc, .modal-incluye li, .modal-nota, .lb-includes li, .lb-price-note, .tarot-card-meaning, .tarot-disclaimer, #orders-empty p, .seo-footer p { font-size: 1rem !important; line-height: 1.7 !important; } .back-bar a, .page-topbar a, .site-header .nav a, .header-links a, .col-link, .lb-btn, .btn-secondary, .btn-primary, .btn-shop, .btn-draw, .tarot-btn, .page-hero .eyebrow, .col-hero-eyebrow, .tarot-badge, .tirada-count, .orient-badge, .lb-eyebrow, .modal-signo, .ps-label, .page-btn { font-size: 0.92rem !important; }
-} /* ── CUPÓN ── */
+} /* �� CUPÓN �� */
 .coupon-box { background: rgba(13,8,33,0.92); border: 1px solid rgba(201,168,76,0.35); border-radius: 18px; padding: 1.4rem 1.6rem; margin: 1.2rem 0;
 }
 .coupon-hint { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.1em; color: #e8c96a; margin-bottom: 0.9rem; text-align: center;
@@ -345,13 +345,13 @@ body.aura-modal-open .topbar { z-index: 1 !important; pointer-events: none !impo
 } @media (max-width: 760px) { .site-header { min-height: 64px !important; overflow: visible !important; } .site-header .brand, .site-header .logo, .site-header .brand-link { min-width: 0 !important; flex: 1 1 auto !important; overflow: visible !important; } .site-header .brand img, .site-header .logo img, .site-header .brand-link img { max-width: min(142px, 36vw) !important; max-height: 44px !important; width: auto !important; height: auto !important; object-fit: contain !important; } .lady-aura-header-actions { flex: 0 0 auto !important; max-width: 158px !important; overflow: visible !important; } .lady-aura-language { max-width: 82px !important; } .aura-universal-close, .aura-floating-close { top: max(10px, env(safe-area-inset-top)) !important; right: max(10px, env(safe-area-inset-right)) !important; }
 } </style>
 </head>
-<body> <div id="stars"></div> <header class="site-header" id="site-header"> <a class="brand" href="index.html" aria-label="Lady Aura inicio"> <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art – Diamond Painting Premium"> </a> <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">Menu</button> <nav class="nav" id="nav" aria-label="Navegación principal"> <a href="index.html"><span class="nav-icon-dot nav-icon-home" aria-hidden="true"></span>Inicio</a> <a href="horoscopo.html"><span class="nav-icon-dot nav-icon-zodiac" aria-hidden="true"></span>Horoscopo</a> <a href="personalizados.html"><span class="nav-icon-dot nav-icon-custom" aria-hidden="true"></span>Personalizados</a> <a href="pedidos.html"><span class="nav-icon-dot nav-icon-orders" aria-hidden="true"></span>Mis pedidos</a> <a href="carrito.html" class="cart-nav-link" aria-current="page" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;"><span class="nav-icon-dot nav-icon-cart" aria-hidden="true"></span>Carrito<span class="cart-badge" style="display:none">0</span></a> </nav> <a class="header-button" href="horoscopo.html">Ver colecciones</a>
-</header> <main> <div class="page-hero"> <span class="eyebrow" data-i18n="cart_eyebrow">✦ Lady Aura Art · Diamond Painting Premium ✦</span> <h1 data-i18n="cart_title">🛒 Mi carrito</h1> <p>Pedidos cerrados temporalmente. Volveremos pronto.</p> </div> <!-- VACÍO --> <div id="cart-empty" style="display:none"> <span class="empty-icon">🌟</span> <h2 data-i18n="cart_empty_title">Tu carrito está vacío</h2> <p data-i18n="cart_empty_sub">Explora nuestras colecciones y encuentra tu diamond painting perfecto.</p> <a href="index.html" class="btn-shop" data-i18n="cart_btn_shop">✨ Ver colecciones</a> </div> <!-- CON ITEMS --> <div id="cart-content" style="display:none"> <div class="closed-notice"><strong>Pedidos cerrados temporalmente</strong>Ahora mismo no se pueden enviar reservas ni formularios desde el carrito. Gracias por tu paciencia.</div> <div id="cart-list"></div> <div class="cart-summary"> <div class="summary-row"> <span>Diseños seleccionados</span> <span id="sum-count">0</span> </div> <div class="summary-row"> <span>Formato</span> <span id="sum-formats">Diamond painting premium</span> </div> <div class="summary-row"> <span>Envío</span> <span style="color:#a0ffb0">✓ Incluido</span> </div> <div class="summary-row" id="discount-row" style="display:none;color:#e8c96a;"> <span id="discount-label">Cupón</span> <span id="sum-discount">-0 €</span> </div> <div class="summary-row summary-total"> <span>Total</span> <span id="sum-total">0 €</span> </div> </div> <!-- CUPÓN --> <div class="coupon-box" id="coupon-box"> <p class="coupon-hint" style="display:none">🎁 Cupón de bienvenida visible: <strong>LADYAURA5</strong> (-5 €, primer pedido)</p> <label class="coupon-label" for="couponCode">¿Tienes un cupón?</label> <!-- id="coupon-form" previene que carrito.js inyecte una segunda caja --> <form id="coupon-form" onsubmit="event.preventDefault(); applyCoupon();"> <div class="coupon-row"> <input class="coupon-input" id="coupon-code" type="text" placeholder="Escribe tu código" autocomplete="off"> <button class="coupon-btn" id="applyCouponBtn" type="submit">Aplicar</button> </div> </form> <div class="coupon-applied-row" id="coupon-applied-row"> <span>✓ Cupón aplicado</span> <button class="coupon-remove" onclick="removeCoupon()" title="Quitar cuón">✕</button> </div> <p class="coupon-msg" id="couponMessage"></p> </div> <!-- FORMULARIO --> <div class="order-form is-closed"> <p class="form-title" data-i18n="cart_form_title">Pedidos cerrados por ahora</p> <p class="form-subtitle">El formulario de reservas está pausado temporalmente. Puedes revisar tu carrito, pero no se enviará ningún pedido hasta que vuelva a abrir.</p> <form id="order-form" novalidate> <div class="form-grid"> <div class="form-group"> <label for="f-nombre">Nombre *</label> <input type="text" id="f-nombre" name="nombre" required placeholder="Tu nombre" autocomplete="given-name"> </div> <div class="form-group"> <label for="f-apellidos">Apellidos *</label> <input type="text" id="f-apellidos" name="apellidos" required placeholder="Tus apellidos" autocomplete="family-name"> </div> <div class="form-group"> <label for="f-email">Email *</label> <input type="email" id="f-email" name="email" required placeholder="tu@email.com" autocomplete="email"> </div> <div class="form-group"> <label for="f-telefono">Teléfono</label> <input type="tel" id="f-telefono" name="telefono" placeholder="+34 600 000 000" autocomplete="tel"> </div> <div class="form-group full"> <label for="f-direccion">Dirección de envío *</label> <input type="text" id="f-direccion" name="direccion" required placeholder="Calle, número, piso..." autocomplete="street-address"> </div> <div class="form-group"> <label for="f-ciudad">Población / ciudad *</label> <input type="text" id="f-ciudad" name="poblacion" required placeholder="Población o ciudad" autocomplete="address-level2"> </div> <div class="form-group"> <label for="f-cp">Código postal *</label> <input type="text" id="f-cp" name="cp" required placeholder="00000" autocomplete="postal-code"> </div> <div class="form-group"> <label for="f-provincia">Provincia / estado *</label> <input type="text" id="f-provincia" name="provincia" required placeholder="Provincia, estado o región" autocomplete="address-level1"> </div> <div class="form-group full"> <label for="f-pais">País *</label> <select id="f-pais" name="pais" required autocomplete="country-name"> <option value="">Selecciona país...</option> <option value="España" selected>España</option> <option value="Portugal">Portugal</option> <option value="Francia">Francia</option> <option value="Italia">Italia</option> <option value="Alemania">Alemania</option> <option value="Estados Unidos">Estados Unidos / United States</option> <option value="México">México</option> <option value="Argentina">Argentina</option> <option value="Colombia">Colombia</option> <option value="Otro">Otro</option> </select> <div class="form-group country-other-field" id="country-other-field"> <label for="f-pais-otro">Escribe tu país *</label> <input type="text" id="f-pais-otro" name="pais_otro" placeholder="Ej. United States"> </div> </div> <div class="form-group full"> <label for="f-notas">Notas adicionales</label> <textarea id="f-notas" name="notas" placeholder="¿Algo que quieras comentarme? Personalización, regalo, etc."></textarea> </div> </div> <div class="form-note"> <strong>Cerrado temporalmente.</strong> El formulario está pausado y no se mandará ninguna reserva por ahora.</div> <button type="submit" class="btn-submit" id="btn-submit" disabled>Pedidos cerrados temporalmente</button> </form> </div> </div> <!-- CONFIRMACIÓN LISTA DE ESPERA --> <div id="cart-confirm"> <span class="confirm-icon">🌟</span> <h2>¡Ya estás en la lista de espera!</h2> <p>He recibido tu reserva. Ya formas parte de la lista de espera.</p> <p style="color:var(--muted);font-size:0.85rem;margin-top:0.5rem;">Te avisaré personalmente por email. No se ha cobrado nada todavía. 💜</p> <div class="email-reminder"> <h3>Revisa también spam</h3> <p>A veces mis emails pueden llegar allí. Échale un vistazo de vez en cuando para no perderte el aviso sobre tu reserva.</p> </div> <div class="payment-box" style="margin-top:2rem;text-align:center;"> <p style="font-family:'Cinzel',serif;color:var(--gold2);font-size:1rem;margin-bottom:0.8rem;">✦ Tu reserva está guardada ✦</p> <p style="color:rgba(255,255,255,0.7);font-size:0.88rem;line-height:1.7;"> Puedes ver el estado de tu reserva en <strong style="color:#fff;">📦 Mis pedidos</strong>.<br> Tu precio y diseños quedan reservados para ti. </p> </div> <p style="color:var(--gold2);margin-top:1.5rem;font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:0.08em;">GRACIAS POR TU CONFIANZA ✨</p> <a href="pedidos.html" class="confirm-wa" style="margin-top:1.2rem;display:inline-block;">📦 Ver mi reserva</a> </div> </main> <footer> <p>© 2026 <a href="index.html">Lady Aura Art</a> · Diamond Painting Premium · Valencia, España 💜</p>
+<body> <div id="stars"></div> <header class="site-header" id="site-header"> <a class="brand" href="index.html" aria-label="Lady Aura inicio"> <img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art � Diamond Painting Premium"> </a> <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">Menu</button> <nav class="nav" id="nav" aria-label="Navegación principal"> <a href="index.html"><span class="nav-icon-dot nav-icon-home" aria-hidden="true"></span>Inicio</a> <a href="horoscopo.html"><span class="nav-icon-dot nav-icon-zodiac" aria-hidden="true"></span>Horoscopo</a> <a href="personalizados.html"><span class="nav-icon-dot nav-icon-custom" aria-hidden="true"></span>Personalizados</a> <a href="pedidos.html"><span class="nav-icon-dot nav-icon-orders" aria-hidden="true"></span>Mis pedidos</a> <a href="carrito.html" class="cart-nav-link" aria-current="page" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;"><span class="nav-icon-dot nav-icon-cart" aria-hidden="true"></span>Carrito<span class="cart-badge" style="display:none">0</span></a> </nav> <a class="header-button" href="horoscopo.html">Ver colecciones</a>
+</header> <main> <div class="page-hero"> <span class="eyebrow" data-i18n="cart_eyebrow">✦ Lady Aura Art · Diamond Painting Premium ✦</span> <h1 data-i18n="cart_title">🛒 Mi carrito</h1> <p>Pedidos cerrados temporalmente. Volveremos pronto.</p> </div> <!-- VACÍO --> <div id="cart-empty" style="display:none"> <span class="empty-icon">🌟</span> <h2 data-i18n="cart_empty_title">Tu carrito está vacío</h2> <p data-i18n="cart_empty_sub">Explora nuestras colecciones y encuentra tu diamond painting perfecto.</p> <a href="index.html" class="btn-shop" data-i18n="cart_btn_shop">✨ Ver colecciones</a> </div> <!-- CON ITEMS --> <div id="cart-content" style="display:none"> <div class="closed-notice"><strong>Pedidos cerrados temporalmente</strong>Ahora mismo no se pueden enviar reservas ni formularios desde el carrito. Gracias por tu paciencia.</div> <div id="cart-list"></div> <div class="cart-summary"> <div class="summary-row"> <span>Diseños seleccionados</span> <span id="sum-count">0</span> </div> <div class="summary-row"> <span>Formato</span> <span id="sum-formats">Diamond painting premium</span> </div> <div class="summary-row"> <span>Envío</span> <span style="color:#a0ffb0">✓ Incluido</span> </div> <div class="summary-row" id="discount-row" style="display:none;color:#e8c96a;"> <span id="discount-label">Cupón</span> <span id="sum-discount"></span> </div> <div class="summary-row summary-total"> <span>Total</span> <span id="sum-total"></span> </div> </div> <!-- CUPÓN --> <div class="coupon-box" id="coupon-box"> <p class="coupon-hint" style="display:none">🎁 Cupón de bienvenida visible: <strong>LADYAURA5</strong> </p> <label class="coupon-label" for="couponCode">¿Tienes un cupón?</label> <!-- id="coupon-form" previene que carrito.js inyecte una segunda caja --> <form id="coupon-form" onsubmit="event.preventDefault(); applyCoupon();"> <div class="coupon-row"> <input class="coupon-input" id="coupon-code" type="text" placeholder="Escribe tu código" autocomplete="off"> <button class="coupon-btn" id="applyCouponBtn" type="submit">Aplicar</button> </div> </form> <div class="coupon-applied-row" id="coupon-applied-row"> <span>✓ Cupón aplicado</span> <button class="coupon-remove" onclick="removeCoupon()" title="Quitar cuón">✕</button> </div> <p class="coupon-msg" id="couponMessage"></p> </div> <!-- FORMULARIO --> <div class="order-form is-closed"> <p class="form-title" data-i18n="cart_form_title">Pedidos cerrados por ahora</p> <p class="form-subtitle">El formulario de reservas está pausado temporalmente. Puedes revisar tu carrito, pero no se enviará ningún pedido hasta que vuelva a abrir.</p> <form id="order-form" novalidate> <div class="form-grid"> <div class="form-group"> <label for="f-nombre">Nombre *</label> <input type="text" id="f-nombre" name="nombre" required placeholder="Tu nombre" autocomplete="given-name"> </div> <div class="form-group"> <label for="f-apellidos">Apellidos *</label> <input type="text" id="f-apellidos" name="apellidos" required placeholder="Tus apellidos" autocomplete="family-name"> </div> <div class="form-group"> <label for="f-email">Email *</label> <input type="email" id="f-email" name="email" required placeholder="tu@email.com" autocomplete="email"> </div> <div class="form-group"> <label for="f-telefono">Teléfono</label> <input type="tel" id="f-telefono" name="telefono" placeholder="+34 600 000 000" autocomplete="tel"> </div> <div class="form-group full"> <label for="f-direccion">Dirección de envío *</label> <input type="text" id="f-direccion" name="direccion" required placeholder="Calle, número, piso..." autocomplete="street-address"> </div> <div class="form-group"> <label for="f-ciudad">Población / ciudad *</label> <input type="text" id="f-ciudad" name="poblacion" required placeholder="Población o ciudad" autocomplete="address-level2"> </div> <div class="form-group"> <label for="f-cp">Código postal *</label> <input type="text" id="f-cp" name="cp" required placeholder="00000" autocomplete="postal-code"> </div> <div class="form-group"> <label for="f-provincia">Provincia / estado *</label> <input type="text" id="f-provincia" name="provincia" required placeholder="Provincia, estado o región" autocomplete="address-level1"> </div> <div class="form-group full"> <label for="f-pais">País *</label> <select id="f-pais" name="pais" required autocomplete="country-name"> <option value="">Selecciona país...</option> <option value="España" selected>España</option> <option value="Portugal">Portugal</option> <option value="Francia">Francia</option> <option value="Italia">Italia</option> <option value="Alemania">Alemania</option> <option value="Estados Unidos">Estados Unidos / United States</option> <option value="México">México</option> <option value="Argentina">Argentina</option> <option value="Colombia">Colombia</option> <option value="Otro">Otro</option> </select> <div class="form-group country-other-field" id="country-other-field"> <label for="f-pais-otro">Escribe tu país *</label> <input type="text" id="f-pais-otro" name="pais_otro" placeholder="Ej. United States"> </div> </div> <div class="form-group full"> <label for="f-notas">Notas adicionales</label> <textarea id="f-notas" name="notas" placeholder="¿Algo que quieras comentarme? Personalización, regalo, etc."></textarea> </div> </div> <div class="form-note"> <strong>Cerrado temporalmente.</strong> El formulario está pausado y no se mandará ninguna reserva por ahora.</div> <button type="submit" class="btn-submit" id="btn-submit" disabled>Pedidos cerrados temporalmente</button> </form> </div> </div> <!-- CONFIRMACIÓN LISTA DE ESPERA --> <div id="cart-confirm"> <span class="confirm-icon">🌟</span> <h2>¡Ya estás en la lista de espera!</h2> <p>He recibido tu reserva. Ya formas parte de la lista de espera.</p> <p style="color:var(--muted);font-size:0.85rem;margin-top:0.5rem;">Te avisaré personalmente por email. No se ha cobrado nada todavía. 💜</p> <div class="email-reminder"> <h3>Revisa también spam</h3> <p>A veces mis emails pueden llegar allí. Échale un vistazo de vez en cuando para no perderte el aviso sobre tu reserva.</p> </div> <div class="payment-box" style="margin-top:2rem;text-align:center;"> <p style="font-family:'Cinzel',serif;color:var(--gold2);font-size:1rem;margin-bottom:0.8rem;">✦ Tu reserva está guardada ✦</p> <p style="color:rgba(255,255,255,0.7);font-size:0.88rem;line-height:1.7;"> Puedes ver el estado de tu reserva en <strong style="color:#fff;">📦 Mis pedidos</strong>.<br> Tu detalle y diseños quedan reservados para ti. </p> </div> <p style="color:var(--gold2);margin-top:1.5rem;font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:0.08em;">GRACIAS POR TU CONFIANZA ✨</p> <a href="pedidos.html" class="confirm-wa" style="margin-top:1.2rem;display:inline-block;">📦 Ver mi reserva</a> </div> </main> <footer> <p>© 2026 <a href="index.html">Lady Aura Art</a> · Diamond Painting Premium · Valencia, España 💜</p>
 </footer> <script>
-/* ── Estrellas ── */
+/* �� Estrellas �� */
 (function(){ var c = document.getElementById('stars'); for(var i=0;i<80;i++){ var s=document.createElement('div'); s.style.cssText='position:absolute;border-radius:50%;background:#fff;width:'+(Math.random()*2+0.4)+'px;height:'+(Math.random()*2+0.4)+'px;top:'+(Math.random()*100)+'%;left:'+(Math.random()*100)+'%;opacity:'+(Math.random()*0.35+0.06)+';animation:tw '+(Math.random()*3+2)+'s ease-in-out infinite alternate;animation-delay:'+(Math.random()*4)+'s;'; c.appendChild(s); } var st=document.createElement('style'); st.textContent='@keyframes tw{from{opacity:0.06}to{opacity:0.5}}'; document.head.appendChild(st);
-})(); /* ── Carrito ── */
-const CART_KEY = 'ladyaura_cart'; /* ── CUPÓN: soporta LADYAURA5 + coupones privados de colaboradoras ── */
+})(); /* �� Carrito �� */
+const CART_KEY = 'ladyaura_cart'; /* �� CUPÓN: soporta LADYAURA5 + coupones privados de colaboradoras �� */
 const COUPON_KEY_INLINE = 'ladyaura_coupon'; 
 const COUPON_USED_KEY = 'ladyAuraCouponUsed';  function getCouponInline() { try { return JSON.parse(localStorage.getItem(COUPON_KEY_INLINE)); } catch(e) { return null; }
 } const SPECIAL60_PRICE = 60;
@@ -367,11 +367,10 @@ function isSpecial60Coupon(code) { return [].includes(code); }
 function itemMatchesSpecial60(item, code) { return false; }
 function cartItemSearchText(item) { return [item?.nombre, item?.id, item?.img, item?.coleccion, item?.collection, item?.tamano, item?.size].filter(Boolean).join(' ');
 }
-function moneyInline(value) { return (Number(value) || 0) + ' €';
-}
+function moneyInline(value) { return ''; }
 function getCartItemSize(item) {
   if (item.tamano || item.size) return item.tamano || item.size;
-  const price = Number(item.precio || item.price);
+  const price = Number(item.detalle || item.price);
   if (price === 76 || price === 79 || price === (79 + 2)) return '50x70 cm';
   if (price === 66) return '40x60 cm';
   return item.orient === 'v' ? '60x90 cm' : '90x60 cm';
@@ -381,13 +380,13 @@ function getCartFormatsLabel(items) {
   if (!formats.length) return 'Diamond painting premium';
   return formats.join(' y ') + ' · Diamond painting premium';
 }
-function isSmallFormatItem(item) { return /40\s*(x|×|—)\s*60/i.test(cartItemSearchText(item));
+function isSmallFormatItem(item) { return /40\s*(x|×|�)\s*60/i.test(cartItemSearchText(item));
 }
-function isMediumFormatItem(item) { return /(?:50\s*(x|×|—)\s*70|70\s*(x|×|—)\s*50)/i.test(cartItemSearchText(item));
+function isMediumFormatItem(item) { return /(?:50\s*(x|×|�)\s*70|70\s*(x|×|�)\s*50)/i.test(cartItemSearchText(item));
 }
-function getCurrentCartPrice(item) { const savedPrice = Number(item?.precio); if (savedPrice > 0 && savedPrice <= 10) return savedPrice; if (isMediumFormatItem(item)) return MEDIUM_FORMAT_PRICE; if (isSmallFormatItem(item)) return SMALL_FORMAT_PRICE; const raw = cartItemSearchText(item); const override = CURRENT_PRICE_OVERRIDES.find(entry => entry.test.test(raw)); if (override) return override.price; return NORMAL_PRICE;
+function getCurrentCartPrice(item) { const savedPrice = Number(item?.detalle); if (savedPrice > 0 && savedPrice <= 10) return savedPrice; if (isMediumFormatItem(item)) return MEDIUM_FORMAT_PRICE; if (isSmallFormatItem(item)) return SMALL_FORMAT_PRICE; const raw = cartItemSearchText(item); const override = CURRENT_PRICE_OVERRIDES.find(entry => entry.test.test(raw)); if (override) return override.price; return NORMAL_PRICE;
 } function calcDiscountInline(items, code) { const subtotal = items.reduce((s,i) => s + getCurrentCartPrice(i), 0); if (code === 'LADYAURA5') return subtotal > 0 ? 5 : 0; return 0; } function getPriceWithCoupon(item, code) { if (isSpecial60Coupon(code) && itemMatchesSpecial60(item, code)) return SPECIAL60_PRICE; return getCurrentCartPrice(item);
-} function applyCoupon() { const input = document.getElementById('coupon-code') || document.getElementById('couponCode'); const msg = document.getElementById('couponMessage'); const code = (input ? input.value : '').trim().toUpperCase(); const items = cartGet(); if (!code) { if(msg){ msg.textContent='Introduce un código de cuón'; msg.className='coupon-msg err'; } return; } if (items.length === 0) { if(msg){ msg.textContent='Añade algún producto antes de aplicar el cuón'; msg.className='coupon-msg err'; } return; } const existing = getCouponInline(); if (existing && existing.code && existing.code !== code) { if(msg){ msg.textContent='Solo se puede usar un cuón por pedido.'; msg.className='coupon-msg err'; } return; } if (!['LADYAURA5'].includes(code)) { if(msg){ msg.textContent='Código de cuón no válido'; msg.className='coupon-msg err'; } return; } if (code === 'LADYAURA5' && localStorage.getItem(COUPON_USED_KEY) === 'true') { if(msg){ msg.textContent='Este cuón de bienvenida ya se ha usado en un pedido anterior'; msg.className='coupon-msg err'; } return; } const discount = calcDiscountInline(items, code); if (discount <= 0) { if(msg){ msg.textContent='Este cuón no se puede aplicar a tu carrito actual'; msg.className='coupon-msg err'; } return; } localStorage.setItem(COUPON_KEY_INLINE, JSON.stringify({ code, discount })); if(msg){ msg.textContent=`${code === 'LADYAURA5' ? 'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code} aplicado: -${discount.toFixed(2).replace('.',',')} \u20ac`; msg.className='coupon-msg ok'; } renderCart();
+} function applyCoupon() { const input = document.getElementById('coupon-code') || document.getElementById('couponCode'); const msg = document.getElementById('couponMessage'); const code = (input ? input.value : '').trim().toUpperCase(); const items = cartGet(); if (!code) { if(msg){ msg.textContent='Introduce un código de cuón'; msg.className='coupon-msg err'; } return; } if (items.length === 0) { if(msg){ msg.textContent='Añade algún producto antes de aplicar el cuón'; msg.className='coupon-msg err'; } return; } const existing = getCouponInline(); if (existing && existing.code && existing.code !== code) { if(msg){ msg.textContent='Solo se puede usar un cuón por pedido.'; msg.className='coupon-msg err'; } return; } if (!['LADYAURA5'].includes(code)) { if(msg){ msg.textContent='Código de cuón no válido'; msg.className='coupon-msg err'; } return; } if (code === 'LADYAURA5' && localStorage.getItem(COUPON_USED_KEY) === 'true') { if(msg){ msg.textContent='Este cuón de bienvenida ya se ha usado en un pedido anterior'; msg.className='coupon-msg err'; } return; } const discount = calcDiscountInline(items, code); if (discount <= 0) { if(msg){ msg.textContent='Este cuón no se puede aplicar a tu carrito actual'; msg.className='coupon-msg err'; } return; } localStorage.setItem(COUPON_KEY_INLINE, JSON.stringify({ code, discount })); if(msg){ msg.textContent='Cupon aplicado'; msg.className='coupon-msg ok'; } renderCart();
   if (window.ladyAuraCartTracker) window.ladyAuraCartTracker.track('cart', { event: 'coupon_applied' });
 } function removeCoupon() { localStorage.removeItem(COUPON_KEY_INLINE); const msg = document.getElementById('couponMessage'); if (msg) { msg.textContent = ''; msg.className = 'coupon-msg'; } if (window.ladyAuraCartTracker) window.ladyAuraCartTracker.track('cart', { event: 'coupon_removed' }); renderCart();
 }
@@ -412,8 +411,8 @@ function renderCart() {
       const itemName = escapeHtmlInline(item.nombre || 'Producto Lady Aura');
       const itemId = escapeHtmlInline(item.id || item.nombre || item.img || imageSrc);
       const itemSize = escapeHtmlInline(getCartItemSize(item));
-      const priceHtml = (isSpecial60Coupon(couponCode) && itemMatchesSpecial60(item, couponCode)) ? '<span class="cart-item-price"><s style="opacity:.4;font-size:.8em;text-decoration:line-through">' + moneyInline(originalPrice) + '</s>&nbsp;' + moneyInline(displayPrice) + '</span>' : '<span class="cart-item-price">' + moneyInline(originalPrice) + '</span>';
-      return '<div class="cart-item"><img class="cart-item-img" src="' + imageSrc + '" alt="' + itemName + '" onerror="this.src=&quot;assets/Logo-transparent.webp&quot;;this.onerror=null;"><div class="cart-item-info"><h3>' + itemName + '</h3><p>Diamond painting ' + itemSize + ' - Envío incluido</p></div>' + priceHtml + '<button class="cart-item-remove" onclick="cartRemove(this.dataset.id)" data-id="' + itemId + '" aria-label="Eliminar">x</button></div>';
+      const detailHtml = '';
+      return '<div class="cart-item"><img class="cart-item-img" src="' + imageSrc + '" alt="' + itemName + '" onerror="this.src=&quot;assets/Logo-transparent.webp&quot;;this.onerror=null;"><div class="cart-item-info"><h3>' + itemName + '</h3><p>Diamond painting ' + itemSize + ' - Envío incluido</p></div>' + detailHtml + '<button class="cart-item-remove" onclick="cartRemove(this.dataset.id)" data-id="' + itemId + '" aria-label="Eliminar">x</button></div>';
     }).join('');
   }
   const subtotal = isSpecial60Coupon(couponCode) ? items.reduce(function(sum,item){ return sum + getPriceWithCoupon(item, couponCode); }, 0) : items.reduce(function(sum,item){ return sum + getCurrentCartPrice(item); }, 0);
@@ -421,10 +420,10 @@ function renderCart() {
   const total = Math.max(0, subtotal - discount);
   const countEl = document.getElementById('sum-count'); if (countEl) countEl.textContent = items.length + (items.length === 1 ? ' diseño' : ' diseños');
   const formatsEl = document.getElementById('sum-formats'); if (formatsEl) formatsEl.textContent = getCartFormatsLabel(items);
-  const totalEl = document.getElementById('sum-total'); if (totalEl) totalEl.textContent = moneyInline(total);
+  const totalEl = document.getElementById('sum-total'); if (totalEl) totalEl.textContent = ''; 
   const discountRow = document.getElementById('discount-row'); if (discountRow) discountRow.style.display = (couponCode && (discount > 0 || isSpecial60Coupon(couponCode))) ? '' : 'none';
-  const discountLabel = document.getElementById('discount-label'); if (discountLabel && couponCode) discountLabel.textContent = isSpecial60Coupon(couponCode) ? 'Precio especial ' + couponCode : 'Cupón ' + couponCode;
-  const sumDiscount = document.getElementById('sum-discount'); if (sumDiscount && couponCode) sumDiscount.textContent = '-' + calcDiscountInline(items, couponCode).toFixed(2).replace('.', ',') + ' €';
+  const discountLabel = document.getElementById('discount-label'); if (discountLabel && couponCode) discountLabel.textContent = isSpecial60Coupon(couponCode) ? 'C�digo ' + couponCode : 'Cupón ' + couponCode;
+  const sumDiscount = document.getElementById('sum-discount'); if (sumDiscount && couponCode) sumDiscount.textContent = ''; 
   const appliedRow = document.getElementById('coupon-applied-row'); if (appliedRow) appliedRow.style.display = (couponCode && (discount > 0 || isSpecial60Coupon(couponCode))) ? 'flex' : 'none';
 }
 const CUSTOMER_DATA_KEY = 'ladyaura_customer_data';
@@ -527,7 +526,7 @@ if (orderForm) {
         poblacion: data.poblacion,
         provincia: data.provincia,
         pais: data.pais,
-        items: items.map(function(item){ return { nombre:item.nombre, img:item.img, precio:getCurrentCartPrice(item), orient:item.orient, tamano:getCartItemSize(item) }; }),
+        items: items.map(function(item){ return { nombre:item.nombre, img:item.img, detalle:getCurrentCartPrice(item), orient:item.orient, tamano:getCartItemSize(item) }; }),
         total: totalPedido,
         estado: 'lista_espera'
       };
@@ -559,7 +558,7 @@ if (orderForm) {
 }
 renderCart();
 </script> <script>
-/* ── Menú móvil ── */
+/* �� Menú móvil �� */
 (function(){ const btn = document.getElementById('menuToggle'); const nav = document.getElementById('nav'); if (!btn || !nav) return; btn.addEventListener('click', function(){ nav.classList.toggle('active'); btn.setAttribute('aria-expanded', nav.classList.contains('active') ? 'true' : 'false'); }); nav.querySelectorAll('a').forEach(function(link){ link.addEventListener('click', function(){ nav.classList.remove('active'); btn.setAttribute('aria-expanded', 'false'); }); });
 })();
 </script> <script src="private-cart-config.js"></script> <script src="carrito.js"></script> <script src="language-toggle.js"></script> <script>

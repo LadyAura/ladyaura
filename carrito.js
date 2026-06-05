@@ -63,7 +63,7 @@ function cartBuildTrackingPayload(status, extra) {
   const items = typeof cartGet === 'function' ? cartGet() : [];
   const couponCode = cartReadCouponCode();
   const total = items.reduce(function(sum, item) {
-    return sum + (Number(item.precio || item.price) || 0);
+    return sum + (Number(item.detalle || item.price) || 0);
   }, 0);
   return Object.assign({
     session_id: cartGetSessionId(),
@@ -81,7 +81,7 @@ function cartBuildTrackingPayload(status, extra) {
         producto: item.nombre || item.name || 'Producto Lady Aura',
         tamano: item.tamano || item.size || '',
         size: item.tamano || item.size || '',
-        precio: Number(item.precio || item.price) || 0,
+        detalle: Number(item.detalle || item.price) || 0,
         coupon: couponCode || null,
         fecha_hora: new Date().toISOString()
       };
@@ -176,14 +176,14 @@ function cartBuildId(item) {
 
 function cartNormalizeItemPrice(item) {
   const sizeText = [item?.tamano, item?.size, item?.id].filter(Boolean).join(' ');
-  if (/(?:50\s*(?:x|×)\s*70|70\s*(?:x|×)\s*50)/i.test(sizeText)) item.precio = MEDIUM_FORMAT_PRICE;
-  else if (/(?:60\s*(?:x|×)\s*90|90\s*(?:x|×)\s*60)/i.test(sizeText)) item.precio = NORMAL_FORMAT_PRICE;
-  else if (/40\s*(?:x|×)\s*60/i.test(sizeText)) item.precio = SMALL_FORMAT_PRICE;
-  item.price = item.precio;
+  if (/(?:50\s*(?:x|×)\s*70|70\s*(?:x|×)\s*50)/i.test(sizeText)) item.detalle = MEDIUM_FORMAT_PRICE;
+  else if (/(?:60\s*(?:x|×)\s*90|90\s*(?:x|×)\s*60)/i.test(sizeText)) item.detalle = NORMAL_FORMAT_PRICE;
+  else if (/40\s*(?:x|×)\s*60/i.test(sizeText)) item.detalle = SMALL_FORMAT_PRICE;
+  item.price = item.detalle;
   return item;
 }
 
-/* ── Leer / guardar ── */
+/* �� Leer / guardar �� */
 function cartGet() {
   try {
     return (JSON.parse(localStorage.getItem(CART_KEY)) || []).map(function(item) {
@@ -203,9 +203,9 @@ function cartSave(items) {
   window.dispatchEvent(new CustomEvent('ladyaura:cart-updated', { detail: { items: items } }));
 }
 
-/* ── Añadir al carrito ── */
+/* �� Añadir al carrito �� */
 function cartAdd(item) {
-  // item = { id, nombre, img, precio, orient, coleccion/collection, tamano }
+  // item = { id, nombre, img, detalle, orient, coleccion/collection, tamano }
   item = item || {};
   item.tamano = item.tamano || item.size || '';
   item.size = item.size || item.tamano;
@@ -226,7 +226,7 @@ function cartAdd(item) {
       last_item: {
         nombre: item.nombre || '',
         tamano: item.tamano || item.size || '',
-        precio: Number(item.precio || item.price) || 0,
+        detalle: Number(item.detalle || item.price) || 0,
         coupon: cartReadCouponCode() || null,
         fecha_hora: new Date().toISOString()
       }
@@ -238,12 +238,12 @@ function cartAdd(item) {
   }
 }
 
-/* ── Eliminar ── */
+/* �� Eliminar �� */
 function cartRemove(id) {
   cartSave(cartGet().filter(i => i.id !== id));
 }
 
-/* ── Badge del icono en el nav ── */
+/* �� Badge del icono en el nav �� */
 function cartUpdateBadge() {
   const count = cartGet().length;
   document.querySelectorAll('.cart-badge').forEach(el => {
@@ -252,7 +252,7 @@ function cartUpdateBadge() {
   });
 }
 
-/* ── Botón flotante del carrito ── */
+/* �� Botón flotante del carrito �� */
 function cartUpdateFloating() {
   const count = cartGet().length;
   const fab = document.getElementById('cart-fab');
@@ -261,7 +261,7 @@ function cartUpdateFloating() {
   fab.style.display = count > 0 ?'flex' : 'none';
 }
 
-/* ── Toast de confirmación ── */
+/* �� Toast de confirmación �� */
 function cartShowToast(nombre, yaEsta) {
   let toast = document.getElementById('cart-toast');
   if (!toast) {
@@ -281,7 +281,7 @@ function cartShowToast(nombre, yaEsta) {
   }, 2800);
 }
 
-/* ── Inyectar icono carrito en el nav ── */
+/* �� Inyectar icono carrito en el nav �� */
 function cartInjectNav() {
   // Si ya hay un enlace hardcodeado, solo actualizar badge
   if (document.querySelector('.cart-nav-link')) {
@@ -300,7 +300,7 @@ function cartInjectNav() {
   cartUpdateBadge();
 }
 
-/* ── Inyectar FAB flotante ── */
+/* �� Inyectar FAB flotante �� */
 function cartInjectFAB() {
   if (document.getElementById('cart-fab')) return;
   const fab = document.createElement('a');
@@ -314,22 +314,22 @@ function cartInjectFAB() {
 }
 
 function cartProductPrice(card) {
-  const dataPrice = Number(card.dataset.precio || card.dataset.price);
+  const dataPrice = Number(card.dataset.detalle || card.dataset.price);
   if (dataPrice) return dataPrice;
-  const visiblePrice = (card.querySelector('.card-price')?.textContent || '').match(/(\d+(?:[,.]\d+)?)\s*(?:€|EUR)?/i);
+  const visiblePrice = (card.querySelector('.card-price')?.textContent || '').match(/(\d+(?:[,.]\d+)?)\s*(?:|EUR)?/i);
   return visiblePrice ?Number(visiblePrice[1].replace(',', '.')) : NORMAL_FORMAT_PRICE;
 }
 
-/* ── Inyectar botón "Añadir al carrito" en cada product-card ── */
+/* �� Inyectar botón "Añadir al carrito" en cada product-card �� */
 function cartProductPriceForSize(card, size) {
   const normalizedSize = String(size || '').toLowerCase().replace(/\s+/g, '');
   if (normalizedSize === '50x70' || normalizedSize === '70x50') {
-    return Number(card.dataset.price50x70 || card.dataset.precio50x70) || MEDIUM_FORMAT_PRICE;
+    return Number(card.dataset.price50x70 || card.dataset.detalle50x70) || MEDIUM_FORMAT_PRICE;
   }
   if (normalizedSize === '60x90' || normalizedSize === '90x60') {
-    return Number(card.dataset.price60x90 || card.dataset.precio60x90 || card.dataset.price || card.dataset.precio) || NORMAL_FORMAT_PRICE;
+    return Number(card.dataset.price60x90 || card.dataset.detalle60x90 || card.dataset.price || card.dataset.detalle) || NORMAL_FORMAT_PRICE;
   }
-  if (normalizedSize === '40x60') return Number(card.dataset.price40x60 || card.dataset.precio40x60) || SMALL_FORMAT_PRICE;
+  if (normalizedSize === '40x60') return Number(card.dataset.price40x60 || card.dataset.detalle40x60) || SMALL_FORMAT_PRICE;
   return cartProductPrice(card);
 }
 
@@ -398,7 +398,7 @@ function cartInjectButtons() {
       function addSizeOption(size, price) {
         const row = document.createElement('div');
         row.className = 'cart-size-option';
-        row.innerHTML = `<div class="cart-size-line"><span>${size} cm</span><strong>${price} €</strong></div>`;
+        row.innerHTML = `<div class="cart-size-line"><span>${size} cm</span></div>`;
         const btn = document.createElement('button');
         btn.className = 'btn-add-cart';
         btn.type = 'button';
@@ -413,7 +413,7 @@ function cartInjectButtons() {
             id: (card.dataset.img || nombre) + '-' + size,
             nombre: nombre,
             img: cartProductImageForSize(card, size),
-            precio: price,
+            detalle: price,
             tamano: size + ' cm',
             size: size + ' cm',
             orient: card.dataset.orient || 'v',
@@ -451,7 +451,7 @@ function cartInjectButtons() {
         id: card.dataset.img || nombre,
         nombre: nombre,
         img: cartProductImageForSize(card, size),
-        precio: cartProductPriceForSize(card, size),
+        detalle: cartProductPriceForSize(card, size),
         orient: card.dataset.orient || 'v',
         coleccion: card.dataset.coleccion || card.dataset.collection || (card.dataset.coleccion || card.dataset.collection || ''),
         collection: card.dataset.collection || card.dataset.coleccion || (card.dataset.coleccion || card.dataset.collection || '')
@@ -469,7 +469,7 @@ function cartInjectButtons() {
   });
 }
 
-/* ── Estilos del carrito inyectados dinámicamente ── */
+/* �� Estilos del carrito inyectados dinámicamente �� */
 function cartInjectStyles() {
   if (document.getElementById('cart-styles')) return;
   const style = document.createElement('style');
@@ -661,7 +661,7 @@ function cartInjectStyles() {
   document.head.appendChild(style);
 }
 
-/* ── Inyectar botón en sign-cards del zodiaco ── */
+/* �� Inyectar botón en sign-cards del zodiaco �� */
 function cartInjectZodiaco() {
   document.querySelectorAll('.sign-card:not(.sold-out)').forEach(card => {
     if (card.querySelector('.btn-add-cart')) return;
@@ -682,7 +682,7 @@ function cartInjectZodiaco() {
         id: 'zodiaco-' + titulo + '-' + (isFem ?'f' : 'm'),
         nombre: nombre,
         img: imgSrc,
-        precio: NORMAL_FORMAT_PRICE,
+        detalle: NORMAL_FORMAT_PRICE,
         orient: 'v'
       });
       this.classList.add('added');
@@ -714,7 +714,7 @@ function cartInjectZodiaco() {
     function addZodiacSize(size, price) {
       const row = document.createElement('div');
       row.className = 'cart-size-option';
-      row.innerHTML = `<div class="cart-size-line"><span>${size} cm</span><strong>${price} €</strong></div>`;
+      row.innerHTML = `<div class="cart-size-line"><span>${size} cm</span></div>`;
       const btn = document.createElement('button');
       btn.className = 'btn-add-cart';
       btn.type = 'button';
@@ -727,7 +727,7 @@ function cartInjectZodiaco() {
           id: 'zodiaco-' + nombre + '-' + size,
           nombre: nombre,
           img: imgSrc,
-          precio: price,
+          detalle: price,
           tamano: size + ' cm',
           size: size + ' cm',
           orient: card.dataset.orient || 'v',
@@ -745,20 +745,20 @@ function cartInjectZodiaco() {
       options.appendChild(row);
     }
 
-    addZodiacSize('60x90', Number(card.dataset.precio || card.dataset.price) || NORMAL_FORMAT_PRICE);
+    addZodiacSize('60x90', Number(card.dataset.detalle || card.dataset.price) || NORMAL_FORMAT_PRICE);
     addZodiacSize('40x60', SMALL_FORMAT_PRICE);
     info.appendChild(options);
   });
 }
 
-/* ── Inyectar botón en láminas kawaii de colorear.html ── */
+/* �� Inyectar botón en láminas kawaii de colorear.html �� */
 function cartInjectColorear() {
   document.querySelectorAll('.lamina-doble').forEach(card => {
     if (card.querySelector('.btn-add-cart')) return;
     const nombreEl = card.querySelector('.lamina-nombre');
     if (!nombreEl) return;
     const nombre = nombreEl.textContent.trim();
-    if (nombre === 'Lámina personalizada') return; // precio variable, skip
+    if (nombre === 'Lámina personalizada') return; // detalle variable, skip
     const img = card.querySelector('img');
     const imgSrc = img ?img.src : '';
 
@@ -772,7 +772,7 @@ function cartInjectColorear() {
         id: 'colorear-' + nombre,
         nombre: 'Lámina kawaii · ' + nombre,
         img: imgSrc,
-        precio: 3,
+        detalle: 3,
         orient: 'v'
       });
       this.classList.add('added');
@@ -788,7 +788,7 @@ function cartInjectColorear() {
   });
 }
 
-/* ── INIT ── */
+/* �� INIT �� */
 document.addEventListener('DOMContentLoaded', function() {
   cartInjectStyles();
   cartInjectNav();
@@ -826,7 +826,7 @@ document.addEventListener('DOMContentLoaded', function() {
   fullscreenBindProductFallback();
 });
 
-/* ── Patch del openLB para añadir botón dentro del lightbox ── */
+/* �� Patch del openLB para añadir botón dentro del lightbox �� */
 // Se llama desde cada página que tenga openLB
 function cartPatchLightbox(card) {
   const btns = document.getElementById('lbBtns') || document.querySelector('.lb-btns');
@@ -855,9 +855,9 @@ function cartPatchLightbox(card) {
   const lbPrice = document.querySelector('.lb-price');
   if (lbPrice) {
     lbPrice.removeAttribute('style');
-    lbPrice.innerHTML = `<button class="lb-price-option active" type="button" data-size="60x90"><span>60x90 cm</span><strong>${cartProductPriceForSize(lightboxCard, '60x90')} €</strong></button><button class="lb-price-option" type="button" data-size="50x70"><span>50x70 cm</span><strong>${cartProductPriceForSize(lightboxCard, '50x70')} €</strong></button><button class="lb-price-option" type="button" data-size="40x60"><span>40x60 cm</span><strong>${cartProductPriceForSize(lightboxCard, '40x60')} €</strong></button>`;
+    lbPrice.innerHTML = `<button class="lb-price-option active" type="button" data-size="60x90"><span>60x90 cm</span></button><button class="lb-price-option" type="button" data-size="50x70"><span>50x70 cm</span></button><button class="lb-price-option" type="button" data-size="40x60"><span>40x60 cm</span></button>`;
     if (lightboxSizes.length === 2) {
-      lbPrice.innerHTML = lightboxSizes.map((size, index) => `<button class="lb-price-option${index === 0 ? ' active' : ''}" type="button" data-size="${size}"><span>${size} cm</span><strong>${cartProductPriceForSize(lightboxCard, size)} €</strong></button>`).join('');
+      lbPrice.innerHTML = lightboxSizes.map((size, index) => `<button class="lb-price-option${index === 0 ? ' active' : ''}" type="button" data-size="${size}"><span>${size} cm</span></button>`).join('');
     }
     lbPrice.querySelectorAll('.lb-price-option').forEach(option => {
       option.addEventListener('click', function(e) {
@@ -902,7 +902,7 @@ function cartPatchLightbox(card) {
         id: (data.img || data.nombre) + '-' + size,
         nombre: data.nombre,
         img: cartProductImageForSize(lightboxCard, size),
-        precio: price,
+        detalle: price,
         tamano: size + ' cm',
         size: size + ' cm',
         orient: data.orient || 'v',
@@ -1173,7 +1173,7 @@ function getItemsSafe() {
 
   function calculateCouponDiscount(items, couponCode) {
     const code = normalizeCoupon(couponCode);
-    const subtotal = items.reduce((sum, item) => sum + (Number(item.precio) || NORMAL_FORMAT_PRICE), 0);
+    const subtotal = items.reduce((sum, item) => sum + (Number(item.detalle) || NORMAL_FORMAT_PRICE), 0);
     if (code === 'LADYAURA5') return subtotal > 0 ? 5 : 0;
     return 0;
   }
@@ -1219,7 +1219,7 @@ function getItemsSafe() {
     }
 
     setCoupon({ code: clean, discount: discount });
-    couponMessage(`${clean === 'LADYAURA5' ?'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + clean} aplicado: -${discount.toFixed(2).replace('.', ',')} \u20ac`, true);
+    couponMessage(`${clean === 'LADYAURA5' ?'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + clean} aplicado`, true);
     return true;
   };
 
@@ -1293,21 +1293,19 @@ function getItemsSafe() {
         const line = document.createElement('div');
         line.className = 'coupon-line';
         line.setAttribute('data-coupon-line','true');
-        line.innerHTML = `<span>${code === 'LADYAURA5' ?'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code}</span><strong>-${discount.toFixed(2).replace('.', ',')} €</strong>`;
+        line.innerHTML = `<span>${code === 'LADYAURA5' ?'Cupon LADYAURA5' : 'Cupon ' + code}</span>`;
         totalEl.parentElement.insertBefore(line, totalEl);
       }
 
       // Recalculate visible totals if possible by text
-      const subtotal = items.reduce((sum, item) => sum + (Number(item.precio) || NORMAL_FORMAT_PRICE), 0);
-      const finalTotal = Math.max(0, subtotal - discount);
       if (totalEl) {
-        totalEl.textContent = `${finalTotal.toFixed(2).replace('.', ',')} €`;
+        totalEl.textContent = '';
       }
     }
 
     const msg = document.getElementById('coupon-message');
     if (msg && code && discount > 0) {
-      msg.textContent = `${code === 'LADYAURA5' ?'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code} aplicado: -${discount.toFixed(2).replace('.', ',')} €`;
+      msg.textContent = `${code === 'LADYAURA5' ?'Cup\u00f3n LADYAURA5' : 'Cup\u00f3n ' + code} aplicado`;
       msg.style.color = '#a0ffb0';
     }
   }

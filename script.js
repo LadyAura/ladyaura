@@ -31,15 +31,12 @@ const lightbox        = document.getElementById("lightbox");
 const lightboxImg     = document.getElementById("lightbox-img");
 const lightboxTitle   = document.getElementById("lightbox-title");
 const lightboxPrice   = document.getElementById("lightbox-price");
-const lightboxWhatsapp= document.getElementById("lightbox-whatsapp");
+const lightboxContact = document.getElementById("lightbox-email");
 const lightboxEmail   = document.getElementById("lightbox-email");
 const closeBtn        = document.querySelector(".lightbox-close");
 
-function buildWhatsappUrl(titulo, precio) {
-  return `https://wa.me/34621355638?text=${encodeURIComponent(`Hola Lady Aura ✨ Quiero pre-reservar: ${titulo}. Diamond painting 60x90, ${precio}€. ¡Gracias!`)}`;
-}
-function buildEmailUrl(titulo, precio) {
-  return `https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=${encodeURIComponent(`Pre-reserva Lady Aura - ${titulo}`)}&body=${encodeURIComponent(`Hola Lady Aura, me interesa pre-reservar: ${titulo}. 60x90, ${precio}€.\n\nNombre:\nEmail:\n\n¡Gracias! ✨`)}`;
+function buildEmailUrl(titulo) {
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=lady.aura.2025@gmail.com&su=${encodeURIComponent(`Consulta Lady Aura - ${titulo}`)}&body=${encodeURIComponent(`Hola Lady Aura, me interesa: ${titulo}.\n\nNombre:\nEmail:\n\nGracias`)}`;
 }
 
 if (lightbox && lightboxImg && closeBtn) {
@@ -48,17 +45,16 @@ if (lightbox && lightboxImg && closeBtn) {
     if (!opener) return;
     const img   = card.querySelector("img");
     const title = card.querySelector("h3")?.textContent || "Diseño Lady Aura";
-    const price = card.dataset.price || "89";
     const oldPrice = card.dataset.oldPrice;
     opener.addEventListener("click", () => {
       try {
         lightboxImg.src = img.src; lightboxImg.alt = img.alt;
         if (lightboxTitle) lightboxTitle.textContent = title;
         if (lightboxPrice) lightboxPrice.innerHTML = oldPrice
-          ?`Diamond painting 60×90 cm · <span style="text-decoration:line-through;opacity:0.6">${oldPrice} €</span> <strong>${price} €</strong> · Envío incluido`
+          ? `Diamond painting 60x90 cm - Envio incluido`
           : `Diamond painting 60×90 cm · Envío incluido`;
-        if (lightboxWhatsapp) lightboxWhatsapp.href = buildWhatsappUrl(title, price);
-        if (lightboxEmail)    lightboxEmail.href    = buildEmailUrl(title, price);
+        if (lightboxContact) lightboxContact.href = buildEmailUrl(title);
+        if (lightboxEmail)   lightboxEmail.href   = buildEmailUrl(title);
         lightbox.classList.add("active");
         lightbox.setAttribute("aria-hidden","false");
         document.body.style.overflow = "hidden";
@@ -76,8 +72,8 @@ if (lightbox && lightboxImg && closeBtn) {
         lightboxImg.src = imgSrc; lightboxImg.alt = titulo;
         if (lightboxTitle) lightboxTitle.textContent = titulo;
         if (lightboxPrice) lightboxPrice.textContent = "Diamond painting 60×90 cm · Envío incluido";
-        if (lightboxWhatsapp) lightboxWhatsapp.href = buildWhatsappUrl(titulo,"89");
-        if (lightboxEmail)    lightboxEmail.href    = buildEmailUrl(titulo,"89");
+        if (lightboxContact) lightboxContact.href = buildEmailUrl(titulo);
+        if (lightboxEmail)   lightboxEmail.href   = buildEmailUrl(titulo);
         lightbox.classList.add("active");
         lightbox.setAttribute("aria-hidden","false");
         document.body.style.overflow = "hidden";
@@ -96,7 +92,7 @@ if (lightbox && lightboxImg && closeBtn) {
   document.addEventListener("keydown", e => { if (e.key==="Escape" && lightbox.classList.contains("active")) closeLightbox(); });
 }
 
-/* ── PAGINACIÓN ── */
+/* �� PAGINACIÓN �� */
 (function(){
   const ITEMS_PER_PAGE = 10;
   const grid = null;
@@ -124,7 +120,7 @@ if (lightbox && lightboxImg && closeBtn) {
   showPage(1);
 })();
 
-/* ── PAGINACIÓN GLOBAL DE TARJETAS ── */
+/* �� PAGINACIÓN GLOBAL DE TARJETAS �� */
 (function(){
   const DEFAULT_ITEMS_PER_PAGE = 10;
   const gridSelectors = [
