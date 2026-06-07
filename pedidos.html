@@ -34,7 +34,8 @@ main{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:3.5rem 5%
 .order-items{display:grid;gap:.8rem;margin-bottom:1rem}
 .order-item{display:flex;align-items:center;gap:.9rem;background:rgba(255,255,255,.03);border:1px solid rgba(160,63,255,.12);border-radius:14px;padding:.75rem .9rem}
 .order-item-img{width:60px;height:78px;object-fit:cover;border-radius:8px;border:1px solid rgba(160,63,255,.22);flex:0 0 auto}
-.order-item-info{flex:1;min-width:0}.order-item-name{font-family:"Cinzel",serif;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.order-item-info{flex:1;min-width:0}
+.order-item-name{font-family:"Cinzel",serif;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .order-item-price{font-family:"Cinzel",serif;color:var(--gold);white-space:nowrap}
 .order-footer{padding-top:1rem;border-top:1px solid rgba(160,63,255,.14)}
 .btn-clear{background:none;border:1px solid rgba(255,72,137,.28);color:rgba(255,180,210,.82);font-family:"Cinzel",serif;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:.5rem 1.2rem;border-radius:999px;cursor:pointer}
@@ -45,19 +46,117 @@ footer a{color:var(--gold)}
 </style>
 </head>
 <body>
-<header class="site-header" id="site-header"> <a class="brand" href="index.html" aria-label="Lady Aura inicio"><img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art"></a> <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">Menu</button> <nav class="nav" id="nav" aria-label="Navegaci?n principal"> <a href="index.html"><span class="nav-icon-dot nav-icon-home" aria-hidden="true"></span>Inicio</a> <a href="horoscopo.html"><span class="nav-icon-dot nav-icon-zodiac" aria-hidden="true"></span>Horoscopo</a> <a href="personalizados.html"><span class="nav-icon-dot nav-icon-custom" aria-hidden="true"></span>Personalizados</a> <a href="pedidos.html" aria-current="page"><span class="nav-icon-dot nav-icon-orders" aria-hidden="true"></span>Mis pedidos</a> <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;"><span class="nav-icon-dot nav-icon-cart" aria-hidden="true"></span>Carrito<span class="cart-badge" style="display:none">0</span></a> </nav>
-</header> <main> <div class="page-hero"> <span class="eyebrow">Lady Aura Art - Diamond Painting Premium</span> <h1>Mis pedidos</h1> <p>Aqui puedes ver tus reservas y pedidos.</p> </div> <div class="info-card"> <h2>Pedidos cerrados temporalmente</h2> <p>Ahora mismo el carrito y el formulario de reservas estan pausados. Si ya tienes una reserva guardada, podras verla aqui, pero no se pueden enviar pedidos nuevos por el momento.</p> </div> <div class="info-card"> <h2>Revisa también spam</h2> <p>A veces mis emails pueden llegar alli. Echale un vistazo de vez en cuando para no perderte el aviso sobre tu reserva.</p> </div> <div id="orders-empty" style="display:none"> <span class="empty-icon">◇</span> <h2>Aun no tienes reservas</h2> <p>Los pedidos estan cerrados temporalmente. Puedes seguir explorando las colecciones hasta que volvamos a abrir.</p> <a href="index.html" class="btn-shop">Ver colecciones</a> </div> <div id="orders-list"></div>
-</main> <footer><p>2026 <a href="index.html">Lady Aura Art</a> - Diamond Painting Premium - Valencia, Espana</p></footer> <script>
-(function(){ const btn = document.getElementById('menuToggle'); const nav = document.getElementById('nav'); if (!btn || !nav) return; btn.addEventListener('click', function(){ nav.classList.toggle('active'); btn.setAttribute('aria-expanded', nav.classList.contains('active') ? 'true' : 'false'); });
-})(); const STATUS_LABEL = { lista_espera: 'Lista de espera', procesando: 'Produccion por orden de reserva', enviado: 'Enviado', recibido: 'Recibido'
-}; function money(value) { return ''; } function orderItemSize(item) { if (item.tamano || item.size) return item.tamano || item.size; const price = Number(item.detalle || item.price); if (price === 76 || price === 79 || price === (79 + 2)) return '50x70 cm'; if (price === 66) return '40x60 cm'; return item.orient === 'v' ? '60x90 cm' : '90x60 cm';
-} function orderItemCurrentPrice(item) { const size = orderItemSize(item); if (/(?:50\s*x\s*70|70\s*x\s*50)/i.test(size)) return 79; if (/40\s*x\s*60/i.test(size)) return 66; return 89;
-} function orderCurrentTotal(order) { const items = order.items || []; if (!items.length) return Number(order.total) || 0; return items.reduce(function(sum, item) { return sum + orderItemCurrentPrice(item); }, 0);
-} function renderOrders() { const orders = JSON.parse(localStorage.getItem('ladyaura_orders') || '[]'); const list = document.getElementById('orders-list'); const empty = document.getElementById('orders-empty'); if (!orders.length) { empty.style.display = 'block'; list.innerHTML = ''; return; } empty.style.display = 'none'; list.innerHTML = orders.map(function(order, idx) { const estado = order.estado || 'lista_espera'; const currentTotal = orderCurrentTotal(order); const itemsHtml = (order.items || []).map(function(item) { const size = orderItemSize(item); return '<div class="order-item">' + '<img class="order-item-img" src="' + (item.img || '') + '" alt="' + (item.nombre || '') + '">' + '<div class="order-item-info"><div class="order-item-name">' + (item.nombre || 'Diseño') + '</div>' + '<div class="order-item-meta">Diamond painting ' + size + ' - Envío incluido</div></div>' + '' + '</div>'; }).join(''); const waitlistNote = estado === 'lista_espera' ? '<div class="order-waitlist-note"><strong>Reserva guardada.</strong> Los pedidos nuevos estan cerrados temporalmente. Si ya tienes esta reserva, recibiras un email personalizado cuando toque continuar. No se ha cobrado nada todavia.<div class="order-spam-note"><strong>Revisa spam de vez en cuando:</strong> a veces mis emails pueden llegar alli.</div></div>' : ''; return '<div class="order-card">' + '<div class="order-header"><div><div class="order-id">' + (order.id || 'LA-' + idx) + '</div><div class="order-date">' + (order.fecha || '') + ' - ' + (order.nombre || '') + '</div></div><span class="status-badge">' + (STATUS_LABEL[estado] || estado) + '</span></div>' + '<div class="order-items">' + itemsHtml + '</div>' + '<div class="order-footer"><div class="order-total"><span>Reserva guardada</span></div><button class="btn-clear" onclick="removeOrder(' + idx + ')">Eliminar reserva</button></div>' + waitlistNote + '</div>'; }).join('');
-} function removeOrder(idx) { const orders = JSON.parse(localStorage.getItem('ladyaura_orders') || '[]'); orders.splice(idx, 1); localStorage.setItem('ladyaura_orders', JSON.stringify(orders)); renderOrders();
-} renderOrders();
+<header class="site-header" id="site-header">
+  <a class="brand" href="index.html" aria-label="Lady Aura inicio"><img src="assets/Logo-transparent.webp" alt="Logo Lady Aura Art"></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">Menu</button>
+  <nav class="nav" id="nav" aria-label="Navegacion principal">
+    <a href="index.html"><span class="nav-icon-dot nav-icon-home" aria-hidden="true"></span>Inicio</a>
+    <a href="horoscopo.html"><span class="nav-icon-dot nav-icon-zodiac" aria-hidden="true"></span>Horoscopo</a>
+    <a href="personalizados.html"><span class="nav-icon-dot nav-icon-custom" aria-hidden="true"></span>Personalizados</a>
+    <a href="pedidos.html" aria-current="page"><span class="nav-icon-dot nav-icon-orders" aria-hidden="true"></span>Mis pedidos</a>
+    <a href="carrito.html" class="cart-nav-link" aria-label="Ver carrito" style="position:relative;display:inline-flex;align-items:center;text-decoration:none;"><span class="nav-icon-dot nav-icon-cart" aria-hidden="true"></span>Carrito<span class="cart-badge" style="display:none">0</span></a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <span class="eyebrow">Lady Aura Art - Diamond Painting Premium</span>
+    <h1>Mis pedidos</h1>
+    <p>Aqui podras ver tus pedidos cuando todo este listo.</p>
+  </div>
+  <div class="info-card">
+    <h2>Estamos preparando todo</h2>
+    <p>La zona de pedidos todavia no esta activa. Estamos dejando el sistema listo para que puedas usarlo con calma cuando este disponible.</p>
+  </div>
+  <div class="info-card">
+    <h2>Te avisare cuando este listo</h2>
+    <p>Si has dejado tus datos, revisa tambien spam de vez en cuando para no perderte ningun aviso.</p>
+  </div>
+  <div id="orders-empty" style="display:none">
+    <span class="empty-icon">◇</span>
+    <h2>Aun no tienes pedidos</h2>
+    <p>Estamos preparando el sistema de pedidos. Mientras tanto puedes seguir explorando las colecciones y guardar tus diseños favoritos en el carrito.</p>
+    <a href="index.html" class="btn-shop">Ver colecciones</a>
+  </div>
+  <div id="orders-list"></div>
+</main>
+<footer><p>2026 <a href="index.html">Lady Aura Art</a> - Diamond Painting Premium - Valencia, Espana</p></footer>
+<script>
+(function(){
+  const btn = document.getElementById('menuToggle');
+  const nav = document.getElementById('nav');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function(){
+    nav.classList.toggle('active');
+    btn.setAttribute('aria-expanded', nav.classList.contains('active') ? 'true' : 'false');
+  });
+})();
+const STATUS_LABEL = {
+  lista_espera: 'Preparando sistema',
+  preparacion: 'Preparando sistema',
+  procesando: 'Produccion por orden de pedido',
+  enviado: 'Enviado',
+  recibido: 'Recibido'
+};
+function money(value) { return ''; }
+function orderItemSize(item) {
+  if (item.tamano || item.size) return item.tamano || item.size;
+  const price = Number(item.detalle || item.price);
+  if (price === 76 || price === 79 || price === (79 + 2)) return '50x70 cm';
+  if (price === 66) return '40x60 cm';
+  return item.orient === 'v' ? '60x90 cm' : '90x60 cm';
+}
+function orderItemCurrentPrice(item) {
+  const size = orderItemSize(item);
+  if (/(?:50\s*x\s*70|70\s*x\s*50)/i.test(size)) return 79;
+  if (/40\s*x\s*60/i.test(size)) return 66;
+  return 89;
+}
+function orderCurrentTotal(order) {
+  const items = order.items || [];
+  if (!items.length) return Number(order.total) || 0;
+  return items.reduce(function(sum, item) { return sum + orderItemCurrentPrice(item); }, 0);
+}
+function renderOrders() {
+  const orders = JSON.parse(localStorage.getItem('ladyaura_orders') || '[]');
+  const list = document.getElementById('orders-list');
+  const empty = document.getElementById('orders-empty');
+  if (!orders.length) {
+    empty.style.display = 'block';
+    list.innerHTML = '';
+    return;
+  }
+  empty.style.display = 'none';
+  list.innerHTML = orders.map(function(order, idx) {
+    const estado = order.estado || 'preparacion';
+    const itemsHtml = (order.items || []).map(function(item) {
+      const size = orderItemSize(item);
+      return '<div class="order-item">' +
+        '<img class="order-item-img" src="' + (item.img || '') + '" alt="' + (item.nombre || '') + '">' +
+        '<div class="order-item-info"><div class="order-item-name">' + (item.nombre || 'Diseño') + '</div>' +
+        '<div class="order-item-meta">Diamond painting ' + size + ' - Envio incluido</div></div>' +
+        '</div>';
+    }).join('');
+    const waitlistNote = (estado === 'lista_espera' || estado === 'preparacion')
+      ? '<div class="order-waitlist-note"><strong>Estamos preparando todo.</strong> Tus datos y diseños quedan guardados mientras dejamos lista la zona de pedidos. No se ha cobrado nada todavia.<div class="order-spam-note"><strong>Revisa spam de vez en cuando:</strong> a veces mis emails pueden llegar alli.</div></div>'
+      : '';
+    return '<div class="order-card">' +
+      '<div class="order-header"><div><div class="order-id">' + (order.id || 'LA-' + idx) + '</div><div class="order-date">' + (order.fecha || '') + ' - ' + (order.nombre || '') + '</div></div><span class="status-badge">' + (STATUS_LABEL[estado] || estado) + '</span></div>' +
+      '<div class="order-items">' + itemsHtml + '</div>' +
+      '<div class="order-footer"><div class="order-total"><span>Sistema en preparacion</span></div><button class="btn-clear" onclick="removeOrder(' + idx + ')">Eliminar pedido</button></div>' +
+      waitlistNote +
+      '</div>';
+  }).join('');
+}
+function removeOrder(idx) {
+  const orders = JSON.parse(localStorage.getItem('ladyaura_orders') || '[]');
+  orders.splice(idx, 1);
+  localStorage.setItem('ladyaura_orders', JSON.stringify(orders));
+  renderOrders();
+}
+renderOrders();
 </script>
-<script src="private-cart-config.js"></script> <script src="carrito.js"></script>
+<script src="private-cart-config.js"></script>
+<script src="carrito.js"></script>
 <script src="language-toggle.js"></script>
 </body>
 </html>
